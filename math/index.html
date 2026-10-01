@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Speed Math Workout - Granular Levels</title>
+  <title>Speed Math Workout - Vedic & Competitive Exam Engine</title>
   <link rel="manifest" href="/math/manifest.json">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3134012164951095" crossorigin="anonymous"></script>
 
@@ -32,7 +32,7 @@
     }
     #app-container {
       width: 100%;
-      max-width: 440px;
+      max-width: 460px;
       min-height: 100vh;
       background: #fff;
       display: flex;
@@ -100,9 +100,101 @@
       margin-bottom: 8px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
     }
 
-    /* Granular Difficulty Pills */
+    /* Category Pill Navigation for Learning */
+    .sub-nav {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      margin-bottom: 10px;
+    }
+    .sub-pill {
+      background: var(--accent-soft);
+      border: 1px solid #b2dfdb;
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .sub-pill.active {
+      background: var(--teal-header);
+      color: #fff;
+      border-color: var(--teal-header);
+    }
+
+    /* Interval selector (1-10, 11-20, etc.) */
+    .interval-bar {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      margin-bottom: 8px;
+    }
+    .int-chip {
+      background: #eceff1;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .int-chip.active {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* Learning Card & Row Styling */
+    .learn-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .learn-card h4 {
+      color: var(--teal-header);
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .learn-card p {
+      font-size: 13px;
+      color: #455a64;
+      line-height: 1.5;
+      margin-bottom: 6px;
+    }
+    .learn-example {
+      background: #f1f8e9;
+      border-left: 3px solid #689f38;
+      padding: 8px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-family: monospace;
+      color: #2e7d32;
+    }
+
+    .data-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #e0f2f1;
+      padding: 9px 14px;
+      border-radius: 8px;
+      margin-bottom: 5px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .data-row:active { background: #b2dfdb; }
+
+    /* Granular Difficulty Pills for Practice */
     .diff-grid {
       display: flex;
       flex-wrap: wrap;
@@ -153,7 +245,7 @@
       left: 50%;
       transform: translateX(-50%);
       width: 100%;
-      max-width: 440px;
+      max-width: 460px;
       padding: 14px 16px;
       background: #fff;
       border-top: 1px solid var(--border);
@@ -170,7 +262,7 @@
       cursor: pointer;
     }
 
-    /* Active Exercise Area */
+    /* Active Drill Layout */
     .exam-box {
       background: #fff;
       border: 1px solid var(--border);
@@ -206,7 +298,6 @@
       min-width: 120px;
     }
 
-    /* MCQ Grid */
     .mcq-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -226,7 +317,6 @@
     }
     .mcq-card:active { background: #e0f2f1; }
 
-    /* Custom Numpad */
     .numpad-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -245,7 +335,6 @@
     }
     .pad-btn:active { background: #b2dfdb; }
 
-    /* 3-Second Count Overlay */
     .overlay-count {
       position: fixed;
       inset: 0;
@@ -272,36 +361,6 @@
       animation: spin 1s linear infinite;
     }
     @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-    /* Table Flashcard View */
-    .table-slider {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding-bottom: 8px;
-      margin-bottom: 12px;
-    }
-    .table-chip {
-      background: #eceff1;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-weight: 700;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-    .table-chip.active { background: var(--teal-header); color: #fff; }
-    .table-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #e0f2f1;
-      padding: 10px 16px;
-      border-radius: 8px;
-      margin-bottom: 6px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-    }
 
     .hint-modal {
       position: fixed;
@@ -333,7 +392,7 @@
       <span>Speed Math Workout</span>
       <div>
         <span style="font-size: 14px; margin-right: 8px;">🪙 <span id="dash-coins">679</span></span>
-        <span style="cursor:pointer;" onclick="switchTab('practice')">⚙️</span>
+        <span style="cursor:pointer;" onclick="switchTab('practice')">⚙️️</span>
       </div>
     </div>
     
@@ -343,19 +402,26 @@
     </div>
 
     <div class="tab-bar">
-      <div id="tab-learn-btn" class="tab-btn active" onclick="switchTab('learn')">LEARNING</div>
+      <div id="tab-learn-btn" class="tab-btn active" onclick="switchTab('learn')">LEARNING & TRICKS</div>
       <div id="tab-practice-btn" class="tab-btn" onclick="switchTab('practice')">PRACTICE & TESTS</div>
     </div>
 
-    <!-- TAB A: LEARNING -->
+    <!-- TAB A: ADVANCED LEARNING & VEDIC HUB -->
     <div id="tab-learn" class="scroll-body">
-      <div class="group-title"><span>Tables & Active Recall</span></div>
-      <div class="table-slider" id="table-tabs"></div>
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-        <span style="font-size:12px; color:var(--text-muted);">Tap row to toggle reveal</span>
-        <button onclick="toggleAllTableRows()" style="background:none; border:none; color:var(--teal-header); font-weight:700; font-size:12px; cursor:pointer;">Show/Hide All</button>
+      <!-- Sub-Category Selector -->
+      <div class="sub-nav">
+        <div class="sub-pill active" onclick="setLearnCategory('vedic_add')">Vedic Add (+)</div>
+        <div class="sub-pill" onclick="setLearnCategory('vedic_sub')">Vedic Sub (-)</div>
+        <div class="sub-pill" onclick="setLearnCategory('vedic_mul')">Vedic Mul (×)</div>
+        <div class="sub-pill" onclick="setLearnCategory('vedic_div')">Vedic Div (÷)</div>
+        <div class="sub-pill" onclick="setLearnCategory('squares')">Squares (1-100)</div>
+        <div class="sub-pill" onclick="setLearnCategory('cubes')">Cubes (1-100)</div>
+        <div class="sub-pill" onclick="setLearnCategory('fractions')">% ↔ Fractions</div>
+        <div class="sub-pill" onclick="setLearnCategory('tables')">Tables (12-40)</div>
       </div>
-      <div id="table-container"></div>
+
+      <!-- Active Learning Container -->
+      <div id="learn-content-view"></div>
     </div>
 
     <!-- TAB B: PRACTICE & CONFIGURATION -->
@@ -501,9 +567,10 @@
 </div>
 
 <script>
-  let currentTab = 'practice';
+  let currentTab = 'learn';
   let userCoins = 679;
-  let activeTableNum = 30;
+  let activeLearnCategory = 'vedic_add';
+  let activeInterval = 1;
   let tableRevealed = true;
 
   let workoutConfig = {
@@ -525,20 +592,285 @@
     activeHint: ''
   };
 
-  function setDifficulty(level) {
-    workoutConfig.difficulty = level;
-    document.querySelectorAll('.diff-chip').forEach(el => {
-      el.classList.toggle('active', el.innerText === level);
+  /* --- Learning Engine Data & Handlers --- */
+  const fractionData = [
+    { frac: "1/2", pct: "50%", dec: "0.5" },
+    { frac: "1/3", pct: "33.33%", dec: "0.333" },
+    { frac: "1/4", pct: "25%", dec: "0.25" },
+    { frac: "1/5", pct: "20%", dec: "0.20" },
+    { frac: "1/6", pct: "16.66% / 16⅔%", dec: "0.166" },
+    { frac: "1/7", pct: "14.28% / 14 2/7%", dec: "0.1428" },
+    { frac: "1/8", pct: "12.5%", dec: "0.125" },
+    { frac: "1/9", pct: "11.11% / 11 1/9%", dec: "0.111" },
+    { frac: "1/10", pct: "10%", dec: "0.10" },
+    { frac: "1/11", pct: "9.09% / 9 1/11%", dec: "0.0909" },
+    { frac: "1/12", pct: "8.33%", dec: "0.0833" },
+    { frac: "1/13", pct: "7.69%", dec: "0.0769" },
+    { frac: "1/14", pct: "7.14%", dec: "0.0714" },
+    { frac: "1/15", pct: "6.66%", dec: "0.0666" },
+    { frac: "1/16", pct: "6.25%", dec: "0.0625" },
+    { frac: "1/20", pct: "5%", dec: "0.05" },
+    { frac: "1/25", pct: "4%", dec: "0.04" },
+    { frac: "2/3", pct: "66.66%", dec: "0.666" },
+    { frac: "3/4", pct: "75%", dec: "0.75" },
+    { frac: "2/5", pct: "40%", dec: "0.40" },
+    { frac: "3/5", pct: "60%", dec: "0.60" },
+    { frac: "4/5", pct: "80%", dec: "0.80" },
+    { frac: "5/6", pct: "83.33%", dec: "0.833" },
+    { frac: "2/7", pct: "28.57%", dec: "0.2857" },
+    { frac: "3/7", pct: "42.85%", dec: "0.4285" },
+    { frac: "4/7", pct: "57.14%", dec: "0.5714" },
+    { frac: "3/8", pct: "37.5%", dec: "0.375" },
+    { frac: "5/8", pct: "62.5%", dec: "0.625" },
+    { frac: "7/8", pct: "87.5%", dec: "0.875" },
+    { frac: "2/9", pct: "22.22%", dec: "0.222" },
+    { frac: "4/9", pct: "44.44%", dec: "0.444" },
+    { frac: "7/9", pct: "77.77%", dec: "0.777" }
+  ];
+
+  function setLearnCategory(cat) {
+    activeLearnCategory = cat;
+    document.querySelectorAll('.sub-pill').forEach(el => {
+      el.classList.toggle('active', el.innerText.toLowerCase().includes(cat.split('_')[1] || cat));
     });
-    document.getElementById('diff-indicator').innerText = level;
+    activeInterval = 1;
+    renderLearningContent();
   }
 
+  function renderLearningContent() {
+    const v = document.getElementById('learn-content-view');
+    v.innerHTML = '';
+
+    // 1. VEDIC ADDITION (1 to 5 Digits)
+    if (activeLearnCategory === 'vedic_add') {
+      v.innerHTML = `
+        <div class="learn-card">
+          <h4>1-Digit & 2-Digit: Left-to-Right Partition</h4>
+          <p>Add the highest place values first instead of carrying from right to left.</p>
+          <div class="learn-example">68 + 75 = (60 + 70) + (8 + 5) = 130 + 13 = 143</div>
+        </div>
+        <div class="learn-card">
+          <h4>3-Digit: Base Rounding & Compensation</h4>
+          <p>Round near-hundred numbers and subtract the excess at the end.</p>
+          <div class="learn-example">496 + 328 = (500 + 328) − 4 = 828 − 4 = 824</div>
+        </div>
+        <div class="learn-card">
+          <h4>4-Digit: Twin Splitting</h4>
+          <p>Split 4 digits into two 2-digit pairs and add independently.</p>
+          <div class="learn-example">3452 + 2341 = [34+23] [52+41] = 5793</div>
+        </div>
+        <div class="learn-card">
+          <h4>5-Digit: Pillar Column Partition</h4>
+          <p>Group thousands together, then hundreds, then tens/units.</p>
+          <div class="learn-example">42,310 + 25,480 = (42k + 25k) + (310 + 480) = 67,000 + 790 = 67,790</div>
+        </div>
+      `;
+    }
+
+    // 2. VEDIC SUBTRACTION
+    else if (activeLearnCategory === 'vedic_sub') {
+      v.innerHTML = `
+        <div class="learn-card">
+          <h4>All from 9 and Last from 10 (Nikhilam)</h4>
+          <p>Use to subtract instantly from powers of 10 (100, 1000, 10000, 100000).</p>
+          <div class="learn-example">10000 − 4376 = (9-4)(9-3)(9-7)(10-6) = 5624</div>
+        </div>
+        <div class="learn-card">
+          <h4>2 & 3-Digit: Add to Subtract (Friendly Base)</h4>
+          <p>Increase both numbers to make the subtrahend a clean zero base.</p>
+          <div class="learn-example">83 − 47 = (83 + 3) − (47 + 3) = 86 − 50 = 36</div>
+        </div>
+        <div class="learn-card">
+          <h4>4 & 5-Digit: Left-to-Right Drop</h4>
+          <p>Subtract from left to right. If next digit requires borrowing, drop 1 immediately.</p>
+          <div class="learn-example">5420 − 2180 = (5-2=3) → (4-1=3, but 2<8 so drop to 2) [12-8=4] [0] = 3240</div>
+        </div>
+      `;
+    }
+
+    // 3. VEDIC MULTIPLICATION
+    else if (activeLearnCategory === 'vedic_mul') {
+      v.innerHTML = `
+        <div class="learn-card">
+          <h4>Multiply by 5, 25, 50, 125</h4>
+          <p>Convert multiplication into rapid half/double division steps:</p>
+          <div class="learn-example">
+            × 5 = ÷ 2 then × 10 (48 × 5 = 240)<br>
+            × 25 = ÷ 4 then × 100 (64 × 25 = 1600)<br>
+            × 50 = ÷ 2 then × 100 (82 × 50 = 4100)<br>
+            × 125 = ÷ 8 then × 1000 (72 × 125 = 9000)
+          </div>
+        </div>
+        <div class="learn-card">
+          <h4>Base Multiplication (Near 100)</h4>
+          <p>Both numbers near 100 (Above or below base 100).</p>
+          <div class="learn-example">104 × 107 = (104 + 7) | (4 × 7) = 111 | 28 = 11128<br>96 × 94 = (96 − 6) | (-4 × -6) = 90 | 24 = 9024</div>
+        </div>
+        <div class="learn-card">
+          <h4>Crosswise (Urdhva-Tiryagbhyam) 2-Digit & 3-Digit</h4>
+          <p>Multiply straight, crosswise sum, straight.</p>
+          <div class="learn-example">23 × 14 = (2×1) | (2×4 + 3×1) | (3×4) = 2 | 11 | 12 = 322</div>
+        </div>
+      `;
+    }
+
+    // 4. VEDIC DIVISION
+    else if (activeLearnCategory === 'vedic_div') {
+      v.innerHTML = `
+        <div class="learn-card">
+          <h4>Divide by 5, 25, 50</h4>
+          <p>Never divide directly by 5, 25, or 50. Multiply and shift decimal places:</p>
+          <div class="learn-example">
+            ÷ 5 = × 2 then ÷ 10 (340 ÷ 5 = 680 ÷ 10 = 68)<br>
+            ÷ 50 = × 2 then ÷ 100 (8250 ÷ 50 = 16500 ÷ 100 = 165)<br>
+            ÷ 25 = × 4 then ÷ 100 (350 ÷ 25 = 1400 ÷ 100 = 14)
+          </div>
+        </div>
+        <div class="learn-card">
+          <h4>Flag Method (Dhwajank) Overview (3 to 5 Digits)</h4>
+          <p>Keep 1st digit as divisor and rest as flag to compute quotient/remainder mentally.</p>
+          <div class="learn-example">4324 ÷ 52 → Divisor: 5, Flag: 2. Reduces multi-digit division to 1-digit division.</div>
+        </div>
+      `;
+    }
+
+    // 5. SQUARES (1 to 100) in Decades
+    else if (activeLearnCategory === 'squares') {
+      const decades = [
+        "1-10", "11-20", "21-30", "31-40", "41-50",
+        "51-60", "61-70", "71-80", "81-90", "91-100"
+      ];
+      let bar = `<div class="interval-bar">`;
+      decades.forEach((d, i) => {
+        bar += `<div class="int-chip ${activeInterval === (i+1) ? 'active' : ''}" onclick="activeInterval=${i+1}; renderLearningContent();">${d}</div>`;
+      });
+      bar += `</div><div style="display:flex; justify-content:space-between; margin-bottom:8px;"><span style="font-size:12px; color:var(--text-muted);">Tap to toggle answer reveal</span><button onclick="toggleRows()" style="background:none; border:none; color:var(--teal-header); font-weight:700; font-size:12px; cursor:pointer;">Show/Hide All</button></div>`;
+
+      const start = (activeInterval - 1) * 10 + 1;
+      const end = activeInterval * 10;
+      let rows = '';
+      for (let n = start; n <= end; n++) {
+        rows += `
+          <div class="data-row" onclick="toggleRowVal(this, '${n}² = ${n*n}')">
+            <span>${n}²</span>
+            <span class="val-hide" data-ans="${n*n}">=${n*n}</span>
+          </div>
+        `;
+      }
+      v.innerHTML = bar + rows;
+    }
+
+    // 6. CUBES (1 to 100) in Decades
+    else if (activeLearnCategory === 'cubes') {
+      const decades = ["1-10", "11-20", "21-30", "31-40", "41-50", "Key 51-100"];
+      let bar = `<div class="interval-bar">`;
+      decades.forEach((d, i) => {
+        bar += `<div class="int-chip ${activeInterval === (i+1) ? 'active' : ''}" onclick="activeInterval=${i+1}; renderLearningContent();">${d}</div>`;
+      });
+      bar += `</div><div style="display:flex; justify-content:space-between; margin-bottom:8px;"><span style="font-size:12px; color:var(--text-muted);">Tap to toggle answer reveal</span><button onclick="toggleRows()" style="background:none; border:none; color:var(--teal-header); font-weight:700; font-size:12px; cursor:pointer;">Show/Hide All</button></div>`;
+
+      let rows = '';
+      if (activeInterval <= 5) {
+        const start = (activeInterval - 1) * 10 + 1;
+        const end = activeInterval * 10;
+        for (let n = start; n <= end; n++) {
+          rows += `
+            <div class="data-row" onclick="toggleRowVal(this, '${n}³ = ${n*n*n}')">
+              <span>${n}³</span>
+              <span class="val-hide" data-ans="${n*n*n}">=${n*n*n}</span>
+            </div>
+          `;
+        }
+      } else {
+        const landmarks = [55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
+        landmarks.forEach(n => {
+          rows += `
+            <div class="data-row" onclick="toggleRowVal(this, '${n}³ = ${n*n*n}')">
+              <span>${n}³</span>
+              <span class="val-hide" data-ans="${n*n*n}">=${n*n*n}</span>
+            </div>
+          `;
+        });
+      }
+      v.innerHTML = bar + rows;
+    }
+
+    // 7. FRACTIONS TO PERCENTAGES
+    else if (activeLearnCategory === 'fractions') {
+      let html = `
+        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+          <span style="font-size:12px; color:var(--text-muted);">Tap row to hide/reveal percentage</span>
+          <button onclick="toggleRows()" style="background:none; border:none; color:var(--teal-header); font-weight:700; font-size:12px; cursor:pointer;">Show/Hide All</button>
+        </div>
+      `;
+      fractionData.forEach(item => {
+        html += `
+          <div class="data-row" onclick="toggleRowVal(this, '${item.frac} = ${item.pct}')">
+            <span>${item.frac}</span>
+            <span class="val-hide" data-ans="${item.pct}">=${item.pct} (${item.dec})</span>
+          </div>
+        `;
+      });
+      v.innerHTML = html;
+    }
+
+    // 8. MULTIPLICATION TABLES
+    else if (activeLearnCategory === 'tables') {
+      let bar = `<div class="interval-bar">`;
+      for (let t = 12; t <= 40; t++) {
+        bar += `<div class="int-chip ${activeInterval === t ? 'active' : ''}" onclick="activeInterval=${t}; renderLearningContent();">${t}</div>`;
+      }
+      bar += `</div><div style="display:flex; justify-content:space-between; margin-bottom:8px;"><span style="font-size:12px; color:var(--text-muted);">Tap row to toggle reveal</span><button onclick="toggleRows()" style="background:none; border:none; color:var(--teal-header); font-weight:700; font-size:12px; cursor:pointer;">Show/Hide All</button></div>`;
+
+      let curTable = (activeInterval >= 12 && activeInterval <= 40) ? activeInterval : 12;
+      let rows = '';
+      for (let i = 1; i <= 10; i++) {
+        let ans = curTable * i;
+        rows += `
+          <div class="data-row" onclick="toggleRowVal(this, '${curTable} × ${i} = ${ans}')">
+            <span>${curTable} × ${i}</span>
+            <span class="val-hide" data-ans="${ans}">=${ans}</span>
+          </div>
+        `;
+      }
+      v.innerHTML = bar + rows;
+    }
+  }
+
+  function toggleRowVal(el, fullText) {
+    const valSpan = el.querySelector('.val-hide');
+    if (!valSpan) return;
+    const ans = valSpan.getAttribute('data-ans');
+    if (valSpan.innerText.includes('***')) {
+      valSpan.innerText = `=${ans}`;
+    } else {
+      valSpan.innerText = '=***';
+    }
+  }
+
+  function toggleRows() {
+    tableRevealed = !tableRevealed;
+    document.querySelectorAll('.val-hide').forEach(el => {
+      const ans = el.getAttribute('data-ans');
+      el.innerText = tableRevealed ? `=${ans}` : '=***';
+    });
+  }
+
+  /* --- Navigation & Setup Controls --- */
   function switchTab(t) {
     currentTab = t;
     document.getElementById('tab-learn-btn').classList.toggle('active', t === 'learn');
     document.getElementById('tab-practice-btn').classList.toggle('active', t === 'practice');
     document.getElementById('tab-learn').classList.toggle('hidden', t !== 'learn');
     document.getElementById('tab-practice').classList.toggle('hidden', t !== 'practice');
+  }
+
+  function setDifficulty(level) {
+    workoutConfig.difficulty = level;
+    document.querySelectorAll('.diff-chip').forEach(el => {
+      el.classList.toggle('active', el.innerText === level);
+    });
+    document.getElementById('diff-indicator').innerText = level;
   }
 
   function toggleSelection(el, op) {
@@ -571,134 +903,89 @@
     const diff = workoutConfig.difficulty;
     let expr = "", ans = 0, hint = "";
 
-    // 1. ADDITION & SUBTRACTION
+    // 1. ADD & SUB
     if (op === 'add' || op === 'sub') {
       let a, b;
       switch(diff) {
-        case 'Very Easy':
-          a = Math.floor(Math.random() * 8) + 2;
-          b = Math.floor(Math.random() * 8) + 2;
-          break;
-        case 'Easy':
-          a = Math.floor(Math.random() * 80) + 11;
-          b = Math.floor(Math.random() * 9) + 1;
-          break;
-        case 'Medium':
-          a = Math.floor(Math.random() * 45) + 12;
-          b = Math.floor(Math.random() * 40) + 10;
-          break;
-        case 'Above Medium':
-          a = Math.floor(Math.random() * 89) + 11;
-          b = Math.floor(Math.random() * 89) + 11;
-          break;
-        case 'Hard':
-          a = Math.floor(Math.random() * 800) + 100;
-          b = Math.floor(Math.random() * 89) + 10;
-          break;
-        case 'Extreme Hard':
-          a = Math.floor(Math.random() * 899) + 100;
-          b = Math.floor(Math.random() * 899) + 100;
-          break;
-        case 'Expert':
-        default:
-          a = Math.floor(Math.random() * 8999) + 1000;
-          b = Math.floor(Math.random() * 4999) + 500;
-          break;
+        case 'Very Easy': a = Math.floor(Math.random() * 8) + 2; b = Math.floor(Math.random() * 8) + 2; break;
+        case 'Easy': a = Math.floor(Math.random() * 80) + 11; b = Math.floor(Math.random() * 9) + 1; break;
+        case 'Medium': a = Math.floor(Math.random() * 45) + 12; b = Math.floor(Math.random() * 40) + 10; break;
+        case 'Above Medium': a = Math.floor(Math.random() * 89) + 11; b = Math.floor(Math.random() * 89) + 11; break;
+        case 'Hard': a = Math.floor(Math.random() * 800) + 100; b = Math.floor(Math.random() * 89) + 10; break;
+        case 'Extreme Hard': a = Math.floor(Math.random() * 899) + 100; b = Math.floor(Math.random() * 899) + 100; break;
+        case 'Expert': default: a = Math.floor(Math.random() * 8999) + 1000; b = Math.floor(Math.random() * 4999) + 500; break;
       }
       if (op === 'add') {
         ans = a + b;
         expr = `${a} + ${b} = ?`;
-        hint = `Decompose: Add the hundreds/tens first, then units.`;
+        hint = `Vedic Left-to-Right: Add largest place values first, then resolve units.`;
       } else {
         if (a < b) { let t = a; a = b; b = t; }
         ans = a - b;
         expr = `${a} − ${b} = ?`;
-        hint = `Subtract to round number base, then adjust remainder.`;
+        hint = `Friendly Base: Round up subtrahend ${b} to clean base, then add compensation.`;
       }
     }
 
-    // 2. MULTIPLICATION & DIVISION
+    // 2. MULTIPLY & DIVIDE
     else if (op === 'mul' || op === 'div') {
       let a, b;
       switch(diff) {
-        case 'Very Easy':
-          a = Math.floor(Math.random() * 9) + 2;
-          b = Math.floor(Math.random() * 8) + 2;
-          break;
-        case 'Easy':
-          a = Math.floor(Math.random() * 5) + 11;
-          b = Math.floor(Math.random() * 8) + 2;
-          break;
-        case 'Medium':
-          a = Math.floor(Math.random() * 9) + 12;
-          b = Math.floor(Math.random() * 10) + 3;
-          break;
-        case 'Above Medium':
-          a = Math.floor(Math.random() * 20) + 15;
-          b = Math.floor(Math.random() * 15) + 10;
-          break;
-        case 'Hard':
-          a = Math.floor(Math.random() * 50) + 25;
-          b = Math.floor(Math.random() * 30) + 12;
-          break;
-        case 'Extreme Hard':
-          a = Math.floor(Math.random() * 500) + 100;
-          b = Math.floor(Math.random() * 8) + 3;
-          break;
-        case 'Expert':
-        default:
-          a = Math.floor(Math.random() * 800) + 100;
-          b = Math.floor(Math.random() * 30) + 12;
-          break;
+        case 'Very Easy': a = Math.floor(Math.random() * 9) + 2; b = Math.floor(Math.random() * 8) + 2; break;
+        case 'Easy': a = Math.floor(Math.random() * 5) + 11; b = Math.floor(Math.random() * 8) + 2; break;
+        case 'Medium': a = Math.floor(Math.random() * 9) + 12; b = Math.floor(Math.random() * 10) + 3; break;
+        case 'Above Medium': a = Math.floor(Math.random() * 20) + 15; b = Math.floor(Math.random() * 15) + 10; break;
+        case 'Hard': a = Math.floor(Math.random() * 50) + 25; b = Math.floor(Math.random() * 30) + 12; break;
+        case 'Extreme Hard': a = Math.floor(Math.random() * 500) + 100; b = Math.floor(Math.random() * 8) + 3; break;
+        case 'Expert': default: a = Math.floor(Math.random() * 800) + 100; b = Math.floor(Math.random() * 30) + 12; break;
       }
       if (op === 'mul') {
         ans = a * b;
         expr = `${a} × ${b} = ?`;
-        hint = `Multiply ${a} by tens (${Math.floor(b/10)*10}) then units (${b%10}) and add.`;
+        hint = `Decompose: Multiply ${a} by ${Math.floor(b/10)*10} and ${b%10}, then sum.`;
       } else {
-        let q = a;
-        let product = q * b;
-        ans = q;
+        ans = a;
+        let product = a * b;
         expr = `${product} ÷ ${b} = ?`;
-        hint = `How many times does ${b} go into ${product}?`;
+        hint = `Inverse: How many times does ${b} divide into ${product}?`;
       }
     }
 
     // 3. SQUARES & CUBES
     else if (op === 'square') {
-      let limit = diff === 'Very Easy' ? 12 : (diff === 'Easy' ? 20 : (diff === 'Medium' ? 30 : (diff === 'Above Medium' ? 50 : (diff === 'Hard' ? 75 : 100))));
+      let limit = diff === 'Very Easy' ? 10 : (diff === 'Easy' ? 20 : (diff === 'Medium' ? 30 : (diff === 'Above Medium' ? 50 : (diff === 'Hard' ? 75 : 100))));
       let n = Math.floor(Math.random() * (limit - 2 + 1)) + 2;
       ans = n * n;
       expr = `${n}² = ?`;
-      hint = `Unit digit of ${n}² will always be ${(ans)%10}.`;
+      hint = `Unit digit of ${n}² must end in ${(ans)%10}.`;
     }
     else if (op === 'cube') {
       let limit = diff === 'Very Easy' ? 5 : (diff === 'Easy' ? 10 : (diff === 'Medium' ? 15 : (diff === 'Above Medium' ? 20 : (diff === 'Hard' ? 30 : 50))));
       let n = Math.floor(Math.random() * (limit - 2 + 1)) + 2;
       ans = n * n * n;
       expr = `${n}³ = ?`;
-      hint = `Memorize unit ending: ${n} cubed ends in ${(ans)%10}.`;
+      hint = `Recall cubes table: ${n}³ ends in ${(ans)%10}.`;
     }
     else if (op === 'sqrt') {
       let limit = diff === 'Very Easy' ? 10 : (diff === 'Easy' ? 20 : (diff === 'Medium' ? 30 : (diff === 'Above Medium' ? 50 : (diff === 'Hard' ? 75 : 100))));
       let n = Math.floor(Math.random() * (limit - 2 + 1)) + 2;
       ans = n;
       expr = `√${n * n} = ?`;
-      hint = `Find integer whose square is ${n * n}.`;
+      hint = `Find whole number whose square is ${n * n}.`;
     }
     else if (op === 'cbrt') {
       let limit = diff === 'Very Easy' ? 5 : (diff === 'Easy' ? 10 : (diff === 'Medium' ? 15 : 30));
       let n = Math.floor(Math.random() * (limit - 2 + 1)) + 2;
       ans = n;
       expr = `∛${n * n * n} = ?`;
-      hint = `Find integer whose cube is ${n * n * n}.`;
+      hint = `Look at unit place: only ${n} produces cube ending in ${(n*n*n)%10}.`;
     }
     else if (op === 'percent') {
       let base = (Math.floor(Math.random() * 50) + 10) * 10;
       let pct = (diff === 'Very Easy' || diff === 'Easy') ? 10 : (diff === 'Medium' ? 20 : 25);
       ans = Math.round(base * (pct / 100));
       expr = `${pct}% of ${base} = ?`;
-      hint = `To find ${pct}%, divide ${base} appropriately.`;
+      hint = `Shift decimal: 10% of ${base} is ${base/10}. Scale accordingly.`;
     }
 
     // 4. BODMAS SIMPLIFICATION
@@ -897,45 +1184,8 @@
     document.getElementById('modal-hint').classList.add('hidden');
   }
 
-  /* --- Learning Tables View --- */
-  function buildTableTabs() {
-    const bar = document.getElementById('table-tabs');
-    bar.innerHTML = '';
-    for (let i = 12; i <= 40; i++) {
-      const chip = document.createElement('div');
-      chip.className = `table-chip ${i === activeTableNum ? 'active' : ''}`;
-      chip.innerText = i;
-      chip.onclick = () => { activeTableNum = i; renderActiveTable(); buildTableTabs(); };
-      bar.appendChild(chip);
-    }
-  }
-
-  function renderActiveTable() {
-    const c = document.getElementById('table-container');
-    c.innerHTML = '';
-    for (let i = 1; i <= 10; i++) {
-      const row = document.createElement('div');
-      row.className = 'table-row';
-      const ans = activeTableNum * i;
-      row.innerHTML = `<span>${activeTableNum} × ${i}</span> <span class="tbl-ans" data-val="${ans}">=${ans}</span>`;
-      row.onclick = () => {
-        const valSpan = row.querySelector('.tbl-ans');
-        valSpan.innerText = valSpan.innerText.includes('***') ? `=${ans}` : '=***';
-      };
-      c.appendChild(row);
-    }
-  }
-
-  function toggleAllTableRows() {
-    tableRevealed = !tableRevealed;
-    document.querySelectorAll('.tbl-ans').forEach(el => {
-      const v = el.getAttribute('data-val');
-      el.innerText = tableRevealed ? `=${v}` : '=***';
-    });
-  }
-
-  buildTableTabs();
-  renderActiveTable();
+  // Initial load
+  renderLearningContent();
 </script>
 </body>
 </html>
