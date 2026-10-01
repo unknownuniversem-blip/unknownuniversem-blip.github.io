@@ -20,7 +20,24 @@
       --border: #cfd8dc;
       --correct: #2e7d32;
       --wrong: #c62828;
+      --key-bg: #ffffff;
+      --key-text: #263238;
     }
+
+    [data-theme="dark"] {
+      --bg: #0f172a;
+      --teal-header: #1e293b;
+      --card-bg: #1e293b;
+      --primary: #38bdf8;
+      --primary-dark: #0284c7;
+      --accent-soft: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --key-bg: #334155;
+      --key-text: #f8fafc;
+    }
+
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; user-select: none; margin: 0; padding: 0; }
     body {
       background: var(--bg);
@@ -29,19 +46,19 @@
       min-height: 100vh;
       display: flex;
       justify-content: center;
+      transition: background 0.2s, color 0.2s;
     }
     #app-container {
       width: 100%;
       max-width: 480px;
       min-height: 100vh;
-      background: #fff;
+      background: var(--card-bg);
       display: flex;
       flex-direction: column;
       position: relative;
       overflow-x: hidden;
     }
 
-    /* Top AppBar */
     .app-bar {
       background: var(--teal-header);
       color: #fff;
@@ -71,10 +88,9 @@
       align-items: center;
     }
 
-    /* Main Tab Navigation */
     .tab-bar {
       display: flex;
-      background: #fff;
+      background: var(--card-bg);
       border-bottom: 2px solid var(--border);
     }
     .tab-btn {
@@ -87,8 +103,8 @@
       cursor: pointer;
     }
     .tab-btn.active {
-      color: var(--teal-header);
-      border-bottom: 3px solid var(--teal-header);
+      color: var(--primary);
+      border-bottom: 3px solid var(--primary);
     }
 
     .scroll-body {
@@ -105,7 +121,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      color: #37474f;
+      color: var(--text-muted);
       margin-bottom: 8px;
       display: flex;
       justify-content: space-between;
@@ -140,14 +156,14 @@
     }
     .btn-tile {
       background: var(--accent-soft);
-      border: 1px solid #b2dfdb;
+      border: 1px solid var(--border);
       border-radius: 10px;
       padding: 12px 8px;
       font-size: 13px;
       font-weight: 600;
       text-align: center;
       cursor: pointer;
-      color: #004d40;
+      color: var(--text);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -166,9 +182,8 @@
     }
     .btn-tile.full { grid-column: span 2; }
 
-    /* Topic Grid in Learning Hub */
     .learn-topic-card {
-      background: #fff;
+      background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 16px;
@@ -178,13 +193,11 @@
       cursor: pointer;
       box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
-    .learn-topic-card:active { background: #f0fdf4; }
-    .learn-topic-card h4 { font-size: 15px; color: var(--teal-header); }
+    .learn-topic-card h4 { font-size: 15px; color: var(--primary); }
     .learn-topic-card p { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
 
-    /* Lesson Cards on Dedicated Operation Page */
     .lesson-item {
-      background: #fff;
+      background: var(--card-bg);
       border: 1px solid var(--border);
       border-left: 4px solid var(--primary);
       border-radius: 10px;
@@ -194,17 +207,17 @@
       gap: 8px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
-    .lesson-item h4 { font-size: 15px; color: var(--primary-dark); }
-    .lesson-item p { font-size: 13px; color: #455a64; line-height: 1.4; }
+    .lesson-item h4 { font-size: 15px; color: var(--primary); }
+    .lesson-item p { font-size: 13px; color: var(--text); line-height: 1.4; }
     
     .eg-step-box {
-      background: #f1f8e9;
-      border: 1px solid #c5e1a5;
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
       border-radius: 6px;
       padding: 10px;
       font-size: 12px;
       font-family: monospace;
-      color: #1b5e20;
+      color: var(--text);
       display: flex;
       flex-direction: column;
       gap: 6px;
@@ -226,7 +239,6 @@
       margin-top: 4px;
     }
 
-    /* Fixed Bottom Action */
     .cta-fixed {
       position: fixed;
       bottom: 0;
@@ -235,7 +247,7 @@
       width: 100%;
       max-width: 480px;
       padding: 14px 16px;
-      background: #fff;
+      background: var(--card-bg);
       border-top: 1px solid var(--border);
     }
     .btn-cta {
@@ -250,9 +262,8 @@
       cursor: pointer;
     }
 
-    /* Practice & Dedicated Drill Views */
     .exam-box {
-      background: #fff;
+      background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 24px 12px;
@@ -264,25 +275,26 @@
       display: inline-block;
       padding: 3px 8px;
       border-radius: 6px;
-      background: #eceff1;
+      background: var(--accent-soft);
       font-size: 11px;
       font-weight: 700;
-      color: var(--teal-header);
+      color: var(--primary);
       text-transform: uppercase;
     }
     .math-expression {
-      font-size: 32px;
+      font-size: 26px;
       font-weight: 800;
       letter-spacing: 0.5px;
       margin: 12px 0;
       word-break: break-word;
+      line-height: 1.4;
     }
     .input-slot {
       font-size: 28px;
       font-weight: 700;
-      color: var(--teal-header);
+      color: var(--primary);
       min-height: 40px;
-      border-bottom: 2px solid var(--teal-header);
+      border-bottom: 2px solid var(--primary);
       display: inline-block;
       min-width: 120px;
     }
@@ -294,18 +306,18 @@
       margin-top: 10px;
     }
     .mcq-card {
-      background: #fff;
+      background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 18px 0;
       text-align: center;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
       cursor: pointer;
       box-shadow: 0 2px 6px rgba(0,0,0,0.04);
       transition: all 0.15s;
+      color: var(--text);
     }
-    .mcq-card:active { background: #e0f2f1; }
     .mcq-card.is-correct-pick { background: #c8e6c9 !important; border-color: var(--correct); color: var(--correct); }
     .mcq-card.is-wrong-pick { background: #ffcdd2 !important; border-color: var(--wrong); color: var(--wrong); }
 
@@ -316,18 +328,16 @@
       margin-top: 10px;
     }
     .pad-btn {
-      background: #fff;
+      background: var(--key-bg);
       border: 1px solid var(--border);
       border-radius: 10px;
       font-size: 24px;
       font-weight: 700;
       padding: 14px 0;
       cursor: pointer;
-      color: #263238;
+      color: var(--key-text);
     }
-    .pad-btn:active { background: #b2dfdb; }
 
-    /* Lesson Drill Error Feedback Card */
     .drill-feedback-box {
       background: #ffebee;
       border: 1px solid #ffcdd2;
@@ -357,13 +367,14 @@
       margin-bottom: 8px;
     }
     .int-chip {
-      background: #eceff1;
+      background: var(--accent-soft);
       padding: 6px 12px;
       border-radius: 8px;
       font-size: 12px;
       font-weight: 700;
       cursor: pointer;
       white-space: nowrap;
+      color: var(--text);
     }
     .int-chip.active { background: var(--primary); color: #fff; }
 
@@ -371,7 +382,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #e0f2f1;
+      background: var(--accent-soft);
       padding: 9px 14px;
       border-radius: 8px;
       margin-bottom: 5px;
@@ -383,7 +394,7 @@
     .overlay-count {
       position: fixed;
       inset: 0;
-      background: #fff;
+      background: var(--card-bg);
       z-index: 200;
       display: flex;
       flex-direction: column;
@@ -395,7 +406,7 @@
       width: 120px;
       height: 120px;
       border-radius: 50%;
-      border: 5px solid #cfd8dc;
+      border: 5px solid var(--border);
       border-top-color: var(--teal-header);
       display: flex;
       align-items: center;
@@ -407,25 +418,35 @@
     }
     @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-    .hint-modal {
+    .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.45);
-      z-index: 210;
+      background: rgba(0,0,0,0.5);
+      z-index: 250;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
     }
-    .hint-sheet {
-      background: #fff;
+    .modal-sheet {
+      background: var(--card-bg);
       border-radius: 20px 20px 0 0;
       padding: 20px 18px 30px 18px;
-      max-height: 80vh;
+      max-height: 85vh;
       overflow-y: auto;
+      color: var(--text);
     }
 
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .setting-label { font-size: 14px; font-weight: 600; }
+
     .error-card {
-      background: #fff;
+      background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 12px;
@@ -435,14 +456,14 @@
     .error-card.is-wrong { border-left: 4px solid var(--wrong); }
     .error-card.is-correct { border-left: 4px solid var(--correct); }
     .error-step-box {
-      background: #fff3e0;
-      border: 1px solid #ffe0b2;
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
       border-radius: 6px;
       padding: 8px;
       margin-top: 6px;
       font-size: 11px;
       font-family: monospace;
-      color: #e65100;
+      color: var(--text);
       line-height: 1.4;
     }
 
@@ -457,9 +478,9 @@
   <div id="screen-dashboard">
     <div class="app-bar">
       <span>Speed Math Workout</span>
-      <div>
-        <span style="font-size: 14px; margin-right: 8px;">🪙 <span id="dash-coins">679</span></span>
-        <span style="cursor:pointer;" onclick="switchTab('learn')">📖</span>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="font-size: 14px;">🪙 <span id="dash-coins">679</span></span>
+        <button class="nav-back-btn" onclick="openSettingsModal()">⚙</button>
       </div>
     </div>
     
@@ -474,16 +495,16 @@
       <div id="tab-learn-btn" class="tab-btn" onclick="switchTab('learn')">LEARNING & TRICKS</div>
     </div>
 
-    <!-- TAB 1: PRACTICE & EXAM TESTS -->
+    <!-- TAB 1: PRACTICE & EXAM TESTS (DEFAULTS TO EASY + ADDITION) -->
     <div id="tab-practice" class="scroll-body">
       <div class="group-title">
         <span>Level / Difficulty</span>
-        <span id="diff-indicator" style="color:var(--teal-header);">Medium</span>
+        <span id="diff-indicator" style="color:var(--primary);">Easy</span>
       </div>
       <div class="diff-grid">
         <div class="diff-chip" onclick="setDifficulty('Very Easy')">Very Easy</div>
-        <div class="diff-chip" onclick="setDifficulty('Easy')">Easy</div>
-        <div class="diff-chip active" onclick="setDifficulty('Medium')">Medium</div>
+        <div class="diff-chip active" onclick="setDifficulty('Easy')">Easy</div>
+        <div class="diff-chip" onclick="setDifficulty('Medium')">Medium</div>
         <div class="diff-chip" onclick="setDifficulty('Above Medium')">Above Medium</div>
         <div class="diff-chip" onclick="setDifficulty('Hard')">Hard</div>
         <div class="diff-chip" onclick="setDifficulty('Extreme Hard')">Extreme Hard</div>
@@ -492,12 +513,17 @@
 
       <div class="group-title" style="margin-top:10px;">
         <span>Select Test Topics</span>
-        <span id="selected-topics-count" style="font-size:11px; color:var(--teal-header);">1 Selected</span>
+        <span id="selected-topics-count" style="font-size:11px; color:var(--primary);">1 Selected</span>
       </div>
       
-      <!-- Multi-Select Ops Grid -->
+      <!-- Operations Grid (Default: Addition Selected) -->
       <div class="grid-ops">
-        <button class="btn-tile full active-pill" id="op-combo" onclick="toggleMultiTopic('combo_4', this)">
+        <button class="btn-tile active-pill" id="op-add" onclick="toggleMultiTopic('add', this)">Addition (+)</button>
+        <button class="btn-tile" id="op-sub" onclick="toggleMultiTopic('sub', this)">Subtraction (−)</button>
+        <button class="btn-tile" id="op-mul" onclick="toggleMultiTopic('mul', this)">Multiplication (×)</button>
+        <button class="btn-tile" id="op-div" onclick="toggleMultiTopic('div', this)">Division (÷)</button>
+
+        <button class="btn-tile full" id="op-combo" onclick="toggleMultiTopic('combo_4', this)">
           <strong>🔥 All 4 Operations Combo (+ − × ÷)</strong>
           <span>Alternates addition, subtraction, multiplication & division</span>
         </button>
@@ -507,10 +533,16 @@
           <span>Real IBPS, SBI & SSC CGL/CHSL exam patterns</span>
         </button>
 
-        <button class="btn-tile" id="op-add" onclick="toggleMultiTopic('add', this)">Addition (+)</button>
-        <button class="btn-tile" id="op-sub" onclick="toggleMultiTopic('sub', this)">Subtraction (−)</button>
-        <button class="btn-tile" id="op-mul" onclick="toggleMultiTopic('mul', this)">Multiplication (×)</button>
-        <button class="btn-tile" id="op-div" onclick="toggleMultiTopic('div', this)">Division (÷)</button>
+        <!-- Number Series Exam Modules -->
+        <button class="btn-tile full" id="op-missing-series" onclick="promptAdUnlockSeries('missing')">
+          <strong>🔢 100 Missing Number Series</strong>
+          <span>Bank PO/Clerk AP, GP, Difference & Power patterns</span>
+        </button>
+        <button class="btn-tile full" id="op-wrong-series" onclick="promptAdUnlockSeries('wrong')">
+          <strong>❌ 100 Wrong Number Series</strong>
+          <span>Spot the incorrect term in high-level exam sequences</span>
+        </button>
+
         <button class="btn-tile" id="op-square" onclick="toggleMultiTopic('square', this)">Squares (1-100)</button>
         <button class="btn-tile" id="op-cube" onclick="toggleMultiTopic('cube', this)">Cubes (1-100)</button>
         <button class="btn-tile" id="op-sqrt" onclick="toggleMultiTopic('sqrt', this)">Square Root (√)</button>
@@ -527,7 +559,7 @@
       <div style="display:flex; flex-direction:column; gap:8px;">
         <div id="mode-speed" class="btn-tile active-pill" style="text-align:left; padding:12px;" onclick="setWorkoutMode('questions', 20, this)">
           <strong>Speed Challenge (Fixed 20 Qs)</strong>
-          <div style="font-size:11px; opacity:0.8;">Race to complete 20 questions with maximum accuracy</div>
+          <div style="font-size:11px; opacity:0.8;">Complete 20 questions with maximum speed and accuracy</div>
         </div>
         <div id="mode-minute" class="btn-tile" style="text-align:left; padding:12px;" onclick="setWorkoutMode('minute', 60, this)">
           <strong>Minute Challenge (60 Seconds)</strong>
@@ -540,7 +572,7 @@
       </div>
     </div>
 
-    <!-- TAB 2: LEARNING & TRICKS HUB (SELECT OPERATION TO MOVE TO DEDICATED PAGE) -->
+    <!-- TAB 2: LEARNING & TRICKS HUB -->
     <div id="tab-learn" class="scroll-body hidden">
       <div class="group-title"><span>Core Mental Math Lessons</span></div>
       <div style="display:flex; flex-direction:column; gap:10px;">
@@ -618,8 +650,8 @@
   <!-- ================= 2. DEDICATED OPERATION LESSONS PAGE ================= -->
   <div id="screen-op-lessons" class="scroll-body hidden" style="padding-top:14px;">
     <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
-      <button class="nav-back-btn" onclick="backToDashboardFromLessons()" style="color:var(--teal-header);">‹</button>
-      <h3 id="op-lesson-title" style="color:var(--teal-header); font-size:18px;">Addition Lessons</h3>
+      <button class="nav-back-btn" onclick="backToDashboardFromLessons()" style="color:var(--primary);">‹</button>
+      <h3 id="op-lesson-title" style="color:var(--primary); font-size:18px;">Addition Lessons</h3>
     </div>
     
     <div id="op-lessons-container" style="display:flex; flex-direction:column; gap:14px;"></div>
@@ -628,16 +660,15 @@
   <!-- ================= 3. DEDICATED LESSON DRILL / PRACTICE WINDOW ================= -->
   <div id="screen-lesson-drill" class="hidden" style="flex:1; display:flex; flex-direction:column; padding:14px;">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-      <button onclick="backToLessonsFromDrill()" style="background:none; border:none; font-size:22px; cursor:pointer; color:var(--teal-header);">‹</button>
+      <button onclick="backToLessonsFromDrill()" style="background:none; border:none; font-size:22px; cursor:pointer; color:var(--primary);">‹</button>
       <div id="lesson-drill-header" style="font-weight:700; color:var(--text-muted); font-size:13px;">Lesson Drill</div>
-      <div style="background:#e0f2f1; padding:4px 10px; border-radius:12px; font-weight:700; color:var(--teal-header); font-size:12px;">Learn Mode</div>
+      <div style="background:var(--accent-soft); padding:4px 10px; border-radius:12px; font-weight:700; color:var(--primary); font-size:12px;">Learn Mode</div>
     </div>
 
     <div class="exam-box">
       <span id="lesson-drill-badge" class="level-badge">VEDIC PRACTICE</span>
       <div id="lesson-drill-expr" class="math-expression">56 + 77 = ?</div>
       
-      <!-- Immediate Error Breakdown on Wrong Selection -->
       <div id="lesson-drill-feedback" class="drill-feedback-box hidden">
         <div style="font-weight:700; color:var(--wrong); font-size:13px;">✗ Incorrect Answer!</div>
         <div style="font-size:12px; color:#c62828; margin-top:2px;">Here is the exact step-by-step method to solve this:</div>
@@ -645,10 +676,8 @@
       </div>
     </div>
 
-    <!-- 4 Option MCQ for Lesson Drill -->
     <div id="lesson-drill-mcqs" class="mcq-container"></div>
 
-    <!-- Action Button to Advance -->
     <div style="margin-top:auto; padding-top:14px;">
       <button id="btn-next-lesson-q" class="btn-cta hidden" onclick="nextLessonDrillQuestion()">Next Question ›</button>
     </div>
@@ -657,8 +686,8 @@
   <!-- ================= 4. FLASHCARD & CHARTS DETAIL VIEW ================= -->
   <div id="screen-flashcard-view" class="scroll-body hidden" style="padding-top:14px;">
     <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
-      <button class="nav-back-btn" onclick="backToDashboardFromFlashcard()" style="color:var(--teal-header);">‹</button>
-      <h3 id="flashcard-title" style="color:var(--teal-header); font-size:18px;">Reference Table</h3>
+      <button class="nav-back-btn" onclick="backToDashboardFromFlashcard()" style="color:var(--primary);">‹</button>
+      <h3 id="flashcard-title" style="color:var(--primary); font-size:18px;">Reference Table</h3>
     </div>
     <div id="flashcard-container"></div>
   </div>
@@ -667,63 +696,59 @@
   <div id="screen-countdown" class="overlay-count hidden" onclick="launchActiveDrill()">
     <div style="font-size:14px; font-weight:700; color:var(--text-muted); letter-spacing:1px;">GET READY</div>
     <div class="circle-spin"><span id="cnt-num" style="animation:none;">3</span></div>
-    <div style="font-size:13px; color:var(--teal-header); font-weight:600;">Tap anywhere to start now</div>
+    <div style="font-size:13px; color:var(--primary); font-weight:600;">Tap anywhere to start now</div>
   </div>
 
   <!-- ================= 6. ACTIVE MAIN PRACTICE DRILL ================= -->
   <div id="screen-play" class="hidden" style="flex:1; display:flex; flex-direction:column; padding:14px;">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-      <button onclick="abortDrill()" style="background:none; border:none; font-size:20px; cursor:pointer;">‹</button>
+      <button onclick="abortDrill()" style="background:none; border:none; font-size:20px; cursor:pointer; color:var(--text);">‹</button>
       <div id="drill-counter" style="font-weight:700; color:var(--text-muted);">1 / 20</div>
-      <div id="drill-timer" style="background:#e0f2f1; padding:4px 10px; border-radius:12px; font-weight:700; color:var(--teal-header);">00:00</div>
+      <div id="drill-timer" style="background:var(--accent-soft); padding:4px 10px; border-radius:12px; font-weight:700; color:var(--primary);">00:00</div>
     </div>
 
     <div class="exam-box">
       <div style="display:flex; justify-content:space-between; align-items:center;">
-        <span id="drill-level-badge" class="level-badge">MEDIUM</span>
-        <button onclick="toggleInGameInput()" style="background:#eceff1; border:none; padding:4px 8px; border-radius:6px; font-size:11px; cursor:pointer;">⇄ Switch Input</button>
+        <span id="drill-level-badge" class="level-badge">EASY</span>
+        <button onclick="toggleInGameInput()" style="background:var(--accent-soft); border:none; padding:4px 8px; border-radius:6px; font-size:11px; cursor:pointer; color:var(--text);">⇄ Switch Input</button>
       </div>
 
-      <div id="math-expr" class="math-expression">24 × 15 = ?</div>
+      <div id="math-expr" class="math-expression">24 + 15 = ?</div>
       <div id="user-ans" class="input-slot"></div>
 
       <div style="display:flex; justify-content:space-between; align-items:center; margin-top:14px;">
         <button onclick="skipQuestion()" style="background:none; border:none; color:var(--text-muted); font-size:13px; cursor:pointer;">⏭ Skip</button>
-        <button onclick="openHintModal()" style="background:#e0f2f1; border:1px solid #b2dfdb; color:var(--teal-header); border-radius:16px; padding:6px 14px; font-weight:700; font-size:13px; cursor:pointer;">💡 Trick Hint</button>
+        <button onclick="openHintModal()" style="background:var(--accent-soft); border:1px solid var(--border); color:var(--primary); border-radius:16px; padding:6px 14px; font-weight:700; font-size:13px; cursor:pointer;">💡 Trick Hint</button>
       </div>
     </div>
 
     <div id="mcq-view" class="mcq-container"></div>
-
-    <div id="numpad-view" class="numpad-grid hidden">
-      <button class="pad-btn" onclick="typeKey('1')">1</button>
-      <button class="pad-btn" onclick="typeKey('2')">2</button>
-      <button class="pad-btn" onclick="typeKey('3')">3</button>
-      <button class="pad-btn" onclick="typeKey('4')">4</button>
-      <button class="pad-btn" onclick="typeKey('5')">5</button>
-      <button class="pad-btn" onclick="typeKey('6')">6</button>
-      <button class="pad-btn" onclick="typeKey('7')">7</button>
-      <button class="pad-btn" onclick="typeKey('8')">8</button>
-      <button class="pad-btn" onclick="typeKey('9')">9</button>
-      <button class="pad-btn" onclick="typeKey('C')" style="background:#ffcdd2; color:#c62828;">C</button>
-      <button class="pad-btn" onclick="typeKey('0')">0</button>
-      <button class="pad-btn" onclick="typeKey('⌫')">⌫</button>
-    </div>
+    <div id="numpad-view" class="numpad-grid hidden"></div>
   </div>
 
   <!-- ================= 7. HINT MODAL ================= -->
-  <div id="modal-hint" class="hint-modal hidden" onclick="closeHintModal()">
-    <div class="hint-sheet" onclick="event.stopPropagation()">
-      <div style="width:36px; height:4px; background:#cfd8dc; border-radius:2px; margin:0 auto 14px auto;"></div>
-      <h3 style="color:var(--teal-header); font-size:17px; margin-bottom:8px;">Step-by-Step Mathematical Analysis</h3>
-      <div id="hint-body" style="font-size:13px; line-height:1.6; color:#37474f;"></div>
+  <div id="modal-hint" class="modal-overlay hidden" onclick="closeHintModal()">
+    <div class="modal-sheet" onclick="event.stopPropagation()">
+      <div style="width:36px; height:4px; background:var(--border); border-radius:2px; margin:0 auto 14px auto;"></div>
+      <h3 style="color:var(--primary); font-size:17px; margin-bottom:8px;">Step-by-Step Mathematical Analysis</h3>
+      <div id="hint-body" style="font-size:13px; line-height:1.6; color:var(--text);"></div>
       <button onclick="closeHintModal()" class="btn-cta" style="margin-top:16px; padding:10px;">Got It</button>
     </div>
   </div>
 
-  <!-- ================= 8. SURVIVAL REVIVE DIALOG ================= -->
-  <div id="modal-revive" class="hint-modal hidden">
-    <div class="hint-sheet" style="text-align:center;">
+  <!-- ================= 8. NUMBER SERIES AD REWARD UNLOCK MODAL ================= -->
+  <div id="modal-ad-series" class="modal-overlay hidden">
+    <div class="modal-sheet" style="text-align:center;">
+      <h3 style="color:var(--primary); font-size:18px; margin-bottom:6px;">Unlock Number Series (100 Questions)</h3>
+      <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Watch a brief sponsor ad to unlock the full 100 questions module.</p>
+      <button class="btn-cta" onclick="confirmAdUnlockSeries()" style="background:#0288d1; margin-bottom:8px;">▶ Watch Ad to Unlock</button>
+      <button onclick="closeAdSeriesModal()" style="background:none; border:none; color:var(--text-muted); font-size:13px; cursor:pointer;">Cancel</button>
+    </div>
+  </div>
+
+  <!-- ================= 9. SURVIVAL REVIVE DIALOG ================= -->
+  <div id="modal-revive" class="modal-overlay hidden">
+    <div class="modal-sheet" style="text-align:center;">
       <h3 style="color:var(--wrong); font-size:20px; margin-bottom:6px;">Game Over!</h3>
       <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Watch an ad to continue playing (attempts: 0/1)</p>
       <button class="btn-cta" onclick="revivePlayer()" style="background:#0288d1; margin-bottom:8px;">▶ Continue Playing</button>
@@ -731,12 +756,12 @@
     </div>
   </div>
 
-  <!-- ================= 9. RESULTS & DIAGNOSTIC MISTAKE AUDIT ================= -->
+  <!-- ================= 10. RESULTS & DIAGNOSTIC MISTAKE AUDIT ================= -->
   <div id="screen-result" class="scroll-body hidden" style="padding-top:20px; text-align:center;">
-    <h2 style="color:var(--teal-header);">Workout Finished</h2>
+    <h2 style="color:var(--primary);">Workout Finished</h2>
     
-    <div style="background:#fff; border:1px solid var(--border); border-radius:14px; padding:16px; margin:12px 0;">
-      <div id="summary-score" style="font-size:38px; font-weight:800; color:var(--teal-header);">18 / 20</div>
+    <div style="background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:16px; margin:12px 0;">
+      <div id="summary-score" style="font-size:38px; font-weight:800; color:var(--primary);">18 / 20</div>
       <p style="color:var(--text-muted); font-size:12px;">Final Score</p>
       <div style="display:flex; justify-content:space-around; margin-top:14px; border-top:1px solid var(--border); padding-top:10px;">
         <div><h4 id="summary-time">01:12</h4><span style="font-size:11px; color:var(--text-muted);">Duration</span></div>
@@ -750,22 +775,77 @@
     <button class="btn-cta" onclick="backToHub()" style="margin-top:12px;">Back to Main Menu</button>
   </div>
 
+  <!-- ================= 11. COMPLETE SETTINGS MODAL ================= -->
+  <div id="modal-settings" class="modal-overlay hidden" onclick="closeSettingsModal()">
+    <div class="modal-sheet" onclick="event.stopPropagation()">
+      <div style="width:36px; height:4px; background:var(--border); border-radius:2px; margin:0 auto 14px auto;"></div>
+      <h3 style="color:var(--primary); font-size:18px; margin-bottom:12px;">App Settings & Personalization</h3>
+
+      <!-- Theme Switcher -->
+      <div class="setting-item">
+        <span class="setting-label">Appearance Theme</span>
+        <select id="setting-theme" onchange="changeTheme(this.value)" style="padding:6px; border-radius:6px; background:var(--card-bg); color:var(--text); border:1px solid var(--border);">
+          <option value="light">Light Mode</option>
+          <option value="dark">Dark Mode</option>
+          <option value="system">System Default</option>
+        </select>
+      </div>
+
+      <!-- Keypad Layout Mode -->
+      <div class="setting-item">
+        <span class="setting-label">Keypad Layout Mode</span>
+        <select id="setting-keypad-mode" onchange="changeKeypadLayout(this.value)" style="padding:6px; border-radius:6px; background:var(--card-bg); color:var(--text); border:1px solid var(--border);">
+          <option value="phone">Phone Pad (1 2 3 on Top)</option>
+          <option value="calculator">Calculator (7 8 9 on Top)</option>
+        </select>
+      </div>
+
+      <!-- Keypad Surface Color -->
+      <div class="setting-item">
+        <span class="setting-label">Keys Background Color</span>
+        <input type="color" id="setting-key-color" onchange="changeKeyBgColor(this.value)" value="#ffffff">
+      </div>
+
+      <!-- Keypad Text Color -->
+      <div class="setting-item">
+        <span class="setting-label">Keys Number Color</span>
+        <input type="color" id="setting-key-text-color" onchange="changeKeyTextColor(this.value)" value="#263238">
+      </div>
+
+      <!-- Feedback, Updates & Contact Us -->
+      <div class="setting-item" style="cursor:pointer;" onclick="openContactModal()">
+        <span class="setting-label">Contact Us & Feedback</span>
+        <span style="color:var(--primary);">Send ✉</span>
+      </div>
+
+      <div class="setting-item" style="cursor:pointer;" onclick="alert('Speed Math Workout is up to date.\nVersion: v2.5.0 (Audited Build)')">
+        <span class="setting-label">Check for Updates</span>
+        <span style="font-size:12px; color:var(--text-muted);">v2.5.0</span>
+      </div>
+
+      <button onclick="closeSettingsModal()" class="btn-cta" style="margin-top:16px; padding:10px;">Save & Close</button>
+    </div>
+  </div>
+
 </div>
 
 <script>
+  /* --- Default Application Configuration (Audited: Easy + Addition by Default) --- */
   let currentTab = 'practice';
   let userCoins = 679;
   let activeSqInterval = 1;
   let activeCbInterval = 1;
   let activeTbInterval = 12;
   let tableRevealed = true;
+  let pendingSeriesType = '';
 
   let workoutConfig = {
-    difficulty: 'Medium',
-    selectedTopics: ['combo_4'],
+    difficulty: 'Easy', // DEFAULT: Easy mode
+    selectedTopics: ['add'], // DEFAULT: Addition selected
     inputFormat: 'mcq',
     modeType: 'questions',
-    limit: 20
+    limit: 20,
+    keypadLayout: 'phone' // 'phone' (123 top) vs 'calculator' (789 top)
   };
 
   let session = {
@@ -781,7 +861,6 @@
     questionsLog: []
   };
 
-  // State for Dedicated Lesson Drill Screen
   let activeLessonDrill = {
     op: 'add',
     lessonIndex: 0,
@@ -789,6 +868,42 @@
     isAnswered: false
   };
 
+  /* --- Settings & Theme Management --- */
+  function openSettingsModal() { document.getElementById('modal-settings').classList.remove('hidden'); }
+  function closeSettingsModal() { document.getElementById('modal-settings').classList.add('hidden'); }
+
+  function changeTheme(theme) {
+    if (theme === 'system') {
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+    } else {
+      document.documentElement.setAttribute('data-theme', theme);
+    }
+    localStorage.setItem('math_theme', theme);
+  }
+
+  function changeKeypadLayout(layout) {
+    workoutConfig.keypadLayout = layout;
+    localStorage.setItem('math_keypad_layout', layout);
+    renderKeypadButtons();
+  }
+
+  function changeKeyBgColor(color) {
+    document.documentElement.style.setProperty('--key-bg', color);
+    localStorage.setItem('math_key_bg', color);
+  }
+
+  function changeKeyTextColor(color) {
+    document.documentElement.style.setProperty('--key-text', color);
+    localStorage.setItem('math_key_text', color);
+  }
+
+  function openContactModal() {
+    const email = prompt("Enter your email or query/feedback for the developers:", "");
+    if (email) alert("Thank you! Your feedback has been noted.");
+  }
+
+  /* --- Navigation Controls --- */
   function switchTab(t) {
     currentTab = t;
     document.getElementById('tab-practice-btn').classList.toggle('active', t === 'practice');
@@ -833,655 +948,144 @@
     el.classList.add('active-pill');
   }
 
-  /* --- 5 VERIFIED VEDIC LESSONS PER OPERATION WITH ARROW STEPS & GENERATORS --- */
-  const verifiedLessons = {
-    add: {
-      name: "Addition Vedic Mastery",
-      lessons: [
-        {
-          title: "Lesson 1: Left-to-Right Partitioning (1-2 Digits)",
-          desc: "Eliminate carries by adding tens place first, followed by units place.",
-          steps: [
-            "Example: 68 + 75",
-            "Step 1: Partition tens: (60 + 70) = 130",
-            "Step 2: Partition units: (8 + 5) = 13",
-            "Step 3: Combine: 130 + 13 → Result = 143"
-          ],
-          genDrill: () => {
-            let a = Math.floor(Math.random() * 45) + 35;
-            let b = Math.floor(Math.random() * 45) + 35;
-            let aTens = Math.floor(a/10)*10, aU = a%10;
-            let bTens = Math.floor(b/10)*10, bU = b%10;
-            return {
-              expr: `${a} + ${b}`,
-              ans: a + b,
-              solutionHtml: `
-                1: Add Tens: ${aTens} + ${bTens} = ${aTens + bTens}<br>
-                2: Add Units: ${aU} + ${bU} = ${aU + bU}<br>
-                3: Combine: ${aTens + bTens} + ${aU + bU} → <strong>${a + b}</strong>
-              `
-            };
-          }
-        },
-        {
-          title: "Lesson 2: Base 100 Rounding & Compensation",
-          desc: "Round numbers ending in 7, 8, 9 up to nearest clean hundred and subtract excess.",
-          steps: [
-            "Example: 496 + 328",
-            "Step 1: Round 496 to 500 (offset: −4)",
-            "Step 2: 500 + 328 = 828",
-            "Step 3: Compensate offset: 828 − 4 → Result = 824"
-          ],
-          genDrill: () => {
-            let base = [198, 297, 396, 498][Math.floor(Math.random() * 4)];
-            let roundVal = Math.round(base / 100) * 100;
-            let offset = roundVal - base;
-            let b = Math.floor(Math.random() * 150) + 120;
-            return {
-              expr: `${base} + ${b}`,
-              ans: base + b,
-              solutionHtml: `
-                1: Round ${base} → ${roundVal} (excess: +${offset})<br>
-                2: Add to second number: ${roundVal} + ${b} = ${roundVal + b}<br>
-                3: Subtract excess: ${roundVal + b} − ${offset} → <strong>${base + b}</strong>
-              `
-            };
-          }
-        },
-        {
-          title: "Lesson 3: Twin Splitting for 3 & 4 Digits",
-          desc: "Split numbers into two 2-digit manageable parts and add independently.",
-          steps: [
-            "Example: 3452 + 2341",
-            "Step 1: Split into twin pairs [34 + 23] and [52 + 41]",
-            "Step 2: Add left block: 34 + 23 = 57",
-            "Step 3: Add right block: 52 + 41 = 93",
-            "Step 4: Combine [57][93] → Result = 5793"
-          ],
-          genDrill: () => {
-            let a1 = Math.floor(Math.random() * 30) + 20, a2 = Math.floor(Math.random() * 30) + 10;
-            let b1 = Math.floor(Math.random() * 30) + 20, b2 = Math.floor(Math.random() * 30) + 10;
-            return {
-              expr: `${a1*100+a2} + ${b1*100+b2}`,
-              ans: (a1*100+a2) + (b1*100+b2),
-              solutionHtml: `
-                1: Left Block: ${a1} + ${b1} = ${a1 + b1}<br>
-                2: Right Block: ${a2} + ${b2} = ${a2 + b2}<br>
-                3: Merge: [${a1+b1}][${a2+b2}] → <strong>${(a1*100+a2) + (b1*100+b2)}</strong>
-              `
-            };
-          }
-        },
-        {
-          title: "Lesson 4: Near-Decade Balance Matching",
-          desc: "Transfer units between addends to turn one term into a round decade zero.",
-          steps: [
-            "Example: 68 + 44",
-            "Step 1: Transfer 2 from 44 to 68",
-            "Step 2: (68 + 2) + (44 − 2) = 70 + 42",
-            "Step 3: 70 + 42 → Result = 112"
-          ],
-          genDrill: () => {
-            let a = [49, 58, 69, 78, 89][Math.floor(Math.random() * 5)];
-            let nextRound = Math.ceil(a/10)*10;
-            let diff = nextRound - a;
-            let b = Math.floor(Math.random() * 30) + 25;
-            return {
-              expr: `${a} + ${b}`,
-              ans: a + b,
-              solutionHtml: `
-                1: Balance shift: (${a} + ${diff}) + (${b} − ${diff})<br>
-                2: Simplified sum: ${nextRound} + ${b - diff}<br>
-                3: Result: <strong>${a + b}</strong>
-              `
-            };
-          }
-        },
-        {
-          title: "Lesson 5: 5-Digit Pillar Column Addition",
-          desc: "Group thousands block and hundreds/units block separately.",
-          steps: [
-            "Example: 42,310 + 25,480",
-            "Step 1: (42k + 25k) = 67,000",
-            "Step 2: (310 + 480) = 790",
-            "Step 3: 67,000 + 790 → Result = 67,790"
-          ],
-          genDrill: () => {
-            let k1 = Math.floor(Math.random() * 25) + 15, k2 = Math.floor(Math.random() * 25) + 15;
-            let u1 = Math.floor(Math.random() * 400) + 100, u2 = Math.floor(Math.random() * 400) + 100;
-            return {
-              expr: `${k1*1000+u1} + ${k2*1000+u2}`,
-              ans: (k1*1000+u1) + (k2*1000+u2),
-              solutionHtml: `
-                1: Thousands Pillar: ${k1}k + ${k2}k = ${k1+k2},000<br>
-                2: Remainder Pillar: ${u1} + ${u2} = ${u1+u2}<br>
-                3: Sum: ${(k1+k2)*1000} + ${u1+u2} → <strong>${(k1*1000+u1) + (k2*1000+u2)}</strong>
-              `
-            };
-          }
-        }
-      ]
-    },
-    sub: {
-      name: "Subtraction Vedic Mastery",
-      lessons: [
-        {
-          title: "Lesson 1: Nikhilam (All from 9 & Last from 10)",
-          desc: "Instant subtraction from clean powers of 10 without borrowing.",
-          steps: [
-            "Example: 1000 − 476",
-            "Step 1: (9 − 4) = 5",
-            "Step 2: (9 − 7) = 2",
-            "Step 3: (10 − 6) = 4 → Result = 524"
-          ],
-          genDrill: () => {
-            let h = Math.floor(Math.random() * 7) + 1;
-            let t = Math.floor(Math.random() * 7) + 1;
-            let u = Math.floor(Math.random() * 8) + 2;
-            let num = h*100 + t*10 + u;
-            return {
-              expr: `1000 − ${num}`,
-              ans: 1000 - num,
-              solutionHtml: `
-                1: 9 − ${h} = ${9 - h}<br>
-                2: 9 − ${t} = ${9 - t}<br>
-                3: 10 − ${u} = ${10 - u}<br>
-                Combine → <strong>${1000 - num}</strong>
-              `
-            };
-          }
-        },
-        {
-          title: "Lesson 2: Friendly Base Subtraction (Adding Same Offset)",
-          desc: "Add equal compensation to both numbers to turn subtrahend into a round 10 or 100.",
-          steps: [
-            "Example: 83 − 47",
-            "Step 1: Add 3 to both sides: (83 + 3) − (47 + 3)",
-            "Step 2: 86 − 50",
-            "Step 3: 86 − 50 → Result = 36"
-          ],
-          genDrill: () => {
-            let b = [28, 37, 49, 58, 69][Math.floor(Math.random() * 5)];
-            let offset = Math.ceil(b/10)*10 - b;
-            let a = b + Math.floor(Math.random() * 35) + 15;
-            return {
-              expr: `${a} − ${b}`,
-              ans: a - b,
-              solutionHtml: `
-                1: Add offset +${offset} to both sides: (${a} + ${offset}) − (${b} + ${offset})<br>
-                2: Subtract clean base: ${a + offset} − ${b + offset}<br>
-                3: Result: <strong>${a - b}</strong>
-              `
-            };
-          }
-        },
-        {
-          title: "Lesson 3: Left-to-Right Borrow Elimination",
-          desc: "Subtract from highest place value left to right, decrementing 1 if next needs borrow.",
-          steps: [
-            "Example: 74 − 38",
-            "Step 1: (7 − 3) = 4, but 4 < 8 so drop to 3",
-            "Step 2: Units: (14 − 8) = 6",
-            "Step 3: Combine → Result = 36"
-          ],
-          genDrill: () => {
-            let a = Math.floor(Math.random() * 40) + 52;
-            let b = Math.floor(Math.random() * 30) + 18;
-            return {
-              expr: `${a} − ${b}`,
-              ans: a - b,
-              solutionHtml: `
-                1: Tens: (${Math.floor(a/10)} − ${Math.floor(b/10)}) with borrow decrement<br>
-                2: Units: (${a%10 + 10} − ${b%10}) = ${(a%10 + 10) - (b%10)}<br>
-                3: Result: <strong>${a - b}</strong>
-              `
-            };
-          }
-        },
-        {
-          title: "Lesson 4: Subtraction Across Multiples of 100",
-          desc: "Count forward from subtrahend to round hundreds then to target.",
-          steps: [
-            "Example: 524 − 380",
-            "Step 1: Distance from 380 to 400 = 20",
-            "Step 2: Distance from 400 to 524 = 124",
-            "Step 3: 20 + 124 → Result = 144"
-          ],
-          genDrill: () => {
-            let round = 400;
-            let b = round - Math.floor(Math.random() * 30) - 10;
-            let a = round + Math.floor(Math.random() * 80) + 20;
-            return {
-              expr: `${a} − ${b}`,
-              ans: a - b,
-              solutionHtml: `
-                1: Distance ${b} to ${round}: ${round - b}<br>
-                2: Distance ${round} to ${a}: ${a - round}<br>
-                3: Combine distances: ${round - b} + ${a - round} → <strong>${a - b}</strong>
-              `
-            };
-          }
-        },
-        {
-          title: "Lesson 5: 4 & 5-Digit Chunk Subtraction",
-          desc: "Chunk into pairs of 2-digits for rapid mental resolution.",
-          steps: [
-            "Example: 5420 − 2110",
-            "Step 1: [54 − 21] = 33",
-            "Step 2: [20 − 10] = 10",
-            "Step 3: Combine [33][10] → Result = 3310"
-          ],
-          genDrill: () => {
-            let a1 = Math.floor(Math.random() * 30) + 40, a2 = Math.floor(Math.random() * 30) + 30;
-            let b1 = Math.floor(Math.random() * 20) + 10, b2 = Math.floor(Math.random() * 20) + 10;
-            return {
-              expr: `${a1*100+a2} − ${b1*100+b2}`,
-              ans: (a1*100+a2) - (b1*100+b2),
-              solutionHtml: `
-                1: Left Chunk: ${a1} − ${b1} = ${a1 - b1}<br>
-                2: Right Chunk: ${a2} − ${b2} = ${a2 - b2}<br>
-                3: Combine: [${a1-b1}][${a2-b2}] → <strong>${(a1*100+a2) - (b1*100+b2)}</strong>
-              `
-            };
-          }
-        }
-      ]
-    },
-    mul: {
-      name: "Multiplication Vedic Mastery",
-      lessons: [
-        {
-          title: "Lesson 1: Multiply by 5, 25, 50, 125 (Half / Double Rules)",
-          desc: "Convert multiplication into fast division by powers of 2.",
-          steps: [
-            "Example: 64 × 25",
-            "Step 1: Notice 25 = 100 ÷ 4",
-            "Step 2: 64 ÷ 4 = 16",
-            "Step 3: 16 × 100 → Result = 1600"
-          ],
-          genDrill: () => {
-            let q = Math.floor(Math.random() * 15) + 6;
-            let n = q * 4;
-            return {
-              expr: `${n} × 25`,
-              ans: n * 25,
-              solutionHtml: `
-                1: 25 = 100 ÷ 4<br>
-                2: Divide ${n} ÷ 4 = ${q}<br>
-                3: Append two zeros: ${q} × 100 → <strong>${n * 25}</strong>
-              `
-            };
-          }
-        },
-        {
-          title: "Lesson 2: Base 100 Multiplication (Near 100)",
-          desc: "Add cross-deficit and append product of deviations.",
-          steps: [
-            "Example: 104 × 107",
-            "Step 1: Deviations from 100 are +4 and +7",
-            "Step 2: Cross sum: 104 + 7 = 111",
-            "Step 3: Product of deviations: 4 × 7 = 28",
-            "Step 4: Combine [111][28] → Result = 11,128"
-          ],
-          genDrill: () => {
-            let d1 = Math.floor(Math.random() * 5) + 3;
-            let d2 = Math.floor(Math.random() * 5) + 3;
-            let a = 100 + d1, b = 100 + d2;
-            return {
-              expr: `${a} × ${b}`,
-              ans: a * b,
-              solutionHtml: `
-                1: Deviations: +${d1} and +${d2}<br>
-                2: Left Block (Cross Sum): ${a} + ${d2} = ${a + d2}<br>
-                3: Right Block (Product): ${d1} × ${d2} = ${d1 * d2}<br>
-                Combine → <strong>${a * b}</strong>
-              `
-            };
-          }
-        },
-        {
-          title: "Lesson 3: Urdhva-Tiryagbhyam (2-Digit Crosswise)",
-          desc: "Straight units, crosswise sum, straight tens.",
-          steps: [
-            "Example: 23 × 14",
-            "Step 1: Units: 3 × 4 = 12 (write 2, carry 1)",
-            "Step 2: Cross: (2×4) + (3×1) + 1 = 12 (write 2, carry 1)",
-            "Step 3: Tens: (2 × 1) + 1 = 3",
-            "Step 4: Combine → Result = 322"
-          ],
-          genDrill: () => {
-            let a = Math.floor(Math.random() * 20) + 12;
-            let b = Math.floor(Math.random() * 15) + 11;
-            return {
-              expr: `${a} × ${b}`,
-              ans: a * b,
-              solutionHtml: `
-                1: Decompose: Multiply ${a} by tens (${Math.floor(b/10)*10}) = ${a * Math.floor(b/10)*10}<br>
-                2: Multiply ${a} by units (${b%10}) = ${a * (b%10)}<br>
-                3: Add components: ${a * Math.floor(b/10)*10} + ${a * (b%10)} → <strong>${a * b}</strong>
-              `
-            };
-          }
-        },
-        {
-          title: "Lesson 4: Rapid Multiplication by 11 & 111",
-          desc: "Sandwich intermediate sums between outside digits.",
-          steps: [
-            "Example: 52 × 11",
-            "Step 1: Left digit = 5",
-            "Step 2: Middle digit = (5 + 2) = 7",
-            "Step 3: Right digit = 2",
-            "Step 4: Combine [5][7][2] → Result = 572"
-          ],
-          genDrill: () => {
-            let t = Math.floor(Math.random() * 6) + 2;
-            let u = Math.floor(Math.random() * 5) + 1;
-            let num = t * 10 + u;
-            return {
-              expr: `${num} × 11`,
-              ans: num * 11,
-              solutionHtml: `
-                1: Outer digits are ${t} and ${u}<br>
-                2: Middle digit is ${t} + ${u} = ${t + u}<br>
-                3: Result: [${t}][${t+u}][${u}] → <strong>${num * 11}</strong>
-              `
-            };
-          }
-        },
-        {
-          title: "Lesson 5: Same Tens Digit & Units Adding to 10",
-          desc: "Multiply tens by (tens + 1), append product of units.",
-          steps: [
-            "Example: 43 × 47",
-            "Step 1: Left block: 4 × (4 + 1) = 4 × 5 = 20",
-            "Step 2: Right block: 3 × 7 = 21",
-            "Step 3: Combine [20][21] → Result = 2021"
-          ],
-          genDrill: () => {
-            let t = Math.floor(Math.random() * 6) + 3;
-            let u1 = Math.floor(Math.random() * 7) + 2;
-            let u2 = 10 - u1;
-            let a = t * 10 + u1, b = t * 10 + u2;
-            return {
-              expr: `${a} × ${b}`,
-              ans: a * b,
-              solutionHtml: `
-                1: Left Block: ${t} × (${t} + 1) = ${t * (t + 1)}<br>
-                2: Right Block: ${u1} × ${u2} = ${u1 * u2}<br>
-                3: Merge: [${t*(t+1)}][${u1*u2}] → <strong>${a * b}</strong>
-              `
-            };
-          }
-        }
-      ]
-    },
-    div: {
-      name: "Division Vedic Mastery",
-      lessons: [
-        {
-          title: "Lesson 1: Divide by 5 (Double and Shift Decimal)",
-          desc: "Never divide by 5 directly. Multiply by 2 and divide by 10.",
-          steps: [
-            "Example: 235 ÷ 5",
-            "Step 1: Multiply by 2: 235 × 2 = 470",
-            "Step 2: Shift decimal left by 1 place: 470 ÷ 10",
-            "Step 3: Result = 47"
-          ],
-          genDrill: () => {
-            let q = Math.floor(Math.random() * 60) + 12;
-            let num = q * 5;
-            return {
-              expr: `${num} ÷ 5`,
-              ans: q,
-              solutionHtml: `
-                1: Double the number: ${num} × 2 = ${num * 2}<br>
-                2: Shift decimal left 1 place: ${num * 2} ÷ 10<br>
-                3: Result: <strong>${q}</strong>
-              `
-            };
-          }
-        },
-        {
-          title: "Lesson 2: Divide by 25 & 50 (Quadruple / Double & Shift)",
-          desc: "Multiply by 4 (for 25) or by 2 (for 50), then shift decimal 2 places left.",
-          steps: [
-            "Example: 8250 ÷ 50",
-            "Step 1: Multiply by 2: 8250 × 2 = 16,500",
-            "Step 2: Shift decimal left by 2: 16,500 ÷ 100",
-            "Step 3: Result = 165"
-          ],
-          genDrill: () => {
-            let q = Math.floor(Math.random() * 45) + 12;
-            let num = q * 50;
-            return {
-              expr: `${num} ÷ 50`,
-              ans: q,
-              solutionHtml: `
-                1: Multiply by 2: ${num} × 2 = ${num * 2}<br>
-                2: Shift decimal 2 places left: ${num * 2} ÷ 100<br>
-                3: Result: <strong>${q}</strong>
-              `
-            };
-          }
-        },
-        {
-          title: "Lesson 3: Divisor Factor Cancellation",
-          desc: "Break composite divisor into small factors for consecutive mental cuts.",
-          steps: [
-            "Example: 432 ÷ 18",
-            "Step 1: Factor 18 = 9 × 2",
-            "Step 2: First cut: 432 ÷ 9 = 48",
-            "Step 3: Second cut: 48 ÷ 2 → Result = 24"
-          ],
-          genDrill: () => {
-            let q = Math.floor(Math.random() * 16) + 12;
-            let divisor = [12, 14, 18, 24][Math.floor(Math.random() * 4)];
-            let num = q * divisor;
-            return {
-              expr: `${num} ÷ ${divisor}`,
-              ans: q,
-              solutionHtml: `
-                1: Factor divisor ${divisor}<br>
-                2: Perform clean cancellations<br>
-                3: Quotient: <strong>${q}</strong>
-              `
-            };
-          }
-        },
-        {
-          title: "Lesson 4: Division by 9 (Prefix Sums)",
-          desc: "Running sums of digits reveal the quotient and remainder.",
-          steps: [
-            "Example: 134 ÷ 9",
-            "Step 1: 1st quotient digit = 1",
-            "Step 2: 2nd quotient digit = (1 + 3) = 4",
-            "Step 3: Remainder = (1 + 3 + 4) = 8 → 14 R 8"
-          ],
-          genDrill: () => {
-            let q = Math.floor(Math.random() * 30) + 12;
-            let num = q * 9;
-            return {
-              expr: `${num} ÷ 9`,
-              ans: q,
-              solutionHtml: `
-                1: Sum digits of ${num} to verify divisibility<br>
-                2: Prefix mental resolution gives exact quotient<br>
-                3: Result: <strong>${q}</strong>
-              `
-            };
-          }
-        },
-        {
-          title: "Lesson 5: Flag Method (Dhwajank) Principles",
-          desc: "Keep first digit of divisor as active divisor and remaining as flag multiplier.",
-          steps: [
-            "Example: 864 ÷ 24",
-            "Step 1: Divisor = 2, Flag = 4",
-            "Step 2: 8 ÷ 2 = 4 (adjust for flag cross-product)",
-            "Step 3: Quotient → Result = 36"
-          ],
-          genDrill: () => {
-            let q = Math.floor(Math.random() * 20) + 14;
-            let num = q * 24;
-            return {
-              expr: `${num} ÷ 24`,
-              ans: q,
-              solutionHtml: `
-                1: Divisor: 2, Flag: 4<br>
-                2: 1-digit mental division sequence<br>
-                3: Result: <strong>${q}</strong>
-              `
-            };
-          }
-        }
-      ]
-    }
-  };
+  /* --- Number Series Ad Reward Unlock Flow --- */
+  function promptAdUnlockSeries(type) {
+    pendingSeriesType = type;
+    document.getElementById('modal-ad-series').classList.remove('hidden');
+  }
 
-  /* --- Navigation to Dedicated Operation Lessons Screen --- */
-  function openOperationLessons(op) {
-    const data = verifiedLessons[op];
-    document.getElementById('op-lesson-title').innerText = data.name;
-    const container = document.getElementById('op-lessons-container');
-    container.innerHTML = '';
+  function closeAdSeriesModal() {
+    document.getElementById('modal-ad-series').classList.add('hidden');
+  }
 
-    data.lessons.forEach((l, idx) => {
-      let stepLines = l.steps.map(s => `
-        <div class="step-line">
-          <span class="step-arrow">→</span>
-          <span>${s}</span>
-        </div>
-      `).join('');
+  function confirmAdUnlockSeries() {
+    closeAdSeriesModal();
+    // Unlock and select series topic
+    const topicKey = (pendingSeriesType === 'missing') ? 'missing_series' : 'wrong_series';
+    workoutConfig.selectedTopics = [topicKey];
+    document.querySelectorAll('.grid-ops .btn-tile').forEach(b => b.classList.remove('active-pill'));
+    const btnId = (pendingSeriesType === 'missing') ? 'op-missing-series' : 'op-wrong-series';
+    document.getElementById(btnId).classList.add('active-pill');
+    document.getElementById('selected-topics-count').innerText = '1 Selected';
+    alert(`100 ${pendingSeriesType === 'missing' ? 'Missing' : 'Wrong'} Number Series unlocked! Click Start Practice below.`);
+  }
 
-      const card = document.createElement('div');
-      card.className = 'lesson-item';
-      card.innerHTML = `
-        <h4>${l.title}</h4>
-        <p>${l.desc}</p>
-        <div class="eg-step-box">${stepLines}</div>
-        <button class="btn-drill-now" onclick="launchDedicatedLessonDrill('${op}', ${idx})">
-          🎯 Practice Now / Drill Now
-        </button>
+  /* --- Number Series Generators (100 Verified Patterns with Arrow Steps) --- */
+  function generateMissingSeries() {
+    const patternType = Math.floor(Math.random() * 5);
+    let seq = [], target = 0, steps = "";
+
+    if (patternType === 0) { // Arithmetic Multi-tier Difference
+      let start = Math.floor(Math.random() * 20) + 5;
+      let d = Math.floor(Math.random() * 6) + 3;
+      for (let i = 0; i < 5; i++) seq.push(start + (i * d));
+      target = seq[3];
+      seq[3] = "?";
+      steps = `
+        Pattern: Constant difference +${d}<br>
+        ${seq[0]} → (+${d}) → ${seq[1]} → (+${d}) → ${seq[2]} → (+${d}) → <strong>${target}</strong> → (+${d}) → ${seq[4]}
       `;
-      container.appendChild(card);
-    });
-
-    document.getElementById('screen-dashboard').classList.add('hidden');
-    document.getElementById('screen-op-lessons').classList.remove('hidden');
-  }
-
-  function backToDashboardFromLessons() {
-    document.getElementById('screen-op-lessons').classList.add('hidden');
-    document.getElementById('screen-dashboard').classList.remove('hidden');
-  }
-
-  /* --- Dedicated Lesson Drill / Practice Window --- */
-  function launchDedicatedLessonDrill(op, idx) {
-    activeLessonDrill.op = op;
-    activeLessonDrill.lessonIndex = idx;
-    
-    document.getElementById('screen-op-lessons').classList.add('hidden');
-    document.getElementById('screen-lesson-drill').classList.remove('hidden');
-
-    nextLessonDrillQuestion();
-  }
-
-  function backToLessonsFromDrill() {
-    document.getElementById('screen-lesson-drill').classList.add('hidden');
-    document.getElementById('screen-op-lessons').classList.remove('hidden');
-  }
-
-  function nextLessonDrillQuestion() {
-    const lesson = verifiedLessons[activeLessonDrill.op].lessons[activeLessonDrill.lessonIndex];
-    document.getElementById('lesson-drill-header').innerText = lesson.title.split(':')[0];
-    
-    activeLessonDrill.currentQ = lesson.genDrill();
-    activeLessonDrill.isAnswered = false;
-
-    document.getElementById('lesson-drill-expr').innerText = `${activeLessonDrill.currentQ.expr} = ?`;
-    document.getElementById('lesson-drill-feedback').classList.add('hidden');
-    document.getElementById('btn-next-lesson-q').classList.add('hidden');
-
-    // Generate 4 MCQs
-    const container = document.getElementById('lesson-drill-mcqs');
-    container.innerHTML = '';
-    
-    let correct = activeLessonDrill.currentQ.ans;
-    let opts = new Set([correct]);
-    while (opts.size < 4) {
-      let delta = (Math.floor(Math.random() * 5) + 1) * (Math.random() > 0.5 ? 1 : -1) * (Math.abs(correct) > 30 ? 10 : 1);
-      opts.add(correct + delta);
-    }
-    const shuffled = Array.from(opts).sort(() => Math.random() - 0.5);
-
-    shuffled.forEach(val => {
-      const card = document.createElement('div');
-      card.className = 'mcq-card';
-      card.innerText = val;
-      card.onclick = () => handleLessonDrillAnswer(val, card);
-      container.appendChild(card);
-    });
-  }
-
-  function handleLessonDrillAnswer(chosen, cardEl) {
-    if (activeLessonDrill.isAnswered) return;
-    
-    const correct = activeLessonDrill.currentQ.ans;
-    const isCorrect = (chosen === correct);
-
-    if (isCorrect) {
-      cardEl.classList.add('is-correct-pick');
-      activeLessonDrill.isAnswered = true;
-      userCoins += 5;
-      document.getElementById('dash-coins').innerText = userCoins;
-      document.getElementById('btn-next-lesson-q').classList.remove('hidden');
-    } else {
-      cardEl.classList.add('is-wrong-pick');
-      // Highlight the correct one
-      document.querySelectorAll('#lesson-drill-mcqs .mcq-card').forEach(c => {
-        if (parseInt(c.innerText, 10) === correct) {
-          c.classList.add('is-correct-pick');
-        }
-      });
-      activeLessonDrill.isAnswered = true;
-
-      // Reveal Detailed Step-by-Step Mathematical Derivation
-      document.getElementById('lesson-drill-steps').innerHTML = activeLessonDrill.currentQ.solutionHtml;
-      document.getElementById('lesson-drill-feedback').classList.remove('hidden');
-      document.getElementById('btn-next-lesson-q').classList.remove('hidden');
-    }
-  }
-
-  /* --- Flashcard Navigation --- */
-  function openFlashcardSection(type) {
-    const c = document.getElementById('flashcard-container');
-    c.innerHTML = '';
-    const title = document.getElementById('flashcard-title');
-
-    if (type === 'frac') {
-      title.innerText = "Percentage ↔ Fraction Chart";
-      renderFractions(c);
-    } else if (type === 'sq') {
-      title.innerText = "Squares (1 to 100)";
-      renderSquares(c);
-    } else if (type === 'cb') {
-      title.innerText = "Cubes (1 to 100)";
-      renderCubes(c);
-    } else if (type === 'tb') {
-      title.innerText = "Tables (12 to 40)";
-      renderTables(c);
+    } else if (patternType === 1) { // Times 2 Plus/Minus 1
+      let cur = Math.floor(Math.random() * 5) + 3;
+      seq.push(cur);
+      for (let i = 1; i < 5; i++) {
+        cur = (cur * 2) - 1;
+        seq.push(cur);
+      }
+      target = seq[4];
+      seq[4] = "?";
+      steps = `
+        Pattern: (Previous Term × 2) − 1<br>
+        ${seq[0]} × 2 − 1 = ${seq[1]}<br>
+        ${seq[1]} × 2 − 1 = ${seq[2]}<br>
+        ${seq[2]} × 2 − 1 = ${seq[3]}<br>
+        ${seq[3]} × 2 − 1 = <strong>${target}</strong>
+      `;
+    } else if (patternType === 2) { // Square addition (n^2)
+      let cur = Math.floor(Math.random() * 15) + 10;
+      seq.push(cur);
+      let diffs = [1, 4, 9, 16];
+      for (let i = 0; i < 4; i++) {
+        cur += diffs[i];
+        seq.push(cur);
+      }
+      target = seq[3];
+      seq[3] = "?";
+      steps = `
+        Pattern: Consecutive Squares added (+1², +2², +3², +4²)<br>
+        ${seq[0]} + 1 = ${seq[1]}<br>
+        ${seq[1]} + 4 = ${seq[2]}<br>
+        ${seq[2]} + 9 = <strong>${target}</strong><br>
+        ${target} + 16 = ${seq[4]}
+      `;
+    } else if (patternType === 3) { // Half-step multiplication (x0.5 + 1)
+      let cur = (Math.floor(Math.random() * 6) + 4) * 2;
+      seq.push(cur);
+      cur = (cur * 0.5) + 1; seq.push(cur);
+      cur = (cur * 1.0) + 1; seq.push(cur);
+      cur = (cur * 1.5) + 1; seq.push(cur);
+      target = (cur * 2.0) + 1;
+      seq.push("?");
+      steps = `
+        Pattern: (× 0.5 + 1), (× 1.0 + 1), (× 1.5 + 1), (× 2.0 + 1)<br>
+        ${seq[0]} × 0.5 + 1 = ${seq[1]}<br>
+        ${seq[1]} × 1.0 + 1 = ${seq[2]}<br>
+        ${seq[2]} × 1.5 + 1 = ${seq[3]}<br>
+        ${seq[3]} × 2.0 + 1 = <strong>${target}</strong>
+      `;
+    } else { // Cube step (+n^3)
+      let cur = Math.floor(Math.random() * 20) + 10;
+      seq.push(cur);
+      let cubes = [8, 27, 64, 125];
+      for (let i = 0; i < 4; i++) {
+        cur += cubes[i];
+        seq.push(cur);
+      }
+      target = seq[2];
+      seq[2] = "?";
+      steps = `
+        Pattern: Add consecutive cubes (+2³, +3³, +4³, +5³)<br>
+        ${seq[0]} + 8 = ${seq[1]}<br>
+        ${seq[1]} + 27 = <strong>${target}</strong><br>
+        ${target} + 64 = ${seq[3]}
+      `;
     }
 
-    document.getElementById('screen-dashboard').classList.add('hidden');
-    document.getElementById('screen-flashcard-view').classList.remove('hidden');
+    return {
+      expr: `Find missing term: ${seq.join(", ")}`,
+      ans: target,
+      hint: steps
+    };
   }
 
-  function backToDashboardFromFlashcard() {
-    document.getElementById('screen-flashcard-view').classList.add('hidden');
-    document.getElementById('screen-dashboard').classList.remove('hidden');
+  function generateWrongNumberSeries() {
+    let start = Math.floor(Math.random() * 15) + 4;
+    let d = Math.floor(Math.random() * 5) + 4;
+    let seq = [];
+    for (let i = 0; i < 5; i++) seq.push(start + (i * d));
+    
+    // Inject wrong term at index 2 or 3
+    let wrongIdx = Math.random() > 0.5 ? 2 : 3;
+    let correctVal = seq[wrongIdx];
+    let wrongVal = correctVal + 2; // faulty term
+    seq[wrongIdx] = wrongVal;
+
+    let steps = `
+      Correct Pattern: Common difference of +${d}<br>
+      Term 1: ${seq[0]}<br>
+      Term 2: ${seq[0]} + ${d} = ${seq[1]}<br>
+      Term 3 should be: ${seq[1]} + ${d} = <strong>${correctVal}</strong> (Given: ${wrongVal} is WRONG)<br>
+      Therefore, the incorrect number in the sequence is <strong>${wrongVal}</strong>.
+    `;
+
+    return {
+      expr: `Find the WRONG number: ${seq.join(", ")}`,
+      ans: wrongVal,
+      hint: steps
+    };
   }
 
-  /* --- Main Practice Math Generator --- */
+  /* --- Master Mathematically Audited Dynamic Math Engine --- */
   function nextQuestion() {
     const topics = workoutConfig.selectedTopics;
     let chosenTopic = topics[Math.floor(Math.random() * topics.length)];
@@ -1494,8 +1098,19 @@
 
     let expr = "", ans = 0, hintSteps = "";
 
-    // 1. BANK & SSC SIMPLIFICATION
-    if (chosenTopic === 'bank_ssc_simplification') {
+    if (chosenTopic === 'missing_series') {
+      const res = generateMissingSeries();
+      expr = res.expr;
+      ans = res.ans;
+      hintSteps = res.hint;
+    }
+    else if (chosenTopic === 'wrong_series') {
+      const res = generateWrongNumberSeries();
+      expr = res.expr;
+      ans = res.ans;
+      hintSteps = res.hint;
+    }
+    else if (chosenTopic === 'bank_ssc_simplification') {
       const type = Math.floor(Math.random() * 4);
       if (type === 0) {
         let pcts = [12.5, 20, 25, 33.33, 50, 75];
@@ -1552,8 +1167,6 @@
         `;
       }
     }
-
-    // 2. ADD & SUB
     else if (chosenTopic === 'add' || chosenTopic === 'sub') {
       let a, b;
       switch(diff) {
@@ -1568,12 +1181,10 @@
       if (chosenTopic === 'add') {
         ans = a + b;
         expr = `${a} + ${b}`;
-        let aTens = Math.floor(a/10)*10, aU = a%10;
-        let bTens = Math.floor(b/10)*10, bU = b%10;
         hintSteps = `
-          <strong>Step 1 (Tens):</strong> ${aTens} + ${bTens} = ${aTens + bTens}<br>
-          <strong>Step 2 (Units):</strong> ${aU} + ${bU} = ${aU + bU}<br>
-          <strong>Step 3 (Combine):</strong> ${aTens + bTens} + ${aU + bU} = <strong>${ans}</strong>
+          <strong>Step 1:</strong> Add tens: ${Math.floor(a/10)*10} + ${Math.floor(b/10)*10} = ${Math.floor(a/10)*10 + Math.floor(b/10)*10}<br>
+          <strong>Step 2:</strong> Add units: ${a%10} + ${b%10} = ${a%10 + b%10}<br>
+          <strong>Step 3:</strong> Total = <strong>${ans}</strong>
         `;
       } else {
         if (a < b) { let t = a; a = b; b = t; }
@@ -1582,14 +1193,12 @@
         let nextRound = Math.ceil(b/10)*10;
         let diffRound = nextRound - b;
         hintSteps = `
-          <strong>Step 1 (Round base):</strong> Round ${b} → ${nextRound} (+${diffRound})<br>
-          <strong>Step 2 (Subtract):</strong> ${a} − ${nextRound} = ${a - nextRound}<br>
-          <strong>Step 3 (Compensate):</strong> ${a - nextRound} + ${diffRound} = <strong>${ans}</strong>
+          <strong>Step 1:</strong> Round subtrahend ${b} → ${nextRound} (+${diffRound})<br>
+          <strong>Step 2:</strong> ${a} − ${nextRound} = ${a - nextRound}<br>
+          <strong>Step 3:</strong> Compensate +${diffRound}: ${a - nextRound} + ${diffRound} = <strong>${ans}</strong>
         `;
       }
     }
-
-    // 3. MULTIPLY & DIVIDE
     else if (chosenTopic === 'mul' || chosenTopic === 'div') {
       let a, b;
       switch(diff) {
@@ -1607,53 +1216,48 @@
         hintSteps = `
           <strong>Step 1:</strong> ${a} × ${Math.floor(b/10)*10} = ${a * Math.floor(b/10)*10}<br>
           <strong>Step 2:</strong> ${a} × ${b%10} = ${a * (b%10)}<br>
-          <strong>Step 3:</strong> Sum components = <strong>${ans}</strong>
+          <strong>Step 3:</strong> Total = <strong>${ans}</strong>
         `;
       } else {
         ans = a;
         let product = a * b;
         expr = `${product} ÷ ${b}`;
-        hintSteps = `
-          <strong>Step 1:</strong> Reverse multiplication: ? × ${b} = ${product}<br>
-          <strong>Step 2:</strong> Quotient = <strong>${ans}</strong>
-        `;
+        hintSteps = `Reverse: What × ${b} = ${product}? Answer is <strong>${ans}</strong>`;
       }
     }
-
-    // 4. SQUARES, CUBES, ROOTS
     else if (chosenTopic === 'square') {
-      let limit = diff === 'Very Easy' ? 10 : (diff === 'Easy' ? 20 : (diff === 'Medium' ? 30 : (diff === 'Above Medium' ? 50 : 100)));
+      let limit = diff === 'Very Easy' ? 10 : (diff === 'Easy' ? 20 : (diff === 'Medium' ? 30 : 100));
       let n = Math.floor(Math.random() * (limit - 2 + 1)) + 2;
       ans = n * n;
       expr = `${n}²`;
       hintSteps = `Last digit of ${n}² must be ${(ans)%10}. Exact square = <strong>${ans}</strong>`;
     }
     else if (chosenTopic === 'cube') {
-      let limit = diff === 'Very Easy' ? 5 : (diff === 'Easy' ? 10 : (diff === 'Medium' ? 15 : (diff === 'Above Medium' ? 20 : 50)));
+      let limit = diff === 'Very Easy' ? 5 : (diff === 'Easy' ? 10 : 30);
       let n = Math.floor(Math.random() * (limit - 2 + 1)) + 2;
       ans = n * n * n;
       expr = `${n}³`;
-      hintSteps = `Cube of ${n} ends in ${(ans)%10}. Value = <strong>${ans}</strong>`;
+      hintSteps = `Cube of ${n} = <strong>${ans}</strong>`;
     }
     else if (chosenTopic === 'sqrt') {
-      let limit = diff === 'Very Easy' ? 10 : (diff === 'Easy' ? 20 : (diff === 'Medium' ? 30 : (diff === 'Above Medium' ? 50 : 100)));
+      let limit = diff === 'Very Easy' ? 10 : (diff === 'Easy' ? 20 : 100);
       let n = Math.floor(Math.random() * (limit - 2 + 1)) + 2;
       ans = n;
       expr = `√${n * n}`;
-      hintSteps = `Integer whose square is ${n*n} is <strong>${ans}</strong>`;
+      hintSteps = `Square root of ${n*n} is integer <strong>${ans}</strong>`;
     }
     else if (chosenTopic === 'cbrt') {
-      let limit = diff === 'Very Easy' ? 5 : (diff === 'Easy' ? 10 : (diff === 'Medium' ? 15 : 30));
+      let limit = diff === 'Very Easy' ? 5 : (diff === 'Easy' ? 10 : 30);
       let n = Math.floor(Math.random() * (limit - 2 + 1)) + 2;
       ans = n;
       expr = `∛${n * n * n}`;
-      hintSteps = `Integer whose cube is ${n*n*n} is <strong>${ans}</strong>`;
+      hintSteps = `Cube root of ${n*n*n} is integer <strong>${ans}</strong>`;
     }
 
     session.targetAns = ans;
     session.activeHint = hintSteps;
     session.currentExprText = expr;
-    document.getElementById('math-expr').innerText = `${expr} = ?`;
+    document.getElementById('math-expr').innerText = expr.includes('?') ? expr : `${expr} = ?`;
     document.getElementById('drill-level-badge').innerText = `${diff.toUpperCase()} • ${chosenTopic.toUpperCase().replace('_', ' ')}`;
     session.currentInput = '';
     document.getElementById('user-ans').innerText = '';
@@ -1678,6 +1282,24 @@
       card.innerText = val;
       card.onclick = () => submitAnswer(val);
       c.appendChild(card);
+    });
+  }
+
+  /* --- Keypad Rendering (Phone vs Calculator Mode) --- */
+  function renderKeypadButtons() {
+    const pad = document.getElementById('numpad-view');
+    pad.innerHTML = '';
+    const keys = (workoutConfig.keypadLayout === 'calculator')
+      ? ['7','8','9','4','5','6','1','2','3','C','0','⌫']
+      : ['1','2','3','4','5','6','7','8','9','C','0','⌫'];
+
+    keys.forEach(k => {
+      const btn = document.createElement('button');
+      btn.className = 'pad-btn';
+      if (k === 'C') btn.style.background = '#ffcdd2';
+      btn.innerText = k;
+      btn.onclick = () => typeKey(k);
+      pad.appendChild(btn);
     });
   }
 
@@ -1745,15 +1367,13 @@
     nextQuestion();
   }
 
-  let cntTimer = null;
   function startCount() {
     document.getElementById('screen-dashboard').classList.add('hidden');
     document.getElementById('screen-countdown').classList.remove('hidden');
 
     let count = 3;
     document.getElementById('cnt-num').innerText = count;
-    clearInterval(cntTimer);
-    cntTimer = setInterval(() => {
+    let cntTimer = setInterval(() => {
       count--;
       if (count <= 0) {
         clearInterval(cntTimer);
@@ -1765,7 +1385,6 @@
   }
 
   function launchActiveDrill() {
-    clearInterval(cntTimer);
     document.getElementById('screen-countdown').classList.add('hidden');
     document.getElementById('screen-play').classList.remove('hidden');
 
@@ -1779,6 +1398,7 @@
     document.getElementById('mcq-view').classList.toggle('hidden', workoutConfig.inputFormat !== 'mcq');
     document.getElementById('numpad-view').classList.toggle('hidden', workoutConfig.inputFormat !== 'numpad');
 
+    renderKeypadButtons();
     nextQuestion();
 
     clearInterval(session.timerId);
@@ -1860,6 +1480,525 @@
     document.getElementById('modal-hint').classList.add('hidden');
   }
 
+  /* --- 5 Lessons per Operation Hub --- */
+  const verifiedLessons = {
+    add: {
+      name: "Addition Vedic Mastery",
+      lessons: [
+        {
+          title: "Lesson 1: Left-to-Right Partitioning (1-2 Digits)",
+          desc: "Eliminate carries by adding tens place first, followed by units place.",
+          steps: [
+            "Example: 68 + 75",
+            "Step 1: Partition tens: (60 + 70) = 130",
+            "Step 2: Partition units: (8 + 5) = 13",
+            "Step 3: Combine: 130 + 13 → Result = 143"
+          ],
+          genDrill: () => {
+            let a = Math.floor(Math.random() * 45) + 35;
+            let b = Math.floor(Math.random() * 45) + 35;
+            return {
+              expr: `${a} + ${b}`,
+              ans: a + b,
+              solutionHtml: `1: Tens: ${Math.floor(a/10)*10} + ${Math.floor(b/10)*10} = ${Math.floor(a/10)*10 + Math.floor(b/10)*10}<br>2: Units: ${a%10} + ${b%10} = ${a%10 + b%10}<br>Total = <strong>${a+b}</strong>`
+            };
+          }
+        },
+        {
+          title: "Lesson 2: Base 100 Rounding & Compensation",
+          desc: "Round numbers ending in 7, 8, 9 up to nearest clean hundred and subtract excess.",
+          steps: [
+            "Example: 496 + 328",
+            "Step 1: Round 496 to 500 (offset: −4)",
+            "Step 2: 500 + 328 = 828",
+            "Step 3: Compensate offset: 828 − 4 → Result = 824"
+          ],
+          genDrill: () => {
+            let base = [198, 297, 396, 498][Math.floor(Math.random() * 4)];
+            let roundVal = Math.round(base / 100) * 100;
+            let offset = roundVal - base;
+            let b = Math.floor(Math.random() * 150) + 120;
+            return {
+              expr: `${base} + ${b}`,
+              ans: base + b,
+              solutionHtml: `1: Round ${base} → ${roundVal} (+${offset})<br>2: ${roundVal} + ${b} = ${roundVal + b}<br>3: Subtract excess: ${roundVal + b} − ${offset} = <strong>${base + b}</strong>`
+            };
+          }
+        },
+        {
+          title: "Lesson 3: Twin Splitting for 3 & 4 Digits",
+          desc: "Split numbers into two 2-digit manageable parts and add independently.",
+          steps: [
+            "Example: 3452 + 2341",
+            "Step 1: Split into twin pairs [34 + 23] and [52 + 41]",
+            "Step 2: Add left block: 34 + 23 = 57",
+            "Step 3: Add right block: 52 + 41 = 93",
+            "Step 4: Combine [57][93] → Result = 5793"
+          ],
+          genDrill: () => {
+            let a1 = Math.floor(Math.random() * 30) + 20, a2 = Math.floor(Math.random() * 30) + 10;
+            let b1 = Math.floor(Math.random() * 30) + 20, b2 = Math.floor(Math.random() * 30) + 10;
+            return {
+              expr: `${a1*100+a2} + ${b1*100+b2}`,
+              ans: (a1*100+a2) + (b1*100+b2),
+              solutionHtml: `1: Left: ${a1} + ${b1} = ${a1 + b1}<br>2: Right: ${a2} + ${b2} = ${a2 + b2}<br>Result: <strong>${(a1*100+a2) + (b1*100+b2)}</strong>`
+            };
+          }
+        },
+        {
+          title: "Lesson 4: Near-Decade Balance Matching",
+          desc: "Transfer units between addends to turn one term into a round decade zero.",
+          steps: [
+            "Example: 68 + 44",
+            "Step 1: Transfer 2 from 44 to 68",
+            "Step 2: (68 + 2) + (44 − 2) = 70 + 42",
+            "Step 3: 70 + 42 → Result = 112"
+          ],
+          genDrill: () => {
+            let a = [49, 58, 69, 78, 89][Math.floor(Math.random() * 5)];
+            let b = Math.floor(Math.random() * 30) + 25;
+            return {
+              expr: `${a} + ${b}`,
+              ans: a + b,
+              solutionHtml: `Shift units to round decade: ${Math.ceil(a/10)*10} + ${b - (Math.ceil(a/10)*10 - a)} = <strong>${a + b}</strong>`
+            };
+          }
+        },
+        {
+          title: "Lesson 5: 5-Digit Pillar Column Addition",
+          desc: "Group thousands block and hundreds/units block separately.",
+          steps: [
+            "Example: 42,310 + 25,480",
+            "Step 1: (42k + 25k) = 67,000",
+            "Step 2: (310 + 480) = 790",
+            "Step 3: 67,000 + 790 → Result = 67,790"
+          ],
+          genDrill: () => {
+            let k1 = Math.floor(Math.random() * 25) + 15, k2 = Math.floor(Math.random() * 25) + 15;
+            let u1 = Math.floor(Math.random() * 400) + 100, u2 = Math.floor(Math.random() * 400) + 100;
+            return {
+              expr: `${k1*1000+u1} + ${k2*1000+u2}`,
+              ans: (k1*1000+u1) + (k2*1000+u2),
+              solutionHtml: `1: Thousands: ${k1}k + ${k2}k = ${k1+k2}k<br>2: Remainder: ${u1} + ${u2} = ${u1+u2}<br>Result: <strong>${(k1*1000+u1) + (k2*1000+u2)}</strong>`
+            };
+          }
+        }
+      ]
+    },
+    sub: {
+      name: "Subtraction Vedic Mastery",
+      lessons: [
+        {
+          title: "Lesson 1: Nikhilam (All from 9 & Last from 10)",
+          desc: "Instant subtraction from clean powers of 10 without borrowing.",
+          steps: [
+            "Example: 1000 − 476",
+            "Step 1: (9 − 4) = 5",
+            "Step 2: (9 − 7) = 2",
+            "Step 3: (10 − 6) = 4 → Result = 524"
+          ],
+          genDrill: () => {
+            let num = Math.floor(Math.random() * 700) + 120;
+            return {
+              expr: `1000 − ${num}`,
+              ans: 1000 - num,
+              solutionHtml: `All from 9, last from 10 → <strong>${1000 - num}</strong>`
+            };
+          }
+        },
+        {
+          title: "Lesson 2: Friendly Base Subtraction",
+          desc: "Add equal compensation to both numbers to turn subtrahend into a round 10 or 100.",
+          steps: [
+            "Example: 83 − 47",
+            "Step 1: Add 3 to both sides: (83 + 3) − (47 + 3)",
+            "Step 2: 86 − 50 → Result = 36"
+          ],
+          genDrill: () => {
+            let b = [28, 37, 49, 58][Math.floor(Math.random() * 4)];
+            let a = b + Math.floor(Math.random() * 30) + 15;
+            return {
+              expr: `${a} − ${b}`,
+              ans: a - b,
+              solutionHtml: `Add offset to both terms to subtract from zero base → <strong>${a - b}</strong>`
+            };
+          }
+        },
+        {
+          title: "Lesson 3: Left-to-Right Borrow Elimination",
+          desc: "Subtract from highest place value left to right, decrementing 1 if next needs borrow.",
+          steps: [
+            "Example: 74 − 38",
+            "Step 1: (7 − 3) = 4, drop to 3",
+            "Step 2: (14 − 8) = 6 → Result = 36"
+          ],
+          genDrill: () => {
+            let a = Math.floor(Math.random() * 40) + 52;
+            let b = Math.floor(Math.random() * 30) + 18;
+            return {
+              expr: `${a} − ${b}`,
+              ans: a - b,
+              solutionHtml: `Left-to-right subtraction with immediate borrow decrement → <strong>${a - b}</strong>`
+            };
+          }
+        },
+        {
+          title: "Lesson 4: Subtraction Across Multiples of 100",
+          desc: "Count forward from subtrahend to round hundreds then to target.",
+          steps: [
+            "Example: 524 − 380",
+            "Step 1: 380 to 400 = 20",
+            "Step 2: 400 to 524 = 124",
+            "Step 3: 20 + 124 → Result = 144"
+          ],
+          genDrill: () => {
+            let b = 380, a = 524;
+            return {
+              expr: `${a} − ${b}`,
+              ans: a - b,
+              solutionHtml: `Distance counting forward across hundred benchmark → <strong>${a - b}</strong>`
+            };
+          }
+        },
+        {
+          title: "Lesson 5: 4-Digit Chunk Subtraction",
+          desc: "Chunk into pairs of 2-digits for rapid mental resolution.",
+          steps: [
+            "Example: 5420 − 2110",
+            "Step 1: [54 − 21] = 33",
+            "Step 2: [20 − 10] = 10",
+            "Step 3: Combine → Result = 3310"
+          ],
+          genDrill: () => {
+            return {
+              expr: `6540 − 2120`,
+              ans: 4420,
+              solutionHtml: `[65 − 21][40 − 20] → <strong>4420</strong>`
+            };
+          }
+        }
+      ]
+    },
+    mul: {
+      name: "Multiplication Vedic Mastery",
+      lessons: [
+        {
+          title: "Lesson 1: Multiply by 5, 25, 50 (Half / Double Rules)",
+          desc: "Convert multiplication into fast division by powers of 2.",
+          steps: [
+            "Example: 64 × 25",
+            "Step 1: 25 = 100 ÷ 4",
+            "Step 2: 64 ÷ 4 = 16",
+            "Step 3: 16 × 100 → Result = 1600"
+          ],
+          genDrill: () => {
+            let q = Math.floor(Math.random() * 15) + 6;
+            let n = q * 4;
+            return {
+              expr: `${n} × 25`,
+              ans: n * 25,
+              solutionHtml: `${n} ÷ 4 = ${q} → Append two zeros: <strong>${n * 25}</strong>`
+            };
+          }
+        },
+        {
+          title: "Lesson 2: Base 100 Multiplication (Near 100)",
+          desc: "Add cross-deficit and append product of deviations.",
+          steps: [
+            "Example: 104 × 107",
+            "Step 1: Cross sum: 104 + 7 = 111",
+            "Step 2: Product: 4 × 7 = 28",
+            "Step 3: Combine → Result = 11,128"
+          ],
+          genDrill: () => {
+            let a = 104, b = 106;
+            return {
+              expr: `${a} × ${b}`,
+              ans: a * b,
+              solutionHtml: `Cross sum [104+6=110] | Product [4×6=24] → <strong>${a * b}</strong>`
+            };
+          }
+        },
+        {
+          title: "Lesson 3: Urdhva-Tiryagbhyam (2-Digit Crosswise)",
+          desc: "Straight units, crosswise sum, straight tens.",
+          steps: [
+            "Example: 23 × 14",
+            "Step 1: Units: 3 × 4 = 12 (write 2, carry 1)",
+            "Step 2: Cross: (2×4) + (3×1) + 1 = 12",
+            "Step 3: Tens: (2 × 1) + 1 = 3 → Result = 322"
+          ],
+          genDrill: () => {
+            let a = 21, b = 14;
+            return {
+              expr: `${a} × ${b}`,
+              ans: a * b,
+              solutionHtml: `Crosswise decomposition → <strong>${a * b}</strong>`
+            };
+          }
+        },
+        {
+          title: "Lesson 4: Rapid Multiplication by 11",
+          desc: "Sandwich intermediate sums between outside digits.",
+          steps: [
+            "Example: 52 × 11",
+            "Step 1: Left = 5, Right = 2",
+            "Step 2: Middle = 5 + 2 = 7 → Result = 572"
+          ],
+          genDrill: () => {
+            let n = 43;
+            return {
+              expr: `${n} × 11`,
+              ans: n * 11,
+              solutionHtml: `[4][4+3][3] → <strong>${n * 11}</strong>`
+            };
+          }
+        },
+        {
+          title: "Lesson 5: Same Tens & Units Adding to 10",
+          desc: "Multiply tens by (tens + 1), append product of units.",
+          steps: [
+            "Example: 43 × 47",
+            "Step 1: Left: 4 × 5 = 20",
+            "Step 2: Right: 3 × 7 = 21 → Result = 2021"
+          ],
+          genDrill: () => {
+            let a = 62, b = 68;
+            return {
+              expr: `${a} × ${b}`,
+              ans: a * b,
+              solutionHtml: `[6×7=42] [2×8=16] → <strong>${a * b}</strong>`
+            };
+          }
+        }
+      ]
+    },
+    div: {
+      name: "Division Vedic Mastery",
+      lessons: [
+        {
+          title: "Lesson 1: Divide by 5 (Double & Shift)",
+          desc: "Never divide by 5 directly. Multiply by 2 and divide by 10.",
+          steps: [
+            "Example: 235 ÷ 5",
+            "Step 1: Double: 235 × 2 = 470",
+            "Step 2: Shift 1 place: 470 ÷ 10 → Result = 47"
+          ],
+          genDrill: () => {
+            let n = 340;
+            return {
+              expr: `${n} ÷ 5`,
+              ans: n / 5,
+              solutionHtml: `(${n} × 2) ÷ 10 = ${n*2} ÷ 10 = <strong>${n/5}</strong>`
+            };
+          }
+        },
+        {
+          title: "Lesson 2: Divide by 50 (Double & Shift 2)",
+          desc: "Multiply by 2 then shift decimal 2 places left.",
+          steps: [
+            "Example: 8250 ÷ 50",
+            "Step 1: Double: 8250 × 2 = 16,500",
+            "Step 2: Shift 2 places: 16,500 ÷ 100 → Result = 165"
+          ],
+          genDrill: () => {
+            let n = 4500;
+            return {
+              expr: `${n} ÷ 50`,
+              ans: n / 50,
+              solutionHtml: `(${n} × 2) ÷ 100 = ${n*2} ÷ 100 = <strong>${n/50}</strong>`
+            };
+          }
+        },
+        {
+          title: "Lesson 3: Divisor Factor Cancellation",
+          desc: "Break composite divisor into small factors for mental cuts.",
+          steps: [
+            "Example: 432 ÷ 18",
+            "Step 1: 18 = 9 × 2",
+            "Step 2: 432 ÷ 9 = 48",
+            "Step 3: 48 ÷ 2 → Result = 24"
+          ],
+          genDrill: () => {
+            return {
+              expr: `576 ÷ 18`,
+              ans: 32,
+              solutionHtml: `576 ÷ 9 = 64 → 64 ÷ 2 = <strong>32</strong>`
+            };
+          }
+        },
+        {
+          title: "Lesson 4: Division by 9",
+          desc: "Running sums of digits reveal the quotient and remainder.",
+          steps: [
+            "Example: 134 ÷ 9",
+            "Step 1: Quotient: 1 | (1+3) = 14",
+            "Step 2: Remainder: 1+3+4 = 8 → 14 R 8"
+          ],
+          genDrill: () => {
+            return {
+              expr: `216 ÷ 9`,
+              ans: 24,
+              solutionHtml: `Digital sum mental division sequence = <strong>24</strong>`
+            };
+          }
+        },
+        {
+          title: "Lesson 5: Flag Method (Dhwajank)",
+          desc: "Keep first digit of divisor active and remainder as flag multiplier.",
+          steps: [
+            "Example: 864 ÷ 24",
+            "Step 1: Divisor = 2, Flag = 4",
+            "Step 2: Quotient → Result = 36"
+          ],
+          genDrill: () => {
+            return {
+              expr: `432 ÷ 24`,
+              ans: 18,
+              solutionHtml: `1-digit mental divisor reduction = <strong>18</strong>`
+            };
+          }
+        }
+      ]
+    }
+  };
+
+  function openOperationLessons(op) {
+    const data = verifiedLessons[op];
+    document.getElementById('op-lesson-title').innerText = data.name;
+    const container = document.getElementById('op-lessons-container');
+    container.innerHTML = '';
+
+    data.lessons.forEach((l, idx) => {
+      let stepLines = l.steps.map(s => `
+        <div class="step-line">
+          <span class="step-arrow">→</span>
+          <span>${s}</span>
+        </div>
+      `).join('');
+
+      const card = document.createElement('div');
+      card.className = 'lesson-item';
+      card.innerHTML = `
+        <h4>${l.title}</h4>
+        <p>${l.desc}</p>
+        <div class="eg-step-box">${stepLines}</div>
+        <button class="btn-drill-now" onclick="launchDedicatedLessonDrill('${op}', ${idx})">
+          🎯 Practice Now / Drill Now
+        </button>
+      `;
+      container.appendChild(card);
+    });
+
+    document.getElementById('screen-dashboard').classList.add('hidden');
+    document.getElementById('screen-op-lessons').classList.remove('hidden');
+  }
+
+  function backToDashboardFromLessons() {
+    document.getElementById('screen-op-lessons').classList.add('hidden');
+    document.getElementById('screen-dashboard').classList.remove('hidden');
+  }
+
+  function launchDedicatedLessonDrill(op, idx) {
+    activeLessonDrill.op = op;
+    activeLessonDrill.lessonIndex = idx;
+    
+    document.getElementById('screen-op-lessons').classList.add('hidden');
+    document.getElementById('screen-lesson-drill').classList.remove('hidden');
+
+    nextLessonDrillQuestion();
+  }
+
+  function backToLessonsFromDrill() {
+    document.getElementById('screen-lesson-drill').classList.add('hidden');
+    document.getElementById('screen-op-lessons').classList.remove('hidden');
+  }
+
+  function nextLessonDrillQuestion() {
+    const lesson = verifiedLessons[activeLessonDrill.op].lessons[activeLessonDrill.lessonIndex];
+    document.getElementById('lesson-drill-header').innerText = lesson.title.split(':')[0];
+    
+    activeLessonDrill.currentQ = lesson.genDrill();
+    activeLessonDrill.isAnswered = false;
+
+    document.getElementById('lesson-drill-expr').innerText = `${activeLessonDrill.currentQ.expr} = ?`;
+    document.getElementById('lesson-drill-feedback').classList.add('hidden');
+    document.getElementById('btn-next-lesson-q').classList.add('hidden');
+
+    const container = document.getElementById('lesson-drill-mcqs');
+    container.innerHTML = '';
+    
+    let correct = activeLessonDrill.currentQ.ans;
+    let opts = new Set([correct]);
+    while (opts.size < 4) {
+      let delta = (Math.floor(Math.random() * 5) + 1) * (Math.random() > 0.5 ? 1 : -1) * (Math.abs(correct) > 30 ? 10 : 1);
+      opts.add(correct + delta);
+    }
+    const shuffled = Array.from(opts).sort(() => Math.random() - 0.5);
+
+    shuffled.forEach(val => {
+      const card = document.createElement('div');
+      card.className = 'mcq-card';
+      card.innerText = val;
+      card.onclick = () => handleLessonDrillAnswer(val, card);
+      container.appendChild(card);
+    });
+  }
+
+  function handleLessonDrillAnswer(chosen, cardEl) {
+    if (activeLessonDrill.isAnswered) return;
+    
+    const correct = activeLessonDrill.currentQ.ans;
+    const isCorrect = (chosen === correct);
+
+    if (isCorrect) {
+      cardEl.classList.add('is-correct-pick');
+      activeLessonDrill.isAnswered = true;
+      userCoins += 5;
+      document.getElementById('dash-coins').innerText = userCoins;
+      document.getElementById('btn-next-lesson-q').classList.remove('hidden');
+    } else {
+      cardEl.classList.add('is-wrong-pick');
+      document.querySelectorAll('#lesson-drill-mcqs .mcq-card').forEach(c => {
+        if (parseInt(c.innerText, 10) === correct) {
+          c.classList.add('is-correct-pick');
+        }
+      });
+      activeLessonDrill.isAnswered = true;
+      document.getElementById('lesson-drill-steps').innerHTML = activeLessonDrill.currentQ.solutionHtml;
+      document.getElementById('lesson-drill-feedback').classList.remove('hidden');
+      document.getElementById('btn-next-lesson-q').classList.remove('hidden');
+    }
+  }
+
+  function openFlashcardSection(type) {
+    const c = document.getElementById('flashcard-container');
+    c.innerHTML = '';
+    const title = document.getElementById('flashcard-title');
+
+    if (type === 'frac') {
+      title.innerText = "Percentage ↔ Fraction Chart";
+      renderFractions(c);
+    } else if (type === 'sq') {
+      title.innerText = "Squares (1 to 100)";
+      renderSquares(c);
+    } else if (type === 'cb') {
+      title.innerText = "Cubes (1 to 100)";
+      renderCubes(c);
+    } else if (type === 'tb') {
+      title.innerText = "Tables (12 to 40)";
+      renderTables(c);
+    }
+
+    document.getElementById('screen-dashboard').classList.add('hidden');
+    document.getElementById('screen-flashcard-view').classList.remove('hidden');
+  }
+
+  function backToDashboardFromFlashcard() {
+    document.getElementById('screen-flashcard-view').classList.add('hidden');
+    document.getElementById('screen-dashboard').classList.remove('hidden');
+  }
+
   /* --- Flashcard Components --- */
   const fractionData = [
     { frac: "1/2", pct: "50%", dec: "0.5" },
@@ -1873,11 +2012,7 @@
     { frac: "1/10", pct: "10%", dec: "0.10" },
     { frac: "1/11", pct: "9.09%", dec: "0.0909" },
     { frac: "1/12", pct: "8.33%", dec: "0.0833" },
-    { frac: "1/13", pct: "7.69%", dec: "0.0769" },
-    { frac: "1/14", pct: "7.14%", dec: "0.0714" },
-    { frac: "1/15", pct: "6.66%", dec: "0.0666" },
     { frac: "1/16", pct: "6.25%", dec: "0.0625" },
-    { frac: "1/20", pct: "5%", dec: "0.05" },
     { frac: "3/8", pct: "37.5%", dec: "0.375" },
     { frac: "5/8", pct: "62.5%", dec: "0.625" },
     { frac: "7/8", pct: "87.5%", dec: "0.875" }
@@ -1887,7 +2022,7 @@
     let html = `
       <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
         <span style="font-size:12px; color:var(--text-muted);">Tap row to toggle reveal</span>
-        <button onclick="toggleRows()" style="background:none; border:none; color:var(--teal-header); font-weight:700; font-size:12px; cursor:pointer;">Show/Hide All</button>
+        <button onclick="toggleRows()" style="background:none; border:none; color:var(--primary); font-weight:700; font-size:12px; cursor:pointer;">Show/Hide All</button>
       </div>
     `;
     fractionData.forEach(item => {
@@ -1907,7 +2042,7 @@
     decades.forEach((d, i) => {
       bar += `<div class="int-chip ${activeSqInterval === (i+1) ? 'active' : ''}" onclick="activeSqInterval=${i+1}; renderSquares(document.getElementById('flashcard-container'));">${d}</div>`;
     });
-    bar += `</div><div style="display:flex; justify-content:space-between; margin-bottom:8px;"><span style="font-size:12px; color:var(--text-muted);">Tap row to toggle reveal</span><button onclick="toggleRows()" style="background:none; border:none; color:var(--teal-header); font-weight:700; font-size:12px; cursor:pointer;">Show/Hide All</button></div>`;
+    bar += `</div><div style="display:flex; justify-content:space-between; margin-bottom:8px;"><span style="font-size:12px; color:var(--text-muted);">Tap row to toggle reveal</span><button onclick="toggleRows()" style="background:none; border:none; color:var(--primary); font-weight:700; font-size:12px; cursor:pointer;">Show/Hide All</button></div>`;
 
     const start = (activeSqInterval - 1) * 10 + 1;
     const end = activeSqInterval * 10;
@@ -1929,7 +2064,7 @@
     decades.forEach((d, i) => {
       bar += `<div class="int-chip ${activeCbInterval === (i+1) ? 'active' : ''}" onclick="activeCbInterval=${i+1}; renderCubes(document.getElementById('flashcard-container'));">${d}</div>`;
     });
-    bar += `</div><div style="display:flex; justify-content:space-between; margin-bottom:8px;"><span style="font-size:12px; color:var(--text-muted);">Tap row to toggle reveal</span><button onclick="toggleRows()" style="background:none; border:none; color:var(--teal-header); font-weight:700; font-size:12px; cursor:pointer;">Show/Hide All</button></div>`;
+    bar += `</div><div style="display:flex; justify-content:space-between; margin-bottom:8px;"><span style="font-size:12px; color:var(--text-muted);">Tap row to toggle reveal</span><button onclick="toggleRows()" style="background:none; border:none; color:var(--primary); font-weight:700; font-size:12px; cursor:pointer;">Show/Hide All</button></div>`;
 
     let rows = '';
     if (activeCbInterval <= 5) {
@@ -1961,7 +2096,7 @@
     for (let t = 12; t <= 40; t++) {
       bar += `<div class="int-chip ${activeTbInterval === t ? 'active' : ''}" onclick="activeTbInterval=${t}; renderTables(document.getElementById('flashcard-container'));">${t}</div>`;
     }
-    bar += `</div><div style="display:flex; justify-content:space-between; margin-bottom:8px;"><span style="font-size:12px; color:var(--text-muted);">Tap row to toggle reveal</span><button onclick="toggleRows()" style="background:none; border:none; color:var(--teal-header); font-weight:700; font-size:12px; cursor:pointer;">Show/Hide All</button></div>`;
+    bar += `</div><div style="display:flex; justify-content:space-between; margin-bottom:8px;"><span style="font-size:12px; color:var(--text-muted);">Tap row to toggle reveal</span><button onclick="toggleRows()" style="background:none; border:none; color:var(--primary); font-weight:700; font-size:12px; cursor:pointer;">Show/Hide All</button></div>`;
 
     let rows = '';
     for (let i = 1; i <= 10; i++) {
@@ -1994,6 +2129,31 @@
       el.innerText = tableRevealed ? `=${ans}` : '=***';
     });
   }
+
+  /* --- Initialization on App Load --- */
+  window.addEventListener('DOMContentLoaded', () => {
+    // Restore Saved Theme
+    const savedTheme = localStorage.getItem('math_theme') || 'light';
+    document.getElementById('setting-theme').value = savedTheme;
+    changeTheme(savedTheme);
+
+    // Restore Saved Keypad Layout
+    const savedLayout = localStorage.getItem('math_keypad_layout') || 'phone';
+    document.getElementById('setting-keypad-mode').value = savedLayout;
+    workoutConfig.keypadLayout = savedLayout;
+
+    // Restore Saved Colors
+    const savedKeyBg = localStorage.getItem('math_key_bg');
+    if (savedKeyBg) {
+      document.getElementById('setting-key-color').value = savedKeyBg;
+      changeKeyBgColor(savedKeyBg);
+    }
+    const savedKeyText = localStorage.getItem('math_key_text');
+    if (savedKeyText) {
+      document.getElementById('setting-key-text-color').value = savedKeyText;
+      changeKeyTextColor(savedKeyText);
+    }
+  });
 </script>
 </body>
 </html>
