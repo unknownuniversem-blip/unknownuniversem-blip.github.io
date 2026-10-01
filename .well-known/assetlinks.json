@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "io.github.unknownuniversem_blip.twa",
+    "sha256_cert_fingerprints": [
+      "51:F3:54:19:0D:70:05:6C:B5:50:E4:6A:73:0B:2C:C0:1B:37:99:21:44:89:1A:0B:04:49:F1:91:9A:E4:4B:04"
+    ]
+  }
+}]
