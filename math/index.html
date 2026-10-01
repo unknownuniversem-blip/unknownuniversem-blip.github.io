@@ -169,6 +169,7 @@
       align-items: center;
       justify-content: center;
       gap: 2px;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
     }
     .btn-tile span {
       font-size: 11px;
@@ -495,7 +496,7 @@
       <div id="tab-learn-btn" class="tab-btn" onclick="switchTab('learn')">LEARNING & TRICKS</div>
     </div>
 
-    <!-- TAB 1: PRACTICE & EXAM TESTS (DEFAULTS TO EASY + ADDITION) -->
+    <!-- TAB 1: PRACTICE & EXAM TESTS -->
     <div id="tab-practice" class="scroll-body">
       <div class="group-title">
         <span>Level / Difficulty</span>
@@ -516,37 +517,37 @@
         <span id="selected-topics-count" style="font-size:11px; color:var(--primary);">1 Selected</span>
       </div>
       
-      <!-- Operations Grid (Default: Addition Selected) -->
+      <!-- Operations Grid: Toggle Selection Supported -->
       <div class="grid-ops">
-        <button class="btn-tile active-pill" id="op-add" onclick="toggleMultiTopic('add', this)">Addition (+)</button>
-        <button class="btn-tile" id="op-sub" onclick="toggleMultiTopic('sub', this)">Subtraction (−)</button>
-        <button class="btn-tile" id="op-mul" onclick="toggleMultiTopic('mul', this)">Multiplication (×)</button>
-        <button class="btn-tile" id="op-div" onclick="toggleMultiTopic('div', this)">Division (÷)</button>
+        <button class="btn-tile active-pill" id="op-add" onclick="toggleTopic('add')">Addition (+)</button>
+        <button class="btn-tile" id="op-sub" onclick="toggleTopic('sub')">Subtraction (−)</button>
+        <button class="btn-tile" id="op-mul" onclick="toggleTopic('mul')">Multiplication (×)</button>
+        <button class="btn-tile" id="op-div" onclick="toggleTopic('div')">Division (÷)</button>
 
-        <button class="btn-tile full" id="op-combo" onclick="toggleMultiTopic('combo_4', this)">
+        <button class="btn-tile full" id="op-combo" onclick="toggleTopic('combo_4')">
           <strong>🔥 All 4 Operations Combo (+ − × ÷)</strong>
           <span>Alternates addition, subtraction, multiplication & division</span>
         </button>
 
-        <button class="btn-tile full" id="op-simp" onclick="toggleMultiTopic('bank_ssc_simplification', this)">
+        <button class="btn-tile full" id="op-simp" onclick="toggleTopic('bank_ssc_simplification')">
           <strong>🧩 Bank & SSC Exam Simplification (BODMAS + %)</strong>
           <span>Real IBPS, SBI & SSC CGL/CHSL exam patterns</span>
         </button>
 
-        <!-- Number Series Exam Modules -->
-        <button class="btn-tile full" id="op-missing-series" onclick="promptAdUnlockSeries('missing')">
+        <!-- Exclusive Standalone Number Series Modules -->
+        <button class="btn-tile full" id="op-missing-series" onclick="toggleTopic('missing_series')">
           <strong>🔢 100 Missing Number Series</strong>
-          <span>Bank PO/Clerk AP, GP, Difference & Power patterns</span>
+          <span>Standalone mode • AP, GP, Difference & Power patterns</span>
         </button>
-        <button class="btn-tile full" id="op-wrong-series" onclick="promptAdUnlockSeries('wrong')">
+        <button class="btn-tile full" id="op-wrong-series" onclick="toggleTopic('wrong_series')">
           <strong>❌ 100 Wrong Number Series</strong>
-          <span>Spot the incorrect term in high-level exam sequences</span>
+          <span>Standalone mode • Spot incorrect term in sequences</span>
         </button>
 
-        <button class="btn-tile" id="op-square" onclick="toggleMultiTopic('square', this)">Squares (1-100)</button>
-        <button class="btn-tile" id="op-cube" onclick="toggleMultiTopic('cube', this)">Cubes (1-100)</button>
-        <button class="btn-tile" id="op-sqrt" onclick="toggleMultiTopic('sqrt', this)">Square Root (√)</button>
-        <button class="btn-tile" id="op-cbrt" onclick="toggleMultiTopic('cbrt', this)">Cube Root (∛)</button>
+        <button class="btn-tile" id="op-square" onclick="toggleTopic('square')">Squares (1-100)</button>
+        <button class="btn-tile" id="op-cube" onclick="toggleTopic('cube')">Cubes (1-100)</button>
+        <button class="btn-tile" id="op-sqrt" onclick="toggleTopic('sqrt')">Square Root (√)</button>
+        <button class="btn-tile" id="op-cbrt" onclick="toggleTopic('cbrt')">Cube Root (∛)</button>
       </div>
 
       <div class="group-title" style="margin-top:10px;">Input Format</div>
@@ -594,7 +595,7 @@
 
         <div class="learn-topic-card" onclick="openOperationLessons('mul')">
           <div>
-            <h4>✖️ Multiplication Vedic Tricks</h4>
+            <h4>✖️️ Multiplication Vedic Tricks</h4>
             <p>Crosswise (Urdhva), Base-100 & Half/Double rules</p>
           </div>
           <span style="font-size:18px; color:var(--primary);">›</span>
@@ -736,17 +737,7 @@
     </div>
   </div>
 
-  <!-- ================= 8. NUMBER SERIES AD REWARD UNLOCK MODAL ================= -->
-  <div id="modal-ad-series" class="modal-overlay hidden">
-    <div class="modal-sheet" style="text-align:center;">
-      <h3 style="color:var(--primary); font-size:18px; margin-bottom:6px;">Unlock Number Series (100 Questions)</h3>
-      <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Watch a brief sponsor ad to unlock the full 100 questions module.</p>
-      <button class="btn-cta" onclick="confirmAdUnlockSeries()" style="background:#0288d1; margin-bottom:8px;">▶ Watch Ad to Unlock</button>
-      <button onclick="closeAdSeriesModal()" style="background:none; border:none; color:var(--text-muted); font-size:13px; cursor:pointer;">Cancel</button>
-    </div>
-  </div>
-
-  <!-- ================= 9. SURVIVAL REVIVE DIALOG ================= -->
+  <!-- ================= 8. SURVIVAL REVIVE DIALOG ================= -->
   <div id="modal-revive" class="modal-overlay hidden">
     <div class="modal-sheet" style="text-align:center;">
       <h3 style="color:var(--wrong); font-size:20px; margin-bottom:6px;">Game Over!</h3>
@@ -756,7 +747,7 @@
     </div>
   </div>
 
-  <!-- ================= 10. RESULTS & DIAGNOSTIC MISTAKE AUDIT ================= -->
+  <!-- ================= 9. RESULTS & DIAGNOSTIC MISTAKE AUDIT ================= -->
   <div id="screen-result" class="scroll-body hidden" style="padding-top:20px; text-align:center;">
     <h2 style="color:var(--primary);">Workout Finished</h2>
     
@@ -775,7 +766,7 @@
     <button class="btn-cta" onclick="backToHub()" style="margin-top:12px;">Back to Main Menu</button>
   </div>
 
-  <!-- ================= 11. COMPLETE SETTINGS MODAL ================= -->
+  <!-- ================= 10. COMPLETE SETTINGS MODAL ================= -->
   <div id="modal-settings" class="modal-overlay hidden" onclick="closeSettingsModal()">
     <div class="modal-sheet" onclick="event.stopPropagation()">
       <div style="width:36px; height:4px; background:var(--border); border-radius:2px; margin:0 auto 14px auto;"></div>
@@ -818,9 +809,9 @@
         <span style="color:var(--primary);">Send ✉</span>
       </div>
 
-      <div class="setting-item" style="cursor:pointer;" onclick="alert('Speed Math Workout is up to date.\nVersion: v2.5.0 (Audited Build)')">
+      <div class="setting-item" style="cursor:pointer;" onclick="alert('Speed Math Workout is up to date.\nVersion: v2.5.2 (Audited & Exclusive Selection)')">
         <span class="setting-label">Check for Updates</span>
-        <span style="font-size:12px; color:var(--text-muted);">v2.5.0</span>
+        <span style="font-size:12px; color:var(--text-muted);">v2.5.2</span>
       </div>
 
       <button onclick="closeSettingsModal()" class="btn-cta" style="margin-top:16px; padding:10px;">Save & Close</button>
@@ -830,22 +821,36 @@
 </div>
 
 <script>
-  /* --- Default Application Configuration (Audited: Easy + Addition by Default) --- */
+  /* --- Default Configuration (Easy + Addition) --- */
   let currentTab = 'practice';
   let userCoins = 679;
   let activeSqInterval = 1;
   let activeCbInterval = 1;
   let activeTbInterval = 12;
   let tableRevealed = true;
-  let pendingSeriesType = '';
+
+  const topicButtonMap = {
+    'add': 'op-add',
+    'sub': 'op-sub',
+    'mul': 'op-mul',
+    'div': 'op-div',
+    'combo_4': 'op-combo',
+    'bank_ssc_simplification': 'op-simp',
+    'missing_series': 'op-missing-series',
+    'wrong_series': 'op-wrong-series',
+    'square': 'op-square',
+    'cube': 'op-cube',
+    'sqrt': 'op-sqrt',
+    'cbrt': 'op-cbrt'
+  };
 
   let workoutConfig = {
-    difficulty: 'Easy', // DEFAULT: Easy mode
-    selectedTopics: ['add'], // DEFAULT: Addition selected
+    difficulty: 'Easy',
+    selectedTopics: ['add'], // default selection
     inputFormat: 'mcq',
     modeType: 'questions',
     limit: 20,
-    keypadLayout: 'phone' // 'phone' (123 top) vs 'calculator' (789 top)
+    keypadLayout: 'phone'
   };
 
   let session = {
@@ -867,6 +872,57 @@
     currentQ: null,
     isAnswered: false
   };
+
+  /* --- Tap-Based Toggle Selection Logic (Exclusive Series + 2-Tap Unselect) --- */
+  function toggleTopic(topic) {
+    const isSeries = (topic === 'missing_series' || topic === 'wrong_series');
+    const isCurrentlySelected = workoutConfig.selectedTopics.includes(topic);
+
+    if (isSeries) {
+      if (isCurrentlySelected) {
+        // 2nd tap on already-selected series: Unselect it and default back to addition
+        workoutConfig.selectedTopics = ['add'];
+      } else {
+        // 1st tap on series: Standalone exclusive selection, drop ALL other topics
+        workoutConfig.selectedTopics = [topic];
+      }
+    } else {
+      // User tapped a regular operation
+      // If a series was previously active, clear it immediately
+      workoutConfig.selectedTopics = workoutConfig.selectedTopics.filter(
+        t => t !== 'missing_series' && t !== 'wrong_series'
+      );
+
+      if (isCurrentlySelected) {
+        // 2nd tap on selected item: Unselect it
+        if (workoutConfig.selectedTopics.length > 1) {
+          workoutConfig.selectedTopics = workoutConfig.selectedTopics.filter(t => t !== topic);
+        } else {
+          // If user unselects the only remaining item, toggle it off and fallback safely
+          workoutConfig.selectedTopics = (topic === 'add') ? ['sub'] : ['add'];
+        }
+      } else {
+        // 1st / 3rd tap: Select it
+        workoutConfig.selectedTopics.push(topic);
+      }
+    }
+
+    syncTopicUI();
+  }
+
+  function syncTopicUI() {
+    Object.keys(topicButtonMap).forEach(key => {
+      const btn = document.getElementById(topicButtonMap[key]);
+      if (btn) {
+        btn.classList.toggle('active-pill', workoutConfig.selectedTopics.includes(key));
+      }
+    });
+
+    const count = workoutConfig.selectedTopics.length;
+    const isSeries = workoutConfig.selectedTopics.includes('missing_series') || workoutConfig.selectedTopics.includes('wrong_series');
+    const label = isSeries ? 'Standalone Series Mode' : `${count} Selected`;
+    document.getElementById('selected-topics-count').innerText = label;
+  }
 
   /* --- Settings & Theme Management --- */
   function openSettingsModal() { document.getElementById('modal-settings').classList.remove('hidden'); }
@@ -899,7 +955,7 @@
   }
 
   function openContactModal() {
-    const email = prompt("Enter your email or query/feedback for the developers:", "");
+    const email = prompt("Enter your email or feedback for the developers:", "");
     if (email) alert("Thank you! Your feedback has been noted.");
   }
 
@@ -920,19 +976,6 @@
     document.getElementById('diff-indicator').innerText = level;
   }
 
-  function toggleMultiTopic(topic, el) {
-    if (workoutConfig.selectedTopics.includes(topic)) {
-      if (workoutConfig.selectedTopics.length > 1) {
-        workoutConfig.selectedTopics = workoutConfig.selectedTopics.filter(t => t !== topic);
-        el.classList.remove('active-pill');
-      }
-    } else {
-      workoutConfig.selectedTopics.push(topic);
-      el.classList.add('active-pill');
-    }
-    document.getElementById('selected-topics-count').innerText = `${workoutConfig.selectedTopics.length} Selected`;
-  }
-
   function setInputFormat(fmt) {
     workoutConfig.inputFormat = fmt;
     document.getElementById('opt-mcq').classList.toggle('active-pill', fmt === 'mcq');
@@ -948,29 +991,7 @@
     el.classList.add('active-pill');
   }
 
-  /* --- Number Series Ad Reward Unlock Flow --- */
-  function promptAdUnlockSeries(type) {
-    pendingSeriesType = type;
-    document.getElementById('modal-ad-series').classList.remove('hidden');
-  }
-
-  function closeAdSeriesModal() {
-    document.getElementById('modal-ad-series').classList.add('hidden');
-  }
-
-  function confirmAdUnlockSeries() {
-    closeAdSeriesModal();
-    // Unlock and select series topic
-    const topicKey = (pendingSeriesType === 'missing') ? 'missing_series' : 'wrong_series';
-    workoutConfig.selectedTopics = [topicKey];
-    document.querySelectorAll('.grid-ops .btn-tile').forEach(b => b.classList.remove('active-pill'));
-    const btnId = (pendingSeriesType === 'missing') ? 'op-missing-series' : 'op-wrong-series';
-    document.getElementById(btnId).classList.add('active-pill');
-    document.getElementById('selected-topics-count').innerText = '1 Selected';
-    alert(`100 ${pendingSeriesType === 'missing' ? 'Missing' : 'Wrong'} Number Series unlocked! Click Start Practice below.`);
-  }
-
-  /* --- Number Series Generators (100 Verified Patterns with Arrow Steps) --- */
+  /* --- Number Series Generators (100 Exam Patterns with Arrow Steps) --- */
   function generateMissingSeries() {
     const patternType = Math.floor(Math.random() * 5);
     let seq = [], target = 0, steps = "";
@@ -985,7 +1006,7 @@
         Pattern: Constant difference +${d}<br>
         ${seq[0]} → (+${d}) → ${seq[1]} → (+${d}) → ${seq[2]} → (+${d}) → <strong>${target}</strong> → (+${d}) → ${seq[4]}
       `;
-    } else if (patternType === 1) { // Times 2 Plus/Minus 1
+    } else if (patternType === 1) { // Times 2 Minus 1
       let cur = Math.floor(Math.random() * 5) + 3;
       seq.push(cur);
       for (let i = 1; i < 5; i++) {
@@ -1018,7 +1039,7 @@
         ${seq[2]} + 9 = <strong>${target}</strong><br>
         ${target} + 16 = ${seq[4]}
       `;
-    } else if (patternType === 3) { // Half-step multiplication (x0.5 + 1)
+    } else if (patternType === 3) { // Half-step multiplication
       let cur = (Math.floor(Math.random() * 6) + 4) * 2;
       seq.push(cur);
       cur = (cur * 0.5) + 1; seq.push(cur);
@@ -1064,10 +1085,9 @@
     let seq = [];
     for (let i = 0; i < 5; i++) seq.push(start + (i * d));
     
-    // Inject wrong term at index 2 or 3
     let wrongIdx = Math.random() > 0.5 ? 2 : 3;
     let correctVal = seq[wrongIdx];
-    let wrongVal = correctVal + 2; // faulty term
+    let wrongVal = correctVal + 2;
     seq[wrongIdx] = wrongVal;
 
     let steps = `
@@ -1085,7 +1105,7 @@
     };
   }
 
-  /* --- Master Mathematically Audited Dynamic Math Engine --- */
+  /* --- Dynamic Math Engine --- */
   function nextQuestion() {
     const topics = workoutConfig.selectedTopics;
     let chosenTopic = topics[Math.floor(Math.random() * topics.length)];
@@ -1285,7 +1305,6 @@
     });
   }
 
-  /* --- Keypad Rendering (Phone vs Calculator Mode) --- */
   function renderKeypadButtons() {
     const pad = document.getElementById('numpad-view');
     pad.innerHTML = '';
@@ -2153,6 +2172,8 @@
       document.getElementById('setting-key-text-color').value = savedKeyText;
       changeKeyTextColor(savedKeyText);
     }
+
+    syncTopicUI();
   });
 </script>
 </body>
