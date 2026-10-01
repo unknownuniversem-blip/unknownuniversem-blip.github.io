@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Speed Math Workout - Banking & SSC Edition</title>
+  
+  <!-- AdSense Tag Pre-integrated -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3134012164951095" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #131d31;
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --correct: #22c55e;
+      --wrong: #ef4444;
+      --pad-btn: #1e293b;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; user-select: none; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+    .container {
+      width: 100%;
+      max-width: 480px;
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .badge {
+      background: #090d16;
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .badge-wrong { color: var(--wrong); }
+    .question-box {
+      background: #090d16;
+      border-radius: 16px;
+      padding: 24px 16px;
+      text-align: center;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .mode-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .expression {
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      color: #ffffff;
+      word-break: break-word;
+    }
+    .input-display {
+      font-size: 32px;
+      min-height: 40px;
+      border-bottom: 3px solid var(--accent);
+      color: var(--accent);
+      display: inline-block;
+      min-width: 140px;
+      letter-spacing: 3px;
+      font-weight: 700;
+    }
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .key {
+      background: var(--pad-btn);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      font-size: 24px;
+      font-weight: 600;
+      padding: 14px 0;
+      cursor: pointer;
+      touch-action: manipulation;
+      transition: background 0.1s, transform 0.05s;
+    }
+    .key:active { background: #334155; transform: scale(0.97); }
+    .key.action { background: #334155; color: #f87171; }
+    .key.submit { background: var(--accent); color: #090d16; font-weight: 800; }
+    .key.submit:active { background: var(--accent-hover); }
+    .hidden { display: none !important; }
+    
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 16px 0;
+    }
+    .menu-btn {
+      background: #1e293b;
+      border: 1px solid var(--border);
+      padding: 14px 10px;
+      border-radius: 12px;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      text-align: center;
+    }
+    .menu-btn:hover { border-color: var(--accent); }
+    .menu-btn span { font-size: 11px; color: var(--text-muted); font-weight: normal; }
+    .menu-btn.full { grid-column: span 2; background: var(--accent); color: #090d16; font-weight: 800; font-size: 15px; }
+
+    .btn-action {
+      background: var(--accent);
+      color: #090d16;
+      border: none;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      background: #090d16;
+      padding: 16px 8px;
+      border-radius: 12px;
+      margin: 14px 0;
+      border: 1px solid var(--border);
+    }
+    .stat-item h3 { font-size: 22px; color: var(--accent); }
+    .stat-item p { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Screen 1: Mode Select Hub -->
+  <div id="screen-menu">
+    <h1 style="font-size: 22px; color: var(--accent); text-align: center;">⚡ Speed Math Engine</h1>
+    <p style="color: var(--text-muted); font-size: 13px; text-align: center; margin-top: 4px;">
+      Bank PO, Clerk, SSC CGL Speed Workout
+    </p>
+
+    <div class="menu-grid">
+      <button class="menu-btn full" onclick="startGame('simplification')">
+        🧩 Simplification (BODMAS)
+        <span>Multi-step exam expressions</span>
+      </button>
+
+      <button class="menu-btn" onclick="startGame('squares')">
+        x² Squares (1-100)
+        <span>Quick mental recall</span>
+      </button>
+
+      <button class="menu-btn" onclick="startGame('cubes')">
+        x³ Cubes (1-100)
+        <span>High-speed drill</span>
+      </button>
+
+      <button class="menu-btn" onclick="startGame('roots')">
+        √ & ∛ Roots
+        <span>Reverse powers drill</span>
+      </button>
+
+      <button class="menu-btn" onclick="startGame('tables')">
+        × Tables (12-30)
+        <span>Core multiplication</span>
+      </button>
+
+      <button class="menu-btn full" style="background:#1e293b; color:#fff;" onclick="startGame('blitz')">
+        🔥 60s All-Round Blitz
+        <span>Random mix of all topics</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Screen 2: Active Workout Screen -->
+  <div id="screen-game" class="hidden">
+    <div class="header-bar">
+      <div id="timer" class="badge">60s</div>
+      <div id="mode-badge" class="badge" style="color: var(--text-muted);">Mode</div>
+      <div id="score" class="badge">Score: 0</div>
+    </div>
+
+    <div class="question-box">
+      <div id="mode-label" class="mode-label">CALCULATE VALUE</div>
+      <div id="expr" class="expression">12²</div>
+      <div id="input-val" class="input-display"></div>
+    </div>
+
+    <div class="keypad">
+      <button class="key" onclick="press('1')">1</button>
+      <button class="key" onclick="press('2')">2</button>
+      <button class="key" onclick="press('3')">3</button>
+      <button class="key" onclick="press('4')">4</button>
+      <button class="key" onclick="press('5')">5</button>
+      <button class="key" onclick="press('6')">6</button>
+      <button class="key" onclick="press('7')">7</button>
+      <button class="key" onclick="press('8')">8</button>
+      <button class="key" onclick="press('9')">9</button>
+      <button class="key action" onclick="press('C')">C</button>
+      <button class="key" onclick="press('0')">0</button>
+      <button class="key submit" onclick="submitAnswer()">↵</button>
+    </div>
+    
+    <button onclick="endGame()" style="margin-top:12px; background:none; border:none; color:var(--text-muted); font-size:12px; cursor:pointer; text-align:center;">Abort Session</button>
+  </div>
+
+  <!-- Screen 3: Results & Analytics Screen -->
+  <div id="screen-result" class="hidden" style="text-align: center;">
+    <h2 style="font-size: 22px; color: var(--accent);">Workout Completed</h2>
+    
+    <div class="stat-row">
+      <div class="stat-item">
+        <h3 id="res-score">0</h3>
+        <p>Correct</p>
+      </div>
+      <div class="stat-item">
+        <h3 id="res-accuracy">0%</h3>
+        <p>Accuracy</p>
+      </div>
+      <div class="stat-item">
+        <h3 id="res-speed">0.0</h3>
+        <p>Ans / Min</p>
+      </div>
+    </div>
+
+    <button class="btn-action" style="width: 100%;" onclick="showMenu()">Select Another Workout</button>
+  </div>
+</div>
+
+<script>
+  let activeMode = 'squares';
+  let timeLeft = 60;
+  let timerId = null;
+  let currentAnswer = 0;
+  let score = 0;
+  let totalAttempted = 0;
+  let currentInput = "";
+  let sessionStart = 0;
+
+  // --- Dynamic Math Generators ---
+
+  function genSquare() {
+    const n = Math.floor(Math.random() * 89) + 11; // 11 to 99
+    currentAnswer = n * n;
+    return `${n}² = ?`;
+  }
+
+  function genCube() {
+    const n = Math.floor(Math.random() * 25) + 3; // 3 to 27 (optimal for speed exams)
+    currentAnswer = n * n * n;
+    return `${n}³ = ?`;
+  }
+
+  function genRoots() {
+    const isCube = Math.random() > 0.6;
+    if (isCube) {
+      const n = Math.floor(Math.random() * 18) + 2; // 2 to 20
+      currentAnswer = n;
+      return `∛${n * n * n} = ?`;
+    } else {
+      const n = Math.floor(Math.random() * 70) + 11; // 11 to 80
+      currentAnswer = n;
+      return `√${n * n} = ?`;
+    }
+  }
+
+  function genTables() {
+    const a = Math.floor(Math.random() * 19) + 12; // 12 to 30
+    const b = Math.floor(Math.random() * 18) + 3;  // 3 to 20
+    currentAnswer = a * b;
+    return `${a} × ${b} = ?`;
+  }
+
+  function genSimplification() {
+    const pattern = Math.floor(Math.random() * 4);
+    let a, b, c, d;
+
+    switch(pattern) {
+      case 0: // (A * B) + C
+        a = Math.floor(Math.random() * 18) + 3;
+        b = Math.floor(Math.random() * 12) + 2;
+        c = Math.floor(Math.random() * 150) + 15;
+        currentAnswer = (a * b) + c;
+        return `(${a} × ${b}) + ${c}`;
+
+      case 1: // (A / B) + (C * D) with guaranteed whole numbers
+        b = Math.floor(Math.random() * 8) + 2;
+        currentAnswer = Math.floor(Math.random() * 15) + 3;
+        a = b * currentAnswer; // ensures cleanly divisible
+        c = Math.floor(Math.random() * 12) + 2;
+        d = Math.floor(Math.random() * 9) + 2;
+        currentAnswer = (a / b) + (c * d);
+        return `(${a} ÷ ${b}) + (${c} × ${d})`;
+
+      case 2: // A² - B
+        a = Math.floor(Math.random() * 25) + 5;
+        b = Math.floor(Math.random() * (a * a - 5)) + 1;
+        currentAnswer = (a * a) - b;
+        return `${a}² - ${b}`;
+
+      case 3: // (A + B) * C
+      default:
+        a = Math.floor(Math.random() * 30) + 10;
+        b = Math.floor(Math.random() * 20) + 5;
+        c = Math.floor(Math.random() * 6) + 2;
+        currentAnswer = (a + b) * c;
+        return `(${a} + ${b}) × ${c}`;
+    }
+  }
+
+  function generateQuestion() {
+    let mode = activeMode;
+    if (activeMode === 'blitz') {
+      const modes = ['squares', 'cubes', 'roots', 'tables', 'simplification'];
+      mode = modes[Math.floor(Math.random() * modes.length)];
+    }
+
+    let text = "";
+    if (mode === 'squares') text = genSquare();
+    else if (mode === 'cubes') text = genCube();
+    else if (mode === 'roots') text = genRoots();
+    else if (mode === 'tables') text = genTables();
+    else if (mode === 'simplification') text = genSimplification();
+
+    document.getElementById("expr").innerText = text;
+    document.getElementById("mode-label").innerText = mode.toUpperCase();
+    currentInput = "";
+    document.getElementById("input-val").innerText = "";
+  }
+
+  function press(val) {
+    if (val === 'C') {
+      currentInput = "";
+    } else {
+      if (currentInput.length < 7) currentInput += val;
+    }
+    document.getElementById("input-val").innerText = currentInput;
+  }
+
+  function submitAnswer() {
+    if (currentInput === "") return;
+    totalAttempted++;
+    if (parseInt(currentInput, 10) === currentAnswer) {
+      score++;
+      document.getElementById("score").innerText = `Score: ${score}`;
+    }
+    generateQuestion();
+  }
+
+  function startGame(selectedMode) {
+    activeMode = selectedMode;
+    score = 0;
+    totalAttempted = 0;
+    timeLeft = 60;
+    sessionStart = Date.now();
+
+    document.getElementById("score").innerText = "Score: 0";
+    document.getElementById("timer").innerText = "60s";
+    document.getElementById("mode-badge").innerText = selectedMode.toUpperCase();
+
+    document.getElementById("screen-menu").classList.add("hidden");
+    document.getElementById("screen-result").classList.add("hidden");
+    document.getElementById("screen-game").classList.remove("hidden");
+
+    generateQuestion();
+
+    clearInterval(timerId);
+    timerId = setInterval(() => {
+      timeLeft--;
+      document.getElementById("timer").innerText = `${timeLeft}s`;
+      if (timeLeft <= 0) endGame();
+    }, 1000);
+  }
+
+  function endGame() {
+    clearInterval(timerId);
+    document.getElementById("screen-game").classList.add("hidden");
+    document.getElementById("screen-result").classList.remove("hidden");
+
+    const elapsedSeconds = Math.max(1, Math.round((Date.now() - sessionStart) / 1000));
+    const accuracy = totalAttempted > 0 ? Math.round((score / totalAttempted) * 100) : 0;
+    const speed = ((score / elapsedSeconds) * 60).toFixed(1);
+
+    document.getElementById("res-score").innerText = score;
+    document.getElementById("res-accuracy").innerText = `${accuracy}%`;
+    document.getElementById("res-speed").innerText = speed;
+  }
+
+  function showMenu() {
+    document.getElementById("screen-result").classList.add("hidden");
+    document.getElementById("screen-menu").classList.remove("hidden");
+  }
+</script>
+</body>
+</html>
