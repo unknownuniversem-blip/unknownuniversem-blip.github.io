@@ -32,7 +32,7 @@
     }
     #app-container {
       width: 100%;
-      max-width: 460px;
+      max-width: 480px;
       min-height: 100vh;
       background: #fff;
       display: flex;
@@ -41,7 +41,6 @@
       overflow-x: hidden;
     }
 
-    /* Top AppBar */
     .app-bar {
       background: var(--teal-header);
       color: #fff;
@@ -62,7 +61,6 @@
       font-size: 13px;
     }
 
-    /* Tab Switcher: Practice First, Learning Second */
     .tab-bar {
       display: flex;
       background: #fff;
@@ -103,7 +101,6 @@
       align-items: center;
     }
 
-    /* Granular Difficulty Pills */
     .diff-grid {
       display: flex;
       flex-wrap: wrap;
@@ -125,7 +122,6 @@
       border-color: var(--primary-dark);
     }
 
-    /* Grid for Operations & Combos */
     .grid-ops {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -161,11 +157,10 @@
       grid-column: span 2;
     }
 
-    /* Vertical Category Accordion for Learning */
     .vertical-topics {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
     }
     .topic-card {
       background: #fff;
@@ -191,37 +186,76 @@
       border-top: 1px solid var(--border);
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 14px;
     }
 
-    .level-item {
+    .lesson-item {
       background: #f9fbfb;
       border: 1px solid var(--border);
       border-left: 4px solid var(--primary);
-      border-radius: 8px;
-      padding: 10px 12px;
+      border-radius: 10px;
+      padding: 12px;
     }
-    .level-item h5 {
-      font-size: 13px;
+    .lesson-item h4 {
+      font-size: 14px;
       color: var(--primary-dark);
       margin-bottom: 4px;
     }
-    .level-item p {
+    .lesson-item p {
       font-size: 12px;
       color: #455a64;
       line-height: 1.4;
-      margin-bottom: 4px;
+      margin-bottom: 8px;
     }
-    .level-example {
-      background: #e8f5e9;
-      color: #2e7d32;
-      font-family: monospace;
+    .eg-list {
+      background: #f1f8e9;
+      border: 1px solid #c5e1a5;
+      border-radius: 6px;
+      padding: 8px 10px;
       font-size: 12px;
-      padding: 6px 8px;
-      border-radius: 4px;
+      font-family: monospace;
+      color: #2e7d32;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 8px;
     }
 
-    /* Interval selector for squares/cubes/tables */
+    /* Hand-to-Hand Inline Practice Box */
+    .inline-practice {
+      background: #e0f2f1;
+      border: 1px dashed var(--primary);
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 6px;
+    }
+    .inline-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .inline-input {
+      width: 90px;
+      padding: 6px 8px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+      color: var(--primary-dark);
+    }
+    .inline-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
     .interval-bar {
       display: flex;
       gap: 6px;
@@ -256,14 +290,13 @@
       cursor: pointer;
     }
 
-    /* Fixed Bottom Action */
     .cta-fixed {
       position: fixed;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
       width: 100%;
-      max-width: 460px;
+      max-width: 480px;
       padding: 14px 16px;
       background: #fff;
       border-top: 1px solid var(--border);
@@ -280,7 +313,6 @@
       cursor: pointer;
     }
 
-    /* Active Drill Layout */
     .exam-box {
       background: #fff;
       border: 1px solid var(--border);
@@ -420,13 +452,13 @@
       <span>22/100 today</span>
     </div>
 
-    <!-- TAB SWITCHER: Practice First, Learning Second -->
+    <!-- PRIMARY TAB CONTROLLER -->
     <div class="tab-bar">
       <div id="tab-practice-btn" class="tab-btn active" onclick="switchTab('practice')">PRACTICE & TESTS</div>
       <div id="tab-learn-btn" class="tab-btn" onclick="switchTab('learn')">LEARNING & TRICKS</div>
     </div>
 
-    <!-- TAB 1: PRACTICE & EXAM TESTS (DEFAULT) -->
+    <!-- TAB 1: PRACTICE & EXAM TESTS (DEFAULT TAB) -->
     <div id="tab-practice" class="scroll-body">
       <div class="group-title">
         <span>Level / Difficulty</span>
@@ -442,29 +474,31 @@
         <div class="diff-chip" onclick="setDifficulty('Expert')">Expert</div>
       </div>
 
-      <div class="group-title" style="margin-top:10px;">Select Test Type</div>
+      <div class="group-title" style="margin-top:10px;">
+        <span>Select Test Topics</span>
+        <span id="selected-topics-count" style="font-size:11px; color:var(--teal-header);">1 Selected</span>
+      </div>
+      
+      <!-- Multi-Select Ops Grid -->
       <div class="grid-ops">
-        <!-- 4-in-1 Combo Tile -->
-        <button class="btn-tile full active-pill" onclick="selectTestTopic(this, 'combo_4')">
+        <button class="btn-tile full active-pill" id="op-combo" onclick="toggleMultiTopic('combo_4', this)">
           <strong>🔥 All 4 Operations Combo (+ − × ÷)</strong>
           <span>Alternates addition, subtraction, multiplication & division</span>
         </button>
 
-        <!-- Real Bank & SSC Exam Simplification Tile -->
-        <button class="btn-tile full" onclick="selectTestTopic(this, 'bank_ssc_simplification')">
+        <button class="btn-tile full" id="op-simp" onclick="toggleMultiTopic('bank_ssc_simplification', this)">
           <strong>🧩 Bank & SSC Exam Simplification (BODMAS + %)</strong>
           <span>Real IBPS, SBI & SSC CGL/CHSL exam patterns</span>
         </button>
 
-        <!-- Individual Operations -->
-        <button class="btn-tile" onclick="selectTestTopic(this, 'add')">Addition (+)</button>
-        <button class="btn-tile" onclick="selectTestTopic(this, 'sub')">Subtraction (−)</button>
-        <button class="btn-tile" onclick="selectTestTopic(this, 'mul')">Multiplication (×)</button>
-        <button class="btn-tile" onclick="selectTestTopic(this, 'div')">Division (÷)</button>
-        <button class="btn-tile" onclick="selectTestTopic(this, 'square')">Squares (1-100)</button>
-        <button class="btn-tile" onclick="selectTestTopic(this, 'cube')">Cubes (1-100)</button>
-        <button class="btn-tile" onclick="selectTestTopic(this, 'sqrt')">Square Root (√)</button>
-        <button class="btn-tile" onclick="selectTestTopic(this, 'cbrt')">Cube Root (∛)</button>
+        <button class="btn-tile" id="op-add" onclick="toggleMultiTopic('add', this)">Addition (+)</button>
+        <button class="btn-tile" id="op-sub" onclick="toggleMultiTopic('sub', this)">Subtraction (−)</button>
+        <button class="btn-tile" id="op-mul" onclick="toggleMultiTopic('mul', this)">Multiplication (×)</button>
+        <button class="btn-tile" id="op-div" onclick="toggleMultiTopic('div', this)">Division (÷)</button>
+        <button class="btn-tile" id="op-square" onclick="toggleMultiTopic('square', this)">Squares (1-100)</button>
+        <button class="btn-tile" id="op-cube" onclick="toggleMultiTopic('cube', this)">Cubes (1-100)</button>
+        <button class="btn-tile" id="op-sqrt" onclick="toggleMultiTopic('sqrt', this)">Square Root (√)</button>
+        <button class="btn-tile" id="op-cbrt" onclick="toggleMultiTopic('cbrt', this)">Cube Root (∛)</button>
       </div>
 
       <div class="group-title" style="margin-top:10px;">Input Format</div>
@@ -475,56 +509,56 @@
 
       <div class="group-title" style="margin-top:10px;">Workout Mode</div>
       <div style="display:flex; flex-direction:column; gap:8px;">
-        <div class="btn-tile active-pill" style="text-align:left; padding:12px;" onclick="setModeType('questions', 20)">
-          <strong>Speed Challenge</strong>
-          <div style="font-size:11px; opacity:0.8;">20 questions tailored to your chosen level</div>
+        <div id="mode-speed" class="btn-tile active-pill" style="text-align:left; padding:12px;" onclick="setWorkoutMode('questions', 20, this)">
+          <strong>Speed Challenge (Fixed 20 Qs)</strong>
+          <div style="font-size:11px; opacity:0.8;">Race to complete 20 questions with maximum accuracy</div>
         </div>
-        <div class="btn-tile" style="text-align:left; padding:12px;" onclick="setModeType('minute', 60)">
-          <strong>Minute Challenge</strong>
-          <div style="font-size:11px; opacity:0.8;">Score attack in 60 seconds</div>
+        <div id="mode-minute" class="btn-tile" style="text-align:left; padding:12px;" onclick="setWorkoutMode('minute', 60, this)">
+          <strong>Minute Challenge (60 Seconds)</strong>
+          <div style="font-size:11px; opacity:0.8;">Score attack: Solve as many as possible before time runs out</div>
         </div>
-        <div class="btn-tile" style="text-align:left; padding:12px;" onclick="setModeType('bitter_end', 0)">
-          <strong>To The Bitter End</strong>
-          <div style="font-size:11px; opacity:0.8;">Survival: 1 wrong answer ends drill</div>
+        <div id="mode-bitter" class="btn-tile" style="text-align:left; padding:12px;" onclick="setWorkoutMode('bitter_end', 0, this)">
+          <strong>To The Bitter End (Sudden Death)</strong>
+          <div style="font-size:11px; opacity:0.8;">Survival: 1 wrong answer triggers instant game over</div>
         </div>
       </div>
     </div>
 
-    <!-- TAB 2: LEARNING & VEDIC TRICKS (VERTICAL ACCORDIONS WITH 20 LEVELS EACH) -->
+    <!-- TAB 2: LEARNING & 5 VEDIC MASTERY LESSONS -->
     <div id="tab-learn" class="scroll-body hidden">
       <div class="vertical-topics">
         
-        <!-- Accordion 1: Vedic Addition (20 Levels) -->
+        <!-- Accordion 1: Addition Vedic Mastery (5 Lessons with 5+ Examples & Hand-to-Hand Practice) -->
         <div class="topic-card">
           <div class="topic-header" onclick="toggleAccordion('acc-add')">
-            <span>➕ Addition Vedic Tricks (20 Levels)</span>
+            <span>➕ Addition Vedic Tricks (5 Lessons)</span>
             <span id="icon-acc-add">▾</span>
           </div>
           <div id="acc-add" class="topic-content hidden"></div>
         </div>
 
-        <!-- Accordion 2: Vedic Subtraction (20 Levels) -->
+        <!-- Accordion 2: Subtraction Vedic Mastery -->
         <div class="topic-card">
           <div class="topic-header" onclick="toggleAccordion('acc-sub')">
-            <span>➖ Subtraction Vedic Tricks (20 Levels)</span>
+            <span>➖ Subtraction Vedic Tricks (5 Lessons)</span>
             <span id="icon-acc-sub">▾</span>
           </div>
           <div id="acc-sub" class="topic-content hidden"></div>
         </div>
 
-        <!-- Accordion 3: Vedic Multiplication (20 Levels) -->
+        <!-- Accordion 3: Multiplication Vedic Mastery -->
         <div class="topic-card">
           <div class="topic-header" onclick="toggleAccordion('acc-mul')">
-            <span>✖️ Multiplication Vedic Tricks (20 Levels)</span>
+            <span>✖️ Multiplication Vedic Tricks (5 Lessons)</span>
             <span id="icon-acc-mul">▾</span>
           </div>
           <div id="acc-mul" class="topic-content hidden"></div>
         </div>
 
-        <!-- Accordion 4: Vedic Division (20 Levels) -->
+        <!-- Accordion 4: Division Vedic Mastery -->
         <div class="topic-card">
           <div class="topic-header" onclick="toggleAccordion('acc-div')">
-            <span>➗ Division Vedic Tricks (20 Levels)</span>
+            <span>➗ Division Vedic Tricks (5 Lessons)</span>
             <span id="icon-acc-div">▾</span>
           </div>
           <div id="acc-div" class="topic-content hidden"></div>
@@ -666,11 +700,12 @@
   let activeTbInterval = 12;
   let tableRevealed = true;
 
+  // Fully multi-selectable topics pool
   let workoutConfig = {
     difficulty: 'Medium',
-    testTopic: 'combo_4', // 'combo_4', 'bank_ssc_simplification', etc.
+    selectedTopics: ['combo_4'], // allows multiple selection
     inputFormat: 'mcq',
-    modeType: 'questions',
+    modeType: 'questions', // 'questions', 'minute', 'bitter_end'
     limit: 20
   };
 
@@ -701,10 +736,18 @@
     document.getElementById('diff-indicator').innerText = level;
   }
 
-  function selectTestTopic(el, topic) {
-    workoutConfig.testTopic = topic;
-    document.querySelectorAll('.grid-ops .btn-tile').forEach(b => b.classList.remove('active-pill'));
-    el.classList.add('active-pill');
+  /* --- Multi-Select Handlers --- */
+  function toggleMultiTopic(topic, el) {
+    if (workoutConfig.selectedTopics.includes(topic)) {
+      if (workoutConfig.selectedTopics.length > 1) {
+        workoutConfig.selectedTopics = workoutConfig.selectedTopics.filter(t => t !== topic);
+        el.classList.remove('active-pill');
+      }
+    } else {
+      workoutConfig.selectedTopics.push(topic);
+      el.classList.add('active-pill');
+    }
+    document.getElementById('selected-topics-count').innerText = `${workoutConfig.selectedTopics.length} Selected`;
   }
 
   function setInputFormat(fmt) {
@@ -713,12 +756,16 @@
     document.getElementById('opt-pad').classList.toggle('active-pill', fmt === 'numpad');
   }
 
-  function setModeType(m, limit) {
-    workoutConfig.modeType = m;
-    workoutConfig.limit = limit;
+  /* --- Fixed Workout Mode Logic --- */
+  function setWorkoutMode(mode, val, el) {
+    workoutConfig.modeType = mode;
+    workoutConfig.limit = (mode === 'questions') ? 20 : val;
+    document.getElementById('mode-speed').classList.remove('active-pill');
+    document.getElementById('mode-minute').classList.remove('active-pill');
+    document.getElementById('mode-bitter').classList.remove('active-pill');
+    el.classList.add('active-pill');
   }
 
-  /* --- Accordion Toggle --- */
   function toggleAccordion(id) {
     const el = document.getElementById(id);
     const isHidden = el.classList.contains('hidden');
@@ -726,37 +773,40 @@
     document.getElementById(`icon-${id}`).innerText = isHidden ? '▴' : '▾';
   }
 
-  /* --- Dynamic Math Generator (Bank & SSC Exam Caliber) --- */
+  /* --- Dynamic Math Generator Pooling Multi-Selected Topics --- */
   function nextQuestion() {
-    let topic = workoutConfig.testTopic;
+    const topics = workoutConfig.selectedTopics;
+    let chosenTopic = topics[Math.floor(Math.random() * topics.length)];
     const diff = workoutConfig.difficulty;
 
-    if (topic === 'combo_4') {
+    if (chosenTopic === 'combo_4') {
       const ops = ['add', 'sub', 'mul', 'div'];
-      topic = ops[Math.floor(Math.random() * ops.length)];
+      chosenTopic = ops[Math.floor(Math.random() * ops.length)];
     }
 
     let expr = "", ans = 0, hint = "";
 
-    // 1. REAL BANK & SSC EXAM SIMPLIFICATION (IBPS/SBI/SSC CGL)
-    if (topic === 'bank_ssc_simplification') {
+    // 1. BANK & SSC EXAM SIMPLIFICATION (Real Prelims Patterns)
+    if (chosenTopic === 'bank_ssc_simplification') {
       const type = Math.floor(Math.random() * 4);
-      if (type === 0) { // Percentage + Addition
-        let pct = [12.5, 20, 25, 33.33, 50, 75][Math.floor(Math.random() * 6)];
-        let base = (Math.floor(Math.random() * 20) + 4) * (pct === 12.5 ? 8 : (pct === 33.33 ? 3 : 4));
+      if (type === 0) { // Percentage fraction
+        let pcts = [12.5, 20, 25, 33.33, 50, 75];
+        let pct = pcts[Math.floor(Math.random() * pcts.length)];
+        let factor = pct === 12.5 ? 8 : (pct === 33.33 ? 3 : (pct === 75 ? 4 : Math.round(100/pct)));
+        let base = (Math.floor(Math.random() * 20) + 4) * factor;
         let addVal = Math.floor(Math.random() * 100) + 20;
-        let fracVal = pct === 12.5 ? 1/8 : (pct === 33.33 ? 1/3 : pct/100);
-        ans = Math.round(base * fracVal) + addVal;
+        let fracMult = pct === 75 ? 3/4 : 1/factor;
+        ans = Math.round(base * fracMult) + addVal;
         expr = `${pct}% of ${base} + ${addVal} = ?`;
-        hint = `Fraction Shortcut: ${pct}% = ${pct === 12.5 ? '1/8' : (pct === 33.33 ? '1/3' : (pct === 75 ? '3/4' : '1/' + Math.round(100/pct)))}. Then solve instantly.`;
+        hint = `Conversion Trick: ${pct}% = ${pct===75?'3/4':'1/'+factor}. (${base} × ${pct===75?'3/4':'1/'+factor}) + ${addVal} = ${ans}.`;
       } 
-      else if (type === 1) { // Radical + Exponent BODMAS
+      else if (type === 1) { // Radical + Power BODMAS
         let rootBase = Math.floor(Math.random() * 16) + 4;
         let mul = Math.floor(Math.random() * 7) + 3;
         let z = Math.floor(Math.random() * 6) + 2;
         ans = (rootBase * mul) - (z * z);
         expr = `√${rootBase * rootBase} × ${mul} − ${z}² = ?`;
-        hint = `BODMAS Step: Evaluate √${rootBase * rootBase} = ${rootBase}, then multiply by ${mul} (= ${rootBase*mul}), finally subtract ${z*z}.`;
+        hint = `BODMAS Step: Evaluate √${rootBase * rootBase} = ${rootBase}, then ${rootBase} × ${mul} = ${rootBase*mul}, then subtract ${z*z}.`;
       }
       else if (type === 2) { // Exam Fraction Cancellation
         let c = Math.floor(Math.random() * 8) + 3;
@@ -766,20 +816,20 @@
         let d = Math.floor(Math.random() * 120) + 15;
         ans = (factor * b) + d;
         expr = `(${a} × ${b}) ÷ ${c} + ${d} = ?`;
-        hint = `Cancel first: Simplify ${a} ÷ ${c} = ${factor}. Then multiply by ${b} (= ${factor*b}) and add ${d}.`;
+        hint = `Cancel first: ${a} ÷ ${c} = ${factor}. Multiply by ${b} (= ${factor*b}) and add ${d}.`;
       }
-      else { // Difference of squares exam pattern
-        let a = Math.floor(Math.random() * 15) + 15; // 15-30
+      else { // Difference of consecutive squares
+        let a = Math.floor(Math.random() * 15) + 15;
         let b = a - 1;
         let c = Math.floor(Math.random() * 80) + 10;
-        ans = (a + b) + c; // a^2 - b^2 = a + b when diff is 1
+        ans = (a + b) + c;
         expr = `(${a}² − ${b}²) + ${c} = ?`;
-        hint = `Algebra Shortcut: (a² − b²) = (a − b)(a + b). Since (${a} − ${b}) = 1, it is simply ${a} + ${b} (= ${a+b}) + ${c}.`;
+        hint = `Algebra shortcut: a² − b² = (a−b)(a+b). Since a−b=1, it is simply ${a} + ${b} + ${c} = ${ans}.`;
       }
     }
 
     // 2. ADD & SUB
-    else if (topic === 'add' || topic === 'sub') {
+    else if (chosenTopic === 'add' || chosenTopic === 'sub') {
       let a, b;
       switch(diff) {
         case 'Very Easy': a = Math.floor(Math.random() * 8) + 2; b = Math.floor(Math.random() * 8) + 2; break;
@@ -790,20 +840,20 @@
         case 'Extreme Hard': a = Math.floor(Math.random() * 899) + 100; b = Math.floor(Math.random() * 899) + 100; break;
         case 'Expert': default: a = Math.floor(Math.random() * 8999) + 1000; b = Math.floor(Math.random() * 4999) + 500; break;
       }
-      if (topic === 'add') {
+      if (chosenTopic === 'add') {
         ans = a + b;
         expr = `${a} + ${b} = ?`;
-        hint = `Left-to-Right Addition: Add largest digit columns first, then units.`;
+        hint = `Left-to-Right Addition: Add highest place values first, then sum the units.`;
       } else {
         if (a < b) { let t = a; a = b; b = t; }
         ans = a - b;
         expr = `${a} − ${b} = ?`;
-        hint = `Friendly Base Subtraction: Round subtrahend up to next decade, subtract, then add difference.`;
+        hint = `Friendly Base Subtraction: Round subtrahend up to multiple of 10, subtract, then add compensation.`;
       }
     }
 
     // 3. MULTIPLY & DIVIDE
-    else if (topic === 'mul' || topic === 'div') {
+    else if (chosenTopic === 'mul' || chosenTopic === 'div') {
       let a, b;
       switch(diff) {
         case 'Very Easy': a = Math.floor(Math.random() * 9) + 2; b = Math.floor(Math.random() * 8) + 2; break;
@@ -814,52 +864,52 @@
         case 'Extreme Hard': a = Math.floor(Math.random() * 500) + 100; b = Math.floor(Math.random() * 8) + 3; break;
         case 'Expert': default: a = Math.floor(Math.random() * 800) + 100; b = Math.floor(Math.random() * 30) + 12; break;
       }
-      if (topic === 'mul') {
+      if (chosenTopic === 'mul') {
         ans = a * b;
         expr = `${a} × ${b} = ?`;
-        hint = `Decompose: Multiply ${a} by tens then units, and sum together.`;
+        hint = `Decomposition: Multiply ${a} by tens and units separately, then sum.`;
       } else {
         ans = a;
         let product = a * b;
         expr = `${product} ÷ ${b} = ?`;
-        hint = `Inverse: How many times does ${b} divide into ${product}?`;
+        hint = `Reverse: What multiplied by ${b} equals ${product}?`;
       }
     }
 
-    // 4. SQUARES, CUBES & ROOTS
-    else if (topic === 'square') {
+    // 4. POWERS & ROOTS
+    else if (chosenTopic === 'square') {
       let limit = diff === 'Very Easy' ? 10 : (diff === 'Easy' ? 20 : (diff === 'Medium' ? 30 : (diff === 'Above Medium' ? 50 : 100)));
       let n = Math.floor(Math.random() * (limit - 2 + 1)) + 2;
       ans = n * n;
       expr = `${n}² = ?`;
-      hint = `End digit: ${n}² must end in ${(ans)%10}.`;
+      hint = `Unit ending of ${n}² must be ${(ans)%10}.`;
     }
-    else if (topic === 'cube') {
+    else if (chosenTopic === 'cube') {
       let limit = diff === 'Very Easy' ? 5 : (diff === 'Easy' ? 10 : (diff === 'Medium' ? 15 : (diff === 'Above Medium' ? 20 : 50)));
       let n = Math.floor(Math.random() * (limit - 2 + 1)) + 2;
       ans = n * n * n;
       expr = `${n}³ = ?`;
       hint = `Cube Recall: End digit is ${(ans)%10}.`;
     }
-    else if (topic === 'sqrt') {
+    else if (chosenTopic === 'sqrt') {
       let limit = diff === 'Very Easy' ? 10 : (diff === 'Easy' ? 20 : (diff === 'Medium' ? 30 : (diff === 'Above Medium' ? 50 : 100)));
       let n = Math.floor(Math.random() * (limit - 2 + 1)) + 2;
       ans = n;
       expr = `√${n * n} = ?`;
-      hint = `Find integer whose square equals ${n * n}.`;
+      hint = `Square root of ${n*n} is integer ${n}.`;
     }
-    else if (topic === 'cbrt') {
+    else if (chosenTopic === 'cbrt') {
       let limit = diff === 'Very Easy' ? 5 : (diff === 'Easy' ? 10 : (diff === 'Medium' ? 15 : 30));
       let n = Math.floor(Math.random() * (limit - 2 + 1)) + 2;
       ans = n;
       expr = `∛${n * n * n} = ?`;
-      hint = `Identify integer whose cube is ${n * n * n}.`;
+      hint = `Cube root of ${n*n*n} is integer ${n}.`;
     }
 
     session.targetAns = ans;
     session.activeHint = hint;
     document.getElementById('math-expr').innerText = expr;
-    document.getElementById('drill-level-badge').innerText = `${diff.toUpperCase()} • ${topic.toUpperCase().replace('_', ' ')}`;
+    document.getElementById('drill-level-badge').innerText = `${diff.toUpperCase()} • ${chosenTopic.toUpperCase().replace('_', ' ')}`;
     session.currentInput = '';
     document.getElementById('user-ans').innerText = '';
 
@@ -927,7 +977,7 @@
       finalizeSummary();
       return;
     }
-    document.getElementById('drill-counter').innerText = `${session.qIndex + 1} / ${workoutConfig.limit || '∞'}`;
+    document.getElementById('drill-counter').innerText = `${session.qIndex + 1} / ${workoutConfig.modeType === 'questions' ? workoutConfig.limit : '∞'}`;
     nextQuestion();
   }
 
@@ -966,6 +1016,7 @@
     session.startTime = Date.now();
     session.hasRevived = false;
 
+    document.getElementById('drill-counter').innerText = `1 / ${workoutConfig.modeType === 'questions' ? workoutConfig.limit : '∞'}`;
     document.getElementById('mcq-view').classList.toggle('hidden', workoutConfig.inputFormat !== 'mcq');
     document.getElementById('numpad-view').classList.toggle('hidden', workoutConfig.inputFormat !== 'numpad');
 
@@ -1025,95 +1076,316 @@
     document.getElementById('modal-hint').classList.add('hidden');
   }
 
-  /* --- 20 Levels per Operation Generator --- */
-  function populate20Levels(containerId, opType) {
+  /* --- 5 ACCURATE VEDIC LESSONS PER OPERATION WITH 5+ WORKED EXAMPLES & INLINE HAND-TO-HAND PRACTICE --- */
+  const verifiedVedicLessons = {
+    add: [
+      {
+        title: "Lesson 1: Left-to-Right Partitioning (1-2 Digits)",
+        desc: "Eliminate carries by adding tens place first, followed by units place.",
+        egs: [
+          "68 + 75 = (60 + 70) + (8 + 5) = 130 + 13 = 143",
+          "47 + 38 = (40 + 30) + (7 + 8) = 70 + 15 = 85",
+          "84 + 59 = (80 + 50) + (4 + 9) = 130 + 13 = 143",
+          "93 + 68 = (90 + 60) + (3 + 8) = 150 + 11 = 161",
+          "56 + 77 = (50 + 70) + (6 + 7) = 120 + 13 = 133"
+        ],
+        practiceQ: "57 + 68",
+        practiceAns: 125
+      },
+      {
+        title: "Lesson 2: Base 100/1000 Rounding & Compensation",
+        desc: "Round numbers ending in 7, 8, 9 up to nearest clean base and subtract excess.",
+        egs: [
+          "496 + 328 = (500 + 328) − 4 = 828 − 4 = 824",
+          "298 + 445 = (300 + 445) − 2 = 745 − 2 = 743",
+          "689 + 254 = (700 + 254) − 11 = 954 − 11 = 943",
+          "895 + 432 = (900 + 432) − 5 = 1332 − 5 = 1327",
+          "1997 + 342 = (2000 + 342) − 3 = 2342 − 3 = 2339"
+        ],
+        practiceQ: "397 + 456",
+        practiceAns: 853
+      },
+      {
+        title: "Lesson 3: Twin Splitting for 3 & 4 Digits",
+        desc: "Split numbers into two 2-digit manageable parts and add independently.",
+        egs: [
+          "3452 + 2341 = [34 + 23] [52 + 41] = 5793",
+          "4218 + 3524 = [42 + 35] [18 + 24] = 7742",
+          "5635 + 2142 = [56 + 21] [35 + 42] = 7777",
+          "6225 + 1630 = [62 + 16] [25 + 30] = 7855",
+          "8114 + 1472 = [81 + 14] [14 + 72] = 9586"
+        ],
+        practiceQ: "2431 + 5245",
+        practiceAns: 7676
+      },
+      {
+        title: "Lesson 4: Near-Decade Balance Matching",
+        desc: "Transfer units between addends to make one term a round zero.",
+        egs: [
+          "68 + 44 = (68 + 2) + (44 − 2) = 70 + 42 = 112",
+          "89 + 53 = (89 + 1) + (53 − 1) = 90 + 52 = 142",
+          "138 + 64 = (138 + 2) + (64 − 2) = 140 + 62 = 202",
+          "247 + 85 = (247 + 3) + (85 − 3) = 250 + 82 = 332",
+          "419 + 73 = (419 + 1) + (73 − 1) = 420 + 72 = 492"
+        ],
+        practiceQ: "79 + 46",
+        practiceAns: 125
+      },
+      {
+        title: "Lesson 5: 5-Digit Pillar Column Addition",
+        desc: "Group thousands block and hundreds/units block separately.",
+        egs: [
+          "42,310 + 25,480 = (42k + 25k) + (310 + 480) = 67,000 + 790 = 67,790",
+          "31,250 + 14,320 = (31k + 14k) + (250 + 320) = 45,000 + 570 = 45,570",
+          "54,120 + 23,650 = (54k + 23k) + (120 + 650) = 77,000 + 770 = 77,770",
+          "62,400 + 18,280 = (62k + 18k) + (400 + 280) = 80,000 + 680 = 80,680",
+          "73,150 + 21,340 = (73k + 21k) + (150 + 340) = 94,000 + 490 = 94,490"
+        ],
+        practiceQ: "23,200 + 41,350",
+        practiceAns: 64550
+      }
+    ],
+    sub: [
+      {
+        title: "Lesson 1: Nikhilam (All from 9 & Last from 10)",
+        desc: "Instant subtraction from clean powers of 10 without borrowing.",
+        egs: [
+          "1000 − 476 = (9−4)(9−7)(10−6) = 524",
+          "1000 − 638 = (9−6)(9−3)(10−8) = 362",
+          "10000 − 3482 = (9−3)(9−4)(9−8)(10−2) = 6518",
+          "10000 − 7125 = (9−7)(9−1)(9−2)(10−5) = 2875",
+          "100000 − 43216 = (9−4)(9−3)(9−2)(9−1)(10−6) = 56784"
+        ],
+        practiceQ: "1000 − 384",
+        practiceAns: 616
+      },
+      {
+        title: "Lesson 2: Friendly Base Subtraction (Adding Same Offset)",
+        desc: "Add compensation to both numbers to turn subtrahend into a round 10 or 100.",
+        egs: [
+          "83 − 47 = (83 + 3) − (47 + 3) = 86 − 50 = 36",
+          "92 − 38 = (92 + 2) − (38 + 2) = 94 − 40 = 54",
+          "145 − 68 = (145 + 2) − (68 + 2) = 147 − 70 = 77",
+          "234 − 79 = (234 + 1) − (79 + 1) = 235 − 80 = 155",
+          "362 − 88 = (362 + 2) − (88 + 2) = 364 − 90 = 274"
+        ],
+        practiceQ: "85 − 39",
+        practiceAns: 46
+      },
+      {
+        title: "Lesson 3: Left-to-Right Borrow Elimination",
+        desc: "Subtract from highest place value left to right, decrementing 1 if next needs borrow.",
+        egs: [
+          "74 − 38 = (7−3=4, but 4<8 so drop to 3) [14−8=6] = 36",
+          "83 − 29 = (8−2=6, drop to 5) [13−9=4] = 54",
+          "92 − 46 = (9−4=5, drop to 4) [12−6=6] = 46",
+          "65 − 17 = (6−1=5, drop to 4) [15−7=8] = 48",
+          "91 − 35 = (9−3=6, drop to 5) [11−5=6] = 56"
+        ],
+        practiceQ: "82 − 37",
+        practiceAns: 45
+      },
+      {
+        title: "Lesson 4: Subtraction Across Multiples of 100",
+        desc: "Count forward from subtrahend to round hundreds then to target.",
+        egs: [
+          "524 − 380 = (380 to 400 = 20) + (400 to 524 = 124) = 144",
+          "715 − 490 = (490 to 500 = 10) + (500 to 715 = 215) = 225",
+          "432 − 195 = (195 to 200 = 5) + (200 to 432 = 232) = 237",
+          "850 − 585 = (585 to 600 = 15) + (600 to 850 = 250) = 265",
+          "620 − 275 = (275 to 300 = 25) + (300 to 620 = 320) = 345"
+        ],
+        practiceQ: "630 − 385",
+        practiceAns: 245
+      },
+      {
+        title: "Lesson 5: 4 & 5-Digit Chunk Subtraction",
+        desc: "Chunk into pairs of 2-digits for rapid mental resolution.",
+        egs: [
+          "5420 − 2110 = [54 − 21] [20 − 10] = 3310",
+          "6845 − 3220 = [68 − 32] [45 − 20] = 3625",
+          "7590 − 4140 = [75 − 41] [90 − 40] = 3450",
+          "8674 − 3422 = [86 − 34] [74 − 22] = 5252",
+          "9560 − 4230 = [95 − 42] [60 − 30] = 5330"
+        ],
+        practiceQ: "7450 − 3120",
+        practiceAns: 4330
+      }
+    ],
+    mul: [
+      {
+        title: "Lesson 1: Multiply by 5, 25, 50, 125 (Power of 2 Division)",
+        desc: "Convert multiplication into division by powers of 2.",
+        egs: [
+          "48 × 5 = (48 ÷ 2) × 10 = 24 × 10 = 240",
+          "64 × 25 = (64 ÷ 4) × 100 = 16 × 100 = 1600",
+          "82 × 50 = (82 ÷ 2) × 100 = 41 × 100 = 4100",
+          "72 × 125 = (72 ÷ 8) × 1000 = 9 × 1000 = 9000",
+          "36 × 25 = (36 ÷ 4) × 100 = 9 × 100 = 900"
+        ],
+        practiceQ: "56 × 25",
+        practiceAns: 1400
+      },
+      {
+        title: "Lesson 2: Base 100 Multiplication (Near 100)",
+        desc: "Add cross-deficit and append product of deviations.",
+        egs: [
+          "104 × 107 = (104 + 7) | (4 × 7) = 111 | 28 = 11,128",
+          "103 × 106 = (103 + 6) | (3 × 6) = 109 | 18 = 10,918",
+          "96 × 94 = (96 − 6) | (−4 × −6) = 90 | 24 = 9,024",
+          "98 × 93 = (98 − 7) | (−2 × −7) = 91 | 14 = 9,114",
+          "105 × 108 = (105 + 8) | (5 × 8) = 113 | 40 = 11,340"
+        ],
+        practiceQ: "103 × 105",
+        practiceAns: 10815
+      },
+      {
+        title: "Lesson 3: Urdhva-Tiryagbhyam (2-Digit Crosswise)",
+        desc: "Straight units, crosswise sum, straight tens.",
+        egs: [
+          "23 × 14 = (2×1) | (2×4 + 3×1) | (3×4) = 2 | 11 | 12 = 322",
+          "21 × 32 = (2×3) | (2×2 + 1×3) | (1×2) = 6 | 7 | 2 = 672",
+          "31 × 23 = (3×2) | (3×3 + 1×2) | (1×3) = 6 | 11 | 3 = 713",
+          "42 × 21 = (4×2) | (4×1 + 2×2) | (2×1) = 8 | 8 | 2 = 882",
+          "34 × 12 = (3×1) | (3×2 + 4×1) | (4×2) = 3 | 10 | 8 = 408"
+        ],
+        practiceQ: "31 × 22",
+        practiceAns: 682
+      },
+      {
+        title: "Lesson 4: Rapid Multiplication by 11 & 111",
+        desc: "Sandwich intermediate sums between outside digits.",
+        egs: [
+          "34 × 11 = 3 | (3+4) | 4 = 374",
+          "52 × 11 = 5 | (5+2) | 2 = 572",
+          "63 × 11 = 6 | (6+3) | 3 = 693",
+          "75 × 11 = 7 | (7+5=12 carry 1) | 5 = 825",
+          "123 × 11 = 1 | (1+2) | (2+3) | 3 = 1353"
+        ],
+        practiceQ: "43 × 11",
+        practiceAns: 473
+      },
+      {
+        title: "Lesson 5: Same Tens Digit & Units Adding to 10",
+        desc: "Multiply tens by (tens + 1), append product of units.",
+        egs: [
+          "34 × 36 = [3 × 4] | [4 × 6] = 12 | 24 = 1,224",
+          "43 × 47 = [4 × 5] | [3 × 7] = 20 | 21 = 2,021",
+          "62 × 68 = [6 × 7] | [2 × 8] = 42 | 16 = 4,216",
+          "71 × 79 = [7 × 8] | [1 × 9] = 56 | 09 = 5,609",
+          "85 × 85 = [8 × 9] | [5 × 5] = 72 | 25 = 7,225"
+        ],
+        practiceQ: "53 × 57",
+        practiceAns: 3021
+      }
+    ],
+    div: [
+      {
+        title: "Lesson 1: Divide by 5 (Double and Shift Decimal)",
+        desc: "Never divide by 5 directly. Multiply by 2 and divide by 10.",
+        egs: [
+          "140 ÷ 5 = (140 × 2) ÷ 10 = 280 ÷ 10 = 28",
+          "235 ÷ 5 = (235 × 2) ÷ 10 = 470 ÷ 10 = 47",
+          "342 ÷ 5 = (342 × 2) ÷ 10 = 684 ÷ 10 = 68.4",
+          "610 ÷ 5 = (610 × 2) ÷ 10 = 1220 ÷ 10 = 122",
+          "425 ÷ 5 = (425 × 2) ÷ 10 = 850 ÷ 10 = 85"
+        ],
+        practiceQ: "320 ÷ 5",
+        practiceAns: 64
+      },
+      {
+        title: "Lesson 2: Divide by 25 & 50 (Quadruple / Double & Shift)",
+        desc: "Multiply by 4 (for 25) or by 2 (for 50), then shift decimal 2 places left.",
+        egs: [
+          "350 ÷ 50 = (350 × 2) ÷ 100 = 700 ÷ 100 = 7",
+          "8250 ÷ 50 = (8250 × 2) ÷ 100 = 16500 ÷ 100 = 165",
+          "450 ÷ 25 = (450 × 4) ÷ 100 = 1800 ÷ 100 = 18",
+          "1200 ÷ 25 = (1200 × 4) ÷ 100 = 4800 ÷ 100 = 48",
+          "2100 ÷ 50 = (2100 × 2) ÷ 100 = 4200 ÷ 100 = 42"
+        ],
+        practiceQ: "650 ÷ 50",
+        practiceAns: 13
+      },
+      {
+        title: "Lesson 3: Divisor Factor Cancellation",
+        desc: "Break composite divisor into small prime factors for consecutive mental cuts.",
+        egs: [
+          "432 ÷ 18 = (432 ÷ 9) ÷ 2 = 48 ÷ 2 = 24",
+          "648 ÷ 24 = (648 ÷ 8) ÷ 3 = 81 ÷ 3 = 27",
+          "540 ÷ 36 = (540 ÷ 9) ÷ 4 = 60 ÷ 4 = 15",
+          "840 ÷ 28 = (840 ÷ 7) ÷ 4 = 120 ÷ 4 = 30",
+          "960 ÷ 16 = (960 ÷ 4) ÷ 4 = 240 ÷ 4 = 60"
+        ],
+        practiceQ: "576 ÷ 18",
+        practiceAns: 32
+      },
+      {
+        title: "Lesson 4: Division by 9 (Vedic Prefix Sum)",
+        desc: "Quotient digits formed by consecutive running sums of digits.",
+        egs: [
+          "123 ÷ 9 = Q: 1 | (1+2=3) = 13, R: 1+2+3 = 6 (13 R 6)",
+          "134 ÷ 9 = Q: 1 | (1+3=4) = 14, R: 1+3+4 = 8 (14 R 8)",
+          "211 ÷ 9 = Q: 2 | (2+1=3) = 23, R: 2+1+1 = 4 (23 R 4)",
+          "312 ÷ 9 = Q: 3 | (3+1=4) = 34, R: 3+1+2 = 6 (34 R 6)",
+          "421 ÷ 9 = Q: 4 | (4+2=6) = 46, R: 4+2+1 = 7 (46 R 7)"
+        ],
+        practiceQ: "231 ÷ 9 (Quotient)",
+        practiceAns: 25
+      },
+      {
+        title: "Lesson 5: Dhwajank (Flag Method) Principles",
+        desc: "Keep first digit of divisor as operating divisor and rest as flag multiplier.",
+        egs: [
+          "144 ÷ 12: Divisor 1, Flag 2. Solved in 1 step.",
+          "864 ÷ 24: Divisor 2, Flag 4. Mental quotient 36.",
+          "912 ÷ 38: Divisor 3, Flag 8. Mental quotient 24.",
+          "1128 ÷ 47: Divisor 4, Flag 7. Mental quotient 24.",
+          "1728 ÷ 72: Divisor 7, Flag 2. Mental quotient 24."
+        ],
+        practiceQ: "432 ÷ 24",
+        practiceAns: 18
+      }
+    ]
+  };
+
+  function render5VedicLessons(containerId, op) {
     const c = document.getElementById(containerId);
     if (!c) return;
+    const lessons = verifiedVedicLessons[op];
     let html = '';
-    for (let i = 1; i <= 20; i++) {
-      let title = "", desc = "", eg = "";
-      if (opType === 'add') {
-        if (i <= 5) {
-          title = `Level ${i}: Single to 2-Digit Partition (${i*5}s)`;
-          desc = "Add left-to-right tens first, then units without carries.";
-          eg = `${20 + i*3} + ${14 + i*2} = (${20+i*3+10+i*2}) + units`;
-        } else if (i <= 10) {
-          title = `Level ${i}: Base 100 Rounding & Compensation`;
-          desc = "Round near-hundred number up and subtract excess at the end.";
-          eg = `${98 - i} + ${140 + i*5} = (100 + ${140+i*5}) − ${2+i}`;
-        } else if (i <= 15) {
-          title = `Level ${i}: 3 & 4-Digit Twin Grouping`;
-          desc = "Group digits into twin blocks and sum independently.";
-          eg = `4${i}20 + 2${i}40 = [4${i}+2${i}] [20+40]`;
-        } else {
-          title = `Level ${i}: 5-Digit Multi-Column Vedic Addition`;
-          desc = "Add highest 10,000s and 1,000s pillars directly.";
-          eg = `45,${i*100} + 32,${i*150} = (45k + 32k) + remainder`;
-        }
-      } else if (opType === 'sub') {
-        if (i <= 5) {
-          title = `Level ${i}: 2-Digit Friendly Base Rounding`;
-          desc = "Add common difference to both numbers to turn subtrahend to round 10.";
-          eg = `${60 + i*4} − ${28} = (${60+i*4+2}) − 30`;
-        } else if (i <= 10) {
-          title = `Level ${i}: Nikhilam (All from 9, Last from 10)`;
-          desc = "Rapid subtraction from 1,000 and 10,000 clean bases.";
-          eg = `1000 − 4${i}6 = (9-4)(9-${i})(10-6)`;
-        } else if (i <= 15) {
-          title = `Level ${i}: 3 & 4-Digit Left-to-Right Drop Subtraction`;
-          desc = "Subtract left to right, decrementing previous digit on borrow.";
-          eg = `5${i}20 − 2${i}80 = left-to-right borrowing`;
-        } else {
-          title = `Level ${i}: 5-Digit Heavy Borrow Elimination`;
-          desc = "Bank PO caliber multi-digit mental subtraction.";
-          eg = `64,${i*120} − 28,${i*180} = chunk thousands and remainder`;
-        }
-      } else if (opType === 'mul') {
-        if (i <= 5) {
-          title = `Level ${i}: Multiply by 5, 25, 50 Rapid Half/Double`;
-          desc = "Convert multiplication into division by powers of 2.";
-          eg = `${24 + i*4} × 25 = (${24+i*4} ÷ 4) × 100 = ${(24+i*4)*25}`;
-        } else if (i <= 10) {
-          title = `Level ${i}: Near Base 100 (Urdhva Base)`;
-          desc = "Multiplication of two numbers near 100 (above/below).";
-          eg = `10${i} × 104 = (10${i} + 4) | (${i} × 4)`;
-        } else if (i <= 15) {
-          title = `Level ${i}: 2-Digit × 2-Digit Vertically & Crosswise`;
-          desc = "Multiply units, cross-multiply sum, multiply tens.";
-          eg = `2${i%9+1} × 34 = (2×3) | (2×4 + ${i%9+1}×3) | units`;
-        } else {
-          title = `Level ${i}: 3-Digit × 2-Digit Exam Shortcuts`;
-          desc = "Split into 100x and remainder for competitive speed.";
-          eg = `2${i*5} × 15 = (2${i*5} × 10) + half of result`;
-        }
-      } else if (opType === 'div') {
-        if (i <= 5) {
-          title = `Level ${i}: Rapid Division by 5 (Double & Shift)`;
-          desc = "Never divide by 5 directly. Double number and divide by 10.";
-          eg = `${140 + i*20} ÷ 5 = (${(140+i*20)*2}) ÷ 10 = ${(140+i*20)/5}`;
-        } else if (i <= 10) {
-          title = `Level ${i}: Divide by 25 & 50 (Quadruple & Shift)`;
-          desc = "Multiply by 4 or 2 then shift decimal 2 places.";
-          eg = `${350 + i*50} ÷ 50 = (${(350+i*50)*2}) ÷ 100`;
-        } else if (i <= 15) {
-          title = `Level ${i}: Flag Method (Dhwajank) 2-Digit Divisor`;
-          desc = "Convert 2-digit divisor to 1-digit division with flag multiplier.";
-          eg = `4${i}20 ÷ 52 → Divisor: 5, Flag: 2`;
-        } else {
-          title = `Level ${i}: 4 & 5-Digit Bank Cancellation Short Division`;
-          desc = "Factoring divisor to simplify long division into mental steps.";
-          eg = `8${i}00 ÷ 75 = (8${i}00 ÷ 3) ÷ 25`;
-        }
-      }
+    lessons.forEach((l, idx) => {
+      let egItems = l.egs.map(e => `<div>• ${e}</div>`).join('');
       html += `
-        <div class="level-item">
-          <h5>${title}</h5>
-          <p>${desc}</p>
-          <div class="level-example">${eg}</div>
+        <div class="lesson-item">
+          <h4>${l.title}</h4>
+          <p>${l.desc}</p>
+          <div class="eg-list">${egItems}</div>
+          
+          <div class="inline-practice">
+            <span style="font-size:11px; font-weight:700; color:var(--primary-dark);">TRY HAND-TO-HAND NOW:</span>
+            <div class="inline-row">
+              <span style="font-weight:700; font-size:13px;">${l.practiceQ} = </span>
+              <input type="number" id="inline-${op}-${idx}" class="inline-input" placeholder="?">
+              <button class="inline-btn" onclick="checkInlinePractice('${op}', ${idx}, ${l.practiceAns})">Check</button>
+              <span id="res-${op}-${idx}" style="font-size:12px; font-weight:700; margin-left:4px;"></span>
+            </div>
+          </div>
         </div>
       `;
-    }
+    });
     c.innerHTML = html;
+  }
+
+  function checkInlinePractice(op, idx, correct) {
+    const inp = document.getElementById(`inline-${op}-${idx}`);
+    const res = document.getElementById(`res-${op}-${idx}`);
+    if (parseInt(inp.value, 10) === correct) {
+      res.innerText = "✓ Correct!";
+      res.style.color = "var(--correct)";
+    } else {
+      res.innerText = `✗ (Ans: ${correct})`;
+      res.style.color = "var(--wrong)";
+    }
   }
 
   /* --- Tables, Squares, Cubes & Fraction Renderers --- */
@@ -1255,11 +1527,11 @@
     });
   }
 
-  // Pre-populate 20 levels for each operation
-  populate20Levels('acc-add', 'add');
-  populate20Levels('acc-sub', 'sub');
-  populate20Levels('acc-mul', 'mul');
-  populate20Levels('acc-div', 'div');
+  // Pre-populate 5 authentic Vedic lessons per operation
+  render5VedicLessons('acc-add', 'add');
+  render5VedicLessons('acc-sub', 'sub');
+  render5VedicLessons('acc-mul', 'mul');
+  render5VedicLessons('acc-div', 'div');
   renderFractions();
   renderSquares();
   renderCubes();
