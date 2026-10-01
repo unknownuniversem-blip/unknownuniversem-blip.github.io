@@ -1,0 +1,17 @@
+{
+  "name": "Speed Math Workout",
+  "short_name": "SpeedMath",
+  "start_url": "/math/",
+  "display": "standalone",
+  "background_color": "#004d40",
+  "theme_color": "#00695c",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
