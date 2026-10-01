@@ -2,437 +2,816 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Speed Math Workout - Banking & SSC Edition</title>
-  
-  <!-- AdSense Tag Pre-integrated -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Speed Math Workout - Ultimate Edition</title>
+  <link rel="manifest" href="/math/manifest.json">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3134012164951095" crossorigin="anonymous"></script>
 
   <style>
     :root {
-      --bg: #090d16;
-      --card-bg: #131d31;
-      --accent: #38bdf8;
-      --accent-hover: #0284c7;
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-      --correct: #22c55e;
-      --wrong: #ef4444;
-      --pad-btn: #1e293b;
-      --border: #334155;
+      --bg: #004d40;
+      --teal-header: #00695c;
+      --card-bg: #ffffff;
+      --primary: #00897b;
+      --primary-dark: #004d40;
+      --accent: #26a69a;
+      --accent-soft: #e0f2f1;
+      --text: #263238;
+      --text-muted: #546e7a;
+      --border: #cfd8dc;
+      --correct: #2e7d32;
+      --wrong: #c62828;
     }
-    * { box-sizing: border-box; user-select: none; margin: 0; padding: 0; }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; user-select: none; margin: 0; padding: 0; }
     body {
-      background: var(--bg);
+      background: #eceff1;
       color: var(--text);
-      font-family: system-ui, -apple-system, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      padding: 12px;
     }
-    .container {
+    #app-container {
       width: 100%;
-      max-width: 480px;
-      background: var(--card-bg);
-      border-radius: 20px;
-      padding: 22px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-      border: 1px solid var(--border);
+      max-width: 440px;
+      min-height: 100vh;
+      background: #fff;
       display: flex;
       flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
     }
-    .header-bar {
+
+    /* Top AppBar */
+    .app-bar {
+      background: var(--teal-header);
+      color: #fff;
+      padding: 14px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
-    }
-    .badge {
-      background: #090d16;
-      border: 1px solid var(--border);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 14px;
       font-weight: 700;
-      color: var(--accent);
+      font-size: 17px;
     }
-    .badge-wrong { color: var(--wrong); }
-    .question-box {
-      background: #090d16;
-      border-radius: 16px;
-      padding: 24px 16px;
-      text-align: center;
-      margin-bottom: 16px;
-      border: 1px solid var(--border);
-      min-height: 140px;
+    .app-bar-sub {
+      background: var(--primary);
+      color: #fff;
+      padding: 8px 16px;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      position: relative;
+      font-size: 13px;
     }
-    .mode-label {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-    .expression {
-      font-size: 34px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
-      color: #ffffff;
-      word-break: break-word;
-    }
-    .input-display {
-      font-size: 32px;
-      min-height: 40px;
-      border-bottom: 3px solid var(--accent);
-      color: var(--accent);
-      display: inline-block;
-      min-width: 140px;
-      letter-spacing: 3px;
-      font-weight: 700;
-    }
-    .keypad {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-    .key {
-      background: var(--pad-btn);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      color: var(--text);
-      font-size: 24px;
-      font-weight: 600;
-      padding: 14px 0;
-      cursor: pointer;
-      touch-action: manipulation;
-      transition: background 0.1s, transform 0.05s;
-    }
-    .key:active { background: #334155; transform: scale(0.97); }
-    .key.action { background: #334155; color: #f87171; }
-    .key.submit { background: var(--accent); color: #090d16; font-weight: 800; }
-    .key.submit:active { background: var(--accent-hover); }
-    .hidden { display: none !important; }
-    
-    .menu-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin: 16px 0;
-    }
-    .menu-btn {
-      background: #1e293b;
-      border: 1px solid var(--border);
-      padding: 14px 10px;
-      border-radius: 12px;
-      color: var(--text);
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      text-align: center;
-    }
-    .menu-btn:hover { border-color: var(--accent); }
-    .menu-btn span { font-size: 11px; color: var(--text-muted); font-weight: normal; }
-    .menu-btn.full { grid-column: span 2; background: var(--accent); color: #090d16; font-weight: 800; font-size: 15px; }
-
-    .btn-action {
-      background: var(--accent);
-      color: #090d16;
+    .icon-btn {
+      background: none;
       border: none;
-      padding: 14px;
-      border-radius: 12px;
-      font-size: 15px;
-      font-weight: 700;
+      color: #fff;
+      font-size: 18px;
       cursor: pointer;
-      margin-top: 10px;
     }
-    .stat-row {
+
+    /* Tab Switcher */
+    .tab-bar {
+      display: flex;
+      background: #fff;
+      border-bottom: 2px solid var(--border);
+    }
+    .tab-btn {
+      flex: 1;
+      text-align: center;
+      padding: 12px 0;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .tab-btn.active {
+      color: var(--teal-header);
+      border-bottom: 3px solid var(--teal-header);
+    }
+
+    .scroll-body {
+      flex: 1;
+      padding: 16px 14px 80px 14px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .group-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #37474f;
+      margin-bottom: 8px;
+    }
+
+    .grid-learning {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 8px;
-      background: #090d16;
-      padding: 16px 8px;
-      border-radius: 12px;
-      margin: 14px 0;
-      border: 1px solid var(--border);
     }
-    .stat-item h3 { font-size: 22px; color: var(--accent); }
-    .stat-item p { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+    .btn-tile {
+      background: var(--accent-soft);
+      border: 1px solid #b2dfdb;
+      border-radius: 10px;
+      padding: 14px 6px;
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      color: #004d40;
+    }
+
+    .btn-tile.active-pill {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary-dark);
+    }
+
+    /* Fixed Bottom Action */
+    .cta-fixed {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 440px;
+      padding: 14px 16px;
+      background: #fff;
+      border-top: 1px solid var(--border);
+    }
+    .btn-cta {
+      width: 100%;
+      background: var(--teal-header);
+      color: #fff;
+      border: none;
+      padding: 14px;
+      border-radius: 24px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Table Flashcard View */
+    .table-slider {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .table-chip {
+      background: #eceff1;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .table-chip.active {
+      background: var(--teal-header);
+      color: #fff;
+    }
+    .table-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #e0f2f1;
+      padding: 10px 16px;
+      border-radius: 8px;
+      margin-bottom: 6px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Active Exercise Area */
+    .exam-box {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 12px;
+      text-align: center;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .math-expression {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin: 10px 0;
+    }
+    .input-slot {
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--teal-header);
+      min-height: 40px;
+      border-bottom: 2px solid var(--teal-header);
+      display: inline-block;
+      min-width: 120px;
+    }
+
+    /* MCQ Grid */
+    .mcq-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .mcq-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .mcq-card:active { background: #e0f2f1; }
+
+    /* Custom Numpad */
+    .numpad-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .pad-btn {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 24px;
+      font-weight: 700;
+      padding: 14px 0;
+      cursor: pointer;
+      color: #263238;
+    }
+    .pad-btn:active { background: #b2dfdb; }
+
+    /* Circular 3s Overlay */
+    .overlay-count {
+      position: fixed;
+      inset: 0;
+      background: #fff;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    .circle-spin {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 5px solid #cfd8dc;
+      border-top-color: var(--teal-header);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--teal-header);
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    /* Step-by-Step Hint Card */
+    .hint-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 210;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .hint-sheet {
+      background: #fff;
+      border-radius: 20px 20px 0 0;
+      padding: 20px 18px 30px 18px;
+      max-height: 75vh;
+      overflow-y: auto;
+    }
+
+    .hidden { display: none !important; }
   </style>
 </head>
 <body>
 
-<div class="container">
-  <!-- Screen 1: Mode Select Hub -->
-  <div id="screen-menu">
-    <h1 style="font-size: 22px; color: var(--accent); text-align: center;">⚡ Speed Math Engine</h1>
-    <p style="color: var(--text-muted); font-size: 13px; text-align: center; margin-top: 4px;">
-      Bank PO, Clerk, SSC CGL Speed Workout
-    </p>
+<div id="app-container">
 
-    <div class="menu-grid">
-      <button class="menu-btn full" onclick="startGame('simplification')">
-        🧩 Simplification (BODMAS)
-        <span>Multi-step exam expressions</span>
-      </button>
-
-      <button class="menu-btn" onclick="startGame('squares')">
-        x² Squares (1-100)
-        <span>Quick mental recall</span>
-      </button>
-
-      <button class="menu-btn" onclick="startGame('cubes')">
-        x³ Cubes (1-100)
-        <span>High-speed drill</span>
-      </button>
-
-      <button class="menu-btn" onclick="startGame('roots')">
-        √ & ∛ Roots
-        <span>Reverse powers drill</span>
-      </button>
-
-      <button class="menu-btn" onclick="startGame('tables')">
-        × Tables (12-30)
-        <span>Core multiplication</span>
-      </button>
-
-      <button class="menu-btn full" style="background:#1e293b; color:#fff;" onclick="startGame('blitz')">
-        🔥 60s All-Round Blitz
-        <span>Random mix of all topics</span>
-      </button>
-    </div>
-  </div>
-
-  <!-- Screen 2: Active Workout Screen -->
-  <div id="screen-game" class="hidden">
-    <div class="header-bar">
-      <div id="timer" class="badge">60s</div>
-      <div id="mode-badge" class="badge" style="color: var(--text-muted);">Mode</div>
-      <div id="score" class="badge">Score: 0</div>
-    </div>
-
-    <div class="question-box">
-      <div id="mode-label" class="mode-label">CALCULATE VALUE</div>
-      <div id="expr" class="expression">12²</div>
-      <div id="input-val" class="input-display"></div>
-    </div>
-
-    <div class="keypad">
-      <button class="key" onclick="press('1')">1</button>
-      <button class="key" onclick="press('2')">2</button>
-      <button class="key" onclick="press('3')">3</button>
-      <button class="key" onclick="press('4')">4</button>
-      <button class="key" onclick="press('5')">5</button>
-      <button class="key" onclick="press('6')">6</button>
-      <button class="key" onclick="press('7')">7</button>
-      <button class="key" onclick="press('8')">8</button>
-      <button class="key" onclick="press('9')">9</button>
-      <button class="key action" onclick="press('C')">C</button>
-      <button class="key" onclick="press('0')">0</button>
-      <button class="key submit" onclick="submitAnswer()">↵</button>
+  <!-- ================= 1. DASHBOARD HUB ================= -->
+  <div id="screen-dashboard">
+    <div class="app-bar">
+      <span>Speed Math Workout</span>
+      <div>
+        <span style="font-size: 14px; margin-right: 8px;">🪙 <span id="dash-coins">679</span></span>
+        <button class="icon-btn" onclick="openInfo()">⚙️</button>
+      </div>
     </div>
     
-    <button onclick="endGame()" style="margin-top:12px; background:none; border:none; color:var(--text-muted); font-size:12px; cursor:pointer; text-align:center;">Abort Session</button>
-  </div>
+    <div class="app-bar-sub">
+      <span>🔥 6-day streak</span>
+      <span>22/100 today</span>
+    </div>
 
-  <!-- Screen 3: Results & Analytics Screen -->
-  <div id="screen-result" class="hidden" style="text-align: center;">
-    <h2 style="font-size: 22px; color: var(--accent);">Workout Completed</h2>
-    
-    <div class="stat-row">
-      <div class="stat-item">
-        <h3 id="res-score">0</h3>
-        <p>Correct</p>
+    <div class="tab-bar">
+      <div id="tab-learn-btn" class="tab-btn active" onclick="switchTab('learn')">LEARNING</div>
+      <div id="tab-practice-btn" class="tab-btn" onclick="switchTab('practice')">PRACTICE & TESTS</div>
+    </div>
+
+    <!-- TAB A: LEARNING SECTION -->
+    <div id="tab-learn" class="scroll-body">
+      <div class="group-title">Tables & Active Recall</div>
+      <div class="table-slider" id="table-tabs"></div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <span style="font-size:12px; color:var(--text-muted);">Tap a row to reveal/hide</span>
+        <button onclick="toggleAllTableRows()" style="background:none; border:none; color:var(--teal-header); font-weight:700; font-size:12px; cursor:pointer;">Show/Hide All</button>
       </div>
-      <div class="stat-item">
-        <h3 id="res-accuracy">0%</h3>
-        <p>Accuracy</p>
+      <div id="table-container"></div>
+    </div>
+
+    <!-- TAB B: PRACTICE & CONFIGURATION -->
+    <div id="tab-practice" class="scroll-body hidden">
+      <div class="group-title">Select Topics</div>
+      <div class="grid-learning">
+        <div class="btn-tile active-pill" onclick="toggleSelection(this, 'add')">Addition (+)</div>
+        <div class="btn-tile" onclick="toggleSelection(this, 'sub')">Subtraction (-)</div>
+        <div class="btn-tile" onclick="toggleSelection(this, 'mul')">Multiply (×)</div>
+        <div class="btn-tile" onclick="toggleSelection(this, 'div')">Division (÷)</div>
+        <div class="btn-tile" onclick="toggleSelection(this, 'square')">Squares (1-100)</div>
+        <div class="btn-tile" onclick="toggleSelection(this, 'cube')">Cubes (1-100)</div>
+        <div class="btn-tile" onclick="toggleSelection(this, 'sqrt')">Sq. Root (√)</div>
+        <div class="btn-tile" onclick="toggleSelection(this, 'cbrt')">Cube Root (∛)</div>
+        <div class="btn-tile" onclick="toggleSelection(this, 'percent')">Percentage (%)</div>
+        <div class="btn-tile active-pill" style="grid-column: span 3;" onclick="toggleSelection(this, 'simplification')">🧩 Simplification (100+ BODMAS)</div>
       </div>
-      <div class="stat-item">
-        <h3 id="res-speed">0.0</h3>
-        <p>Ans / Min</p>
+
+      <div class="group-title" style="margin-top:10px;">Input Format</div>
+      <div style="display:flex; gap:10px;">
+        <div id="opt-mcq" class="btn-tile active-pill" style="flex:1;" onclick="setInputFormat('mcq')">4-Option MCQ</div>
+        <div id="opt-pad" class="btn-tile" style="flex:1;" onclick="setInputFormat('numpad')">Numeric Keypad</div>
+      </div>
+
+      <div class="group-title" style="margin-top:10px;">Challenge Modes</div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div class="btn-tile active-pill" style="text-align:left; padding:12px;" onclick="setModeType('questions', 20)">
+          <strong>Speed Challenge</strong>
+          <div style="font-size:11px; opacity:0.8;">Fixed 20 questions against the clock</div>
+        </div>
+        <div class="btn-tile" style="text-align:left; padding:12px;" onclick="setModeType('minute', 60)">
+          <strong>Minute Challenge</strong>
+          <div style="font-size:11px; opacity:0.8;">Score as many points as possible in 60s</div>
+        </div>
+        <div class="btn-tile" style="text-align:left; padding:12px;" onclick="setModeType('bitter_end', 0)">
+          <strong>To The Bitter End</strong>
+          <div style="font-size:11px; opacity:0.8;">Sudden death: Game over on first wrong answer</div>
+        </div>
       </div>
     </div>
 
-    <button class="btn-action" style="width: 100%;" onclick="showMenu()">Select Another Workout</button>
+    <div class="cta-fixed">
+      <button class="btn-cta" onclick="startCount()">Start Practice</button>
+    </div>
   </div>
+
+  <!-- ================= 2. CIRCULAR COUNTDOWN ================= -->
+  <div id="screen-countdown" class="overlay-count hidden" onclick="launchActiveDrill()">
+    <div style="font-size:14px; font-weight:700; color:var(--text-muted); letter-spacing:1px;">GET READY</div>
+    <div class="circle-spin"><span id="cnt-num" style="animation:none;">3</span></div>
+    <div style="font-size:13px; color:var(--teal-header); font-weight:600;">Tap anywhere to start now</div>
+  </div>
+
+  <!-- ================= 3. ACTIVE DRILL PLAYGROUND ================= -->
+  <div id="screen-play" class="hidden" style="flex:1; display:flex; flex-direction:column; padding:14px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+      <button onclick="abortDrill()" style="background:none; border:none; font-size:20px; cursor:pointer;">‹</button>
+      <div id="drill-counter" style="font-weight:700; color:var(--text-muted);">1 / 20</div>
+      <div id="drill-timer" style="background:#e0f2f1; padding:4px 10px; border-radius:12px; font-weight:700; color:var(--teal-header);">00:00</div>
+    </div>
+
+    <div class="exam-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; font-size:12px; color:var(--text-muted);">
+        <span id="drill-mode-badge">DIVISION</span>
+        <button onclick="toggleInGameInput()" style="background:#eceff1; border:none; padding:4px 8px; border-radius:6px; cursor:pointer;">⇄ Switch Input</button>
+      </div>
+
+      <div id="math-expr" class="math-expression">8250 ÷ 50 = ?</div>
+      <div id="user-ans" class="input-slot"></div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:14px;">
+        <button onclick="skipQuestion()" style="background:none; border:none; color:var(--text-muted); font-size:13px; cursor:pointer;">⏭ Skip</button>
+        <button onclick="openHintModal()" style="background:#e0f2f1; border:1px solid #b2dfdb; color:var(--teal-header); border-radius:16px; padding:6px 14px; font-weight:700; font-size:13px; cursor:pointer;">💡 Hint</button>
+      </div>
+    </div>
+
+    <!-- Active Input: MCQ Cards -->
+    <div id="mcq-view" class="mcq-container"></div>
+
+    <!-- Active Input: Numpad -->
+    <div id="numpad-view" class="numpad-grid hidden">
+      <button class="pad-btn" onclick="typeKey('1')">1</button>
+      <button class="pad-btn" onclick="typeKey('2')">2</button>
+      <button class="pad-btn" onclick="typeKey('3')">3</button>
+      <button class="pad-btn" onclick="typeKey('4')">4</button>
+      <button class="pad-btn" onclick="typeKey('5')">5</button>
+      <button class="pad-btn" onclick="typeKey('6')">6</button>
+      <button class="pad-btn" onclick="typeKey('7')">7</button>
+      <button class="pad-btn" onclick="typeKey('8')">8</button>
+      <button class="pad-btn" onclick="typeKey('9')">9</button>
+      <button class="pad-btn" onclick="typeKey('C')" style="background:#ffcdd2; color:#c62828;">C</button>
+      <button class="pad-btn" onclick="typeKey('0')">0</button>
+      <button class="pad-btn" onclick="typeKey('⌫')">⌫</button>
+    </div>
+  </div>
+
+  <!-- ================= 4. STEP-BY-STEP SHORTCUT HINT MODAL ================= -->
+  <div id="modal-hint" class="hint-modal hidden" onclick="closeHintModal()">
+    <div class="hint-sheet" onclick="event.stopPropagation()">
+      <div style="width:36px; height:4px; background:#cfd8dc; border-radius:2px; margin:0 auto 14px auto;"></div>
+      <h3 style="color:var(--teal-header); font-size:18px; margin-bottom:8px;" id="hint-title">Mental Shortcut</h3>
+      <div id="hint-body" style="font-size:14px; line-height:1.6; color:#37474f;"></div>
+      <button onclick="closeHintModal()" class="btn-cta" style="margin-top:16px; padding:10px;">Got It</button>
+    </div>
+  </div>
+
+  <!-- ================= 5. SURVIVAL REVIVE DIALOG ================= -->
+  <div id="modal-revive" class="hint-modal hidden">
+    <div class="hint-sheet" style="text-align:center;">
+      <h3 style="color:var(--wrong); font-size:20px; margin-bottom:6px;">Game Over!</h3>
+      <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Watch an ad to continue playing (attempts: 0/1)</p>
+      <button class="btn-cta" onclick="revivePlayer()" style="background:#0288d1; margin-bottom:8px;">▶ Continue Playing</button>
+      <button onclick="finalizeSummary()" style="background:none; border:none; color:var(--text-muted); font-size:14px; cursor:pointer;">End Workout</button>
+    </div>
+  </div>
+
+  <!-- ================= 6. RESULTS SCORECARD ================= -->
+  <div id="screen-result" class="scroll-body hidden" style="padding-top:40px; text-align:center;">
+    <h2 style="color:var(--teal-header);">Workout Finished</h2>
+    <div style="background:#fff; border:1px solid var(--border); border-radius:14px; padding:24px; margin:20px 0;">
+      <div id="summary-score" style="font-size:42px; font-weight:800; color:var(--teal-header);">18 / 20</div>
+      <p style="color:var(--text-muted); font-size:13px;">Total Score</p>
+      <div style="display:flex; justify-content:space-around; margin-top:20px; border-top:1px solid var(--border); padding-top:14px;">
+        <div><h4 id="summary-time">01:12</h4><span style="font-size:11px; color:var(--text-muted);">Duration</span></div>
+        <div><h4 id="summary-acc">90%</h4><span style="font-size:11px; color:var(--text-muted);">Accuracy</span></div>
+      </div>
+    </div>
+    <button class="btn-cta" onclick="backToHub()">Back to Main Menu</button>
+  </div>
+
 </div>
 
 <script>
-  let activeMode = 'squares';
-  let timeLeft = 60;
-  let timerId = null;
-  let currentAnswer = 0;
-  let score = 0;
-  let totalAttempted = 0;
-  let currentInput = "";
-  let sessionStart = 0;
+  /* --- App State & Defaults --- */
+  let currentTab = 'learn';
+  let userCoins = 679;
+  let activeTableNum = 30;
+  let tableRevealed = true;
 
-  // --- Dynamic Math Generators ---
+  let workoutConfig = {
+    selectedOps: ['add', 'simplification'],
+    inputFormat: 'mcq', // 'mcq' or 'numpad'
+    modeType: 'questions', // 'questions', 'minute', 'bitter_end'
+    limit: 20
+  };
 
-  function genSquare() {
-    const n = Math.floor(Math.random() * 89) + 11; // 11 to 99
-    currentAnswer = n * n;
-    return `${n}² = ?`;
+  let session = {
+    qIndex: 0,
+    score: 0,
+    targetAns: 0,
+    currentInput: '',
+    startTime: 0,
+    timerId: null,
+    hasRevived: false,
+    activeHint: ''
+  };
+
+  /* --- Tab Navigation --- */
+  function switchTab(t) {
+    currentTab = t;
+    document.getElementById('tab-learn-btn').classList.toggle('active', t === 'learn');
+    document.getElementById('tab-practice-btn').classList.toggle('active', t === 'practice');
+    document.getElementById('tab-learn').classList.toggle('hidden', t !== 'learn');
+    document.getElementById('tab-practice').classList.toggle('hidden', t !== 'practice');
   }
 
-  function genCube() {
-    const n = Math.floor(Math.random() * 25) + 3; // 3 to 27 (optimal for speed exams)
-    currentAnswer = n * n * n;
-    return `${n}³ = ?`;
+  /* --- Flashcard Learning Section --- */
+  function buildTableTabs() {
+    const bar = document.getElementById('table-tabs');
+    bar.innerHTML = '';
+    for (let i = 12; i <= 40; i++) {
+      const chip = document.createElement('div');
+      chip.className = `table-chip ${i === activeTableNum ? 'active' : ''}`;
+      chip.innerText = i;
+      chip.onclick = () => { activeTableNum = i; renderActiveTable(); buildTableTabs(); };
+      bar.appendChild(chip);
+    }
   }
 
-  function genRoots() {
-    const isCube = Math.random() > 0.6;
-    if (isCube) {
-      const n = Math.floor(Math.random() * 18) + 2; // 2 to 20
-      currentAnswer = n;
-      return `∛${n * n * n} = ?`;
+  function renderActiveTable() {
+    const c = document.getElementById('table-container');
+    c.innerHTML = '';
+    for (let i = 1; i <= 10; i++) {
+      const row = document.createElement('div');
+      row.className = 'table-row';
+      const ans = activeTableNum * i;
+      row.innerHTML = `<span>${activeTableNum} × ${i}</span> <span class="tbl-ans" data-val="${ans}">=${ans}</span>`;
+      row.onclick = () => {
+        const valSpan = row.querySelector('.tbl-ans');
+        valSpan.innerText = valSpan.innerText.includes('***') ? `=${ans}` : '=***';
+      };
+      c.appendChild(row);
+    }
+  }
+
+  function toggleAllTableRows() {
+    tableRevealed = !tableRevealed;
+    document.querySelectorAll('.tbl-ans').forEach(el => {
+      const v = el.getAttribute('data-val');
+      el.innerText = tableRevealed ? `=${v}` : '=***';
+    });
+  }
+
+  /* --- Practice Setup Toggles --- */
+  function toggleSelection(el, op) {
+    if (workoutConfig.selectedOps.includes(op)) {
+      if (workoutConfig.selectedOps.length > 1) {
+        workoutConfig.selectedOps = workoutConfig.selectedOps.filter(o => o !== op);
+        el.classList.remove('active-pill');
+      }
     } else {
-      const n = Math.floor(Math.random() * 70) + 11; // 11 to 80
-      currentAnswer = n;
-      return `√${n * n} = ?`;
+      workoutConfig.selectedOps.push(op);
+      el.classList.add('active-pill');
     }
   }
 
-  function genTables() {
-    const a = Math.floor(Math.random() * 19) + 12; // 12 to 30
-    const b = Math.floor(Math.random() * 18) + 3;  // 3 to 20
-    currentAnswer = a * b;
-    return `${a} × ${b} = ?`;
+  function setInputFormat(fmt) {
+    workoutConfig.inputFormat = fmt;
+    document.getElementById('opt-mcq').classList.toggle('active-pill', fmt === 'mcq');
+    document.getElementById('opt-pad').classList.toggle('active-pill', fmt === 'numpad');
   }
 
-  function genSimplification() {
-    const pattern = Math.floor(Math.random() * 4);
-    let a, b, c, d;
+  function setModeType(m, limit) {
+    workoutConfig.modeType = m;
+    workoutConfig.limit = limit;
+  }
 
-    switch(pattern) {
-      case 0: // (A * B) + C
-        a = Math.floor(Math.random() * 18) + 3;
-        b = Math.floor(Math.random() * 12) + 2;
-        c = Math.floor(Math.random() * 150) + 15;
-        currentAnswer = (a * b) + c;
-        return `(${a} × ${b}) + ${c}`;
+  /* --- Question Generator & Shortcut Logic --- */
+  function nextQuestion() {
+    const ops = workoutConfig.selectedOps;
+    const op = ops[Math.floor(Math.random() * ops.length)];
+    let expr = "", ans = 0, hint = "";
 
-      case 1: // (A / B) + (C * D) with guaranteed whole numbers
-        b = Math.floor(Math.random() * 8) + 2;
-        currentAnswer = Math.floor(Math.random() * 15) + 3;
-        a = b * currentAnswer; // ensures cleanly divisible
-        c = Math.floor(Math.random() * 12) + 2;
-        d = Math.floor(Math.random() * 9) + 2;
-        currentAnswer = (a / b) + (c * d);
-        return `(${a} ÷ ${b}) + (${c} × ${d})`;
+    if (op === 'square') {
+      const n = Math.floor(Math.random() * 89) + 11; // 11-99
+      ans = n * n;
+      expr = `${n}² = ?`;
+      hint = `<strong>Trick for Squares:</strong> For ${n}², round to nearest decade ${Math.round(n/10)*10}. Use (a-b)(a+b) + b² formula.`;
+    } 
+    else if (op === 'cube') {
+      const n = Math.floor(Math.random() * 25) + 3;
+      ans = n * n * n;
+      expr = `${n}³ = ?`;
+      hint = `<strong>Recalling Cubes:</strong> Practice root memorization. Last digit of ${n}³ is ${(ans)%10}.`;
+    }
+    else if (op === 'sqrt') {
+      const n = Math.floor(Math.random() * 89) + 11;
+      ans = n;
+      expr = `√${n * n} = ?`;
+      hint = `<strong>Square Roots:</strong> Look at the unit place of ${n*n}.`;
+    }
+    else if (op === 'percent') {
+      const base = (Math.floor(Math.random() * 80) + 10) * 50; // Multiple of 50
+      ans = Math.round(base * 0.10);
+      expr = `10% of ${base} = ?`;
+      hint = `<strong>10% Shortcut:</strong> Simply shift the decimal point one place left: ${base} → ${ans}.`;
+    }
+    else if (op === 'simplification') {
+      const p = Math.floor(Math.random() * 2);
+      if (p === 0) {
+        let b = 50;
+        let mult = Math.floor(Math.random() * 150) + 20;
+        let a = mult * b;
+        ans = mult;
+        expr = `${a} ÷ 50 = ?`;
+        hint = `<strong>Divide by 50 Shortcut:</strong><br>1: 50 = 100 ÷ 2<br>2: ${a} ÷ 100 = ${a/100}<br>3: ${a/100} × 2 = ${ans}`;
+      } else {
+        let a = Math.floor(Math.random() * 20) + 4;
+        let b = Math.floor(Math.random() * 12) + 2;
+        let c = Math.floor(Math.random() * 100) + 10;
+        ans = (a * b) + c;
+        expr = `(${a} × ${b}) + ${c} = ?`;
+        hint = `<strong>BODMAS Order:</strong> Compute (${a} × ${b} = ${a*b}) first, then add ${c}.`;
+      }
+    }
+    else { // Basic Arithmetic
+      let a = Math.floor(Math.random() * 70) + 12;
+      let b = Math.floor(Math.random() * 60) + 12;
+      if (op === 'add') {
+        ans = a + b;
+        expr = `${a} + ${b} = ?`;
+        hint = `Break apart: (${Math.floor(a/10)*10} + ${Math.floor(b/10)*10}) + (${a%10} + ${b%10})`;
+      } else if (op === 'sub') {
+        if (a < b) { let t = a; a = b; b = t; }
+        ans = a - b;
+        expr = `${a} − ${b} = ?`;
+        hint = `Subtract round base first then compensate remainder.`;
+      } else if (op === 'mul') {
+        ans = a * 2;
+        expr = `${a} × 2 = ?`;
+        hint = `Double the tens: ${Math.floor(a/10)*10*2}, double the units: ${(a%10)*2}, sum together = ${ans}.`;
+      } else {
+        b = Math.floor(Math.random() * 10) + 2;
+        let q = Math.floor(Math.random() * 20) + 3;
+        a = b * q;
+        ans = q;
+        expr = `${a} ÷ ${b} = ?`;
+        hint = `Think reverse: What times ${b} equals ${a}?`;
+      }
+    }
 
-      case 2: // A² - B
-        a = Math.floor(Math.random() * 25) + 5;
-        b = Math.floor(Math.random() * (a * a - 5)) + 1;
-        currentAnswer = (a * a) - b;
-        return `${a}² - ${b}`;
+    session.targetAns = ans;
+    session.activeHint = hint;
+    document.getElementById('math-expr').innerText = expr;
+    session.currentInput = '';
+    document.getElementById('user-ans').innerText = '';
 
-      case 3: // (A + B) * C
-      default:
-        a = Math.floor(Math.random() * 30) + 10;
-        b = Math.floor(Math.random() * 20) + 5;
-        c = Math.floor(Math.random() * 6) + 2;
-        currentAnswer = (a + b) * c;
-        return `(${a} + ${b}) × ${c}`;
+    // Render Options
+    if (workoutConfig.inputFormat === 'mcq') {
+      renderMcq(ans);
     }
   }
 
-  function generateQuestion() {
-    let mode = activeMode;
-    if (activeMode === 'blitz') {
-      const modes = ['squares', 'cubes', 'roots', 'tables', 'simplification'];
-      mode = modes[Math.floor(Math.random() * modes.length)];
+  function renderMcq(correct) {
+    const c = document.getElementById('mcq-view');
+    c.innerHTML = '';
+    let opts = new Set([correct]);
+    while (opts.size < 4) {
+      let delta = (Math.floor(Math.random() * 5) + 1) * (Math.random() > 0.5 ? 1 : -1) * (correct > 20 ? 10 : 1);
+      let candidate = correct + delta;
+      if (candidate > 0) opts.add(candidate);
     }
-
-    let text = "";
-    if (mode === 'squares') text = genSquare();
-    else if (mode === 'cubes') text = genCube();
-    else if (mode === 'roots') text = genRoots();
-    else if (mode === 'tables') text = genTables();
-    else if (mode === 'simplification') text = genSimplification();
-
-    document.getElementById("expr").innerText = text;
-    document.getElementById("mode-label").innerText = mode.toUpperCase();
-    currentInput = "";
-    document.getElementById("input-val").innerText = "";
+    const shuffled = Array.from(opts).sort(() => Math.random() - 0.5);
+    shuffled.forEach(val => {
+      const card = document.createElement('div');
+      card.className = 'mcq-card';
+      card.innerText = val;
+      card.onclick = () => submitAnswer(val);
+      c.appendChild(card);
+    });
   }
 
-  function press(val) {
-    if (val === 'C') {
-      currentInput = "";
+  /* --- Keypad / Numpad Handler --- */
+  function typeKey(k) {
+    if (k === 'C') {
+      session.currentInput = '';
+    } else if (k === '⌫') {
+      session.currentInput = session.currentInput.slice(0, -1);
     } else {
-      if (currentInput.length < 7) currentInput += val;
+      if (session.currentInput.length < 8) session.currentInput += k;
     }
-    document.getElementById("input-val").innerText = currentInput;
+    document.getElementById('user-ans').innerText = session.currentInput;
+
+    if (session.currentInput.length > 0 && parseInt(session.currentInput, 10) === session.targetAns) {
+      submitAnswer(parseInt(session.currentInput, 10));
+    }
   }
 
-  function submitAnswer() {
-    if (currentInput === "") return;
-    totalAttempted++;
-    if (parseInt(currentInput, 10) === currentAnswer) {
-      score++;
-      document.getElementById("score").innerText = `Score: ${score}`;
-    }
-    generateQuestion();
+  function toggleInGameInput() {
+    workoutConfig.inputFormat = workoutConfig.inputFormat === 'mcq' ? 'numpad' : 'mcq';
+    document.getElementById('mcq-view').classList.toggle('hidden', workoutConfig.inputFormat !== 'mcq');
+    document.getElementById('numpad-view').classList.toggle('hidden', workoutConfig.inputFormat !== 'numpad');
+    if (workoutConfig.inputFormat === 'mcq') renderMcq(session.targetAns);
   }
 
-  function startGame(selectedMode) {
-    activeMode = selectedMode;
-    score = 0;
-    totalAttempted = 0;
-    timeLeft = 60;
-    sessionStart = Date.now();
+  /* --- Verification & Scoring Engine --- */
+  function submitAnswer(chosen) {
+    const isCorrect = (chosen === session.targetAns);
+    if (isCorrect) {
+      session.score++;
+      userCoins += 5;
+      document.getElementById('dash-coins').innerText = userCoins;
+    } else {
+      if (workoutConfig.modeType === 'bitter_end' && !session.hasRevived) {
+        document.getElementById('modal-revive').classList.remove('hidden');
+        return;
+      }
+    }
 
-    document.getElementById("score").innerText = "Score: 0";
-    document.getElementById("timer").innerText = "60s";
-    document.getElementById("mode-badge").innerText = selectedMode.toUpperCase();
+    session.qIndex++;
+    if (workoutConfig.modeType === 'questions' && session.qIndex >= workoutConfig.limit) {
+      finalizeSummary();
+      return;
+    }
+    document.getElementById('drill-counter').innerText = `${session.qIndex + 1} / ${workoutConfig.limit || '∞'}`;
+    nextQuestion();
+  }
 
-    document.getElementById("screen-menu").classList.add("hidden");
-    document.getElementById("screen-result").classList.add("hidden");
-    document.getElementById("screen-game").classList.remove("hidden");
+  function skipQuestion() {
+    session.qIndex++;
+    nextQuestion();
+  }
 
-    generateQuestion();
+  /* --- Countdown & Session Flow --- */
+  let cntTimer = null;
+  function startCount() {
+    document.getElementById('screen-dashboard').classList.add('hidden');
+    document.getElementById('screen-countdown').classList.remove('hidden');
 
-    clearInterval(timerId);
-    timerId = setInterval(() => {
-      timeLeft--;
-      document.getElementById("timer").innerText = `${timeLeft}s`;
-      if (timeLeft <= 0) endGame();
+    let count = 3;
+    document.getElementById('cnt-num').innerText = count;
+    clearInterval(cntTimer);
+    cntTimer = setInterval(() => {
+      count--;
+      if (count <= 0) {
+        clearInterval(cntTimer);
+        launchActiveDrill();
+      } else {
+        document.getElementById('cnt-num').innerText = count;
+      }
     }, 1000);
   }
 
-  function endGame() {
-    clearInterval(timerId);
-    document.getElementById("screen-game").classList.add("hidden");
-    document.getElementById("screen-result").classList.remove("hidden");
+  function launchActiveDrill() {
+    clearInterval(cntTimer);
+    document.getElementById('screen-countdown').classList.add('hidden');
+    document.getElementById('screen-play').classList.remove('hidden');
 
-    const elapsedSeconds = Math.max(1, Math.round((Date.now() - sessionStart) / 1000));
-    const accuracy = totalAttempted > 0 ? Math.round((score / totalAttempted) * 100) : 0;
-    const speed = ((score / elapsedSeconds) * 60).toFixed(1);
+    session.qIndex = 0;
+    session.score = 0;
+    session.startTime = Date.now();
+    session.hasRevived = false;
 
-    document.getElementById("res-score").innerText = score;
-    document.getElementById("res-accuracy").innerText = `${accuracy}%`;
-    document.getElementById("res-speed").innerText = speed;
+    document.getElementById('mcq-view').classList.toggle('hidden', workoutConfig.inputFormat !== 'mcq');
+    document.getElementById('numpad-view').classList.toggle('hidden', workoutConfig.inputFormat !== 'numpad');
+
+    nextQuestion();
+
+    clearInterval(session.timerId);
+    session.timerId = setInterval(() => {
+      const elapsed = Math.floor((Date.now() - session.startTime) / 1000);
+      const m = String(Math.floor(elapsed / 60)).padStart(2, '0');
+      const s = String(elapsed % 60).padStart(2, '0');
+      document.getElementById('drill-timer').innerText = `${m}:${s}`;
+
+      if (workoutConfig.modeType === 'minute' && elapsed >= 60) {
+        finalizeSummary();
+      }
+    }, 1000);
   }
 
-  function showMenu() {
-    document.getElementById("screen-result").classList.add("hidden");
-    document.getElementById("screen-menu").classList.remove("hidden");
+  function abortDrill() {
+    clearInterval(session.timerId);
+    document.getElementById('screen-play').classList.add('hidden');
+    document.getElementById('screen-dashboard').classList.remove('hidden');
   }
+
+  function revivePlayer() {
+    session.hasRevived = true;
+    document.getElementById('modal-revive').classList.add('hidden');
+    nextQuestion();
+  }
+
+  function finalizeSummary() {
+    clearInterval(session.timerId);
+    document.getElementById('modal-revive').classList.add('hidden');
+    document.getElementById('screen-play').classList.add('hidden');
+    document.getElementById('screen-result').classList.remove('hidden');
+
+    const totalSec = Math.floor((Date.now() - session.startTime) / 1000);
+    const m = String(Math.floor(totalSec / 60)).padStart(2, '0');
+    const s = String(totalSec % 60).padStart(2, '0');
+    const totalQ = Math.max(1, session.qIndex);
+
+    document.getElementById('summary-score').innerText = `${session.score} / ${totalQ}`;
+    document.getElementById('summary-time').innerText = `${m}:${s}`;
+    document.getElementById('summary-acc').innerText = `${Math.round((session.score / totalQ) * 100)}%`;
+  }
+
+  function backToHub() {
+    document.getElementById('screen-result').classList.add('hidden');
+    document.getElementById('screen-dashboard').classList.remove('hidden');
+  }
+
+  /* --- Hint Modal --- */
+  function openHintModal() {
+    document.getElementById('hint-body').innerHTML = session.activeHint;
+    document.getElementById('modal-hint').classList.remove('hidden');
+  }
+  function closeHintModal() {
+    document.getElementById('modal-hint').classList.add('hidden');
+  }
+  function openInfo() {
+    alert("Speed Math Workout v2.0\nFully offline capable TWA with mental shortcuts.");
+  }
+
+  // Initial load
+  buildTableTabs();
+  renderActiveTable();
 </script>
 </body>
 </html>
