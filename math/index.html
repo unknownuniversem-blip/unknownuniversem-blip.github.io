@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Speed Math Workout - Ultimate Edition</title>
+  <title>Speed Math Workout - Granular Levels</title>
   <link rel="manifest" href="/math/manifest.json">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3134012164951095" crossorigin="anonymous"></script>
 
   <style>
     :root {
-      --bg: #004d40;
+      --bg: #eceff1;
       --teal-header: #00695c;
       --card-bg: #ffffff;
       --primary: #00897b;
       --primary-dark: #004d40;
-      --accent: #26a69a;
       --accent-soft: #e0f2f1;
       --text: #263238;
       --text-muted: #546e7a;
@@ -24,7 +23,7 @@
     }
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; user-select: none; margin: 0; padding: 0; }
     body {
-      background: #eceff1;
+      background: var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       min-height: 100vh;
@@ -62,13 +61,6 @@
       align-items: center;
       font-size: 13px;
     }
-    .icon-btn {
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 18px;
-      cursor: pointer;
-    }
 
     /* Tab Switcher */
     .tab-bar {
@@ -100,10 +92,36 @@
     }
 
     .group-title {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       color: #37474f;
       margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Granular Difficulty Pills */
+    .diff-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .diff-chip {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+    }
+    .diff-chip.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary-dark);
     }
 
     .grid-learning {
@@ -115,14 +133,13 @@
       background: var(--accent-soft);
       border: 1px solid #b2dfdb;
       border-radius: 10px;
-      padding: 14px 6px;
+      padding: 12px 6px;
       font-size: 12px;
       font-weight: 600;
       text-align: center;
       cursor: pointer;
       color: #004d40;
     }
-
     .btn-tile.active-pill {
       background: var(--primary);
       color: #fff;
@@ -153,39 +170,6 @@
       cursor: pointer;
     }
 
-    /* Table Flashcard View */
-    .table-slider {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding-bottom: 8px;
-      margin-bottom: 12px;
-    }
-    .table-chip {
-      background: #eceff1;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-weight: 700;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-    .table-chip.active {
-      background: var(--teal-header);
-      color: #fff;
-    }
-    .table-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #e0f2f1;
-      padding: 10px 16px;
-      border-radius: 8px;
-      margin-bottom: 6px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
     /* Active Exercise Area */
     .exam-box {
       background: #fff;
@@ -196,11 +180,21 @@
       margin-bottom: 12px;
       position: relative;
     }
+    .level-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: #eceff1;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--teal-header);
+      text-transform: uppercase;
+    }
     .math-expression {
       font-size: 34px;
       font-weight: 800;
       letter-spacing: 1px;
-      margin: 10px 0;
+      margin: 12px 0;
     }
     .input-slot {
       font-size: 30px;
@@ -223,7 +217,7 @@
       background: #fff;
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 20px 0;
+      padding: 18px 0;
       text-align: center;
       font-size: 24px;
       font-weight: 700;
@@ -251,7 +245,7 @@
     }
     .pad-btn:active { background: #b2dfdb; }
 
-    /* Circular 3s Overlay */
+    /* 3-Second Count Overlay */
     .overlay-count {
       position: fixed;
       inset: 0;
@@ -279,7 +273,36 @@
     }
     @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-    /* Step-by-Step Hint Card */
+    /* Table Flashcard View */
+    .table-slider {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .table-chip {
+      background: #eceff1;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .table-chip.active { background: var(--teal-header); color: #fff; }
+    .table-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #e0f2f1;
+      padding: 10px 16px;
+      border-radius: 8px;
+      margin-bottom: 6px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
     .hint-modal {
       position: fixed;
       inset: 0;
@@ -310,7 +333,7 @@
       <span>Speed Math Workout</span>
       <div>
         <span style="font-size: 14px; margin-right: 8px;">🪙 <span id="dash-coins">679</span></span>
-        <button class="icon-btn" onclick="openInfo()">⚙️</button>
+        <span style="cursor:pointer;" onclick="switchTab('practice')">⚙️</span>
       </div>
     </div>
     
@@ -324,12 +347,12 @@
       <div id="tab-practice-btn" class="tab-btn" onclick="switchTab('practice')">PRACTICE & TESTS</div>
     </div>
 
-    <!-- TAB A: LEARNING SECTION -->
+    <!-- TAB A: LEARNING -->
     <div id="tab-learn" class="scroll-body">
-      <div class="group-title">Tables & Active Recall</div>
+      <div class="group-title"><span>Tables & Active Recall</span></div>
       <div class="table-slider" id="table-tabs"></div>
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-        <span style="font-size:12px; color:var(--text-muted);">Tap a row to reveal/hide</span>
+        <span style="font-size:12px; color:var(--text-muted);">Tap row to toggle reveal</span>
         <button onclick="toggleAllTableRows()" style="background:none; border:none; color:var(--teal-header); font-weight:700; font-size:12px; cursor:pointer;">Show/Hide All</button>
       </div>
       <div id="table-container"></div>
@@ -337,14 +360,28 @@
 
     <!-- TAB B: PRACTICE & CONFIGURATION -->
     <div id="tab-practice" class="scroll-body hidden">
-      <div class="group-title">Select Topics</div>
+      <div class="group-title">
+        <span>Level / Difficulty</span>
+        <span id="diff-indicator" style="color:var(--teal-header);">Medium</span>
+      </div>
+      <div class="diff-grid">
+        <div class="diff-chip" onclick="setDifficulty('Very Easy')">Very Easy</div>
+        <div class="diff-chip" onclick="setDifficulty('Easy')">Easy</div>
+        <div class="diff-chip active" onclick="setDifficulty('Medium')">Medium</div>
+        <div class="diff-chip" onclick="setDifficulty('Above Medium')">Above Medium</div>
+        <div class="diff-chip" onclick="setDifficulty('Hard')">Hard</div>
+        <div class="diff-chip" onclick="setDifficulty('Extreme Hard')">Extreme Hard</div>
+        <div class="diff-chip" onclick="setDifficulty('Expert')">Expert</div>
+      </div>
+
+      <div class="group-title" style="margin-top:10px;">Select Topics</div>
       <div class="grid-learning">
         <div class="btn-tile active-pill" onclick="toggleSelection(this, 'add')">Addition (+)</div>
         <div class="btn-tile" onclick="toggleSelection(this, 'sub')">Subtraction (-)</div>
         <div class="btn-tile" onclick="toggleSelection(this, 'mul')">Multiply (×)</div>
         <div class="btn-tile" onclick="toggleSelection(this, 'div')">Division (÷)</div>
-        <div class="btn-tile" onclick="toggleSelection(this, 'square')">Squares (1-100)</div>
-        <div class="btn-tile" onclick="toggleSelection(this, 'cube')">Cubes (1-100)</div>
+        <div class="btn-tile" onclick="toggleSelection(this, 'square')">Squares</div>
+        <div class="btn-tile" onclick="toggleSelection(this, 'cube')">Cubes</div>
         <div class="btn-tile" onclick="toggleSelection(this, 'sqrt')">Sq. Root (√)</div>
         <div class="btn-tile" onclick="toggleSelection(this, 'cbrt')">Cube Root (∛)</div>
         <div class="btn-tile" onclick="toggleSelection(this, 'percent')">Percentage (%)</div>
@@ -361,15 +398,15 @@
       <div style="display:flex; flex-direction:column; gap:8px;">
         <div class="btn-tile active-pill" style="text-align:left; padding:12px;" onclick="setModeType('questions', 20)">
           <strong>Speed Challenge</strong>
-          <div style="font-size:11px; opacity:0.8;">Fixed 20 questions against the clock</div>
+          <div style="font-size:11px; opacity:0.8;">20 questions tailored to your chosen level</div>
         </div>
         <div class="btn-tile" style="text-align:left; padding:12px;" onclick="setModeType('minute', 60)">
           <strong>Minute Challenge</strong>
-          <div style="font-size:11px; opacity:0.8;">Score as many points as possible in 60s</div>
+          <div style="font-size:11px; opacity:0.8;">Score attack in 60 seconds</div>
         </div>
         <div class="btn-tile" style="text-align:left; padding:12px;" onclick="setModeType('bitter_end', 0)">
           <strong>To The Bitter End</strong>
-          <div style="font-size:11px; opacity:0.8;">Sudden death: Game over on first wrong answer</div>
+          <div style="font-size:11px; opacity:0.8;">Survival: End drill upon first error</div>
         </div>
       </div>
     </div>
@@ -395,12 +432,12 @@
     </div>
 
     <div class="exam-box">
-      <div style="display:flex; justify-content:space-between; align-items:center; font-size:12px; color:var(--text-muted);">
-        <span id="drill-mode-badge">DIVISION</span>
-        <button onclick="toggleInGameInput()" style="background:#eceff1; border:none; padding:4px 8px; border-radius:6px; cursor:pointer;">⇄ Switch Input</button>
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span id="drill-level-badge" class="level-badge">MEDIUM</span>
+        <button onclick="toggleInGameInput()" style="background:#eceff1; border:none; padding:4px 8px; border-radius:6px; font-size:11px; cursor:pointer;">⇄ Switch Input</button>
       </div>
 
-      <div id="math-expr" class="math-expression">8250 ÷ 50 = ?</div>
+      <div id="math-expr" class="math-expression">24 × 15 = ?</div>
       <div id="user-ans" class="input-slot"></div>
 
       <div style="display:flex; justify-content:space-between; align-items:center; margin-top:14px;">
@@ -409,10 +446,8 @@
       </div>
     </div>
 
-    <!-- Active Input: MCQ Cards -->
     <div id="mcq-view" class="mcq-container"></div>
 
-    <!-- Active Input: Numpad -->
     <div id="numpad-view" class="numpad-grid hidden">
       <button class="pad-btn" onclick="typeKey('1')">1</button>
       <button class="pad-btn" onclick="typeKey('2')">2</button>
@@ -429,11 +464,11 @@
     </div>
   </div>
 
-  <!-- ================= 4. STEP-BY-STEP SHORTCUT HINT MODAL ================= -->
+  <!-- ================= 4. HINT MODAL ================= -->
   <div id="modal-hint" class="hint-modal hidden" onclick="closeHintModal()">
     <div class="hint-sheet" onclick="event.stopPropagation()">
       <div style="width:36px; height:4px; background:#cfd8dc; border-radius:2px; margin:0 auto 14px auto;"></div>
-      <h3 style="color:var(--teal-header); font-size:18px; margin-bottom:8px;" id="hint-title">Mental Shortcut</h3>
+      <h3 style="color:var(--teal-header); font-size:18px; margin-bottom:8px;">Mental Shortcut</h3>
       <div id="hint-body" style="font-size:14px; line-height:1.6; color:#37474f;"></div>
       <button onclick="closeHintModal()" class="btn-cta" style="margin-top:16px; padding:10px;">Got It</button>
     </div>
@@ -466,16 +501,16 @@
 </div>
 
 <script>
-  /* --- App State & Defaults --- */
-  let currentTab = 'learn';
+  let currentTab = 'practice';
   let userCoins = 679;
   let activeTableNum = 30;
   let tableRevealed = true;
 
   let workoutConfig = {
+    difficulty: 'Medium',
     selectedOps: ['add', 'simplification'],
-    inputFormat: 'mcq', // 'mcq' or 'numpad'
-    modeType: 'questions', // 'questions', 'minute', 'bitter_end'
+    inputFormat: 'mcq',
+    modeType: 'questions',
     limit: 20
   };
 
@@ -490,7 +525,14 @@
     activeHint: ''
   };
 
-  /* --- Tab Navigation --- */
+  function setDifficulty(level) {
+    workoutConfig.difficulty = level;
+    document.querySelectorAll('.diff-chip').forEach(el => {
+      el.classList.toggle('active', el.innerText === level);
+    });
+    document.getElementById('diff-indicator').innerText = level;
+  }
+
   function switchTab(t) {
     currentTab = t;
     document.getElementById('tab-learn-btn').classList.toggle('active', t === 'learn');
@@ -499,44 +541,6 @@
     document.getElementById('tab-practice').classList.toggle('hidden', t !== 'practice');
   }
 
-  /* --- Flashcard Learning Section --- */
-  function buildTableTabs() {
-    const bar = document.getElementById('table-tabs');
-    bar.innerHTML = '';
-    for (let i = 12; i <= 40; i++) {
-      const chip = document.createElement('div');
-      chip.className = `table-chip ${i === activeTableNum ? 'active' : ''}`;
-      chip.innerText = i;
-      chip.onclick = () => { activeTableNum = i; renderActiveTable(); buildTableTabs(); };
-      bar.appendChild(chip);
-    }
-  }
-
-  function renderActiveTable() {
-    const c = document.getElementById('table-container');
-    c.innerHTML = '';
-    for (let i = 1; i <= 10; i++) {
-      const row = document.createElement('div');
-      row.className = 'table-row';
-      const ans = activeTableNum * i;
-      row.innerHTML = `<span>${activeTableNum} × ${i}</span> <span class="tbl-ans" data-val="${ans}">=${ans}</span>`;
-      row.onclick = () => {
-        const valSpan = row.querySelector('.tbl-ans');
-        valSpan.innerText = valSpan.innerText.includes('***') ? `=${ans}` : '=***';
-      };
-      c.appendChild(row);
-    }
-  }
-
-  function toggleAllTableRows() {
-    tableRevealed = !tableRevealed;
-    document.querySelectorAll('.tbl-ans').forEach(el => {
-      const v = el.getAttribute('data-val');
-      el.innerText = tableRevealed ? `=${v}` : '=***';
-    });
-  }
-
-  /* --- Practice Setup Toggles --- */
   function toggleSelection(el, op) {
     if (workoutConfig.selectedOps.includes(op)) {
       if (workoutConfig.selectedOps.length > 1) {
@@ -560,87 +564,178 @@
     workoutConfig.limit = limit;
   }
 
-  /* --- Question Generator & Shortcut Logic --- */
+  /* --- Granular Dynamic Math Generator --- */
   function nextQuestion() {
     const ops = workoutConfig.selectedOps;
     const op = ops[Math.floor(Math.random() * ops.length)];
+    const diff = workoutConfig.difficulty;
     let expr = "", ans = 0, hint = "";
 
-    if (op === 'square') {
-      const n = Math.floor(Math.random() * 89) + 11; // 11-99
-      ans = n * n;
-      expr = `${n}² = ?`;
-      hint = `<strong>Trick for Squares:</strong> For ${n}², round to nearest decade ${Math.round(n/10)*10}. Use (a-b)(a+b) + b² formula.`;
-    } 
-    else if (op === 'cube') {
-      const n = Math.floor(Math.random() * 25) + 3;
-      ans = n * n * n;
-      expr = `${n}³ = ?`;
-      hint = `<strong>Recalling Cubes:</strong> Practice root memorization. Last digit of ${n}³ is ${(ans)%10}.`;
-    }
-    else if (op === 'sqrt') {
-      const n = Math.floor(Math.random() * 89) + 11;
-      ans = n;
-      expr = `√${n * n} = ?`;
-      hint = `<strong>Square Roots:</strong> Look at the unit place of ${n*n}.`;
-    }
-    else if (op === 'percent') {
-      const base = (Math.floor(Math.random() * 80) + 10) * 50; // Multiple of 50
-      ans = Math.round(base * 0.10);
-      expr = `10% of ${base} = ?`;
-      hint = `<strong>10% Shortcut:</strong> Simply shift the decimal point one place left: ${base} → ${ans}.`;
-    }
-    else if (op === 'simplification') {
-      const p = Math.floor(Math.random() * 2);
-      if (p === 0) {
-        let b = 50;
-        let mult = Math.floor(Math.random() * 150) + 20;
-        let a = mult * b;
-        ans = mult;
-        expr = `${a} ÷ 50 = ?`;
-        hint = `<strong>Divide by 50 Shortcut:</strong><br>1: 50 = 100 ÷ 2<br>2: ${a} ÷ 100 = ${a/100}<br>3: ${a/100} × 2 = ${ans}`;
-      } else {
-        let a = Math.floor(Math.random() * 20) + 4;
-        let b = Math.floor(Math.random() * 12) + 2;
-        let c = Math.floor(Math.random() * 100) + 10;
-        ans = (a * b) + c;
-        expr = `(${a} × ${b}) + ${c} = ?`;
-        hint = `<strong>BODMAS Order:</strong> Compute (${a} × ${b} = ${a*b}) first, then add ${c}.`;
+    // 1. ADDITION & SUBTRACTION
+    if (op === 'add' || op === 'sub') {
+      let a, b;
+      switch(diff) {
+        case 'Very Easy':
+          a = Math.floor(Math.random() * 8) + 2;
+          b = Math.floor(Math.random() * 8) + 2;
+          break;
+        case 'Easy':
+          a = Math.floor(Math.random() * 80) + 11;
+          b = Math.floor(Math.random() * 9) + 1;
+          break;
+        case 'Medium':
+          a = Math.floor(Math.random() * 45) + 12;
+          b = Math.floor(Math.random() * 40) + 10;
+          break;
+        case 'Above Medium':
+          a = Math.floor(Math.random() * 89) + 11;
+          b = Math.floor(Math.random() * 89) + 11;
+          break;
+        case 'Hard':
+          a = Math.floor(Math.random() * 800) + 100;
+          b = Math.floor(Math.random() * 89) + 10;
+          break;
+        case 'Extreme Hard':
+          a = Math.floor(Math.random() * 899) + 100;
+          b = Math.floor(Math.random() * 899) + 100;
+          break;
+        case 'Expert':
+        default:
+          a = Math.floor(Math.random() * 8999) + 1000;
+          b = Math.floor(Math.random() * 4999) + 500;
+          break;
       }
-    }
-    else { // Basic Arithmetic
-      let a = Math.floor(Math.random() * 70) + 12;
-      let b = Math.floor(Math.random() * 60) + 12;
       if (op === 'add') {
         ans = a + b;
         expr = `${a} + ${b} = ?`;
-        hint = `Break apart: (${Math.floor(a/10)*10} + ${Math.floor(b/10)*10}) + (${a%10} + ${b%10})`;
-      } else if (op === 'sub') {
+        hint = `Decompose: Add the hundreds/tens first, then units.`;
+      } else {
         if (a < b) { let t = a; a = b; b = t; }
         ans = a - b;
         expr = `${a} − ${b} = ?`;
-        hint = `Subtract round base first then compensate remainder.`;
-      } else if (op === 'mul') {
-        ans = a * 2;
-        expr = `${a} × 2 = ?`;
-        hint = `Double the tens: ${Math.floor(a/10)*10*2}, double the units: ${(a%10)*2}, sum together = ${ans}.`;
+        hint = `Subtract to round number base, then adjust remainder.`;
+      }
+    }
+
+    // 2. MULTIPLICATION & DIVISION
+    else if (op === 'mul' || op === 'div') {
+      let a, b;
+      switch(diff) {
+        case 'Very Easy':
+          a = Math.floor(Math.random() * 9) + 2;
+          b = Math.floor(Math.random() * 8) + 2;
+          break;
+        case 'Easy':
+          a = Math.floor(Math.random() * 5) + 11;
+          b = Math.floor(Math.random() * 8) + 2;
+          break;
+        case 'Medium':
+          a = Math.floor(Math.random() * 9) + 12;
+          b = Math.floor(Math.random() * 10) + 3;
+          break;
+        case 'Above Medium':
+          a = Math.floor(Math.random() * 20) + 15;
+          b = Math.floor(Math.random() * 15) + 10;
+          break;
+        case 'Hard':
+          a = Math.floor(Math.random() * 50) + 25;
+          b = Math.floor(Math.random() * 30) + 12;
+          break;
+        case 'Extreme Hard':
+          a = Math.floor(Math.random() * 500) + 100;
+          b = Math.floor(Math.random() * 8) + 3;
+          break;
+        case 'Expert':
+        default:
+          a = Math.floor(Math.random() * 800) + 100;
+          b = Math.floor(Math.random() * 30) + 12;
+          break;
+      }
+      if (op === 'mul') {
+        ans = a * b;
+        expr = `${a} × ${b} = ?`;
+        hint = `Multiply ${a} by tens (${Math.floor(b/10)*10}) then units (${b%10}) and add.`;
       } else {
-        b = Math.floor(Math.random() * 10) + 2;
-        let q = Math.floor(Math.random() * 20) + 3;
-        a = b * q;
+        let q = a;
+        let product = q * b;
         ans = q;
-        expr = `${a} ÷ ${b} = ?`;
-        hint = `Think reverse: What times ${b} equals ${a}?`;
+        expr = `${product} ÷ ${b} = ?`;
+        hint = `How many times does ${b} go into ${product}?`;
+      }
+    }
+
+    // 3. SQUARES & CUBES
+    else if (op === 'square') {
+      let limit = diff === 'Very Easy' ? 12 : (diff === 'Easy' ? 20 : (diff === 'Medium' ? 30 : (diff === 'Above Medium' ? 50 : (diff === 'Hard' ? 75 : 100))));
+      let n = Math.floor(Math.random() * (limit - 2 + 1)) + 2;
+      ans = n * n;
+      expr = `${n}² = ?`;
+      hint = `Unit digit of ${n}² will always be ${(ans)%10}.`;
+    }
+    else if (op === 'cube') {
+      let limit = diff === 'Very Easy' ? 5 : (diff === 'Easy' ? 10 : (diff === 'Medium' ? 15 : (diff === 'Above Medium' ? 20 : (diff === 'Hard' ? 30 : 50))));
+      let n = Math.floor(Math.random() * (limit - 2 + 1)) + 2;
+      ans = n * n * n;
+      expr = `${n}³ = ?`;
+      hint = `Memorize unit ending: ${n} cubed ends in ${(ans)%10}.`;
+    }
+    else if (op === 'sqrt') {
+      let limit = diff === 'Very Easy' ? 10 : (diff === 'Easy' ? 20 : (diff === 'Medium' ? 30 : (diff === 'Above Medium' ? 50 : (diff === 'Hard' ? 75 : 100))));
+      let n = Math.floor(Math.random() * (limit - 2 + 1)) + 2;
+      ans = n;
+      expr = `√${n * n} = ?`;
+      hint = `Find integer whose square is ${n * n}.`;
+    }
+    else if (op === 'cbrt') {
+      let limit = diff === 'Very Easy' ? 5 : (diff === 'Easy' ? 10 : (diff === 'Medium' ? 15 : 30));
+      let n = Math.floor(Math.random() * (limit - 2 + 1)) + 2;
+      ans = n;
+      expr = `∛${n * n * n} = ?`;
+      hint = `Find integer whose cube is ${n * n * n}.`;
+    }
+    else if (op === 'percent') {
+      let base = (Math.floor(Math.random() * 50) + 10) * 10;
+      let pct = (diff === 'Very Easy' || diff === 'Easy') ? 10 : (diff === 'Medium' ? 20 : 25);
+      ans = Math.round(base * (pct / 100));
+      expr = `${pct}% of ${base} = ?`;
+      hint = `To find ${pct}%, divide ${base} appropriately.`;
+    }
+
+    // 4. BODMAS SIMPLIFICATION
+    else {
+      let a, b, c;
+      if (diff === 'Very Easy' || diff === 'Easy') {
+        a = Math.floor(Math.random() * 8) + 2;
+        b = Math.floor(Math.random() * 5) + 2;
+        c = Math.floor(Math.random() * 20) + 5;
+        ans = (a * b) + c;
+        expr = `(${a} × ${b}) + ${c} = ?`;
+        hint = `Multiplication first: ${a*b}, then add ${c}.`;
+      } else if (diff === 'Medium' || diff === 'Above Medium') {
+        b = 50;
+        let mult = Math.floor(Math.random() * 80) + 20;
+        let big = mult * b;
+        ans = mult;
+        expr = `${big} ÷ 50 = ?`;
+        hint = `Shortcut: ${big} ÷ 100 × 2 = ${ans}`;
+      } else {
+        a = Math.floor(Math.random() * 20) + 5;
+        b = Math.floor(Math.random() * 15) + 3;
+        c = Math.floor(Math.random() * 12) + 2;
+        let d = Math.floor(Math.random() * 8) + 2;
+        ans = (a * b) - (c * d);
+        expr = `(${a} × ${b}) − (${c} × ${d}) = ?`;
+        hint = `Compute both brackets: (${a*b}) − (${c*d}) = ${ans}`;
       }
     }
 
     session.targetAns = ans;
     session.activeHint = hint;
     document.getElementById('math-expr').innerText = expr;
+    document.getElementById('drill-level-badge').innerText = diff.toUpperCase();
     session.currentInput = '';
     document.getElementById('user-ans').innerText = '';
 
-    // Render Options
     if (workoutConfig.inputFormat === 'mcq') {
       renderMcq(ans);
     }
@@ -651,9 +746,9 @@
     c.innerHTML = '';
     let opts = new Set([correct]);
     while (opts.size < 4) {
-      let delta = (Math.floor(Math.random() * 5) + 1) * (Math.random() > 0.5 ? 1 : -1) * (correct > 20 ? 10 : 1);
+      let delta = (Math.floor(Math.random() * 5) + 1) * (Math.random() > 0.5 ? 1 : -1) * (Math.abs(correct) > 30 ? 10 : 1);
       let candidate = correct + delta;
-      if (candidate > 0) opts.add(candidate);
+      opts.add(candidate);
     }
     const shuffled = Array.from(opts).sort(() => Math.random() - 0.5);
     shuffled.forEach(val => {
@@ -665,7 +760,6 @@
     });
   }
 
-  /* --- Keypad / Numpad Handler --- */
   function typeKey(k) {
     if (k === 'C') {
       session.currentInput = '';
@@ -688,7 +782,6 @@
     if (workoutConfig.inputFormat === 'mcq') renderMcq(session.targetAns);
   }
 
-  /* --- Verification & Scoring Engine --- */
   function submitAnswer(chosen) {
     const isCorrect = (chosen === session.targetAns);
     if (isCorrect) {
@@ -716,7 +809,6 @@
     nextQuestion();
   }
 
-  /* --- Countdown & Session Flow --- */
   let cntTimer = null;
   function startCount() {
     document.getElementById('screen-dashboard').classList.add('hidden');
@@ -797,7 +889,6 @@
     document.getElementById('screen-dashboard').classList.remove('hidden');
   }
 
-  /* --- Hint Modal --- */
   function openHintModal() {
     document.getElementById('hint-body').innerHTML = session.activeHint;
     document.getElementById('modal-hint').classList.remove('hidden');
@@ -805,11 +896,44 @@
   function closeHintModal() {
     document.getElementById('modal-hint').classList.add('hidden');
   }
-  function openInfo() {
-    alert("Speed Math Workout v2.0\nFully offline capable TWA with mental shortcuts.");
+
+  /* --- Learning Tables View --- */
+  function buildTableTabs() {
+    const bar = document.getElementById('table-tabs');
+    bar.innerHTML = '';
+    for (let i = 12; i <= 40; i++) {
+      const chip = document.createElement('div');
+      chip.className = `table-chip ${i === activeTableNum ? 'active' : ''}`;
+      chip.innerText = i;
+      chip.onclick = () => { activeTableNum = i; renderActiveTable(); buildTableTabs(); };
+      bar.appendChild(chip);
+    }
   }
 
-  // Initial load
+  function renderActiveTable() {
+    const c = document.getElementById('table-container');
+    c.innerHTML = '';
+    for (let i = 1; i <= 10; i++) {
+      const row = document.createElement('div');
+      row.className = 'table-row';
+      const ans = activeTableNum * i;
+      row.innerHTML = `<span>${activeTableNum} × ${i}</span> <span class="tbl-ans" data-val="${ans}">=${ans}</span>`;
+      row.onclick = () => {
+        const valSpan = row.querySelector('.tbl-ans');
+        valSpan.innerText = valSpan.innerText.includes('***') ? `=${ans}` : '=***';
+      };
+      c.appendChild(row);
+    }
+  }
+
+  function toggleAllTableRows() {
+    tableRevealed = !tableRevealed;
+    document.querySelectorAll('.tbl-ans').forEach(el => {
+      const v = el.getAttribute('data-val');
+      el.innerText = tableRevealed ? `=${v}` : '=***';
+    });
+  }
+
   buildTableTabs();
   renderActiveTable();
 </script>
