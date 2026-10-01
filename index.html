@@ -105,6 +105,23 @@
     left: auto;
   }
 </style>
+
+<style id="responsive-screen-lock">
+  html, body {
+  }
+  *, *::before, *::after {
+  }
+  /* Constrain the top header bar and make elements wrap neatly */
+  header, nav, .header, .top-bar, .hero-section {
+  }
+  /* Neutralize runaway coordinates on the Mobile Keyboard toggle */
+  button:has-text('Mobile Keyboard'),
+  [id*='keyboard'],
+  [class*='keyboard'],
+  [class*='toggle'] {
+  }
+</style>
+
 </head>
 <body>
   <div class="card">
