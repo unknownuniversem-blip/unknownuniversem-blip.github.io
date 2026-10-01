@@ -207,37 +207,46 @@
       line-height: 1.4;
       margin-bottom: 8px;
     }
-    .eg-list {
+    
+    /* Structured Step Visuals in Lessons */
+    .eg-step-box {
       background: #f1f8e9;
       border: 1px solid #c5e1a5;
       border-radius: 6px;
-      padding: 8px 10px;
+      padding: 10px;
       font-size: 12px;
       font-family: monospace;
-      color: #2e7d32;
+      color: #1b5e20;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
       margin-bottom: 8px;
+      line-height: 1.5;
     }
+    .step-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .step-arrow { color: var(--primary); font-weight: bold; }
 
-    /* Hand-to-Hand Inline Practice Box */
+    /* Infinite Hand-to-Hand Practice Box */
     .inline-practice {
       background: #e0f2f1;
       border: 1px dashed var(--primary);
       border-radius: 8px;
       padding: 10px;
-      margin-top: 6px;
+      margin-top: 8px;
     }
     .inline-row {
       display: flex;
       align-items: center;
-      gap: 8px;
-      margin-top: 4px;
+      gap: 6px;
+      margin-top: 6px;
     }
     .inline-input {
-      width: 90px;
-      padding: 6px 8px;
+      width: 80px;
+      padding: 6px 4px;
       border: 1px solid var(--border);
       border-radius: 6px;
       font-size: 14px;
@@ -249,7 +258,7 @@
       background: var(--primary);
       color: #fff;
       border: none;
-      padding: 6px 12px;
+      padding: 6px 10px;
       border-radius: 6px;
       font-size: 12px;
       font-weight: 700;
@@ -426,8 +435,31 @@
       background: #fff;
       border-radius: 20px 20px 0 0;
       padding: 20px 18px 30px 18px;
-      max-height: 75vh;
+      max-height: 80vh;
       overflow-y: auto;
+    }
+
+    /* Error Log Review Section */
+    .error-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 8px;
+      text-align: left;
+    }
+    .error-card.is-wrong { border-left: 4px solid var(--wrong); }
+    .error-card.is-correct { border-left: 4px solid var(--correct); }
+    .error-step-box {
+      background: #fff3e0;
+      border: 1px solid #ffe0b2;
+      border-radius: 6px;
+      padding: 8px;
+      margin-top: 6px;
+      font-size: 11px;
+      font-family: monospace;
+      color: #e65100;
+      line-height: 1.4;
     }
 
     .hidden { display: none !important; }
@@ -458,7 +490,7 @@
       <div id="tab-learn-btn" class="tab-btn" onclick="switchTab('learn')">LEARNING & TRICKS</div>
     </div>
 
-    <!-- TAB 1: PRACTICE & EXAM TESTS (DEFAULT TAB) -->
+    <!-- TAB 1: PRACTICE & EXAM TESTS -->
     <div id="tab-practice" class="scroll-body">
       <div class="group-title">
         <span>Level / Difficulty</span>
@@ -528,7 +560,7 @@
     <div id="tab-learn" class="scroll-body hidden">
       <div class="vertical-topics">
         
-        <!-- Accordion 1: Addition Vedic Mastery (5 Lessons with 5+ Examples & Hand-to-Hand Practice) -->
+        <!-- Accordion 1: Addition -->
         <div class="topic-card">
           <div class="topic-header" onclick="toggleAccordion('acc-add')">
             <span>➕ Addition Vedic Tricks (5 Lessons)</span>
@@ -537,7 +569,7 @@
           <div id="acc-add" class="topic-content hidden"></div>
         </div>
 
-        <!-- Accordion 2: Subtraction Vedic Mastery -->
+        <!-- Accordion 2: Subtraction -->
         <div class="topic-card">
           <div class="topic-header" onclick="toggleAccordion('acc-sub')">
             <span>➖ Subtraction Vedic Tricks (5 Lessons)</span>
@@ -546,7 +578,7 @@
           <div id="acc-sub" class="topic-content hidden"></div>
         </div>
 
-        <!-- Accordion 3: Multiplication Vedic Mastery -->
+        <!-- Accordion 3: Multiplication -->
         <div class="topic-card">
           <div class="topic-header" onclick="toggleAccordion('acc-mul')">
             <span>✖️ Multiplication Vedic Tricks (5 Lessons)</span>
@@ -555,7 +587,7 @@
           <div id="acc-mul" class="topic-content hidden"></div>
         </div>
 
-        <!-- Accordion 4: Division Vedic Mastery -->
+        <!-- Accordion 4: Division -->
         <div class="topic-card">
           <div class="topic-header" onclick="toggleAccordion('acc-div')">
             <span>➗ Division Vedic Tricks (5 Lessons)</span>
@@ -564,16 +596,16 @@
           <div id="acc-div" class="topic-content hidden"></div>
         </div>
 
-        <!-- Accordion 5: % to Fractions & Vice Versa -->
+        <!-- Accordion 5: Fractions -->
         <div class="topic-card">
           <div class="topic-header" onclick="toggleAccordion('acc-frac')">
-            <span>📊 Percentage ↔ Fraction Chart (Exam Vital)</span>
+            <span>📊 Percentage ↔ Fraction Chart</span>
             <span id="icon-acc-frac">▾</span>
           </div>
           <div id="acc-frac" class="topic-content hidden"></div>
         </div>
 
-        <!-- Accordion 6: Squares (1 to 100) -->
+        <!-- Accordion 6: Squares -->
         <div class="topic-card">
           <div class="topic-header" onclick="toggleAccordion('acc-sq')">
             <span>🔲 Squares (1 to 100 in Decades)</span>
@@ -582,7 +614,7 @@
           <div id="acc-sq" class="topic-content hidden"></div>
         </div>
 
-        <!-- Accordion 7: Cubes (1 to 100) -->
+        <!-- Accordion 7: Cubes -->
         <div class="topic-card">
           <div class="topic-header" onclick="toggleAccordion('acc-cb')">
             <span>🧊 Cubes (1 to 100 in Decades)</span>
@@ -591,7 +623,7 @@
           <div id="acc-cb" class="topic-content hidden"></div>
         </div>
 
-        <!-- Accordion 8: Tables (12 to 40) -->
+        <!-- Accordion 8: Tables -->
         <div class="topic-card">
           <div class="topic-header" onclick="toggleAccordion('acc-tb')">
             <span>🔢 Multiplication Tables (12 to 40)</span>
@@ -660,8 +692,8 @@
   <div id="modal-hint" class="hint-modal hidden" onclick="closeHintModal()">
     <div class="hint-sheet" onclick="event.stopPropagation()">
       <div style="width:36px; height:4px; background:#cfd8dc; border-radius:2px; margin:0 auto 14px auto;"></div>
-      <h3 style="color:var(--teal-header); font-size:18px; margin-bottom:8px;">Vedic / Exam Shortcut</h3>
-      <div id="hint-body" style="font-size:14px; line-height:1.6; color:#37474f;"></div>
+      <h3 style="color:var(--teal-header); font-size:17px; margin-bottom:8px;">Step-by-Step Mathematical Analysis</h3>
+      <div id="hint-body" style="font-size:13px; line-height:1.6; color:#37474f;"></div>
       <button onclick="closeHintModal()" class="btn-cta" style="margin-top:16px; padding:10px;">Got It</button>
     </div>
   </div>
@@ -676,18 +708,24 @@
     </div>
   </div>
 
-  <!-- ================= 6. RESULTS SCORECARD ================= -->
-  <div id="screen-result" class="scroll-body hidden" style="padding-top:40px; text-align:center;">
+  <!-- ================= 6. RESULTS & DIAGNOSTIC MISTAKE AUDIT ================= -->
+  <div id="screen-result" class="scroll-body hidden" style="padding-top:20px; text-align:center;">
     <h2 style="color:var(--teal-header);">Workout Finished</h2>
-    <div style="background:#fff; border:1px solid var(--border); border-radius:14px; padding:24px; margin:20px 0;">
-      <div id="summary-score" style="font-size:42px; font-weight:800; color:var(--teal-header);">18 / 20</div>
-      <p style="color:var(--text-muted); font-size:13px;">Total Score</p>
-      <div style="display:flex; justify-content:space-around; margin-top:20px; border-top:1px solid var(--border); padding-top:14px;">
+    
+    <div style="background:#fff; border:1px solid var(--border); border-radius:14px; padding:16px; margin:12px 0;">
+      <div id="summary-score" style="font-size:38px; font-weight:800; color:var(--teal-header);">18 / 20</div>
+      <p style="color:var(--text-muted); font-size:12px;">Final Score</p>
+      <div style="display:flex; justify-content:space-around; margin-top:14px; border-top:1px solid var(--border); padding-top:10px;">
         <div><h4 id="summary-time">01:12</h4><span style="font-size:11px; color:var(--text-muted);">Duration</span></div>
         <div><h4 id="summary-acc">90%</h4><span style="font-size:11px; color:var(--text-muted);">Accuracy</span></div>
       </div>
     </div>
-    <button class="btn-cta" onclick="backToHub()">Back to Main Menu</button>
+
+    <!-- Itemized Error & Solution Breakdown List -->
+    <div class="group-title" style="margin-top:8px;"><span>Question-by-Question Audit</span></div>
+    <div id="results-audit-list"></div>
+
+    <button class="btn-cta" onclick="backToHub()" style="margin-top:12px;">Back to Main Menu</button>
   </div>
 
 </div>
@@ -700,15 +738,15 @@
   let activeTbInterval = 12;
   let tableRevealed = true;
 
-  // Fully multi-selectable topics pool
   let workoutConfig = {
     difficulty: 'Medium',
-    selectedTopics: ['combo_4'], // allows multiple selection
+    selectedTopics: ['combo_4'],
     inputFormat: 'mcq',
-    modeType: 'questions', // 'questions', 'minute', 'bitter_end'
+    modeType: 'questions',
     limit: 20
   };
 
+  // Full session tracker including complete question log
   let session = {
     qIndex: 0,
     score: 0,
@@ -717,7 +755,9 @@
     startTime: 0,
     timerId: null,
     hasRevived: false,
-    activeHint: ''
+    activeHint: '',
+    currentExprText: '',
+    questionsLog: [] // stores { expr, correctAns, userAns, isCorrect, steps }
   };
 
   function switchTab(t) {
@@ -736,7 +776,6 @@
     document.getElementById('diff-indicator').innerText = level;
   }
 
-  /* --- Multi-Select Handlers --- */
   function toggleMultiTopic(topic, el) {
     if (workoutConfig.selectedTopics.includes(topic)) {
       if (workoutConfig.selectedTopics.length > 1) {
@@ -756,7 +795,6 @@
     document.getElementById('opt-pad').classList.toggle('active-pill', fmt === 'numpad');
   }
 
-  /* --- Fixed Workout Mode Logic --- */
   function setWorkoutMode(mode, val, el) {
     workoutConfig.modeType = mode;
     workoutConfig.limit = (mode === 'questions') ? 20 : val;
@@ -773,7 +811,7 @@
     document.getElementById(`icon-${id}`).innerText = isHidden ? '▴' : '▾';
   }
 
-  /* --- Dynamic Math Generator Pooling Multi-Selected Topics --- */
+  /* --- Dynamic Math Generator with Step-by-Step Math Solutions --- */
   function nextQuestion() {
     const topics = workoutConfig.selectedTopics;
     let chosenTopic = topics[Math.floor(Math.random() * topics.length)];
@@ -784,12 +822,12 @@
       chosenTopic = ops[Math.floor(Math.random() * ops.length)];
     }
 
-    let expr = "", ans = 0, hint = "";
+    let expr = "", ans = 0, hintSteps = "";
 
-    // 1. BANK & SSC EXAM SIMPLIFICATION (Real Prelims Patterns)
+    // 1. BANK & SSC EXAM SIMPLIFICATION
     if (chosenTopic === 'bank_ssc_simplification') {
       const type = Math.floor(Math.random() * 4);
-      if (type === 0) { // Percentage fraction
+      if (type === 0) {
         let pcts = [12.5, 20, 25, 33.33, 50, 75];
         let pct = pcts[Math.floor(Math.random() * pcts.length)];
         let factor = pct === 12.5 ? 8 : (pct === 33.33 ? 3 : (pct === 75 ? 4 : Math.round(100/pct)));
@@ -797,34 +835,51 @@
         let addVal = Math.floor(Math.random() * 100) + 20;
         let fracMult = pct === 75 ? 3/4 : 1/factor;
         ans = Math.round(base * fracMult) + addVal;
-        expr = `${pct}% of ${base} + ${addVal} = ?`;
-        hint = `Conversion Trick: ${pct}% = ${pct===75?'3/4':'1/'+factor}. (${base} × ${pct===75?'3/4':'1/'+factor}) + ${addVal} = ${ans}.`;
+        expr = `${pct}% of ${base} + ${addVal}`;
+        hintSteps = `
+          <strong>Step 1 (Convert % to Fraction):</strong> ${pct}% = ${pct===75 ? '3/4' : '1/'+factor}<br>
+          <strong>Step 2 (Multiply):</strong> ${base} × (${pct===75 ? '3/4' : '1/'+factor}) = ${Math.round(base * fracMult)}<br>
+          <strong>Step 3 (Add constant):</strong> ${Math.round(base * fracMult)} + ${addVal} = <strong>${ans}</strong>
+        `;
       } 
-      else if (type === 1) { // Radical + Power BODMAS
+      else if (type === 1) {
         let rootBase = Math.floor(Math.random() * 16) + 4;
         let mul = Math.floor(Math.random() * 7) + 3;
         let z = Math.floor(Math.random() * 6) + 2;
         ans = (rootBase * mul) - (z * z);
-        expr = `√${rootBase * rootBase} × ${mul} − ${z}² = ?`;
-        hint = `BODMAS Step: Evaluate √${rootBase * rootBase} = ${rootBase}, then ${rootBase} × ${mul} = ${rootBase*mul}, then subtract ${z*z}.`;
+        expr = `√${rootBase * rootBase} × ${mul} − ${z}²`;
+        hintSteps = `
+          <strong>Step 1 (Resolve Radical):</strong> √${rootBase * rootBase} = ${rootBase}<br>
+          <strong>Step 2 (Resolve Exponent):</strong> ${z}² = ${z*z}<br>
+          <strong>Step 3 (Multiplication):</strong> ${rootBase} × ${mul} = ${rootBase * mul}<br>
+          <strong>Step 4 (Subtraction):</strong> ${rootBase * mul} − ${z*z} = <strong>${ans}</strong>
+        `;
       }
-      else if (type === 2) { // Exam Fraction Cancellation
+      else if (type === 2) {
         let c = Math.floor(Math.random() * 8) + 3;
         let factor = Math.floor(Math.random() * 12) + 4;
         let a = c * factor;
         let b = Math.floor(Math.random() * 8) + 2;
         let d = Math.floor(Math.random() * 120) + 15;
         ans = (factor * b) + d;
-        expr = `(${a} × ${b}) ÷ ${c} + ${d} = ?`;
-        hint = `Cancel first: ${a} ÷ ${c} = ${factor}. Multiply by ${b} (= ${factor*b}) and add ${d}.`;
+        expr = `(${a} × ${b}) ÷ ${c} + ${d}`;
+        hintSteps = `
+          <strong>Step 1 (Cancel common factor):</strong> ${a} ÷ ${c} = ${factor}<br>
+          <strong>Step 2 (Multiply):</strong> ${factor} × ${b} = ${factor * b}<br>
+          <strong>Step 3 (Add remaining):</strong> ${factor * b} + ${d} = <strong>${ans}</strong>
+        `;
       }
-      else { // Difference of consecutive squares
+      else {
         let a = Math.floor(Math.random() * 15) + 15;
         let b = a - 1;
         let c = Math.floor(Math.random() * 80) + 10;
         ans = (a + b) + c;
-        expr = `(${a}² − ${b}²) + ${c} = ?`;
-        hint = `Algebra shortcut: a² − b² = (a−b)(a+b). Since a−b=1, it is simply ${a} + ${b} + ${c} = ${ans}.`;
+        expr = `(${a}² − ${b}²) + ${c}`;
+        hintSteps = `
+          <strong>Step 1 (Formula a² − b² = (a−b)(a+b)):</strong><br>
+          (${a} − ${b}) × (${a} + ${b}) = 1 × ${a+b} = ${a+b}<br>
+          <strong>Step 2 (Add constant):</strong> ${a+b} + ${c} = <strong>${ans}</strong>
+        `;
       }
     }
 
@@ -842,13 +897,25 @@
       }
       if (chosenTopic === 'add') {
         ans = a + b;
-        expr = `${a} + ${b} = ?`;
-        hint = `Left-to-Right Addition: Add highest place values first, then sum the units.`;
+        expr = `${a} + ${b}`;
+        let aTens = Math.floor(a/10)*10, aUnits = a%10;
+        let bTens = Math.floor(b/10)*10, bUnits = b%10;
+        hintSteps = `
+          <strong>Step 1 (Partition Tens):</strong> ${aTens} + ${bTens} = ${aTens + bTens}<br>
+          <strong>Step 2 (Partition Units):</strong> ${aUnits} + ${bUnits} = ${aUnits + bUnits}<br>
+          <strong>Step 3 (Combine):</strong> ${aTens + bTens} + ${aUnits + bUnits} = <strong>${ans}</strong>
+        `;
       } else {
         if (a < b) { let t = a; a = b; b = t; }
         ans = a - b;
-        expr = `${a} − ${b} = ?`;
-        hint = `Friendly Base Subtraction: Round subtrahend up to multiple of 10, subtract, then add compensation.`;
+        expr = `${a} − ${b}`;
+        let nextRound = Math.ceil(b/10)*10;
+        let diffRound = nextRound - b;
+        hintSteps = `
+          <strong>Step 1 (Round subtrahend ${b} → ${nextRound}):</strong> Offset is +${diffRound}<br>
+          <strong>Step 2 (Subtract round base):</strong> ${a} − ${nextRound} = ${a - nextRound}<br>
+          <strong>Step 3 (Compensate offset):</strong> ${a - nextRound} + ${diffRound} = <strong>${ans}</strong>
+        `;
       }
     }
 
@@ -866,13 +933,22 @@
       }
       if (chosenTopic === 'mul') {
         ans = a * b;
-        expr = `${a} × ${b} = ?`;
-        hint = `Decomposition: Multiply ${a} by tens and units separately, then sum.`;
+        expr = `${a} × ${b}`;
+        let bTens = Math.floor(b/10)*10, bUnits = b%10;
+        hintSteps = `
+          <strong>Step 1 (Multiply by tens):</strong> ${a} × ${bTens} = ${a * bTens}<br>
+          <strong>Step 2 (Multiply by units):</strong> ${a} × ${bUnits} = ${a * bUnits}<br>
+          <strong>Step 3 (Sum components):</strong> ${a * bTens} + ${a * bUnits} = <strong>${ans}</strong>
+        `;
       } else {
         ans = a;
         let product = a * b;
-        expr = `${product} ÷ ${b} = ?`;
-        hint = `Reverse: What multiplied by ${b} equals ${product}?`;
+        expr = `${product} ÷ ${b}`;
+        hintSteps = `
+          <strong>Step 1 (Inverse multiplication):</strong> ? × ${b} = ${product}<br>
+          <strong>Step 2 (Decompose):</strong> (${b * 10} × ${Math.floor(ans/10)}) + (${b} × ${ans%10}) = ${product}<br>
+          <strong>Step 3 (Quotient):</strong> <strong>${ans}</strong>
+        `;
       }
     }
 
@@ -881,34 +957,51 @@
       let limit = diff === 'Very Easy' ? 10 : (diff === 'Easy' ? 20 : (diff === 'Medium' ? 30 : (diff === 'Above Medium' ? 50 : 100)));
       let n = Math.floor(Math.random() * (limit - 2 + 1)) + 2;
       ans = n * n;
-      expr = `${n}² = ?`;
-      hint = `Unit ending of ${n}² must be ${(ans)%10}.`;
+      expr = `${n}²`;
+      let nearestDecade = Math.round(n/10)*10;
+      let d = n - nearestDecade;
+      hintSteps = `
+        <strong>Step 1 (Base formula (n−d)(n+d) + d²):</strong><br>
+        Offset d = ${d}<br>
+        (${n} − ${d}) × (${n} + ${d}) = ${n - d} × ${n + d} = ${(n - d) * (n + d)}<br>
+        <strong>Step 2 (Add d²):</strong> ${(n - d) * (n + d)} + (${d}²) = <strong>${ans}</strong>
+      `;
     }
     else if (chosenTopic === 'cube') {
       let limit = diff === 'Very Easy' ? 5 : (diff === 'Easy' ? 10 : (diff === 'Medium' ? 15 : (diff === 'Above Medium' ? 20 : 50)));
       let n = Math.floor(Math.random() * (limit - 2 + 1)) + 2;
       ans = n * n * n;
-      expr = `${n}³ = ?`;
-      hint = `Cube Recall: End digit is ${(ans)%10}.`;
+      expr = `${n}³`;
+      hintSteps = `
+        <strong>Step 1:</strong> ${n}² = ${n * n}<br>
+        <strong>Step 2:</strong> ${n * n} × ${n} = <strong>${ans}</strong>
+      `;
     }
     else if (chosenTopic === 'sqrt') {
       let limit = diff === 'Very Easy' ? 10 : (diff === 'Easy' ? 20 : (diff === 'Medium' ? 30 : (diff === 'Above Medium' ? 50 : 100)));
       let n = Math.floor(Math.random() * (limit - 2 + 1)) + 2;
       ans = n;
-      expr = `√${n * n} = ?`;
-      hint = `Square root of ${n*n} is integer ${n}.`;
+      expr = `√${n * n}`;
+      hintSteps = `
+        <strong>Step 1:</strong> Identify integer whose square equals ${n * n}.<br>
+        <strong>Step 2:</strong> ${n} × ${n} = ${n * n} → √${n * n} = <strong>${ans}</strong>
+      `;
     }
     else if (chosenTopic === 'cbrt') {
       let limit = diff === 'Very Easy' ? 5 : (diff === 'Easy' ? 10 : (diff === 'Medium' ? 15 : 30));
       let n = Math.floor(Math.random() * (limit - 2 + 1)) + 2;
       ans = n;
-      expr = `∛${n * n * n} = ?`;
-      hint = `Cube root of ${n*n*n} is integer ${n}.`;
+      expr = `∛${n * n * n}`;
+      hintSteps = `
+        <strong>Step 1:</strong> Identify integer whose cube equals ${n * n * n}.<br>
+        <strong>Step 2:</strong> ${n}³ = ${n * n * n} → ∛${n * n * n} = <strong>${ans}</strong>
+      `;
     }
 
     session.targetAns = ans;
-    session.activeHint = hint;
-    document.getElementById('math-expr').innerText = expr;
+    session.activeHint = hintSteps;
+    session.currentExprText = expr;
+    document.getElementById('math-expr').innerText = `${expr} = ?`;
     document.getElementById('drill-level-badge').innerText = `${diff.toUpperCase()} • ${chosenTopic.toUpperCase().replace('_', ' ')}`;
     session.currentInput = '';
     document.getElementById('user-ans').innerText = '';
@@ -959,8 +1052,19 @@
     if (workoutConfig.inputFormat === 'mcq') renderMcq(session.targetAns);
   }
 
+  /* --- Verification & Session Logging Engine --- */
   function submitAnswer(chosen) {
     const isCorrect = (chosen === session.targetAns);
+    
+    // Log Question in detail
+    session.questionsLog.push({
+      expr: session.currentExprText,
+      correctAns: session.targetAns,
+      userAns: chosen,
+      isCorrect: isCorrect,
+      steps: session.activeHint
+    });
+
     if (isCorrect) {
       session.score++;
       userCoins += 5;
@@ -982,6 +1086,13 @@
   }
 
   function skipQuestion() {
+    session.questionsLog.push({
+      expr: session.currentExprText,
+      correctAns: session.targetAns,
+      userAns: 'Skipped',
+      isCorrect: false,
+      steps: session.activeHint
+    });
     session.qIndex++;
     nextQuestion();
   }
@@ -1015,6 +1126,7 @@
     session.score = 0;
     session.startTime = Date.now();
     session.hasRevived = false;
+    session.questionsLog = []; // clear previous log
 
     document.getElementById('drill-counter').innerText = `1 / ${workoutConfig.modeType === 'questions' ? workoutConfig.limit : '∞'}`;
     document.getElementById('mcq-view').classList.toggle('hidden', workoutConfig.inputFormat !== 'mcq');
@@ -1047,6 +1159,7 @@
     nextQuestion();
   }
 
+  /* --- Final Scorecard & Error Audit Screen --- */
   function finalizeSummary() {
     clearInterval(session.timerId);
     document.getElementById('modal-revive').classList.add('hidden');
@@ -1056,11 +1169,38 @@
     const totalSec = Math.floor((Date.now() - session.startTime) / 1000);
     const m = String(Math.floor(totalSec / 60)).padStart(2, '0');
     const s = String(totalSec % 60).padStart(2, '0');
-    const totalQ = Math.max(1, session.qIndex);
+    const totalQ = Math.max(1, session.questionsLog.length);
 
     document.getElementById('summary-score').innerText = `${session.score} / ${totalQ}`;
     document.getElementById('summary-time').innerText = `${m}:${s}`;
     document.getElementById('summary-acc').innerText = `${Math.round((session.score / totalQ) * 100)}%`;
+
+    // Render Question Audit List
+    const auditContainer = document.getElementById('results-audit-list');
+    auditContainer.innerHTML = '';
+    
+    session.questionsLog.forEach((item, idx) => {
+      const card = document.createElement('div');
+      card.className = `error-card ${item.isCorrect ? 'is-correct' : 'is-wrong'}`;
+      
+      let badge = item.isCorrect 
+        ? `<span style="color:var(--correct); font-weight:700;">✓ Correct</span>`
+        : `<span style="color:var(--wrong); font-weight:700;">✗ Wrong (Your answer: ${item.userAns})</span>`;
+
+      card.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <strong>Q${idx + 1}: ${item.expr} = ${item.correctAns}</strong>
+          ${badge}
+        </div>
+        ${!item.isCorrect ? `
+          <div class="error-step-box">
+            <strong>Solution Breakdown:</strong><br>
+            ${item.steps}
+          </div>
+        ` : ''}
+      `;
+      auditContainer.appendChild(card);
+    });
   }
 
   function backToHub() {
@@ -1076,274 +1216,322 @@
     document.getElementById('modal-hint').classList.add('hidden');
   }
 
-  /* --- 5 ACCURATE VEDIC LESSONS PER OPERATION WITH 5+ WORKED EXAMPLES & INLINE HAND-TO-HAND PRACTICE --- */
+  /* --- 5 Verified Vedic Lessons with Visual Steps and Infinite Practice --- */
   const verifiedVedicLessons = {
     add: [
       {
         title: "Lesson 1: Left-to-Right Partitioning (1-2 Digits)",
         desc: "Eliminate carries by adding tens place first, followed by units place.",
-        egs: [
-          "68 + 75 = (60 + 70) + (8 + 5) = 130 + 13 = 143",
-          "47 + 38 = (40 + 30) + (7 + 8) = 70 + 15 = 85",
-          "84 + 59 = (80 + 50) + (4 + 9) = 130 + 13 = 143",
-          "93 + 68 = (90 + 60) + (3 + 8) = 150 + 11 = 161",
-          "56 + 77 = (50 + 70) + (6 + 7) = 120 + 13 = 133"
+        steps: [
+          "Example: 68 + 75",
+          "Step 1: (60 + 70) = 130",
+          "Step 2: (8 + 5) = 13",
+          "Step 3: 130 + 13 → Result = 143"
         ],
-        practiceQ: "57 + 68",
-        practiceAns: 125
+        genPractice: () => {
+          let a = Math.floor(Math.random() * 50) + 25;
+          let b = Math.floor(Math.random() * 50) + 25;
+          return { q: `${a} + ${b}`, ans: a + b };
+        }
       },
       {
         title: "Lesson 2: Base 100/1000 Rounding & Compensation",
         desc: "Round numbers ending in 7, 8, 9 up to nearest clean base and subtract excess.",
-        egs: [
-          "496 + 328 = (500 + 328) − 4 = 828 − 4 = 824",
-          "298 + 445 = (300 + 445) − 2 = 745 − 2 = 743",
-          "689 + 254 = (700 + 254) − 11 = 954 − 11 = 943",
-          "895 + 432 = (900 + 432) − 5 = 1332 − 5 = 1327",
-          "1997 + 342 = (2000 + 342) − 3 = 2342 − 3 = 2339"
+        steps: [
+          "Example: 496 + 328",
+          "Step 1: Round 496 to 500 (offset: −4)",
+          "Step 2: 500 + 328 = 828",
+          "Step 3: 828 − 4 → Result = 824"
         ],
-        practiceQ: "397 + 456",
-        practiceAns: 853
+        genPractice: () => {
+          let a = [198, 297, 396, 498, 595][Math.floor(Math.random() * 5)];
+          let b = Math.floor(Math.random() * 200) + 120;
+          return { q: `${a} + ${b}`, ans: a + b };
+        }
       },
       {
         title: "Lesson 3: Twin Splitting for 3 & 4 Digits",
         desc: "Split numbers into two 2-digit manageable parts and add independently.",
-        egs: [
-          "3452 + 2341 = [34 + 23] [52 + 41] = 5793",
-          "4218 + 3524 = [42 + 35] [18 + 24] = 7742",
-          "5635 + 2142 = [56 + 21] [35 + 42] = 7777",
-          "6225 + 1630 = [62 + 16] [25 + 30] = 7855",
-          "8114 + 1472 = [81 + 14] [14 + 72] = 9586"
+        steps: [
+          "Example: 3452 + 2341",
+          "Step 1: Split into [34 + 23] and [52 + 41]",
+          "Step 2: 34 + 23 = 57",
+          "Step 3: 52 + 41 = 93",
+          "Step 4: Combine [57][93] → Result = 5793"
         ],
-        practiceQ: "2431 + 5245",
-        practiceAns: 7676
+        genPractice: () => {
+          let a1 = Math.floor(Math.random() * 30) + 20, a2 = Math.floor(Math.random() * 30) + 10;
+          let b1 = Math.floor(Math.random() * 30) + 20, b2 = Math.floor(Math.random() * 30) + 10;
+          let a = a1 * 100 + a2, b = b1 * 100 + b2;
+          return { q: `${a} + ${b}`, ans: a + b };
+        }
       },
       {
         title: "Lesson 4: Near-Decade Balance Matching",
         desc: "Transfer units between addends to make one term a round zero.",
-        egs: [
-          "68 + 44 = (68 + 2) + (44 − 2) = 70 + 42 = 112",
-          "89 + 53 = (89 + 1) + (53 − 1) = 90 + 52 = 142",
-          "138 + 64 = (138 + 2) + (64 − 2) = 140 + 62 = 202",
-          "247 + 85 = (247 + 3) + (85 − 3) = 250 + 82 = 332",
-          "419 + 73 = (419 + 1) + (73 − 1) = 420 + 72 = 492"
+        steps: [
+          "Example: 68 + 44",
+          "Step 1: Transfer 2 from 44 to 68",
+          "Step 2: (68 + 2) + (44 − 2) = 70 + 42",
+          "Step 3: 70 + 42 → Result = 112"
         ],
-        practiceQ: "79 + 46",
-        practiceAns: 125
+        genPractice: () => {
+          let a = [49, 58, 69, 78, 89][Math.floor(Math.random() * 5)];
+          let b = Math.floor(Math.random() * 40) + 23;
+          return { q: `${a} + ${b}`, ans: a + b };
+        }
       },
       {
         title: "Lesson 5: 5-Digit Pillar Column Addition",
         desc: "Group thousands block and hundreds/units block separately.",
-        egs: [
-          "42,310 + 25,480 = (42k + 25k) + (310 + 480) = 67,000 + 790 = 67,790",
-          "31,250 + 14,320 = (31k + 14k) + (250 + 320) = 45,000 + 570 = 45,570",
-          "54,120 + 23,650 = (54k + 23k) + (120 + 650) = 77,000 + 770 = 77,770",
-          "62,400 + 18,280 = (62k + 18k) + (400 + 280) = 80,000 + 680 = 80,680",
-          "73,150 + 21,340 = (73k + 21k) + (150 + 340) = 94,000 + 490 = 94,490"
+        steps: [
+          "Example: 42,310 + 25,480",
+          "Step 1: (42k + 25k) = 67,000",
+          "Step 2: (310 + 480) = 790",
+          "Step 3: 67,000 + 790 → Result = 67,790"
         ],
-        practiceQ: "23,200 + 41,350",
-        practiceAns: 64550
+        genPractice: () => {
+          let k1 = Math.floor(Math.random() * 30) + 15, k2 = Math.floor(Math.random() * 30) + 15;
+          let u1 = Math.floor(Math.random() * 400) + 100, u2 = Math.floor(Math.random() * 400) + 100;
+          let a = k1 * 1000 + u1, b = k2 * 1000 + u2;
+          return { q: `${a} + ${b}`, ans: a + b };
+        }
       }
     ],
     sub: [
       {
         title: "Lesson 1: Nikhilam (All from 9 & Last from 10)",
         desc: "Instant subtraction from clean powers of 10 without borrowing.",
-        egs: [
-          "1000 − 476 = (9−4)(9−7)(10−6) = 524",
-          "1000 − 638 = (9−6)(9−3)(10−8) = 362",
-          "10000 − 3482 = (9−3)(9−4)(9−8)(10−2) = 6518",
-          "10000 − 7125 = (9−7)(9−1)(9−2)(10−5) = 2875",
-          "100000 − 43216 = (9−4)(9−3)(9−2)(9−1)(10−6) = 56784"
+        steps: [
+          "Example: 10,000 − 3,482",
+          "Step 1: 9 − 3 = 6",
+          "Step 2: 9 − 4 = 5",
+          "Step 3: 9 − 8 = 1",
+          "Step 4: 10 − 2 = 8 → Result = 6518"
         ],
-        practiceQ: "1000 − 384",
-        practiceAns: 616
+        genPractice: () => {
+          let n = Math.floor(Math.random() * 800) + 120;
+          return { q: `1000 − ${n}`, ans: 1000 - n };
+        }
       },
       {
         title: "Lesson 2: Friendly Base Subtraction (Adding Same Offset)",
         desc: "Add compensation to both numbers to turn subtrahend into a round 10 or 100.",
-        egs: [
-          "83 − 47 = (83 + 3) − (47 + 3) = 86 − 50 = 36",
-          "92 − 38 = (92 + 2) − (38 + 2) = 94 − 40 = 54",
-          "145 − 68 = (145 + 2) − (68 + 2) = 147 − 70 = 77",
-          "234 − 79 = (234 + 1) − (79 + 1) = 235 − 80 = 155",
-          "362 − 88 = (362 + 2) − (88 + 2) = 364 − 90 = 274"
+        steps: [
+          "Example: 83 − 47",
+          "Step 1: Add 3 to both sides: (83 + 3) − (47 + 3)",
+          "Step 2: 86 − 50",
+          "Step 3: 86 − 50 → Result = 36"
         ],
-        practiceQ: "85 − 39",
-        practiceAns: 46
+        genPractice: () => {
+          let b = [28, 37, 49, 58, 69][Math.floor(Math.random() * 5)];
+          let a = b + Math.floor(Math.random() * 40) + 15;
+          return { q: `${a} − ${b}`, ans: a - b };
+        }
       },
       {
         title: "Lesson 3: Left-to-Right Borrow Elimination",
         desc: "Subtract from highest place value left to right, decrementing 1 if next needs borrow.",
-        egs: [
-          "74 − 38 = (7−3=4, but 4<8 so drop to 3) [14−8=6] = 36",
-          "83 − 29 = (8−2=6, drop to 5) [13−9=4] = 54",
-          "92 − 46 = (9−4=5, drop to 4) [12−6=6] = 46",
-          "65 − 17 = (6−1=5, drop to 4) [15−7=8] = 48",
-          "91 − 35 = (9−3=6, drop to 5) [11−5=6] = 56"
+        steps: [
+          "Example: 74 − 38",
+          "Step 1: (7 − 3) = 4, but 4 < 8 so drop to 3",
+          "Step 2: Units: (14 − 8) = 6",
+          "Step 3: Combine → Result = 36"
         ],
-        practiceQ: "82 − 37",
-        practiceAns: 45
+        genPractice: () => {
+          let a = Math.floor(Math.random() * 50) + 45;
+          let b = Math.floor(Math.random() * 30) + 18;
+          return { q: `${a} − ${b}`, ans: a - b };
+        }
       },
       {
         title: "Lesson 4: Subtraction Across Multiples of 100",
         desc: "Count forward from subtrahend to round hundreds then to target.",
-        egs: [
-          "524 − 380 = (380 to 400 = 20) + (400 to 524 = 124) = 144",
-          "715 − 490 = (490 to 500 = 10) + (500 to 715 = 215) = 225",
-          "432 − 195 = (195 to 200 = 5) + (200 to 432 = 232) = 237",
-          "850 − 585 = (585 to 600 = 15) + (600 to 850 = 250) = 265",
-          "620 − 275 = (275 to 300 = 25) + (300 to 620 = 320) = 345"
+        steps: [
+          "Example: 524 − 380",
+          "Step 1: 380 to 400 = 20",
+          "Step 2: 400 to 524 = 124",
+          "Step 3: 20 + 124 → Result = 144"
         ],
-        practiceQ: "630 − 385",
-        practiceAns: 245
+        genPractice: () => {
+          let base = Math.floor(Math.random() * 3) + 3;
+          let b = (base * 100) - Math.floor(Math.random() * 25) - 5;
+          let a = (base * 100) + Math.floor(Math.random() * 60) + 15;
+          return { q: `${a} − ${b}`, ans: a - b };
+        }
       },
       {
         title: "Lesson 5: 4 & 5-Digit Chunk Subtraction",
         desc: "Chunk into pairs of 2-digits for rapid mental resolution.",
-        egs: [
-          "5420 − 2110 = [54 − 21] [20 − 10] = 3310",
-          "6845 − 3220 = [68 − 32] [45 − 20] = 3625",
-          "7590 − 4140 = [75 − 41] [90 − 40] = 3450",
-          "8674 − 3422 = [86 − 34] [74 − 22] = 5252",
-          "9560 − 4230 = [95 − 42] [60 − 30] = 5330"
+        steps: [
+          "Example: 5420 − 2110",
+          "Step 1: [54 − 21] = 33",
+          "Step 2: [20 − 10] = 10",
+          "Step 3: Combine [33][10] → Result = 3310"
         ],
-        practiceQ: "7450 − 3120",
-        practiceAns: 4330
+        genPractice: () => {
+          let a1 = Math.floor(Math.random() * 30) + 40, a2 = Math.floor(Math.random() * 30) + 30;
+          let b1 = Math.floor(Math.random() * 20) + 10, b2 = Math.floor(Math.random() * 20) + 10;
+          let a = a1 * 100 + a2, b = b1 * 100 + b2;
+          return { q: `${a} − ${b}`, ans: a - b };
+        }
       }
     ],
     mul: [
       {
         title: "Lesson 1: Multiply by 5, 25, 50, 125 (Power of 2 Division)",
         desc: "Convert multiplication into division by powers of 2.",
-        egs: [
-          "48 × 5 = (48 ÷ 2) × 10 = 24 × 10 = 240",
-          "64 × 25 = (64 ÷ 4) × 100 = 16 × 100 = 1600",
-          "82 × 50 = (82 ÷ 2) × 100 = 41 × 100 = 4100",
-          "72 × 125 = (72 ÷ 8) × 1000 = 9 × 1000 = 9000",
-          "36 × 25 = (36 ÷ 4) × 100 = 9 × 100 = 900"
+        steps: [
+          "Example: 64 × 25",
+          "Step 1: 25 = 100 ÷ 4",
+          "Step 2: 64 ÷ 4 = 16",
+          "Step 3: 16 × 100 → Result = 1600"
         ],
-        practiceQ: "56 × 25",
-        practiceAns: 1400
+        genPractice: () => {
+          let n = (Math.floor(Math.random() * 20) + 4) * 4;
+          return { q: `${n} × 25`, ans: n * 25 };
+        }
       },
       {
         title: "Lesson 2: Base 100 Multiplication (Near 100)",
         desc: "Add cross-deficit and append product of deviations.",
-        egs: [
-          "104 × 107 = (104 + 7) | (4 × 7) = 111 | 28 = 11,128",
-          "103 × 106 = (103 + 6) | (3 × 6) = 109 | 18 = 10,918",
-          "96 × 94 = (96 − 6) | (−4 × −6) = 90 | 24 = 9,024",
-          "98 × 93 = (98 − 7) | (−2 × −7) = 91 | 14 = 9,114",
-          "105 × 108 = (105 + 8) | (5 × 8) = 113 | 40 = 11,340"
+        steps: [
+          "Example: 104 × 107",
+          "Step 1: Deviations from 100 are +4 and +7",
+          "Step 2: Cross sum: 104 + 7 = 111",
+          "Step 3: Product of deviations: 4 × 7 = 28",
+          "Step 4: Combine [111][28] → Result = 11,128"
         ],
-        practiceQ: "103 × 105",
-        practiceAns: 10815
+        genPractice: () => {
+          let a = Math.floor(Math.random() * 6) + 102;
+          let b = Math.floor(Math.random() * 6) + 102;
+          return { q: `${a} × ${b}`, ans: a * b };
+        }
       },
       {
         title: "Lesson 3: Urdhva-Tiryagbhyam (2-Digit Crosswise)",
         desc: "Straight units, crosswise sum, straight tens.",
-        egs: [
-          "23 × 14 = (2×1) | (2×4 + 3×1) | (3×4) = 2 | 11 | 12 = 322",
-          "21 × 32 = (2×3) | (2×2 + 1×3) | (1×2) = 6 | 7 | 2 = 672",
-          "31 × 23 = (3×2) | (3×3 + 1×2) | (1×3) = 6 | 11 | 3 = 713",
-          "42 × 21 = (4×2) | (4×1 + 2×2) | (2×1) = 8 | 8 | 2 = 882",
-          "34 × 12 = (3×1) | (3×2 + 4×1) | (4×2) = 3 | 10 | 8 = 408"
+        steps: [
+          "Example: 23 × 14",
+          "Step 1: Units: 3 × 4 = 12 (write 2, carry 1)",
+          "Step 2: Crosswise: (2×4) + (3×1) + 1 = 12 (write 2, carry 1)",
+          "Step 3: Tens: (2 × 1) + 1 = 3",
+          "Step 4: Combine → Result = 322"
         ],
-        practiceQ: "31 × 22",
-        practiceAns: 682
+        genPractice: () => {
+          let a = Math.floor(Math.random() * 20) + 12;
+          let b = Math.floor(Math.random() * 20) + 12;
+          return { q: `${a} × ${b}`, ans: a * b };
+        }
       },
       {
         title: "Lesson 4: Rapid Multiplication by 11 & 111",
         desc: "Sandwich intermediate sums between outside digits.",
-        egs: [
-          "34 × 11 = 3 | (3+4) | 4 = 374",
-          "52 × 11 = 5 | (5+2) | 2 = 572",
-          "63 × 11 = 6 | (6+3) | 3 = 693",
-          "75 × 11 = 7 | (7+5=12 carry 1) | 5 = 825",
-          "123 × 11 = 1 | (1+2) | (2+3) | 3 = 1353"
+        steps: [
+          "Example: 52 × 11",
+          "Step 1: Leading digit = 5",
+          "Step 2: Middle digit = (5 + 2) = 7",
+          "Step 3: Ending digit = 2",
+          "Step 4: Combine [5][7][2] → Result = 572"
         ],
-        practiceQ: "43 × 11",
-        practiceAns: 473
+        genPractice: () => {
+          let n = Math.floor(Math.random() * 60) + 15;
+          return { q: `${n} × 11`, ans: n * 11 };
+        }
       },
       {
         title: "Lesson 5: Same Tens Digit & Units Adding to 10",
         desc: "Multiply tens by (tens + 1), append product of units.",
-        egs: [
-          "34 × 36 = [3 × 4] | [4 × 6] = 12 | 24 = 1,224",
-          "43 × 47 = [4 × 5] | [3 × 7] = 20 | 21 = 2,021",
-          "62 × 68 = [6 × 7] | [2 × 8] = 42 | 16 = 4,216",
-          "71 × 79 = [7 × 8] | [1 × 9] = 56 | 09 = 5,609",
-          "85 × 85 = [8 × 9] | [5 × 5] = 72 | 25 = 7,225"
+        steps: [
+          "Example: 43 × 47",
+          "Step 1: Left block: 4 × (4 + 1) = 4 × 5 = 20",
+          "Step 2: Right block: 3 × 7 = 21",
+          "Step 3: Combine [20][21] → Result = 2021"
         ],
-        practiceQ: "53 × 57",
-        practiceAns: 3021
+        genPractice: () => {
+          let t = Math.floor(Math.random() * 7) + 2;
+          let u1 = Math.floor(Math.random() * 8) + 1;
+          let u2 = 10 - u1;
+          let a = t * 10 + u1, b = t * 10 + u2;
+          return { q: `${a} × ${b}`, ans: a * b };
+        }
       }
     ],
     div: [
       {
         title: "Lesson 1: Divide by 5 (Double and Shift Decimal)",
         desc: "Never divide by 5 directly. Multiply by 2 and divide by 10.",
-        egs: [
-          "140 ÷ 5 = (140 × 2) ÷ 10 = 280 ÷ 10 = 28",
-          "235 ÷ 5 = (235 × 2) ÷ 10 = 470 ÷ 10 = 47",
-          "342 ÷ 5 = (342 × 2) ÷ 10 = 684 ÷ 10 = 68.4",
-          "610 ÷ 5 = (610 × 2) ÷ 10 = 1220 ÷ 10 = 122",
-          "425 ÷ 5 = (425 × 2) ÷ 10 = 850 ÷ 10 = 85"
+        steps: [
+          "Example: 235 ÷ 5",
+          "Step 1: 235 × 2 = 470",
+          "Step 2: Shift decimal left by 1: 470 ÷ 10",
+          "Step 3: Result = 47"
         ],
-        practiceQ: "320 ÷ 5",
-        practiceAns: 64
+        genPractice: () => {
+          let n = (Math.floor(Math.random() * 60) + 10) * 5;
+          return { q: `${n} ÷ 5`, ans: n / 5 };
+        }
       },
       {
         title: "Lesson 2: Divide by 25 & 50 (Quadruple / Double & Shift)",
         desc: "Multiply by 4 (for 25) or by 2 (for 50), then shift decimal 2 places left.",
-        egs: [
-          "350 ÷ 50 = (350 × 2) ÷ 100 = 700 ÷ 100 = 7",
-          "8250 ÷ 50 = (8250 × 2) ÷ 100 = 16500 ÷ 100 = 165",
-          "450 ÷ 25 = (450 × 4) ÷ 100 = 1800 ÷ 100 = 18",
-          "1200 ÷ 25 = (1200 × 4) ÷ 100 = 4800 ÷ 100 = 48",
-          "2100 ÷ 50 = (2100 × 2) ÷ 100 = 4200 ÷ 100 = 42"
+        steps: [
+          "Example: 8250 ÷ 50",
+          "Step 1: 8250 × 2 = 16,500",
+          "Step 2: Shift decimal left by 2: 16,500 ÷ 100",
+          "Step 3: Result = 165"
         ],
-        practiceQ: "650 ÷ 50",
-        practiceAns: 13
+        genPractice: () => {
+          let n = (Math.floor(Math.random() * 50) + 10) * 50;
+          return { q: `${n} ÷ 50`, ans: n / 50 };
+        }
       },
       {
         title: "Lesson 3: Divisor Factor Cancellation",
-        desc: "Break composite divisor into small prime factors for consecutive mental cuts.",
-        egs: [
-          "432 ÷ 18 = (432 ÷ 9) ÷ 2 = 48 ÷ 2 = 24",
-          "648 ÷ 24 = (648 ÷ 8) ÷ 3 = 81 ÷ 3 = 27",
-          "540 ÷ 36 = (540 ÷ 9) ÷ 4 = 60 ÷ 4 = 15",
-          "840 ÷ 28 = (840 ÷ 7) ÷ 4 = 120 ÷ 4 = 30",
-          "960 ÷ 16 = (960 ÷ 4) ÷ 4 = 240 ÷ 4 = 60"
+        desc: "Break composite divisor into small prime factors for consecutive cuts.",
+        steps: [
+          "Example: 432 ÷ 18",
+          "Step 1: 18 = 9 × 2",
+          "Step 2: 432 ÷ 9 = 48",
+          "Step 3: 48 ÷ 2 → Result = 24"
         ],
-        practiceQ: "576 ÷ 18",
-        practiceAns: 32
+        genPractice: () => {
+          let factor = Math.floor(Math.random() * 15) + 12;
+          let divisor = [12, 14, 16, 18, 24][Math.floor(Math.random() * 5)];
+          let dividend = factor * divisor;
+          return { q: `${dividend} ÷ ${divisor}`, ans: factor };
+        }
       },
       {
         title: "Lesson 4: Division by 9 (Vedic Prefix Sum)",
         desc: "Quotient digits formed by consecutive running sums of digits.",
-        egs: [
-          "123 ÷ 9 = Q: 1 | (1+2=3) = 13, R: 1+2+3 = 6 (13 R 6)",
-          "134 ÷ 9 = Q: 1 | (1+3=4) = 14, R: 1+3+4 = 8 (14 R 8)",
-          "211 ÷ 9 = Q: 2 | (2+1=3) = 23, R: 2+1+1 = 4 (23 R 4)",
-          "312 ÷ 9 = Q: 3 | (3+1=4) = 34, R: 3+1+2 = 6 (34 R 6)",
-          "421 ÷ 9 = Q: 4 | (4+2=6) = 46, R: 4+2+1 = 7 (46 R 7)"
+        steps: [
+          "Example: 134 ÷ 9",
+          "Step 1: 1st quotient digit = 1",
+          "Step 2: 2nd quotient digit = (1 + 3) = 4",
+          "Step 3: Remainder = (1 + 3 + 4) = 8",
+          "Step 4: Result = 14 (Remainder 8)"
         ],
-        practiceQ: "231 ÷ 9 (Quotient)",
-        practiceAns: 25
+        genPractice: () => {
+          let q = Math.floor(Math.random() * 30) + 10;
+          let dividend = q * 9;
+          return { q: `${dividend} ÷ 9`, ans: q };
+        }
       },
       {
         title: "Lesson 5: Dhwajank (Flag Method) Principles",
         desc: "Keep first digit of divisor as operating divisor and rest as flag multiplier.",
-        egs: [
-          "144 ÷ 12: Divisor 1, Flag 2. Solved in 1 step.",
-          "864 ÷ 24: Divisor 2, Flag 4. Mental quotient 36.",
-          "912 ÷ 38: Divisor 3, Flag 8. Mental quotient 24.",
-          "1128 ÷ 47: Divisor 4, Flag 7. Mental quotient 24.",
-          "1728 ÷ 72: Divisor 7, Flag 2. Mental quotient 24."
+        steps: [
+          "Example: 864 ÷ 24",
+          "Step 1: Divisor = 2, Flag = 4",
+          "Step 2: 8 ÷ 2 = 4 (adjust for flag)",
+          "Step 3: Reduced to mental single-digit division → Result = 36"
         ],
-        practiceQ: "432 ÷ 24",
-        practiceAns: 18
+        genPractice: () => {
+          let q = Math.floor(Math.random() * 20) + 12;
+          let dividend = q * 24;
+          return { q: `${dividend} ÷ 24`, ans: q };
+        }
       }
     ]
   };
@@ -1353,20 +1541,30 @@
     if (!c) return;
     const lessons = verifiedVedicLessons[op];
     let html = '';
+    
     lessons.forEach((l, idx) => {
-      let egItems = l.egs.map(e => `<div>• ${e}</div>`).join('');
+      let stepLines = l.steps.map(s => `
+        <div class="step-line">
+          <span class="step-arrow">→</span>
+          <span>${s}</span>
+        </div>
+      `).join('');
+
       html += `
         <div class="lesson-item">
           <h4>${l.title}</h4>
           <p>${l.desc}</p>
-          <div class="eg-list">${egItems}</div>
+          <div class="eg-step-box">${stepLines}</div>
           
           <div class="inline-practice">
-            <span style="font-size:11px; font-weight:700; color:var(--primary-dark);">TRY HAND-TO-HAND NOW:</span>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:11px; font-weight:700; color:var(--primary-dark);">PRACTICE NOW (INFINITE DRILLS):</span>
+              <button onclick="newInlineDrill('${op}', ${idx})" style="background:none; border:none; color:var(--teal-header); font-weight:700; font-size:11px; cursor:pointer;">↻ Next Drill</button>
+            </div>
             <div class="inline-row">
-              <span style="font-weight:700; font-size:13px;">${l.practiceQ} = </span>
+              <span id="drill-label-${op}-${idx}" style="font-weight:700; font-size:13px;">...</span>
               <input type="number" id="inline-${op}-${idx}" class="inline-input" placeholder="?">
-              <button class="inline-btn" onclick="checkInlinePractice('${op}', ${idx}, ${l.practiceAns})">Check</button>
+              <button class="inline-btn" onclick="checkInlinePractice('${op}', ${idx})">Check</button>
               <span id="res-${op}-${idx}" style="font-size:12px; font-weight:700; margin-left:4px;"></span>
             </div>
           </div>
@@ -1374,11 +1572,35 @@
       `;
     });
     c.innerHTML = html;
+
+    // Initialize first drills
+    lessons.forEach((_, idx) => newInlineDrill(op, idx));
   }
 
-  function checkInlinePractice(op, idx, correct) {
+  // Active state for inline infinite lesson drills
+  let inlineDrillsState = {};
+
+  function newInlineDrill(op, idx) {
+    const lesson = verifiedVedicLessons[op][idx];
+    const drill = lesson.genPractice();
+    inlineDrillsState[`${op}_${idx}`] = drill.ans;
+
+    const label = document.getElementById(`drill-label-${op}-${idx}`);
+    const input = document.getElementById(`inline-${op}-${idx}`);
+    const res = document.getElementById(`res-${op}-${idx}`);
+
+    if (label && input && res) {
+      label.innerText = `${drill.q} = `;
+      input.value = '';
+      res.innerText = '';
+    }
+  }
+
+  function checkInlinePractice(op, idx) {
     const inp = document.getElementById(`inline-${op}-${idx}`);
     const res = document.getElementById(`res-${op}-${idx}`);
+    const correct = inlineDrillsState[`${op}_${idx}`];
+
     if (parseInt(inp.value, 10) === correct) {
       res.innerText = "✓ Correct!";
       res.style.color = "var(--correct)";
@@ -1527,7 +1749,7 @@
     });
   }
 
-  // Pre-populate 5 authentic Vedic lessons per operation
+  // Pre-populate lessons
   render5VedicLessons('acc-add', 'add');
   render5VedicLessons('acc-sub', 'sub');
   render5VedicLessons('acc-mul', 'mul');
