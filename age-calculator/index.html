@@ -1,1 +1,49 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Age Calculator · Master Hub</title><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>"><style>body{margin:0;font-family:system-ui,sans-serif;background:linear-gradient(145deg,#f7f9fc,#e9eef4);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box}.w{max-width:520px;width:100%;background:#fff;border-radius:2rem;padding:2rem;box-shadow:0 20px 40px -10px rgba(30,40,60,.15)}h1{margin:0 0 1rem;color:#1e2b3c;font-size:1.5rem}label{display:block;color:#5a6f88;font-size:.85rem;font-weight:600;margin-top:.8rem}input{width:100%;padding:.8rem;border:1px solid #d5e0ed;border-radius:12px;box-sizing:border-box;margin-top:.3rem}button{background:#1e3b5c;color:#fff;border:none;padding:.8rem;border-radius:12px;font-weight:600;cursor:pointer;width:100%;margin-top:1rem}.res{background:linear-gradient(135deg,#1e3b5c,#2f5575);color:#fff;border-radius:1.2rem;padding:1.5rem;margin-top:1rem;text-align:center;display:none}.res .big{font-size:2rem;font-weight:700;margin:.4rem 0}.res .row{display:flex;justify-content:space-around;font-size:.85rem;opacity:.9;margin-top:.6rem}.res b{display:block;font-size:1.2rem}a{display:block;text-align:center;margin-top:1rem;color:#5a6f88;text-decoration:none;font-size:.85rem}.extra{background:#f6f9fd;color:#3e5a7a;padding:.8rem;border-radius:12px;margin-top:.6rem;font-size:.85rem;text-align:left;line-height:1.7}</style></head><body><div class="w"><h1>🎂 Age Calculator</h1><label>Date of Birth</label><input type="date" id="dob"><label>As on</label><input type="date" id="asof"><button onclick="calc()">Calculate</button><div class="res" id="res"><div>Your Age</div><div class="big" id="big">—</div><div class="row"><div>Months<b id="m">0</b></div><div>Days<b id="d">0</b></div><div>Total Days<b id="td">0</b></div></div></div><div class="extra" id="extra" style="display:none"></div><a href="../">← Back</a></div><script>const $=i=>document.getElementById(i);$("asof").valueAsDate=new Date();const zodiac=[[120,"Capricorn ♑"],[219,"Aquarius ♒"],[320,"Pisces ♓"],[420,"Aries ♈"],[521,"Taurus ♉"],[621,"Gemini ♊"],[723,"Cancer ♋"],[823,"Leo ♌"],[923,"Virgo ♍"],[1023,"Libra ♎"],[1122,"Scorpio ♏"],[1222,"Sagittarius ♐"],[1231,"Capricorn ♑"]];function z(d){const k=(d.getMonth()+1)*100+d.getDate();for(const[v,n]of zodiac)if(k<=v)return n;return"Capricorn ♑"}function calc(){const dob=new Date($("dob").value),ao=new Date($("asof").value);if(isNaN(dob)||isNaN(ao)||dob>ao)return alert("Check dates");let y=ao.getFullYear()-dob.getFullYear(),m=ao.getMonth()-dob.getMonth(),d=ao.getDate()-dob.getDate();if(d<0){m--;d+=new Date(ao.getFullYear(),ao.getMonth(),0).getDate()}if(m<0){y--;m+=12}const td=Math.floor((ao-dob)/86400000);$("big").textContent=y+" years";$("m").textContent=m;$("d").textContent=d;$("td").textContent=td.toLocaleString();$("res").style.display="block";const days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];const born=days[dob.getDay()];const next=new Date(ao.getFullYear(),dob.getMonth(),dob.getDate());if(next<ao)next.setFullYear(ao.getFullYear()+1);const daysToNext=Math.ceil((next-ao)/86400000);const totalHours=td*24;$("extra").innerHTML="🎯 <b>Zodiac:</b> "+z(dob)+"<br>📅 <b>Born on:</b> "+born+"<br>⏰ <b>Next birthday in:</b> "+daysToNext+" days<br>🕐 <b>Total hours lived:</b> "+totalHours.toLocaleString();$("extra").style.display="block"}</script></body></html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5"><title>Age Calculator · Master Hub</title><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>"><style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:system-ui,sans-serif;background:radial-gradient(circle at 20% 10%,#eef4fb,#dde6f2);min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:clamp(8px,1.5vw,16px);overflow:hidden}
+.w{width:100%;max-width:480px;background:rgba(255,255,255,.88);backdrop-filter:blur(20px);border-radius:clamp(18px,3.5vw,28px);padding:clamp(16px,2.5vw,26px);box-shadow:0 30px 60px -20px rgba(20,40,80,.25);position:relative;max-height:96vh;max-height:96dvh;display:flex;flex-direction:column}
+.hub{position:absolute;top:12px;left:12px;background:#1e3b5c;color:#fff;text-decoration:none;font-size:.7rem;font-weight:600;padding:5px 11px;border-radius:999px;box-shadow:0 4px 12px rgba(30,59,92,.35)}
+h1{margin:6px 0 2px;color:#1e2b3c;font-size:clamp(1.15rem,3.6vw,1.45rem);text-align:center;font-weight:700}
+.sub{text-align:center;color:#5a6f88;font-size:.78rem;margin-bottom:10px}
+label{display:block;color:#5a6f88;font-size:.72rem;font-weight:600;margin-top:8px;text-transform:uppercase;letter-spacing:.05em}
+input{width:100%;padding:clamp(9px,2vw,12px) 14px;border:1px solid #d5e0ed;border-radius:12px;box-sizing:border-box;font-size:clamp(.85rem,2.2vw,.95rem);background:#fff;font-family:inherit;transition:.15s}
+input:focus{outline:none;border-color:#1e3b5c;box-shadow:0 0 0 3px rgba(30,59,92,.12)}
+.btn{background:linear-gradient(135deg,#1e3b5c,#2f5575);color:#fff;border:none;padding:clamp(10px,2.2vw,13px);border-radius:13px;font-weight:600;cursor:pointer;width:100%;margin-top:10px;font-size:.9rem;box-shadow:0 8px 20px -6px rgba(30,59,92,.5)}
+.res{background:linear-gradient(135deg,#1e3b5c,#2f5575);color:#fff;border-radius:14px;padding:clamp(10px,2vw,16px);margin-top:10px;text-align:center;display:none}
+.res .big{font-size:clamp(1.5rem,5vw,2rem);font-weight:700;margin:.2rem 0}
+.res .row{display:flex;justify-content:space-around;font-size:.75rem;opacity:.9;margin-top:.3rem}
+.res b{display:block;font-size:clamp(.95rem,2.5vw,1.15rem)}
+.extra{background:linear-gradient(135deg,#f6f9fd,#eef4fa);color:#3e5a7a;padding:10px 12px;border-radius:12px;margin-top:8px;font-size:.76rem;line-height:1.55;display:none}
+.extra b{color:#1e3b5c}
+</style></head><body>
+<div class="w">
+<a href="../" class="hub">🏠 Hub</a>
+<h1>🎂 Age Calculator</h1>
+<p class="sub">Exact age + zodiac + next birthday countdown</p>
+<label>Date of Birth</label><input type="date" id="dob">
+<label>As on</label><input type="date" id="asof">
+<button class="btn" onclick="calc()">Calculate Age</button>
+<div class="res" id="res"><div style="font-size:.75rem;opacity:.85">Your Age</div><div class="big" id="big">—</div><div class="row"><div>Months<b id="m">0</b></div><div>Days<b id="d">0</b></div><div>Total Days<b id="td">0</b></div></div></div>
+<div class="extra" id="extra"></div>
+</div>
+<script>
+const $=i=>document.getElementById(i);$("asof").valueAsDate=new Date();
+const zodiac=[[120,"Capricorn ♑"],[219,"Aquarius ♒"],[320,"Pisces ♓"],[420,"Aries ♈"],[521,"Taurus ♉"],[621,"Gemini ♊"],[723,"Cancer ♋"],[823,"Leo ♌"],[923,"Virgo ♍"],[1023,"Libra ♎"],[1122,"Scorpio ♏"],[1222,"Sagittarius ♐"],[1231,"Capricorn ♑"]];
+function z(d){const k=(d.getMonth()+1)*100+d.getDate();for(const[v,n]of zodiac)if(k<=v)return n;return"Capricorn ♑"}
+function calc(){
+  const dob=new Date($("dob").value),ao=new Date($("asof").value);
+  if(isNaN(dob)||isNaN(ao)||dob>ao)return alert("Please enter valid dates");
+  let y=ao.getFullYear()-dob.getFullYear(),m=ao.getMonth()-dob.getMonth(),d=ao.getDate()-dob.getDate();
+  if(d<0){m--;d+=new Date(ao.getFullYear(),ao.getMonth(),0).getDate()}
+  if(m<0){y--;m+=12}
+  const td=Math.floor((ao-dob)/86400000);
+  $("big").textContent=y+" years";$("m").textContent=m;$("d").textContent=d;$("td").textContent=td.toLocaleString();
+  $("res").style.display="block";
+  const days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const next=new Date(ao.getFullYear(),dob.getMonth(),dob.getDate());
+  if(next<ao)next.setFullYear(ao.getFullYear()+1);
+  const dtn=Math.ceil((next-ao)/86400000);
+  $("extra").innerHTML="🎯 <b>Zodiac:</b> "+z(dob)+"<br>📅 <b>Born on:</b> "+days[dob.getDay()]+"<br>🎈 <b>Next birthday in:</b> "+dtn+" days<br>🕐 <b>Hours lived:</b> "+(td*24).toLocaleString();
+  $("extra").style.display="block";
+}
+</script></body></html>

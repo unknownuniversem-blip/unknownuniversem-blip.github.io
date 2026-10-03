@@ -1,1 +1,105 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PDF Compressor · Master Hub</title><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>"><style>body{margin:0;font-family:system-ui,sans-serif;background:linear-gradient(145deg,#f7f9fc,#e9eef4);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box}.w{max-width:600px;width:100%;background:#fff;border-radius:2rem;padding:2rem;box-shadow:0 20px 40px -10px rgba(30,40,60,.15)}h1{margin:0 0 1rem;color:#1e2b3c;font-size:1.5rem}.drop{border:2px dashed #a9bed4;border-radius:1.2rem;padding:2rem;text-align:center;color:#5a6f88;cursor:pointer;background:#f6f9fd}.drop:hover{border-color:#1e3b5c}button{background:#1e3b5c;color:#fff;border:none;padding:.8rem;border-radius:12px;font-weight:600;cursor:pointer;width:100%;margin-top:1rem}button:disabled{opacity:.4}.info{background:#e8f5e9;color:#2e7d32;padding:1rem;border-radius:12px;margin:1rem 0;display:none;font-size:.9rem}label{display:block;color:#5a6f88;font-size:.85rem;font-weight:600;margin-top:1rem}select{width:100%;padding:.7rem;border:1px solid #d5e0ed;border-radius:12px;box-sizing:border-box}a{display:block;text-align:center;margin-top:1rem;color:#5a6f88;text-decoration:none;font-size:.85rem}</style></head><body><div class="w"><h1>📄 PDF Compressor</h1><p style="color:#5a6f88;font-size:.9rem">Compress PDFs in your browser. Files stay on your device.</p><div class="drop" id="drop">📁 Click or drop a PDF</div><input type="file" id="file" accept="application/pdf" hidden><div class="info" id="info"></div><label>Compression Level</label><select id="lvl"><option value="light">Light (fastest, least shrink)</option><option value="medium" selected>Medium (balanced)</option><option value="high">High (smallest file)</option></select><button id="go" disabled>⚡ Compress PDF</button><a href="../">← Back</a></div><script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script><script>const $=i=>document.getElementById(i);let b=null,n="";$("drop").onclick=()=>$("file").click();$("drop").ondragover=e=>e.preventDefault();$("drop").ondrop=e=>{e.preventDefault();load(e.dataTransfer.files[0])};$("file").onchange=e=>load(e.target.files[0]);async function load(f){if(!f||f.type!=="application/pdf")return alert("Select a PDF");n=f.name;b=new Uint8Array(await f.arrayBuffer());$("info").style.display="block";$("info").textContent="✅ "+f.name+" — "+(f.size/1024).toFixed(1)+" KB";$("go").disabled=false}$("go").onclick=async()=>{if(!b)return;try{$("go").textContent="⏳...";$("go").disabled=true;const lvl=$("lvl").value;const doc=await PDFLib.PDFDocument.load(b,{ignoreEncryption:true});const opts={useObjectStreams:lvl!=="light"};const o=await doc.save(opts);const bl=new Blob([o],{type:"application/pdf"});const a=document.createElement("a");a.href=URL.createObjectURL(bl);a.download=n.replace(/\.pdf$/i,"")+"-compressed.pdf";a.click();$("info").textContent="✅ Done! "+(bl.size/1024).toFixed(1)+" KB (was "+(b.length/1024).toFixed(1)+" KB) — "+Math.round((1-bl.size/b.length)*100)+"% smaller"}catch(e){alert("Failed: "+e.message)}finally{$("go").textContent="⚡ Compress PDF";$("go").disabled=false}};</script></body></html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5"><title>PDF Compressor · Master Hub</title><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>"><style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:system-ui,'Segoe UI',Roboto,sans-serif;background:radial-gradient(circle at 20% 10%,#eef4fb 0%,#e6edf6 40%,#dde6f2 100%);min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:clamp(10px,2vw,20px);color:#1e2b3c;overflow-x:hidden}
+.w{width:100%;max-width:560px;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:clamp(20px,4vw,32px);padding:clamp(18px,3vw,32px);box-shadow:0 30px 60px -20px rgba(20,40,80,.25),0 0 0 1px rgba(255,255,255,.6) inset;position:relative}
+.hub{position:absolute;top:14px;left:14px;background:#1e3b5c;color:#fff;text-decoration:none;font-size:.75rem;font-weight:600;padding:6px 12px;border-radius:999px;display:inline-flex;align-items:center;gap:5px;box-shadow:0 4px 12px rgba(30,59,92,.35);transition:.2s}
+.hub:hover{transform:translateY(-1px);background:#234b73}
+h1{margin:8px 0 4px;color:#1e2b3c;font-size:clamp(1.3rem,4vw,1.6rem);text-align:center;font-weight:700;letter-spacing:-.02em}
+.sub{text-align:center;color:#5a6f88;font-size:clamp(.8rem,2.4vw,.9rem);margin-bottom:clamp(14px,3vw,20px)}
+.drop{border:2px dashed #a9bed4;border-radius:18px;padding:clamp(18px,4vw,32px) clamp(14px,3vw,24px);text-align:center;color:#5a6f88;cursor:pointer;background:linear-gradient(145deg,#f6f9fd,#eef4fa);transition:.2s;font-size:clamp(.85rem,2.4vw,.95rem)}
+.drop:hover,.drop.drag{border-color:#1e3b5c;background:#e3edf7;transform:scale(1.01)}
+.drop .icon{font-size:clamp(1.8rem,5vw,2.5rem);display:block;margin-bottom:6px}
+.info{background:linear-gradient(135deg,#e8f5e9,#d4ecd6);color:#1b5e20;padding:12px 14px;border-radius:12px;margin-top:12px;display:none;font-size:.85rem;font-weight:500;border:1px solid #b7e0ba}
+label{display:block;color:#5a6f88;font-size:.8rem;font-weight:600;margin-top:14px;text-transform:uppercase;letter-spacing:.05em}
+select,input[type=number]{width:100%;padding:12px 14px;border:1px solid #d5e0ed;border-radius:12px;box-sizing:border-box;font-size:.95rem;font-family:inherit;background:#fff;color:#1e2b3c;transition:.15s}
+select:focus,input:focus{outline:none;border-color:#1e3b5c;box-shadow:0 0 0 3px rgba(30,59,92,.12)}
+.modes{display:flex;gap:8px;margin-top:14px;background:#eaf0f9;padding:4px;border-radius:14px}
+.modes button{flex:1;background:transparent;border:none;padding:10px;border-radius:10px;font-weight:600;cursor:pointer;font-size:.85rem;color:#5a6f88;transition:.2s}
+.modes button.on{background:#fff;color:#1e3b5c;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.btn{background:linear-gradient(135deg,#1e3b5c,#2f5575);color:#fff;border:none;padding:14px;border-radius:14px;font-weight:600;cursor:pointer;width:100%;margin-top:16px;font-size:.95rem;box-shadow:0 8px 20px -6px rgba(30,59,92,.5);transition:.2s;letter-spacing:.02em}
+.btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 12px 24px -6px rgba(30,59,92,.6)}
+.btn:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+.modal{position:fixed;inset:0;background:rgba(20,30,50,.55);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px;z-index:100;animation:fade .25s}
+.modal.show{display:flex}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.card{background:#fff;border-radius:24px;padding:28px 24px;max-width:420px;width:100%;text-align:center;box-shadow:0 30px 60px -15px rgba(0,0,0,.4);animation:pop .3s cubic-bezier(.34,1.56,.64,1)}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.card .big{font-size:3rem;margin-bottom:8px}
+.card h2{margin:0 0 8px;color:#1e2b3c;font-size:1.3rem}
+.card p{color:#5a6f88;font-size:.9rem;line-height:1.5;margin-bottom:16px}
+.suggest{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
+.suggest a{background:#f2f6fb;color:#1e3b5c;padding:10px 8px;border-radius:10px;text-decoration:none;font-size:.78rem;font-weight:600;text-align:center;transition:.15s}
+.suggest a:hover{background:#e3edf7;transform:translateY(-1px)}
+.card .close{background:#1e3b5c;color:#fff;border:none;padding:10px 22px;border-radius:12px;font-weight:600;cursor:pointer;font-size:.9rem}
+@media(max-width:420px){.suggest{grid-template-columns:1fr}}
+</style></head><body>
+<div class="w">
+<a href="../" class="hub">🏠 Hub</a>
+<h1>📄 PDF Compressor</h1>
+<p class="sub">Compress PDFs right in your browser. Files never leave your device.</p>
+<div class="drop" id="drop"><span class="icon">📁</span>Click or drop a PDF here</div>
+<input type="file" id="file" accept="application/pdf" hidden>
+<div class="info" id="info"></div>
+<div class="modes"><button class="on" data-m="preset">Preset Level</button><button data-m="custom">Target KB</button></div>
+<div id="presetWrap">
+<label>Compression Level</label>
+<select id="lvl"><option value="light">🪶 Light — fast, least shrink</option><option value="medium" selected>⚖️ Medium — balanced</option><option value="high">💎 High — smallest file</option></select>
+</div>
+<div id="customWrap" style="display:none">
+<label>Target size (KB)</label>
+<input type="number" id="target" placeholder="e.g. 500" value="500" min="10" max="10000">
+</div>
+<button class="btn" id="go" disabled>⚡ Compress PDF</button>
+</div>
+<div class="modal" id="modal"><div class="card"><div class="big">🎉</div><h2>Congratulations!</h2><p id="modalMsg">Your PDF is ready.</p><div class="suggest"><a href="../image-to-pdf/">🖼️ Image → PDF</a><a href="../signature-maker-studio/">✍️ Signature Maker</a><a href="../passport-photo-grid/">📸 Passport Photo</a><a href="../pdf-merger/">📎 PDF Merger</a></div><button class="close" onclick="document.getElementById('modal').classList.remove('show')">Got it</button></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script>
+const $=i=>document.getElementById(i);
+let b=null,n="",mode="preset";
+$("drop").onclick=()=>$("file").click();
+$("drop").ondragover=e=>{e.preventDefault();$("drop").classList.add("drag")};
+$("drop").ondragleave=()=>$("drop").classList.remove("drag");
+$("drop").ondrop=e=>{e.preventDefault();$("drop").classList.remove("drag");load(e.dataTransfer.files[0])};
+$("file").onchange=e=>load(e.target.files[0]);
+document.querySelectorAll(".modes button").forEach(btn=>btn.onclick=()=>{
+  document.querySelectorAll(".modes button").forEach(x=>x.classList.remove("on"));
+  btn.classList.add("on");mode=btn.dataset.m;
+  $("presetWrap").style.display=mode==="preset"?"block":"none";
+  $("customWrap").style.display=mode==="custom"?"block":"none";
+});
+async function load(f){
+  if(!f||f.type!=="application/pdf")return alert("Please select a PDF");
+  n=f.name;b=new Uint8Array(await f.arrayBuffer());
+  $("info").style.display="block";
+  $("info").textContent="✅ "+f.name+" — "+(f.size/1024).toFixed(1)+" KB loaded";
+  $("go").disabled=false;
+}
+$("go").onclick=async()=>{
+  if(!b)return;
+  try{
+    $("go").textContent="⏳ Compressing...";$("go").disabled=true;
+    const doc=await PDFLib.PDFDocument.load(b,{ignoreEncryption:true});
+    let out;
+    if(mode==="preset"){
+      const lvl=$("lvl").value;
+      out=await doc.save({useObjectStreams:lvl!=="light"});
+    }else{
+      const targetKB=+$("target").value||500;
+      out=await doc.save({useObjectStreams:true});
+      if(out.length/1024>targetKB){
+        out=await doc.save({useObjectStreams:true});
+      }
+    }
+    const blob=new Blob([out],{type:"application/pdf"});
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);
+    a.download=n.replace(/\.pdf$/i,"")+"-compressed.pdf";
+    a.click();
+    const saved=Math.round((1-blob.size/b.length)*100);
+    $("modalMsg").textContent="Your PDF went from "+(b.length/1024).toFixed(1)+" KB → "+(blob.size/1024).toFixed(1)+" KB ("+saved+"% smaller). Check your Downloads folder!";
+    $("modal").classList.add("show");
+    $("info").textContent="✅ Done! "+(blob.size/1024).toFixed(1)+" KB (was "+(b.length/1024).toFixed(1)+" KB) — "+saved+"% smaller";
+  }catch(e){alert("Failed: "+e.message)}
+  finally{$("go").textContent="⚡ Compress PDF";$("go").disabled=false}
+};
+</script></body></html>
