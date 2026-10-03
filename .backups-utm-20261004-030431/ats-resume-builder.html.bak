@@ -495,7 +495,7 @@
 <div style="position:fixed;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-radius:999px;padding:6px 12px;box-shadow:0 8px 24px -8px rgba(20,40,80,.25);display:flex;gap:6px;align-items:center;z-index:9998;font-family:system-ui,sans-serif;font-size:.72rem">
 <span style="color:#5a6f88;font-weight:600">Share:</span>
 <a href="https://wa.me/?text=Check%20this%20tool%3A%20https://unknownuniversem-blip.github.io/ats-resume-builder/" target="_blank" style="background:#25D366;color:#fff;text-decoration:none;padding:5px 10px;border-radius:999px;font-weight:600">💬 WhatsApp</a>
-<a href="https://t.me/share/url?url=https://unknownuniversem-blip.github.io/ats-resume-builder/?utm_source=telegram&utm_medium=share" target="_blank" style="background:#0088cc;color:#fff;text-decoration:none;padding:5px 10px;border-radius:999px;font-weight:600">✈️ Telegram</a>
+<a href="https://t.me/share/url?url=https://unknownuniversem-blip.github.io/ats-resume-builder/" target="_blank" style="background:#0088cc;color:#fff;text-decoration:none;padding:5px 10px;border-radius:999px;font-weight:600">✈️ Telegram</a>
 </div>
 </body>
 </html>

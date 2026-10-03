@@ -35,7 +35,7 @@ h1{margin:6px 0 4px;color:#1e2b3c;font-size:clamp(1.15rem,3.5vw,1.45rem);text-al
 <div class="share">
 <span style="font-size:.72rem;color:#5a6f88;align-self:center">Share:</span>
 <a class="wa" href="https://wa.me/?text=Check%20OMR%20Practice%3A%20https://unknownuniversem-blip.github.io/omr-sheet-test/" target="_blank">💬 WhatsApp</a>
-<a class="tg" href="https://t.me/share/url?url=https://unknownuniversem-blip.github.io/omr-sheet-test/?utm_source=telegram&utm_medium=share" target="_blank">✈️ Telegram</a>
+<a class="tg" href="https://t.me/share/url?url=https://unknownuniversem-blip.github.io/omr-sheet-test/" target="_blank">✈️ Telegram</a>
 </div>
 </div>
 <script>

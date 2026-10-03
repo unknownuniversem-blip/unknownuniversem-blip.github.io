@@ -37,7 +37,7 @@ input:focus,select:focus{outline:none;border-color:#7fb0e0;box-shadow:0 0 0 3px 
 <div class="share">
 <span style="font-size:.72rem;opacity:.7;align-self:center">Share:</span>
 <a class="wa" href="https://wa.me/?text=Check%20Cadence%20Pacer%3A%20https://unknownuniversem-blip.github.io/running-cadence/" target="_blank">💬 WhatsApp</a>
-<a class="tg" href="https://t.me/share/url?url=https://unknownuniversem-blip.github.io/running-cadence/?utm_source=telegram&utm_medium=share" target="_blank">✈️ Telegram</a>
+<a class="tg" href="https://t.me/share/url?url=https://unknownuniversem-blip.github.io/running-cadence/" target="_blank">✈️ Telegram</a>
 </div>
 </div>
 <script>
