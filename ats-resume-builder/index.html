@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ATS Resume Studio — Free ATS-Friendly Resume Builder for Indian Aspirants</title>
-  <meta name="description" content="Build single-column, ATS-compliant resumes for Banking, SSC, IT, and Freshers. Instant preview, no login required, print-ready PDF export.">
-  <meta name="keywords" content="ats resume builder free, single page ats resume format, fresher resume format pdf, bank po resume generator">
+  <title>ATS Resume Studio — 4 ATS Formats & PDF Builder for Indian Aspirants</title>
+  <meta name="description" content="Single-column ATS compliant resume builder. Presets for Banking, SSC, IT, and Commerce freshers. Instant print-ready A4 PDF export with zero tracking.">
   <link rel="canonical" href="https://unknownuniversem-blip.github.io/ats-resume-builder/">
   
-  <!-- Analytics -->
   <script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
   <style>
@@ -22,11 +20,10 @@
       flex-direction: column;
     }
 
-    /* Top Bar */
     header {
       background: #091122;
       border-bottom: 1px solid #1e293b;
-      padding: 12px 20px;
+      padding: 12px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -34,19 +31,9 @@
       top: 0;
       z-index: 1000;
     }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #fff;
-    }
-    .header-actions {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
+    .brand { font-size: 1.15rem; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 8px; }
+    .header-actions { display: flex; gap: 10px; align-items: center; }
+
     .btn {
       padding: 8px 16px;
       border-radius: 8px;
@@ -58,34 +45,23 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      text-decoration: none;
     }
-    .btn-download {
-      background: #22c55e;
-      color: #fff;
-    }
+    .btn-download { background: #22c55e; color: #fff; }
     .btn-download:hover { background: #16a34a; }
-    .btn-pro {
-      background: #f59e0b;
-      color: #070c18;
-    }
+    .btn-pro { background: #f59e0b; color: #070c18; }
     .btn-pro:hover { background: #d97706; }
 
-    /* Layout Split */
     .app-container {
       display: grid;
-      grid-template-columns: 480px 1fr;
+      grid-template-columns: 460px 1fr;
       flex: 1;
       height: calc(100vh - 61px);
     }
-    @media (max-width: 950px) {
-      .app-container {
-        grid-template-columns: 1fr;
-        height: auto;
-      }
+    @media (max-width: 980px) {
+      .app-container { grid-template-columns: 1fr; height: auto; }
     }
 
-    /* Form Editor Panel */
+    /* Left Control Sidebar */
     .editor-pane {
       background: #0b1329;
       border-right: 1px solid #1e293b;
@@ -93,7 +69,7 @@
       overflow-y: auto;
     }
     .section-title {
-      font-size: 0.95rem;
+      font-size: 0.86rem;
       font-weight: 700;
       color: #38bdf8;
       text-transform: uppercase;
@@ -102,57 +78,50 @@
       border-bottom: 1px solid #1e293b;
       padding-bottom: 4px;
     }
-    .form-group {
-      margin-bottom: 12px;
-    }
-    label {
-      display: block;
-      font-size: 0.78rem;
-      color: #94a3b8;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    input, textarea {
+    .form-group { margin-bottom: 12px; }
+    label { display: block; font-size: 0.78rem; color: #94a3b8; font-weight: 600; margin-bottom: 4px; }
+    input, textarea, select {
       width: 100%;
       background: #131d35;
       border: 1px solid #334155;
       border-radius: 6px;
       padding: 8px 12px;
       color: #fff;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       outline: none;
       font-family: inherit;
     }
-    input:focus, textarea:focus {
-      border-color: #38bdf8;
-    }
-    textarea { resize: vertical; min-height: 60px; }
+    input:focus, textarea:focus, select:focus { border-color: #38bdf8; }
+    textarea { resize: vertical; min-height: 55px; }
 
-    /* Template Switcher */
-    .theme-selector {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 15px;
+    /* Layout & Preset Selectors */
+    .pill-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin-bottom: 12px;
     }
-    .theme-pill {
-      padding: 6px 12px;
-      font-size: 0.78rem;
+    .pill-btn {
+      padding: 7px 10px;
+      font-size: 0.76rem;
       background: #1e293b;
       border: 1px solid #334155;
       border-radius: 6px;
       color: #cbd5e1;
       cursor: pointer;
+      text-align: center;
+      font-weight: 600;
     }
-    .theme-pill.active {
+    .pill-btn.active {
       background: #0284c7;
       color: #fff;
       border-color: #38bdf8;
     }
 
-    /* Live ATS Preview Pane */
+    /* Right Preview Canvas */
     .preview-pane {
       background: #1e293b;
-      padding: 30px;
+      padding: 28px;
       overflow-y: auto;
       display: flex;
       justify-content: center;
@@ -162,242 +131,248 @@
       background: #ffffff;
       color: #111827;
       width: 100%;
-      max-width: 794px; /* Standard A4 ratio */
+      max-width: 794px;
       min-height: 1123px;
-      padding: 44px 50px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-      border-radius: 4px;
-      font-family: "Georgia", "Times New Roman", serif;
+      padding: 42px 48px;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.5);
+      border-radius: 3px;
       line-height: 1.45;
       position: relative;
+      transition: all 0.2s ease;
     }
 
-    /* ATS Resume Styling (Standard Pure Single Column) */
-    .resume-name {
-      font-size: 24px;
-      font-weight: bold;
-      text-transform: uppercase;
-      text-align: center;
-      letter-spacing: 0.05em;
-      color: #111827;
-      margin-bottom: 4px;
-    }
-    .resume-contact {
-      text-align: center;
-      font-size: 12px;
-      color: #4b5563;
-      margin-bottom: 16px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-    .resume-section-head {
-      font-size: 13px;
-      font-weight: bold;
-      text-transform: uppercase;
-      border-bottom: 1.5px solid #111827;
-      padding-bottom: 2px;
-      margin: 14px 0 8px;
-      letter-spacing: 0.04em;
-    }
-    .resume-item-title {
-      font-weight: bold;
-      font-size: 12.5px;
-      display: flex;
-      justify-content: space-between;
-    }
-    .resume-item-sub {
-      font-size: 12px;
-      font-style: italic;
-      color: #374151;
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 4px;
-    }
-    .resume-text {
-      font-size: 12px;
-      color: #1f2937;
-      margin-bottom: 8px;
-    }
-    .resume-bullets {
-      font-size: 12px;
-      color: #1f2937;
-      padding-left: 18px;
-      margin-bottom: 8px;
-    }
-    .watermark-tag {
-      position: absolute;
-      bottom: 12px;
-      right: 20px;
-      font-size: 10px;
-      color: #9ca3af;
-      font-family: sans-serif;
-    }
+    /* Layout 1: Classic Ivy (Serif Harvard) */
+    .theme-ivy { font-family: "Georgia", "Times New Roman", serif; font-size: 12px; }
+    .theme-ivy .resume-name { font-size: 23px; font-weight: bold; text-align: center; text-transform: uppercase; margin-bottom: 4px; }
+    .theme-ivy .resume-contact { text-align: center; font-size: 11.5px; color: #4b5563; margin-bottom: 14px; font-family: sans-serif; }
+    .theme-ivy .resume-section-head { font-size: 12.5px; font-weight: bold; text-transform: uppercase; border-bottom: 1.5px solid #111827; padding-bottom: 2px; margin: 12px 0 6px; }
 
-    /* Modal for UPI Unlock */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.8);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 10000;
-    }
-    .modal-card {
-      background: #0f172a;
-      border: 1px solid #38bdf8;
-      border-radius: 14px;
-      max-width: 380px;
-      width: 90%;
-      padding: 24px;
-      text-align: center;
-    }
+    /* Layout 2: Modern Tech (Sans-Serif Minimal) */
+    .theme-modern { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; }
+    .theme-modern .resume-name { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 2px; }
+    .theme-modern .resume-contact { font-size: 11.5px; color: #64748b; margin-bottom: 14px; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; }
+    .theme-modern .resume-section-head { font-size: 12px; font-weight: 700; text-transform: uppercase; color: #0284c7; margin: 12px 0 6px; letter-spacing: 0.05em; }
 
-    /* Print settings for high-resolution clean PDF */
+    /* Layout 3: Executive Navy */
+    .theme-navy { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; }
+    .theme-navy .resume-name { font-size: 24px; font-weight: 800; color: #1e3a8a; text-transform: uppercase; }
+    .theme-navy .resume-contact { font-size: 11.5px; color: #475569; margin-bottom: 14px; }
+    .theme-navy .resume-section-head { font-size: 12.5px; font-weight: bold; text-transform: uppercase; background: #f1f5f9; color: #1e3a8a; padding: 3px 6px; border-left: 4px solid #1e3a8a; margin: 12px 0 6px; }
+
+    /* Layout 4: Compact One-Pager */
+    .theme-compact { font-family: "Georgia", serif; font-size: 11px; padding: 26px 36px !important; line-height: 1.35; }
+    .theme-compact .resume-name { font-size: 20px; font-weight: bold; text-align: center; }
+    .theme-compact .resume-contact { text-align: center; font-size: 10.5px; margin-bottom: 10px; font-family: sans-serif; }
+    .theme-compact .resume-section-head { font-size: 11.5px; font-weight: bold; text-transform: uppercase; border-bottom: 1px solid #333; margin: 8px 0 4px; padding-bottom: 1px; }
+    .theme-compact .resume-bullets { margin-bottom: 4px; }
+
+    /* Elements */
+    .resume-item-title { font-weight: bold; font-size: 12px; display: flex; justify-content: space-between; }
+    .resume-item-sub { font-size: 11.5px; font-style: italic; color: #374151; display: flex; justify-content: space-between; margin-bottom: 4px; }
+    .resume-text { font-size: 11.5px; color: #1f2937; margin-bottom: 6px; }
+    .resume-bullets { font-size: 11.5px; color: #1f2937; padding-left: 18px; margin-bottom: 6px; }
+    .watermark-tag { position: absolute; bottom: 10px; right: 20px; font-size: 9.5px; color: #9ca3af; font-family: sans-serif; }
+
+    /* Modal */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 10000; }
+    .modal-card { background: #0f172a; border: 1px solid #38bdf8; border-radius: 12px; max-width: 360px; width: 90%; padding: 22px; text-align: center; }
+
+    /* Media Print */
     @media print {
       body * { visibility: hidden; }
       header, .editor-pane, #viral-share-bar, .related-mesh-card { display: none !important; }
       .preview-pane { padding: 0; background: #fff; }
-      .paper-sheet, .paper-sheet * {
-        visibility: visible;
-      }
-      .paper-sheet {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        margin: 0;
-        padding: 20mm;
-        box-shadow: none;
-      }
+      .paper-sheet, .paper-sheet * { visibility: visible; }
+      .paper-sheet { position: absolute; left: 0; top: 0; width: 100%; margin: 0; padding: 18mm 20mm; box-shadow: none; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="brand">
-      <span>📄</span> ATS Resume Studio
-    </div>
+    <div class="brand"><span>📄</span> ATS Resume Studio</div>
     <div class="header-actions">
-      <button class="btn btn-pro" onclick="openProModal()">⭐ Unlock Pro Themes (₹19)</button>
-      <button class="btn btn-download" onclick="window.print()">📥 Download ATS PDF</button>
+      <button class="btn btn-pro" onclick="openProModal()">⭐ Remove Watermark (₹19)</button>
+      <button class="btn btn-download" onclick="window.print()">📥 Print / Save PDF</button>
     </div>
   </header>
 
   <div class="app-container">
-    <!-- Left Editor -->
     <div class="editor-pane">
-      <div class="section-title">Template Style</div>
-      <div class="theme-selector">
-        <button class="theme-pill active" onclick="setTheme('classic')">Classic ATS Serif</button>
-        <button class="theme-pill" onclick="setTheme('modern')">Modern Sans</button>
-        <button class="theme-pill" onclick="openProModal()">Executive Navy 🔒</button>
+      <div class="section-title">1. One-Click Role Presets</div>
+      <div class="pill-grid">
+        <button class="pill-btn" onclick="applyPreset('banking')">🏦 Bank & Govt Aspirant</button>
+        <button class="pill-btn" onclick="applyPreset('tech')">💻 Software / IT Fresher</button>
+        <button class="pill-btn" onclick="applyPreset('commerce')">📊 Commerce / Accounts</button>
+        <button class="pill-btn" onclick="applyPreset('fresh')">🎓 General Fresher</button>
       </div>
 
-      <div class="section-title">Personal Details</div>
+      <div class="section-title">2. Choose ATS Layout</div>
+      <div class="pill-grid">
+        <button class="pill-btn active" id="btn-ivy" onclick="setLayout('theme-ivy', this)">Classic Ivy (Harvard)</button>
+        <button class="pill-btn" id="btn-modern" onclick="setLayout('theme-modern', this)">Modern Tech</button>
+        <button class="pill-btn" id="btn-navy" onclick="setLayout('theme-navy', this)">Executive Navy</button>
+        <button class="pill-btn" id="btn-compact" onclick="setLayout('theme-compact', this)">Compact One-Page</button>
+      </div>
+
+      <div class="section-title">3. Personal & Contact Details</div>
       <div class="form-group">
         <label>Full Name</label>
-        <input type="text" id="in-name" value="Aakash Sharma" oninput="updateResume()">
+        <input type="text" id="in-name" oninput="updateResume()">
       </div>
       <div class="form-group">
-        <label>Contact Info (Email | Phone | Location | LinkedIn)</label>
-        <input type="text" id="in-contact" value="aakash.sharma@email.com | +91 98765 43210 | Gorakhpur, UP | linkedin.com/in/profile" oninput="updateResume()">
+        <label>Contact Info (Email | Phone | City, State | LinkedIn)</label>
+        <input type="text" id="in-contact" oninput="updateResume()">
       </div>
       <div class="form-group">
-        <label>Professional Summary / Objective</label>
-        <textarea id="in-summary" oninput="updateResume()">Dedicated graduate with a strong foundation in quantitative aptitude, financial analysis, and digital office management. Seeking an entry-level Banking / Administrative role to leverage problem-solving and computer proficiency.</textarea>
+        <label>Professional Summary</label>
+        <textarea id="in-summary" oninput="updateResume()"></textarea>
       </div>
 
-      <div class="section-title">Education</div>
+      <div class="section-title">4. Education</div>
       <div class="form-group">
         <label>Degree & Institution</label>
-        <input type="text" id="in-edu-title" value="Bachelor of Commerce (B.Com) — DDU Gorakhpur University" oninput="updateResume()">
+        <input type="text" id="in-edu-title" oninput="updateResume()">
       </div>
       <div class="form-group">
-        <label>Year & Score</label>
-        <input type="text" id="in-edu-meta" value="2022 – 2025 | Aggregate: 74.5%" oninput="updateResume()">
-      </div>
-
-      <div class="section-title">Experience / Projects</div>
-      <div class="form-group">
-        <label>Role & Organization</label>
-        <input type="text" id="in-exp-title" value="Digital Utility & Data Management Intern" oninput="updateResume()">
-      </div>
-      <div class="form-group">
-        <label>Timeline & Location</label>
-        <input type="text" id="in-exp-meta" value="July 2025 – Present | Remote" oninput="updateResume()">
-      </div>
-      <div class="form-group">
-        <label>Responsibilities & Achievements (Each line = Bullet point)</label>
-        <textarea id="in-exp-bullets" rows="4" oninput="updateResume()">Automated accounting ledger and client document processing for cyber cafe and student operations.
-Maintained error-free document verification and application processing with high turnaround.
-Utilized MS Excel, Hindi/English typing (40+ WPM), and billing utilities.</textarea>
+        <label>Duration & Grades / Marks</label>
+        <input type="text" id="in-edu-meta" oninput="updateResume()">
       </div>
 
-      <div class="section-title">Skills & Certifications</div>
+      <div class="section-title">5. Experience & Projects</div>
       <div class="form-group">
-        <label>Technical & Core Skills</label>
-        <input type="text" id="in-skills" value="Speed Calculation, MS Excel, Tally Prime, Hindi/English Typing (45 WPM), Data Verification" oninput="updateResume()">
+        <label>Role & Organization / Project Title</label>
+        <input type="text" id="in-exp-title" oninput="updateResume()">
       </div>
       <div class="form-group">
-        <label>Languages & Strengths</label>
-        <input type="text" id="in-lang" value="English (Professional), Hindi (Native), Time Management, Analytical Thinking" oninput="updateResume()">
+        <label>Duration & Location</label>
+        <input type="text" id="in-exp-meta" oninput="updateResume()">
+      </div>
+      <div class="form-group">
+        <label>Bullet Points (Each line becomes an ATS bullet)</label>
+        <textarea id="in-exp-bullets" rows="4" oninput="updateResume()"></textarea>
+      </div>
+
+      <div class="section-title">6. Skills & Certifications</div>
+      <div class="form-group">
+        <label>Core Technical / Domain Skills</label>
+        <input type="text" id="in-skills" oninput="updateResume()">
+      </div>
+      <div class="form-group">
+        <label>Tools, Languages & Certifications</label>
+        <input type="text" id="in-lang" oninput="updateResume()">
       </div>
     </div>
 
-    <!-- Right Paper Preview -->
+    <!-- Paper Sheet Preview -->
     <div class="preview-pane">
-      <div class="paper-sheet" id="resume-sheet">
-        <div class="resume-name" id="out-name">Aakash Sharma</div>
-        <div class="resume-contact" id="out-contact">aakash.sharma@email.com | +91 98765 43210 | Gorakhpur, UP</div>
+      <div class="paper-sheet theme-ivy" id="resume-sheet">
+        <div class="resume-name" id="out-name"></div>
+        <div class="resume-contact" id="out-contact"></div>
 
         <div class="resume-section-head">Professional Summary</div>
         <div class="resume-text" id="out-summary"></div>
 
         <div class="resume-section-head">Education</div>
-        <div class="resume-item-title">
-          <span id="out-edu-title"></span>
-        </div>
-        <div class="resume-item-sub">
-          <span id="out-edu-meta"></span>
-        </div>
+        <div class="resume-item-title"><span id="out-edu-title"></span></div>
+        <div class="resume-item-sub"><span id="out-edu-meta"></span></div>
 
-        <div class="resume-section-head">Experience & Practical Projects</div>
-        <div class="resume-item-title">
-          <span id="out-exp-title"></span>
-        </div>
-        <div class="resume-item-sub">
-          <span id="out-exp-meta"></span>
-        </div>
+        <div class="resume-section-head">Experience & Key Projects</div>
+        <div class="resume-item-title"><span id="out-exp-title"></span></div>
+        <div class="resume-item-sub"><span id="out-exp-meta"></span></div>
         <ul class="resume-bullets" id="out-exp-bullets"></ul>
 
-        <div class="resume-section-head">Skills & Core Competencies</div>
+        <div class="resume-section-head">Technical & Professional Competencies</div>
         <div class="resume-text" id="out-skills"></div>
 
-        <div class="resume-section-head">Languages & Additional Details</div>
+        <div class="resume-section-head">Certifications & Languages</div>
         <div class="resume-text" id="out-lang"></div>
 
-        <div class="watermark-tag" id="wm-tag">Generated with ATS Resume Studio</div>
+        <div class="watermark-tag" id="wm-tag">Created via ATS Resume Studio</div>
       </div>
     </div>
   </div>
 
-  <!-- Micro-UPI Modal (₹19) -->
+  <!-- UPI Modal -->
   <div class="modal-overlay" id="proModal">
     <div class="modal-card">
-      <h3 style="color:#facc15; margin-bottom:8px;">Unlock Executive Templates</h3>
-      <p style="font-size:0.85rem; color:#94a3b8; margin-bottom:14px;">Remove watermark and unlock 4 ATS-tested executive layouts for <b>₹19 only</b>.</p>
-      
-      <!-- Instant UPI QR -->
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=aakash@upi&pn=ATS%20Resume&am=19&cu=INR" alt="Pay 19 via UPI" style="border-radius:8px; border:2px solid #334155; margin-bottom:12px;">
-      
-      <p style="font-size:0.75rem; color:#cbd5e1; margin-bottom:14px;">Scan with GPay, PhonePe, or Paytm</p>
-      <button class="btn btn-pro" style="width:100%; justify-content:center;" onclick="unlockPro()">I Have Paid (Unlock Now)</button>
-      <button class="btn" style="width:100%; justify-content:center; background:transparent; color:#64748b; margin-top:6px;" onclick="closeProModal()">Cancel</button>
+      <h3 style="color:#facc15; margin-bottom:6px;">Remove Watermark</h3>
+      <p style="font-size:0.82rem; color:#94a3b8; margin-bottom:12px;">Get a 100% white-label ATS resume PDF for <b>₹19</b>.</p>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=aakash@upi&pn=ATS%20Studio&am=19&cu=INR" alt="UPI QR" style="border-radius:6px; border:2px solid #334155; margin-bottom:10px;">
+      <p style="font-size:0.75rem; color:#94a3b8; margin-bottom:12px;">Scan with PhonePe / GPay / Paytm</p>
+      <button class="btn btn-pro" style="width:100%; justify-content:center;" onclick="unlockPro()">I Have Paid (Unlock Watermark)</button>
+      <button class="btn" style="width:100%; justify-content:center; background:transparent; color:#64748b; margin-top:4px;" onclick="closeProModal()">Cancel</button>
     </div>
   </div>
 
   <script>
+    const PRESETS = {
+      banking: {
+        name: "Aakash Sharma",
+        contact: "aakash.sharma@email.com | +91 98765 43210 | Gorakhpur, UP | Roll No: 2601934",
+        summary: "Target-driven B.Com graduate with 85%+ accuracy in Quantitative Aptitude and Data Interpretation. Rigorously prepared for IBPS PO, SBI, and RRB banking exams with thorough command of banking awareness, numerical reasoning, and office spreadsheet automation.",
+        eduTitle: "Bachelor of Commerce (B.Com) — DDU Gorakhpur University",
+        eduMeta: "2022 – 2025 | First Division (74.2%)",
+        expTitle: "Commercial Accounting & Digital Registry Assistant — Sahaj Jan Seva Kendra",
+        expMeta: "Aug 2025 – Present | Gorakhpur, UP",
+        expBullets: "Managed day-to-day citizen DBT account verifications and PMJDY banking kiosk deposits.\nAudited digital submission forms for 500+ Sarkari exam applicants with zero rejection rates.\nHandled ledger reconciliation, UPI settlement summaries, and monthly cash flow logs in MS Excel.",
+        skills: "Fast Numerical Calculation (Tables 1-30, Squares/Cubes), MS Excel (VLOOKUP, Pivot Tables), Tally Prime, Financial Record Keeping",
+        lang: "Hindi (Native/Remington 45 WPM), English (Professional Working), NIELIT CCC Certified"
+      },
+      tech: {
+        name: "Aakash Sharma",
+        contact: "aakash.sharma@email.com | +91 98765 43210 | github.com/unknownuniversem-blip | linkedin.com/in/aakash",
+        summary: "Frontend developer and computer science graduate specializing in responsive, client-side web utilities and zero-dependency JavaScript applications. Experience deploying progressive web apps (PWAs), automated SEO pipelines, and performance-optimized UI suites.",
+        eduTitle: "Bachelor of Technology (Computer Science) — AKTU",
+        eduMeta: "2021 – 2025 | Aggregate: 7.8 CGPA",
+        expTitle: "Frontend Engineering Intern — Open Utility Suite",
+        expMeta: "Jan 2025 – Present | Remote",
+        expBullets: "Engineered 20+ responsive web utilities using clean vanilla JavaScript, Service Workers, and Canvas API.\nImplemented programmatic SEO pipelines that improved search crawler index rates across 22 micro-tools.\nBuilt client-side image compression and document formatting tools operating entirely within browser memory.",
+        skills: "JavaScript (ES6+), HTML5/CSS3, Git/GitHub Pages, PWA & Service Workers, Responsive Design, Python Scripting",
+        lang: "English (Fluent), Hindi (Native), Full Stack Web Development Specialization"
+      },
+      commerce: {
+        name: "Aakash Sharma",
+        contact: "aakash.sharma@email.com | +91 98765 43210 | Gorakhpur, Uttar Pradesh",
+        summary: "Diligent commerce professional proficient in double-entry bookkeeping, GST return preparation, balance sheet finalization, and bank reconciliation. Capable of handling ledger adjustments, vouchers, and multi-slab invoice computations.",
+        eduTitle: "B.Com (Honours in Financial Accounting) — DDU University",
+        eduMeta: "2022 – 2025 | 76% Marks",
+        expTitle: "Junior Accountant & Bookkeeper — Trade Solutions Ltd",
+        expMeta: "June 2025 – Present | Gorakhpur",
+        expBullets: "Drafted monthly GST tax liability reports and computed input tax credits across multi-tier vendors.\nReconciled bank passbooks with commercial sales ledgers, reducing month-end discrepancies by 35%.\nPrepared trial balances, profit & loss schedules, and partner capital accounts using Tally Prime.",
+        skills: "Tally Prime, GST Filing & Calculations, Double-Entry Ledger Posting, Bank Reconciliation (BRS), MS Excel",
+        lang: "English (Intermediate), Hindi (Native), Diploma in Computer Financial Accounting (DICFA)"
+      },
+      fresh: {
+        name: "Aakash Sharma",
+        contact: "aakash.sharma@email.com | +91 98765 43210 | Gorakhpur, UP",
+        summary: "Motivated graduate seeking an entry-level professional opportunity to utilize strong interpersonal skills, high typing speed, and data organization proficiency to drive team productivity and operational efficiency.",
+        eduTitle: "Bachelor of Arts / Science — University of Gorakhpur",
+        eduMeta: "2022 – 2025 | First Class",
+        expTitle: "Academic Project & Administrative Assistant",
+        expMeta: "2024 – 2025 | Campus",
+        expBullets: "Coordinated digital data entry and student registration records during annual administrative drives.\nDrafted formal correspondence, meeting agendas, and weekly documentation briefs.\nMaintained 99%+ data entry accuracy while adhering to strict submission deadlines.",
+        skills: "Data Entry & Office Management, MS Word & Excel, Fast Typing (40+ WPM), Time Management",
+        lang: "Hindi (Fluent), English (Working Proficiency)"
+      }
+    };
+
+    function applyPreset(key) {
+      const data = PRESETS[key];
+      if (!data) return;
+      document.getElementById('in-name').value = data.name;
+      document.getElementById('in-contact').value = data.contact;
+      document.getElementById('in-summary').value = data.summary;
+      document.getElementById('in-edu-title').value = data.eduTitle;
+      document.getElementById('in-edu-meta').value = data.eduMeta;
+      document.getElementById('in-exp-title').value = data.expTitle;
+      document.getElementById('in-exp-meta').value = data.expMeta;
+      document.getElementById('in-exp-bullets').value = data.expBullets;
+      document.getElementById('in-skills').value = data.skills;
+      document.getElementById('in-lang').value = data.lang;
+      updateResume();
+    }
+
     function updateResume() {
       document.getElementById('out-name').innerText = document.getElementById('in-name').value || "Your Name";
       document.getElementById('out-contact').innerText = document.getElementById('in-contact').value || "";
@@ -407,7 +382,6 @@ Utilized MS Excel, Hindi/English typing (40+ WPM), and billing utilities.</texta
       document.getElementById('out-exp-title').innerText = document.getElementById('in-exp-title').value || "";
       document.getElementById('out-exp-meta').innerText = document.getElementById('in-exp-meta').value || "";
 
-      // Bullets
       const rawBullets = document.getElementById('in-exp-bullets').value.split('\n');
       const bContainer = document.getElementById('out-exp-bullets');
       bContainer.innerHTML = '';
@@ -420,35 +394,28 @@ Utilized MS Excel, Hindi/English typing (40+ WPM), and billing utilities.</texta
       });
 
       document.getElementById('out-skills').innerHTML = `<b>Core Skills:</b> ${document.getElementById('in-skills').value}`;
-      document.getElementById('out-lang').innerHTML = `<b>Languages:</b> ${document.getElementById('in-lang').value}`;
+      document.getElementById('out-lang').innerHTML = `<b>Languages & Certs:</b> ${document.getElementById('in-lang').value}`;
     }
 
-    function setTheme(t) {
+    function setLayout(themeClass, el) {
       const sheet = document.getElementById('resume-sheet');
-      document.querySelectorAll('.theme-pill').forEach(p => p.classList.remove('active'));
-      if (t === 'modern') {
-        sheet.style.fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-        event.target.classList.add('active');
-      } else {
-        sheet.style.fontFamily = '"Georgia", "Times New Roman", serif';
-        event.target.classList.add('active');
-      }
+      sheet.className = 'paper-sheet ' + themeClass;
+      document.querySelectorAll('.editor-pane .pill-btn').forEach(btn => {
+        if (btn.id && btn.id.startsWith('btn-')) btn.classList.remove('active');
+      });
+      if (el) el.classList.add('active');
     }
 
-    function openProModal() {
-      document.getElementById('proModal').style.display = 'flex';
-    }
-    function closeProModal() {
-      document.getElementById('proModal').style.display = 'none';
-    }
+    function openProModal() { document.getElementById('proModal').style.display = 'flex'; }
+    function closeProModal() { document.getElementById('proModal').style.display = 'none'; }
     function unlockPro() {
       document.getElementById('wm-tag').style.display = 'none';
-      alert('Unlocked! Watermark removed. You can now save or print your ATS Resume.');
+      alert('Watermark removed successfully!');
       closeProModal();
     }
 
-    // Initialize
-    updateResume();
+    // Default initialization
+    applyPreset('banking');
   </script>
 </body>
 </html>
