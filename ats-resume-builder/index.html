@@ -52,16 +52,41 @@
     .btn-pro { background: #f59e0b; color: #070c18; }
     .btn-pro:hover { background: #d97706; }
 
+    /* Rigid 2-Column Desktop Grid */
     .app-container {
-      display: grid;
-      grid-template-columns: 440px 1fr;
-      flex: 1;
-      height: calc(100vh - 61px);
-      overflow: hidden;
+      display: grid !important;
+      grid-template-columns: 460px 1fr !important;
+      height: calc(100vh - 61px) !important;
+      width: 100% !important;
+      overflow: hidden !important;
     }
-    @media (max-width: 768px) {
+
+    .editor-pane {
+      background: #0b1329;
+      border-right: 1px solid #1e293b;
+      padding: 20px;
+      overflow-y: auto;
+      height: 100%;
+    }
+
+    .preview-pane {
+      background: #1e293b;
+      padding: 28px;
+      overflow-y: auto;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 650px) {
       .app-container {
-        grid-template-columns: 1fr;
+        display: block !important;
+        height: auto !important;
+        overflow: visible !important;
+      }
+      .editor-pane, .preview-pane {
+        width: 100%;
         height: auto;
         overflow: visible;
       }
