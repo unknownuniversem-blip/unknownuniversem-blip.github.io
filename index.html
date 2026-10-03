@@ -59,7 +59,6 @@
       width: 100%;
       max-width: 500px;
       margin: 0 auto 30px auto;
-      position: relative;
     }
     .search-box input {
       width: 100%;
@@ -70,7 +69,6 @@
       color: #fff;
       font-size: 1rem;
       outline: none;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
     .search-box input:focus {
       border-color: #38bdf8;
@@ -123,18 +121,10 @@
       line-height: 1.4;
       flex-grow: 1;
     }
-    .no-results {
-      text-align: center;
-      grid-column: 1 / -1;
-      padding: 40px;
-      color: #64748b;
-      display: none;
-    }
   </style>
 </head>
 <body>
 
-  <!-- Community Banner -->
   <div class="ribbon">
     <div>📢 <b>Daily Health & Fitness Tips:</b> WhatsApp channel now active!</div>
     <div class="ribbon-links">
@@ -153,50 +143,41 @@
     </div>
 
     <div class="tool-grid" id="grid">
-      <a href="./ats-resume-builder/" class="tool-card" data-name="ats resume studio" data-desc="clean single-page resumes formatted for ats scanners and corporate applications.">
+      <a href="./ats-resume-builder/" class="tool-card" data-name="ats resume studio" data-desc="harvard & navy single-page formats for job applications.">
         <div class="card-top">
           <div class="tool-icon">📄</div>
           <span class="tool-tag">Career</span>
         </div>
         <h3>ATS Resume Studio</h3>
-        <p>Clean single-page resumes formatted for ATS scanners and corporate applications.</p>
+        <p>Harvard & Navy single-page formats for job applications.</p>
       </a>
-      <a href="./math/" class="tool-card" data-name="speed math drill studio" data-desc="tables 1-30, squares, cubes, and fraction-to-percentage rapid tests.">
+      <a href="./math/" class="tool-card" data-name="speed math drill studio" data-desc="tables 1–30, squares, cubes & fraction rapid tests.">
         <div class="card-top">
           <div class="tool-icon">⚡</div>
           <span class="tool-tag">Aptitude</span>
         </div>
         <h3>Speed Math Drill Studio</h3>
-        <p>Tables 1-30, Squares, Cubes, and Fraction-to-Percentage rapid tests.</p>
+        <p>Tables 1–30, Squares, Cubes & Fraction rapid tests.</p>
       </a>
-      <a href="./pomodoro-timer/" class="tool-card" data-name="focus pomodoro studio" data-desc="aspirant focus intervals, custom minute presets, and past session history logging.">
+      <a href="./pomodoro-timer/" class="tool-card" data-name="focus pomodoro studio" data-desc="aspirant study interval timer with custom presets & session history.">
         <div class="card-top">
           <div class="tool-icon">⏳</div>
           <span class="tool-tag">Productivity</span>
         </div>
         <h3>Focus Pomodoro Studio</h3>
-        <p>Aspirant focus intervals, custom minute presets, and past session history logging.</p>
+        <p>Aspirant study interval timer with custom presets & session history.</p>
       </a>
-      <div class="no-results" id="no-res">No matching tools found.</div>
     </div>
   </div>
 
   <script>
     function filterTools() {
       const q = document.getElementById('tool-search').value.toLowerCase().trim();
-      const cards = document.querySelectorAll('.tool-card');
-      let visible = 0;
-      cards.forEach(card => {
+      document.querySelectorAll('.tool-card').forEach(card => {
         const name = card.getAttribute('data-name');
         const desc = card.getAttribute('data-desc');
-        if (name.includes(q) || desc.includes(q)) {
-          card.style.display = 'flex';
-          visible++;
-        } else {
-          card.style.display = 'none';
-        }
+        card.style.display = (name.includes(q) || desc.includes(q)) ? 'flex' : 'none';
       });
-      document.getElementById('no-res').style.display = visible === 0 ? 'block' : 'none';
     }
   </script>
 </body>
