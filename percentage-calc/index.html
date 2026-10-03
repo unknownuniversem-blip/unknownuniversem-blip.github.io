@@ -1,28 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"><title>Marksheet Percentage Calculator</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}
-    .box{max-width:440px;margin:auto;background:#0f172a;padding:24px;border-radius:14px;border:1px solid #1e293b;text-align:left}
-    input{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #334155;background:#131d35;color:#fff}
-    .res{font-size:2.2rem;font-weight:bold;color:#10b981;text-align:center;margin-top:14px}
-  </style>
-</head>
-<body>
-  <div class="box">
-    <h3 style="text-align:center;color:#10b981">📊 Marksheet Percentage</h3>
-    <label style="font-size:0.8rem;color:#94a3b8">Marks Obtained</label><input type="number" id="obt" value="435" oninput="calc()">
-    <label style="font-size:0.8rem;color:#94a3b8">Total Maximum Marks</label><input type="number" id="tot" value="500" oninput="calc()">
-    <div class="res" id="res">87.00 %</div>
-  </div>
-  <script>
-    function calc(){
-      const o = parseFloat(document.getElementById('obt').value)||0;
-      const t = parseFloat(document.getElementById('tot').value)||1;
-      document.getElementById('res').innerText = ((o/t)*100).toFixed(2) + " %";
-    }
-  </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5"><title>Marksheet Percentage Calculator · Master Hub</title><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>"><style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:system-ui,sans-serif;background:radial-gradient(circle at 20% 10%,#eef4fb,#dde6f2);min-height:100vh;min-height:100dvh;padding:clamp(8px,1.5vw,16px)}
+.w{width:100%;max-width:620px;margin:0 auto;background:rgba(255,255,255,.9);backdrop-filter:blur(20px);border-radius:clamp(18px,3.5vw,28px);padding:clamp(16px,2.5vw,26px);box-shadow:0 30px 60px -20px rgba(20,40,80,.25);position:relative}
+.hub{position:absolute;top:12px;left:12px;background:#1e3b5c;color:#fff;text-decoration:none;font-size:.7rem;font-weight:600;padding:5px 11px;border-radius:999px}
+h1{margin:6px 0 4px;color:#1e2b3c;font-size:clamp(1.15rem,3.5vw,1.45rem);text-align:center;font-weight:700}
+.sub{text-align:center;color:#5a6f88;font-size:.78rem;margin-bottom:12px}
+.row{display:flex;gap:8px;margin-bottom:6px;align-items:center}
+.row input{flex:1;padding:9px 12px;border:1px solid #d5e0ed;border-radius:10px;font-size:.85rem;background:#fff}
+.row button{background:#ffebee;color:#c62828;border:none;padding:9px 14px;border-radius:10px;font-weight:600;cursor:pointer;font-size:.8rem}
+.add{background:linear-gradient(135deg,#1e3b5c,#2f5575);color:#fff;border:none;padding:11px;border-radius:11px;font-weight:600;cursor:pointer;width:100%;margin-top:8px;font-size:.85rem;box-shadow:0 6px 14px -6px rgba(30,59,92,.5)}
+.res{background:linear-gradient(135deg,#1e3b5c,#2f5575);color:#fff;border-radius:14px;padding:16px;margin-top:12px;text-align:center}
+.res .big{font-size:clamp(1.6rem,5vw,2.1rem);font-weight:700;margin:.2rem 0}
+.res .row2{display:flex;justify-content:space-around;font-size:.72rem;opacity:.9;margin-top:.3rem}
+.res b{display:block;font-size:1rem}
+.share{display:flex;gap:6px;margin-top:10px;justify-content:center;flex-wrap:wrap}
+.share a{text-decoration:none;padding:7px 14px;border-radius:999px;font-size:.75rem;font-weight:600}
+.share a.wa{background:#25D366;color:#fff}
+.share a.tg{background:#0088cc;color:#fff}
+</style></head><body>
+<div class="w">
+<a href="../" class="hub">🏠 Hub</a>
+<h1>📊 Marksheet Percentage Calculator</h1>
+<p class="sub">Enter subject marks — get overall percentage & division.</p>
+<div id="subs"></div>
+<button class="add" onclick="addSub()">+ Add Subject</button>
+<button class="add" style="background:#eaf0f9;color:#1e3b5c;box-shadow:none" onclick="calc()">📊 Calculate</button>
+<div class="res" id="res" style="display:none">
+<div style="font-size:.72rem;opacity:.85">Overall Percentage</div>
+<div class="big" id="pct">—</div>
+<div class="row2"><div>Division<b id="div">—</b></div><div>Total<b id="tot">0</b></div><div>Obtained<b id="obt">0</b></div></div>
+</div>
+<div class="share">
+<span style="font-size:.75rem;color:#5a6f88;align-self:center">Share:</span>
+<a class="wa" href="https://wa.me/?text=Check%20Marksheet%20Percentage%20Calc%3A%20https://unknownuniversem-blip.github.io/percentage-calc/" target="_blank">💬 WhatsApp</a>
+<a class="tg" href="https://t.me/share/url?url=https://unknownuniversem-blip.github.io/percentage-calc/" target="_blank">✈️ Telegram</a>
+</div>
+</div>
+<script>
+const $=i=>document.getElementById(i);
+let count=0;
+function addSub(name="",total="",obt=""){
+  count++;
+  const div=document.createElement("div");
+  div.className="row";
+  div.innerHTML=`<input placeholder="Subject ${count}" value="${name}" style="flex:2">
+  <input type="number" placeholder="Total" value="${total}" style="flex:1" class="t">
+  <input type="number" placeholder="Marks" value="${obt}" style="flex:1" class="o">
+  <button onclick="this.parentNode.remove()">×</button>`;
+  $("subs").appendChild(div);
+}
+function calc(){
+  const rows=$("subs").querySelectorAll(".row");
+  let tot=0,obt=0;
+  rows.forEach(r=>{
+    const t=parseFloat(r.querySelector(".t").value)||0;
+    const o=parseFloat(r.querySelector(".o").value)||0;
+    tot+=t;obt+=o;
+  });
+  if(!tot)return alert("Enter subject marks first");
+  const pct=obt/tot*100;
+  $("pct").textContent=pct.toFixed(2)+"%";
+  $("tot").textContent=tot;$("obt").textContent=obt;
+  $("div").textContent=pct>=75?"Distinction":pct>=60?"1st Div":pct>=50?"2nd Div":pct>=40?"Pass":"Fail";
+  $("res").style.display="block";
+}
+addSub("English",100,85);addSub("Math",100,92);addSub("Science",100,78);
+</script></body></html>
