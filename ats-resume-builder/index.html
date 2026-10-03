@@ -190,7 +190,23 @@
 <body>
 
   <header>
-    <div class="brand"><span>📄</span> ATS Resume Studio</div>
+    
+    <div class="brand" style="display:flex; align-items:center; gap:12px;">
+      <div style="position:relative; width:36px; height:36px; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle, #0284c7 0%, #0f172a 80%); border-radius:50%; border:1.5px solid #38bdf8; box-shadow:0 0 14px rgba(56,189,248,0.5);">
+        <span style="font-size:22px; filter:drop-shadow(0 0 4px #38bdf8);">🌍</span>
+        <span style="position:absolute; bottom:-2px; right:-4px; font-size:11px; background:#22c55e; border-radius:50%; width:14px; height:14px; display:flex; align-items:center; justify-content:center; border:2px solid #091122; color:#fff; font-weight:900;">✓</span>
+      </div>
+      <div>
+        <div style="font-size:1.05rem; font-weight:800; color:#fff; display:flex; align-items:center; gap:8px;">
+          ATS Resume Studio
+          <span style="background:linear-gradient(135deg, #f59e0b, #ec4899); color:#fff; font-size:0.65rem; font-weight:800; padding:2px 8px; border-radius:20px; letter-spacing:0.04em; text-transform:uppercase;">Premium App</span>
+        </div>
+        <div style="font-size:0.73rem; color:#38bdf8; font-weight:600; letter-spacing:0.02em;">
+          ✨ Premium Quality at Zero Cost (100% Free)
+        </div>
+      </div>
+    </div>
+
     <div class="header-actions">
       <button class="btn btn-pro" onclick="openProModal()">⭐ Remove Watermark (₹19)</button>
       <button class="btn btn-download" onclick="window.print()">📥 Print / Save PDF</button>
@@ -199,6 +215,15 @@
 
   <div class="app-container">
     <div class="editor-pane">
+
+      <div style="background:linear-gradient(90deg, #0c2135, #111e3b); border:1px solid #0284c7; border-radius:8px; padding:10px 14px; margin-bottom:14px; display:flex; align-items:center; gap:10px;">
+        <span style="font-size:20px;">🌍</span>
+        <div>
+          <div style="font-size:0.8rem; font-weight:700; color:#f8fafc;">Enterprise-Grade ATS Engine</div>
+          <div style="font-size:0.73rem; color:#38bdf8;">Designed to pass Workday, Taleo & Sarkari screening — <b>Free of Cost</b></div>
+        </div>
+      </div>
+
       <div class="section-title">1. One-Click Role Presets</div>
       <div class="pill-grid">
         <button class="pill-btn" onclick="applyPreset('banking')">🏦 Bank & Govt Aspirant</button>
