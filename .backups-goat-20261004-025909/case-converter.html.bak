@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5"><title>Case Converter · Master Hub</title><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔤</text></svg>"><style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:system-ui,sans-serif;background:radial-gradient(circle at 20% 10%,#eef4fb,#dde6f2);min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:clamp(8px,1.5vw,16px);overflow-x:hidden}
+.w{width:100%;max-width:620px;background:rgba(255,255,255,.9);backdrop-filter:blur(20px);border-radius:clamp(18px,3.5vw,28px);padding:clamp(16px,2.5vw,26px);box-shadow:0 30px 60px -20px rgba(20,40,80,.25);position:relative}
+.hub{position:absolute;top:12px;left:12px;background:#1e3b5c;color:#fff;text-decoration:none;font-size:.7rem;font-weight:600;padding:5px 11px;border-radius:999px;box-shadow:0 4px 12px rgba(30,59,92,.35)}
+h1{margin:6px 0 4px;color:#1e2b3c;font-size:clamp(1.2rem,3.6vw,1.5rem);text-align:center;font-weight:700}
+.sub{text-align:center;color:#5a6f88;font-size:.8rem;margin-bottom:12px}
+textarea{width:100%;min-height:150px;padding:12px 14px;border:1px solid #d5e0ed;border-radius:12px;font-size:.9rem;box-sizing:border-box;font-family:inherit;resize:vertical;background:#fff}
+textarea:focus{outline:none;border-color:#1e3b5c;box-shadow:0 0 0 3px rgba(30,59,92,.12)}
+.btns{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:6px;margin-top:10px}
+.btn{background:#eaf0f9;color:#1e3b5c;border:none;padding:10px;border-radius:10px;font-weight:600;cursor:pointer;font-size:.82rem;transition:.15s}
+.btn:hover{background:#d5e0ed;transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(135deg,#1e3b5c,#2f5575);color:#fff;box-shadow:0 6px 14px -6px rgba(30,59,92,.5)}
+.share{display:flex;gap:6px;margin-top:12px;justify-content:center;flex-wrap:wrap}
+.share a,.share button{background:#eaf0f9;color:#1e3b5c;text-decoration:none;padding:7px 14px;border-radius:999px;font-size:.75rem;font-weight:600;border:none;cursor:pointer}
+.share a.wa{background:#25D366;color:#fff}
+.share a.tg{background:#0088cc;color:#fff}
+</style></head><body>
+<div class="w">
+<a href="../" class="hub">🏠 Hub</a>
+<h1>🔤 Case Converter</h1>
+<p class="sub">Instantly transform text case — perfect for names, forms, essays.</p>
+<textarea id="ta" placeholder="Paste or type text here...">Hello World</textarea>
+<div class="btns">
+<button class="btn primary" onclick="c('upper')">UPPERCASE</button>
+<button class="btn primary" onclick="c('lower')">lowercase</button>
+<button class="btn" onclick="c('title')">Title Case</button>
+<button class="btn" onclick="c('sentence')">Sentence case</button>
+<button class="btn" onclick="c('camel')">camelCase</button>
+<button class="btn" onclick="c('snake')">snake_case</button>
+<button class="btn" onclick="c('kebab')">kebab-case</button>
+<button class="btn" onclick="copy()">📋 Copy</button>
+</div>
+<div class="share">
+<span style="font-size:.75rem;color:#5a6f88;align-self:center">Share:</span>
+<a class="wa" id="waBtn" href="#" target="_blank">💬 WhatsApp</a>
+<a class="tg" id="tgBtn" href="#" target="_blank">✈️ Telegram</a>
+</div>
+</div>
+<script>
+const $=i=>document.getElementById(i);
+function c(m){
+  let t=$("ta").value;
+  if(m==="upper")t=t.toUpperCase();
+  else if(m==="lower")t=t.toLowerCase();
+  else if(m==="title")t=t.toLowerCase().replace(/\b\w/g,ch=>ch.toUpperCase());
+  else if(m==="sentence")t=t.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g,ch=>ch.toUpperCase());
+  else if(m==="camel")t=t.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g,(m,ch)=>ch.toUpperCase()).replace(/^[A-Z]/,ch=>ch.toLowerCase());
+  else if(m==="snake")t=t.replace(/\s+/g,"_").toLowerCase();
+  else if(m==="kebab")t=t.replace(/\s+/g,"-").toLowerCase();
+  $("ta").value=t;
+}
+function copy(){$("ta").select();document.execCommand("copy");alert("Copied!")}
+function updateShare(){const txt=encodeURIComponent($("ta").value);const url=encodeURIComponent("https://unknownuniversem-blip.github.io/case-converter/");$("waBtn").href="https://wa.me/?text="+txt+"%20"+url;$("tgBtn").href="https://t.me/share/url?url="+url+"&text="+txt}
+$("ta").oninput=updateShare;updateShare();
+</script></body></html>

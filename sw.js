@@ -1,5 +1,5 @@
 
-const CACHE_NAME = 'quicktools-v2';
+const CACHE_NAME = 'quicktools-v3';
 const ASSETS = [
   '/',
   '/index.html',

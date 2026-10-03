@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5"><title>UPI & Link QR Studio · Master Hub</title><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>"><style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:system-ui,sans-serif;background:radial-gradient(circle at 20% 10%,#eef4fb,#dde6f2);min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:clamp(8px,1.5vw,16px)}
+.w{width:100%;max-width:520px;background:rgba(255,255,255,.9);backdrop-filter:blur(20px);border-radius:clamp(18px,3.5vw,28px);padding:clamp(16px,2.5vw,26px);box-shadow:0 30px 60px -20px rgba(20,40,80,.25);position:relative}
+.hub{position:absolute;top:12px;left:12px;background:#1e3b5c;color:#fff;text-decoration:none;font-size:.7rem;font-weight:600;padding:5px 11px;border-radius:999px}
+h1{margin:6px 0 4px;color:#1e2b3c;font-size:clamp(1.15rem,3.5vw,1.45rem);text-align:center;font-weight:700}
+.sub{text-align:center;color:#5a6f88;font-size:.78rem;margin-bottom:10px}
+.tabs{display:flex;gap:5px;background:#eaf0f9;padding:4px;border-radius:12px;margin-bottom:12px}
+.tabs button{flex:1;background:transparent;border:none;padding:9px;border-radius:9px;font-weight:600;cursor:pointer;font-size:.78rem;color:#5a6f88;transition:.15s}
+.tabs button.on{background:#fff;color:#1e3b5c;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+label{display:block;color:#5a6f88;font-size:.7rem;font-weight:600;margin-top:8px;text-transform:uppercase;letter-spacing:.05em}
+input{width:100%;padding:10px 13px;border:1px solid #d5e0ed;border-radius:11px;box-sizing:border-box;font-size:.9rem;background:#fff;margin-top:4px}
+input:focus{outline:none;border-color:#1e3b5c;box-shadow:0 0 0 3px rgba(30,59,92,.12)}
+.btn{background:linear-gradient(135deg,#1e3b5c,#2f5575);color:#fff;border:none;padding:12px;border-radius:12px;font-weight:600;cursor:pointer;width:100%;margin-top:12px;font-size:.9rem;box-shadow:0 8px 20px -6px rgba(30,59,92,.5)}
+.box{background:#fff;border-radius:14px;padding:16px;text-align:center;margin-top:12px;border:1px dashed #d5e0ed;min-height:200px;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.box img{max-width:100%;border-radius:10px}
+.share{display:flex;gap:6px;margin-top:10px;justify-content:center;flex-wrap:wrap}
+.share a,.share button{text-decoration:none;padding:7px 14px;border-radius:999px;font-size:.75rem;font-weight:600;border:none;cursor:pointer;background:#eaf0f9;color:#1e3b5c}
+.share a.wa{background:#25D366;color:#fff}
+.share a.tg{background:#0088cc;color:#fff}
+</style></head><body>
+<div class="w">
+<a href="../" class="hub">🏠 Hub</a>
+<h1>📱 UPI & Link QR Studio</h1>
+<p class="sub">Generate printable QR codes for payments, links & text.</p>
+<div class="tabs"><button class="on" data-m="link">Link/Text</button><button data-m="upi">UPI Payment</button></div>
+<div id="linkBox">
+<label>Text or URL</label><input id="text" value="https://unknownuniversem-blip.github.io/">
+</div>
+<div id="upiBox" style="display:none">
+<label>UPI ID</label><input id="upi" placeholder="name@upi">
+<label>Payee Name</label><input id="payee" placeholder="Shop name">
+<label>Amount (₹)</label><input id="amt" type="number" placeholder="Optional">
+</div>
+<button class="btn" onclick="gen()">Generate QR</button>
+<div class="box" id="box"><p style="color:#8899aa;font-size:.82rem">Enter details & click Generate</p></div>
+<div class="share">
+<span style="font-size:.75rem;color:#5a6f88;align-self:center">Share:</span>
+<a class="wa" id="waBtn" href="#" target="_blank">💬 WhatsApp</a>
+<a class="tg" id="tgBtn" href="#" target="_blank">✈️ Telegram</a>
+<button onclick="dl()">⬇ PNG</button>
+</div>
+</div>
+<script>
+const $=i=>document.getElementById(i);let mode="link";
+document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll(".tabs button").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on");mode=b.dataset.m;
+  $("linkBox").style.display=mode==="link"?"block":"none";
+  $("upiBox").style.display=mode==="upi"?"block":"none";
+});
+function gen(){
+  let data="";
+  if(mode==="link")data=$("text").value.trim();
+  else{
+    const upi=$("upi").value.trim(),name=$("payee").value.trim(),amt=$("amt").value.trim();
+    if(!upi)return alert("Enter UPI ID");
+    data="upi://pay?pa="+encodeURIComponent(upi)+"&pn="+encodeURIComponent(name||"Payee")+(amt?"&am="+amt:"")+"&cu=INR";
+  }
+  if(!data)return alert("Enter content");
+  const img=new Image();
+  img.onload=()=>{const box=$("box");box.innerHTML="";box.appendChild(img);box.dataset.ready="1"};
+  img.onerror=()=>alert("QR generation failed");
+  img.alt="QR";
+  img.src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data="+encodeURIComponent(data);
+  const url=encodeURIComponent("https://unknownuniversem-blip.github.io/qr-generator/");
+  $("waBtn").href="https://wa.me/?text=Check%20QR%20Generator%3A%20"+url;
+  $("tgBtn").href="https://t.me/share/url?url="+url;
+}
+function dl(){const img=$("box").querySelector("img");if(!img||!$("box").dataset.ready)return alert("Generate first");const a=document.createElement("a");a.download="qr.png";a.href=img.src;a.click()}
+</script></body></html>

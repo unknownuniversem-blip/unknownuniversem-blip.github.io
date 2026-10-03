@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>Sarkari Photo & Sign Resizer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}
+    .box{max-width:500px;margin:auto;background:#0f172a;padding:24px;border-radius:12px;border:1px solid #1e293b}
+    input,button,select{width:100%;margin:10px 0;padding:10px;border-radius:8px;border:1px solid #334155;background:#131d35;color:#fff}
+    button{background:#0284c7;cursor:pointer;font-weight:700}
+    canvas{display:none}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>📸 Sarkari Photo & Sign Resizer</h2>
+    <p style="font-size:0.85rem;color:#94a3b8">Target 20KB - 50KB for SSC, UPSC, Police</p>
+    <input type="file" id="upload" accept="image/*">
+    <select id="target">
+      <option value="50">Photo: Max 50 KB (3.5 x 4.5 cm)</option>
+      <option value="20">Signature: Max 20 KB (4 x 2 cm)</option>
+      <option value="100">Document Scan: Max 100 KB</option>
+    </select>
+    <button onclick="processImage()">Compress & Resize</button>
+    <div id="output" style="margin-top:15px"></div>
+    <canvas id="c"></canvas>
+  </div>
+  <script>
+    function processImage(){
+      const file = document.getElementById('upload').files[0];
+      if(!file) return alert('Select an image');
+      const maxKb = parseInt(document.getElementById('target').value);
+      const reader = new FileReader();
+      reader.onload = e => {
+        const img = new Image();
+        img.onload = () => {
+          const cvs = document.getElementById('c');
+          const ctx = cvs.getContext('2d');
+          cvs.width = (maxKb === 20) ? 280 : 350;
+          cvs.height = (maxKb === 20) ? 140 : 450;
+          ctx.drawImage(img, 0, 0, cvs.width, cvs.height);
+          let q = 0.9;
+          function loopCompress(){
+            cvs.toBlob(blob => {
+              if (blob.size / 1024 > maxKb && q > 0.1) {
+                q -= 0.08; loopCompress();
+              } else {
+                const url = URL.createObjectURL(blob);
+                document.getElementById('output').innerHTML = `
+                  <p style="color:#10b981;font-weight:bold">Resized Size: ${(blob.size/1024).toFixed(1)} KB</p>
+                  <a href="${url}" download="resized_photo.jpg"><button style="background:#22c55e;color:#052e16">Download Image</button></a>`;
+              }
+            }, 'image/jpeg', q);
+          }
+          loopCompress();
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  </script>
+</body>
+</html>

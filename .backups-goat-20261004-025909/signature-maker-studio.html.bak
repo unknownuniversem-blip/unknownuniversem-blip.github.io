@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>Digital Signature Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}
+    .box{max-width:520px;margin:auto;background:#0f172a;padding:20px;border-radius:12px;border:1px solid #1e293b}
+    canvas{background:#fff;border-radius:8px;touch-action:none;cursor:crosshair;margin:10px 0}
+    button{padding:8px 16px;margin:4px;border-radius:6px;border:none;font-weight:700;cursor:pointer}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h3>✍️ Digital Signature Pad & Maker</h3>
+    <p style="color:#94a3b8;font-size:0.8rem">Draw on screen or mobile touch to get clean 10-20KB signature</p>
+    <canvas id="pad" width="460" height="200"></canvas><br>
+    <button style="background:#ef4444;color:#fff" onclick="clearPad()">Clear</button>
+    <button style="background:#22c55e;color:#052e16" onclick="downloadSign()">Download Sign (PNG)</button>
+  </div>
+  <script>
+    const cvs = document.getElementById('pad');
+    const ctx = cvs.getContext('2d');
+    let drawing = false;
+    ctx.lineWidth = 2.5; ctx.lineCap = 'round'; ctx.strokeStyle = '#000000';
+    function getPos(e){
+      const r = cvs.getBoundingClientRect();
+      const x = (e.touches ? e.touches[0].clientX : e.clientX) - r.left;
+      const y = (e.touches ? e.touches[0].clientY : e.clientY) - r.top;
+      return {x, y};
+    }
+    cvs.addEventListener('mousedown', e => { drawing=true; ctx.beginPath(); const p=getPos(e); ctx.moveTo(p.x, p.y); });
+    cvs.addEventListener('mousemove', e => { if(drawing){ const p=getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); } });
+    window.addEventListener('mouseup', () => drawing=false);
+    cvs.addEventListener('touchstart', e => { drawing=true; ctx.beginPath(); const p=getPos(e); ctx.moveTo(p.x, p.y); e.preventDefault(); });
+    cvs.addEventListener('touchmove', e => { if(drawing){ const p=getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); } e.preventDefault(); });
+    cvs.addEventListener('touchend', () => drawing=false);
+    function clearPad(){ ctx.clearRect(0,0,cvs.width,cvs.height); }
+    function downloadSign(){
+      const a = document.createElement('a');
+      a.download = 'signature.png'; a.href = cvs.toDataURL('image/png');
+      a.click();
+    }
+  </script>
+</body>
+</html>

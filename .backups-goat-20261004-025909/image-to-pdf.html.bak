@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5"><title>Image to PDF · Master Hub</title><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖼️</text></svg>"><style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:system-ui,sans-serif;background:radial-gradient(circle at 20% 10%,#eef4fb,#dde6f2);min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:clamp(10px,2vw,20px);overflow-x:hidden}
+.w{width:100%;max-width:560px;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);border-radius:clamp(20px,4vw,32px);padding:clamp(18px,3vw,30px);box-shadow:0 30px 60px -20px rgba(20,40,80,.25);position:relative}
+.hub{position:absolute;top:14px;left:14px;background:#1e3b5c;color:#fff;text-decoration:none;font-size:.75rem;font-weight:600;padding:6px 12px;border-radius:999px;box-shadow:0 4px 12px rgba(30,59,92,.35)}
+h1{margin:8px 0 4px;color:#1e2b3c;font-size:clamp(1.3rem,4vw,1.6rem);text-align:center;font-weight:700}
+.sub{text-align:center;color:#5a6f88;font-size:.85rem;margin-bottom:14px}
+.drop{border:2px dashed #a9bed4;border-radius:18px;padding:22px;text-align:center;color:#5a6f88;cursor:pointer;background:linear-gradient(145deg,#f6f9fd,#eef4fa);font-size:.9rem}
+.drop:hover{border-color:#1e3b5c;background:#e3edf7}
+.imgs{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:6px;margin:12px 0;max-height:160px;overflow-y:auto}
+.img{position:relative;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#eef4fa;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.img img{width:100%;height:100%;object-fit:cover}
+.img button{position:absolute;top:3px;right:3px;background:rgba(198,40,40,.95);color:#fff;border:none;width:20px;height:20px;border-radius:50%;cursor:pointer;font-size:.7rem;line-height:1}
+label{display:block;color:#5a6f88;font-size:.8rem;font-weight:600;margin-top:10px;text-transform:uppercase;letter-spacing:.05em}
+select{width:100%;padding:11px 14px;border:1px solid #d5e0ed;border-radius:12px;font-size:.9rem;background:#fff}
+.btn{background:linear-gradient(135deg,#1e3b5c,#2f5575);color:#fff;border:none;padding:13px;border-radius:14px;font-weight:600;cursor:pointer;width:100%;margin-top:14px;font-size:.95rem;box-shadow:0 8px 20px -6px rgba(30,59,92,.5)}
+.btn:disabled{opacity:.45}
+.modal{position:fixed;inset:0;background:rgba(20,30,50,.55);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px;z-index:100}
+.modal.show{display:flex}
+.card{background:#fff;border-radius:24px;padding:26px 22px;max-width:420px;width:100%;text-align:center;box-shadow:0 30px 60px -15px rgba(0,0,0,.4);animation:pop .3s}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.card .big{font-size:3rem;margin-bottom:8px}
+.card h2{margin:0 0 8px;color:#1e2b3c}
+.card p{color:#5a6f88;font-size:.9rem;line-height:1.5;margin-bottom:14px}
+.suggest{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
+.suggest a{background:#f2f6fb;color:#1e3b5c;padding:10px 8px;border-radius:10px;text-decoration:none;font-size:.78rem;font-weight:600;text-align:center}
+.suggest a:hover{background:#e3edf7}
+.card .close{background:#1e3b5c;color:#fff;border:none;padding:10px 22px;border-radius:12px;font-weight:600;cursor:pointer}
+</style></head><body>
+<div class="w">
+<a href="../" class="hub">🏠 Hub</a>
+<h1>🖼️ Image → PDF</h1>
+<p class="sub">Combine JPG / PNG images into one PDF.</p>
+<div class="drop" id="drop">📁 Click or drop images</div>
+<input type="file" id="file" accept="image/*" multiple hidden>
+<div class="imgs" id="list"></div>
+<label>Page Size</label>
+<select id="size"><option value="a4">A4</option><option value="letter">Letter</option><option value="a3">A3</option></select>
+<label>Orientation</label>
+<select id="orient"><option value="p">Portrait</option><option value="l">Landscape</option></select>
+<button class="btn" id="go" disabled>📄 Create PDF</button>
+</div>
+<div class="modal" id="modal"><div class="card"><div class="big">🎉</div><h2>Congratulations!</h2><p id="modalMsg">Your PDF is ready.</p><div class="suggest"><a href="../pdf-compressor/">📄 PDF Compressor</a><a href="../pdf-merger/">📎 PDF Merger</a><a href="../passport-photo-grid/">📸 Passport Photo</a><a href="../signature-maker-studio/">✍️ Signature</a></div><button class="close" onclick="document.getElementById('modal').classList.remove('show')">Got it</button></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+const $=i=>document.getElementById(i);let imgs=[];
+$("drop").onclick=()=>$("file").click();
+$("drop").ondragover=e=>e.preventDefault();
+$("drop").ondrop=e=>{e.preventDefault();add(e.dataTransfer.files)};
+$("file").onchange=e=>add(e.target.files);
+async function add(fs){for(const f of fs){if(!f.type.startsWith("image/"))continue;const d=await new Promise(r=>{const fr=new FileReader();fr.onload=()=>r(fr.result);fr.readAsDataURL(f)});imgs.push(d)}render()}
+function render(){$("list").innerHTML=imgs.map((im,i)=>`<div class="img"><img src="${im}"><button onclick="del(${i})">×</button></div>`).join("");$("go").disabled=!imgs.length}
+function del(i){imgs.splice(i,1);render()}
+$("go").onclick=async()=>{
+  if(!imgs.length)return;
+  const pdf=new jspdf.jsPDF({unit:"pt",format:$("size").value,orientation:$("orient").value==="l"?"landscape":"portrait"});
+  const pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight();
+  for(let i=0;i<imgs.length;i++){if(i)pdf.addPage();const img=new Image();img.src=imgs[i];await new Promise(r=>{img.onload=r});const r=Math.min(pw/img.width,ph/img.height),w=img.width*r,h=img.height*r;pdf.addImage(imgs[i],"JPEG",(pw-w)/2,(ph-h)/2,w,h)}
+  pdf.save("images.pdf");
+  $("modalMsg").textContent=imgs.length+" image"+(imgs.length>1?"s":"")+" combined into one PDF. Check your Downloads folder!";
+  $("modal").classList.add("show");
+};
+</script></body></html>

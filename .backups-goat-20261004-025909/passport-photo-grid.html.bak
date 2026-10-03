@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>Passport Photo A4 Printable Sheet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}
+    .box{max-width:500px;margin:auto;background:#0f172a;padding:24px;border-radius:12px;border:1px solid #1e293b}
+    button,input{width:100%;margin:10px 0;padding:10px;border-radius:8px;border:none;cursor:pointer}
+    button{background:#10b981;font-weight:700;color:#042f2e}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h3>🖨️ Passport Photo A4 Sheet Maker</h3>
+    <p style="font-size:0.8rem;color:#94a3b8">Print 8 passport photos on a single sheet at home or cyber cafe</p>
+    <input type="file" id="photo" accept="image/*">
+    <button onclick="renderGrid()">Generate Printable Sheet</button>
+  </div>
+  <div id="print-area" style="display:none;background:#fff;padding:20px;display:flex;flex-wrap:wrap;gap:15px;justify-content:center;margin-top:20px"></div>
+  <script>
+    function renderGrid(){
+      const file = document.getElementById('photo').files[0];
+      if(!file) return alert('Upload a photo');
+      const reader = new FileReader();
+      reader.onload = e => {
+        const area = document.getElementById('print-area');
+        area.style.display = 'flex'; area.innerHTML = '';
+        for(let i=0; i<8; i++){
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          img.style.width = '3.5cm'; img.style.height = '4.5cm';
+          img.style.border = '1px solid #ccc';
+          area.appendChild(img);
+        }
+        window.print();
+      };
+      reader.readAsDataURL(file);
+    }
+  </script>
+</body>
+</html>

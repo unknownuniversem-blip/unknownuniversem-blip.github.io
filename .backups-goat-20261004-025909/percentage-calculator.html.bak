@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5"><title>Percentage Calculator · Master Hub</title><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💯</text></svg>"><style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:system-ui,sans-serif;background:radial-gradient(circle at 20% 10%,#eef4fb,#dde6f2);min-height:100vh;min-height:100dvh;padding:clamp(8px,1.5vw,16px);overflow-x:hidden}
+.w{width:100%;max-width:640px;margin:0 auto;background:rgba(255,255,255,.88);backdrop-filter:blur(20px);border-radius:clamp(18px,3.5vw,28px);padding:clamp(14px,2.5vw,24px);box-shadow:0 30px 60px -20px rgba(20,40,80,.25);position:relative}
+.hub{position:absolute;top:12px;left:12px;background:#1e3b5c;color:#fff;text-decoration:none;font-size:.7rem;font-weight:600;padding:5px 11px;border-radius:999px}
+h1{margin:6px 0 10px;color:#1e2b3c;font-size:clamp(1.2rem,3.6vw,1.5rem);text-align:center;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.box{background:linear-gradient(145deg,#f6f9fd,#eef4fa);border-radius:14px;padding:12px}
+.box h3{margin:0 0 6px;color:#3e5a7a;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+.box input{width:100%;padding:9px 12px;border:1px solid #d5e0ed;border-radius:10px;margin:.15rem 0;box-sizing:border-box;font-size:.85rem;background:#fff}
+.box .out{background:#1e3b5c;color:#fff;padding:9px;border-radius:10px;text-align:center;font-size:1rem;font-weight:700;margin-top:6px;min-height:36px;display:flex;align-items:center;justify-content:center}
+</style></head><body>
+<div class="w">
+<a href="../" class="hub">🏠 Hub</a>
+<h1>💯 Percentage Calculator</h1>
+<div class="grid">
+<div class="box"><h3>X% of Y</h3><input id="p1" type="number" placeholder="X"><input id="p2" type="number" placeholder="Y"><div class="out" id="o1">—</div></div>
+<div class="box"><h3>X is what % of Y</h3><input id="p3" type="number" placeholder="X"><input id="p4" type="number" placeholder="Y"><div class="out" id="o2">—</div></div>
+<div class="box"><h3>% change X → Y</h3><input id="p5" type="number" placeholder="From"><input id="p6" type="number" placeholder="To"><div class="out" id="o3">—</div></div>
+<div class="box"><h3>Marks Obtained / Total</h3><input id="p7" type="number" placeholder="Obtained"><input id="p8" type="number" placeholder="Total"><div class="out" id="o4">—</div></div>
+<div class="box"><h3>GST / Tax</h3><input id="g1" type="number" placeholder="Amount ₹"><input id="g2" type="number" placeholder="GST %"><div class="out" id="o5">—</div></div>
+<div class="box"><h3>Discount</h3><input id="d1" type="number" placeholder="Price ₹"><input id="d2" type="number" placeholder="Discount %"><div class="out" id="o6">—</div></div>
+<div class="box"><h3>Tip Calculator</h3><input id="t1" type="number" placeholder="Bill ₹"><input id="t2" type="number" placeholder="Tip %"><div class="out" id="o7">—</div></div>
+<div class="box"><h3>Reverse % (X% of ? = Y)</h3><input id="r1" type="number" placeholder="X %"><input id="r2" type="number" placeholder="Y"><div class="out" id="o8">—</div></div>
+</div>
+</div>
+<script>
+const $=i=>document.getElementById(i);
+function f(v){return isFinite(v)?Number(v.toFixed(2)):"—"}
+function upd(){
+  const g=id=>parseFloat($(id).value);
+  $("o1").textContent=f(g("p1")*g("p2")/100);
+  $("o2").textContent=isFinite(g("p3")/g("p4"))?f(g("p3")/g("p4")*100)+" %":"—";
+  const fr=g("p5"),to=g("p6");$("o3").textContent=fr?f((to-fr)/fr*100)+" %":"—";
+  $("o4").textContent=isFinite(g("p7")/g("p8"))?f(g("p7")/g("p8")*100)+" %":"—";
+  const ga=g("g1"),gr=g("g2");$("o5").textContent=(isFinite(ga)&&isFinite(gr))?"₹"+f(ga*(1+gr/100)):"—";
+  const dp=g("d1"),dr=g("d2");$("o6").textContent=(isFinite(dp)&&isFinite(dr))?"₹"+f(dp*(1-dr/100)):"—";
+  const tb=g("t1"),tr=g("t2");$("o7").textContent=(isFinite(tb)&&isFinite(tr))?"₹"+f(tb*(1+tr/100)):"—";
+  $("o8").textContent=g("r1")?f(g("r2")/(g("r1")/100)):"—";
+}
+["p1","p2","p3","p4","p5","p6","p7","p8","g1","g2","d1","d2","t1","t2","r1","r2"].forEach(id=>$(id).oninput=upd);
+</script></body></html>

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Focus Pomodoro Studio — Aspirant Study Timer & History</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2338bdf8'><path d='M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z'/></svg>">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #070c18;
+      color: #f1f5f9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
+      width: 100%;
+      height: 56px;
+      background: #091122;
+      border-bottom: 1px solid #1e293b;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: #38bdf8;
+      text-decoration: none;
+    }
+    .container {
+      width: 100%;
+      max-width: 680px;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .modes {
+      display: flex;
+      gap: 8px;
+      background: #0f172a;
+      padding: 6px;
+      border-radius: 12px;
+      border: 1px solid #1e293b;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .mode-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .mode-btn.active {
+      background: #0284c7;
+      color: #ffffff;
+    }
+    
+    /* Custom Time Row */
+    .custom-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 22px;
+      background: #0d1527;
+      padding: 6px 12px;
+      border-radius: 10px;
+      border: 1px solid #1e293b;
+    }
+    .custom-row label {
+      font-size: 0.78rem;
+      color: #94a3b8;
+      font-weight: 600;
+    }
+    .custom-row input {
+      width: 65px;
+      background: #131d35;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      padding: 4px 8px;
+      color: #fff;
+      font-size: 0.85rem;
+      text-align: center;
+      outline: none;
+    }
+    .custom-row button {
+      background: #38bdf8;
+      color: #070c18;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .timer-wrap {
+      position: relative;
+      width: 260px;
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .timer-svg {
+      transform: rotate(-90deg);
+      width: 100%;
+      height: 100%;
+    }
+    .circle-bg {
+      fill: none;
+      stroke: #1e293b;
+      stroke-width: 8;
+    }
+    .circle-progress {
+      fill: none;
+      stroke: #38bdf8;
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 753.98;
+      stroke-dashoffset: 0;
+      transition: stroke-dashoffset 0.5s ease;
+    }
+    .time-display {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .digits {
+      font-size: 3.3rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: #fff;
+    }
+    .label {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 3px;
+    }
+    .controls {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .btn {
+      padding: 10px 24px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary { background: #22c55e; color: #052e16; }
+    .btn-secondary { background: #1e293b; color: #cbd5e1; border: 1px solid #334155; }
+    
+    .stats-card {
+      width: 100%;
+      background: #0d1527;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+    .stat-item h4 { font-size: 1.3rem; color: #38bdf8; }
+    .stat-item p { font-size: 0.72rem; color: #64748b; text-transform: uppercase; }
+
+    /* Past Sessions History Ledger */
+    .history-card {
+      width: 100%;
+      background: #0d1527;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: left;
+    }
+    .history-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #1e293b;
+    }
+    .history-head h3 { font-size: 0.9rem; color: #f1f5f9; }
+    .clear-btn {
+      background: transparent;
+      border: 1px solid #ef4444;
+      color: #ef4444;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      cursor: pointer;
+    }
+    .history-list {
+      max-height: 180px;
+      overflow-y: auto;
+      list-style: none;
+      font-size: 0.8rem;
+    }
+    .history-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 7px 0;
+      border-bottom: 1px solid #131d35;
+      color: #cbd5e1;
+    }
+    .history-item span.tag {
+      background: #1e293b;
+      color: #38bdf8;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+    }
+    .empty-msg {
+      color: #64748b;
+      font-size: 0.78rem;
+      text-align: center;
+      padding: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Community Ribbon -->
+  <div style="width:100%; background: linear-gradient(90deg, #052e16 0%, #0c2135 100%); border-bottom: 1px solid #10b981; padding: 6px 16px; font-size: 0.78rem; display: flex; align-items: center; justify-content: space-between; color: #ecfdf5;">
+    <div>📢 <b>Student Utility Hub:</b> Daily study tools & drills</div>
+    <div style="display:flex; gap:8px;">
+      <a href="https://whatsapp.com/channel/0029Vb9D7Qk7Noa58zytoP0P" target="_blank" style="background:#22c55e; color:#052e16; text-decoration:none; padding:3px 10px; border-radius:12px; font-weight:700; font-size:0.72rem;">WhatsApp</a>
+      <a href="https://t.me/StudentUtilityHub" target="_blank" style="background:#0284c7; color:#fff; text-decoration:none; padding:3px 10px; border-radius:12px; font-weight:700; font-size:0.72rem;">Telegram</a>
+    </div>
+  </div>
+
+  <header>
+    <a href="../" class="brand">
+      <span>⬅ Master Hub</span>
+    </a>
+    <span style="font-size: 0.85rem; color: #94a3b8;">Focus Pomodoro Studio</span>
+  </header>
+
+  <div class="container">
+    
+    <!-- Mode Switcher -->
+    <div class="modes">
+      <button class="mode-btn active" onclick="setPreset(25, 'Study Session', this)">25m Study</button>
+      <button class="mode-btn" onclick="setPreset(50, 'Exam Marathon', this)">50m Sprint</button>
+      <button class="mode-btn" onclick="setPreset(5, 'Short Break', this)">5m Break</button>
+      <button class="mode-btn" onclick="setPreset(15, 'Long Break', this)">15m Rest</button>
+    </div>
+
+    <!-- Custom Time Setter -->
+    <div class="custom-row">
+      <label>Custom Timer (Mins):</label>
+      <input type="number" id="custom-min" min="1" max="180" value="40">
+      <button onclick="applyCustom()">Set Timer</button>
+    </div>
+
+    <!-- Circle Timer -->
+    <div class="timer-wrap">
+      <svg class="timer-svg" viewBox="0 0 260 260">
+        <circle class="circle-bg" cx="130" cy="130" r="120"></circle>
+        <circle id="progress" class="circle-progress" cx="130" cy="130" r="120"></circle>
+      </svg>
+      <div class="time-display">
+        <div class="digits" id="time">25:00</div>
+        <div class="label" id="phase-label">Study Session</div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button class="btn btn-primary" id="toggle-btn" onclick="toggleTimer()">Start Focus</button>
+      <button class="btn btn-secondary" onclick="resetTimer()">Reset</button>
+    </div>
+
+    <!-- Focus Stats -->
+    <div class="stats-card">
+      <div class="stat-item">
+        <h4 id="stat-sessions">0</h4>
+        <p>Total Completed</p>
+      </div>
+      <div class="stat-item">
+        <h4 id="stat-minutes">0</h4>
+        <p>Focus Minutes</p>
+      </div>
+    </div>
+
+    <!-- Past Sessions History Log -->
+    <div class="history-card">
+      <div class="history-head">
+        <h3>📜 Past Session History</h3>
+        <button class="clear-btn" onclick="clearHistory()">Clear Log</button>
+      </div>
+      <ul class="history-list" id="history-items">
+        <li class="empty-msg">No completed sessions logged yet today.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <script>
+    let durationMins = 25;
+    let totalSec = durationMins * 60;
+    let remainSec = totalSec;
+    let timerId = null;
+    let isRunning = false;
+    let currentPhase = 'Study Session';
+
+    const circleCircumference = 2 * Math.PI * 120; // 753.98
+    const progressEl = document.getElementById('progress');
+    const timeEl = document.getElementById('time');
+    const toggleBtn = document.getElementById('toggle-btn');
+    const labelEl = document.getElementById('phase-label');
+    const historyUl = document.getElementById('history-items');
+
+    // Storage
+    let completed = parseInt(localStorage.getItem('pomo_completed') || '0');
+    let minutes = parseInt(localStorage.getItem('pomo_minutes') || '0');
+    let history = JSON.parse(localStorage.getItem('pomo_history') || '[]');
+
+    document.getElementById('stat-sessions').innerText = completed;
+    document.getElementById('stat-minutes').innerText = minutes;
+    renderHistory();
+
+    function renderTime() {
+      const m = Math.floor(remainSec / 60).toString().padStart(2, '0');
+      const s = (remainSec % 60).toString().padStart(2, '0');
+      timeEl.innerText = `${m}:${s}`;
+      document.title = `${m}:${s} • ${currentPhase}`;
+      
+      const offset = circleCircumference * (1 - (remainSec / totalSec));
+      progressEl.style.strokeDashoffset = offset;
+    }
+
+    function toggleTimer() {
+      if (isRunning) {
+        clearInterval(timerId);
+        isRunning = false;
+        toggleBtn.innerText = 'Resume';
+        toggleBtn.style.background = '#22c55e';
+      } else {
+        isRunning = true;
+        toggleBtn.innerText = 'Pause';
+        toggleBtn.style.background = '#f59e0b';
+        timerId = setInterval(() => {
+          if (remainSec > 0) {
+            remainSec--;
+            renderTime();
+          } else {
+            clearInterval(timerId);
+            isRunning = false;
+            toggleBtn.innerText = 'Start Focus';
+            toggleBtn.style.background = '#22c55e';
+            playChime();
+            logCompletedSession();
+            alert(`${currentPhase} finished! Logged in session history.`);
+            resetTimer();
+          }
+        }, 1000);
+      }
+    }
+
+    function resetTimer() {
+      clearInterval(timerId);
+      isRunning = false;
+      remainSec = totalSec;
+      toggleBtn.innerText = 'Start Focus';
+      toggleBtn.style.background = '#22c55e';
+      renderTime();
+    }
+
+    function setPreset(mins, label, btn) {
+      document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      durationMins = mins;
+      totalSec = mins * 60;
+      currentPhase = label;
+      labelEl.innerText = label;
+      resetTimer();
+    }
+
+    function applyCustom() {
+      const val = parseInt(document.getElementById('custom-min').value);
+      if (isNaN(val) || val < 1 || val > 180) {
+        alert('Please enter a valid time between 1 and 180 minutes.');
+        return;
+      }
+      document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+      durationMins = val;
+      totalSec = val * 60;
+      currentPhase = `Custom (${val}m)`;
+      labelEl.innerText = currentPhase;
+      resetTimer();
+    }
+
+    function logCompletedSession() {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const dateStr = now.toLocaleDateString([], { month: 'short', day: 'numeric' });
+
+      completed++;
+      minutes += durationMins;
+      localStorage.setItem('pomo_completed', completed);
+      localStorage.setItem('pomo_minutes', minutes);
+      document.getElementById('stat-sessions').innerText = completed;
+      document.getElementById('stat-minutes').innerText = minutes;
+
+      const record = {
+        phase: currentPhase,
+        mins: durationMins,
+        time: timeStr,
+        date: dateStr
+      };
+
+      history.unshift(record);
+      if (history.length > 30) history.pop();
+      localStorage.setItem('pomo_history', JSON.stringify(history));
+      renderHistory();
+    }
+
+    function renderHistory() {
+      if (!history || history.length === 0) {
+        historyUl.innerHTML = '<li class="empty-msg">No completed sessions logged yet.</li>';
+        return;
+      }
+      historyUl.innerHTML = '';
+      history.forEach(item => {
+        const li = document.createElement('li');
+        li.className = 'history-item';
+        li.innerHTML = `
+          <div>
+            <b>${item.phase}</b> <span class="tag">${item.mins} mins</span>
+          </div>
+          <div style="color: #64748b; font-size: 0.74rem;">
+            ${item.date}, ${item.time}
+          </div>
+        `;
+        historyUl.appendChild(li);
+      });
+    }
+
+    function clearHistory() {
+      if (confirm('Clear all logged session history?')) {
+        history = [];
+        localStorage.removeItem('pomo_history');
+        renderHistory();
+      }
+    }
+
+    function playChime() {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.frequency.setValueAtTime(528, ctx.currentTime);
+        gain.gain.setValueAtTime(0.3, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.8);
+        osc.start();
+        osc.stop(ctx.currentTime + 1.8);
+      } catch(e) {}
+    }
+
+    renderTime();
+  </script>
+</body>
+</html>
