@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>20-20-20 Posture & Eye Chime</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}
+    .box{max-width:440px;margin:auto;background:#0f172a;padding:24px;border-radius:14px;border:1px solid #1e293b}
+    .t{font-size:4rem;font-weight:900;color:#10b981;margin:15px 0}
+    button{background:#10b981;color:#042f2e;padding:12px 24px;border-radius:8px;border:none;font-weight:bold;cursor:pointer}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h3>🧘 20-20-20 Eye & Posture Chime</h3>
+    <p style="color:#94a3b8;font-size:0.85rem">Decompresses neck stiffness and resets eye strain during 8-hr study sessions.</p>
+    <div class="t" id="disp">20:00</div>
+    <button id="btn" onclick="start()">Start Chime</button>
+  </div>
+  <script>
+    let s = 1200, t = null;
+    function chime(){
+      try{
+        const c = new (window.AudioContext||window.webkitAudioContext)();
+        const o = c.createOscillator(); const g = c.createGain();
+        o.connect(g); g.connect(c.destination);
+        o.frequency.value = 528; g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 1.8);
+        o.start(); o.stop(c.currentTime + 1.8);
+      }catch(e){}
+    }
+    function start(){
+      if(t){ clearInterval(t); t=null; document.getElementById('btn').innerText="Resume"; }
+      else {
+        document.getElementById('btn').innerText="Pause";
+        t = setInterval(()=>{
+          if(s>0){ s--; const m=Math.floor(s/60).toString().padStart(2,'0'); const sc=(s%60).toString().padStart(2,'0'); document.getElementById('disp').innerText=`${m}:${sc}`; }
+          else{ chime(); alert("🔔 Look 20ft away, roll shoulders, drink water!"); s=1200; }
+        },1000);
+      }
+    }
+  </script>
+</body>
+</html>

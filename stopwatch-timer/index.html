@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>Physical PET Sprint Stopwatch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}
+    .box{max-width:440px;margin:auto;background:#0f172a;padding:24px;border-radius:14px;border:1px solid #1e293b}
+    .disp{font-size:4rem;font-weight:900;color:#38bdf8;margin:15px 0}
+    button{padding:10px 20px;margin:4px;border-radius:8px;border:none;font-weight:bold;cursor:pointer}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h3>⏱️ Physical Sprint Lap Stopwatch</h3>
+    <div class="disp" id="d">00:00.0</div>
+    <button style="background:#22c55e;color:#052e16" id="b" onclick="toggle()">Start</button>
+    <button style="background:#334155;color:#fff" onclick="rst()">Reset</button>
+  </div>
+  <script>
+    let t=null, ms=0;
+    function toggle(){
+      if(t){ clearInterval(t); t=null; document.getElementById('b').innerText="Resume"; }
+      else {
+        document.getElementById('b').innerText="Stop";
+        t = setInterval(()=>{
+          ms += 100;
+          const s = Math.floor(ms/1000)%60;
+          const m = Math.floor(ms/60000);
+          const tenths = Math.floor((ms%1000)/100);
+          document.getElementById('d').innerText = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}.${tenths}`;
+        }, 100);
+      }
+    }
+    function rst(){ clearInterval(t); t=null; ms=0; document.getElementById('d').innerText="00:00.0"; document.getElementById('b').innerText="Start"; }
+  </script>
+</body>
+</html>

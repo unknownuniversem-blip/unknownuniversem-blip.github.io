@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>CGPA to Percentage Converter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}
+    .box{max-width:460px;margin:auto;background:#0f172a;padding:24px;border-radius:12px;border:1px solid #1e293b;text-align:left}
+    input,select{width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #334155;background:#131d35;color:#fff}
+    .res{margin-top:16px;padding:16px;background:#070c18;border-radius:8px;text-align:center;font-size:1.5rem;color:#38bdf8;font-weight:800}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h3 style="text-align:center;color:#38bdf8">🎓 CGPA to Percentage</h3>
+    <label style="font-size:0.8rem;color:#94a3b8">Enter CGPA (Scale of 10)</label>
+    <input type="number" id="cgpa" step="0.01" value="8.4" oninput="convert()">
+    <label style="font-size:0.8rem;color:#94a3b8">Formula Standard</label>
+    <select id="mode" onchange="convert()">
+      <option value="9.5">CBSE Standard (CGPA x 9.5)</option>
+      <option value="10.0">AICTE / Engineering Standard ((CGPA - 0.75) x 10)</option>
+      <option value="raw">Direct 10-Multiplier (CGPA x 10)</option>
+    </select>
+    <div class="res" id="res">79.80 %</div>
+  </div>
+  <script>
+    function convert(){
+      const val = parseFloat(document.getElementById('cgpa').value) || 0;
+      const m = document.getElementById('mode').value;
+      let pct = 0;
+      if(m === '9.5') pct = val * 9.5;
+      else if(m === '10.0') pct = (val - 0.75) * 10;
+      else pct = val * 10;
+      pct = Math.max(0, Math.min(100, pct));
+      document.getElementById('res').innerText = pct.toFixed(2) + " %";
+    }
+  </script>
+</body>
+</html>

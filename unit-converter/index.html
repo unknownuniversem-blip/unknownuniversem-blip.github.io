@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>Aspirant Unit Converter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}
+    .box{max-width:440px;margin:auto;background:#0f172a;padding:24px;border-radius:14px;border:1px solid #1e293b;text-align:left}
+    input,select{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #334155;background:#131d35;color:#fff}
+    .res{margin-top:12px;padding:12px;background:#070c18;border-radius:8px;text-align:center;font-weight:bold;color:#38bdf8}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h3 style="text-align:center;color:#38bdf8">📐 Rapid Unit Converter</h3>
+    <label style="font-size:0.8rem;color:#94a3b8">Value</label><input type="number" id="v" value="10" oninput="c()">
+    <label style="font-size:0.8rem;color:#94a3b8">Type</label>
+    <select id="m" onchange="c()">
+      <option value="km_m">Kilometers to Meters</option>
+      <option value="m_km">Meters to Kilometers</option>
+      <option value="kg_g">Kilograms to Grams</option>
+      <option value="mb_kb">Megabytes (MB) to Kilobytes (KB)</option>
+    </select>
+    <div class="res" id="res">10,000 Meters</div>
+  </div>
+  <script>
+    function c(){
+      const val = parseFloat(document.getElementById('v').value)||0;
+      const m = document.getElementById('m').value;
+      let r = '';
+      if(m==='km_m') r = (val * 1000).toLocaleString() + ' Meters';
+      if(m==='m_km') r = (val / 1000).toFixed(3) + ' Kilometers';
+      if(m==='kg_g') r = (val * 1000).toLocaleString() + ' Grams';
+      if(m==='mb_kb') r = (val * 1024).toLocaleString() + ' KB';
+      document.getElementById('res').innerText = r;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>Distraction-Free Scratchpad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{background:#070c18;color:#f8fafc;font-family:sans-serif;margin:0;display:flex;flex-direction:column;height:100vh}
+    header{padding:12px 20px;background:#0f172a;border-bottom:1px solid #1e293b;display:flex;justify-content:space-between}
+    textarea{flex-grow:1;background:transparent;color:#f1f5f9;border:none;padding:24px;font-size:1.1rem;line-height:1.6;outline:none;resize:none}
+  </style>
+</head>
+<body>
+  <header>
+    <span>📝 Aspirant Quick Scratchpad</span>
+    <span style="font-size:0.8rem;color:#10b981" id="st">Autosaved</span>
+  </header>
+  <textarea id="pad" placeholder="Jot down quick formulas, revision points, or daily targets..."></textarea>
+  <script>
+    const p = document.getElementById('pad');
+    p.value = localStorage.getItem('hub_scratchpad') || '';
+    p.addEventListener('input', () => {
+      localStorage.setItem('hub_scratchpad', p.value);
+      document.getElementById('st').innerText = 'Autosaved';
+    });
+  </script>
+</body>
+</html>

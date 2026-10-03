@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>Digital OMR Practice Sheet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:15px;margin:0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(160px, 1fr));gap:8px;max-width:800px;margin:20px auto}
+    .row{background:#0f172a;padding:8px;border-radius:6px;border:1px solid #1e293b;display:flex;justify-content:space-between;align-items:center}
+    .b{width:24px;height:24px;border-radius:50%;border:1px solid #64748b;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:0.75rem}
+    .b.sel{background:#38bdf8;color:#070c18;border-color:#38bdf8;font-weight:bold}
+  </style>
+</head>
+<body>
+  <div style="text-align:center;padding:10px">
+    <h3>⭕ 50-Question Digital OMR Sheet</h3>
+    <button onclick="alert('Submission recorded!')" style="background:#22c55e;color:#052e16;border:none;padding:8px 16px;border-radius:6px;font-weight:bold;cursor:pointer">Evaluate Score</button>
+  </div>
+  <div class="grid" id="g"></div>
+  <script>
+    const g = document.getElementById('g');
+    for(let i=1; i<=50; i++){
+      const d = document.createElement('div'); d.className='row';
+      d.innerHTML = `<span>${i}.</span>` + ['A','B','C','D'].map(o => `<span class="b" onclick="this.parentElement.querySelectorAll('.b').forEach(x=>x.classList.remove('sel'));this.classList.add('sel')">${o}</span>`).join('');
+      g.appendChild(d);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>Essay Word & Character Counter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}
+    .box{max-width:560px;margin:auto;background:#0f172a;padding:20px;border-radius:14px;border:1px solid #1e293b}
+    textarea{width:100%;height:160px;background:#131d35;color:#fff;border:1px solid #334155;border-radius:8px;padding:12px;box-sizing:border-box;outline:none}
+    .stats{display:flex;justify-content:space-around;margin-top:12px;font-weight:bold;color:#38bdf8}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h3>📝 Essay Word & Character Counter</h3>
+    <textarea id="t" placeholder="Paste your descriptive answer or essay draft here..." oninput="cnt(this.value)"></textarea>
+    <div class="stats">
+      <div id="w">Words: 0</div>
+      <div id="c">Chars: 0</div>
+    </div>
+  </div>
+  <script>
+    function cnt(v){
+      const w = v.trim() ? v.trim().split(/\s+/).length : 0;
+      document.getElementById('w').innerText = "Words: " + w;
+      document.getElementById('c').innerText = "Chars: " + v.length;
+    }
+  </script>
+</body>
+</html>

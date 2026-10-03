@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>Marksheet Percentage Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}
+    .box{max-width:440px;margin:auto;background:#0f172a;padding:24px;border-radius:14px;border:1px solid #1e293b;text-align:left}
+    input{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #334155;background:#131d35;color:#fff}
+    .res{font-size:2.2rem;font-weight:bold;color:#10b981;text-align:center;margin-top:14px}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h3 style="text-align:center;color:#10b981">📊 Marksheet Percentage</h3>
+    <label style="font-size:0.8rem;color:#94a3b8">Marks Obtained</label><input type="number" id="obt" value="435" oninput="calc()">
+    <label style="font-size:0.8rem;color:#94a3b8">Total Maximum Marks</label><input type="number" id="tot" value="500" oninput="calc()">
+    <div class="res" id="res">87.00 %</div>
+  </div>
+  <script>
+    function calc(){
+      const o = parseFloat(document.getElementById('obt').value)||0;
+      const t = parseFloat(document.getElementById('tot').value)||1;
+      document.getElementById('res').innerText = ((o/t)*100).toFixed(2) + " %";
+    }
+  </script>
+</body>
+</html>

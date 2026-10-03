@@ -7,124 +7,30 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2338bdf8'><path d='M12 2L1 21h22L12 2zm0 3.5L19.5 19h-15L12 5.5z'/></svg>">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: #070c18;
-      color: #f1f5f9;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      min-height: 100vh;
-    }
-    .ribbon {
-      background: linear-gradient(90deg, #052e16 0%, #0c2135 100%);
-      border-bottom: 1px solid #10b981;
-      padding: 8px 16px;
-      font-size: 0.8rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
+    body { background: #070c18; color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; min-height: 100vh; }
+    .ribbon { background: linear-gradient(90deg, #052e16 0%, #0c2135 100%); border-bottom: 1px solid #10b981; padding: 8px 16px; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
     .ribbon-links { display: flex; gap: 8px; }
-    .ribbon-btn {
-      padding: 4px 10px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 0.72rem;
-      text-decoration: none;
-    }
+    .ribbon-btn { padding: 4px 10px; border-radius: 12px; font-weight: 700; font-size: 0.72rem; text-decoration: none; }
     .btn-wa { background: #22c55e; color: #052e16; }
     .btn-tg { background: #0284c7; color: #fff; }
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-    .hero {
-      text-align: center;
-      margin-bottom: 35px;
-    }
-    .hero h1 {
-      font-size: 2.4rem;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 10px;
-    }
-    .hero p {
-      color: #94a3b8;
-      font-size: 1.05rem;
-      max-width: 600px;
-      margin: 0 auto 20px auto;
-    }
-    .search-box {
-      width: 100%;
-      max-width: 500px;
-      margin: 0 auto 30px auto;
-    }
-    .search-box input {
-      width: 100%;
-      padding: 14px 20px;
-      background: #0f172a;
-      border: 1px solid #334155;
-      border-radius: 12px;
-      color: #fff;
-      font-size: 1rem;
-      outline: none;
-    }
-    .search-box input:focus {
-      border-color: #38bdf8;
-    }
-    .tool-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 18px;
-    }
-    .tool-card {
-      background: #0d1527;
-      border: 1px solid #1e293b;
-      border-radius: 14px;
-      padding: 20px;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      transition: all 0.2s ease;
-    }
-    .tool-card:hover {
-      transform: translateY(-3px);
-      border-color: #38bdf8;
-      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.12);
-    }
-    .card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+    .hero { text-align: center; margin-bottom: 35px; }
+    .hero h1 { font-size: 2.4rem; font-weight: 800; color: #fff; margin-bottom: 10px; }
+    .hero p { color: #94a3b8; font-size: 1.05rem; max-width: 600px; margin: 0 auto 20px auto; }
+    .search-box { width: 100%; max-width: 500px; margin: 0 auto 30px auto; }
+    .search-box input { width: 100%; padding: 14px 20px; background: #0f172a; border: 1px solid #334155; border-radius: 12px; color: #fff; font-size: 1rem; outline: none; }
+    .search-box input:focus { border-color: #38bdf8; }
+    .tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+    .tool-card { background: #0d1527; border: 1px solid #1e293b; border-radius: 14px; padding: 20px; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: all 0.2s ease; }
+    .tool-card:hover { transform: translateY(-3px); border-color: #38bdf8; box-shadow: 0 8px 24px rgba(56, 189, 248, 0.12); }
+    .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
     .tool-icon { font-size: 2rem; }
-    .tool-tag {
-      background: #1e293b;
-      color: #38bdf8;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 6px;
-    }
-    .tool-card h3 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #f8fafc;
-      margin-bottom: 6px;
-    }
-    .tool-card p {
-      color: #94a3b8;
-      font-size: 0.85rem;
-      line-height: 1.4;
-      flex-grow: 1;
-    }
+    .tool-tag { background: #1e293b; color: #38bdf8; font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 6px; }
+    .tool-card h3 { font-size: 1.15rem; font-weight: 700; color: #f8fafc; margin-bottom: 6px; }
+    .tool-card p { color: #94a3b8; font-size: 0.85rem; line-height: 1.4; flex-grow: 1; }
   </style>
 </head>
 <body>
-
   <div class="ribbon">
     <div>📢 <b>Daily Health & Fitness Tips:</b> WhatsApp channel now active!</div>
     <div class="ribbon-links">
@@ -132,17 +38,23 @@
       <a href="https://t.me/StudentUtilityHub" target="_blank" class="ribbon-btn btn-tg">Telegram</a>
     </div>
   </div>
-
   <div class="container">
     <div class="hero">
       <h1>Student Utility Hub</h1>
       <p>100% Free, privacy-first tools for exams, fitness, form filling & daily focus.</p>
       <div class="search-box">
-        <input type="text" id="tool-search" placeholder="🔍 Search among 3 tools..." oninput="filterTools()">
+        <input type="text" id="tool-search" placeholder="🔍 Search among 23 tools..." oninput="filterTools()">
       </div>
     </div>
-
     <div class="tool-grid" id="grid">
+      <a href="./age-eligibility-calc/" class="tool-card" data-name="age eligibility calculator" data-desc="check cutoff dates and category age relaxations for ssc, upsc & ibps.">
+        <div class="card-top">
+          <div class="tool-icon">🎂</div>
+          <span class="tool-tag">Eligibility</span>
+        </div>
+        <h3>Age Eligibility Calculator</h3>
+        <p>Check cutoff dates and category age relaxations for SSC, UPSC & IBPS.</p>
+      </a>
       <a href="./ats-resume-builder/" class="tool-card" data-name="ats resume studio" data-desc="harvard & navy single-page formats for job applications.">
         <div class="card-top">
           <div class="tool-icon">📄</div>
@@ -151,13 +63,109 @@
         <h3>ATS Resume Studio</h3>
         <p>Harvard & Navy single-page formats for job applications.</p>
       </a>
-      <a href="./math/" class="tool-card" data-name="speed math drill studio" data-desc="tables 1–30, squares, cubes & fraction rapid tests.">
+      <a href="./bmi-calorie-calc/" class="tool-card" data-name="daily calorie & bmi calc" data-desc="calculate maintenance calories, tdee, and optimal hydration.">
+        <div class="card-top">
+          <div class="tool-icon">🥗</div>
+          <span class="tool-tag">Health</span>
+        </div>
+        <h3>Daily Calorie & BMI Calc</h3>
+        <p>Calculate maintenance calories, TDEE, and optimal hydration.</p>
+      </a>
+      <a href="./case-converter/" class="tool-card" data-name="form text case converter" data-desc="instantly convert names and text to uppercase or title case.">
+        <div class="card-top">
+          <div class="tool-icon">🔤</div>
+          <span class="tool-tag">Forms</span>
+        </div>
+        <h3>Form Text Case Converter</h3>
+        <p>Instantly convert names and text to UPPERCASE or Title Case.</p>
+      </a>
+      <a href="./cgpa-converter/" class="tool-card" data-name="cgpa to % converter" data-desc="standard university cgpa/sgpa percentage conversion formulas.">
+        <div class="card-top">
+          <div class="tool-icon">🎓</div>
+          <span class="tool-tag">Academic</span>
+        </div>
+        <h3>CGPA to % Converter</h3>
+        <p>Standard university CGPA/SGPA percentage conversion formulas.</p>
+      </a>
+      <a href="./desk-posture-bell/" class="tool-card" data-name="posture & 20-20-20 eye chime" data-desc="ergonomic interval reminders with web audio chime alerts.">
+        <div class="card-top">
+          <div class="tool-icon">🧘</div>
+          <span class="tool-tag">Health</span>
+        </div>
+        <h3>Posture & 20-20-20 Eye Chime</h3>
+        <p>Ergonomic interval reminders with Web Audio chime alerts.</p>
+      </a>
+      <a href="./exam-resizer/" class="tool-card" data-name="sarkari photo resizer" data-desc="compress photos to exact 20kb-50kb cutoffs with dimension scaling.">
+        <div class="card-top">
+          <div class="tool-icon">📸</div>
+          <span class="tool-tag">Forms</span>
+        </div>
+        <h3>Sarkari Photo Resizer</h3>
+        <p>Compress photos to exact 20KB-50KB cutoffs with dimension scaling.</p>
+      </a>
+      <a href="./exam-score-calc/" class="tool-card" data-name="negative marking calculator" data-desc="calculate raw score, deductions & accuracy for ssc, upsc & ibps.">
+        <div class="card-top">
+          <div class="tool-icon">🎯</div>
+          <span class="tool-tag">Aspirants</span>
+        </div>
+        <h3>Negative Marking Calculator</h3>
+        <p>Calculate raw score, deductions & accuracy for SSC, UPSC & IBPS.</p>
+      </a>
+      <a href="./home-workout/" class="tool-card" data-name="7-min home workout coach" data-desc="voice-guided zero-equipment bodyweight routines and posture intervals.">
+        <div class="card-top">
+          <div class="tool-icon">🏃‍♂️</div>
+          <span class="tool-tag">Health</span>
+        </div>
+        <h3>7-Min Home Workout Coach</h3>
+        <p>Voice-guided zero-equipment bodyweight routines and posture intervals.</p>
+      </a>
+      <a href="./math/" class="tool-card" data-name="speed math drill studio" data-desc="tables 1-30, squares, cubes & fraction rapid tests.">
         <div class="card-top">
           <div class="tool-icon">⚡</div>
           <span class="tool-tag">Aptitude</span>
         </div>
         <h3>Speed Math Drill Studio</h3>
-        <p>Tables 1–30, Squares, Cubes & Fraction rapid tests.</p>
+        <p>Tables 1-30, Squares, Cubes & Fraction rapid tests.</p>
+      </a>
+      <a href="./notes-scratchpad/" class="tool-card" data-name="aspirant scratchpad" data-desc="autosaving clean scratchpad with dark distraction-free mode.">
+        <div class="card-top">
+          <div class="tool-icon">📝</div>
+          <span class="tool-tag">Productivity</span>
+        </div>
+        <h3>Aspirant Scratchpad</h3>
+        <p>Autosaving clean scratchpad with dark distraction-free mode.</p>
+      </a>
+      <a href="./omr-sheet-test/" class="tool-card" data-name="digital omr sheet simulator" data-desc="100-question bubble response sheet for offline mock test evaluation.">
+        <div class="card-top">
+          <div class="tool-icon">⭕</div>
+          <span class="tool-tag">Aspirants</span>
+        </div>
+        <h3>Digital OMR Sheet Simulator</h3>
+        <p>100-Question bubble response sheet for offline mock test evaluation.</p>
+      </a>
+      <a href="./passport-photo-grid/" class="tool-card" data-name="passport photo a4 grid" data-desc="printable 6/8/12 passport photo sheets for cyber cafes.">
+        <div class="card-top">
+          <div class="tool-icon">🖨️</div>
+          <span class="tool-tag">Print</span>
+        </div>
+        <h3>Passport Photo A4 Grid</h3>
+        <p>Printable 6/8/12 passport photo sheets for cyber cafes.</p>
+      </a>
+      <a href="./pdf-merger/" class="tool-card" data-name="document pdf tool" data-desc="merge, split, and compress certificate scans in-browser.">
+        <div class="card-top">
+          <div class="tool-icon">📑</div>
+          <span class="tool-tag">Utility</span>
+        </div>
+        <h3>Document PDF Tool</h3>
+        <p>Merge, split, and compress certificate scans in-browser.</p>
+      </a>
+      <a href="./percentage-calc/" class="tool-card" data-name="marksheet percentage calc" data-desc="calculate exact marksheet percentages and division cutoffs.">
+        <div class="card-top">
+          <div class="tool-icon">📊</div>
+          <span class="tool-tag">Academic</span>
+        </div>
+        <h3>Marksheet Percentage Calc</h3>
+        <p>Calculate exact marksheet percentages and division cutoffs.</p>
       </a>
       <a href="./pomodoro-timer/" class="tool-card" data-name="focus pomodoro studio" data-desc="aspirant study interval timer with custom presets & session history.">
         <div class="card-top">
@@ -167,9 +175,64 @@
         <h3>Focus Pomodoro Studio</h3>
         <p>Aspirant study interval timer with custom presets & session history.</p>
       </a>
+      <a href="./qr-generator/" class="tool-card" data-name="upi & link qr studio" data-desc="generate printable qr codes for fees, documents and links.">
+        <div class="card-top">
+          <div class="tool-icon">📱</div>
+          <span class="tool-tag">Utility</span>
+        </div>
+        <h3>UPI & Link QR Studio</h3>
+        <p>Generate printable QR codes for fees, documents and links.</p>
+      </a>
+      <a href="./running-cadence/" class="tool-card" data-name="pet 1600m cadence pacer" data-desc="auditory step-rate metronome for police & defense endurance runs.">
+        <div class="card-top">
+          <div class="tool-icon">⚡</div>
+          <span class="tool-tag">Defense</span>
+        </div>
+        <h3>PET 1600m Cadence Pacer</h3>
+        <p>Auditory step-rate metronome for Police & Defense endurance runs.</p>
+      </a>
+      <a href="./signature-maker-studio/" class="tool-card" data-name="signature resizer & maker" data-desc="convert & crop signatures to strict 10kb-20kb exam specifications.">
+        <div class="card-top">
+          <div class="tool-icon">✍️</div>
+          <span class="tool-tag">Forms</span>
+        </div>
+        <h3>Signature Resizer & Maker</h3>
+        <p>Convert & crop signatures to strict 10KB-20KB exam specifications.</p>
+      </a>
+      <a href="./stopwatch-timer/" class="tool-card" data-name="physical sprint stopwatch" data-desc="high-precision millisecond stopwatch for 1600m pet timing.">
+        <div class="card-top">
+          <div class="tool-icon">⏱️</div>
+          <span class="tool-tag">Defense</span>
+        </div>
+        <h3>Physical Sprint Stopwatch</h3>
+        <p>High-precision millisecond stopwatch for 1600m PET timing.</p>
+      </a>
+      <a href="./typing-practice/" class="tool-card" data-name="typing speed test" data-desc="real-time wpm & accuracy typing test with remington & english layouts.">
+        <div class="card-top">
+          <div class="tool-icon">⌨️</div>
+          <span class="tool-tag">Skill Test</span>
+        </div>
+        <h3>Typing Speed Test</h3>
+        <p>Real-time WPM & accuracy typing test with Remington & English layouts.</p>
+      </a>
+      <a href="./unit-converter/" class="tool-card" data-name="all-in-one unit converter" data-desc="instant conversion for length, weight, exam fees & data sizes.">
+        <div class="card-top">
+          <div class="tool-icon">📐</div>
+          <span class="tool-tag">Utility</span>
+        </div>
+        <h3>All-in-One Unit Converter</h3>
+        <p>Instant conversion for length, weight, exam fees & data sizes.</p>
+      </a>
+      <a href="./word-counter/" class="tool-card" data-name="essay word & char counter" data-desc="character and word counter for descriptive exam papers.">
+        <div class="card-top">
+          <div class="tool-icon">📝</div>
+          <span class="tool-tag">Forms</span>
+        </div>
+        <h3>Essay Word & Char Counter</h3>
+        <p>Character and word counter for descriptive exam papers.</p>
+      </a>
     </div>
   </div>
-
   <script>
     function filterTools() {
       const q = document.getElementById('tool-search').value.toLowerCase().trim();

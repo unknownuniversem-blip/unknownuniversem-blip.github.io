@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>Case Converter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}
+    .box{max-width:540px;margin:auto;background:#0f172a;padding:20px;border-radius:14px;border:1px solid #1e293b}
+    textarea{width:100%;height:120px;background:#131d35;color:#fff;border:1px solid #334155;border-radius:8px;padding:10px;box-sizing:border-box}
+    button{margin:4px;padding:8px 14px;border-radius:6px;border:none;background:#38bdf8;color:#070c18;font-weight:bold;cursor:pointer}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h3>🔤 Form Text Case Converter</h3>
+    <textarea id="txt" placeholder="Enter names or addresses for exam forms..."></textarea><br>
+    <button onclick="conv('upper')">UPPERCASE</button>
+    <button onclick="conv('lower')">lowercase</button>
+    <button onclick="conv('title')">Title Case</button>
+  </div>
+  <script>
+    function conv(mode){
+      const t = document.getElementById('txt');
+      if(mode==='upper') t.value = t.value.toUpperCase();
+      if(mode==='lower') t.value = t.value.toLowerCase();
+      if(mode==='title') t.value = t.value.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
+    }
+  </script>
+</body>
+</html>

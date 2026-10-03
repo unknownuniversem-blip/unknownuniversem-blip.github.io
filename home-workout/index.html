@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>7-Min Workout Coach</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}
+    .box{max-width:480px;margin:auto;background:#0f172a;padding:24px;border-radius:16px;border:1px solid #1e293b}
+    .time{font-size:4.5rem;font-weight:900;color:#38bdf8;margin:15px 0}
+    button{padding:12px 24px;border-radius:8px;border:none;font-weight:700;cursor:pointer;background:#10b981;color:#042f2e}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div style="font-size:0.8rem;color:#94a3b8" id="badge">READY</div>
+    <div class="time" id="t">30</div>
+    <h2 id="ex">Jumping Jacks</h2>
+    <p id="desc" style="color:#94a3b8;font-size:0.85rem;min-height:36px">Warm up cardio drill</p>
+    <button id="btn" onclick="toggle()">Start Workout</button>
+  </div>
+  <script>
+    const list = [
+      {name:"Jumping Jacks", d:"Cardio Warmup"},
+      {name:"Bodyweight Squats", d:"Quad & Glute strength"},
+      {name:"Push-ups", d:"Chest & Core push"},
+      {name:"Forearm Plank", d:"Transverse Abdominal hold"}
+    ];
+    let idx = 0, sec = 30, timer = null, active = false;
+    function speak(t){ if('speechSynthesis' in window){ window.speechSynthesis.cancel(); window.speechSynthesis.speak(new SpeechSynthesisUtterance(t)); } }
+    function toggle(){
+      if(active){ clearInterval(timer); active = false; document.getElementById('btn').innerText = "Resume"; }
+      else {
+        active = true; document.getElementById('btn').innerText = "Pause";
+        speak(list[idx].name);
+        timer = setInterval(() => {
+          if(sec > 0){ sec--; document.getElementById('t').innerText = sec; }
+          else {
+            idx = (idx + 1) % list.length; sec = 30;
+            document.getElementById('ex').innerText = list[idx].name;
+            document.getElementById('desc').innerText = list[idx].d;
+            speak(list[idx].name);
+          }
+        }, 1000);
+      }
+    }
+  </script>
+</body>
+</html>
