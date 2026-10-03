@@ -1,40 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"><title>PET 1600m Cadence Pacer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}
-    .box{max-width:440px;margin:auto;background:#0f172a;padding:24px;border-radius:14px;border:1px solid #1e293b}
-    .bpm{font-size:4.5rem;font-weight:900;color:#f97316;margin:10px 0}
-    input{width:100%;margin:15px 0}
-    button{background:#f97316;color:#fff;padding:12px 24px;border-radius:8px;border:none;font-weight:bold;cursor:pointer}
-  </style>
-</head>
-<body>
-  <div class="box">
-    <h3>⚡ PET 1600m Cadence Metronome</h3>
-    <p style="color:#94a3b8;font-size:0.8rem">Auditory footsteps pacer for Police & Agniveer physical tests</p>
-    <div class="bpm" id="v">170</div>
-    <input type="range" min="140" max="200" value="170" oninput="set(this.value)">
-    <br><button id="btn" onclick="toggle()">Start Pacer Click</button>
-  </div>
-  <script>
-    let spm=170, t=null;
-    function set(val){ spm=parseInt(val); document.getElementById('v').innerText=spm; if(t){ clearInterval(t); t=setInterval(click, (60/spm)*1000); } }
-    function click(){
-      try{
-        const c = new (window.AudioContext||window.webkitAudioContext)();
-        const o = c.createOscillator(); const g = c.createGain();
-        o.connect(g); g.connect(c.destination);
-        o.frequency.value = 850; g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.05);
-        o.start(); o.stop(c.currentTime + 0.05);
-      }catch(e){}
-    }
-    function toggle(){
-      if(t){ clearInterval(t); t=null; document.getElementById('btn').innerText="Start Pacer Click"; }
-      else { t=setInterval(click, (60/spm)*1000); document.getElementById('btn').innerText="Stop Pacer"; }
-    }
-  </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5"><title>PET 1600m Cadence Pacer · Master Hub</title><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏃</text></svg>"><style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:system-ui,sans-serif;background:radial-gradient(circle at 50% 0%,#25344a,#1e2b3c 70%);min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:clamp(8px,1.5vw,16px);color:#fff}
+.w{width:100%;max-width:480px;background:rgba(45,64,90,.85);backdrop-filter:blur(20px);border-radius:clamp(18px,3.5vw,28px);padding:clamp(16px,2.5vw,26px);text-align:center;position:relative;box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+.hub{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.12);color:#fff;text-decoration:none;font-size:.7rem;font-weight:600;padding:5px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.15)}
+h1{margin:6px 0 4px;font-size:clamp(1.1rem,3.4vw,1.35rem);font-weight:700}
+.sub{color:#a0b2c8;font-size:.75rem;margin-bottom:12px}
+label{display:block;color:#a0b2c8;font-size:.7rem;font-weight:600;margin-top:8px;text-transform:uppercase;letter-spacing:.05em;text-align:left}
+input,select{width:100%;padding:10px 13px;border:1px solid rgba(255,255,255,.15);border-radius:11px;box-sizing:border-box;font-size:.9rem;background:rgba(255,255,255,.08);color:#fff;margin-top:4px}
+input:focus,select:focus{outline:none;border-color:#7fb0e0;box-shadow:0 0 0 3px rgba(127,176,224,.2)}
+.bpm{font-size:clamp(3rem,12vw,4.5rem);font-weight:700;margin:16px 0;font-variant-numeric:tabular-nums;letter-spacing:2px}
+.bpm.beat{transform:scale(1.08);color:#7fffa0;transition:transform .08s}
+.btn{background:linear-gradient(135deg,#2e7d32,#1b5e20);color:#fff;border:none;padding:13px;border-radius:12px;font-weight:600;cursor:pointer;width:100%;margin-top:12px;font-size:.9rem;box-shadow:0 8px 20px -6px rgba(46,125,50,.5)}
+.btn.pause{background:linear-gradient(135deg,#c62828,#8f1e1e)}
+.share{display:flex;gap:6px;margin-top:10px;justify-content:center;flex-wrap:wrap}
+.share a{text-decoration:none;padding:6px 12px;border-radius:999px;font-size:.72rem;font-weight:600;background:rgba(255,255,255,.1);color:#fff}
+.share a.wa{background:#25D366}
+.share a.tg{background:#0088cc}
+</style></head><body>
+<div class="w">
+<a href="../" class="hub">🏠 Hub</a>
+<h1>🏃 PET 1600m Cadence Pacer</h1>
+<p class="sub">Auditory step-rate metronome for Police & Defense runs.</p>
+<label>Target BPM (steps per minute)</label><input type="number" id="bpm" value="170" min="80" max="240">
+<label>Preset</label>
+<select id="preset" onchange="if(this.value)document.getElementById('bpm').value=this.value">
+<option value="">Custom</option>
+<option value="150">150 — Slow jog</option>
+<option value="165">165 — Steady pace</option>
+<option value="170">170 — Standard</option>
+<option value="180">180 — Fast run</option>
+<option value="190">190 — Sprint pace</option>
+</select>
+<div class="bpm" id="disp">170</div>
+<button class="btn" id="startBtn" onclick="toggle()">▶ Start Pacer</button>
+<div class="share">
+<span style="font-size:.72rem;opacity:.7;align-self:center">Share:</span>
+<a class="wa" href="https://wa.me/?text=Check%20Cadence%20Pacer%3A%20https://unknownuniversem-blip.github.io/running-cadence/" target="_blank">💬 WhatsApp</a>
+<a class="tg" href="https://t.me/share/url?url=https://unknownuniversem-blip.github.io/running-cadence/" target="_blank">✈️ Telegram</a>
+</div>
+</div>
+<script>
+const $=i=>document.getElementById(i);
+let ctx=null,running=false,timer=null;
+function ensureCtx(){if(!ctx)ctx=new(window.AudioContext||window.webkitAudioContext)();return ctx}
+function beep(freq=1000,dur=0.05){
+  const c=ensureCtx();
+  const o=c.createOscillator();const g=c.createGain();
+  o.connect(g);g.connect(c.destination);
+  o.frequency.value=freq;g.gain.value=0.3;
+  o.start();
+  g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+dur);
+  o.stop(c.currentTime+dur);
+}
+function beat(){
+  const bpm=+$("bpm").value;
+  if(!bpm||bpm<40||bpm>300)return;
+  beep(1200,0.04);
+  const d=$("disp");d.classList.add("beat");setTimeout(()=>d.classList.remove("beat"),80);
+}
+function tick(){
+  beat();
+  timer=setTimeout(tick,60000/+$("bpm").value);
+}
+function toggle(){
+  if(running){clearTimeout(timer);running=false;$("startBtn").innerHTML="▶ Start Pacer";$("startBtn").className="btn"}
+  else{running=true;$("startBtn").innerHTML="⏸ Pause";$("startBtn").className="btn pause";tick()}
+}
+$("bpm").oninput=()=>$("disp").textContent=$("bpm").value;
+</script></body></html>

@@ -1,44 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"><title>Negative Marking Calculator</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}
-    .box{max-width:480px;margin:auto;background:#0f172a;padding:24px;border-radius:12px;border:1px solid #1e293b;text-align:left}
-    input,select{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #334155;background:#131d35;color:#fff}
-    .score{font-size:2.4rem;font-weight:900;color:#38bdf8;text-align:center;margin-top:14px}
-  </style>
-</head>
-<body>
-  <div class="box">
-    <h3 style="text-align:center;color:#38bdf8">🎯 Negative Marking Calculator</h3>
-    <label style="font-size:0.8rem;color:#94a3b8">Exam Pattern</label>
-    <select id="p" onchange="preset()">
-      <option value="2,0.5">SSC CGL/CHSL (+2, -0.50)</option>
-      <option value="1,0.33">Railway RRB (+1, -0.33)</option>
-      <option value="1,0.25">Banking IBPS (+1, -0.25)</option>
-      <option value="2,0.66">UPSC Prelims (+2, -0.66)</option>
-    </select>
-    <label style="font-size:0.8rem;color:#94a3b8">Correct Answers</label>
-    <input type="number" id="cor" value="70" oninput="calc()">
-    <label style="font-size:0.8rem;color:#94a3b8">Wrong Answers</label>
-    <input type="number" id="wrg" value="12" oninput="calc()">
-    <div class="score" id="res">134.00</div>
-    <div style="text-align:center;color:#94a3b8;font-size:0.85rem" id="acc">Accuracy: 85.4%</div>
-  </div>
-  <script>
-    function calc(){
-      const [pos, neg] = document.getElementById('p').value.split(',').map(Number);
-      const c = parseInt(document.getElementById('cor').value)||0;
-      const w = parseInt(document.getElementById('wrg').value)||0;
-      const net = (c * pos) - (w * neg);
-      const acc = (c+w) > 0 ? ((c/(c+w))*100).toFixed(1) : 0;
-      document.getElementById('res').innerText = net.toFixed(2);
-      document.getElementById('acc').innerText = "Accuracy: " + acc + "% | Penalty: -" + (w*neg).toFixed(2);
-    }
-    function preset(){ calc(); }
-    calc();
-  </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5"><title>Negative Marking Calculator · Master Hub</title><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>"><style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:system-ui,sans-serif;background:radial-gradient(circle at 20% 10%,#eef4fb,#dde6f2);min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:clamp(8px,1.5vw,16px)}
+.w{width:100%;max-width:520px;background:rgba(255,255,255,.9);backdrop-filter:blur(20px);border-radius:clamp(18px,3.5vw,28px);padding:clamp(16px,2.5vw,26px);box-shadow:0 30px 60px -20px rgba(20,40,80,.25);position:relative}
+.hub{position:absolute;top:12px;left:12px;background:#1e3b5c;color:#fff;text-decoration:none;font-size:.7rem;font-weight:600;padding:5px 11px;border-radius:999px}
+h1{margin:6px 0 4px;color:#1e2b3c;font-size:clamp(1.15rem,3.5vw,1.45rem);text-align:center;font-weight:700}
+.sub{text-align:center;color:#5a6f88;font-size:.78rem;margin-bottom:12px}
+label{display:block;color:#5a6f88;font-size:.7rem;font-weight:600;margin-top:8px;text-transform:uppercase;letter-spacing:.05em}
+input{width:100%;padding:10px 13px;border:1px solid #d5e0ed;border-radius:11px;box-sizing:border-box;font-size:.88rem;background:#fff;margin-top:4px}
+input:focus{outline:none;border-color:#1e3b5c;box-shadow:0 0 0 3px rgba(30,59,92,.12)}
+.btn{background:linear-gradient(135deg,#1e3b5c,#2f5575);color:#fff;border:none;padding:12px;border-radius:12px;font-weight:600;cursor:pointer;width:100%;margin-top:12px;font-size:.9rem;box-shadow:0 8px 20px -6px rgba(30,59,92,.5)}
+.res{background:linear-gradient(135deg,#1e3b5c,#2f5575);color:#fff;border-radius:14px;padding:16px;margin-top:12px;text-align:center;display:none}
+.res .big{font-size:clamp(1.8rem,6vw,2.4rem);font-weight:700;margin:.2rem 0}
+.res .label{font-size:.7rem;opacity:.85;text-transform:uppercase;letter-spacing:.05em}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px;font-size:.72rem}
+.grid b{display:block;font-size:1rem;margin-top:2px}
+.share{display:flex;gap:6px;margin-top:10px;justify-content:center;flex-wrap:wrap}
+.share a{text-decoration:none;padding:7px 14px;border-radius:999px;font-size:.75rem;font-weight:600}
+.share a.wa{background:#25D366;color:#fff}
+.share a.tg{background:#0088cc;color:#fff}
+</style></head><body>
+<div class="w">
+<a href="../" class="hub">🏠 Hub</a>
+<h1>🎯 Negative Marking Calculator</h1>
+<p class="sub">Calculate raw score, deductions & accuracy for SSC / UPSC / IBPS.</p>
+<label>Total Questions</label><input type="number" id="tot" value="100">
+<label>Correct Answers</label><input type="number" id="cor" value="75">
+<label>Wrong Answers</label><input type="number" id="wr" value="15">
+<label>Marks per Question</label><input type="number" id="mpq" value="2" step="0.1">
+<label>Negative Marking Penalty (per wrong)</label><input type="number" id="neg" value="0.5" step="0.01">
+<button class="btn" onclick="calc()">Calculate Score</button>
+<div class="res" id="res">
+<div class="label">Final Score</div>
+<div class="big" id="score">—</div>
+<div class="grid">
+<div>Raw<b id="raw">—</b></div>
+<div>Penalty<b id="pen">—</b></div>
+<div>Accuracy<b id="acc">—</b></div>
+</div>
+</div>
+<div class="share">
+<span style="font-size:.72rem;color:#5a6f88;align-self:center">Share:</span>
+<a class="wa" href="https://wa.me/?text=Check%20Score%20Calc%3A%20https://unknownuniversem-blip.github.io/exam-score-calc/" target="_blank">💬 WhatsApp</a>
+<a class="tg" href="https://t.me/share/url?url=https://unknownuniversem-blip.github.io/exam-score-calc/" target="_blank">✈️ Telegram</a>
+</div>
+</div>
+<script>
+const $=i=>document.getElementById(i);
+function calc(){
+  const c=+$("cor").value,w=+$("wr").value,mpq=+$("mpq").value,neg=+$("neg").value;
+  const raw=c*mpq;
+  const pen=w*neg;
+  const score=raw-pen;
+  const acc=c/(c+w)*100;
+  $("score").textContent=score.toFixed(2);
+  $("raw").textContent=raw.toFixed(2);
+  $("pen").textContent=pen.toFixed(2);
+  $("acc").textContent=acc.toFixed(1)+"%";
+  $("res").style.display="block";
+}
+calc();
+</script></body></html>
