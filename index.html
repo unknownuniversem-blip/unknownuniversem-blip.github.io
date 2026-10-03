@@ -4,117 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Digital Utility Suite — 21 Free Web Tools</title>
-  
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
-  
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: #070c18;
-      color: #f1f5f9;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
-      padding: 0 20px 60px;
-    }
-    header {
-      text-align: center;
-      padding: 50px 10px 25px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .hero-badge {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      background: rgba(14, 165, 233, 0.15);
-      color: #38bdf8;
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      padding: 4px 14px;
-      border-radius: 99px;
-      margin-bottom: 12px;
-    }
-    h1 {
-      color: #ffffff;
-      font-size: 2.5rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-    }
+    body { background: #070c18; color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 0 20px 60px; }
+    header { text-align: center; padding: 50px 10px 25px; max-width: 800px; margin: 0 auto; }
+    .hero-badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(14, 165, 233, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); padding: 4px 14px; border-radius: 99px; margin-bottom: 12px; }
+    h1 { color: #ffffff; font-size: 2.5rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 12px; }
     h1 span.bolt { color: #fbbf24; }
-    p.sub {
-      color: #94a3b8;
-      font-size: 1.05rem;
-      margin-top: 8px;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .grid-tools {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 18px;
-      margin-top: 30px;
-    }
-    .tool-card {
-      background: #0f172a;
-      border: 1px solid #1e293b;
-      border-radius: 14px;
-      padding: 22px;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-    .tool-card:hover {
-      border-color: #38bdf8;
-      transform: translateY(-4px);
-      box-shadow: 0 10px 24px rgba(14, 165, 233, 0.15);
-      background: #131d35;
-    }
-    .card-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 14px;
-    }
-    .tool-icon {
-      font-size: 30px;
-      line-height: 1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 50px;
-      height: 50px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-    }
-    .badge {
-      font-size: 10px;
-      font-weight: 700;
-      background: #0284c7;
-      color: #ffffff;
-      padding: 3px 10px;
-      border-radius: 99px;
-      letter-spacing: 0.04em;
-    }
-    .tool-title {
-      font-weight: 700;
-      color: #ffffff;
-      font-size: 1.15rem;
-      margin-bottom: 8px;
-    }
-    .tool-desc {
-      font-size: 0.88rem;
-      color: #94a3b8;
-      line-height: 1.5;
-    }
+    p.sub { color: #94a3b8; font-size: 1.05rem; margin-top: 8px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .grid-tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px; margin-top: 30px; }
+    .tool-card { background: #0f172a; border: 1px solid #1e293b; border-radius: 14px; padding: 22px; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); }
+    .tool-card:hover { border-color: #38bdf8; transform: translateY(-4px); box-shadow: 0 10px 24px rgba(14, 165, 233, 0.15); background: #131d35; }
+    .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+    .tool-icon { font-size: 30px; line-height: 1; display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; }
+    .badge { font-size: 10px; font-weight: 700; background: #0284c7; color: #ffffff; padding: 3px 10px; border-radius: 99px; letter-spacing: 0.04em; }
+    .tool-title { font-weight: 700; color: #ffffff; font-size: 1.15rem; margin-bottom: 8px; }
+    .tool-desc { font-size: 0.88rem; color: #94a3b8; line-height: 1.5; }
   </style>
 </head>
 <body>
@@ -124,9 +31,24 @@
       <h1><span class="bolt">⚡</span> Digital Utility Suite</h1>
       <p class="sub">Explore all 21 free student, career, exam, and web utilities.</p>
     </header>
-
     <div class="grid-tools">
       
+      <a class="tool-card" href="https://unknownuniversem-blip.github.io/math/" target="_blank">
+        <div class="card-top">
+          <span class="tool-icon">⚡</span>
+          <span class="badge">MATH DRILLS</span>
+        </div>
+        <div class="tool-title">Speed Math Workout</div>
+        <div class="tool-desc">Rapid mental arithmetic drills and speed calculations for Banking, SSC, and CSAT aptitude tests.</div>
+      </a>
+      <a class="tool-card" href="https://unknownuniversem-blip.github.io/smartbanker-ai/" target="_blank">
+        <div class="card-top">
+          <span class="tool-icon">🏦</span>
+          <span class="badge">BANKING EXAMS</span>
+        </div>
+        <div class="tool-title">SmartBanker AI</div>
+        <div class="tool-desc">Banking awareness study modules, mock test questions, and exam readiness assistant.</div>
+      </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/wa-direct/" target="_blank">
         <div class="card-top">
           <span class="tool-icon">💬</span>
@@ -145,7 +67,7 @@
       </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/typing-speed-finger-test/" target="_blank">
         <div class="card-top">
-          <span class="tool-icon">⏱️️</span>
+          <span class="tool-icon">⏱️</span>
           <span class="badge">SKILLS</span>
         </div>
         <div class="tool-title">Finger Typing Speed Test</div>
@@ -278,22 +200,6 @@
         </div>
         <div class="tool-title">Exam Age Eligibility Calculator</div>
         <div class="tool-desc">Calculate exact age as of cutoff dates specified in competitive exam notifications.</div>
-      </a>
-      <a class="tool-card" href="https://unknownuniversem-blip.github.io/smartbanker-ai/" target="_blank">
-        <div class="card-top">
-          <span class="tool-icon">🏦</span>
-          <span class="badge">BANKING EXAMS</span>
-        </div>
-        <div class="tool-title">SmartBanker AI</div>
-        <div class="tool-desc">Banking awareness study modules, mock test questions, and exam readiness assistant.</div>
-      </a>
-      <a class="tool-card" href="https://unknownuniversem-blip.github.io/math-workout-app/" target="_blank">
-        <div class="card-top">
-          <span class="tool-icon">⚡</span>
-          <span class="badge">MATH SPEED</span>
-        </div>
-        <div class="tool-title">Math Speed Sprint</div>
-        <div class="tool-desc">Rapid mental arithmetic drills and speed calculations for Banking, SSC, and CSAT exams.</div>
       </a>
     </div>
   </div>
