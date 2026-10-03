@@ -3,185 +3,281 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Digital Utility Suite — 21 Free Tools</title>
+  <title>Digital Utility Suite — 21 Free Web Tools</title>
+  
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: #070c18; color: #f1f5f9; font-family: system-ui, sans-serif; padding: 0 20px 60px; }
-    header { text-align: center; padding: 50px 10px 25px; }
-    h1 { font-size: 2.5rem; color: #fff; display: flex; align-items: center; justify-content: center; gap: 10px; }
-    h1 span { color: #fbbf24; }
-    p.sub { color: #94a3b8; font-size: 1.05rem; margin-top: 8px; }
-    .container { max-width: 1200px; margin: 0 auto; }
-    .grid-tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px; margin-top: 30px; }
-    .tool-card { background: #0f172a; border: 1px solid #1e293b; border-radius: 14px; padding: 22px; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: all 0.2s; }
-    .tool-card:hover { border-color: #38bdf8; transform: translateY(-4px); background: #131d35; }
-    .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-    .tool-icon { font-size: 30px; width: 48px; height: 48px; background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; border-radius: 10px; }
-    .badge { font-size: 10px; font-weight: 700; background: #0284c7; color: #fff; padding: 3px 10px; border-radius: 99px; }
-    .tool-title { font-weight: 700; color: #fff; font-size: 1.15rem; margin-bottom: 6px; }
-    .tool-desc { font-size: 0.88rem; color: #94a3b8; line-height: 1.5; }
+    body {
+      background: #070c18;
+      color: #f1f5f9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+      padding: 0 20px 60px;
+    }
+    header {
+      text-align: center;
+      padding: 50px 10px 25px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(14, 165, 233, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 4px 14px;
+      border-radius: 99px;
+      margin-bottom: 12px;
+    }
+    h1 {
+      color: #ffffff;
+      font-size: 2.5rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    h1 span.bolt { color: #fbbf24; }
+    p.sub {
+      color: #94a3b8;
+      font-size: 1.05rem;
+      margin-top: 8px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .grid-tools {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 18px;
+      margin-top: 30px;
+    }
+    .tool-card {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 14px;
+      padding: 22px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    .tool-card:hover {
+      border-color: #38bdf8;
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(14, 165, 233, 0.15);
+      background: #131d35;
+    }
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .tool-icon {
+      font-size: 30px;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+    }
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      background: #0284c7;
+      color: #ffffff;
+      padding: 3px 10px;
+      border-radius: 99px;
+      letter-spacing: 0.04em;
+    }
+    .tool-title {
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+    .tool-desc {
+      font-size: 0.88rem;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <h1><span>⚡</span> Digital Utility Suite</h1>
+      <div class="hero-badge">Direct Access Network</div>
+      <h1><span class="bolt">⚡</span> Digital Utility Suite</h1>
       <p class="sub">Explore all 21 free student, career, exam, and web utilities.</p>
     </header>
+
     <div class="grid-tools">
       
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/wa-direct/" target="_blank">
         <div class="card-top">
-          <span class="tool-icon">⚡</span>
-          <span class="badge">UTILITY</span>
+          <span class="tool-icon">💬</span>
+          <span class="badge">MESSAGING</span>
         </div>
-        <div class="tool-title">Wa Direct</div>
-        <div class="tool-desc">Free wa direct utility.</div>
+        <div class="tool-title">WhatsApp Direct Chat</div>
+        <div class="tool-desc">Open WhatsApp chats instantly without saving unknown numbers to your phone contacts.</div>
       </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/upi-qr-standee/" target="_blank">
         <div class="card-top">
-          <span class="tool-icon">⚡</span>
-          <span class="badge">UTILITY</span>
+          <span class="tool-icon">💳</span>
+          <span class="badge">BUSINESS</span>
         </div>
-        <div class="tool-title">Upi Qr Standee</div>
-        <div class="tool-desc">Free upi qr standee utility.</div>
+        <div class="tool-title">UPI QR Standee Maker</div>
+        <div class="tool-desc">Create printable countertop UPI QR payment displays with shop details and logos.</div>
       </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/typing-speed-finger-test/" target="_blank">
         <div class="card-top">
-          <span class="tool-icon">⚡</span>
-          <span class="badge">UTILITY</span>
+          <span class="tool-icon">⏱️️</span>
+          <span class="badge">SKILLS</span>
         </div>
-        <div class="tool-title">Typing Speed Finger Test</div>
-        <div class="tool-desc">Free typing speed finger test utility.</div>
+        <div class="tool-title">Finger Typing Speed Test</div>
+        <div class="tool-desc">Test net words per minute (WPM), accuracy, and finger placement with live visual feedback.</div>
       </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/typer-racer-world/" target="_blank">
         <div class="card-top">
-          <span class="tool-icon">⚡</span>
-          <span class="badge">UTILITY</span>
+          <span class="tool-icon">🏎️</span>
+          <span class="badge">GAMING</span>
         </div>
-        <div class="tool-title">Typer Racer World</div>
-        <div class="tool-desc">Free typer racer world utility.</div>
+        <div class="tool-title">Type Racer World</div>
+        <div class="tool-desc">Interactive competitive speed typing challenges against clock benchmarks.</div>
       </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/type-arcade/" target="_blank">
         <div class="card-top">
-          <span class="tool-icon">⚡</span>
-          <span class="badge">UTILITY</span>
+          <span class="tool-icon">🕹️</span>
+          <span class="badge">GAMING</span>
         </div>
         <div class="tool-title">Type Arcade</div>
-        <div class="tool-desc">Free type arcade utility.</div>
+        <div class="tool-desc">Gamified typing practice challenges to build rapid finger muscle memory.</div>
       </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/signature-maker-studio/" target="_blank">
         <div class="card-top">
-          <span class="tool-icon">⚡</span>
-          <span class="badge">UTILITY</span>
+          <span class="tool-icon">✍️</span>
+          <span class="badge">SIGNATURE</span>
         </div>
         <div class="tool-title">Signature Maker Studio</div>
-        <div class="tool-desc">Free signature maker studio utility.</div>
+        <div class="tool-desc">Draw, smooth, transparentize, and export digital signatures for online forms and documents.</div>
       </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/sarkari-alert-ai/" target="_blank">
         <div class="card-top">
-          <span class="tool-icon">⚡</span>
-          <span class="badge">UTILITY</span>
+          <span class="tool-icon">📢</span>
+          <span class="badge">GOVT JOBS</span>
         </div>
-        <div class="tool-title">Sarkari Alert Ai</div>
-        <div class="tool-desc">Free sarkari alert ai utility.</div>
+        <div class="tool-title">Sarkari Alert AI</div>
+        <div class="tool-desc">Real-time government job alerts, age cutoff calculators, and recruitment notices.</div>
       </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/pdf-smart-tools/" target="_blank">
         <div class="card-top">
-          <span class="tool-icon">⚡</span>
-          <span class="badge">UTILITY</span>
+          <span class="tool-icon">📄</span>
+          <span class="badge">DOCUMENTS</span>
         </div>
-        <div class="tool-title">Pdf Smart Tools</div>
-        <div class="tool-desc">Free pdf smart tools utility.</div>
+        <div class="tool-title">PDF Smart Tools</div>
+        <div class="tool-desc">Merge, compress, and split PDF documents client-side with complete file privacy.</div>
       </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/passport-photo-grid/" target="_blank">
         <div class="card-top">
-          <span class="tool-icon">⚡</span>
-          <span class="badge">UTILITY</span>
+          <span class="tool-icon">🪪</span>
+          <span class="badge">PRINTING</span>
         </div>
-        <div class="tool-title">Passport Photo Grid</div>
-        <div class="tool-desc">Free passport photo grid utility.</div>
+        <div class="tool-title">Passport Photo Grid Maker</div>
+        <div class="tool-desc">Arrange passport size photos into 4x6 or A4 printable grid layouts with cut lines.</div>
       </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/panchang-choghadiya/" target="_blank">
         <div class="card-top">
-          <span class="tool-icon">⚡</span>
-          <span class="badge">UTILITY</span>
+          <span class="tool-icon">🕉️</span>
+          <span class="badge">CALENDAR</span>
         </div>
-        <div class="tool-title">Panchang Choghadiya</div>
-        <div class="tool-desc">Free panchang choghadiya utility.</div>
+        <div class="tool-title">Panchang & Choghadiya</div>
+        <div class="tool-desc">Calculate live Shubh Muhurat, Rahu Kaal, Yamaganda, and daily Tithi by location.</div>
       </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/open-astrologer/" target="_blank">
         <div class="card-top">
-          <span class="tool-icon">⚡</span>
-          <span class="badge">UTILITY</span>
+          <span class="tool-icon">🔮</span>
+          <span class="badge">ASTROLOGY</span>
         </div>
         <div class="tool-title">Open Astrologer</div>
-        <div class="tool-desc">Free open astrologer utility.</div>
+        <div class="tool-desc">Algorithmic Vedic Kundli generator and planetary position chart calculations.</div>
       </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/loan-emi-calculator/" target="_blank">
         <div class="card-top">
-          <span class="tool-icon">⚡</span>
-          <span class="badge">UTILITY</span>
+          <span class="tool-icon">📊</span>
+          <span class="badge">FINANCE</span>
         </div>
-        <div class="tool-title">Loan Emi Calculator</div>
-        <div class="tool-desc">Free loan emi calculator utility.</div>
+        <div class="tool-title">Loan EMI Calculator</div>
+        <div class="tool-desc">Instant loan EMI calculation with detailed amortization table and interest breakdown.</div>
       </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/land-converter/" target="_blank">
         <div class="card-top">
-          <span class="tool-icon">⚡</span>
-          <span class="badge">UTILITY</span>
+          <span class="tool-icon">📐</span>
+          <span class="badge">LAND UTILITY</span>
         </div>
-        <div class="tool-title">Land Converter</div>
-        <div class="tool-desc">Free land converter utility.</div>
+        <div class="tool-title">Bigha & Land Unit Converter</div>
+        <div class="tool-desc">Convert regional land units including Bigha, Biswa, Guntha, Acre, and Square Yards.</div>
       </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/krutidev-unicode-converter/" target="_blank">
         <div class="card-top">
-          <span class="tool-icon">⚡</span>
-          <span class="badge">UTILITY</span>
+          <span class="tool-icon">⌨️</span>
+          <span class="badge">HINDI TYPING</span>
         </div>
-        <div class="tool-title">Krutidev Unicode Converter</div>
-        <div class="tool-desc">Free krutidev unicode converter utility.</div>
+        <div class="tool-title">Krutidev to Unicode Converter</div>
+        <div class="tool-desc">Bidirectional conversion between Krutidev and standard Unicode (Mangal) Hindi fonts.</div>
       </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/hindi-typing-tutor/" target="_blank">
         <div class="card-top">
-          <span class="tool-icon">⚡</span>
-          <span class="badge">UTILITY</span>
+          <span class="tool-icon">🇮🇳</span>
+          <span class="badge">HINDI PRACTICE</span>
         </div>
         <div class="tool-title">Hindi Typing Tutor</div>
-        <div class="tool-desc">Free hindi typing tutor utility.</div>
+        <div class="tool-desc">Structured typing lessons for Remington Gail, Krutidev, and Mangal Inscript layouts.</div>
       </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/gst-quick-calc/" target="_blank">
         <div class="card-top">
-          <span class="tool-icon">⚡</span>
-          <span class="badge">UTILITY</span>
+          <span class="tool-icon">🧾</span>
+          <span class="badge">TAX & ACCOUNTS</span>
         </div>
-        <div class="tool-title">Gst Quick Calc</div>
-        <div class="tool-desc">Free gst quick calc utility.</div>
+        <div class="tool-title">GST Quick Calculator</div>
+        <div class="tool-desc">Fast forward and reverse GST calculation across standard 5%, 12%, 18%, and 28% slabs.</div>
       </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/exam-resizer/" target="_blank">
         <div class="card-top">
-          <span class="tool-icon">⚡</span>
-          <span class="badge">UTILITY</span>
+          <span class="tool-icon">📷</span>
+          <span class="badge">SARKARI EXAMS</span>
         </div>
-        <div class="tool-title">Exam Resizer</div>
-        <div class="tool-desc">Free exam resizer utility.</div>
+        <div class="tool-title">Sarkari Photo & Signature Resizer</div>
+        <div class="tool-desc">Strict 20KB–50KB dimension cropping for SSC, UPSC, State PSC, and Railway applications.</div>
       </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/commerce-accounts-hub/" target="_blank">
         <div class="card-top">
-          <span class="tool-icon">⚡</span>
-          <span class="badge">UTILITY</span>
+          <span class="tool-icon">📚</span>
+          <span class="badge">CBSE COMMERCE</span>
         </div>
-        <div class="tool-title">Commerce Accounts Hub</div>
-        <div class="tool-desc">Free commerce accounts hub utility.</div>
+        <div class="tool-title">BalanceSheet OS (Class 12)</div>
+        <div class="tool-desc">Complete DK Goel Class 12 practical problems with step-by-step journals and ledger working notes.</div>
       </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/age-eligibility-calc/" target="_blank">
         <div class="card-top">
-          <span class="tool-icon">⚡</span>
-          <span class="badge">UTILITY</span>
+          <span class="tool-icon">📅</span>
+          <span class="badge">ELIGIBILITY</span>
         </div>
-        <div class="tool-title">Age Eligibility Calc</div>
-        <div class="tool-desc">Free age eligibility calc utility.</div>
+        <div class="tool-title">Exam Age Eligibility Calculator</div>
+        <div class="tool-desc">Calculate exact age as of cutoff dates specified in competitive exam notifications.</div>
       </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/smartbanker-ai/" target="_blank">
         <div class="card-top">
@@ -189,15 +285,15 @@
           <span class="badge">BANKING EXAMS</span>
         </div>
         <div class="tool-title">SmartBanker AI</div>
-        <div class="tool-desc">AI questions and practice modules for banking awareness, financial literacy, and exams.</div>
+        <div class="tool-desc">Banking awareness study modules, mock test questions, and exam readiness assistant.</div>
       </a>
       <a class="tool-card" href="https://unknownuniversem-blip.github.io/math-workout-app/" target="_blank">
         <div class="card-top">
           <span class="tool-icon">⚡</span>
           <span class="badge">MATH SPEED</span>
         </div>
-        <div class="tool-title">Math Workout Speed Drills</div>
-        <div class="tool-desc">Mental arithmetic speed booster for Banking (IBPS/SBI), SSC, and CSAT aptitude tests.</div>
+        <div class="tool-title">Math Speed Sprint</div>
+        <div class="tool-desc">Rapid mental arithmetic drills and speed calculations for Banking, SSC, and CSAT exams.</div>
       </a>
     </div>
   </div>
