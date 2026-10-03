@@ -63,6 +63,16 @@
     .tool-desc { font-size: 0.88rem; color: #94a3b8; line-height: 1.5; }
   </style>
   <script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#0284c7">
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
+  </script>
+
 </head>
 <body>
   <div class="container">
