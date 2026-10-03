@@ -57,7 +57,7 @@
     .btn-pro { background: #f59e0b; color: #070c18; }
     .btn-pro:hover { background: #d97706; }
 
-    /* HARD TWO-COLUMN SPLIT: NEVER COLLAPSE ON DESKTOPS */
+    /* HARD TWO-COLUMN SPLIT */
     .split-layout {
       display: flex;
       width: 100vw;
@@ -68,7 +68,7 @@
     /* LEFT SIDE: INPUT EDITOR */
     .editor-column {
       width: 480px;
-      min-width: 420px;
+      min-width: 430px;
       max-width: 520px;
       background: #0b1329;
       border-right: 2px solid #1e293b;
@@ -91,7 +91,7 @@
 
     /* Section & Form Controls */
     .sec-title {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 700;
       color: #38bdf8;
       text-transform: uppercase;
@@ -100,27 +100,28 @@
       padding-bottom: 4px;
       border-bottom: 1px solid #1e293b;
     }
-    .preset-row {
-      display: flex;
+    .pill-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 6px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
+      margin-bottom: 10px;
     }
     .pill {
-      padding: 6px 10px;
-      font-size: 0.75rem;
+      padding: 6px 8px;
+      font-size: 0.74rem;
       background: #1e293b;
       border: 1px solid #334155;
       border-radius: 5px;
       color: #cbd5e1;
       cursor: pointer;
       font-weight: 600;
+      text-align: center;
     }
     .pill:hover { background: #334155; }
     .pill.active { background: #0284c7; color: #fff; border-color: #38bdf8; }
 
     .form-group { margin-bottom: 10px; }
-    label { display: block; font-size: 0.75rem; color: #94a3b8; font-weight: 600; margin-bottom: 3px; }
+    label { display: block; font-size: 0.74rem; color: #94a3b8; font-weight: 600; margin-bottom: 3px; }
     input, textarea {
       width: 100%;
       background: #131d35;
@@ -145,27 +146,56 @@
       padding: 40px 48px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.6);
       border-radius: 4px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      line-height: 1.4;
+      line-height: 1.45;
       position: relative;
+      transition: all 0.15s ease;
     }
 
-    /* Resume Content Styling */
-    .res-name { font-size: 24px; font-weight: 800; color: #1e3a8a; text-transform: uppercase; margin-bottom: 3px; }
-    .res-contact { font-size: 11.5px; color: #475569; margin-bottom: 14px; }
-    .res-sec-head {
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      background: #f1f5f9;
-      color: #1e3a8a;
-      padding: 3px 6px;
-      border-left: 4px solid #1e3a8a;
-      margin: 12px 0 6px;
-      letter-spacing: 0.04em;
+    /* FONT FAMILIES */
+    .font-system { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .font-times { font-family: "Times New Roman", Times, serif; }
+    .font-georgia { font-family: "Georgia", serif; }
+    .font-calibri { font-family: "Calibri", "Segoe UI", sans-serif; }
+
+    /* LAYOUT FORMATS */
+    /* 1. Executive Navy */
+    .format-navy .res-name { font-size: 24px; font-weight: 800; color: #1e3a8a; text-transform: uppercase; margin-bottom: 3px; }
+    .format-navy .res-contact { font-size: 11px; color: #475569; margin-bottom: 14px; }
+    .format-navy .res-sec-head {
+      font-size: 12px; font-weight: 700; text-transform: uppercase;
+      background: #f1f5f9; color: #1e3a8a; padding: 3px 6px;
+      border-left: 4px solid #1e3a8a; margin: 12px 0 6px; letter-spacing: 0.04em;
     }
+
+    /* 2. Classic Ivy / Harvard */
+    .format-ivy .res-name { font-size: 23px; font-weight: bold; text-align: center; text-transform: uppercase; margin-bottom: 3px; }
+    .format-ivy .res-contact { text-align: center; font-size: 11px; color: #374151; margin-bottom: 14px; }
+    .format-ivy .res-sec-head {
+      font-size: 12.5px; font-weight: bold; text-transform: uppercase;
+      border-bottom: 1.5px solid #111827; padding-bottom: 2px; margin: 12px 0 6px;
+    }
+
+    /* 3. Modern Tech */
+    .format-modern .res-name { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 2px; }
+    .format-modern .res-contact { font-size: 11px; color: #64748b; margin-bottom: 14px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+    .format-modern .res-sec-head {
+      font-size: 11.5px; font-weight: 800; text-transform: uppercase;
+      color: #0284c7; margin: 12px 0 6px; letter-spacing: 0.05em;
+    }
+
+    /* 4. Compact One-Page */
+    .format-compact { padding: 26px 36px !important; line-height: 1.35; font-size: 11px; }
+    .format-compact .res-name { font-size: 20px; font-weight: 800; text-align: center; }
+    .format-compact .res-contact { text-align: center; font-size: 10px; margin-bottom: 10px; }
+    .format-compact .res-sec-head {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      border-bottom: 1px solid #475569; margin: 8px 0 4px; padding-bottom: 1px;
+    }
+    .format-compact .res-bullets { margin-bottom: 4px; }
+
+    /* Common Content Elements */
     .res-item-title { font-weight: 700; font-size: 12px; display: flex; justify-content: space-between; }
-    .res-item-sub { font-size: 11.5px; font-style: italic; color: #4b5563; display: flex; justify-content: space-between; margin-bottom: 4px; }
+    .res-item-sub { font-size: 11px; font-style: italic; color: #4b5563; display: flex; justify-content: space-between; margin-bottom: 4px; }
     .res-text { font-size: 11.5px; color: #1f2937; margin-bottom: 6px; }
     .res-bullets { font-size: 11.5px; color: #1f2937; padding-left: 18px; margin-bottom: 6px; }
     .res-watermark { position: absolute; bottom: 12px; right: 20px; font-size: 10px; color: #9ca3af; font-family: sans-serif; }
@@ -200,40 +230,58 @@
   <div class="split-layout">
     <!-- LEFT: Real-Time Input Column -->
     <div class="editor-column">
-      <div class="sec-title">One-Click Role Presets</div>
-      <div class="preset-row">
-        <button class="pill active" onclick="loadRole('bank')">Banking / Govt</button>
-        <button class="pill" onclick="loadRole('it')">Software / IT</button>
-        <button class="pill" onclick="loadRole('com')">Commerce / Accounts</button>
+      
+      <div class="sec-title">1. One-Click Role Presets</div>
+      <div class="pill-grid">
+        <button class="pill active" id="preset-tutor" onclick="loadRole('tutor', this)">👨‍🏫 Private Tutor / Faculty</button>
+        <button class="pill" id="preset-bank" onclick="loadRole('bank', this)">🏦 Bank / Govt Aspirant</button>
+        <button class="pill" id="preset-it" onclick="loadRole('it', this)">💻 Software / IT</button>
+        <button class="pill" id="preset-com" onclick="loadRole('com', this)">📊 Accounts / Commerce</button>
       </div>
 
-      <div class="sec-title">Personal Details</div>
+      <div class="sec-title">2. Choose ATS Layout</div>
+      <div class="pill-grid">
+        <button class="pill active" id="layout-navy" onclick="setLayout('format-navy', this)">Executive Navy</button>
+        <button class="pill" id="layout-ivy" onclick="setLayout('format-ivy', this)">Classic Ivy (Harvard)</button>
+        <button class="pill" id="layout-modern" onclick="setLayout('format-modern', this)">Modern Tech</button>
+        <button class="pill" id="layout-compact" onclick="setLayout('format-compact', this)">Compact One-Page</button>
+      </div>
+
+      <div class="sec-title">3. Resume Typography Font</div>
+      <div class="pill-grid">
+        <button class="pill active" id="font-sys" onclick="setFont('font-system', this)">Modern Sans</button>
+        <button class="pill" id="font-tm" onclick="setFont('font-times', this)">Times New Roman</button>
+        <button class="pill" id="font-geo" onclick="setFont('font-georgia', this)">Georgia Editorial</button>
+        <button class="pill" id="font-cal" onclick="setFont('font-calibri', this)">Calibri Corporate</button>
+      </div>
+
+      <div class="sec-title">4. Personal Details</div>
       <div class="form-group">
         <label>Full Name</label>
         <input type="text" id="in-name" oninput="renderLive()">
       </div>
       <div class="form-group">
-        <label>Contact Info (Email | Mobile | Location | LinkedIn)</label>
+        <label>Contact Info (Email | Mobile | Location | Profiles)</label>
         <input type="text" id="in-contact" oninput="renderLive()">
       </div>
       <div class="form-group">
-        <label>Summary / Objective</label>
+        <label>Professional Summary</label>
         <textarea id="in-summary" oninput="renderLive()"></textarea>
       </div>
 
-      <div class="sec-title">Education</div>
+      <div class="sec-title">5. Education</div>
       <div class="form-group">
         <label>Degree & Institution</label>
         <input type="text" id="in-edu-title" oninput="renderLive()">
       </div>
       <div class="form-group">
-        <label>Duration & Marks / Percentage</label>
+        <label>Duration & Grades / Marks</label>
         <input type="text" id="in-edu-meta" oninput="renderLive()">
       </div>
 
-      <div class="sec-title">Experience & Projects</div>
+      <div class="sec-title">6. Teaching & Work Experience</div>
       <div class="form-group">
-        <label>Role & Organization</label>
+        <label>Role & Coaching Center / School / Platform</label>
         <input type="text" id="in-exp-title" oninput="renderLive()">
       </div>
       <div class="form-group">
@@ -241,24 +289,24 @@
         <input type="text" id="in-exp-meta" oninput="renderLive()">
       </div>
       <div class="form-group">
-        <label>Key Bullet Points (1 per line)</label>
+        <label>Key Responsibilities & Results (1 per line)</label>
         <textarea id="in-exp-bullets" rows="4" oninput="renderLive()"></textarea>
       </div>
 
-      <div class="sec-title">Skills & Credentials</div>
+      <div class="sec-title">7. Skills & Certifications</div>
       <div class="form-group">
-        <label>Technical / Core Skills</label>
+        <label>Subject Expertise & Teaching Skills</label>
         <input type="text" id="in-skills" oninput="renderLive()">
       </div>
       <div class="form-group">
-        <label>Languages & Certifications</label>
+        <label>Languages & Teaching Credentials</label>
         <input type="text" id="in-lang" oninput="renderLive()">
       </div>
     </div>
 
     <!-- RIGHT: Live Printed Resume Sheet -->
     <div class="preview-column">
-      <div class="paper-sheet" id="resume-sheet">
+      <div class="paper-sheet format-navy font-system" id="resume-sheet">
         <div class="res-name" id="out-name"></div>
         <div class="res-contact" id="out-contact"></div>
 
@@ -269,12 +317,12 @@
         <div class="res-item-title"><span id="out-edu-title"></span></div>
         <div class="res-item-sub"><span id="out-edu-meta"></span></div>
 
-        <div class="res-sec-head">Experience & Practical Projects</div>
+        <div class="res-sec-head">Professional Experience</div>
         <div class="res-item-title"><span id="out-exp-title"></span></div>
         <div class="res-item-sub"><span id="out-exp-meta"></span></div>
         <ul class="res-bullets" id="out-exp-bullets"></ul>
 
-        <div class="res-sec-head">Core Competencies & Skills</div>
+        <div class="res-sec-head">Subject Expertise & Competencies</div>
         <div class="res-text" id="out-skills"></div>
 
         <div class="res-sec-head">Certifications & Languages</div>
@@ -298,11 +346,26 @@
   </div>
 
   <script>
+    let currentFormat = "format-navy";
+    let currentFont = "font-system";
+
     const ROLES = {
+      tutor: {
+        name: "Aakash Sharma",
+        contact: "aakash.educator@email.com | +91 98765 43210 | Gorakhpur, UP | Subject: Mathematics & Science",
+        summary: "Dedicated Private Tutor and Academic Mentor with 4+ years of proven track record in coaching secondary (Class 9-10) and senior secondary (Class 11-12) students. Expert in simplifying complex algebraic calculations, board exam syllabus completion, and competitive foundation drills with 92%+ student success rate in board examinations.",
+        eduTitle: "B.Sc (Mathematics & Physics) — DDU Gorakhpur University",
+        eduMeta: "2021 – 2024 | First Division (78%)",
+        expTitle: "Senior Mathematics & Science Tutor — Career Point Academy / Home Tutoring",
+        expMeta: "July 2023 – Present | Gorakhpur, UP",
+        expBullets: "Delivered concept-driven daily lectures to batches of 35+ students for CBSE and UP Board examinations.\nDesigned weekly diagnostic tests and personalized error-analysis sheets, improving bottom-quartile marks by 30%.\nTrained students in mental speed calculations, Vedic math shortcuts, and timed question selection strategies.",
+        skills: "CBSE/ICSE/State Board Curriculum, Vedic Math & Speed Arithmetic, Doubt Resolution, Parent-Teacher Progress Reporting",
+        lang: "Hindi (Fluent Native), English (Academic Proficiency), CTET Paper I & II Qualified"
+      },
       bank: {
         name: "Aakash Sharma",
         contact: "aakash.sharma@email.com | +91 98765 43210 | Gorakhpur, UP",
-        summary: "Target-driven commerce graduate with 85%+ accuracy in Quantitative Aptitude and Data Interpretation. Prepared for IBPS PO, SBI, and RRB banking exams with thorough command of banking awareness and spreadsheet automation.",
+        summary: "Target-driven commerce graduate with 85%+ accuracy in Quantitative Aptitude and Data Interpretation. Rigorously prepared for IBPS PO, SBI, and RRB banking exams with thorough command of banking awareness and spreadsheet automation.",
         eduTitle: "Bachelor of Commerce (B.Com) — DDU Gorakhpur University",
         eduMeta: "2022 – 2025 | First Division (74.2%)",
         expTitle: "Commercial Accounting & Digital Registry Assistant — Sahaj Jan Seva Kendra",
@@ -337,9 +400,9 @@
       }
     };
 
-    function loadRole(key) {
-      document.querySelectorAll('.preset-row .pill').forEach(b => b.classList.remove('active'));
-      event.target.classList.add('active');
+    function loadRole(key, el) {
+      document.querySelectorAll('#preset-tutor, #preset-bank, #preset-it, #preset-com').forEach(b => b.classList.remove('active'));
+      if (el) el.classList.add('active');
       const r = ROLES[key];
       if (!r) return;
       document.getElementById('in-name').value = r.name;
@@ -353,6 +416,25 @@
       document.getElementById('in-skills').value = r.skills;
       document.getElementById('in-lang').value = r.lang;
       renderLive();
+    }
+
+    function setLayout(fmtClass, el) {
+      currentFormat = fmtClass;
+      document.querySelectorAll('#layout-navy, #layout-ivy, #layout-modern, #layout-compact').forEach(b => b.classList.remove('active'));
+      if (el) el.classList.add('active');
+      applySheetClasses();
+    }
+
+    function setFont(fontClass, el) {
+      currentFont = fontClass;
+      document.querySelectorAll('#font-sys, #font-tm, #font-geo, #font-cal').forEach(b => b.classList.remove('active'));
+      if (el) el.classList.add('active');
+      applySheetClasses();
+    }
+
+    function applySheetClasses() {
+      const sheet = document.getElementById('resume-sheet');
+      sheet.className = `paper-sheet ${currentFormat} ${currentFont}`;
     }
 
     function renderLive() {
@@ -375,8 +457,8 @@
         }
       });
 
-      document.getElementById('out-skills').innerHTML = `<b>Core Skills:</b> ${document.getElementById('in-skills').value}`;
-      document.getElementById('out-lang').innerHTML = `<b>Languages & Certs:</b> ${document.getElementById('in-lang').value}`;
+      document.getElementById('out-skills').innerHTML = `<b>Subject & Technical Skills:</b> ${document.getElementById('in-skills').value}`;
+      document.getElementById('out-lang').innerHTML = `<b>Credentials & Languages:</b> ${document.getElementById('in-lang').value}`;
     }
 
     function openModal() { document.getElementById('proModal').style.display = 'flex'; }
@@ -387,8 +469,8 @@
       closeModal();
     }
 
-    // Default initialization on load
-    loadRole('bank');
+    // Default initialization: Tutor Preset loaded by default
+    loadRole('tutor', document.getElementById('preset-tutor'));
   </script>
 </body>
 </html>
