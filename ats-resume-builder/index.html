@@ -54,12 +54,17 @@
 
     .app-container {
       display: grid;
-      grid-template-columns: 460px 1fr;
+      grid-template-columns: 440px 1fr;
       flex: 1;
       height: calc(100vh - 61px);
+      overflow: hidden;
     }
-    @media (max-width: 980px) {
-      .app-container { grid-template-columns: 1fr; height: auto; }
+    @media (max-width: 768px) {
+      .app-container {
+        grid-template-columns: 1fr;
+        height: auto;
+        overflow: visible;
+      }
     }
 
     /* Left Control Sidebar */
