@@ -92,3 +92,20 @@
   document.getElementById('hub-close').onclick = () => modal.style.display = 'none';
   modal.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
 })();
+
+// Global One-Tap Social Sharing Trigger
+window.shareToolToWhatsApp = function() {
+  const pageTitle = document.title || "Free Online Tool";
+  const pageUrl = window.location.href;
+  const message = `Check this free tool: *${pageTitle}* (No ads, works on mobile instantly) 👉 ${pageUrl}`;
+  
+  if (navigator.share) {
+    navigator.share({
+      title: pageTitle,
+      text: message,
+      url: pageUrl
+    }).catch(() => {});
+  } else {
+    window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(message), "_blank");
+  }
+};
