@@ -1,27 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"><title>Distraction-Free Scratchpad</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body{background:#070c18;color:#f8fafc;font-family:sans-serif;margin:0;display:flex;flex-direction:column;height:100vh}
-    header{padding:12px 20px;background:#0f172a;border-bottom:1px solid #1e293b;display:flex;justify-content:space-between}
-    textarea{flex-grow:1;background:transparent;color:#f1f5f9;border:none;padding:24px;font-size:1.1rem;line-height:1.6;outline:none;resize:none}
-  </style>
-</head>
-<body>
-  <header>
-    <span>📝 Aspirant Quick Scratchpad</span>
-    <span style="font-size:0.8rem;color:#10b981" id="st">Autosaved</span>
-  </header>
-  <textarea id="pad" placeholder="Jot down quick formulas, revision points, or daily targets..."></textarea>
-  <script>
-    const p = document.getElementById('pad');
-    p.value = localStorage.getItem('hub_scratchpad') || '';
-    p.addEventListener('input', () => {
-      localStorage.setItem('hub_scratchpad', p.value);
-      document.getElementById('st').innerText = 'Autosaved';
-    });
-  </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5"><title>Distraction-Free Scratchpad · Master Hub</title><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>"><style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:system-ui,sans-serif;background:radial-gradient(circle at 20% 10%,#eef4fb,#dde6f2);min-height:100vh;min-height:100dvh;padding:clamp(8px,1.5vw,16px);transition:background .3s}
+body.dark{background:#1a2230}
+body.dark .w{background:rgba(30,43,60,.9);color:#e8eef6}
+body.dark h1,body.dark .sub{color:#e8eef6}
+body.dark textarea{background:#25344a;color:#e8eef6;border-color:#3d526e}
+.w{width:100%;max-width:820px;margin:0 auto;background:rgba(255,255,255,.9);backdrop-filter:blur(20px);border-radius:clamp(18px,3.5vw,28px);padding:clamp(16px,2.5vw,26px);box-shadow:0 30px 60px -20px rgba(20,40,80,.25);position:relative}
+.hub{position:absolute;top:12px;left:12px;background:#1e3b5c;color:#fff;text-decoration:none;font-size:.7rem;font-weight:600;padding:5px 11px;border-radius:999px;z-index:2}
+h1{margin:6px 0 4px;color:#1e2b3c;font-size:clamp(1.15rem,3.5vw,1.45rem);text-align:center;font-weight:700}
+.sub{text-align:center;color:#5a6f88;font-size:.78rem;margin-bottom:10px}
+.tools{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:10px}
+.tools button{background:#eaf0f9;color:#1e3b5c;border:none;padding:7px 14px;border-radius:999px;font-weight:600;cursor:pointer;font-size:.75rem;transition:.15s}
+.tools button:hover{background:#d5e0ed}
+textarea{width:100%;min-height:55vh;min-height:55dvh;padding:14px;border:1px solid #d5e0ed;border-radius:12px;font-size:.92rem;box-sizing:border-box;font-family:'Courier New',monospace;resize:vertical;background:#fff;line-height:1.6}
+textarea:focus{outline:none;border-color:#1e3b5c;box-shadow:0 0 0 3px rgba(30,59,92,.12)}
+.status{text-align:center;color:#5a6f88;font-size:.72rem;margin-top:8px;font-weight:600}
+.share{display:flex;gap:6px;margin-top:10px;justify-content:center;flex-wrap:wrap}
+.share a{text-decoration:none;padding:7px 14px;border-radius:999px;font-size:.75rem;font-weight:600}
+.share a.wa{background:#25D366;color:#fff}
+.share a.tg{background:#0088cc;color:#fff}
+</style></head><body>
+<div class="w">
+<a href="../" class="hub">🏠 Hub</a>
+<h1>📝 Distraction-Free Scratchpad</h1>
+<p class="sub">Autosaves every keystroke. Click dark mode for focused study.</p>
+<div class="tools">
+<button onclick="toggleDark()">🌙 Dark mode</button>
+<button onclick="clearAll()">🗑 Clear</button>
+<button onclick="downloadTxt()">⬇ Download</button>
+<button onclick="copyAll()">📋 Copy</button>
+</div>
+<textarea id="ta" placeholder="Start typing... auto-saves in your browser."></textarea>
+<div class="status" id="status">Ready</div>
+<div class="share">
+<span style="font-size:.72rem;color:#5a6f88;align-self:center">Share:</span>
+<a class="wa" href="https://wa.me/?text=Check%20Aspirant%20Scratchpad%3A%20https://unknownuniversem-blip.github.io/notes-scratchpad/" target="_blank">💬 WhatsApp</a>
+<a class="tg" href="https://t.me/share/url?url=https://unknownuniversem-blip.github.io/notes-scratchpad/" target="_blank">✈️ Telegram</a>
+</div>
+</div>
+<script>
+const $=i=>document.getElementById(i);
+const KEY="scratchpad_v1";
+function load(){$("ta").value=localStorage.getItem(KEY)||"";status()}
+function save(){localStorage.setItem(KEY,$("ta").value);status()}
+function status(){const t=$("ta").value;$("status").textContent=t.length+" chars · saved "+new Date().toLocaleTimeString("en-IN",{hour:"2-digit",minute:"2-digit"});}
+function toggleDark(){document.body.classList.toggle("dark");localStorage.setItem("sp_dark",document.body.classList.contains("dark")?"1":"0")}
+function clearAll(){if(confirm("Delete all notes?")){$("ta").value="";save()}}
+function downloadTxt(){const blob=new Blob([$("ta").value],{type:"text/plain"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="scratchpad-"+Date.now()+".txt";a.click()}
+function copyAll(){navigator.clipboard.writeText($("ta").value);alert("Copied!")}
+$("ta").addEventListener("input",save);
+if(localStorage.getItem("sp_dark")==="1")document.body.classList.add("dark");
+load();
+</script></body></html>
