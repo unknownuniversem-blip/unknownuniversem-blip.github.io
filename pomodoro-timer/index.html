@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Focus Pomodoro Studio — Aspirant Study Timer</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2338bdf8'><path d='M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z'/></svg>">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #070c18;
+      color: #f1f5f9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
+      width: 100%;
+      height: 56px;
+      background: #091122;
+      border-bottom: 1px solid #1e293b;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: #38bdf8;
+      text-decoration: none;
+    }
+    .container {
+      width: 100%;
+      max-width: 680px;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .modes {
+      display: flex;
+      gap: 8px;
+      background: #0f172a;
+      padding: 6px;
+      border-radius: 12px;
+      border: 1px solid #1e293b;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .mode-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .mode-btn.active {
+      background: #0284c7;
+      color: #ffffff;
+    }
+    .timer-wrap {
+      position: relative;
+      width: 280px;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    .timer-svg {
+      transform: rotate(-90deg);
+      width: 100%;
+      height: 100%;
+    }
+    .circle-bg {
+      fill: none;
+      stroke: #1e293b;
+      stroke-width: 8;
+    }
+    .circle-progress {
+      fill: none;
+      stroke: #38bdf8;
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 753.98;
+      stroke-dashoffset: 0;
+      transition: stroke-dashoffset 0.5s ease;
+    }
+    .time-display {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .digits {
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: #fff;
+    }
+    .label {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 4px;
+    }
+    .controls {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 35px;
+    }
+    .btn {
+      padding: 12px 28px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.1s ease;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: #22c55e; color: #052e16; }
+    .btn-secondary { background: #1e293b; color: #cbd5e1; border: 1px solid #334155; }
+    
+    .stats-card {
+      width: 100%;
+      background: #0d1527;
+      border: 1px solid #1e293b;
+      border-radius: 14px;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 24px;
+    }
+    .stat-item h4 { font-size: 1.4rem; color: #38bdf8; }
+    .stat-item p { font-size: 0.75rem; color: #64748b; text-transform: uppercase; margin-top: 2px; }
+
+    .ambient-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: #94a3b8;
+    }
+    select {
+      background: #131d35;
+      border: 1px solid #334155;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      outline: none;
+      font-size: 0.82rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="../" class="brand">
+      <span>⬅ Master Hub</span>
+    </a>
+    <span style="font-size: 0.85rem; color: #94a3b8;">Focus Pomodoro Studio</span>
+  </header>
+
+  <div class="container">
+    <div class="modes">
+      <button class="mode-btn active" onclick="setMode(25, 'Study Session', this)">25m Study</button>
+      <button class="mode-btn" onclick="setMode(50, 'Exam Marathon', this)">50m Sprint</button>
+      <button class="mode-btn" onclick="setMode(5, 'Short Break', this)">5m Break</button>
+      <button class="mode-btn" onclick="setMode(15, 'Long Break', this)">15m Rest</button>
+    </div>
+
+    <div class="timer-wrap">
+      <svg class="timer-svg" viewBox="0 0 260 260">
+        <circle class="circle-bg" cx="130" cy="130" r="120"></circle>
+        <circle id="progress" class="circle-progress" cx="130" cy="130" r="120"></circle>
+      </svg>
+      <div class="time-display">
+        <div class="digits" id="time">25:00</div>
+        <div class="label" id="phase-label">Study Session</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="btn btn-primary" id="toggle-btn" onclick="toggleTimer()">Start Focus</button>
+      <button class="btn btn-secondary" onclick="resetTimer()">Reset</button>
+    </div>
+
+    <div class="stats-card">
+      <div class="stat-item">
+        <h4 id="stat-sessions">0</h4>
+        <p>Completed</p>
+      </div>
+      <div class="stat-item">
+        <h4 id="stat-minutes">0</h4>
+        <p>Focus Minutes</p>
+      </div>
+    </div>
+
+    <div class="ambient-bar">
+      <span>🔔 Session Chime:</span>
+      <select id="sound-choice">
+        <option value="bell">Tibetan Bowl Chime</option>
+        <option value="beep">Digital High Beep</option>
+        <option value="mute">Mute</option>
+      </select>
+    </div>
+  </div>
+
+  <script>
+    let totalSec = 25 * 60;
+    let remainSec = totalSec;
+    let timerId = null;
+    let isRunning = false;
+    let currentPhase = 'Study Session';
+
+    const circleCircumference = 2 * Math.PI * 120; // 753.98
+    const progressEl = document.getElementById('progress');
+    const timeEl = document.getElementById('time');
+    const toggleBtn = document.getElementById('toggle-btn');
+    const labelEl = document.getElementById('phase-label');
+
+    let completed = parseInt(localStorage.getItem('pomo_completed') || '0');
+    let minutes = parseInt(localStorage.getItem('pomo_minutes') || '0');
+    document.getElementById('stat-sessions').innerText = completed;
+    document.getElementById('stat-minutes').innerText = minutes;
+
+    function renderTime() {
+      const m = Math.floor(remainSec / 60).toString().padStart(2, '0');
+      const s = (remainSec % 60).toString().padStart(2, '0');
+      timeEl.innerText = `${m}:${s}`;
+      document.title = `${m}:${s} • ${currentPhase}`;
+      
+      const offset = circleCircumference * (1 - (remainSec / totalSec));
+      progressEl.style.strokeDashoffset = offset;
+    }
+
+    function toggleTimer() {
+      if (isRunning) {
+        clearInterval(timerId);
+        isRunning = false;
+        toggleBtn.innerText = 'Resume';
+        toggleBtn.style.background = '#22c55e';
+      } else {
+        isRunning = true;
+        toggleBtn.innerText = 'Pause';
+        toggleBtn.style.background = '#f59e0b';
+        timerId = setInterval(() => {
+          if (remainSec > 0) {
+            remainSec--;
+            renderTime();
+          } else {
+            clearInterval(timerId);
+            isRunning = false;
+            toggleBtn.innerText = 'Start Focus';
+            toggleBtn.style.background = '#22c55e';
+            playChime();
+            if (currentPhase.includes('Study') || currentPhase.includes('Sprint')) {
+              completed++;
+              minutes += Math.floor(totalSec / 60);
+              localStorage.setItem('pomo_completed', completed);
+              localStorage.setItem('pomo_minutes', minutes);
+              document.getElementById('stat-sessions').innerText = completed;
+              document.getElementById('stat-minutes').innerText = minutes;
+            }
+            alert(`${currentPhase} finished! Time for a break.`);
+            resetTimer();
+          }
+        }, 1000);
+      }
+    }
+
+    function resetTimer() {
+      clearInterval(timerId);
+      isRunning = false;
+      remainSec = totalSec;
+      toggleBtn.innerText = 'Start Focus';
+      toggleBtn.style.background = '#22c55e';
+      renderTime();
+    }
+
+    function setMode(mins, label, btn) {
+      document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      totalSec = mins * 60;
+      currentPhase = label;
+      labelEl.innerText = label;
+      resetTimer();
+    }
+
+    function playChime() {
+      const choice = document.getElementById('sound-choice').value;
+      if (choice === 'mute') return;
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        if (choice === 'bell') {
+          osc.frequency.setValueAtTime(528, ctx.currentTime);
+          gain.gain.setValueAtTime(0.3, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.8);
+          osc.start();
+          osc.stop(ctx.currentTime + 1.8);
+        } else {
+          osc.frequency.setValueAtTime(880, ctx.currentTime);
+          gain.gain.setValueAtTime(0.2, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.6);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.6);
+        }
+      } catch(e) {}
+    }
+
+    renderTime();
+  </script>
+</body>
+</html>
