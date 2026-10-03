@@ -17,6 +17,12 @@ input:focus,select:focus{outline:none;border-color:#7fb0e0;box-shadow:0 0 0 3px 
 .share a.wa{background:#25D366}
 .share a.tg{background:#0088cc}
 </style>  <script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0284c7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="QuickTools">
+<link rel="apple-touch-icon" href="/icon-192.png">
 </head><body>
 <div class="w">
 <a href="../" class="hub">🏠 Hub</a>
@@ -68,4 +74,11 @@ function toggle(){
   else{running=true;$("startBtn").innerHTML="⏸ Pause";$("startBtn").className="btn pause";tick()}
 }
 $("bpm").oninput=()=>$("disp").textContent=$("bpm").value;
-</script></body></html>
+</script><script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  });
+}
+</script>
+</body></html>

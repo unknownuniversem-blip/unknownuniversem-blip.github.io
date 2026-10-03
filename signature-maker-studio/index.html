@@ -10,6 +10,12 @@
     button{padding:8px 16px;margin:4px;border-radius:6px;border:none;font-weight:700;cursor:pointer}
   </style>
   <script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0284c7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="QuickTools">
+<link rel="apple-touch-icon" href="/icon-192.png">
 </head>
 <body>
   <div class="box">
@@ -43,5 +49,12 @@
       a.click();
     }
   </script>
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  });
+}
+</script>
 </body>
 </html>

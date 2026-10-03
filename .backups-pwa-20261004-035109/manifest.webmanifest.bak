@@ -1,0 +1,16 @@
+{
+  "name": "Digital Utility Suite \u2014 Free Student & Cyber Cafe Tools",
+  "short_name": "QuickTools",
+  "description": "22+ Free Web Utilities: Speed Math, Photo Resizer, Hindi Typing, Document Tools",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070c18",
+  "theme_color": "#0284c7",
+  "icons": [
+    {
+      "src": "https://unknownuniversem-blip.github.io/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

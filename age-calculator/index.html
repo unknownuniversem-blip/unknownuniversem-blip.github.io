@@ -16,6 +16,12 @@ input:focus{outline:none;border-color:#1e3b5c;box-shadow:0 0 0 3px rgba(30,59,92
 .extra{background:linear-gradient(135deg,#f6f9fd,#eef4fa);color:#3e5a7a;padding:10px 12px;border-radius:12px;margin-top:8px;font-size:.76rem;line-height:1.55;display:none}
 .extra b{color:#1e3b5c}
 </style>  <script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0284c7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="QuickTools">
+<link rel="apple-touch-icon" href="/icon-192.png">
 </head><body>
 <div class="w">
 <a href="../" class="hub">🏠 Hub</a>
@@ -47,4 +53,11 @@ function calc(){
   $("extra").innerHTML="🎯 <b>Zodiac:</b> "+z(dob)+"<br>📅 <b>Born on:</b> "+days[dob.getDay()]+"<br>🎈 <b>Next birthday in:</b> "+dtn+" days<br>🕐 <b>Hours lived:</b> "+(td*24).toLocaleString();
   $("extra").style.display="block";
 }
-</script></body></html>
+</script><script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  });
+}
+</script>
+</body></html>

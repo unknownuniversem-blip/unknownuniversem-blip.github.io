@@ -9,6 +9,12 @@
     .passage{background:#131d35;padding:14px;border-radius:8px;text-align:left;line-height:1.5;color:#94a3b8;margin-bottom:15px}
     input{width:100%;padding:12px;background:#070c18;border:1px solid #334155;color:#fff;border-radius:8px;font-size:1rem;outline:none}
   </style>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0284c7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="QuickTools">
+<link rel="apple-touch-icon" href="/icon-192.png">
 </head>
 <body>
   <div class="box">
@@ -29,5 +35,12 @@
       document.getElementById('stat').innerText = `WPM: ${wpm} | Typed: ${val.length} chars`;
     }
   </script>
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  });
+}
+</script>
 </body>
 </html>

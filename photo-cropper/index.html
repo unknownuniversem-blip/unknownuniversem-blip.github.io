@@ -16,6 +16,12 @@ h1{margin:6px 0 10px;color:#1e2b3c;font-size:clamp(1.2rem,3.6vw,1.5rem);text-ali
 .cw canvas{max-width:100%;max-height:44vh;border-radius:10px}
 .btn{background:linear-gradient(135deg,#1e3b5c,#2f5575);color:#fff;border:none;padding:13px;border-radius:14px;font-weight:600;cursor:pointer;width:100%;font-size:.9rem;box-shadow:0 8px 20px -6px rgba(30,59,92,.5)}
 </style>  <script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0284c7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="QuickTools">
+<link rel="apple-touch-icon" href="/icon-192.png">
 </head><body>
 <div class="w">
 <a href="../" class="hub">🏠 Hub</a>
@@ -40,4 +46,11 @@ $("file").onchange=e=>load(e.target.files[0]);
 function load(f){if(!f)return;const r=new FileReader();r.onload=()=>{img=new Image();img.onload=()=>{document.querySelector(".preset button").classList.add("on");draw()};img.src=r.result};r.readAsDataURL(f)}
 function draw(){if(!img)return;const c=$("cv");c.width=sel.w;c.height=sel.h;const ctx=c.getContext("2d"),ar=sel.w/sel.h,iar=img.width/img.height;let sx=0,sy=0,sw=img.width,sh=img.height;if(iar>ar){sw=img.height*ar;sx=(img.width-sw)/2}else{sh=img.width/ar;sy=(img.height-sh)/2}ctx.drawImage(img,sx,sy,sw,sh,0,0,sel.w,sel.h)}
 $("dl").onclick=()=>{if(!img)return alert("Please select a photo first");const a=document.createElement("a");a.download="cropped-"+sel.w+"x"+sel.h+".jpg";a.href=$("cv").toDataURL("image/jpeg",.92);a.click()};
-</script></body></html>
+</script><script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  });
+}
+</script>
+</body></html>

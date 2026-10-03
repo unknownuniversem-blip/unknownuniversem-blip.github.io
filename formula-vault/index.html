@@ -1,2 +1,15 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Aspirant Formula Vault</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}.box{max-width:580px;margin:auto;background:#0f172a;padding:24px;border-radius:14px;border:1px solid #1e293b}input{width:100%;padding:10px;border-radius:8px;border:1px solid #334155;background:#131d35;color:#fff;box-sizing:border-box}.item{background:#070c18;padding:10px;border-radius:6px;margin:8px 0;text-align:left}</style>  <script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-</head><body><div class="box"><h3>📐 Searchable Formula Vault</h3><input type="text" id="q" placeholder="Search physics, math formulas..." oninput="f()"><div id="list"><div class="item"><b>Speed = Distance / Time</b><br><small style="color:#94a3b8">Kinematics</small></div><div class="item"><b>Simple Interest = (P × R × T) / 100</b><br><small style="color:#94a3b8">Quantitative Aptitude</small></div><div class="item"><b>Compound Interest = P(1 + R/100)^t - P</b><br><small style="color:#94a3b8">Quantitative Aptitude</small></div></div></div><script>function f(){const q=document.getElementById('q').value.toLowerCase();document.querySelectorAll('.item').forEach(i=>{i.style.display=i.innerText.toLowerCase().includes(q)?'block':'none';});}</script></body></html>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0284c7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="QuickTools">
+<link rel="apple-touch-icon" href="/icon-192.png">
+</head><body><div class="box"><h3>📐 Searchable Formula Vault</h3><input type="text" id="q" placeholder="Search physics, math formulas..." oninput="f()"><div id="list"><div class="item"><b>Speed = Distance / Time</b><br><small style="color:#94a3b8">Kinematics</small></div><div class="item"><b>Simple Interest = (P × R × T) / 100</b><br><small style="color:#94a3b8">Quantitative Aptitude</small></div><div class="item"><b>Compound Interest = P(1 + R/100)^t - P</b><br><small style="color:#94a3b8">Quantitative Aptitude</small></div></div></div><script>function f(){const q=document.getElementById('q').value.toLowerCase();document.querySelectorAll('.item').forEach(i=>{i.style.display=i.innerText.toLowerCase().includes(q)?'block':'none';});}</script><script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  });
+}
+</script>
+</body></html>

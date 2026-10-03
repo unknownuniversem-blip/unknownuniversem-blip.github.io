@@ -17,6 +17,12 @@ h1{margin:6px 0 12px;font-size:clamp(1.1rem,3.4vw,1.35rem);font-weight:700}
 .share a.wa{background:#25D366}
 .share a.tg{background:#0088cc}
 </style>  <script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0284c7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="QuickTools">
+<link rel="apple-touch-icon" href="/icon-192.png">
 </head><body>
 <div class="w">
 <a href="../" class="hub">🏠 Hub</a>
@@ -55,4 +61,11 @@ function lap(){
   $("laps").scrollTop=$("laps").scrollHeight;
 }
 document.addEventListener("keydown",e=>{if(e.code==="Space"){e.preventDefault();toggle()}else if(e.key==="l"||e.key==="L")lap()});
-</script></body></html>
+</script><script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  });
+}
+</script>
+</body></html>

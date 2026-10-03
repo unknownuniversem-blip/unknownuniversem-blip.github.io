@@ -239,6 +239,12 @@
     }
   </style>
   <script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0284c7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="QuickTools">
+<link rel="apple-touch-icon" href="/icon-192.png">
 </head>
 <body>
 <a href="../" class="hub" style="position:fixed;top:12px;left:12px;z-index:9999;background:#1e3b5c;color:#fff;text-decoration:none;font-size:.72rem;font-weight:600;padding:6px 12px;border-radius:999px;box-shadow:0 4px 12px rgba(30,59,92,.35);font-family:system-ui,sans-serif">🏠 Hub</a>
@@ -491,5 +497,12 @@
 <a href="https://wa.me/?text=Check%20this%20tool%3A%20https://unknownuniversem-blip.github.io/pomodoro-timer/" target="_blank" style="background:#25D366;color:#fff;text-decoration:none;padding:5px 10px;border-radius:999px;font-weight:600">💬 WhatsApp</a>
 <a href="https://t.me/share/url?url=https://unknownuniversem-blip.github.io/pomodoro-timer/?utm_source=telegram&utm_medium=share" target="_blank" style="background:#0088cc;color:#fff;text-decoration:none;padding:5px 10px;border-radius:999px;font-weight:600">✈️ Telegram</a>
 </div>
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  });
+}
+</script>
 </body>
 </html>

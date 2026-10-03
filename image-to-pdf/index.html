@@ -27,6 +27,12 @@ select{width:100%;padding:11px 14px;border:1px solid #d5e0ed;border-radius:12px;
 .suggest a:hover{background:#e3edf7}
 .card .close{background:#1e3b5c;color:#fff;border:none;padding:10px 22px;border-radius:12px;font-weight:600;cursor:pointer}
 </style>  <script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0284c7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="QuickTools">
+<link rel="apple-touch-icon" href="/icon-192.png">
 </head><body>
 <div class="w">
 <a href="../" class="hub">🏠 Hub</a>
@@ -61,4 +67,11 @@ $("go").onclick=async()=>{
   $("modalMsg").textContent=imgs.length+" image"+(imgs.length>1?"s":"")+" combined into one PDF. Check your Downloads folder!";
   $("modal").classList.add("show");
 };
-</script></body></html>
+</script><script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  });
+}
+</script>
+</body></html>

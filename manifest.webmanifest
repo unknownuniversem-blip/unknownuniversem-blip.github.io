@@ -1,16 +1,49 @@
 {
-  "name": "Digital Utility Suite \u2014 Free Student & Cyber Cafe Tools",
+  "name": "Digital Utility Suite — Free Student & Cyber Cafe Tools",
   "short_name": "QuickTools",
-  "description": "22+ Free Web Utilities: Speed Math, Photo Resizer, Hindi Typing, Document Tools",
+  "description": "30+ Free Web Utilities: Math Drills, PDF Tools, Exam Photo Resizer, Hindi Typing, Unit Converter & more.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "any",
   "background_color": "#070c18",
   "theme_color": "#0284c7",
+  "categories": ["education", "productivity", "utilities"],
+  "lang": "en-IN",
   "icons": [
     {
-      "src": "https://unknownuniversem-blip.github.io/favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "PDF Compressor",
+      "url": "/pdf-compressor/",
+      "description": "Compress PDF files"
+    },
+    {
+      "name": "Hindi Typing",
+      "url": "/hindi-typing-tutor/",
+      "description": "Practice Hindi typing"
+    },
+    {
+      "name": "QR Generator",
+      "url": "/qr-generator/",
+      "description": "Generate QR codes"
     }
   ]
 }

@@ -10,6 +10,12 @@ h1{margin:6px 0 10px;color:#1e2b3c;font-size:clamp(1.2rem,3.6vw,1.5rem);text-ali
 .box input{width:100%;padding:9px 12px;border:1px solid #d5e0ed;border-radius:10px;margin:.15rem 0;box-sizing:border-box;font-size:.85rem;background:#fff}
 .box .out{background:#1e3b5c;color:#fff;padding:9px;border-radius:10px;text-align:center;font-size:1rem;font-weight:700;margin-top:6px;min-height:36px;display:flex;align-items:center;justify-content:center}
 </style>  <script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0284c7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="QuickTools">
+<link rel="apple-touch-icon" href="/icon-192.png">
 </head><body>
 <div class="w">
 <a href="../" class="hub">🏠 Hub</a>
@@ -40,4 +46,11 @@ function upd(){
   $("o8").textContent=g("r1")?f(g("r2")/(g("r1")/100)):"—";
 }
 ["p1","p2","p3","p4","p5","p6","p7","p8","g1","g2","d1","d2","t1","t2","r1","r2"].forEach(id=>$(id).oninput=upd);
-</script></body></html>
+</script><script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  });
+}
+</script>
+</body></html>

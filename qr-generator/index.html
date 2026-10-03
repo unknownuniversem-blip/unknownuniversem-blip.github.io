@@ -19,6 +19,12 @@ input:focus{outline:none;border-color:#1e3b5c;box-shadow:0 0 0 3px rgba(30,59,92
 .share a.wa{background:#25D366;color:#fff}
 .share a.tg{background:#0088cc;color:#fff}
 </style>  <script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0284c7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="QuickTools">
+<link rel="apple-touch-icon" href="/icon-192.png">
 </head><body>
 <div class="w">
 <a href="../" class="hub">🏠 Hub</a>
@@ -69,4 +75,11 @@ function gen(){
   $("tgBtn").href="https://t.me/share/url?url="+url;
 }
 function dl(){const img=$("box").querySelector("img");if(!img||!$("box").dataset.ready)return alert("Generate first");const a=document.createElement("a");a.download="qr.png";a.href=img.src;a.click()}
-</script></body></html>
+</script><script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  });
+}
+</script>
+</body></html>
