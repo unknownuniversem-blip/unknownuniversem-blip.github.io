@@ -1,38 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"><title>Physical PET Sprint Stopwatch</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}
-    .box{max-width:440px;margin:auto;background:#0f172a;padding:24px;border-radius:14px;border:1px solid #1e293b}
-    .disp{font-size:4rem;font-weight:900;color:#38bdf8;margin:15px 0}
-    button{padding:10px 20px;margin:4px;border-radius:8px;border:none;font-weight:bold;cursor:pointer}
-  </style>
-</head>
-<body>
-  <div class="box">
-    <h3>⏱️ Physical Sprint Lap Stopwatch</h3>
-    <div class="disp" id="d">00:00.0</div>
-    <button style="background:#22c55e;color:#052e16" id="b" onclick="toggle()">Start</button>
-    <button style="background:#334155;color:#fff" onclick="rst()">Reset</button>
-  </div>
-  <script>
-    let t=null, ms=0;
-    function toggle(){
-      if(t){ clearInterval(t); t=null; document.getElementById('b').innerText="Resume"; }
-      else {
-        document.getElementById('b').innerText="Stop";
-        t = setInterval(()=>{
-          ms += 100;
-          const s = Math.floor(ms/1000)%60;
-          const m = Math.floor(ms/60000);
-          const tenths = Math.floor((ms%1000)/100);
-          document.getElementById('d').innerText = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}.${tenths}`;
-        }, 100);
-      }
-    }
-    function rst(){ clearInterval(t); t=null; ms=0; document.getElementById('d').innerText="00:00.0"; document.getElementById('b').innerText="Start"; }
-  </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5"><title>PET Sprint Stopwatch · Master Hub</title><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⏱️</text></svg>"><style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:system-ui,sans-serif;background:radial-gradient(circle at 50% 0%,#25344a,#1e2b3c 70%);min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:clamp(8px,1.5vw,16px);color:#fff}
+.w{width:100%;max-width:480px;background:rgba(45,64,90,.85);backdrop-filter:blur(20px);border-radius:clamp(18px,3.5vw,28px);padding:clamp(16px,2.5vw,26px);text-align:center;position:relative;box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+.hub{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.12);color:#fff;text-decoration:none;font-size:.7rem;font-weight:600;padding:5px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.15)}
+h1{margin:6px 0 12px;font-size:clamp(1.1rem,3.4vw,1.35rem);font-weight:700}
+.disp{font-family:'Courier New',monospace;font-size:clamp(2.2rem,9vw,3.2rem);font-weight:700;letter-spacing:2px;padding:20px 8px;background:rgba(0,0,0,.25);border-radius:16px;margin-bottom:12px;font-variant-numeric:tabular-nums}
+.btns{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.btns button{border:none;padding:12px;border-radius:11px;font-weight:600;cursor:pointer;font-size:.82rem;background:rgba(255,255,255,.12);color:#fff;transition:.15s}
+.btns button:hover{background:rgba(255,255,255,.2)}
+.btns button.go{background:linear-gradient(135deg,#2e7d32,#1b5e20)}
+.btns button.stop{background:linear-gradient(135deg,#c62828,#8f1e1e)}
+.laps{margin-top:12px;background:rgba(0,0,0,.2);border-radius:11px;padding:8px;max-height:140px;overflow-y:auto;font-family:monospace;font-size:.82rem;text-align:left}
+.laps div{padding:4px 8px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between}
+.share{display:flex;gap:6px;margin-top:10px;justify-content:center;flex-wrap:wrap}
+.share a{text-decoration:none;padding:6px 12px;border-radius:999px;font-size:.72rem;font-weight:600;background:rgba(255,255,255,.1);color:#fff}
+.share a.wa{background:#25D366}
+.share a.tg{background:#0088cc}
+</style></head><body>
+<div class="w">
+<a href="../" class="hub">🏠 Hub</a>
+<h1>⏱️ PET Sprint Stopwatch</h1>
+<div class="disp" id="disp">00:00.00</div>
+<div class="btns">
+<button id="startBtn" class="go" onclick="toggle()">▶ Start</button>
+<button onclick="lap()">⏱ Lap</button>
+<button class="stop" onclick="reset()">↺ Reset</button>
+</div>
+<div class="laps" id="laps"><div style="opacity:.5">Laps will show here</div></div>
+<div class="share">
+<span style="font-size:.7rem;opacity:.7;align-self:center">Share:</span>
+<a class="wa" href="https://wa.me/?text=Check%20PET%20Stopwatch%3A%20https://unknownuniversem-blip.github.io/stopwatch-timer/" target="_blank">💬 WhatsApp</a>
+<a class="tg" href="https://t.me/share/url?url=https://unknownuniversem-blip.github.io/stopwatch-timer/" target="_blank">✈️ Telegram</a>
+</div>
+</div>
+<script>
+const $=i=>document.getElementById(i);
+let t0=0,elapsed=0,timer=null,running=false,laps=[];
+function fmt(ms){
+  const m=Math.floor(ms/60000),s=Math.floor(ms/1000)%60,cs=Math.floor(ms/10)%100;
+  return String(m).padStart(2,"0")+":"+String(s).padStart(2,"0")+"."+String(cs).padStart(2,"0");
+}
+function upd(){$("disp").textContent=fmt(elapsed+performance.now()-t0)}
+function toggle(){
+  if(running){clearInterval(timer);elapsed+=performance.now()-t0;running=false;$("startBtn").innerHTML="▶ Start";$("startBtn").className="go"}
+  else{t0=performance.now();timer=setInterval(upd,10);running=true;$("startBtn").innerHTML="⏸ Pause";$("startBtn").className=""}
+}
+function reset(){clearInterval(timer);elapsed=0;running=false;t0=0;laps=[];$("disp").textContent="00:00.00";$("startBtn").innerHTML="▶ Start";$("startBtn").className="go";$("laps").innerHTML='<div style="opacity:.5">Laps will show here</div>'}
+function lap(){
+  if(!running)return;
+  const t=elapsed+performance.now()-t0;
+  laps.push(t);
+  $("laps").innerHTML=laps.map((l,i)=>`<div><span>Lap ${i+1}</span><span>${fmt(l)}</span></div>`).join("");
+  $("laps").scrollTop=$("laps").scrollHeight;
+}
+document.addEventListener("keydown",e=>{if(e.code==="Space"){e.preventDefault();toggle()}else if(e.key==="l"||e.key==="L")lap()});
+</script></body></html>
