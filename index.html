@@ -29,7 +29,7 @@
     .tool-card h3 { font-size: 1.15rem; font-weight: 700; color: #f8fafc; margin-bottom: 6px; }
     .tool-card p { color: #94a3b8; font-size: 0.85rem; line-height: 1.4; flex-grow: 1; }
   </style>
-  <script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#0284c7">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -50,7 +50,7 @@
       <h1>Student & Cyber Cafe Utility Suite</h1>
       <p>Explore all 48 free student, career, exam & cyber cafe web utilities.</p>
       <div class="search-box">
-        <input type="text" id="tool-search" placeholder="🔍 Search among 48 tools..." oninput="filterTools()">
+        <input type="text" id="tool-search" placeholder="🔍 Search among tools (e.g. bigha, photo, age, resume)..." autocomplete="off" style="width:100%; padding:14px 20px; background:#0f172a; border:1px solid #334155; border-radius:12px; color:#fff; font-size:1rem; outline:none;">
       </div>
     </div>
     <div class="tool-grid" id="grid">
@@ -442,23 +442,52 @@
       </a>
     </div>
   </div>
-  <script>
-    function filterTools() {
-      const q = document.getElementById('tool-search').value.toLowerCase().trim();
-      document.querySelectorAll('.tool-card').forEach(card => {
-        const name = card.getAttribute('data-name');
-        const desc = card.getAttribute('data-desc');
-        card.style.display = (name.includes(q) || desc.includes(q)) ? 'flex' : 'none';
+  
+
+
+<script>
+(function() {
+  function initSearch() {
+    var searchInput = document.getElementById('tool-search');
+    if (!searchInput) return;
+
+    var cards = document.querySelectorAll('.tool-card');
+
+    function runFilter() {
+      var query = (searchInput.value || '').trim().toLowerCase();
+      var words = query.split(/\s+/).filter(Boolean);
+
+      cards.forEach(function(card) {
+        var cardText = (card.innerText || card.textContent || '').toLowerCase();
+        var cardLink = (card.getAttribute('href') || '').toLowerCase();
+        var combined = cardText + ' ' + cardLink;
+
+        var matches = words.length === 0 || words.every(function(word) {
+          return combined.indexOf(word) !== -1;
+        });
+
+        if (matches) {
+          card.style.setProperty('display', 'flex', 'important');
+        } else {
+          card.style.setProperty('display', 'none', 'important');
+        }
       });
     }
-  </script>
-<script>
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{
-    navigator.serviceWorker.register('/sw.js').catch(()=>{});
-  });
-}
+
+    searchInput.addEventListener('input', runFilter);
+    searchInput.addEventListener('keyup', runFilter);
+    searchInput.addEventListener('search', runFilter);
+    window.filterTools = runFilter;
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSearch);
+  } else {
+    initSearch();
+  }
+})();
 </script>
 </body>
+
 </html>
 <!-- site-rebuild 1791061851 -->
