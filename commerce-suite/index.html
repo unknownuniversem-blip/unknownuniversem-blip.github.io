@@ -1,0 +1,2293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,viewport-fit=cover">
+<meta name="theme-color" content="#0369a1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Commerce Suite — Class 11 & 12 Accountancy</title>
+<meta name="description" content="Complete Class 11 & 12 Accountancy reference: formulas, journal entries, formats, concepts for all chapters.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<link rel="manifest" href="/manifest.webmanifest">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden}
+body{font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;font-feature-settings:'cv02','cv03','cv04','cv11';-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background:#f0f4f9;color:#1a2230;display:flex;justify-content:center}
+.app{width:100%;max-width:900px;height:100vh;display:flex;flex-direction:column;background:#fff;overflow:hidden}
+.topbar{display:flex;align-items:center;gap:8px;padding:10px 12px;background:linear-gradient(135deg,#0369a1,#075985);color:#fff;flex-shrink:0}
+.topbar button{background:rgba(255,255,255,.15);color:#fff;border:none;padding:7px 12px;border-radius:8px;font-weight:700;font-size:.78rem;cursor:pointer;font-family:inherit}
+.topbar .title{flex:1;text-align:center;font-size:.92rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.screen{display:none;flex:1;min-height:0;flex-direction:column;overflow:hidden}
+.screen.active{display:flex}
+.body-scroll{flex:1;min-height:0;overflow-y:auto;padding:14px}
+.hero{text-align:center;padding:16px 0 20px}
+.hero h1{font-size:1.4rem;font-weight:800;color:#0f172a;margin-bottom:6px;letter-spacing:-.03em}
+.hero p{font-size:.85rem;color:#64748b;line-height:1.5}
+.class-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+.class-card{color:#fff;border:none;border-radius:16px;padding:22px 16px;text-align:center;cursor:pointer;font-family:inherit;box-shadow:0 8px 20px -8px rgba(3,105,161,.4)}
+.class-card.eleven{background:linear-gradient(135deg,#0369a1,#075985)}
+.class-card.twelve{background:linear-gradient(135deg,#7c3aed,#5b21b6)}
+.class-card .emoji{font-size:2rem;display:block;margin-bottom:8px}
+.class-card .cls{font-size:1.05rem;font-weight:800;margin-bottom:4px}
+.class-card .desc{font-size:.7rem;opacity:.85;line-height:1.4}
+.section-title{font-size:.68rem;font-weight:700;color:#64748b;letter-spacing:1px;text-transform:uppercase;margin:16px 0 8px}
+.quick-btn{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:12px 14px;text-align:left;cursor:pointer;font-family:inherit;width:100%;margin-bottom:8px}
+.quick-btn .qi{font-size:1.3rem;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:9px;background:#f1f5f9;flex-shrink:0}
+.quick-btn .qt{flex:1;font-size:.88rem;font-weight:700;color:#0f172a}
+.quick-btn .qs{font-size:.65rem;color:#64748b;font-weight:500;margin-top:2px}
+.ad-slot{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:8px;min-height:50px;display:flex;align-items:center;justify-content:center;font-size:.6rem;color:#94a3b8;font-weight:600;letter-spacing:1px;margin-top:16px}
+.ad-slot::after{content:"AD SPACE"}
+.chapter-header{background:#f0f9ff;border-left:4px solid #0369a1;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.chapter-header h2{font-size:1rem;font-weight:800;color:#075985;margin-bottom:3px}
+.chapter-header p{font-size:.72rem;color:#0369a1;font-weight:500}
+.chapter-card{background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:12px 14px;margin-bottom:8px;cursor:pointer;font-family:inherit;text-align:left;width:100%}
+.chapter-card:active{transform:scale(.99);background:#f8fafc}
+.chapter-card .ch-num{display:inline-block;background:#e0f2fe;color:#0369a1;font-size:.6rem;font-weight:800;padding:2px 8px;border-radius:999px;margin-bottom:6px;letter-spacing:.5px;text-transform:uppercase}
+.chapter-card .ch-title{font-size:.92rem;font-weight:700;color:#0f172a;margin-bottom:4px}
+.chapter-card .ch-sum{font-size:.72rem;color:#64748b;line-height:1.4}
+.chapter-view{padding:14px}
+.chapter-title-big{font-size:1.18rem;font-weight:800;color:#0f172a;margin-bottom:6px;letter-spacing:-.02em;line-height:1.35}
+.chapter-sub{font-size:.75rem;color:#64748b;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #e2e8f0}
+.topic-section{background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:14px;margin-bottom:10px}
+.topic-section h3{font-size:.83rem;font-weight:800;color:#0369a1;margin-bottom:11px;display:flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:.6px}
+.formula-list{display:flex;flex-direction:column;gap:6px}
+.formula{background:#f8fafc;border-left:3px solid #0369a1;border-radius:8px;padding:8px 12px}
+.formula .fl{font-size:.7rem;color:#64748b;font-weight:600;margin-bottom:3px}
+.formula .fv{font-family:'JetBrains Mono','SF Mono',Monaco,'Cascadia Code','Roboto Mono',Consolas,'Courier New',monospace;font-size:.84rem;color:#0f172a;font-weight:500;word-break:break-word;letter-spacing:-.01em;line-height:1.6}
+.concept-list{list-style:none;padding:0}
+.concept-list li{background:#f8fafc;padding:10px 13px;border-radius:8px;margin-bottom:7px;font-size:.79rem;line-height:1.65;color:#334155;letter-spacing:-.005em}
+.concept-list li strong{color:#0369a1}
+.format-box{background:#f0f9ff;border-radius:8px;padding:14px 16px;font-family:'JetBrains Mono','SF Mono',Monaco,'Cascadia Code','Roboto Mono',Consolas,'Courier New',monospace;font-size:.73rem;line-height:1.8;color:#0f172a;white-space:pre-wrap;word-break:break-word;border-left:3px solid #0369a1;overflow-x:auto;max-height:480px;overflow-y:auto;font-weight:500;letter-spacing:-.01em}
+.journal-box{background:#fef3c7;border-radius:8px;padding:14px 16px;font-family:'JetBrains Mono','SF Mono',Monaco,'Cascadia Code','Roboto Mono',Consolas,'Courier New',monospace;font-size:.75rem;line-height:1.85;color:#0f172a;white-space:pre-wrap;word-break:break-word;border-left:3px solid #d97706;overflow-x:auto;max-height:480px;overflow-y:auto;font-weight:500;letter-spacing:-.01em}
+.tip-box{background:#dcfce7;border-left:3px solid #16a34a;border-radius:8px;padding:10px 12px;font-size:.76rem;line-height:1.6;color:#166534;margin-bottom:8px}
+.tip-box strong{color:#15803d}
+.search-box{width:100%;padding:11px 14px;border:1.5px solid #e2e8f0;border-radius:10px;font-family:inherit;font-size:.85rem;outline:none;margin-bottom:12px}
+.search-box:focus{border-color:#0369a1}
+.recent-empty{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:10px;padding:14px;text-align:center;font-size:.78rem;color:#94a3b8}
+@media (min-width:700px){
+.class-grid{gap:16px}
+.body-scroll{padding:20px 28px}
+.chapter-view{padding:20px 28px}
+.hero h1{font-size:1.5rem}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- HOME -->
+<div class="screen active" id="screen-home">
+<div class="topbar">
+<button onclick="window.location.href='https://unknownuniversem-blip.github.io/'">🌐 Hub</button>
+<div class="title">📊 Commerce Suite</div>
+<button onclick="openSearch()">🔍</button>
+</div>
+<div class="body-scroll">
+<div class="hero">
+<h1>Commerce Suite</h1>
+<p>Class 11 &amp; 12 Accountancy — every chapter with formulas, journal entries, formats &amp; key concepts</p>
+</div>
+<div class="class-grid">
+<button class="class-card eleven" onclick="openClass(11)">
+<span class="emoji">📚</span>
+<div class="cls">Class 11</div>
+<div class="desc">12 chapters · full formulas &amp; entries</div>
+</button>
+<button class="class-card twelve" onclick="openClass(12)">
+<span class="emoji">🎓</span>
+<div class="cls">Class 12</div>
+<div class="desc">13 chapters · Partnership, Company, Analysis</div>
+</button>
+</div>
+<div class="section-title">Quick Reference</div>
+<button class="quick-btn" onclick="openQuick('formulas')">
+<div class="qi" style="background:#dcfce7">🧮</div>
+<div><div class="qt">All Formulas</div><div class="qs">Every formula — Class 11 &amp; 12</div></div>
+</button>
+<button class="quick-btn" onclick="openQuick('journal')">
+<div class="qi" style="background:#fef3c7">📝</div>
+<div><div class="qt">All Journal Entries</div><div class="qs">Standard entries for every transaction type</div></div>
+</button>
+<button class="quick-btn" onclick="openQuick('formats')">
+<div class="qi" style="background:#e0f2fe">📋</div>
+<div><div class="qt">All Formats</div><div class="qs">Journal, Ledger, Balance Sheet, P&amp;L, BRS, Cash Flow</div></div>
+</button>
+<button class="quick-btn" onclick="openQuick('glossary')">
+<div class="qi" style="background:#fce7f3">📖</div>
+<div><div class="qt">Glossary</div><div class="qs">Key accounting terms</div></div>
+</button>
+<div class="ad-slot"></div>
+</div>
+</div>
+
+<!-- CHAPTER LIST -->
+<div class="screen" id="screen-list">
+<div class="topbar">
+<button onclick="goHome()">← Back</button>
+<div class="title" id="listTitle">Class 11</div>
+<button onclick="goHome()">🏠</button>
+</div>
+<div class="body-scroll" id="chapterList"></div>
+</div>
+
+<!-- CHAPTER VIEW -->
+<div class="screen" id="screen-chapter">
+<div class="topbar">
+<button onclick="goBackToList()">← Back</button>
+<div class="title" id="chapterTitle">Chapter</div>
+<button onclick="goHome()">🏠</button>
+</div>
+<div class="body-scroll">
+<div class="chapter-view" id="chapterContent"></div>
+</div>
+</div>
+
+<!-- SEARCH -->
+<div class="screen" id="screen-search">
+<div class="topbar">
+<button onclick="goHome()">← Back</button>
+<div class="title">Search</div>
+<button onclick="goHome()">🏠</button>
+</div>
+<div class="body-scroll">
+<input class="search-box" id="searchInput" placeholder="Search chapters, formulas, entries, terms..." oninput="doSearch()">
+<div id="searchResults"></div>
+</div>
+</div>
+
+</div>
+
+<script>
+/* ============================================
+   CLASS 11 — 12 CHAPTERS
+   ============================================ */
+const CLASS_11 = [
+{n:1, title:"Introduction to Accounting", summary:"Meaning, objectives, users, branches, qualitative characteristics",
+concepts:[
+"<strong>Accounting</strong> = Process of identifying, measuring, recording, classifying, summarising, analysing, interpreting & communicating financial information to users",
+"<strong>Objectives of Accounting:</strong> (1) Maintain systematic records (2) Determine profit/loss (3) Show financial position (4) Provide information to users (5) Assist management",
+"<strong>Internal Users:</strong> Owners, Management, Employees — inside the organisation",
+"<strong>External Users:</strong> Investors, Creditors, Banks, Govt, Tax authorities, Consumers, Researchers, Public",
+"<strong>Qualitative Characteristics:</strong> Reliability · Relevance · Understandability · Comparability",
+"<strong>Book-keeping:</strong> Only recording of transactions — primary stage",
+"<strong>Accounting:</strong> Book-keeping + Summarising + Analysing + Interpreting + Communicating",
+"<strong>Accountancy:</strong> Body of knowledge — the parent discipline",
+"<strong>Branches:</strong> Financial Accounting · Cost Accounting · Management Accounting · Tax Accounting",
+"<strong>Accounting Process Flow:</strong> Source documents → Journal → Ledger → Trial Balance → Financial Statements",
+"<strong>Transaction vs Event:</strong> Transaction = external exchange; Event = internal happening (e.g. depreciation)",
+"<strong>Cash vs Credit:</strong> Cash = immediate payment; Credit = future payment",
+"<strong>Drawings:</strong> Money/goods withdrawn by owner for personal use — reduces capital",
+"<strong>Capital vs Revenue:</strong> Capital = long-term benefit; Revenue = short-term benefit"
+],
+formulas:[
+["Accounting Equation","Assets = Liabilities + Capital"],
+["Expanded Equation","A = L + (Capital + Revenue − Expenses − Drawings)"],
+["Capital","Assets − Liabilities"],
+["Net Worth","Total Assets − External Liabilities"],
+["Profit/Loss","Revenue − Expenses"],
+["Drawings effect","Reduces capital (debit to Drawings, credit to Cash)"]
+],
+journal:null,
+formats:null,
+tips:[
+"Every transaction always satisfies the accounting equation — verify",
+"Drawings are NOT an expense — they reduce capital",
+"Money measurement concept ignores non-financial items (e.g. employee skill)"
+]},
+
+{n:2, title:"Theory Base of Accounting", summary:"GAAP, concepts, conventions, accounting standards, bases",
+concepts:[
+"<strong>GAAP</strong> — Generally Accepted Accounting Principles: rules accountants follow",
+"<strong>Business Entity concept:</strong> Business is separate from owner — owner's personal transactions NOT recorded",
+"<strong>Money Measurement concept:</strong> Only transactions measurable in money are recorded (qualitative items ignored)",
+"<strong>Going Concern concept:</strong> Business will continue for foreseeable future — justifies asset valuation at cost",
+"<strong>Accounting Period concept:</strong> Life of business divided into equal intervals (usually 1 year)",
+"<strong>Cost concept:</strong> Assets recorded at acquisition cost, NOT market value",
+"<strong>Dual Aspect concept:</strong> Every transaction has 2 effects — debit + credit. Basis of double entry",
+"<strong>Revenue Recognition:</strong> Revenue recorded when earned, NOT when cash received",
+"<strong>Matching concept:</strong> Expenses matched with revenues of the SAME period",
+"<strong>Accrual basis:</strong> Record revenue/expense when earned/incurred (mandatory for companies)",
+"<strong>Cash basis:</strong> Record only when cash received/paid (not allowed for companies)",
+"<strong>Full Disclosure:</strong> All material facts must be disclosed",
+"<strong>Consistency:</strong> Same methods period after period for comparability",
+"<strong>Conservatism (Prudence):</strong> Provide for all losses, ignore anticipated profits — but never understate",
+"<strong>Materiality:</strong> Only items significant enough to affect decisions are recorded",
+"<strong>Objectivity:</strong> Records must be based on verifiable evidence, not opinion",
+"<strong>Accounting Standards:</strong> Issued by ICAI — AS-1 to AS-29 and Ind-AS",
+"<strong>Fundamental Accounting Assumptions:</strong> Going Concern · Consistency · Accrual"
+],
+formulas:null,
+journal:null,
+formats:null,
+tips:[
+"Accrual basis is mandatory for companies — not cash basis",
+"Conservatism ≠ creating hidden reserves — it's about prudence",
+"Going concern justifies depreciation (asset's cost spread over useful life)"
+]},
+
+{n:3, title:"Recording of Transactions — Journal", summary:"Source documents, rules of debit/credit, journal entries, compound entries",
+concepts:[
+"<strong>Source documents:</strong> Cash memo · Invoice · Receipt · Cheque · Debit Note · Credit Note · Pay-in-slip · Bank statement",
+"<strong>Journal:</strong> Book of original entry — chronological record before posting to ledger",
+"<strong>Account types:</strong> Personal (persons/firms) · Real (assets) · Nominal (expenses/incomes)",
+"<strong>Rules of Debit/Credit:</strong>",
+"  • <strong>Personal A/c:</strong> Debit the receiver, Credit the giver",
+"  • <strong>Real A/c:</strong> Debit what comes in, Credit what goes out",
+"  • <strong>Nominal A/c:</strong> Debit expenses/losses, Credit incomes/gains",
+"<strong>Compound entry:</strong> One entry with multiple debits/credits",
+"<strong>Opening entry:</strong> First entry to bring forward old balances",
+"<strong>Narration:</strong> Brief explanation written after each entry in brackets",
+"<strong>L.F. (Ledger Folio):</strong> Reference number to ledger page",
+"<strong>Trade Discount vs Cash Discount:</strong> Trade = on list price (not recorded); Cash = on payment (recorded)",
+"<strong>Goods vs Assets:</strong> Goods purchased for resale; Assets for use"
+],
+formulas:null,
+journal:`BASIC JOURNAL ENTRIES — 25 COMMON TRANSACTIONS
+
+1) Started business with cash ₹5,00,000
+   Cash A/c                    Dr.   5,00,000
+      To Capital A/c                          5,00,000
+
+2) Purchased goods for cash ₹50,000
+   Purchases A/c               Dr.     50,000
+      To Cash A/c                               50,000
+
+3) Purchased goods on credit from Ram ₹30,000
+   Purchases A/c               Dr.     30,000
+      To Ram's A/c                              30,000
+
+4) Sold goods for cash ₹80,000
+   Cash A/c                    Dr.     80,000
+      To Sales A/c                              80,000
+
+5) Sold goods on credit to Shyam ₹40,000
+   Shyam's A/c                 Dr.     40,000
+      To Sales A/c                              40,000
+
+6) Cash received from Shyam ₹38,000 (discount ₹2,000)
+   Cash A/c                    Dr.     38,000
+   Discount Allowed A/c        Dr.      2,000
+      To Shyam's A/c                            40,000
+
+7) Cash paid to Ram ₹29,000 (discount ₹1,000)
+   Ram's A/c                   Dr.     30,000
+      To Cash A/c                               29,000
+      To Discount Received A/c                   1,000
+
+8) Salary paid ₹15,000
+   Salaries A/c                Dr.     15,000
+      To Cash A/c                               15,000
+
+9) Rent paid in cash ₹8,000
+   Rent A/c                    Dr.      8,000
+      To Cash A/c                                8,000
+
+10) Commission received ₹5,000
+    Cash A/c                   Dr.      5,000
+       To Commission Received A/c                5,000
+
+11) Goods withdrawn by owner for personal use ₹4,000
+    Drawings A/c               Dr.      4,000
+       To Purchases A/c                          4,000
+
+12) Cash withdrawn for personal use ₹6,000
+    Drawings A/c               Dr.      6,000
+       To Cash A/c                                6,000
+
+13) Purchased furniture for cash ₹25,000
+    Furniture A/c              Dr.     25,000
+       To Cash A/c                               25,000
+
+14) Purchased machinery on credit ₹2,00,000
+    Machinery A/c              Dr.  2,00,000
+       To Creditor's A/c                      2,00,000
+
+15) Depreciation on machinery @ 10% p.a. ₹20,000
+    Depreciation A/c           Dr.     20,000
+       To Machinery A/c                          20,000
+
+16) Bad debts written off ₹3,000
+    Bad Debts A/c              Dr.      3,000
+       To Debtor's A/c                            3,000
+
+17) Goods returned by customer ₹2,000
+    Sales Return A/c           Dr.      2,000
+       To Customer's A/c                          2,000
+
+18) Goods returned to supplier ₹1,500
+    Supplier's A/c             Dr.      1,500
+       To Purchase Return A/c                     1,500
+
+19) Interest on capital allowed ₹10,000
+    Interest on Capital A/c    Dr.     10,000
+       To Capital A/c                            10,000
+
+20) Interest on drawings charged ₹2,000
+    Drawings A/c               Dr.      2,000
+       To Interest on Drawings A/c                2,000
+
+21) Cash deposited into bank ₹40,000
+    Bank A/c                   Dr.     40,000
+       To Cash A/c                               40,000
+
+22) Cash withdrawn from bank for office use ₹5,000
+    Cash A/c                   Dr.      5,000
+       To Bank A/c                                5,000
+
+23) Goods distributed as free samples ₹3,000
+    Advertisement A/c          Dr.      3,000
+       To Purchases A/c                           3,000
+
+24) Goods lost by fire ₹5,000 (no insurance)
+    Loss by Fire A/c           Dr.      5,000
+       To Purchases A/c                           5,000
+
+25) Outstanding salary ₹4,000
+    Salaries A/c               Dr.      4,000
+       To Outstanding Salaries A/c                4,000`,
+formats:`JOURNAL FORMAT
+
+Date    Particulars                     L.F.   Debit(₹)   Credit(₹)
+──────────────────────────────────────────────────────────────────────
+        [Account to be debited] Dr.            xxx
+           To [Account to be credited]                    xxx
+        (Narration)
+──────────────────────────────────────────────────────────────────────
+Total                                          xxx         xxx`,
+tips:[
+"Debit total must always equal credit total",
+"Trade discount NEVER recorded; Cash discount IS recorded",
+"Goods lost by fire — record even without insurance (loss to P&L)"
+]},
+
+{n:4, title:"Ledger and Trial Balance", summary:"Posting, balancing accounts, trial balance, types of errors",
+concepts:[
+"<strong>Ledger:</strong> Principal book containing ALL accounts (personal, real, nominal)",
+"<strong>Posting:</strong> Transferring entries from journal to ledger",
+"<strong>Balancing:</strong> Difference between debit & credit side = closing balance",
+"<strong>Debit balance on:</strong> Assets, Expenses, Drawings, Losses",
+"<strong>Credit balance on:</strong> Liabilities, Income, Capital, Gains",
+"<strong>Nominal accounts:</strong> Closed at year-end by transferring to Trading/P&L A/c",
+"<strong>Real & Personal accounts:</strong> Carry forward balance to next year",
+"<strong>Trial Balance:</strong> Statement of all ledger balances to verify arithmetic accuracy",
+"<strong>Format: Total method OR Balance method</strong>",
+"<strong>Errors affecting TB (one-sided errors):</strong>",
+"  • Partial omission",
+"  • Wrong amount in one account",
+"  • Posting to wrong side of one account",
+"  • Double posting to same side",
+"<strong>Errors NOT affecting TB (two-sided errors):</strong>",
+"  • Complete omission",
+"  • Error of principle",
+"  • Compensating errors",
+"  • Wrong account posting (both sides)",
+"<strong>Suspense A/c:</strong> Temporary account to balance TB till errors found"
+],
+formulas:[
+["Closing balance (Asset)","Opening + Debits − Credits"],
+["Closing balance (Liability)","Opening + Credits − Debits"],
+["Trial Balance agreement","Σ Debits = Σ Credits"],
+["Suspense A/c","Difference in Trial Balance"]
+],
+journal:null,
+formats:`LEDGER ACCOUNT FORMAT — "T" SHAPE
+
+Dr.           Cash Account                 Cr.
+──────────────────────────────────────────────
+Date  Particulars   ₹  | Date  Particulars   ₹
+──────────────────────────────────────────────
+      To Balance b/d xxx |       By ...     xxx
+      To Sales      xxx |       By ...     xxx
+      To ...        xxx |       By Balance c/d xxx
+──────────────────────────────────────────────
+                    xxx |                    xxx
+──────────────────────────────────────────────
+      To Balance b/d xxx |
+
+TRIAL BALANCE
+
+Particulars                      Dr. (₹)    Cr. (₹)
+─────────────────────────────────────────────────
+[Ledger account]                 xxx
+[Ledger account]                            xxx
+─────────────────────────────────────────────────
+Total                            xxx        xxx
+─────────────────────────────────────────────────`,
+tips:[
+"Trial Balance agreement ≠ guarantee of accuracy — many errors cancel out",
+"Suspense A/c is closed once all one-sided errors are rectified"
+]},
+
+{n:5, title:"Bank Reconciliation Statement", summary:"Reconciliation, causes of difference, favourable balance, preparation",
+concepts:[
+"<strong>BRS:</strong> Statement reconciling bank balance per Cash Book with balance per Pass Book on a specific date",
+"<strong>Cash Book (Bank column):</strong> Business's record of bank transactions",
+"<strong>Pass Book:</strong> Bank's record of customer's account",
+"<strong>Favourable balance:</strong> Positive balance — Cash Book Dr. = Pass Book Cr.",
+"<strong>Overdraft (Unfavourable):</strong> Negative balance — Cash Book Cr. = Pass Book Dr.",
+"<strong>Causes of Difference:</strong>",
+"  • Cheques issued but not presented for payment",
+"  • Cheques deposited/paid in but not yet cleared/credited",
+"  • Interest allowed by bank (not in Cash Book)",
+"  • Interest on overdraft charged by bank",
+"  • Bank charges/commission debited by bank",
+"  • Direct deposits by customers into bank",
+"  • Direct payments by bank on standing instructions",
+"  • Cheques dishonoured (recorded in Pass Book, not always in Cash Book)",
+"  • Errors in Cash Book OR Pass Book",
+"<strong>Timing difference is main reason for BRS</strong>"
+],
+formulas:null,
+journal:null,
+formats:`BRS — STARTING FROM CASH BOOK (Dr. Balance)
+
+Particulars                                       Amount(₹)
+─────────────────────────────────────────────────────────
+Balance as per Cash Book (Dr.)                     xxx
+Add:
+  Cheques issued but not yet presented             xxx
+  Interest credited by bank                        xxx
+  Direct deposits by customers                     xxx
+  Amount directly collected by bank                xxx
+  Error in Cash Book (excess debit)                xxx
+Less:
+  Cheques deposited but not yet cleared           (xxx)
+  Bank charges                                     (xxx)
+  Interest on overdraft                            (xxx)
+  Cheques dishonoured                              (xxx)
+  Error in Cash Book (excess credit)              (xxx)
+─────────────────────────────────────────────────────────
+Balance as per Pass Book                           xxx
+
+BRS — STARTING FROM PASS BOOK (Cr. Balance)
+
+Balance as per Pass Book                           xxx
+Add:
+  Cheques deposited but not cleared                xxx
+  Bank charges                                     xxx
+  Interest on overdraft                            xxx
+Less:
+  Cheques issued but not presented                (xxx)
+  Interest credited by bank                       (xxx)
+  Direct deposits by customers                    (xxx)
+─────────────────────────────────────────────────────────
+Balance as per Cash Book                           xxx
+
+OVERDRAFT CASE — Reverse all additions/deductions`,
+tips:[
+"Always note whose balance you're starting from — rules reverse for opposite",
+"If unfavourable (overdraft), all adds/lesses work in reverse direction",
+"Prepare on specific date — usually month-end"
+]},
+
+{n:6, title:"Depreciation, Provisions & Reserves", summary:"Depreciation methods, provisions, reserves, types, entries",
+concepts:[
+"<strong>Depreciation:</strong> Systematic allocation of fixed asset's cost over its useful life",
+"<strong>Causes:</strong> Wear & tear · Passage of time · Obsolescence · Depletion · Accident",
+"<strong>Depreciation vs Depletion vs Amortisation:</strong> Depreciation = tangible · Depletion = natural resources · Amortisation = intangibles",
+"<strong>SLM (Straight Line):</strong> Equal amount each year; asset can reach zero",
+"<strong>WDV (Written Down Value):</strong> Fixed % on book value; asset NEVER reaches zero",
+"<strong>SLM vs WDV:</strong> SLM = simple but ignores changing asset value; WDV = realistic but complex",
+"<strong>Provision:</strong> Charge against profit for known liability with uncertain amount",
+"<strong>Reserve:</strong> Appropriation of profit — belongs to owners",
+"<strong>Types of Reserves:</strong>",
+"  • General Reserve (free reserve)",
+"  • Specific Reserve (for specific purpose)",
+"  • Capital Reserve (from capital profits)",
+"  • Secret Reserve (hidden)",
+"<strong>Provision vs Reserve:</strong> Provision = charge (compulsory); Reserve = appropriation (discretionary)",
+"<strong>Reserve Fund vs Reserve:</strong> Fund = reserve invested in securities",
+"<strong>Investment Fluctuation Reserve:</strong> Created against decline in investment value"
+],
+formulas:[
+["SLM Depreciation","(Cost − Scrap Value) ÷ Useful Life"],
+["SLM Rate %","(Annual Depreciation ÷ Cost) × 100"],
+["WDV Depreciation","Book Value × Rate%"],
+["Profit on Sale","Sale Price − Book Value (if positive)"],
+["Loss on Sale","Book Value − Sale Price (if positive)"],
+["Avg Period (mid-year)","(Months after 1st + Months after last) ÷ 2"],
+["Depreciation (mid-year)","Cost × Rate% × (Months used ÷ 12)"],
+["Provision for Doubtful Debts","Debtors × Rate%"]
+],
+journal:`DEPRECIATION JOURNAL ENTRIES
+
+1) Depreciation on machinery ₹20,000
+   Depreciation A/c          Dr.     20,000
+      To Machinery A/c                       20,000
+
+2) Depreciation transferred to P&L A/c
+   Profit & Loss A/c         Dr.     20,000
+      To Depreciation A/c                    20,000
+
+3) Asset sold at book value ₹50,000
+   Bank A/c                  Dr.     50,000
+      To Machinery A/c                       50,000
+
+4) Asset sold at loss ₹5,000 (BV ₹50,000)
+   Bank A/c                  Dr.     45,000
+   Loss on Sale A/c          Dr.      5,000
+      To Machinery A/c                       50,000
+
+5) Asset sold at profit ₹8,000 (BV ₹50,000)
+   Bank A/c                  Dr.     58,000
+      To Machinery A/c                       50,000
+      To Profit on Sale A/c                   8,000
+
+6) Provision for Doubtful Debts created ₹10,000
+   Profit & Loss A/c         Dr.     10,000
+      To Provision for Doubtful Debts A/c    10,000
+
+7) Bad debts written off against provision ₹5,000
+   Provision for Doubtful Debts Dr.   5,000
+      To Sundry Debtors A/c                   5,000
+
+8) General Reserve created ₹50,000
+   Profit & Loss A/c         Dr.     50,000
+      To General Reserve A/c                 50,000
+
+9) Capital Reserve (from capital profit)
+   Bank A/c                  Dr.   1,00,000
+      To Capital Reserve A/c                1,00,000
+
+10) Investment Fluctuation Reserve
+    Profit & Loss A/c         Dr.    xxx
+       To Investment Fluctuation Reserve      xxx`,
+formats:null,
+tips:[
+"Depreciation is a non-cash expense — no cash flow",
+"WDV method's rate is HIGHER than SLM's to achieve same effect",
+"Provision for doubtful debts created AFTER deducting bad debts and discounts"
+]},
+
+{n:7, title:"Bills of Exchange", summary:"Parties, terms, accounting treatment, dishonour, renewal, retirement",
+concepts:[
+"<strong>Bill of Exchange:</strong> Written unconditional order to pay on specified date — under NI Act 1881",
+"<strong>Promissory Note:</strong> Written promise to pay (only 2 parties)",
+"<strong>Parties to Bill:</strong>",
+"  • Drawer (maker/creditor) — writes the bill",
+"  • Drawee (acceptor/debtor) — accepts to pay",
+"  • Payee (receiver) — receives money",
+"<strong>Terms of Bill:</strong> At sight · After date · After sight · On demand",
+"<strong>Tenure:</strong> Period of bill + 3 days of grace (except on-demand)",
+"<strong>Days of Grace:</strong> 3 days added to due date",
+"<strong>Retirement:</strong> Payment BEFORE due date with rebate",
+"<strong>Renewal:</strong> New bill issued with interest for extended period",
+"<strong>Dishonour:</strong> Non-payment on due date — noting charges apply",
+"<strong>Noting Charges:</strong> Fee paid to notary to record dishonour — borne by drawee",
+"<strong>Discounting:</strong> Selling bill to bank before due date at discount",
+"<strong>Endorsement:</strong> Transferring bill to creditor to settle dues",
+"<strong>Holder in Due Course:</strong> One who gets bill for value before maturity"
+],
+formulas:[
+["Due Date","Date of Bill + Tenure + 3 days of grace"],
+["Discount on Bill","Bill Amount × Rate% × (Unexpired Months ÷ 12)"],
+["Rebate on Retirement","Bill Amount × Rate% × (Days before due ÷ 365)"],
+["Interest on Renewal","Bill Amount × Rate% × (New Period ÷ 12)"],
+["Average Due Date","Base Date + (Σ Products ÷ Σ Amounts)"]
+],
+journal:`BILLS OF EXCHANGE — KEY ENTRIES
+
+1) Sale on credit — Bill drawn by seller
+   Bills Receivable A/c        Dr.   xxx
+      To Debtor's A/c                     xxx
+
+2) Bill accepted by buyer
+   Creditor's A/c              Dr.   xxx
+      To Bills Payable A/c                xxx
+
+3) Bill discounted with bank (say ₹10,000 @ 12% for 3 months)
+   Bank A/c                    Dr.   9,700
+   Discount A/c                Dr.     300
+      To Bills Receivable A/c            10,000
+
+4) Bill endorsed to creditor
+   Creditor's A/c              Dr.   xxx
+      To Bills Receivable A/c             xxx
+
+5) Bill honoured on due date (holder)
+   Cash/Bank A/c               Dr.   xxx
+      To Bills Receivable A/c             xxx
+
+6) Bill honoured on due date (drawee)
+   Bills Payable A/c           Dr.   xxx
+      To Cash/Bank A/c                    xxx
+
+7) Bill dishonoured (holder)
+   Debtor's A/c                Dr.   xxx
+      To Bills Receivable A/c             xxx
+      To Noting Charges A/c               xxx
+
+8) Bill dishonoured (drawee)
+   Bills Payable A/c           Dr.   xxx
+   Noting Charges A/c          Dr.   xxx
+      To Creditor's A/c                   xxx
+
+9) Bill retired before due date (rebate)
+   Cash A/c                    Dr.   xxx
+   Rebate A/c                  Dr.   xxx
+      To Bills Receivable A/c             xxx
+
+10) Bill renewed with interest
+    New Bills Receivable A/c    Dr.   xxx
+    Interest A/c                Dr.   xxx
+       To Old Bills Receivable A/c         xxx
+       To Interest Received A/c            xxx
+
+11) Insolvency of drawee — partial recovery
+    Cash A/c                    Dr.   xxx
+    Bad Debts A/c               Dr.   xxx
+       To Debtor's A/c                     xxx`,
+formats:`BILL OF EXCHANGE — PROFORMA
+
+₹[Amount]                    [Place], [Date]
+
+[Tenure] after date, pay to [Payee] or order
+the sum of ₹[Amount] for value received.
+
+To                          [Drawer's Signature]
+[Name & Address of Drawee]
+
+PROMISSORY NOTE — PROFORMA
+
+₹[Amount]                    [Place], [Date]
+
+[Tenure] after date, I promise to pay
+[Payee] or order the sum of ₹[Amount]
+for value received.
+
+                            [Maker's Signature]`,
+tips:[
+"Always add 3 days of grace to due date",
+"Noting charges always borne by drawee (defaulter)",
+"Discount is expense for holder; Rebate is income for drawee"
+]},
+
+{n:8, title:"Rectification of Errors", summary:"Types of errors, suspense account, one-sided vs two-sided errors",
+concepts:[
+"<strong>Error of Omission — Complete:</strong> Transaction completely left out — doesn't affect TB",
+"<strong>Error of Omission — Partial:</strong> Only one side posted — affects TB",
+"<strong>Error of Commission:</strong> Wrong amount, wrong account, wrong side",
+"  • Wrong amount in one account → affects TB",
+"  • Wrong amount in both accounts → doesn't affect TB",
+"  • Wrong account (both sides) → doesn't affect TB",
+"<strong>Error of Principle:</strong> Capital vs Revenue confused (e.g. machinery repairs debited to Machinery)",
+"<strong>Compensating Errors:</strong> Two errors cancel each other",
+"<strong>Errors affecting Trial Balance:</strong>",
+"  • Partial omission",
+"  • Wrong amount in ONE account",
+"  • Posting to wrong side of one account",
+"  • Double posting to same side",
+"<strong>Errors NOT affecting Trial Balance:</strong>",
+"  • Complete omission",
+"  • Error of principle",
+"  • Compensating errors",
+"  • Wrong account (both sides)",
+"<strong>Suspense A/c:</strong> Temporary account — created when TB doesn't agree",
+"<strong>Rectification timing:</strong> (a) Before closing books (b) After closing books (via P&L Adjustment A/c)"
+],
+formulas:null,
+journal:`RECTIFICATION ENTRIES — 12 COMMON CASES
+
+1) Sales Book undercast by ₹500
+   Suspense A/c                Dr.    500
+      To Sales A/c                       500
+
+2) Purchase Book undercast by ₹800
+   Purchases A/c               Dr.    800
+      To Suspense A/c                    800
+
+3) Wages paid for machinery installation ₹5,000 wrongly debited to Wages
+   Machinery A/c               Dr.   5,000
+      To Wages A/c                     5,000
+
+4) Furniture purchased ₹20,000 wrongly posted to Purchases
+   Furniture A/c               Dr.  20,000
+      To Purchases A/c                20,000
+
+5) Sales to Ram ₹5,000 posted to Shyam's A/c
+   Shyam's A/c                 Dr.   5,000
+      To Ram's A/c                     5,000
+
+6) Rent paid ₹3,000 omitted from books (complete omission)
+   Rent A/c                    Dr.   3,000
+      To Cash A/c                      3,000
+
+7) Cash received ₹2,000 from customer posted twice to his A/c
+   Customer's A/c              Dr.   2,000
+      To Cash A/c                      2,000
+
+8) Discount allowed ₹100 wrongly debited to Discount Received
+   Discount Allowed A/c        Dr.    200
+      To Discount Received A/c           200
+
+9) Repairs to building ₹4,000 debited to Building A/c (error of principle)
+   Repairs A/c                 Dr.   4,000
+      To Building A/c                  4,000
+
+10) Purchase from A ₹5,000 passed through Sales Book
+    Sales A/c                   Dr.   5,000
+    Purchases A/c               Dr.   5,000
+       To A's A/c                      10,000
+
+11) Goods returned to B ₹1,000 not recorded in Returns Outward
+    B's A/c                     Dr.   1,000
+       To Returns Outward A/c           1,000
+
+12) Suspense A/c (balancing)
+    (Debit or Credit balance transferred to various accounts)`,
+formats:null,
+tips:[
+"One-sided errors ALWAYS involve Suspense A/c",
+"Two-sided errors NEVER involve Suspense A/c",
+"Errors of principle don't affect TB but do affect profit",
+"After closing books — use P&L Adjustment A/c for revenue items"
+]},
+
+{n:9, title:"Financial Statements of Sole Proprietorship", summary:"Trading A/c, P&L A/c, Balance Sheet, adjustments",
+concepts:[
+"<strong>Trading A/c:</strong> Calculates Gross Profit/Loss — for trading activities",
+"<strong>P&L A/c:</strong> Calculates Net Profit/Loss — includes all indirect items",
+"<strong>Balance Sheet:</strong> Statement of Assets & Liabilities on a specific date",
+"<strong>Direct Expenses (Trading A/c):</strong> Wages, Carriage Inward, Freight, Fuel, Factory Rent, Coal, Gas, Water, Import Duty",
+"<strong>Indirect Expenses (P&L A/c):</strong> Salaries, Office Rent, Depreciation, Insurance, Advertisement, Bad Debts, Discount Allowed, Interest Paid",
+"<strong>Direct Incomes (Trading A/c):</strong> Sales, Closing Stock",
+"<strong>Indirect Incomes (P&L A/c):</strong> Interest Received, Commission, Discount Received, Rent Received",
+"<strong>Operating vs Non-operating:</strong> Operating = regular business; Non-operating = exceptional (profit on sale of asset)",
+"<strong>Adjustments (any 6-8 items usually):</strong>",
+"  • Closing Stock — Trading A/c (Cr.) + BS (Asset)",
+"  • Outstanding Expenses — Add to expense + BS (Liability)",
+"  • Prepaid Expenses — Deduct from expense + BS (Asset)",
+"  • Accrued Income — Add to income + BS (Asset)",
+"  • Income Received in Advance — Deduct from income + BS (Liability)",
+"  • Depreciation — Add to P&L + Deduct from Asset",
+"  • Bad Debts — P&L + Deduct from Debtors",
+"  • Provision for Doubtful Debts — P&L + Deduct from Debtors",
+"  • Interest on Capital — P&L + Add to Capital",
+"  • Interest on Drawings — P&L (Cr.) + Deduct from Capital",
+"  • Manager's Commission — P&L + BS (Liability)",
+"  • Goods distributed as samples — P&L (Advertisement)"
+],
+formulas:[
+["Gross Profit","Net Sales − Cost of Goods Sold"],
+["Net Sales","Sales − Sales Return"],
+["Cost of Goods Sold","Opening Stock + Net Purchases + Direct Exp − Closing Stock"],
+["Net Purchases","Purchases − Purchase Return"],
+["Net Profit","Gross Profit + Other Income − Indirect Expenses"],
+["Operating Profit","Net Profit + Non-operating Exp − Non-operating Income"],
+["Capital (closing)","Opening Capital + Additional Capital + Net Profit − Drawings"]
+],
+journal:null,
+formats:`TRADING ACCOUNT
+
+Dr.                              Cr.
+─────────────────────────────────────────────────
+Particulars           ₹   |  Particulars          ₹
+─────────────────────────────────────────────────
+To Opening Stock     xxx  |  By Sales           xxx
+To Purchases         xxx  |  Less: Returns      (xxx)
+Less: Returns       (xxx) |  By Closing Stock   xxx
+To Wages             xxx  |
+To Carriage Inward   xxx  |
+To Fuel              xxx  |
+To Freight           xxx  |
+To Import Duty       xxx  |
+To Gross Profit c/d  xxx  |
+─────────────────────────────────────────────────
+                     xxx  |                     xxx
+─────────────────────────────────────────────────
+
+PROFIT & LOSS ACCOUNT
+
+Dr.                              Cr.
+─────────────────────────────────────────────────
+Particulars           ₹   |  Particulars          ₹
+─────────────────────────────────────────────────
+To Salaries          xxx  |  By Gross Profit b/d xxx
+To Rent              xxx  |  By Interest Received xxx
+To Depreciation      xxx  |  By Discount Received xxx
+To Bad Debts         xxx  |  By Commission Rec.  xxx
+To Discount Allowed  xxx  |  By Rent Received    xxx
+To Insurance         xxx  |  By Commission       xxx
+To Net Profit        xxx  |
+─────────────────────────────────────────────────
+                     xxx  |                     xxx
+─────────────────────────────────────────────────
+
+BALANCE SHEET
+
+Liabilities            ₹   |  Assets              ₹
+─────────────────────────────────────────────────
+Capital             xxx    |  Fixed Assets       xxx
+Add: Net Profit      xxx   |    (Less Depreciation)
+Add: Int. on Cap     xxx   |  Investments        xxx
+Less: Drawings      (xxx)  |  Current Assets:
+Less: Int. on Drw   (xxx)  |    Stock             xxx
+Long-term Loans      xxx   |    Debtors   xxx
+Creditors            xxx   |    Less: Provision (xxx)
+Bills Payable        xxx   |    Bills Rec. xxx
+Outstanding Expenses xxx   |    Cash      xxx
+Incomes Received Adv xxx   |    Bank      xxx
+                            |  Prepaid Expenses   xxx
+                            |  Accrued Income     xxx
+─────────────────────────────────────────────────
+                    xxx    |                    xxx
+─────────────────────────────────────────────────`,
+tips:[
+"Closing Stock appears in Trading A/c AND Balance Sheet",
+"Every adjustment has TWO effects — verify before finalising",
+"Outstanding expense = expense + liability; Prepaid = reduce expense + asset"
+]},
+
+{n:10, title:"Accounts from Incomplete Records", summary:"Single entry, Statement of Affairs, conversion method",
+concepts:[
+"<strong>Incomplete Records:</strong> Books not maintained per double entry system",
+"<strong>Single Entry System:</strong> Only personal accounts + cash book maintained",
+"<strong>Statement of Affairs:</strong> Like Balance Sheet — lists assets & liabilities; capital = balancing figure",
+"<strong>Statement of Affairs vs Balance Sheet:</strong> SoA lacks accrual data; BS is accurate",
+"<strong>Net Worth Method:</strong> Compare opening & closing capital to find profit",
+"<strong>Conversion Method:</strong> Convert single entry to double entry — build missing accounts",
+"<strong>Missing figures found by:</strong> Preparing Total Debtors A/c, Total Creditors A/c, Cash Book",
+"<strong>Limitations:</strong> No arithmetical accuracy, difficult to detect fraud, no accurate profit"
+],
+formulas:[
+["Closing Capital","Closing Assets − Closing Liabilities"],
+["Opening Capital","Opening Assets − Opening Liabilities"],
+["Profit (Net Worth)","Closing Capital + Drawings − Additional Capital − Opening Capital"],
+["Total Sales (from Debtors)","Opening Dr + Credit Sales − Receipts − Discount − Returns − Bad Debts = Closing Dr"],
+["Total Purchases (from Creditors)","Opening Cr + Credit Purchases − Payments − Discount − Returns = Closing Cr"],
+["Total Sales (from Cash)","Cash Received + Closing Dr − Opening Dr"]
+],
+journal:null,
+formats:`STATEMENT OF AFFAIRS (as on 31st March)
+
+Liabilities            ₹   |  Assets              ₹
+─────────────────────────────────────────────────
+Sundry Creditors    xxx    |  Cash in Hand       xxx
+Bills Payable        xxx   |  Cash at Bank       xxx
+Outstanding Expenses xxx   |  Sundry Debtors     xxx
+Bank Overdraft       xxx   |  Bills Receivable   xxx
+Capital (balancing) xxx    |  Stock              xxx
+                           |  Furniture          xxx
+                           |  Machinery          xxx
+                           |  Prepaid Expenses   xxx
+                           |  Investments        xxx
+─────────────────────────────────────────────────
+                    xxx    |                    xxx
+─────────────────────────────────────────────────`,
+tips:[
+"Capital is always the balancing figure in Statement of Affairs",
+"To find missing credit sales — prepare Total Debtors A/c",
+"To find missing credit purchases — prepare Total Creditors A/c"
+]},
+
+{n:11, title:"Partnership Fundamentals", summary:"Meaning, partnership deed, capital accounts, P&L Appropriation",
+concepts:[
+"<strong>Partnership:</strong> Association of 2+ persons to carry on business and share profits (Indian Partnership Act, 1932)",
+"<strong>Features:</strong> Agreement · 2+ persons · Profit sharing · Mutual agency · Unlimited liability · No separate legal entity",
+"<strong>Partnership Deed:</strong> Written agreement containing all terms",
+"<strong>Contents of Deed:</strong> Capital · Profit ratio · Salary · Interest on Capital/Drawings · Duties · Admission/Retirement",
+"<strong>In absence of deed (Section 13):</strong>",
+"  • Equal profit sharing",
+"  • NO interest on capital",
+"  • NO interest on drawings",
+"  • NO salary to partners",
+"  • Interest on loan @ 6% p.a.",
+"<strong>Capital Accounts — 2 Methods:</strong>",
+"  • Fixed Capital Method: Capital A/c + Current A/c (separate)",
+"  • Fluctuating Capital Method: Only Capital A/c (all items adjusted)",
+"<strong>Interest on Capital:</strong> Allowed on OPENING capital (unless specified)",
+"<strong>Interest on Drawings:</strong> Charged from DATE of withdrawal",
+"<strong>Partner's Salary/Commission:</strong> Debited to P&L Appropriation A/c",
+"<strong>Interest on Partner's Loan:</strong> DEBITED to P&L A/c (a charge, not appropriation)"
+],
+formulas:[
+["Interest on Capital","Capital × Rate% × (Months ÷ 12)"],
+["Avg Period","(Months after 1st draw + Months after last draw) ÷ 2"],
+["Interest on Drawings (avg)","Total Drawings × Rate% × (Avg Period ÷ 12)"],
+["Interest on Drawings (product)","Σ(Amount × Months Left) × Rate ÷ 100 ÷ 12"],
+["Divisible Profit","Net Profit + Int. on Drw − Int. on Cap − Salaries − Commission"],
+["Each Partner's Share","Divisible Profit × Profit Sharing Ratio"],
+["Interest on Partner's Loan","Loan × 6% × (Months ÷ 12)"]
+],
+journal:`PARTNERSHIP — KEY JOURNAL ENTRIES
+
+1) Capital introduced by A ₹5,00,000
+   Cash/Bank A/c                Dr.  5,00,000
+      To A's Capital A/c                  5,00,000
+
+2) Additional capital by A ₹1,00,000
+   Cash/Bank A/c                Dr.  1,00,000
+      To A's Capital A/c                  1,00,000
+
+3) Drawings by A for personal use ₹20,000
+   A's Drawings A/c             Dr.   20,000
+      To Cash/Bank A/c                    20,000
+
+4) Interest on Capital allowed ₹25,000
+   Interest on Capital A/c      Dr.   25,000
+      To A's Capital A/c                  25,000
+
+5) Interest on Drawings charged ₹2,000
+   A's Capital A/c              Dr.    2,000
+      To Interest on Drawings A/c          2,000
+
+6) Salary to partner A ₹60,000
+   Salary to A A/c              Dr.   60,000
+      To A's Capital A/c                  60,000
+
+7) Commission to partner B ₹10,000
+   Commission to B A/c          Dr.   10,000
+      To B's Capital A/c                  10,000
+
+8) Transfer of Interest on Capital
+   Profit & Loss App. A/c       Dr.   25,000
+      To Interest on Capital A/c          25,000
+
+9) Transfer of Interest on Drawings
+   Interest on Drawings A/c     Dr.    2,000
+      To Profit & Loss App. A/c            2,000
+
+10) Distribution of Profit ₹80,000 (A:B = 3:2)
+    Profit & Loss App. A/c      Dr.   80,000
+       To A's Capital A/c                 48,000
+       To B's Capital A/c                 32,000
+
+11) Partner's Loan to firm ₹50,000
+    Cash/Bank A/c               Dr.   50,000
+       To Partner's Loan A/c              50,000
+
+12) Interest on Partner's Loan
+    Interest on Loan A/c        Dr.    3,000
+       To Partner's Loan A/c               3,000`,
+formats:`PROFIT & LOSS APPROPRIATION ACCOUNT
+
+Dr.                              Cr.
+─────────────────────────────────────────────────
+Particulars           ₹   |  Particulars          ₹
+─────────────────────────────────────────────────
+To Int. on Capital  xxx   |  By Net Profit       xxx
+To Partner's Salary xxx   |  By Int. on Drawings xxx
+To Commission       xxx   |
+To Share of Profit:       |
+  A's Capital       xxx   |
+  B's Capital       xxx   |
+─────────────────────────────────────────────────
+                    xxx   |                     xxx
+
+PARTNERS' CAPITAL ACCOUNTS (Fluctuating Method)
+
+Dr.                    A      B   |  Cr.            A      B
+────────────────────────────────────────────────────────────
+To Drawings          xxx    xxx  | By Balance b/d xxx  xxx
+To Int. on Drw       xxx    xxx  | By Add. Cap.   xxx  xxx
+To Balance c/d       xxx    xxx  | By Int. on Cap xxx  xxx
+                                 | By Salary      xxx  xxx
+                                 | By Share of Profit xxx xxx
+────────────────────────────────────────────────────────────
+                    xxx    xxx  |                xxx  xxx`,
+tips:[
+"Interest on Partner's Loan is a CHARGE — goes to P&L A/c NOT P&L App. A/c",
+"Interest on Capital is appropriation — goes to P&L App. A/c",
+"In absence of deed — equal profit sharing, no interest, no salary",
+"Interest on Loan in absence of deed = 6% p.a."
+]},
+
+{n:12, title:"Not-for-Profit Organisations", summary:"Receipts & Payments A/c, Income & Expenditure A/c, Balance Sheet",
+concepts:[
+"<strong>NPO:</strong> Formed for welfare (clubs, societies, trusts) — NOT profit",
+"<strong>Receipts & Payments A/c:</strong> Cash-based summary of receipts & payments",
+"<strong>Income & Expenditure A/c:</strong> Accrual-based — like P&L A/c",
+"<strong>Balance Sheet:</strong> Statement of assets & liabilities with Capital Fund",
+"<strong>Capital Fund:</strong> Equivalent of capital in a business",
+"<strong>Subscription:</strong> Regular contribution by members — revenue receipt",
+"<strong>Entrance Fees:</strong> Usually capitalised (as per policy)",
+"<strong>Life Membership Fees:</strong> ALWAYS capitalised",
+"<strong>Donations:</strong>",
+"  • General Donations → I&E A/c (income)",
+"  • Specific Donations → Balance Sheet (liability/fund)",
+"<strong>Legacy:</strong> Amount received under WILL — capital receipt",
+"<strong>Honorarium:</strong> Payment to guest speaker — revenue expense",
+"<strong>Sale of old sports material:</strong> I&E A/c (income) OR deducted from purchase (as per policy)",
+"<strong>Sale of old asset:</strong> NOT in I&E A/c — goes to Balance Sheet",
+"<strong>Specific Funds:</strong> Created for specific purpose — shown in BS",
+"<strong>Surplus = Income − Expenditure</strong> (positive); Deficit = opposite"
+],
+formulas:[
+["Surplus/Deficit","Income − Expenditure"],
+["Closing Capital Fund","Opening Capital Fund + Surplus + Capital Receipts"],
+["Subscription (for I&E)","Opening O/s + Received + Closing Advance − Opening Advance − Closing O/s"],
+["Consumption of Sports Material","Opening Stock + Purchases − Closing Stock"],
+["Salary expense (I&E)","Paid + Outstanding (closing) − Outstanding (opening) − Prepaid (closing)"]
+],
+journal:null,
+formats:`RECEIPTS & PAYMENTS ACCOUNT
+
+Dr.                              Cr.
+─────────────────────────────────────────────
+Receipts         ₹  |  Payments              ₹
+─────────────────────────────────────────────
+To Balance b/d  xxx | By Expenses          xxx
+To Subscription xxx | By Assets Purchased  xxx
+To Donations    xxx | By Investments       xxx
+To Entrance Fee xxx | By Balance c/d       xxx
+To Interest     xxx |
+─────────────────────────────────────────────
+                xxx |                     xxx
+
+INCOME & EXPENDITURE ACCOUNT
+
+Dr.                              Cr.
+─────────────────────────────────────────────
+Expenditure      ₹  |  Income                ₹
+─────────────────────────────────────────────
+To Salaries     xxx | By Subscription       xxx
+To Rent         xxx | By Donations          xxx
+To Depreciation xxx | By Interest           xxx
+To Surplus      xxx | By Entrance Fee       xxx
+─────────────────────────────────────────────
+                xxx |                     xxx
+
+BALANCE SHEET
+
+Liabilities            ₹   |  Assets              ₹
+─────────────────────────────────────────────────
+Capital Fund        xxx    |  Fixed Assets       xxx
+Add: Surplus         xxx   |  Investments        xxx
+Add: Donations       xxx   |  Stock (sports)     xxx
+Specific Funds       xxx   |  Debtors            xxx
+Creditors            xxx   |  Cash/Bank          xxx
+Bank Overdraft       xxx   |  Prepaid Expenses   xxx
+                            |  Accrued Income     xxx
+─────────────────────────────────────────────────
+                    xxx    |                    xxx
+─────────────────────────────────────────────────`,
+tips:[
+"R&P A/c = cash basis; I&E A/c = accrual basis",
+"Only revenue items in I&E; capital items go to Balance Sheet",
+"Life Membership Fees are ALWAYS capitalised",
+"Surplus (not profit) is correct term for NPOs"
+]}
+];
+
+const CLASS_12 = [
+{n:1, title:"Partnership — Fundamentals & P&L Appropriation", summary:"Capital accounts, interest, salary, drawings, appropriation",
+concepts:[
+"<strong>P&L Appropriation A/c:</strong> Distributes profit among partners as per deed",
+"<strong>Items DEBITED to P&L App. A/c (appropriations):</strong>",
+"  • Interest on Capital",
+"  • Partner's Salary",
+"  • Partner's Commission",
+"  • Transfer to Reserve",
+"  • Share of Profit",
+"<strong>Items CREDITED to P&L App. A/c:</strong>",
+"  • Net Profit (from P&L A/c)",
+"  • Interest on Drawings",
+"<strong>Items CHARGED to P&L A/c (not P&L App.):</strong>",
+"  • Interest on Partner's Loan @ 6%",
+"  • Partner's remuneration if specifically charged",
+"<strong>Fixed Capital Method:</strong> Two accounts — Capital + Current",
+"  • Capital A/c changes ONLY on introduction/withdrawal",
+"  • Current A/c records all other adjustments",
+"<strong>Fluctuating Capital Method:</strong> Single Capital A/c — all items adjusted",
+"<strong>Interest on Capital:</strong> On OPENING capital (or as per deed); NOT allowed if loss (unless deed)",
+"<strong>Interest on Drawings:</strong> From DATE of withdrawal",
+"<strong>Drawings during year:</strong> Equal monthly = avg 6.5 months; End = 4.5 months; Beginning = 11.5 months"
+],
+formulas:[
+["Divisible Profit","Net Profit + Int. on Drw − Int. on Cap − Salaries − Commission"],
+["Interest on Capital","Capital × Rate × (Months ÷ 12)"],
+["Avg Period (beginning of month)","Months Left after 1st + Months left after last ÷ 2"],
+["Interest on Drawings (avg)","Total Drawings × Rate × (Avg Period ÷ 12)"],
+["Interest on Drawings (product)","Σ(Amount × Months Left) × Rate ÷ 100 ÷ 12"],
+["Interest on Partner's Loan","Loan × 6% × (Months ÷ 12)"]
+],
+journal:`P&L APPROPRIATION — 12 KEY ENTRIES
+
+1) Interest on Capital allowed ₹25,000 (A: 15k, B: 10k)
+   Interest on Capital A/c      Dr.   25,000
+      To A's Capital A/c                  15,000
+      To B's Capital A/c                  10,000
+
+2) Salary to partner A ₹60,000
+   Salary to A A/c              Dr.   60,000
+      To A's Capital A/c                  60,000
+
+3) Commission to B ₹10,000
+   Commission to B A/c          Dr.   10,000
+      To B's Capital A/c                  10,000
+
+4) Interest on Drawings charged ₹4,000 (A: 2.5k, B: 1.5k)
+   A's Capital A/c              Dr.    2,500
+   B's Capital A/c              Dr.    1,500
+      To Interest on Drawings A/c          4,000
+
+5) Transfer Int. on Capital to P&L App.
+   Profit & Loss App. A/c       Dr.   25,000
+      To Interest on Capital A/c          25,000
+
+6) Transfer Salary to P&L App.
+   Profit & Loss App. A/c       Dr.   60,000
+      To Salary to A A/c                  60,000
+
+7) Transfer Commission to P&L App.
+   Profit & Loss App. A/c       Dr.   10,000
+      To Commission to B A/c              10,000
+
+8) Transfer Int. on Drawings to P&L App.
+   Interest on Drawings A/c     Dr.    4,000
+      To Profit & Loss App. A/c            4,000
+
+9) Transfer of Net Profit from P&L
+   Profit & Loss A/c            Dr.   xxx
+      To Profit & Loss App. A/c           xxx
+
+10) Distribution of profit (A:B = 3:2)
+    Profit & Loss App. A/c       Dr.   xxx
+       To A's Capital A/c                 xxx
+       To B's Capital A/c                 xxx
+
+11) Partner's Loan to firm
+    Cash/Bank A/c                Dr.   xxx
+       To Partner's Loan A/c              xxx
+
+12) Interest on Partner's Loan (charge)
+    Interest on Loan A/c         Dr.   xxx
+       To Partner's Loan A/c              xxx
+    (This goes to P&L A/c, NOT P&L App. A/c)`,
+formats:`PROFIT & LOSS APPROPRIATION ACCOUNT
+
+Dr.                              Cr.
+─────────────────────────────────────────────
+Particulars          ₹   |  Particulars        ₹
+─────────────────────────────────────────────
+To Int. on Cap      xxx  |  By Net Profit    xxx
+To Salary           xxx  |  By Int. on Drw   xxx
+To Commission       xxx  |
+To Reserve          xxx  |
+To Share of Profit:      |
+   A's Capital      xxx  |
+   B's Capital      xxx  |
+─────────────────────────────────────────────
+                    xxx  |                    xxx
+
+PARTNERS' CAPITAL ACCOUNTS (Fluctuating)
+
+Dr.                    A      B   |  Cr.            A      B
+────────────────────────────────────────────────────────────
+To Drawings          xxx    xxx  | By Balance b/d xxx  xxx
+To Int. on Drw       xxx    xxx  | By Add. Cap.   xxx  xxx
+To Balance c/d       xxx    xxx  | By Int. on Cap xxx  xxx
+                                 | By Salary      xxx  xxx
+                                 | By Share of P  xxx  xxx
+────────────────────────────────────────────────────────────
+                    xxx    xxx  |                xxx  xxx
+
+FIXED CAPITAL METHOD — TWO ACCOUNTS
+
+Capital A/c:  Only capital + withdrawals
+Current A/c:  Interest, Salary, Drawings, Share of Profit`,
+tips:[
+"Interest on Partner's Loan = CHARGE on P&L A/c (paid even in loss)",
+"Interest on Capital = APPROPRIATION (not paid in loss unless deed)",
+"Items in P&L App. A/c: Int. Cap, Salary, Commission, Reserve, Share"
+]},
+
+{n:2, title:"Goodwill — Nature & Valuation", summary:"Meaning, factors, methods — Average, Super Profit, Capitalisation",
+concepts:[
+"<strong>Goodwill:</strong> Value of business's reputation, customer connections, earning capacity",
+"<strong>Nature:</strong> Intangible asset, self-generated NOT recorded (only purchased)",
+"<strong>Factors affecting Goodwill:</strong>",
+"  • Location of business",
+"  • Quality of products/services",
+"  • Management skill",
+"  • Market conditions",
+"  • Special privileges (licenses, patents)",
+"  • Brand value & reputation",
+"  • Efficiency of operations",
+"<strong>Methods of Valuation:</strong>",
+"  1. Average Profit Method",
+"  2. Weighted Average Profit Method",
+"  3. Super Profit Method",
+"  4. Capitalisation of Average Profit",
+"  5. Capitalisation of Super Profit",
+"<strong>Normal Rate of Return:</strong> Rate earned by similar businesses in the industry",
+"<strong>Capital Employed:</strong> Total assets − External liabilities (or Capital + Reserves + Loan)"
+],
+formulas:[
+["Average Profit","Σ Profits ÷ Number of Years"],
+["Weighted Avg Profit","Σ(Profit × Weight) ÷ Σ Weights"],
+["Capital Employed","Total Assets − External Liabilities"],
+["Normal Profit","Capital Employed × Normal Rate%"],
+["Super Profit","Average Profit − Normal Profit"],
+["Goodwill (Super Profit)","Super Profit × No. of Years' Purchase"],
+["Goodwill (Capitalisation of Avg)","(Avg Profit ÷ Normal Rate) × 100"],
+["Goodwill (Capitalisation of Super)","(Super Profit ÷ Normal Rate) × 100"]
+],
+journal:`GOODWILL — KEY ENTRIES (Admission Case)
+
+1) New partner brings goodwill in cash
+   Cash/Bank A/c                Dr.   xxx
+      To Goodwill A/c                     xxx
+
+2) Goodwill transferred to old partners in SACRIFICING ratio
+   Goodwill A/c                 Dr.   xxx
+      To Old Partner A's Capital A/c      xxx
+      To Old Partner B's Capital A/c      xxx
+
+3) Goodwill raised & shown in books (rare)
+   Goodwill A/c                 Dr.   xxx
+      To All Partners' Capital A/c        xxx
+
+4) Goodwill written off
+   All Partners' Capital A/c    Dr.   xxx
+      To Goodwill A/c                     xxx
+
+5) Goodwill APPEARS in books at admission (write off to old partners)
+   Old Partners' Capital A/c    Dr.   xxx
+      To Goodwill A/c                     xxx`,
+formats:null,
+tips:[
+"Goodwill is only recorded when PURCHASED — self-generated not shown",
+"Number of years' purchase = how long goodwill is expected to generate earnings",
+"Super Profit = Average Profit − Normal Profit (positive only)"
+]},
+
+{n:3, title:"Change in Profit Sharing Ratio", summary:"Sacrificing vs gaining, revaluation, reserves, goodwill adjustment",
+concepts:[
+"<strong>Change in Ratio:</strong> Partners agree to change profit-sharing ratio",
+"<strong>Sacrificing Partner:</strong> Old Ratio > New Ratio — gives up share",
+"<strong>Gaining Partner:</strong> New Ratio > Old Ratio — receives share",
+"<strong>Adjustments needed:</strong>",
+"  • Goodwill",
+"  • Reserves & Accumulated Profits (OLD ratio)",
+"  • Accumulated Losses (OLD ratio)",
+"  • Revaluation of Assets & Liabilities",
+"  • Capitals adjustment (if required)",
+"<strong>Goodwill adjustment:</strong> Gaining partners compensate Sacrificing partners",
+"<strong>Revaluation A/c:</strong> Temporary account — closed to partners' capital",
+"<strong>Rule:</strong> All reserves/losses/goodwill/revaluation = OLD ratio"
+],
+formulas:[
+["Sacrificing Ratio","Old Ratio − New Ratio"],
+["Gaining Ratio","New Ratio − Old Ratio"],
+["Goodwill paid by Gainer","Total Goodwill × Gaining Share"],
+["Share of Reserve (Old ratio)","Reserve × Old Ratio"],
+["Revaluation Profit/Loss","Old Ratio"]
+],
+journal:`CHANGE IN RATIO — KEY ENTRIES
+
+1) Revaluation of Assets (increase) & Liabilities (decrease)
+   Various Asset A/c            Dr.   xxx
+      To Revaluation A/c                  xxx
+
+2) Revaluation of Assets (decrease) & Liabilities (increase)
+   Revaluation A/c              Dr.   xxx
+      To Various Asset/Liab A/c           xxx
+
+3) Revaluation Profit transferred (OLD ratio)
+   Revaluation A/c              Dr.   xxx
+      To Partners' Capital A/c (Old)      xxx
+
+4) Revaluation Loss transferred (OLD ratio)
+   Partners' Capital A/c (Old)  Dr.   xxx
+      To Revaluation A/c                  xxx
+
+5) Reserves & P&L distributed (OLD ratio)
+   General Reserve A/c          Dr.   xxx
+   Profit & Loss A/c            Dr.   xxx
+      To Partners' Capital A/c            xxx
+
+6) Goodwill adjustment — Gainer pays Sacrificer
+   Gainer's Capital A/c         Dr.   xxx
+      To Sacrificer's Capital A/c         xxx
+
+7) Adjustment of Capitals (as per new ratio)
+   (Cash introduced OR withdrawn to make capitals proportionate)`,
+formats:`REVALUATION ACCOUNT
+
+Dr.                              Cr.
+─────────────────────────────────────────────
+Particulars          ₹   |  Particulars        ₹
+─────────────────────────────────────────────
+To Asset (decr.)    xxx  |  By Asset (incr.) xxx
+To Liability (incr.) xxx |  By Liability (decr.) xxx
+To Profit transferred    |  By Loss transferred
+   to Partners (Old) xxx |     to Partners (Old) xxx
+─────────────────────────────────────────────
+                    xxx  |                    xxx
+─────────────────────────────────────────────`,
+tips:[
+"Revaluation A/c never appears in Balance Sheet — it's temporary",
+"All reserves, goodwill, revaluation adjustments use OLD ratio",
+"Gaining partner PAYS; Sacrificing partner RECEIVES"
+]},
+
+{n:4, title:"Admission of a Partner", summary:"New PSR, sacrificing ratio, goodwill, revaluation, capital adjustment",
+concepts:[
+"<strong>Admission:</strong> New partner joins — new deed, new ratio",
+"<strong>Rights of New Partner:</strong> Share in profits, assets, share in goodwill (if paid)",
+"<strong>New PSR:</strong> Agreed by all partners",
+"<strong>Sacrificing Ratio:</strong> Old Ratio − New Ratio (of OLD partners)",
+"<strong>Goodwill:</strong> New partner pays his share to OLD partners in SACRIFICING ratio",
+"<strong>Revaluation:</strong> Assets/liabilities revalued BEFORE admission",
+"<strong>Reserves & Accumulated Profits:</strong> Distributed to OLD partners in OLD ratio",
+"<strong>Accumulated Losses:</strong> Also borne by OLD partners in OLD ratio",
+"<strong>Capital:</strong> May be adjusted to new ratio",
+"<strong>Revaluation Profit/Loss:</strong> Credited/Debited to OLD partners",
+"<strong>Hidden Goodwill:</strong> When new partner pays more than his share of net assets"
+],
+formulas:[
+["New Ratio (if only new share given)","Old Ratio × (1 − New Partner's Share)"],
+["Sacrificing Ratio","Old Ratio − New Ratio"],
+["Goodwill brought by New Partner","Total Goodwill × New Partner's Share"],
+["Share of Reserve to Old Partner","Reserve × Old Ratio"],
+["Capitals Proportionate","Total Capital of New Firm × Each Partner's Share"],
+["Hidden Goodwill","New Partner's Contribution − His Share of Net Assets"]
+],
+journal:`ADMISSION OF PARTNER — KEY ENTRIES
+
+1) New partner brings Capital ₹3,00,000
+   Cash/Bank A/c                Dr.  3,00,000
+      To New Partner's Capital A/c       3,00,000
+
+2) New partner brings Goodwill ₹50,000
+   Cash/Bank A/c                Dr.   50,000
+      To Goodwill A/c                    50,000
+
+3) Goodwill transferred to old partners (SACRIFICING ratio)
+   Goodwill A/c                 Dr.   50,000
+      To Old Partner A's Capital A/c      30,000
+      To Old Partner B's Capital A/c      20,000
+
+4) Revaluation of Assets increase ₹40,000
+   Various Asset A/c            Dr.   40,000
+      To Revaluation A/c                 40,000
+
+5) Revaluation Profit to OLD partners (Old ratio)
+   Revaluation A/c              Dr.   40,000
+      To Old Partner A's Capital A/c      24,000
+      To Old Partner B's Capital A/c      16,000
+
+6) General Reserve ₹80,000 distributed
+   General Reserve A/c          Dr.   80,000
+      To Old Partner A's Capital A/c      48,000
+      To Old Partner B's Capital A/c      32,000
+
+7) Capital adjustment — Cash introduced
+   Cash/Bank A/c                Dr.   xxx
+      To Partner's Capital A/c            xxx
+
+8) Excess capital withdrawn
+   Partner's Capital A/c        Dr.   xxx
+      To Cash/Bank A/c                    xxx`,
+formats:null,
+tips:[
+"Goodwill + Reserves + Revaluation + Accumulated Profits = ALL go to OLD partners",
+"New partner NEVER shares pre-admission profits/losses/reserves",
+"Sacrificing Ratio is used (not old ratio) for goodwill distribution"
+]},
+
+{n:5, title:"Retirement / Death of a Partner", summary:"Gaining ratio, revaluation, goodwill, executor's account",
+concepts:[
+"<strong>Retirement:</strong> Partner leaves the firm (with consent or as per deed)",
+"<strong>Death:</strong> Partner passes away — legal heir takes over",
+"<strong>Gaining Ratio:</strong> New Ratio − Old Ratio (of continuing partners)",
+"<strong>Settlement due to Retiring/Deceased Partner:</strong>",
+"  • Capital + Interest on Capital",
+"  • Share of Goodwill",
+"  • Share of Reserves & Accumulated Profits",
+"  • Share of Revaluation Profit",
+"  • Share of Profit till Retirement/Death",
+"  Less: Drawings + Interest on Drawings",
+"<strong>Share of Profit till Death:</strong> Last Year's profit × Months ÷ 12 × Share",
+"<strong>Executor's A/c:</strong> Opened in name of legal heir for deceased partner",
+"<strong>Retiring Partner's Loan A/c:</strong> If not paid immediately — treated as loan to firm",
+"<strong>Interest on Executor's A/c:</strong> Usually allowed @ 6% p.a."
+],
+formulas:[
+["Gaining Ratio","New Ratio − Old Ratio"],
+["Goodwill (Retiring Partner's Share)","Total Goodwill × Retiring Partner's Share"],
+["Share of Profit till Death","Last Year's Profit × (Months till death ÷ 12) × Share"],
+["Share of Profit till Retirement","Based on last year's profit OR average of last 3 years"],
+["Executor's A/c Balance","Capital + Reserves + Revaluation + Goodwill + Profit + Int. on Cap − Drawings − Int. on Drw"],
+["Interest on Executor's A/c","Balance × 6% × (Months ÷ 12)"]
+],
+journal:`RETIREMENT / DEATH — KEY ENTRIES
+
+1) Revaluation of Assets & Liabilities
+   (Revaluation A/c opened, adjustments made)
+
+2) Revaluation Profit to ALL partners (OLD ratio)
+   Revaluation A/c              Dr.   xxx
+      To All Partners' Capital A/c        xxx
+
+3) Revaluation Loss to ALL partners (OLD ratio)
+   All Partners' Capital A/c    Dr.   xxx
+      To Revaluation A/c                  xxx
+
+4) Goodwill — share of Retiring Partner
+   Continuing Partners' Cap A/c Dr.   xxx
+      To Retiring Partner's Cap A/c (Gaining ratio) xxx
+
+5) Reserves transferred to ALL partners (OLD ratio)
+   General Reserve A/c          Dr.   xxx
+      To All Partners' Capital A/c        xxx
+
+6) P&L (Cr. balance) transferred (OLD ratio)
+   Profit & Loss A/c            Dr.   xxx
+      To All Partners' Capital A/c        xxx
+
+7) Share of profit till death
+   Profit & Loss Suspense A/c   Dr.   xxx
+      To Deceased Partner's Cap A/c       xxx
+
+8) Retiring partner's capital transferred to Loan A/c
+   Retiring Partner's Cap A/c   Dr.   xxx
+      To Retiring Partner's Loan A/c      xxx
+
+9) Executor's A/c opened
+   Deceased Partner's Cap A/c   Dr.   xxx
+      To Executor's A/c                   xxx
+
+10) Payment to executor
+    Executor's A/c               Dr.   xxx
+       To Cash/Bank A/c                    xxx
+
+11) Interest on Executor's A/c
+    Interest on Executor's A/c   Dr.   xxx
+       To Executor's A/c                  xxx`,
+formats:null,
+tips:[
+"Gaining Ratio is used for goodwill — NOT old ratio",
+"Retiring/Deceased partner's capital may be transferred to LOAN A/c",
+"P&L Suspense A/c used for share of profit till death",
+"All reserves + accumulated profits = distributed in OLD ratio"
+]},
+
+{n:6, title:"Dissolution of Partnership Firm", summary:"Realisation A/c, order of payment, insolvency, Garner vs Murray",
+concepts:[
+"<strong>Dissolution:</strong> Firm closes — assets sold, liabilities paid, partners settle",
+"<strong>Types:</strong> Compulsory (by law) OR Voluntary (by agreement)",
+"<strong>Realisation A/c:</strong> Records sale of assets & payment of liabilities",
+"<strong>ASSETS TRANSFERRED to Realisation A/c:</strong> ALL assets EXCEPT:",
+"  • Cash/Bank (if Debit balance) — NOT transferred",
+"  • Bank Overdraft (if Credit) — IS a liability transferred",
+"  • Fictitious Assets (Goodwill, P&L Dr., Deferred Rev. Exp.) — NOT transferred",
+"  • Partner's Capital A/c — NOT transferred",
+"  • Partner's Current A/c — NOT transferred",
+"  • Partner's Loan A/c (Mr's) — NOT transferred",
+"  • Investments held against specific fund — NOT transferred",
+"<strong>LIABILITIES TRANSFERRED to Realisation A/c:</strong>",
+"  • All external liabilities (Creditors, Bills Payable, Outstanding Exp.)",
+"  • Bank Overdraft (if any)",
+"  • Partner's Loan A/c (Mr's loan) — treated as external liability",
+"  • Mrs. Partner's Loan A/c — treated as EXTERNAL liability, transferred to Realisation",
+"  • Investment Fluctuation Fund (against specific investments)",
+"  • Workmen Compensation Fund",
+"<strong>LIABILITIES NOT TRANSFERRED:</strong>",
+"  • Partner's Capital A/c — settled separately",
+"  • Partner's Current A/c — settled separately",
+"  • General Reserve — distributed among partners",
+"  • Accumulated Profits (P&L Cr.) — distributed among partners",
+"<strong>Order of Payment:</strong>",
+"  1. Realisation expenses",
+"  2. External liabilities",
+"  3. Partners' Loans (Mr & Mrs)",
+"  4. Partners' Capitals",
+"<strong>Garner vs Murray Rule:</strong> Insolvent partner's deficiency borne by SOLVENT partners in CAPITAL ratio (not PSR)",
+"<strong>Fictitious Assets:</strong> Written off to Partners' Capital in PSR"
+],
+formulas:[
+["Realisation Profit/Loss","Total Credits − Total Debits of Realisation A/c"],
+["Deficiency by Insolvent","Borne by solvent partners in CAPITAL ratio"],
+["Fictitious Assets","Written off in PSR (not transferred to Realisation)"],
+["Order of Payment","Expenses → Ext. Liabilities → Partner Loans → Capitals"]
+],
+journal:`DISSOLUTION — KEY ENTRIES
+
+1) Assets transferred to Realisation A/c
+   Realisation A/c              Dr.   xxx
+      To Sundry Assets A/c                xxx
+      To Debtors A/c                      xxx
+      To Stock A/c                        xxx
+      To Furniture A/c                    xxx
+      To Investments A/c                  xxx
+   (EXCEPT Cash, Fictitious Assets, Partner's Capital/Loan)
+
+2) External Liabilities transferred to Realisation A/c
+   Sundry Creditors A/c         Dr.   xxx
+   Bills Payable A/c            Dr.   xxx
+   Outstanding Expenses A/c     Dr.   xxx
+      To Realisation A/c                  xxx
+   (ALSO transfer Partner's Loan & Mrs. Partner's Loan)
+
+3) Partner's Loan transferred
+   Partner's Loan A/c           Dr.   xxx
+      To Realisation A/c                  xxx
+
+4) Fictitious Assets written off
+   Partners' Capital A/c (PSR)  Dr.   xxx
+      To Goodwill A/c                     xxx
+      To P&L A/c (Dr. balance)            xxx
+
+5) General Reserve transferred to Partners
+   General Reserve A/c          Dr.   xxx
+      To Partners' Capital A/c (PSR)      xxx
+
+6) Asset sold for cash
+   Cash A/c                     Dr.   xxx
+      To Realisation A/c                  xxx
+
+7) Asset taken over by partner
+   Partner's Capital A/c        Dr.   xxx
+      To Realisation A/c                  xxx
+
+8) Liability paid in cash
+   Realisation A/c              Dr.   xxx
+      To Cash A/c                         xxx
+
+9) Realisation expenses paid
+   Realisation A/c              Dr.   xxx
+      To Cash A/c                         xxx
+
+10) Realisation Profit transferred
+    Realisation A/c              Dr.   xxx
+       To Partners' Capital A/c (PSR)      xxx
+
+11) Realisation Loss transferred
+    Partners' Capital A/c (PSR)  Dr.   xxx
+       To Realisation A/c                  xxx
+
+12) Partner's Loan paid
+    Partner's Loan A/c           Dr.   xxx
+       To Cash A/c                         xxx
+    (ALWAYS paid before Partner's Capital)
+
+13) Capital returned to partners
+    Partners' Capital A/c        Dr.   xxx
+       To Cash A/c                         xxx
+
+14) Insolvent partner's deficiency
+    Solvent Partners' Cap A/c    Dr.   xxx
+       To Insolvent Partner's Cap A/c      xxx
+    (In CAPITAL ratio, not PSR)`,
+formats:`REALISATION ACCOUNT
+
+Dr.                              Cr.
+─────────────────────────────────────────────
+Particulars          ₹   |  Particulars        ₹
+─────────────────────────────────────────────
+To Assets (bv)      xxx  |  By Liabilities    xxx
+   (except Cash,          |     (incl. Partner's
+    Fictitious,           |      Loan & Mrs.)
+    Partner's Cap/Loan)   |  By Provision      xxx
+To Cash (liab. paid) xxx |  By Cash (realised) xxx
+To Cash (expenses)  xxx  |  By Partner's Cap  xxx
+To Partner's Cap    xxx  |     (asset taken)
+   (liability taken)      |  By Profit (to Partner
+To Profit           xxx  |     Capital in PSR) xxx
+─────────────────────────────────────────────
+                    xxx  |                    xxx
+
+PARTNERS' CAPITAL ACCOUNTS
+
+Dr.                    A      B   |  Cr.            A      B
+────────────────────────────────────────────────────────────
+To Realisation (loss) xxx   xxx  | By Balance b/d xxx  xxx
+To Realisation (asset) xxx  xxx  | By Reserve     xxx  xxx
+To Drawings          xxx    xxx  | By P&L         xxx  xxx
+To Balance c/d       xxx    xxx  | By Realisation xxx  xxx
+                                 |    (profit)
+────────────────────────────────────────────────────────────
+                    xxx    xxx  |                xxx  xxx
+
+PARTNERS' LOAN A/C — Paid BEFORE Capital (separate liability)`,
+tips:[
+"Cash balance is NEVER transferred to Realisation A/c — used for payments",
+"Fictitious Assets (Goodwill, P&L Dr.) NOT transferred — written off in PSR",
+"General Reserve NOT transferred — distributed in PSR",
+"Partner's Loan (Mr) IS transferred to Realisation as external liability",
+"Mrs. Partner's Loan also transferred — treated as EXTERNAL",
+"Garner vs Murray — deficiency borne in CAPITAL ratio, not PSR",
+"Order: Expenses → External Liab. → Partner Loans → Capitals"
+]},
+
+{n:7, title:"Company Accounts — Share Capital", summary:"Issue of shares, forfeiture, reissue, types",
+concepts:[
+"<strong>Share:</strong> Unit of ownership capital",
+"<strong>Equity Shares:</strong> Voting rights, variable dividend, residual claim",
+"<strong>Preference Shares:</strong> Fixed dividend, priority in repayment",
+"  • Cumulative/Non-cumulative",
+"  • Participating/Non-participating",
+"  • Redeemable/Irredeemable",
+"  • Convertible/Non-convertible",
+"<strong>Issue of Shares:</strong>",
+"  • At Par — face value",
+"  • At Premium — above face value (credited to Securities Premium)",
+"  • At Discount — below face value (PROHIBITED by Companies Act 2013 except sweat equity)",
+"<strong>Calls:</strong> Application → Allotment → First Call → Final Call",
+"<strong>Forfeiture:</strong> Non-payment of calls → shares cancelled",
+"<strong>Reissue:</strong> Forfeited shares sold again (can be at discount, max = forfeited amount)",
+"<strong>Securities Premium Reserve:</strong> Capital receipt — used for specific purposes only",
+"<strong>Private Placement:</strong> Issue to select investors",
+"<strong>ESOP:</strong> Employee Stock Option Plan",
+"<strong>Sweat Equity:</strong> Shares issued for non-cash consideration"
+],
+formulas:[
+["Share Capital","Number of Shares × Face Value"],
+["Securities Premium","Amount above Face Value"],
+["Discount on Issue","Amount below Face Value (usually prohibited)"],
+["Calls in Arrears","Amount not received on calls due"],
+["Calls in Advance","Amount received before due"],
+["Profit on Forfeiture Reissue","Amount forfeited − Discount on reissue"],
+["Net Amount (After Forfeiture)","Amount received + Profit on reissue"]
+],
+journal:`ISSUE OF SHARES — 12 KEY ENTRIES
+
+1) Application money received @ ₹3 on 10,000 shares
+   Bank A/c                     Dr.   30,000
+      To Share Application A/c            30,000
+
+2) Application money transferred to Share Capital
+   Share Application A/c        Dr.   30,000
+      To Share Capital A/c                30,000
+
+3) Allotment money due @ ₹4
+   Share Allotment A/c          Dr.   40,000
+      To Share Capital A/c                40,000
+
+4) Allotment money received
+   Bank A/c                     Dr.   40,000
+      To Share Allotment A/c              40,000
+
+5) Allotment with premium ₹2 per share
+   Share Allotment A/c          Dr.   60,000
+      To Share Capital A/c                40,000
+      To Securities Premium A/c           20,000
+
+6) First & Final Call @ ₹3
+   Share First & Final Call A/c Dr.   30,000
+      To Share Capital A/c                30,000
+
+7) Call money received
+   Bank A/c                     Dr.   30,000
+      To Share First & Final Call A/c     30,000
+
+8) Forfeiture of 500 shares (₹7 paid, ₹3 unpaid)
+   Share Capital A/c (500×10)   Dr.    5,000
+      To Share Forfeiture A/c             3,500
+      To Calls in Arrears A/c             1,500
+
+9) Reissue of 500 forfeited shares @ ₹8
+   Bank A/c                     Dr.    4,000
+   Share Forfeiture A/c         Dr.    1,000
+      To Share Capital A/c                5,000
+
+10) Profit on forfeiture transferred to Capital Reserve
+    Share Forfeiture A/c         Dr.    2,500
+       To Capital Reserve A/c              2,500
+
+11) Issue at discount (older acts)
+    Bank A/c                     Dr.   xxx
+    Discount on Issue A/c        Dr.   xxx
+       To Share Capital A/c                xxx
+
+12) Calls in arrear received later
+    Bank A/c                     Dr.   xxx
+       To Calls in Arrears A/c             xxx`,
+formats:null,
+tips:[
+"Securities Premium is a capital receipt — NOT available for dividend",
+"Discount on issue of shares is prohibited under Companies Act 2013",
+"Reissue discount cannot exceed amount forfeited",
+"Forfeited Shares A/c is credited for amount ALREADY received"
+]},
+
+{n:8, title:"Issue of Debentures", summary:"Meaning, types, issue methods, collateral security",
+concepts:[
+"<strong>Debenture:</strong> Written acknowledgement of debt with fixed interest (under Companies Act 2013)",
+"<strong>Types:</strong>",
+"  • Secured/Unsecured (Naked)",
+"  • Redeemable/Irredeemable",
+"  • Convertible/Non-convertible",
+"  • Registered/Bearer",
+"  • First/Second (priority)",
+"<strong>Trust Deed:</strong> Agreement with trustees for secured debentures",
+"<strong>Trustees:</strong> Protect debenture holders' interests",
+"<strong>Collateral Security:</strong> Debentures issued as additional security for loan",
+"  Method 1: No entry (note only)",
+"  Method 2: Debentures Suspense A/c entry",
+"<strong>Interest on Debentures:</strong> CHARGE on profits (paid even in loss)",
+"<strong>Issue Methods:</strong>",
+"  • At Par",
+"  • At Premium (credited to Securities Premium)",
+"  • At Discount (Loss on Issue A/c)",
+"<strong>Debentures vs Shares:</strong> Debentures = debt (creditor); Shares = ownership",
+"<strong>Debenture Interest:</strong> Tax-deductible expense; TDS @ 10% if > ₹5,000"
+],
+formulas:[
+["Debenture Interest","Face Value × Rate × Period"],
+["Issue at Premium","Issue Price > Face Value"],
+["Issue at Discount","Issue Price < Face Value"],
+["Loss on Issue","Discount on issue + Premium on redemption"],
+["TDS on Interest","Interest × 10% (if above threshold)"]
+],
+journal:`DEBENTURES — KEY ENTRIES
+
+1) Issue at par ₹1,00,000
+   Bank A/c                     Dr.  1,00,000
+      To Debentures A/c                  1,00,000
+
+2) Issue at premium ₹1,10,000 (FV ₹1,00,000)
+   Bank A/c                     Dr.  1,10,000
+      To Debentures A/c                  1,00,000
+      To Securities Premium A/c           10,000
+
+3) Issue at discount ₹95,000 (FV ₹1,00,000)
+   Bank A/c                     Dr.    95,000
+   Discount on Issue A/c        Dr.     5,000
+      To Debentures A/c                  1,00,000
+
+4) Debenture interest paid
+   Debenture Interest A/c       Dr.   xxx
+      To Bank A/c                         xxx
+
+5) Interest with TDS @ 10%
+   Debenture Interest A/c       Dr.   xxx
+      To Bank A/c                         xxx
+      To TDS Payable A/c                  xxx
+
+6) Interest transferred to P&L
+   Profit & Loss A/c            Dr.   xxx
+      To Debenture Interest A/c           xxx
+
+7) Debentures issued as collateral security (Suspense method)
+   Debenture Suspense A/c       Dr.   xxx
+      To Debentures A/c                   xxx
+
+8) Loss on issue (premium on redemption)
+   Loss on Issue A/c            Dr.   xxx
+      To Premium on Redemption A/c        xxx`,
+formats:null,
+tips:[
+"Debenture interest is a CHARGE against profit (paid even in loss)",
+"Securities Premium CANNOT be used to pay debenture interest",
+"Premium on redemption written off against Securities Premium or P&L"
+]},
+
+{n:9, title:"Redemption of Debentures", summary:"Methods, DRR, DRI, AS-3",
+concepts:[
+"<strong>Redemption:</strong> Repaying debenture holders — company's obligation",
+"<strong>Methods of Redemption:</strong>",
+"  1. Lump sum payment at maturity",
+"  2. Annual draw of lots",
+"  3. Purchase in open market",
+"  4. Conversion into shares",
+"<strong>Sources of Redemption:</strong>",
+"  • Fresh issue of shares/debentures",
+"  • Profits retained (DRR)",
+"  • Sale of fixed assets",
+"  • DRI (Investment)",
+"<strong>DRR — Debenture Redemption Reserve:</strong>",
+"  • Mandatory for UNLISTED companies: 25% of face value",
+"  • NOT required for LISTED companies",
+"  • Created out of profits (Surplus/P&L)",
+"<strong>DRI — Debenture Redemption Investment:</strong>",
+"  • Mandatory for LISTED companies: 15% of face value",
+"  • Must be invested in specified securities",
+"  • Must be ENCASHED within 30 days before redemption",
+"  • NOT required for UNLISTED companies",
+"<strong>AS-3:</strong> Redemption shown under Financing Activities"
+],
+formulas:[
+["DRR (unlisted)","25% of face value of debentures"],
+["DRR (listed)","Not required"],
+["DRI (listed)","15% of face value, invested in specified securities"],
+["DRI (unlisted)","Not required"],
+["Redemption Amount","Face Value × No. of Debentures"]
+],
+journal:`REDEMPTION — KEY ENTRIES
+
+1) DRR created (unlisted company)
+   Surplus (P&L) A/c            Dr.   xxx
+      To Debenture Redemption Reserve A/c xxx
+
+2) DRI investment made (listed company)
+   DRI A/c                      Dr.   xxx
+      To Bank A/c                         xxx
+
+3) Interest earned on DRI
+   Bank A/c                     Dr.   xxx
+      To Interest on DRI A/c              xxx
+
+4) Investment encashed before redemption
+   Bank A/c                     Dr.   xxx
+      To DRI A/c                          xxx
+
+5) Debentures due for redemption
+   Debentures A/c               Dr.   xxx
+      To Debenture Holders A/c            xxx
+
+6) Redemption paid
+   Debenture Holders A/c        Dr.   xxx
+      To Bank A/c                         xxx
+
+7) DRR transferred to General Reserve
+   Debenture Redemption Reserve Dr.    xxx
+      To General Reserve A/c              xxx
+
+8) Premium on redemption
+   Premium on Redemption A/c    Dr.   xxx
+      To Debenture Holders A/c            xxx`,
+formats:null,
+tips:[
+"DRR is an APPROPRIATION (not a charge against profit)",
+"DRI must be sold BEFORE redemption to generate cash",
+"Listed companies: DRI required, DRR not required",
+"Unlisted companies: DRR required, DRI not required"
+]},
+
+{n:10, title:"Financial Statements of a Company", summary:"Schedule III format, Balance Sheet, P&L, notes",
+concepts:[
+"<strong>Schedule III, Companies Act 2013:</strong> Mandatory format for all companies",
+"<strong>Balance Sheet — Equity & Liabilities:</strong>",
+"  1. Shareholders' Funds (Share Capital + Reserves & Surplus)",
+"  2. Non-Current Liabilities (Long-term Borrowings, Deferred Tax, Long-term Provisions)",
+"  3. Current Liabilities (Short-term Borrowings, Trade Payables, Other Current Liab., Short-term Provisions)",
+"<strong>Balance Sheet — Assets:</strong>",
+"  1. Non-Current Assets (Fixed Assets, Non-current Investments, Long-term Loans & Advances)",
+"  2. Current Assets (Current Investments, Inventories, Trade Receivables, Cash & Cash Equivalents, Short-term Loans)",
+"<strong>P&L:</strong> Revenue from Operations · Other Income · Total Expenses · Tax · PAT",
+"<strong>Notes to Accounts:</strong> Detailed breakups of line items (Note 1-30)",
+"<strong>Comparative Financials:</strong> Previous year figures mandatory",
+"<strong>EPS:</strong> Mandatory disclosure on face of P&L",
+"<strong>Debenture Interest:</strong> Shown under Finance Costs"
+],
+formulas:[
+["Total Revenue","Revenue from Operations + Other Income"],
+["Profit Before Tax","Total Revenue − Total Expenses"],
+["Profit After Tax","PBT − Tax"],
+["EPS","PAT ÷ No. of Equity Shares"],
+["Book Value per Share","Shareholders' Funds ÷ No. of Shares"],
+["Dividend Payout","Dividend ÷ PAT × 100"]
+],
+journal:null,
+formats:`BALANCE SHEET (Schedule III — Companies Act 2013)
+
+I. EQUITY AND LIABILITIES
+   1. Shareholders' Funds
+      a) Share Capital                  xxx
+      b) Reserves & Surplus             xxx
+   2. Non-Current Liabilities
+      a) Long-term Borrowings           xxx
+      b) Deferred Tax Liabilities       xxx
+      c) Long-term Provisions           xxx
+   3. Current Liabilities
+      a) Short-term Borrowings          xxx
+      b) Trade Payables                 xxx
+      c) Other Current Liabilities      xxx
+      d) Short-term Provisions          xxx
+                                        ─────
+                                       TOTAL
+
+II. ASSETS
+   1. Non-Current Assets
+      a) Fixed Assets (Tangible/Intangible) xxx
+      b) Non-current Investments        xxx
+      c) Long-term Loans & Advances     xxx
+   2. Current Assets
+      a) Current Investments            xxx
+      b) Inventories                    xxx
+      c) Trade Receivables              xxx
+      d) Cash & Cash Equivalents        xxx
+      e) Short-term Loans & Advances    xxx
+                                        ─────
+                                       TOTAL
+
+STATEMENT OF PROFIT & LOSS
+
+I. Revenue from Operations              xxx
+II. Other Income                        xxx
+III. Total Revenue (I + II)             xxx
+IV. Expenses:
+    Cost of Materials Consumed          xxx
+    Purchases of Stock-in-Trade         xxx
+    Changes in Inventories              xxx
+    Employee Benefits                   xxx
+    Finance Costs                       xxx
+    Depreciation                        xxx
+    Other Expenses                      xxx
+V. Profit Before Tax (III − IV)         xxx
+VI. Tax Expense                         xxx
+VII. Profit After Tax (V − VI)          xxx
+VIII. EPS                              xxx`,
+tips:[
+"Schedule III format is MANDATORY for all companies",
+"Notes to accounts give detailed breakups of each line item",
+"EPS must be disclosed on the face of P&L"
+]},
+
+{n:11, title:"Analysis of Financial Statements", summary:"Comparative, Common Size, Trend Analysis",
+concepts:[
+"<strong>Financial Analysis:</strong> Evaluating financial data for decision-making",
+"<strong>Objectives:</strong> Assess profitability, liquidity, solvency, efficiency",
+"<strong>Tools:</strong>",
+"  • Comparative Statements",
+"  • Common Size Statements",
+"  • Trend Analysis",
+"  • Ratio Analysis",
+"  • Cash Flow Analysis",
+"  • Fund Flow Analysis",
+"<strong>Comparative Statement:</strong> Side-by-side with change in ₹ & %",
+"<strong>Common Size:</strong> Each item as % of base (Total Assets / Revenue)",
+"<strong>Trend Analysis:</strong> Base year = 100, subsequent in %",
+"<strong>Precautions:</strong>",
+"  • Accounting policies consistent",
+"  • Price level changes considered",
+"  • Window dressing checked",
+"  • Ratios calculated on comparable basis"
+],
+formulas:[
+["% Change","(Current − Previous) ÷ Previous × 100"],
+["Common Size (BS)","Each Item ÷ Total Assets × 100"],
+["Common Size (PL)","Each Item ÷ Revenue × 100"],
+["Trend %","Current Year ÷ Base Year × 100"]
+],
+journal:null,
+formats:`COMPARATIVE BALANCE SHEET
+
+Particulars      Prev Yr   Curr Yr   Change(₹)   Change(%)
+──────────────────────────────────────────────────────
+Share Capital     xxx       xxx       xxx         xxx
+Reserves          xxx       xxx       xxx         xxx
+Long-term Loans   xxx       xxx       xxx         xxx
+Current Liab.     xxx       xxx       xxx         xxx
+──────────────────────────────────────────────────────
+Total             xxx       xxx       xxx         xxx
+──────────────────────────────────────────────────────
+
+COMMON SIZE BALANCE SHEET
+
+Particulars      Amount    % of Total   Amount    % of Total
+──────────────────────────────────────────────────────────────
+Share Capital     xxx       xxx%         xxx       xxx%
+Reserves          xxx       xxx%         xxx       xxx%
+...
+──────────────────────────────────────────────────────────────
+Total             100%                   100%
+──────────────────────────────────────────────────────────────
+
+TREND ANALYSIS
+
+Year             2019  2020  2021  2022  2023
+─────────────────────────────────────────────
+Sales (₹)        100   120   150   180   220
+Trend %          100   120   150   180   220
+─────────────────────────────────────────────`,
+tips:[
+"Comparative shows CHANGE over time",
+"Common Size shows RELATIVE importance",
+"Trend shows DIRECTION of change"
+]},
+
+{n:12, title:"Ratio Analysis", summary:"Liquidity, Solvency, Activity, Profitability ratios",
+concepts:[
+"<strong>Ratio:</strong> Mathematical relationship between two accounting figures",
+"<strong>Liquidity Ratios:</strong> Short-term solvency",
+"<strong>Solvency Ratios:</strong> Long-term financial stability",
+"<strong>Activity Ratios:</strong> Efficiency in using assets (also called Turnover/Efficiency ratios)",
+"<strong>Profitability Ratios:</strong> Profit generation ability",
+"<strong>Types of Comparison:</strong>",
+"  • Intra-firm (over years)",
+"  • Inter-firm (competitors)",
+"  • Industry average",
+"<strong>Precautions:</strong>",
+"  • Ratios alone meaningless — compare",
+"  • Accounting policies affect ratios",
+"  • Window dressing possible",
+"  • Price level changes ignored"
+],
+formulas:[
+["Current Ratio","Current Assets ÷ Current Liabilities (ideal 2:1)"],
+["Liquid (Quick) Ratio","(CA − Stock − Prepaid) ÷ CL (ideal 1:1)"],
+["Absolute Liquid Ratio","(Cash + Bank + Marketable Sec) ÷ CL (ideal 0.5:1)"],
+["Debt-Equity","Long-term Debt ÷ Shareholders' Funds (ideal 2:1)"],
+["Debt to Total Funds","Debt ÷ (Debt + Equity)"],
+["Proprietary Ratio","Shareholders' Funds ÷ Total Assets"],
+["Interest Coverage","EBIT ÷ Interest"],
+["Capital Gearing","Fixed Int. Funds ÷ Equity Funds"],
+["Stock Turnover","COGS ÷ Average Stock"],
+["Debtors Turnover","Credit Sales ÷ Average Debtors"],
+["Creditors Turnover","Credit Purchases ÷ Average Creditors"],
+["Working Capital Turnover","Revenue ÷ Working Capital"],
+["Fixed Assets Turnover","Revenue ÷ Net Fixed Assets"],
+["Gross Profit Ratio","GP ÷ Revenue × 100"],
+["Net Profit Ratio","NP ÷ Revenue × 100"],
+["Operating Ratio","(COGS + Operating Exp) ÷ Revenue × 100"],
+["Operating Profit Ratio","Operating Profit ÷ Revenue × 100"],
+["ROI / Return on Investment","NP before Int. & Tax ÷ Capital Employed × 100"],
+["ROE / Return on Equity","PAT ÷ Shareholders' Funds × 100"],
+["EPS","PAT ÷ No. of Equity Shares"],
+["DPS","Dividend ÷ No. of Shares"],
+["Dividend Payout","DPS ÷ EPS × 100"],
+["P/E Ratio","Market Price ÷ EPS"],
+["Book Value per Share","Shareholders' Funds ÷ No. of Shares"]
+],
+journal:null,
+formats:null,
+tips:[
+"Higher Current Ratio ≠ always better (could mean idle stock)",
+"Ideal ratios vary by industry",
+"Ratios alone meaningless — compare over time or with competitors"
+]},
+
+{n:13, title:"Cash Flow Statement", summary:"Operating, Investing, Financing activities — AS-3",
+concepts:[
+"<strong>Cash Flow:</strong> Movement of cash & cash equivalents during a period",
+"<strong>Cash Equivalents:</strong> Short-term, highly liquid investments (maturity ≤ 3 months from acquisition)",
+"<strong>Three Activities:</strong>",
+"  • <strong>Operating:</strong> Day-to-day business operations",
+"  • <strong>Investing:</strong> Long-term assets & investments",
+"  • <strong>Financing:</strong> Capital + borrowings",
+"<strong>Methods:</strong>",
+"  • Direct Method — actual cash receipts & payments",
+"  • Indirect Method — adjust net profit (most common)",
+"<strong>AS-3:</strong> Mandatory for all companies",
+"<strong>Non-cash Items (added back):</strong> Depreciation, Amortisation, Provisions, Loss on sale, Preliminary expenses written off",
+"<strong>Non-operating Items (removed):</strong> Interest received, Dividend received, Interest paid, Profit on sale",
+"<strong>Working Capital Changes:</strong>",
+"  • Increase in CA → outflow (subtract)",
+"  • Decrease in CA → inflow (add)",
+"  • Increase in CL → inflow (add)",
+"  • Decrease in CL → outflow (subtract)"
+],
+formulas:[
+["Cash from Operations","Net Profit before Tax + Non-cash items + WC changes − Tax paid"],
+["Non-cash items","Depreciation + Amortisation + Provisions + Loss on sale"],
+["WC changes","(−) Increase CA (+) Decrease CA (+) Increase CL (−) Decrease CL"],
+["Cash from Investing","(−) Purchase FA + Sale FA + Interest + Dividend Received"],
+["Cash from Financing","(+) Issue + Borrowings − Redemption − Interest Paid − Dividend Paid"],
+["Net Cash Flow","Operating + Investing + Financing"],
+["Closing Cash","Opening Cash + Net Cash Flow"]
+],
+journal:null,
+formats:`CASH FLOW STATEMENT (AS-3 — Indirect Method)
+
+A. OPERATING ACTIVITIES
+   Net Profit before Tax                        xxx
+   Add: Depreciation                            xxx
+   Add: Loss on Sale of FA                      xxx
+   Add: Interest Paid                           xxx
+   Less: Interest Received                     (xxx)
+   Less: Dividend Received                     (xxx)
+                                                ─────
+   Operating Profit before WC changes           xxx
+   Less: Increase in Current Assets            (xxx)
+   Add: Decrease in Current Assets              xxx
+   Add: Increase in Current Liabilities         xxx
+   Less: Decrease in Current Liabilities       (xxx)
+                                                ─────
+   Cash Generated from Operations               xxx
+   Less: Income Tax Paid                       (xxx)
+                                                ─────
+   Net Cash from Operating Activities           xxx
+
+B. INVESTING ACTIVITIES
+   Purchase of Fixed Assets                    (xxx)
+   Sale of Fixed Assets                         xxx
+   Purchase of Investments                     (xxx)
+   Sale of Investments                          xxx
+   Interest Received                            xxx
+   Dividend Received                            xxx
+                                                ─────
+   Net Cash from Investing Activities           xxx
+
+C. FINANCING ACTIVITIES
+   Issue of Shares                              xxx
+   Issue of Debentures                          xxx
+   Long-term Borrowings                         xxx
+   Repayment of Loans                          (xxx)
+   Interest Paid                               (xxx)
+   Dividend Paid                               (xxx)
+                                                ─────
+   Net Cash from Financing Activities           xxx
+
+NET INCREASE / DECREASE IN CASH                 xxx
+Add: Opening Cash & Cash Equivalents            xxx
+                                                ─────
+CLOSING CASH & CASH EQUIVALENTS                 xxx
+                                                ═════`,
+tips:[
+"Non-cash items (depreciation, provisions) ADDED BACK to net profit",
+"Increase in Current Assets = cash OUTFLOW (subtract)",
+"Increase in Current Liabilities = cash INFLOW (add)",
+"Cash Flow shows only CASH movements — accrual items adjusted"
+]}
+];
+
+let currentClass = 11;
+const $ = id => document.getElementById(id);
+
+function showScreen(name){
+document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+$("screen-"+name).classList.add("active");
+}
+function goHome(){showScreen("home")}
+function goBackToList(){openClass(currentClass)}
+
+function openClass(n){
+currentClass = n;
+const list = n===11 ? CLASS_11 : CLASS_12;
+$("listTitle").textContent = "Class " + n;
+$("chapterList").innerHTML =
+'<div class="chapter-header"><h2>Class '+n+' — Accountancy</h2><p>'+list.length+' chapters · full formulas, journal entries, formats &amp; tips</p></div>' +
+list.map((ch,i)=>'<button class="chapter-card" onclick="openChapter('+i+')"><span class="ch-num">Chapter '+ch.n+'</span><div class="ch-title">'+ch.title+'</div><div class="ch-sum">'+ch.summary+'</div></button>').join("");
+showScreen("list");
+}
+
+function openChapter(i){
+const list = currentClass===11 ? CLASS_11 : CLASS_12;
+const ch = list[i];
+let html = '<div class="chapter-title-big">'+ch.title+'</div>';
+html += '<div class="chapter-sub">Class '+currentClass+' · Chapter '+ch.n+'</div>';
+
+if (ch.concepts && ch.concepts.length){
+html += '<div class="topic-section"><h3>💡 Key Concepts</h3><ul class="concept-list">'+ch.concepts.map(c=>'<li>'+c+'</li>').join('')+'</ul></div>';
+}
+if (ch.formulas && ch.formulas.length){
+html += '<div class="topic-section"><h3>🧮 Formulas</h3><div class="formula-list">'+ch.formulas.map(f=>'<div class="formula"><div class="fl">'+f[0]+'</div><div class="fv">'+f[1]+'</div></div>').join('')+'</div></div>';
+}
+if (ch.journal){
+html += '<div class="topic-section"><h3>📝 Journal Entries</h3><div class="journal-box">'+ch.journal.replace(/</g,"&lt;").replace(/>/g,"&gt;")+'</div></div>';
+}
+if (ch.formats){
+html += '<div class="topic-section"><h3>📋 Format / Layout</h3><div class="format-box">'+ch.formats.replace(/</g,"&lt;").replace(/>/g,"&gt;")+'</div></div>';
+}
+if (ch.tips && ch.tips.length){
+html += '<div class="topic-section"><h3>⭐ Important Points</h3>'+ch.tips.map(t=>'<div class="tip-box"><strong>Tip:</strong> '+t+'</div>').join('')+'</div>';
+}
+html += '<div class="ad-slot"></div>';
+$("chapterTitle").textContent = "Ch " + ch.n;
+$("chapterContent").innerHTML = html;
+showScreen("chapter");
+}
+
+function openQuick(type){
+let html = "";
+if (type==="formulas"){
+html = '<div class="chapter-header"><h2>🧮 All Formulas</h2><p>Class 11 &amp; 12 combined reference</p></div>';
+[["Class 11", CLASS_11],["Class 12", CLASS_12]].forEach(([label, list])=>{
+list.filter(c=>c.formulas).forEach(ch=>{
+html += '<div class="topic-section"><h3>'+label+' · '+ch.title+'</h3><div class="formula-list">'+ch.formulas.map(f=>'<div class="formula"><div class="fl">'+f[0]+'</div><div class="fv">'+f[1]+'</div></div>').join('')+'</div></div>';
+});
+});
+}
+else if (type==="journal"){
+html = '<div class="chapter-header"><h2>📝 All Journal Entries</h2><p>Standard entries for every transaction type</p></div>';
+[["Class 11", CLASS_11],["Class 12", CLASS_12]].forEach(([label, list])=>{
+list.filter(c=>c.journal).forEach(ch=>{
+html += '<div class="topic-section"><h3>'+label+' · '+ch.title+'</h3><div class="journal-box">'+ch.journal.replace(/</g,"&lt;").replace(/>/g,"&gt;")+'</div></div>';
+});
+});
+}
+else if (type==="formats"){
+html = '<div class="chapter-header"><h2>📋 All Formats</h2><p>Journal · Ledger · TB · Balance Sheet · P&amp;L · BRS · Realisation · Cash Flow</p></div>';
+[["Class 11", CLASS_11],["Class 12", CLASS_12]].forEach(([label, list])=>{
+list.filter(c=>c.formats).forEach(ch=>{
+html += '<div class="topic-section"><h3>'+label+' · '+ch.title+'</h3><div class="format-box">'+ch.formats.replace(/</g,"&lt;").replace(/>/g,"&gt;")+'</div></div>';
+});
+});
+}
+else if (type==="glossary"){
+const terms=[
+["Asset","Resource owned by business with future economic value"],
+["Liability","Amount owed by business to outsiders"],
+["Capital","Owner's investment in the business"],
+["Drawings","Amount withdrawn by owner for personal use"],
+["Revenue","Income from sale of goods/services"],
+["Expense","Cost incurred to earn revenue"],
+["Debit","Left side of account — increases assets/expenses"],
+["Credit","Right side — increases liabilities/income"],
+["Journal","Book of original entry"],
+["Ledger","Principal book of accounts"],
+["Trial Balance","Statement of debit & credit balances"],
+["Balance Sheet","Statement of assets & liabilities"],
+["Gross Profit","Net Sales − COGS"],
+["Net Profit","GP + Other Income − Indirect Expenses"],
+["Working Capital","Current Assets − Current Liabilities"],
+["Goodwill","Value of business reputation"],
+["Depreciation","Fall in value of fixed asset over time"],
+["Bad Debts","Amounts not recoverable from debtors"],
+["Reserve","Appropriation of profit for specific purpose"],
+["Provision","Charge against profit for expected loss"],
+["Debenture","Written acknowledgement of debt"],
+["Share","Unit of ownership capital"],
+["Premium","Amount above face value"],
+["Discount","Amount below face value"],
+["Accrual","Recording on earning/incurring basis"],
+["Realisation","Sale of assets at dissolution"],
+["Sacrificing Ratio","Old Ratio − New Ratio"],
+["Gaining Ratio","New Ratio − Old Ratio"],
+["DRR","Debenture Redemption Reserve — 25% of FV"],
+["DRI","Debenture Redemption Investment — 15% for listed"],
+["EBIT","Earnings Before Interest & Tax"],
+["EPS","Earnings Per Share = PAT ÷ No. of Shares"],
+["DPS","Dividend Per Share"],
+["P/E Ratio","Market Price ÷ EPS"],
+["COGS","Cost of Goods Sold"],
+["ROI","Return on Investment"],
+["ROE","Return on Equity"],
+["BRS","Bank Reconciliation Statement"],
+["GAAP","Generally Accepted Accounting Principles"],
+["NPO","Not-for-Profit Organisation"]
+];
+html = '<div class="chapter-header"><h2>📖 Glossary</h2><p>'+terms.length+' key accounting terms</p></div><div class="topic-section"><div class="formula-list">'+terms.map(t=>'<div class="formula"><div class="fl">'+t[0]+'</div><div class="fv" style="font-family:system-ui;font-weight:500;font-size:.78rem">'+t[1]+'</div></div>').join('')+'</div></div>';
+}
+html += '<div class="ad-slot"></div>';
+$("chapterTitle").textContent = type.charAt(0).toUpperCase() + type.slice(1);
+$("chapterContent").innerHTML = html;
+showScreen("chapter");
+}
+
+/* SEARCH */
+function openSearch(){
+$("searchInput").value = "";
+$("searchResults").innerHTML = "";
+showScreen("search");
+setTimeout(()=>$("searchInput").focus(), 100);
+}
+
+function doSearch(){
+const q = $("searchInput").value.trim().toLowerCase();
+if (!q){$("searchResults").innerHTML="";return}
+let results = [];
+[["Class 11", 11, CLASS_11],["Class 12", 12, CLASS_12]].forEach(([label, num, list])=>{
+list.forEach((ch, i)=>{
+const hay = [
+ch.title, ch.summary,
+...(ch.concepts||[]),
+...(ch.formulas||[]).flat(),
+ch.journal||"",
+ch.formats||"",
+...(ch.tips||[])
+].join(" ").toLowerCase();
+if (hay.includes(q)) results.push({label, num, i, ch});
+});
+});
+if (!results.length){
+$("searchResults").innerHTML = '<div class="recent-empty">No matches found</div>';
+return;
+}
+$("searchResults").innerHTML = results.map(r=>'<button class="chapter-card" onclick="jumpTo('+r.num+','+r.i+')"><span class="ch-num">'+r.label+'</span><div class="ch-title">'+r.ch.title+'</div><div class="ch-sum">'+r.ch.summary+'</div></button>').join("");
+}
+
+function jumpTo(cls, idx){
+currentClass = cls;
+openChapter(idx);
+}
+</script>
+<script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
