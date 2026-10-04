@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#0369a1">
+<title>Typing Pro — Learn, Test, Play</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⌨️</text></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden}
+body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:#f0f4f9;color:#1a2230}
+.app{width:100%;height:100vh;display:flex;flex-direction:column;background:#fff;overflow:hidden;max-width:1000px;margin:0 auto}
+
+/* ============ TOP BAR (every screen) ============ */
+.topbar{display:flex;align-items:center;gap:8px;padding:10px 12px;background:linear-gradient(135deg,#0369a1,#075985);color:#fff;flex-shrink:0}
+.topbar button{background:rgba(255,255,255,.15);color:#fff;border:none;padding:7px 12px;border-radius:8px;font-weight:700;font-size:.78rem;cursor:pointer;font-family:inherit;white-space:nowrap}
+.topbar button:active{background:rgba(255,255,255,.3)}
+.topbar .title{flex:1;text-align:center;font-size:.9rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ============ SCREENS ============ */
+.screen{display:none;flex:1;min-height:0;flex-direction:column;overflow:hidden}
+.screen.active{display:flex}
+
+/* ============ HOME ============ */
+.home-body{flex:1;min-height:0;overflow-y:auto;padding:14px}
+.greet h2{font-size:1.3rem;font-weight:700;color:#0f172a}
+.greet p{font-size:.82rem;color:#64748b;margin-top:2px;margin-bottom:14px}
+.menu{display:flex;flex-direction:column;gap:8px}
+.card{background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;text-align:left;font-family:inherit;width:100%}
+.card:active{transform:scale(.98);background:#f8fafc}
+.card .icon{font-size:1.3rem;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:9px;background:#f1f5f9;flex-shrink:0}
+.card .icon.green{background:#dcfce7}.card .icon.orange{background:#fed7aa}.card .icon.purple{background:#e9d5ff}.card .icon.blue{background:#dbeafe}.card .icon.yellow{background:#fef3c7}.card .icon.pink{background:#fce7f3}
+.card .body{flex:1;min-width:0}
+.card .title{font-size:.9rem;font-weight:700;color:#0f172a;margin-bottom:2px}
+.card .sub{font-size:.68rem;color:#64748b}
+.ad-slot{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:8px;min-height:42px;display:flex;align-items:center;justify-content:center;font-size:.58rem;color:#94a3b8;font-weight:600;letter-spacing:1px;margin-top:14px}
+.ad-slot::after{content:"AD SPACE"}
+.section-title{font-size:.66rem;font-weight:700;color:#64748b;letter-spacing:1px;text-transform:uppercase;margin:14px 0 8px}
+.recent-empty{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:10px;padding:14px;text-align:center;font-size:.72rem;color:#94a3b8}
+
+/* ============ SCROLL BODY ============ */
+.scroll-body{flex:1;min-height:0;overflow-y:auto;padding:12px 14px}
+
+/* ============ LESSONS ============ */
+.diff-group{margin-bottom:16px}
+.diff-header{font-size:.7rem;font-weight:700;color:#475569;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;display:flex;justify-content:space-between;padding:4px 0}
+.diff-badge{font-size:.6rem;padding:2px 8px;border-radius:999px;font-weight:700}
+.diff-badge.easy{background:#dcfce7;color:#166534}
+.diff-badge.medium{background:#fef3c7;color:#92400e}
+.diff-badge.hard{background:#fee2e2;color:#991b1b}
+.diff-badge.expert{background:#e9d5ff;color:#6b21a8}
+.lesson{background:#fff;border:1.5px solid #e2e8f0;border-radius:11px;padding:10px 12px;display:flex;align-items:center;gap:10px;cursor:pointer;text-align:left;font-family:inherit;width:100%;margin-bottom:6px}
+.lesson.done{border-color:#86efac;background:#f0fdf4}
+.lesson.locked{opacity:.5;cursor:not-allowed}
+.lesson .num{width:30px;height:30px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.78rem;color:#475569;flex-shrink:0}
+.lesson.done .num{background:#22c55e;color:#fff}
+.lesson .body{flex:1;min-width:0}
+.lesson .title{font-size:.85rem;font-weight:700;color:#0f172a;margin-bottom:2px}
+.lesson .meta{font-size:.65rem;color:#64748b;font-family:monospace}
+
+/* ============ EXAMS ============ */
+.exam-card,.topic-card{background:#fff;border:1.5px solid #e2e8f0;border-radius:11px;padding:12px;margin-bottom:7px;cursor:pointer;text-align:left;width:100%;font-family:inherit;display:block}
+.exam-card .name{font-size:.88rem;font-weight:700;color:#0f172a;margin-bottom:3px}
+.exam-card .meta{font-size:.68rem;color:#64748b;display:flex;gap:10px;flex-wrap:wrap}
+.exam-card .meta b{color:#0369a1}
+.topic-card{display:flex;align-items:center;gap:10px}
+.topic-card .tn{width:26px;height:26px;border-radius:50%;background:#e0f2fe;color:#0369a1;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem;flex-shrink:0}
+.topic-card .tt{flex:1;font-size:.82rem;font-weight:600;color:#0f172a}
+.topic-card .tw{font-size:.6rem;color:#94a3b8;font-weight:600}
+
+/* ============ BUTTONS ============ */
+.btn{background:#f1f5f9;color:#475569;border:none;padding:12px;border-radius:10px;font-weight:700;font-size:.85rem;cursor:pointer;width:100%;font-family:inherit;margin-top:8px}
+.btn-primary{background:linear-gradient(135deg,#0369a1,#075985);color:#fff}
+
+/* ============ PRACTICE ============ */
+.practice{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+.stats-bar{display:flex;gap:5px;padding:8px 12px;background:#fff;border-bottom:1px solid #e2e8f0;align-items:center;flex-wrap:wrap}
+.ls{font-size:.68rem;font-weight:700;color:#475569;background:#f1f5f9;padding:4px 8px;border-radius:6px;white-space:nowrap}
+.ls b{color:#0369a1}
+.stats-bar select{background:#f1f5f9;border:none;border-radius:6px;padding:4px 6px;font-family:inherit;font-size:.66rem;font-weight:700;color:#475569;outline:none;max-width:90px}
+.font-btn{background:#f1f5f9;border:none;width:26px;height:26px;border-radius:6px;font-weight:700;font-size:.72rem;cursor:pointer;color:#475569;padding:0}
+.paragraph-pane{flex:3;min-height:0;background:#fff;border-bottom:2px solid #0369a1;padding:12px 16px;overflow-y:auto}
+.paragraph-text{font-family:var(--ff,'Courier New',monospace);font-size:var(--fs,1.15rem);line-height:1.9;white-space:pre-wrap;word-wrap:break-word}
+.pchar{color:#94a3b8}
+.pchar.ok{color:#16a34a}
+.pchar.bad{color:#fff;background:#dc2626;border-radius:2px}
+.pchar.cur{background:#0369a1;color:#fff;border-radius:2px}
+.typing-pane{flex:1;min-height:60px;max-height:140px;background:#f0f9ff;padding:10px 16px;overflow-y:auto}
+.typed-text{font-family:var(--ff,'Courier New',monospace);font-size:var(--fs,1.15rem);line-height:1.9;white-space:pre-wrap;word-wrap:break-word;color:#1e293b}
+.typed-text .placeholder{color:#94a3b8;font-style:italic}
+.bottom-bar{display:flex;gap:8px;padding:8px 12px;background:#fff;border-top:1px solid #e2e8f0;flex-shrink:0}
+.bottom-bar button{flex:1;padding:10px;border-radius:9px;border:none;font-weight:700;font-size:.78rem;cursor:pointer;font-family:inherit}
+.bottom-bar .submit{background:linear-gradient(135deg,#22c55e,#15803d);color:#fff;flex:2}
+.bottom-bar .sec{background:#f1f5f9;color:#475569}
+#hidden-input{position:absolute;left:-9999px;top:0;width:1px;height:1px;opacity:0;pointer-events:none}
+
+/* ============ RESULT PAGE ============ */
+.result-page{flex:1;min-height:0;overflow-y:auto;padding:16px}
+.result-main{background:#fff;border-radius:16px;padding:22px;max-width:500px;margin:0 auto 12px;text-align:center;box-shadow:0 4px 14px rgba(0,0,0,.05)}
+.result-main .lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:1.5px;color:#64748b;font-weight:700}
+.result-main .big{font-size:4rem;font-weight:700;color:#16a34a;line-height:1;margin:6px 0 4px}
+.result-main .grade{font-size:.9rem;font-weight:700;color:#0369a1;margin-top:8px}
+.result-main .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0 0}
+.result-main .cell{background:#f8fafc;border-radius:10px;padding:12px 6px}
+.result-main .cell b{display:block;font-size:1.15rem;color:#0f172a}
+.result-main .cell small{font-size:.58rem;color:#64748b;text-transform:uppercase;letter-spacing:1px;font-weight:600}
+.result-section{background:#fff;border-radius:16px;padding:16px;max-width:500px;margin:0 auto 12px;box-shadow:0 4px 14px rgba(0,0,0,.05)}
+.result-section h3{font-size:.72rem;text-transform:uppercase;letter-spacing:1px;color:#64748b;font-weight:700;margin-bottom:10px}
+.typed-display{background:#f0f9ff;border-radius:10px;padding:12px;font-family:var(--ff,monospace);font-size:.82rem;line-height:1.8;max-height:240px;overflow-y:auto;color:#1e293b;white-space:pre-wrap;word-break:break-word;display:none}
+.typed-display.show{display:block}
+.action-btns{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.action-btns button,.action-btns a{padding:11px;border-radius:9px;border:none;font-weight:700;font-size:.78rem;cursor:pointer;font-family:inherit;text-decoration:none;text-align:center}
+.action-btns .wa{background:#25D366;color:#fff}
+.action-btns .tg{background:#0088cc;color:#fff}
+.action-btns .sec{background:#f1f5f9;color:#475569}
+.action-btns .pdf{background:#7c3aed;color:#fff}
+.action-btns .again{background:linear-gradient(135deg,#0369a1,#075985);color:#fff}
+.action-btns .home{background:linear-gradient(135deg,#22c55e,#15803d);color:#fff}
+
+/* ============ GAMES ============ */
+.tabs{display:flex;gap:4px;background:#f1f5f9;padding:3px;border-radius:9px;margin-bottom:10px}
+.tab{flex:1;background:transparent;color:#64748b;border:none;padding:8px;border-radius:7px;font-weight:600;cursor:pointer;font-size:.72rem;font-family:inherit}
+.tab.active{background:#fff;color:#0369a1}
+.game-settings{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.game-settings label{font-size:.7rem;color:#64748b;font-weight:600;flex:1;min-width:120px}
+.game-settings select{background:#fff;border:1.5px solid #e2e8f0;border-radius:7px;padding:6px;font-family:inherit;font-size:.75rem;outline:none;flex:1;min-width:100px}
+.game-stats{display:flex;gap:5px;justify-content:center;margin-bottom:8px}
+.gstat{background:#f1f5f9;padding:5px 10px;border-radius:7px;font-size:.7rem;font-weight:700;color:#475569}
+.gstat b{color:#0369a1}
+.game-area{background:linear-gradient(180deg,#0f172a,#1e293b);border-radius:10px;position:relative;overflow:hidden;min-height:260px;height:340px}
+.word{position:absolute;color:#fff;font-family:monospace;font-size:.95rem;font-weight:700;padding:3px 7px;background:rgba(59,130,246,.25);border:1px solid rgba(59,130,246,.5);border-radius:5px;white-space:nowrap;will-change:transform}
+.word.target{background:#22c55e;border-color:#22c55e}
+.game-input{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:9px;padding:10px;text-align:center;font-family:monospace;font-size:1rem;font-weight:700;color:#0f172a;letter-spacing:3px;min-height:40px;margin-top:8px}
+.game-input.correct{background:#dcfce7;border-color:#22c55e;color:#16a34a}
+.game-btns{display:flex;gap:8px;margin-top:8px}
+.game-btns button{flex:1;padding:11px;border-radius:9px;border:none;font-weight:700;font-size:.8rem;cursor:pointer;font-family:inherit}
+.game-btns .start{background:linear-gradient(135deg,#0369a1,#075985);color:#fff}
+.game-btns .end{background:linear-gradient(135deg,#dc2626,#991b1b);color:#fff}
+.game-btns button:disabled{opacity:.4;cursor:not-allowed}
+
+/* ============ SETTINGS ============ */
+.setting-row{display:flex;justify-content:space-between;align-items:center;padding:11px 12px;background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;margin-bottom:6px}
+.setting-row .label{font-size:.82rem;font-weight:600;color:#0f172a}
+.setting-row .sub{font-size:.65rem;color:#64748b;margin-top:1px}
+.setting-row select{background:#f8fafc;border:1px solid #e2e8f0;border-radius:7px;padding:6px;font-family:inherit;font-size:.75rem;outline:none;max-width:140px}
+.switch{position:relative;width:40px;height:22px;flex-shrink:0}
+.switch input{opacity:0;width:0;height:0}
+.slider{position:absolute;inset:0;background:#cbd5e1;border-radius:999px;cursor:pointer;transition:.2s}
+.slider:before{content:"";position:absolute;height:16px;width:16px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}
+input:checked + .slider{background:#0369a1}
+input:checked + .slider:before{transform:translateX(18px)}
+
+/* ============ HISTORY ============ */
+.history-item{background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;padding:11px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.history-item .h-title{font-size:.8rem;font-weight:700;color:#0f172a}
+.history-item .h-date{font-size:.62rem;color:#64748b;margin-top:2px}
+.history-item .h-wpm{font-size:1.3rem;font-weight:700;color:#0369a1}
+.history-item .h-wpm small{font-size:.5rem;color:#64748b;display:block;text-align:right}
+
+/* ============ MODAL ============ */
+.modal{position:fixed;inset:0;background:rgba(15,23,42,.85);display:none;align-items:center;justify-content:center;padding:16px;z-index:100;overflow-y:auto}
+.modal.show{display:flex}
+.modal-card{background:#fff;border-radius:18px;padding:20px;max-width:420px;width:100%;margin:auto}
+.modal-card h2{font-size:1.05rem;font-weight:700;color:#0f172a;margin-bottom:4px;text-align:center}
+.modal-card .sub{font-size:.72rem;color:#64748b;text-align:center;margin-bottom:14px}
+.setup-row{display:flex;justify-content:space-between;align-items:center;padding:9px 11px;background:#f8fafc;border-radius:9px;margin-bottom:6px}
+.setup-row .lbl{font-size:.78rem;font-weight:600;color:#0f172a}
+.setup-row .subtxt{font-size:.6rem;color:#64748b;margin-top:1px}
+.setup-row select{background:#fff;border:1.5px solid #e2e8f0;border-radius:7px;padding:5px 8px;font-family:inherit;font-size:.72rem;outline:none;max-width:140px}
+.setup-row input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:#0369a1}
+.setup-btns{display:flex;gap:8px;margin-top:14px}
+.setup-btns button{flex:1;padding:12px;border-radius:10px;border:none;font-weight:700;font-size:.85rem;cursor:pointer;font-family:inherit}
+.setup-btns .cancel{background:#f1f5f9;color:#475569}
+.setup-btns .begin{background:linear-gradient(135deg,#22c55e,#15803d);color:#fff}
+
+/* ============ LANDSCAPE ============ */
+@media (orientation:landscape) and (max-height:500px){
+.topbar{padding:6px 10px}
+.paragraph-text,.typed-text{font-size:1rem;line-height:1.6}
+.typing-pane{max-height:70px}
+}
+
+/* ============ DESKTOP ============ */
+@media (min-width:900px){
+.home-body{padding:20px 28px}
+.menu{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.card{flex-direction:column;align-items:flex-start;gap:10px;padding:18px}
+.card .icon{font-size:1.7rem;width:50px;height:50px}
+.paragraph-text,.typed-text{font-size:var(--fs,1.35rem);line-height:2.1}
+.paragraph-pane{padding:24px 32px}
+.typing-pane{padding:16px 32px;max-height:160px}
+.scroll-body{padding:20px 28px}
+.result-page{padding:28px}
+.game-area{height:420px}
+}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+
+<!-- ============ HOME ============ -->
+<div class="screen active" id="screen-home">
+<div class="topbar"><button onclick="window.location.href='https://unknownuniversem-blip.github.io/'">🌐 Hub</button><div class="title">⌨️ Typing Pro</div><button onclick="openScreen('settings')">⚙️</button></div>
+<div class="home-body">
+<div class="greet"><h2>Hi there 👋</h2><p>Let's boost your typing speed...</p></div>
+<div class="menu">
+<button class="card" onclick="openScreen('learn')"><div class="icon green">🎓</div><div class="body"><div class="title">Learn Typing</div><div class="sub">Beginner → Expert (40 lessons)</div></div></button>
+<button class="card" onclick="openScreen('games')"><div class="icon orange">🎮</div><div class="body"><div class="title">Typing Games</div><div class="sub">Word Rain · Reaction Test</div></div></button>
+<button class="card" onclick="openScreen('exams')"><div class="icon purple">📝</div><div class="body"><div class="title">Practice for Exams</div><div class="sub">20 topics × 8 exams</div></div></button>
+<button class="card" onclick="startSpeedTest(60)"><div class="icon blue">⚡</div><div class="body"><div class="title">Speed Test</div><div class="sub">1 · 2 · 5 · 10 min</div></div></button>
+<button class="card" onclick="openScreen('custom')"><div class="icon yellow">✏️</div><div class="body"><div class="title">Custom Test</div><div class="sub">Paste your own text</div></div></button>
+<button class="card" onclick="openScreen('history')"><div class="icon pink">📊</div><div class="body"><div class="title">My History</div><div class="sub">Past results & progress</div></div></button>
+<button class="card" onclick="openScreen('settings')"><div class="icon" style="background:#e2e8f0">⚙️</div><div class="body"><div class="title">Settings</div><div class="sub">Font, size, sound, keyboard</div></div></button>
+<button class="card" onclick="window.location.href='https://unknownuniversem-blip.github.io/'"><div class="icon" style="background:#e0f2fe">🌐</div><div class="body"><div class="title">More Tools</div><div class="sub">Back to Student Utility Hub (49+ tools)</div></div></button>
+</div>
+<div class="ad-slot"></div>
+</div>
+</div>
+
+<!-- ============ LEARN ============ -->
+<div class="screen" id="screen-learn">
+<div class="topbar"><button onclick="goHome()">← Back</button><div class="title">Learn Typing</div><button onclick="goHome()">🏠</button></div>
+<div class="scroll-body" id="learnBody"></div>
+</div>
+
+<!-- ============ EXAMS ============ -->
+<div class="screen" id="screen-exams">
+<div class="topbar"><button onclick="goHome()">← Back</button><div class="title" id="examsTitle">Exam Practice</div><button onclick="goHome()">🏠</button></div>
+<div class="scroll-body">
+<button class="btn" id="examsBackBtn" style="display:none;margin-bottom:10px" onclick="renderExams()">← All Exams</button>
+<div id="examList"></div>
+</div>
+</div>
+
+<!-- ============ CUSTOM ============ -->
+<div class="screen" id="screen-custom">
+<div class="topbar"><button onclick="goHome()">← Back</button><div class="title">Custom Test</div><button onclick="goHome()">🏠</button></div>
+<div class="scroll-body">
+<textarea id="customText" placeholder="Paste or type your own text here..." style="width:100%;min-height:180px;padding:12px;border:1.5px solid #e2e8f0;border-radius:10px;font-family:inherit;font-size:.85rem;line-height:1.6;resize:vertical;outline:none"></textarea>
+<button class="btn btn-primary" onclick="startCustomTest()">▶ Continue</button>
+</div>
+</div>
+
+<!-- ============ GAMES ============ -->
+<div class="screen" id="screen-games">
+<div class="topbar"><button onclick="stopGame(false);goHome()">← Back</button><div class="title">Typing Games</div><button onclick="stopGame(false);goHome()">🏠</button></div>
+<div class="scroll-body">
+<div class="tabs">
+<button class="tab active" data-game="rain" onclick="switchGame('rain')">🌧️ Word Rain</button>
+<button class="tab" data-game="react" onclick="switchGame('react')">⚡ Reaction</button>
+</div>
+<div id="gameInfo" style="background:#f0f9ff;border-left:3px solid #0369a1;border-radius:7px;padding:8px 11px;font-size:.72rem;color:#075985;font-weight:600;margin-bottom:10px">Words fall from the top — type them before they reach the bottom!</div>
+<div class="game-settings">
+<label>⚡ Speed: <select id="gameSpeed"><option value="slow">Slow</option><option value="normal" selected>Normal</option><option value="fast">Fast</option><option value="insane">Insane</option></select></label>
+<label>⏱ Time: <select id="gameDuration"><option value="30">30s</option><option value="60" selected>60s</option><option value="120">120s</option></select></label>
+</div>
+<div class="game-stats">
+<div class="gstat">Score: <b id="gScore">0</b></div>
+<div class="gstat">Missed: <b id="gMiss">0</b></div>
+<div class="gstat">Time: <b id="gTime">60s</b></div>
+</div>
+<div class="game-area" id="gameArea"></div>
+<div class="game-input" id="gameInput">_</div>
+<div class="game-btns">
+<button class="start" id="gameStartBtn" onclick="startGame()">▶ Start</button>
+<button class="end" id="gameEndBtn" onclick="stopGame(true)" disabled>⏹ End</button>
+</div>
+</div>
+</div>
+
+<!-- ============ HISTORY ============ -->
+<div class="screen" id="screen-history">
+<div class="topbar"><button onclick="goHome()">← Back</button><div class="title">My History</div><button onclick="goHome()">🏠</button></div>
+<div class="scroll-body">
+<div id="historyList"></div>
+</div>
+</div>
+
+<!-- ============ SETTINGS ============ -->
+<div class="screen" id="screen-settings">
+<div class="topbar"><button onclick="goHome()">← Back</button><div class="title">Settings</div><button onclick="goHome()">🏠</button></div>
+<div class="scroll-body">
+<div class="setting-row"><div><div class="label">Text Size</div><div class="sub">Paragraph & typing</div></div>
+<select id="optFont"><option value="0.95rem">Small</option><option value="1.15rem" selected>Medium</option><option value="1.4rem">Large</option><option value="1.7rem">Extra Large</option><option value="2rem">Huge</option></select></div>
+<div class="setting-row"><div><div class="label">Font Family</div><div class="sub">Text style</div></div>
+<select id="optFF">
+<option value="'Courier New',Courier,monospace">Courier</option>
+<option value="'Consolas','Monaco',monospace">Consolas</option>
+<option value="Arial,Helvetica,sans-serif">Arial</option>
+<option value="Georgia,serif">Georgia</option>
+<option value="'Times New Roman',Times,serif">Times New Roman</option>
+<option value="Verdana,Geneva,sans-serif">Verdana</option>
+<option value="'Trebuchet MS',sans-serif">Trebuchet MS</option>
+</select></div>
+<div class="setting-row"><div><div class="label">Allow Backspace</div><div class="sub">Fix mistakes</div></div><div class="switch"><input type="checkbox" id="optBack" checked><span class="slider"></span></div></div>
+<div class="setting-row"><div><div class="label">Sound Effects</div><div class="sub">Beep on mistakes</div></div><div class="switch"><input type="checkbox" id="optSound"><span class="slider"></span></div></div>
+<div class="setting-row"><div><div class="label">Auto Scroll</div><div class="sub">Keep current line visible</div></div><div class="switch"><input type="checkbox" id="optScroll" checked><span class="slider"></span></div></div>
+<div style="margin-top:14px;padding:12px;background:#f8fafc;border-radius:10px;font-size:.68rem;color:#64748b;line-height:1.6;text-align:center">Made for SSC · IBPS · RRB · State PSC aspirants<br>100% offline · No data collected</div>
+</div>
+</div>
+
+<!-- ============ PRACTICE ============ -->
+<div class="screen" id="screen-practice">
+<div class="practice">
+<div class="stats-bar">
+<button class="font-btn" onclick="exitPractice()" style="width:auto;padding:4px 10px">←</button>
+<div class="ls">⏱ <b id="sTime">00:00</b></div>
+<div class="ls">⚡ <b id="sWpm">0</b> WPM</div>
+<div class="ls">🎯 <b id="sAcc">100</b>%</div>
+<select id="quickFF" onchange="changeFF(this.value)">
+<option value="'Courier New',Courier,monospace">Courier</option>
+<option value="'Consolas','Monaco',monospace">Consolas</option>
+<option value="Arial,Helvetica,sans-serif">Arial</option>
+<option value="Georgia,serif">Georgia</option>
+<option value="'Times New Roman',Times,serif">Times</option>
+<option value="Verdana,Geneva,sans-serif">Verdana</option>
+<option value="'Trebuchet MS',sans-serif">Trebuchet</option>
+</select>
+<button class="font-btn" onclick="changeFS(-1)">A-</button>
+<button class="font-btn" onclick="changeFS(1)">A+</button>
+</div>
+<div class="paragraph-pane"><div class="paragraph-text" id="paraText"></div></div>
+<div class="typing-pane"><div class="typed-text" id="typedText"><span class="placeholder">Start typing below...</span></div></div>
+<div class="bottom-bar">
+<button class="sec" onclick="restartTest()">↺ Restart</button>
+<button class="submit" onclick="submitTest()">✓ Submit</button>
+</div>
+</div>
+</div>
+
+<!-- ============ RESULT ============ -->
+<div class="screen" id="screen-result">
+<div class="topbar"><button onclick="goHome()">← Back</button><div class="title">Result</div><button onclick="goHome()">🏠</button></div>
+<div class="result-page">
+<div class="result-main">
+<div class="lbl">Your Speed</div>
+<div class="big" id="rWpm">0</div>
+<div class="lbl">Words per minute (net)</div>
+<div class="grade" id="rGrade"></div>
+<div class="grid">
+<div class="cell"><b id="rGross">0</b><small>Gross WPM</small></div>
+<div class="cell"><b id="rAcc">0%</b><small>Accuracy</small></div>
+<div class="cell"><b id="rErrors">0</b><small>Errors</small></div>
+</div>
+</div>
+<div class="result-section">
+<h3>📄 Your Typed Text</h3>
+<button class="btn" onclick="toggleTyped()" style="margin-bottom:10px">👁️ Show / Hide</button>
+<div class="typed-display" id="typedDisplay"></div>
+</div>
+<div class="result-section">
+<h3>📤 Share</h3>
+<div class="action-btns">
+<a class="wa" id="shareWa" href="#" target="_blank">💬 WhatsApp</a>
+<a class="tg" id="shareTg" href="#" target="_blank">✈️ Telegram</a>
+<button class="sec" onclick="copyResult()">📋 Copy</button>
+<button class="pdf" onclick="printResult()">🖨️ Save PDF</button>
+</div>
+</div>
+<div class="result-section">
+<h3>🔄 What's Next?</h3>
+<div class="action-btns">
+<button class="again" onclick="tryAgain()">↺ Try Again</button>
+<button class="home" onclick="goHome()">🏠 Home</button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<textarea id="hidden-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+
+<!-- SETUP MODAL -->
+<div class="modal" id="setupModal">
+<div class="modal-card">
+<h2>⚙️ Before You Begin</h2>
+<div class="sub" id="setupSub">Customize your session</div>
+<div class="setup-row"><div><div class="lbl">Font Family</div></div>
+<select id="setupFF">
+<option value="'Courier New',Courier,monospace">Courier</option>
+<option value="'Consolas','Monaco',monospace">Consolas</option>
+<option value="Arial,Helvetica,sans-serif">Arial</option>
+<option value="Georgia,serif">Georgia</option>
+<option value="'Times New Roman',Times,serif">Times New Roman</option>
+<option value="Verdana,Geneva,sans-serif">Verdana</option>
+<option value="'Trebuchet MS',sans-serif">Trebuchet MS</option>
+</select></div>
+<div class="setup-row"><div><div class="lbl">Font Size</div></div>
+<select id="setupFS">
+<option value="0.95rem">Small</option>
+<option value="1.15rem">Medium</option>
+<option value="1.4rem">Large</option>
+<option value="1.7rem">Extra Large</option>
+<option value="2rem">Huge</option>
+</select></div>
+<div class="setup-row"><div><div class="lbl">Duration</div></div>
+<select id="setupDur">
+<option value="60">1 minute</option>
+<option value="120">2 minutes</option>
+<option value="300">5 minutes</option>
+<option value="600">10 minutes</option>
+<option value="900">15 minutes</option>
+<option value="0">Unlimited</option>
+</select></div>
+<div class="setup-row"><div><div class="lbl">Backspace</div></div><input type="checkbox" id="setupBack" checked></div>
+<div class="setup-row"><div><div class="lbl">Sound</div></div><input type="checkbox" id="setupSound"></div>
+<div class="setup-btns">
+<button class="cancel" onclick="closeSetup()">Cancel</button>
+<button class="begin" onclick="beginNow()">▶ Begin Now</button>
+</div>
+</div>
+</div>
+
+<script>
+/* ============================================
+   TEXT POOL
+   ============================================ */
+const PARAS=[
+"The Republic of India is a federal parliamentary democratic republic governed under the Constitution of India. The President serves as the ceremonial head of state while the Prime Minister heads the government. Parliament consists of the President, Rajya Sabha, and Lok Sabha, forming the legislative framework of the nation.",
+"Recent developments in the Indian economy indicate a sustained growth trajectory across various sectors including technology, manufacturing, and services. Policy reforms aimed at digital infrastructure, financial inclusion, and sustainable development continue to shape the nation's economic landscape in the twenty first century.",
+"Numbers form the foundation of mathematics and quantitative reasoning. Prime numbers are divisible only by one and themselves. Composite numbers have multiple factors. Understanding ratios, proportions, and percentages enables efficient problem-solving in competitive examinations.",
+"Logical reasoning involves systematic analysis of premises to derive valid conclusions. Deductive reasoning moves from general principles to specific applications, whereas inductive reasoning builds broader theories from specific observations. Both are essential for competitive examination success.",
+"Grammar provides the structural foundation of effective communication. Understanding parts of speech, sentence construction, and vocabulary enrichment enables clear expression. Regular reading of newspapers and books improves language proficiency and comprehension abilities significantly.",
+"Modern computing systems comprise hardware components including processors, memory, and storage devices working in coordination. Software operates at multiple layers, from system utilities to application programs. Understanding these fundamentals is essential for digital literacy.",
+"The Reserve Bank of India functions as the central bank, regulating monetary policy, currency issuance, and banking operations. Commercial banks accept deposits and extend credit. Cooperative banks, regional rural banks, and payment banks form a diverse banking ecosystem.",
+"Financial literacy encompasses understanding of savings, investments, insurance, and taxation. Mutual funds, equities, fixed deposits, and pension schemes offer diverse investment avenues. Budgeting, disciplined saving, and informed financial decision-making contribute to long-term financial well-being.",
+"Static general knowledge encompasses facts about capitals, currencies, national symbols, constitutions, and geographical features. While static in nature, this knowledge forms the foundation for numerous competitive examinations and civil services assessments conducted across the country.",
+"Indian history spans ancient civilisations, the Vedic period, Mauryan and Gupta empires, medieval sultanates, Mughal rule, colonial era, and the independence movement. Each period contributed to cultural, economic, and political developments that shaped modern India and its institutions.",
+"India's geography ranges from the Himalayan mountains in the north to coastal plains in the south. Major rivers including the Ganga, Yamuna, and Brahmaputra sustain agriculture and civilisation. Climate varies from tropical to alpine, and natural resources support diverse economic activities.",
+"The Indian Constitution establishes a federal structure with clear division of powers between central and state governments. Fundamental rights guarantee citizens essential freedoms while directive principles guide state policy. Independent judiciary, free press, and periodic elections ensure democratic functioning.",
+"Microeconomics studies individual consumer and firm behaviour while macroeconomics examines aggregates like GDP, inflation, and unemployment. Fiscal policy involves government taxation and spending decisions. Monetary policy, managed by central banks, influences money supply and interest rates.",
+"Scientific advancement drives technological innovation across all sectors. Physics explains fundamental forces and matter. Chemistry studies substances and reactions. Biology examines living organisms and ecosystems. Emerging fields like biotechnology and nanotechnology promise transformative capabilities.",
+"Environmental conservation is essential for sustainable development and human well-being. Climate change, pollution, deforestation, and biodiversity loss pose significant challenges. Renewable energy, sustainable agriculture, and responsible consumption patterns offer viable solutions for a greener future.",
+"Sports cultivate physical fitness, teamwork, and sportsmanship. Cricket dominates Indian sporting culture, while hockey, football, badminton, and athletics have passionate followings. Olympic and Commonwealth achievements inspire youth across the nation.",
+"Literature reflects cultural values, historical contexts, and human experiences. Indian writers in English, Hindi, Bengali, Tamil, and other languages have achieved international recognition. Autobiographies, fiction, poetry, and essays explore diverse themes and perspectives.",
+"Bharat Ratna, Padma Vibhushan, Padma Bhushan, and Padma Shri represent India's highest civilian honours. Param Vir Chakra recognises military valour. Nobel Prizes, Oscars, and other international recognitions celebrate Indian achievement in various fields across the world.",
+"National and international observances commemorate significant events and causes. Republic Day on January 26 celebrates constitutional adoption. Independence Day on August 15 honours the freedom struggle. Gandhi Jayanti on October 2 promotes peace and non-violence across the nation.",
+"Effective typing combines speed and accuracy across varied content types. Practicing diverse passages ranging from technical to descriptive, from factual to analytical, develops well-rounded keyboard proficiency essential for competitive examinations and professional contexts.",
+"The quick brown fox jumps over the lazy dog near the riverbank at dawn. Students who practice typing daily improve their speed and accuracy within a few weeks of consistent effort and dedication. Regular practice builds muscle memory for the keyboard layout.",
+"Government job exams in India often include typing tests for clerical positions. Candidates must achieve a minimum speed with high accuracy to qualify for the position they are applying for in the organization. Preparation requires dedicated daily practice.",
+"Accuracy matters more than raw speed because mistakes cost time to correct and can affect the final score in competitive examinations. Focus on proper finger placement and maintain good posture while typing for long periods of sustained work.",
+"Regular practice is the key to building muscle memory for typing efficiently. Focus on accuracy first then gradually increase your speed as your fingers learn the position of each key on the keyboard. Take short breaks during long practice sessions.",
+"Typing is a valuable skill in the modern workplace. Regular practice improves both speed and accuracy. Many employers now require typing proficiency as a basic job skill for various administrative and clerical roles in the Indian job market.",
+"Effective communication requires clarity of thought and precision of expression. Writers must consider their audience, purpose, and context. Good writing emerges from careful planning, multiple drafts, and attentive revision throughout the writing process.",
+"Technology continues to reshape education, healthcare, commerce, and governance across the world. Digital literacy has become essential for participation in modern society. Continuous learning enables individuals to adapt to rapid technological change.",
+"Success in competitive examinations requires disciplined study, consistent practice, and strategic time management. Candidates should focus on understanding fundamental concepts rather than rote memorization of facts and figures.",
+"The Indian Constitution guarantees fundamental rights to all citizens, including equality before law, freedom of speech, and protection of life and personal liberty. These rights form the bedrock of democratic governance in the country.",
+"Climate change represents one of the most significant challenges facing humanity today. Rising temperatures, changing rainfall patterns, and extreme weather events affect agriculture, water resources, and public health across the globe.",
+"Reading widely improves vocabulary, comprehension, and critical thinking. Newspapers, books, and journals expose readers to diverse perspectives and writing styles. Regular reading is essential for language proficiency and academic success.",
+"Health is wealth, as the saying goes. Regular exercise, balanced nutrition, adequate sleep, and stress management contribute to physical and mental well-being. Preventive care reduces the burden of chronic diseases on individuals and society.",
+"The Indian economy is one of the fastest growing major economies in the world. Sectors like information technology, pharmaceuticals, and renewable energy contribute significantly to employment generation and export earnings of the nation.",
+"Public speaking is an essential skill for professional advancement. Effective speakers engage their audience through clear structure, compelling content, and confident delivery. Practice and feedback are key to continuous improvement.",
+"Scientific inquiry proceeds through observation, hypothesis formation, experimentation, and analysis. Peer review ensures rigor and reproducibility. Cumulative knowledge drives technological progress and human understanding of the natural world.",
+"Financial planning involves budgeting, saving, investing, and risk management. Diverse investment instruments offer varying risk-return profiles. Long-term discipline and diversification are key to wealth creation and financial security.",
+"Historical study illuminates the past and informs the present. Understanding causes and consequences of past events enables societies to learn from experience and make informed decisions for a better future for all citizens.",
+"Environmental sustainability requires balancing economic development with ecological preservation. Renewable energy, waste reduction, and conservation efforts contribute to a healthier planet for future generations to inherit and enjoy.",
+"Critical thinking involves analysing information objectively, evaluating evidence, and forming reasoned judgments. This skill is essential for academic success, professional advancement, and responsible citizenship in a democratic society.",
+"Time management is a crucial skill for students and professionals alike. Prioritising tasks, breaking them into smaller steps, and maintaining focus without distraction leads to higher productivity and reduced stress levels throughout the day."
+];
+
+const LESSONS=[
+{n:1,title:"Home Row — Left",focus:"a s d f",diff:"easy",text:"asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf"},
+{n:2,title:"Home Row — Right",focus:"j k l ;",diff:"easy",text:"jkl; jkl; jkl; jkl; jkl; jkl; jkl; jkl; jkl; jkl; jkl; jkl; jkl; jkl; jkl; jkl;"},
+{n:3,title:"Home Row — Both",focus:"asdf jkl;",diff:"easy",text:"asdf jkl; asdf jkl; asdf jkl; asdf jkl; asdf jkl; asdf jkl; asdf jkl; asdf jkl;"},
+{n:4,title:"Top Row — Left",focus:"q w e r",diff:"easy",text:"qwer qwer qwer qwer qwer qwer qwer qwer qwer qwer qwer qwer qwer qwer qwer qwer"},
+{n:5,title:"Top Row — Right",focus:"u i o p",diff:"easy",text:"uiop uiop uiop uiop uiop uiop uiop uiop uiop uiop uiop uiop uiop uiop uiop uiop"},
+{n:6,title:"Top Row — Both",focus:"qwer uiop",diff:"easy",text:"qwer uiop qwer uiop qwer uiop qwer uiop qwer uiop qwer uiop qwer uiop qwer uiop"},
+{n:7,title:"Bottom Row — Left",focus:"z x c v",diff:"easy",text:"zxcv zxcv zxcv zxcv zxcv zxcv zxcv zxcv zxcv zxcv zxcv zxcv zxcv zxcv zxcv zxcv"},
+{n:8,title:"Bottom Row — Right",focus:"m , . /",diff:"easy",text:"m,./ m,./ m,./ m,./ m,./ m,./ m,./ m,./ m,./ m,./ m,./ m,./ m,./ m,./ m,./ m,./"},
+{n:9,title:"All Letters Mixed",focus:"all keys",diff:"easy",text:"the quick brown fox jumps over the lazy dog while students practice daily typing lessons on their computers"},
+{n:10,title:"Common Words",focus:"top 20 words",diff:"easy",text:"the and for you that with have this from they will one all but not what when we are they were said each"},
+{n:11,title:"Capital Letters",focus:"A to Z",diff:"medium",text:"The Quick Brown Fox Jumps Over The Lazy Dog While Students Practice Typing Every Day With Focus"},
+{n:12,title:"Numbers Row",focus:"1 2 3 4 5 6 7 8 9 0",diff:"medium",text:"1234567890 0987654321 111 222 333 444 555 666 777 888 999 000 12 34 56 78 90 100"},
+{n:13,title:"Punctuation",focus:". , ; ? !",diff:"medium",text:"Hello, world. How are you? I'm fine; thanks! Practice: this, that, and more. Really? Yes! Great, isn't it?"},
+{n:14,title:"Short Sentences",focus:"flow",diff:"medium",text:"Practice makes perfect. Time is money. Better late than never. Actions speak louder than words. Every journey begins with a single step."},
+{n:15,title:"Paragraph Practice",focus:"paragraph",diff:"medium",text:"Government job exams in India often include typing tests for clerical positions. Candidates must achieve a minimum speed of thirty words per minute with high accuracy to qualify for the position they are applying for."},
+{n:16,title:"SSC Exam Passage",focus:"exam",diff:"medium",text:"The Staff Selection Commission conducts examinations for recruitment to various posts in the government of India. The typing test is a crucial component for positions like Lower Division Clerk and Data Entry Operator."},
+{n:17,title:"Bank Exam Passage",focus:"exam",diff:"medium",text:"The Institute of Banking Personnel Selection recruits candidates for public sector banks across India. Typing speed and accuracy are essential for clerical and data entry roles in banking operations and daily tasks."},
+{n:18,title:"Real-world Sentences",focus:"mixed",diff:"medium",text:"The Reserve Bank of India manages monetary policy for the entire nation. Commercial banks handle customer deposits and provide loans to businesses and individuals across the country."},
+{n:19,title:"Speed Drill",focus:"speed",diff:"medium",text:"The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog."},
+{n:20,title:"Full Exam Mock",focus:"final exam",diff:"medium",text:"Typing is a valuable skill in the modern workplace. Regular practice improves both speed and accuracy. Focus on proper finger placement and maintain good posture while typing for long periods of time."},
+{n:21,title:"Advanced Vocabulary",focus:"complex words",diff:"hard",text:"The ubiquitous phenomenon of technological advancement necessitates a comprehensive understanding of multifaceted paradigms. Individuals must endeavour to assimilate novel methodologies and consistently demonstrate proficiency in emergent competencies."},
+{n:22,title:"Indian Constitution",focus:"polity",diff:"hard",text:"The Constitution of India is the supreme law of the land, establishing the framework of fundamental political principles, procedures, practices, rights, powers, and duties of government institutions and its citizens."},
+{n:23,title:"Economic Terminology",focus:"commerce",diff:"hard",text:"Fiscal consolidation and monetary policy calibration are essential instruments for macroeconomic stabilisation. Inflation targeting, current account deficit management, and exchange rate dynamics significantly influence emerging market economies."},
+{n:24,title:"Scientific Language",focus:"science",diff:"hard",text:"Photosynthesis is the biological process by which green plants and certain other organisms transform light energy into chemical energy. During this process, carbon dioxide and water are converted into glucose and oxygen."},
+{n:25,title:"Legal Language",focus:"law",diff:"hard",text:"The principle of natural justice encompasses the audi alteram partem rule and the nemo judex in causa sua doctrine, ensuring that administrative and judicial decisions adhere to procedural fairness and reasoned adjudication."},
+{n:26,title:"Business Writing",focus:"formal",diff:"hard",text:"Please be advised that the aforementioned correspondence serves to formally communicate our organisation's endorsement of the proposed strategic initiative. Kindly acknowledge receipt and provide your subsequent recommendations."},
+{n:27,title:"Descriptive Passage",focus:"flow",diff:"hard",text:"The magnificent Himalayan range stretches across the northern frontier of the Indian subcontinent, its snow-capped peaks piercing the azure sky. Sacred rivers originate from its glaciers, descending through lush valleys."},
+{n:28,title:"Historical Account",focus:"long form",diff:"hard",text:"The Indian independence movement represented one of the most significant political upheavals of the twentieth century. Through decades of struggle, sacrifice, and unwavering determination, millions of citizens united to demand self-governance."},
+{n:29,title:"Philosophical Text",focus:"abstract",diff:"hard",text:"Epistemological inquiries examine the nature, scope, and limits of human knowledge. Empiricists contend that sensory experience forms the foundation of understanding, while rationalists argue that reason and innate principles guide comprehension."},
+{n:30,title:"Complex Paragraph",focus:"mastery",diff:"hard",text:"Contemporary societies confront unprecedented challenges requiring innovative interdisciplinary solutions. The interconnectedness of economic, environmental, and social dimensions necessitates holistic approaches that transcend traditional disciplinary boundaries."},
+{n:31,title:"Expert — Mixed Case",focus:"expert",diff:"expert",text:"The Rapid Advancement of Artificial Intelligence necessitates comprehensive Regulatory Frameworks addressing Ethical considerations, Accountability mechanisms, and Transparency requirements across various sectors."},
+{n:32,title:"Expert — Numbers",focus:"expert",diff:"expert",text:"In 2024, the Indian economy grew by 7.2% with GDP reaching $3.5 trillion. Exports increased 12.5% while imports rose 8.3%, resulting in a trade deficit of approximately $240 billion during the fiscal year."},
+{n:33,title:"Expert — Complex Sentences",focus:"expert",diff:"expert",text:"Notwithstanding considerable opposition from various quarters, the committee ultimately resolved to implement the proposed amendments; however, dissenting members formally recorded their objections in the final minutes of deliberation."},
+{n:34,title:"Expert — Technical",focus:"expert",diff:"expert",text:"Machine learning algorithms optimise objective functions through iterative gradient descent, adjusting parameters based on loss calculations. Backpropagation enables efficient credit assignment across deep neural network architectures."},
+{n:35,title:"Expert — Legal Draft",focus:"expert",diff:"expert",text:"Whereas the party of the first part hereby agrees to indemnify and hold harmless the party of the second part, its successors, assigns, officers, directors, and employees, from and against any and all claims, damages, and liabilities."},
+{n:36,title:"Expert — Academic Writing",focus:"expert",diff:"expert",text:"Preliminary empirical investigations suggest a statistically significant correlation between sustained practice and enhanced proficiency; nevertheless, further longitudinal studies with larger sample sizes are warranted to establish causality."},
+{n:37,title:"Expert — Long Paragraph",focus:"expert",diff:"expert",text:"The relationship between economic development and environmental sustainability represents one of the most contentious debates in contemporary policy discourse. Proponents of rapid industrialisation argue that economic growth is a prerequisite for environmental protection."},
+{n:38,title:"Expert — Medical Terms",focus:"expert",diff:"expert",text:"Cardiovascular pathologies frequently manifest through a constellation of symptoms including dyspnoea, palpitations, syncope, and peripheral oedema. Diagnostic evaluation typically incorporates electrocardiography and echocardiography."},
+{n:39,title:"Expert — Government Notice",focus:"expert",diff:"expert",text:"Notice is hereby given that the undersigned, pursuant to authority vested by Section 144 of the Code of Criminal Procedure, 1973, hereby prohibits the assembly of five or more persons in the specified area with effect from 18:00 hours."},
+{n:40,title:"Expert — Master Test",focus:"expert",diff:"expert",text:"The Indian Civil Services examination, widely regarded as one of the most rigorous assessments globally, evaluates candidates across a comprehensive spectrum encompassing history, geography, polity, economy, environment, science, technology, current affairs, ethics, and aptitude."}
+];
+
+const TOPICS=["General Awareness","Current Affairs","Quantitative Ability","Reasoning","English Language","Computer Knowledge","Banking Awareness","Financial Awareness","Static GK","Indian History","Geography","Indian Polity","Economics","Science & Tech","Environment","Sports & Games","Books & Authors","Awards & Honours","Important Days","Mixed Practice"];
+
+const EXAMS=[
+{name:"SSC CGL (Tier-2 DEST)",wpm:35,dur:600},
+{name:"SSC CHSL (DEO/LDC)",wpm:35,dur:600},
+{name:"IBPS PO (Clerical)",wpm:30,dur:300},
+{name:"IBPS Clerk",wpm:30,dur:300},
+{name:"RRB NTPC (Clerk)",wpm:30,dur:300},
+{name:"State PSC Clerk",wpm:35,dur:600},
+{name:"Delhi Police (LDC)",wpm:35,dur:600},
+{name:"Court Clerk (High Court)",wpm:35,dur:600}
+];
+
+/* ============================================
+   STATE
+   ============================================ */
+const S={
+mode:"",currentLesson:null,examName:"",topicName:"",
+text:"",chars:[],correctChars:[],currentIndex:0,
+correct:0,wrong:0,totalTyped:0,startTime:0,elapsed:0,
+duration:0,timed:false,running:false,timerId:null,lastLen:0,
+typedSnapshot:"",pendingConfig:null,
+progress:JSON.parse(localStorage.getItem("tp_progress")||"{}"),
+history:JSON.parse(localStorage.getItem("tp_history")||"[]"),
+settings:JSON.parse(localStorage.getItem("tp_settings")||'{"back":true,"sound":false,"scroll":true,"fs":"1.15rem","ff":"\'Courier New\',Courier,monospace"}')
+};
+
+const $=id=>document.getElementById(id);
+const HI=$("hidden-input");
+
+/* Font */
+function applyFS(s){document.documentElement.style.setProperty("--fs",s);S.settings.fs=s;save()}
+function applyFF(f){document.documentElement.style.setProperty("--ff",f);S.settings.ff=f;save()}
+function save(){localStorage.setItem("tp_settings",JSON.stringify(S.settings))}
+applyFS(S.settings.fs);
+applyFF(S.settings.ff);
+$("optFont").value=S.settings.fs;
+$("optFF").value=S.settings.ff;
+$("quickFF").value=S.settings.ff;
+$("optFont").onchange=e=>applyFS(e.target.value);
+$("optFF").onchange=e=>applyFF(e.target.value);
+$("quickFF").onchange=e=>applyFF(e.target.value);
+$("optBack").checked=S.settings.back;
+$("optSound").checked=S.settings.sound;
+$("optScroll").checked=S.settings.scroll;
+$("optBack").onchange=e=>{S.settings.back=e.target.checked;save()};
+$("optSound").onchange=e=>{S.settings.sound=e.target.checked;save()};
+$("optScroll").onchange=e=>{S.settings.scroll=e.target.checked;save()};
+function changeFS(d){const a=["0.95rem","1.15rem","1.4rem","1.7rem","2rem"];let i=a.indexOf(S.settings.fs);if(i<0)i=1;i=Math.max(0,Math.min(4,i+d));applyFS(a[i])}
+function changeFF(f){applyFF(f)}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+function goHome(){
+if(S.running)stopPractice();
+if(document.fullscreenElement)document.exitFullscreen?.();
+openScreen("home");
+}
+function openScreen(name){
+document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+const sc=$("screen-"+name);
+if(sc)sc.classList.add("active");
+if(name==="learn")renderLessons();
+if(name==="exams")renderExams();
+if(name==="history")renderHistory();
+if(name!=="practice"&&name!=="result")stopPractice();
+}
+function exitPractice(){stopPractice();openScreen("home")}
+function stopPractice(){S.running=false;clearInterval(S.timerId);HI.blur()}
+
+/* ============================================
+   LESSONS
+   ============================================ */
+function renderLessons(){
+const groups=[
+{d:"easy",label:"Beginner",emoji:"🟢",badge:"easy"},
+{d:"medium",label:"Intermediate",emoji:"🟡",badge:"medium"},
+{d:"hard",label:"Advanced",emoji:"🔴",badge:"hard"},
+{d:"expert",label:"Expert",emoji:"🟣",badge:"expert"}
+];
+let html="";
+groups.forEach(g=>{
+const ls=LESSONS.filter(l=>l.diff===g.d);
+html+='<div class="diff-group"><div class="diff-header"><span>'+g.emoji+' '+g.label+'</span><span class="diff-badge '+g.badge+'">'+ls.length+' lessons</span></div>';
+ls.forEach(l=>{
+const idx=LESSONS.indexOf(l);
+const done=S.progress[l.n]===true;
+const prevDone=idx===0||S.progress[LESSONS[idx-1].n]===true;
+const locked=!done&&!prevDone;
+html+='<button class="lesson '+(done?'done':'')+' '+(locked?'locked':'')+'" onclick="openLesson('+l.n+')">'+
+'<div class="num">'+(done?'✓':l.n)+'</div>'+
+'<div class="body"><div class="title">'+l.title+'</div><div class="meta">'+l.focus+'</div></div>'+
+(done?'<span style="background:#22c55e;color:#fff;font-size:.58rem;padding:2px 6px;border-radius:999px;font-weight:700">Done</span>':'')+
+(locked?'<span style="background:#f1f5f9;color:#94a3b8;font-size:.58rem;padding:2px 6px;border-radius:999px;font-weight:700">🔒</span>':'')+
+'</button>';
+});
+html+='</div>';
+});
+$("learnBody").innerHTML=html;
+}
+function openLesson(n){
+const l=LESSONS.find(x=>x.n===n);if(!l)return;
+const idx=LESSONS.indexOf(l);
+const done=S.progress[l.n]===true;
+const prevDone=idx===0||S.progress[LESSONS[idx-1].n]===true;
+if(!done&&!prevDone){alert("Complete previous lesson first");return;}
+S.currentLesson=n;
+showSetup({mode:"lesson",title:"Lesson "+n,sub:l.title,text:l.text,dur:0});
+}
+
+/* ============================================
+   EXAMS
+   ============================================ */
+function renderExams(){
+$("examsBackBtn").style.display="none";
+$("examsTitle").textContent="Exam Practice";
+$("examList").innerHTML=EXAMS.map((e,i)=>'<button class="exam-card" onclick="openExam('+i+')"><div class="name">'+e.name+'</div><div class="meta"><span>🎯 '+e.wpm+' WPM</span><span>⏱ '+(e.dur/60)+' min</span><span>📚 20 topics</span></div></button>').join("");
+}
+function openExam(i){
+const ex=EXAMS[i];
+$("examsBackBtn").style.display="block";
+$("examsTitle").textContent=ex.name;
+$("examList").innerHTML=TOPICS.map((t,j)=>'<button class="topic-card" onclick="openTopic('+i+','+j+')"><div class="tn">'+(j+1)+'</div><div class="tt">'+t+'</div><div class="tw">'+ex.wpm+' WPM</div></button>').join("");
+}
+function openTopic(examIdx,topicIdx){
+const ex=EXAMS[examIdx];
+const topic=TOPICS[topicIdx];
+showSetup({mode:"exam",title:ex.name,sub:topic,text:null,dur:ex.dur});
+}
+
+/* ============================================
+   SPEED / CUSTOM
+   ============================================ */
+function startSpeedTest(d){showSetup({mode:"speed",title:"Speed Test",sub:(d/60)+" minute",text:null,dur:d})}
+function startCustomTest(){
+const t=$("customText").value.trim();
+if(t.length<20){alert("Please enter at least 20 characters");return;}
+showSetup({mode:"custom",title:"Custom Test",sub:"Your text",text:t,dur:0});
+}
+
+/* ============================================
+   SETUP MODAL
+   ============================================ */
+function showSetup(cfg){
+S.pendingConfig=cfg;
+$("setupSub").textContent=cfg.title+" · "+cfg.sub;
+$("setupFF").value=S.settings.ff;
+$("setupFS").value=S.settings.fs;
+$("setupBack").checked=S.settings.back;
+$("setupSound").checked=S.settings.sound;
+/* Rebuild duration options */
+const dsel=$("setupDur");
+if(cfg.dur>0){
+const target=cfg.dur;
+const matching=[...dsel.options].find(o=>parseInt(o.value)===target);
+if(matching){dsel.value=target.toString()}
+else{
+for(let i=dsel.options.length-1;i>=0;i--){if(dsel.options[i].value>900)dsel.remove(i)}
+const o=document.createElement("option");
+o.value=target.toString();o.textContent=(target/60)+" min (exam)";
+dsel.appendChild(o);dsel.value=target.toString();
+}
+}else{dsel.value="0"}
+$("setupModal").classList.add("show");
+}
+function closeSetup(){$("setupModal").classList.remove("show");S.pendingConfig=null}
+function beginNow(){
+const cfg=S.pendingConfig;if(!cfg)return;
+applyFS($("setupFS").value);
+applyFF($("setupFF").value);
+S.settings.back=$("setupBack").checked;
+S.settings.sound=$("setupSound").checked;
+save();
+const dur=parseInt($("setupDur").value)||0;
+$("setupModal").classList.remove("show");
+S.mode=cfg.mode;
+S.examName=cfg.title;
+S.topicName=cfg.sub;
+S.currentLesson=cfg.mode==="lesson"?S.currentLesson:null;
+S.timed=dur>0;
+S.duration=dur;
+S.text=buildText(cfg,dur);
+if(!document.fullscreenElement){
+document.documentElement.requestFullscreen?.().catch(()=>{});
+}
+startPractice();
+}
+
+/* ============================================
+   TEXT BUILDER
+   ============================================ */
+function wordsIn(s){return s.trim().split(/\s+/).filter(Boolean).length}
+function buildText(cfg,dur){
+if(cfg.text&&cfg.mode==="lesson")return cfg.text;
+if(cfg.text&&cfg.mode==="custom"){
+const w=wordsIn(cfg.text);
+const target=dur>0?Math.max(200,Math.round((dur/60)*150)):300;
+if(w>=target)return cfg.text;
+return cfg.text+" "+buildFromPool(target-w);
+}
+const target=dur>0?Math.max(300,Math.round((dur/60)*150)):2500;
+return buildFromPool(target);
+}
+function buildFromPool(minWords){
+const pool=[...PARAS].sort(()=>Math.random()-0.5);
+let out="",i=0;
+while(wordsIn(out)<minWords){
+out+=(out?" ":"")+pool[i%pool.length];
+i++;
+}
+return out;
+}
+
+/* ============================================
+   PRACTICE
+   ============================================ */
+function startPractice(){
+S.chars=S.text.split("");
+S.correctChars=new Array(S.chars.length).fill(false);
+S.currentIndex=0;S.correct=0;S.wrong=0;S.totalTyped=0;
+S.elapsed=0;S.running=true;
+S.startTime=Date.now();S.lastLen=0;
+HI.value="";
+openScreen("practice");
+renderText();
+updateStats();
+HI.focus();
+clearInterval(S.timerId);
+S.timerId=setInterval(tick,100);
+}
+function renderText(){
+/* Extend if near end */
+if(S.currentIndex>S.chars.length-300){
+const more=" "+PARAS[Math.floor(Math.random()*PARAS.length)];
+S.text+=more;
+const m=more.split("");
+S.chars=S.chars.concat(m);
+S.correctChars=S.correctChars.concat(new Array(m.length).fill(false));
+}
+const start=Math.max(0,S.currentIndex-400);
+const end=Math.min(S.chars.length,S.currentIndex+1200);
+let html="";
+for(let i=start;i<end;i++){
+let cls="pchar";
+if(i<S.currentIndex)cls+=S.correctChars[i]?" ok":" bad";
+else if(i===S.currentIndex)cls+=" cur";
+const c=S.chars[i];
+const d=c===" "?"&nbsp;":c.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+html+='<span class="'+cls+'">'+d+'</span>';
+}
+$("paraText").innerHTML=html;
+const t=HI.value;
+$("typedText").textContent=t;
+if(!t)$("typedText").innerHTML='<span class="placeholder">Start typing below...</span>';
+if(S.settings.scroll){
+const cur=$("paraText").querySelector(".pchar.cur");
+if(cur)cur.scrollIntoView({block:"nearest",behavior:"smooth"});
+}
+}
+function tick(){
+if(!S.running)return;
+S.elapsed=Math.floor((Date.now()-S.startTime)/1000);
+updateStats();
+if(S.timed&&S.elapsed>=S.duration)finishPractice();
+}
+function updateStats(){
+$("sTime").textContent=fmt(S.elapsed);
+const net=S.elapsed>0?Math.round(((S.totalTyped-S.wrong)/5)/(S.elapsed/60)):0;
+$("sWpm").textContent=Math.max(0,isFinite(net)?net:0);
+const acc=S.totalTyped>0?Math.round((S.correct/S.totalTyped)*100):100;
+$("sAcc").textContent=acc;
+}
+function fmt(s){return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
+function submitTest(){if(!S.running)return;finishPractice()}
+function finishPractice(){
+S.running=false;clearInterval(S.timerId);HI.blur();
+S.typedSnapshot=HI.value||"";
+const gross=S.elapsed>0?Math.round((S.totalTyped/5)/(S.elapsed/60)):0;
+const net=S.elapsed>0?Math.round(((S.totalTyped-S.wrong)/5)/(S.elapsed/60)):0;
+const acc=S.totalTyped>0?Math.round((S.correct/S.totalTyped)*100):100;
+const netSafe=Math.max(0,isFinite(net)?net:0);
+$("rWpm").textContent=netSafe;
+$("rGross").textContent=isFinite(gross)?gross:0;
+$("rAcc").textContent=acc+"%";
+$("rErrors").textContent=S.wrong;
+let g="";
+if(netSafe>=50)g="🏆 Excellent";
+else if(netSafe>=40)g="🥇 Great";
+else if(netSafe>=30)g="🥈 Good — Exam ready";
+else if(netSafe>=20)g="🥉 Keep practicing";
+else g="📚 Beginner";
+$("rGrade").textContent=g;
+let type="Practice";
+if(S.mode==="lesson")type="Lesson "+S.currentLesson;
+else if(S.mode==="exam")type=S.examName+" · "+S.topicName;
+else if(S.mode==="speed")type="Speed Test ("+(S.duration/60)+" min)";
+else if(S.mode==="custom")type="Custom Test";
+S.history.unshift({type,wpm:netSafe,acc,err:S.wrong,ts:Date.now()});
+if(S.history.length>50)S.history=S.history.slice(0,50);
+localStorage.setItem("tp_history",JSON.stringify(S.history));
+if(S.mode==="lesson"&&S.currentLesson&&acc>=90){
+S.progress[S.currentLesson]=true;
+localStorage.setItem("tp_progress",JSON.stringify(S.progress));
+}
+$("typedDisplay").textContent=S.typedSnapshot||"(nothing typed)";
+$("typedDisplay").classList.remove("show");
+const msg="I typed "+netSafe+" WPM with "+acc+"% accuracy on Typing Pro! Try: https://unknownuniversem-blip.github.io/typing-pro/";
+const url="https://unknownuniversem-blip.github.io/typing-pro/";
+$("shareWa").href="https://wa.me/?text="+encodeURIComponent(msg);
+$("shareTg").href="https://t.me/share/url?url="+encodeURIComponent(url)+"&text="+encodeURIComponent(msg);
+openScreen("result");
+}
+function toggleTyped(){$("typedDisplay").classList.toggle("show")}
+function copyResult(){
+const t="Typing Result:\nNet WPM: "+$("rWpm").textContent+"\nAccuracy: "+$("rAcc").textContent+"\nErrors: "+$("rErrors").textContent+"\n\nTry free: https://unknownuniversem-blip.github.io/typing-pro/";
+navigator.clipboard.writeText(t).then(()=>alert("Copied!"))
+}
+function tryAgain(){closeResult();startPractice()}
+function closeResult(){openScreen("home")}
+function restartTest(){if(S.currentLesson)openLesson(S.currentLesson);else startPractice()}
+
+/* ============================================
+   INPUT HANDLING
+   ============================================ */
+function handleInput(){
+if(!S.running)return;
+const v=HI.value;const n=v.length;
+if(n<S.lastLen){
+if(!S.settings.back)return;
+const d=S.lastLen-n;
+for(let i=0;i<d&&S.currentIndex>0;i++)S.currentIndex--;
+S.lastLen=n;renderText();updateStats();return;
+}
+if(n>S.lastLen){
+const ch=v[v.length-1];
+if(ch.length!==1){HI.value=v.slice(0,-1);return;}
+const exp=S.chars[S.currentIndex];
+S.totalTyped++;
+if(ch===exp){S.correct++;S.correctChars[S.currentIndex]=true}
+else{S.wrong++;S.correctChars[S.currentIndex]=false;if(S.settings.sound)beep(400,0.05)}
+S.currentIndex++;
+renderText();updateStats();
+if(HI.value.length>S.chars.length*2)HI.value="";
+S.lastLen=HI.value.length;
+}
+}
+function beep(f,d){try{const c=new(window.AudioContext||window.webkitAudioContext)();const o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=f;g.gain.value=.05;o.start();o.stop(c.currentTime+d)}catch(e){}}
+HI.addEventListener("input",handleInput);
+HI.addEventListener("keydown",e=>{if(e.key==="Tab")e.preventDefault()});
+document.addEventListener("keydown",()=>{if(!S.running)return;if(document.activeElement!==HI)HI.focus()});
+
+/* ============================================
+   HISTORY
+   ============================================ */
+function renderHistory(){
+const l=$("historyList");
+if(!S.history.length){l.innerHTML='<div class="recent-empty">No history yet</div>';return}
+l.innerHTML=S.history.slice(0,30).map(h=>'<div class="history-item"><div><div class="h-title">'+h.type+'</div><div class="h-date">'+new Date(h.ts).toLocaleString("en-IN",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})+'</div></div><div class="h-wpm">'+h.wpm+'<small>WPM</small></div></div>').join("");
+}
+
+/* ============================================
+   GAMES
+   ============================================ */
+const GW=["the","and","for","you","that","with","have","this","from","they","will","one","all","but","not","what","when","we","are","type","fast","learn","word","play","test","exam","bank","ssc","practice","speed","typing","student","study","focus","quick","easy","best","work","goal"];
+const SC={slow:{p:25,s:3000},normal:{p:60,s:1800},fast:{p:130,s:1100},insane:{p:220,s:700}};
+let G={type:"rain",running:false,score:0,missed:0,time:60,words:[],typed:"",tId:null,sId:null,raf:null,last:0,h:0};
+
+function switchGame(t){stopGame(false);G.type=t;document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x.dataset.game===t));$("gameInfo").textContent=t==="rain"?"Words fall from the top — type them before they hit the bottom!":"Type the target word as fast as possible!";resetGA()}
+function resetGA(){$("gameArea").innerHTML="";$("gameInput").textContent="_";$("gScore").textContent="0";$("gMiss").textContent="0";$("gTime").textContent=$("gameDuration").value+"s";$("gameStartBtn").textContent="▶ Start";$("gameStartBtn").disabled=false;$("gameEndBtn").disabled=true}
+function startGame(){
+if(G.running)return;
+const sp=$("gameSpeed").value;const cfg=SC[sp]||SC.normal;
+G.running=true;G.score=0;G.missed=0;G.time=parseInt($("gameDuration").value);G.words=[];G.typed="";
+$("gScore").textContent="0";$("gMiss").textContent="0";$("gTime").textContent=G.time+"s";
+$("gameStartBtn").textContent="⏸ Playing...";$("gameStartBtn").disabled=true;$("gameEndBtn").disabled=false;
+$("gameArea").innerHTML="";$("gameInput").textContent="_";
+requestAnimationFrame(()=>{
+G.h=$("gameArea").offsetHeight;G.last=performance.now();
+G.tId=setInterval(gameTick,1000);
+if(G.type==="rain"){G.sId=setInterval(spawnWord,cfg.s);spawnWord();G.raf=requestAnimationFrame(anim);}
+else spawnTarget();
+});
+}
+$("gameSpeed").addEventListener("change",()=>{const sp=$("gameSpeed").value;const cfg=SC[sp]||SC.normal;if(G.running&&G.type==="rain"){clearInterval(G.sId);G.sId=setInterval(spawnWord,cfg.s)}});
+function anim(now){
+if(!G.running||G.type!=="rain")return;
+const dt=Math.min(50,now-G.last)/1000;G.last=now;
+const sp=$("gameSpeed").value;const cfg=SC[sp]||SC.normal;
+const fall=cfg.p*dt;
+for(let i=G.words.length-1;i>=0;i--){
+const w=G.words[i];const y=parseFloat(w.dataset.y||-30)+fall;w.dataset.y=y;
+w.style.transform="translateY("+y+"px)";
+if(y>G.h-30){w.remove();G.words.splice(i,1);G.missed++;$("gMiss").textContent=G.missed}
+}
+G.raf=requestAnimationFrame(anim);
+}
+function spawnWord(){
+if(!G.running||G.type!=="rain")return;
+const w=GW[Math.floor(Math.random()*GW.length)];
+const el=document.createElement("div");
+el.className="word";el.textContent=w;
+el.style.left=(Math.random()*65+5)+"%";el.style.top="0px";
+el.style.transform="translateY(-30px)";
+el.dataset.word=w;el.dataset.y=-30;
+$("gameArea").appendChild(el);G.words.push(el);
+}
+function spawnTarget(){
+if(!G.running||G.type!=="react")return;
+$("gameArea").innerHTML="";
+const w=GW[Math.floor(Math.random()*GW.length)];
+const el=document.createElement("div");
+el.className="word target";el.textContent=w;
+el.style.left="50%";el.style.top="50%";
+el.style.transform="translate(-50%,-50%)";
+el.style.fontSize="1.2rem";el.style.padding="10px 18px";
+el.dataset.word=w;$("gameArea").appendChild(el);
+}
+function gameTick(){if(!G.running)return;G.time--;$("gTime").textContent=G.time+"s";if(G.time<=0)stopGame(true)}
+function stopGame(alert_){const was=G.running;G.running=false;clearInterval(G.tId);clearInterval(G.sId);if(G.raf)cancelAnimationFrame(G.raf);G.tId=null;G.sId=null;G.raf=null;G.words=[];$("gameStartBtn").textContent="▶ Start";$("gameStartBtn").disabled=false;$("gameEndBtn").disabled=true;if(was&&alert_)setTimeout(()=>alert("🏆 Game Over!\nScore: "+G.score+"\nMissed: "+G.missed),100)}
+document.addEventListener("keydown",e=>{
+if(!$("screen-games").classList.contains("active")||!G.running)return;
+if(e.key.length!==1&&e.key!=="Backspace"&&e.key!=="Enter")return;
+e.preventDefault();
+if(e.key==="Backspace")G.typed=G.typed.slice(0,-1);
+else if(e.key==="Enter"){G.typed="";$("gameInput").textContent="_";return}
+else G.typed+=e.key.toLowerCase();
+$("gameInput").textContent=G.typed||"_";$("gameInput").className="game-input";
+if(G.type==="rain"){
+const m=G.words.find(x=>x.dataset.word===G.typed);
+if(m){m.remove();G.words=G.words.filter(x=>x!==m);G.score++;$("gScore").textContent=G.score;G.typed="";$("gameInput").textContent="_";$("gameInput").className="game-input correct";setTimeout(()=>{$("gameInput").className="game-input"},300)}
+}else{
+const t=$("gameArea").querySelector(".word.target");
+if(t&&t.dataset.word.startsWith(G.typed)&&t.dataset.word===G.typed){
+t.remove();G.score++;$("gScore").textContent=G.score;
+G.typed="";$("gameInput").textContent="_";$("gameInput").className="game-input correct";
+setTimeout(()=>{$("gameInput").className="game-input";if(G.running)spawnTarget()},400);
+}
+}
+});
+
+/* ============================================
+   PDF
+   ============================================ */
+function printResult(){
+const w=window.open("","_blank");
+w.document.write('<html><head><title>Typing Result</title><style>body{font-family:system-ui,sans-serif;padding:40px;max-width:600px;margin:auto}h1{color:#0369a1}.big{font-size:4rem;color:#16a34a;font-weight:700;margin:0}table{width:100%;border-collapse:collapse;margin:20px 0}td{padding:10px;border-bottom:1px solid #eee}.label{color:#666;font-size:.9rem}.typed{background:#f0f9ff;padding:14px;border-radius:10px;font-family:monospace;font-size:.85rem;line-height:1.7;white-space:pre-wrap;margin-top:10px;max-height:300px;overflow:auto}</style></head><body>'+
+'<h1>⌨️ Typing Pro — Result</h1><p class="label">Date: '+new Date().toLocaleString()+'</p>'+
+'<div class="big">'+$("rWpm").textContent+'</div><p class="label">Words per minute (net)</p>'+
+'<table><tr><td>Gross WPM</td><td><b>'+$("rGross").textContent+'</b></td></tr><tr><td>Accuracy</td><td><b>'+$("rAcc").textContent+'</b></td></tr><tr><td>Errors</td><td><b>'+$("rErrors").textContent+'</b></td></tr><tr><td>Grade</td><td><b>'+$("rGrade").textContent+'</b></td></tr></table>'+
+'<p class="label">Typed Text:</p><div class="typed">'+(S.typedSnapshot||"(nothing)").replace(/&/g,"&amp;").replace(/</g,"&lt;")+'</div>'+
+'</body></html>');
+w.document.close();setTimeout(()=>w.print(),500);
+}
+</script>
+<script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
