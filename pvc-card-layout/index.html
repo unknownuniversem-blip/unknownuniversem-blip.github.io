@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aadhaar & Voter PVC Card Studio — Cyber Cafe Suite</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2338bdf8'><rect x='2' y='4' width='20' height='16' rx='3' fill='none' stroke='%2338bdf8' stroke-width='2'/><circle cx='8' cy='11' r='3'/><path d='M14 9h5M14 13h5M5 18c0-2 2-3 4-3s4 1 4 3'/></svg>">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #070c18;
+      --panel: #0d1527;
+      --card-bg: #131f38;
+      --accent: #38bdf8;
+      --border: #1e293b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      padding-bottom: 50px;
+    }
+    header {
+      height: 58px;
+      background: #091122;
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1rem;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 25px auto;
+      padding: 0 20px;
+    }
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 980px) {
+      .workspace-grid { grid-template-columns: 1fr; }
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+    h2 { font-size: 1.35rem; color: #fff; margin-bottom: 6px; }
+    .desc { font-size: 0.85rem; color: var(--muted); margin-bottom: 20px; line-height: 1.4; }
+
+    .drop-box {
+      border: 2px dashed #334155;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      background: var(--card-bg);
+      cursor: pointer;
+      margin-bottom: 14px;
+      transition: all 0.2s;
+    }
+    .drop-box:hover { border-color: var(--accent); background: #182746; }
+    .drop-box input { display: none; }
+    .drop-title { font-weight: 700; font-size: 0.88rem; color: #fff; margin-bottom: 2px; }
+    .drop-sub { font-size: 0.74rem; color: var(--muted); }
+
+    .control-sec { margin-top: 18px; border-top: 1px solid var(--border); padding-top: 16px; }
+    .control-label {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 6px;
+      display: block;
+      letter-spacing: 0.5px;
+    }
+    .btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    .btn-opt {
+      flex: 1;
+      padding: 9px 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: #cbd5e1;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .btn-opt:hover { border-color: var(--accent); color: #fff; }
+    .btn-opt.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #070c18;
+      font-weight: 700;
+    }
+    .slider-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .slider-row span { font-size: 0.82rem; color: #cbd5e1; }
+    .slider-row input[type="range"] {
+      flex-grow: 1;
+      accent-color: var(--accent);
+    }
+    .btn-print {
+      width: 100%;
+      background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
+      color: #070c18;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(56, 189, 248, 0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .btn-print:hover { opacity: 0.95; }
+
+    .preview-container {
+      background: #1e293b;
+      border-radius: 16px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 520px;
+      overflow-x: auto;
+    }
+    .print-sheet {
+      background: #ffffff;
+      width: 210mm;
+      min-height: 148mm;
+      padding: 15mm;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .sheet-title {
+      font-size: 9px;
+      color: #64748b;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .cards-layout-box {
+      display: inline-flex;
+      position: relative;
+      background: #fff;
+    }
+    
+    .pvc-card {
+      width: 85.6mm;
+      height: 53.98mm;
+      position: relative;
+      overflow: hidden;
+      background: #f8fafc;
+      border: 0.5px solid #000;
+      border-radius: 3.18mm;
+      cursor: grab;
+      user-select: none;
+    }
+    .pvc-card:active { cursor: grabbing; }
+    .pvc-card canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      pointer-events: none;
+    }
+    .center-fold {
+      position: absolute;
+      left: 50%;
+      top: -6mm;
+      bottom: -6mm;
+      width: 1px;
+      border-left: 1px dashed #64748b;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .center-fold::before {
+      content: 'CUT / FOLD';
+      position: absolute;
+      top: -3mm;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 6px;
+      font-weight: 700;
+      color: #64748b;
+      letter-spacing: 0.5px;
+    }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; padding: 0 !important; }
+      header, .panel, .sheet-title, .brand { display: none !important; }
+      .container { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      .preview-container { background: transparent !important; padding: 0 !important; }
+      .print-sheet {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 10mm 15mm !important;
+        margin: 0 !important;
+        width: 100% !important;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 8mm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../" class="brand">⬅ Master Hub</a>
+    <span style="font-size: 0.85rem; color: #94a3b8;">Cyber Cafe PVC Print Studio</span>
+  </header>
+
+  <div class="container">
+    <div class="workspace-grid">
+      <div class="panel">
+        <h2>🪪 PVC Card Studio</h2>
+        <p class="desc">Standard CR-80 layout (85.6mm × 54mm) for Aadhaar, Voter ID, and PAN cards.</p>
+
+        <div class="drop-box" onclick="document.getElementById('front-input').click()">
+          <input type="file" id="front-input" accept="image/*,application/pdf" onchange="handleFile(event, 'front')">
+          <div class="drop-title">📁 Upload Front Side (Image or PDF)</div>
+          <div class="drop-sub" id="front-name">Click or drag Front side scan</div>
+        </div>
+
+        <div class="drop-box" onclick="document.getElementById('back-input').click()">
+          <input type="file" id="back-input" accept="image/*,application/pdf" onchange="handleFile(event, 'back')">
+          <div class="drop-title">📁 Upload Back Side (Image or PDF)</div>
+          <div class="drop-sub" id="back-name">Click or drag Back side scan</div>
+        </div>
+
+        <div class="control-sec">
+          <label class="control-label">Layout Arrangement</label>
+          <div class="btn-row">
+            <button class="btn-opt active" id="btn-fold" onclick="setLayout('fold')">Pouch Fold</button>
+            <button class="btn-opt" id="btn-gap" onclick="setLayout('gap')">PVC Tray (Gap)</button>
+            <button class="btn-opt" id="btn-single" onclick="setLayout('single')">Front Only</button>
+          </div>
+        </div>
+
+        <div class="control-sec">
+          <label class="control-label">Edges & Borders</label>
+          <div class="btn-row">
+            <button class="btn-opt active" id="btn-r-round" onclick="setRadius('3.18mm')">Round Corner</button>
+            <button class="btn-opt" id="btn-r-square" onclick="setRadius('0px')">Square Edge</button>
+          </div>
+          <div class="btn-row">
+            <button class="btn-opt active" id="btn-b-black" onclick="setBorder('0.5px solid #000')">Cut Line</button>
+            <button class="btn-opt" id="btn-b-gray" onclick="setBorder('0.5px solid #94a3b8')">Faint Guide</button>
+            <button class="btn-opt" id="btn-b-none" onclick="setBorder('none')">No Border</button>
+          </div>
+        </div>
+
+        <div class="control-sec">
+          <label class="control-label">Adjust Front Image</label>
+          <div class="slider-row">
+            <span>Zoom</span>
+            <input type="range" min="0.5" max="3" step="0.05" value="1" id="f-zoom" oninput="updateCard('front')">
+          </div>
+          <div class="btn-row">
+            <button class="btn-opt" onclick="rotateCard('front', -90)">↺ 90°</button>
+            <button class="btn-opt" onclick="rotateCard('front', 90)">↻ 90°</button>
+            <button class="btn-opt" onclick="resetCard('front')">Reset</button>
+          </div>
+        </div>
+
+        <div class="control-sec">
+          <label class="control-label">Adjust Back Image</label>
+          <div class="slider-row">
+            <span>Zoom</span>
+            <input type="range" min="0.5" max="3" step="0.05" value="1" id="b-zoom" oninput="updateCard('back')">
+          </div>
+          <div class="btn-row">
+            <button class="btn-opt" onclick="rotateCard('back', -90)">↺ 90°</button>
+            <button class="btn-opt" onclick="rotateCard('back', 90)">↻ 90°</button>
+            <button class="btn-opt" onclick="resetCard('back')">Reset</button>
+          </div>
+        </div>
+
+        <div class="control-sec">
+          <label class="control-label">Print Enhancement</label>
+          <div class="btn-row">
+            <button class="btn-opt" id="btn-sharp" onclick="toggleSharpen()">✨ Auto-Boost Text & Barcode</button>
+          </div>
+        </div>
+
+        <button class="btn-print" onclick="window.print()">
+          🖨️️ Direct Print (100% Scale)
+        </button>
+      </div>
+
+      <div class="preview-container">
+        <div class="print-sheet" id="print-sheet">
+          <div class="sheet-title">📐 Standard CR-80 PVC (85.60 mm × 53.98 mm) — Set Printer Scale to 100%</div>
+          
+          <div class="cards-layout-box" id="layout-box">
+            <div class="center-fold" id="fold-line"></div>
+
+            <div class="pvc-card" id="card-front" onmousedown="startDrag(event, 'front')" ontouchstart="startDrag(event, 'front')">
+              <canvas id="canvas-front" width="1011" height="638"></canvas>
+            </div>
+
+            <div class="pvc-card" id="card-back" onmousedown="startDrag(event, 'back')" ontouchstart="startDrag(event, 'back')">
+              <canvas id="canvas-back" width="1011" height="638"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const state = {
+      front: { img: null, x: 0, y: 0, zoom: 1, rot: 0 },
+      back:  { img: null, x: 0, y: 0, zoom: 1, rot: 0 },
+      boost: false,
+      layout: 'fold'
+    };
+
+    let activeDrag = null;
+    let startPos = { x: 0, y: 0 };
+
+    function handleFile(e, side) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      document.getElementById(`${side}-name`).innerText = file.name;
+
+      if (file.type === "application/pdf") {
+        const fileReader = new FileReader();
+        fileReader.onload = function() {
+          const typedarray = new Uint8Array(this.result);
+          pdfjsLib.getDocument(typedarray).promise.then(pdf => {
+            pdf.getPage(1).then(page => {
+              const viewport = page.getViewport({ scale: 2.0 });
+              const canvas = document.createElement("canvas");
+              const ctx = canvas.getContext("2d");
+              canvas.height = viewport.height;
+              canvas.width = viewport.width;
+
+              page.render({ canvasContext: ctx, viewport: viewport }).promise.then(() => {
+                const img = new Image();
+                img.onload = () => { state[side].img = img; renderCanvas(side); };
+                img.src = canvas.toDataURL();
+              });
+            });
+          });
+        };
+        fileReader.readAsArrayBuffer(file);
+      } else {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          const img = new Image();
+          img.onload = () => { state[side].img = img; renderCanvas(side); };
+          img.src = evt.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function renderCanvas(side) {
+      const s = state[side];
+      const canvas = document.getElementById(`canvas-${side}`);
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      if (!s.img) {
+        ctx.fillStyle = "#94a3b8";
+        ctx.font = "32px sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(`Upload ${side.toUpperCase()} Scan`, canvas.width / 2, canvas.height / 2);
+        return;
+      }
+
+      ctx.save();
+      ctx.translate(canvas.width / 2 + s.x, canvas.height / 2 + s.y);
+      ctx.rotate((s.rot * Math.PI) / 180);
+      ctx.scale(s.zoom, s.zoom);
+
+      if (state.boost) {
+        ctx.filter = "contrast(125%) brightness(102%)";
+      } else {
+        ctx.filter = "none";
+      }
+
+      const aspect = s.img.width / s.img.height;
+      let drawW = canvas.width;
+      let drawH = canvas.width / aspect;
+
+      if (drawH < canvas.height) {
+        drawH = canvas.height;
+        drawW = canvas.height * aspect;
+      }
+
+      ctx.drawImage(s.img, -drawW / 2, -drawH / 2, drawW, drawH);
+      ctx.restore();
+    }
+
+    function updateCard(side) {
+      state[side].zoom = parseFloat(document.getElementById(`${side === 'front' ? 'f' : 'b'}-zoom`).value);
+      renderCanvas(side);
+    }
+
+    function rotateCard(side, deg) {
+      state[side].rot = (state[side].rot + deg) % 360;
+      renderCanvas(side);
+    }
+
+    function resetCard(side) {
+      state[side].x = 0;
+      state[side].y = 0;
+      state[side].zoom = 1;
+      state[side].rot = 0;
+      document.getElementById(`${side === 'front' ? 'f' : 'b'}-zoom`).value = 1;
+      renderCanvas(side);
+    }
+
+    function toggleSharpen() {
+      state.boost = !state.boost;
+      document.getElementById('btn-sharp').classList.toggle('active', state.boost);
+      renderCanvas('front');
+      renderCanvas('back');
+    }
+
+    function startDrag(e, side) {
+      activeDrag = side;
+      const evt = e.touches ? e.touches[0] : e;
+      startPos = { x: evt.clientX - state[side].x, y: evt.clientY - state[side].y };
+      window.addEventListener('mousemove', onDrag);
+      window.addEventListener('touchmove', onDrag);
+      window.addEventListener('mouseup', stopDrag);
+      window.addEventListener('touchend', stopDrag);
+    }
+
+    function onDrag(e) {
+      if (!activeDrag) return;
+      const evt = e.touches ? e.touches[0] : e;
+      state[activeDrag].x = evt.clientX - startPos.x;
+      state[activeDrag].y = evt.clientY - startPos.y;
+      renderCanvas(activeDrag);
+    }
+
+    function stopDrag() {
+      activeDrag = null;
+      window.removeEventListener('mousemove', onDrag);
+      window.removeEventListener('touchmove', onDrag);
+      window.removeEventListener('mouseup', stopDrag);
+      window.removeEventListener('touchend', stopDrag);
+    }
+
+    function setLayout(mode) {
+      const box = document.getElementById('layout-box');
+      const fold = document.getElementById('fold-line');
+      const back = document.getElementById('card-back');
+
+      document.querySelectorAll('.btn-opt').forEach(b => {
+        if (b.id && (b.id.startsWith('btn-fold') || b.id === 'btn-gap' || b.id === 'btn-single')) {
+          b.classList.remove('active');
+        }
+      });
+      document.getElementById(`btn-${mode}`).classList.add('active');
+
+      if (mode === 'fold') {
+        box.style.gap = '0px';
+        fold.style.display = 'block';
+        back.style.display = 'block';
+      } else if (mode === 'gap') {
+        box.style.gap = '8mm';
+        fold.style.display = 'none';
+        back.style.display = 'block';
+      } else if (mode === 'single') {
+        box.style.gap = '0px';
+        fold.style.display = 'none';
+        back.style.display = 'none';
+      }
+    }
+
+    function setRadius(rad) {
+      document.querySelectorAll('.pvc-card').forEach(c => c.style.borderRadius = rad);
+      document.getElementById('btn-r-round').classList.toggle('active', rad !== '0px');
+      document.getElementById('btn-r-square').classList.toggle('active', rad === '0px');
+    }
+
+    function setBorder(border) {
+      document.querySelectorAll('.pvc-card').forEach(c => c.style.border = border);
+      document.getElementById('btn-b-black').classList.toggle('active', border.includes('#000'));
+      document.getElementById('btn-b-gray').classList.toggle('active', border.includes('#94a3b8'));
+      document.getElementById('btn-b-none').classList.toggle('active', border === 'none');
+    }
+
+    renderCanvas('front');
+    renderCanvas('back');
+  </script>
+</body>
+</html>
