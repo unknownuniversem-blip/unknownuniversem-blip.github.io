@@ -7,26 +7,119 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23eab308'><path d='M12 2L1 21h22L12 2z'/></svg>">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: #070c18; color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; min-height: 100vh; padding-bottom: 40px; }
-    header { height: 56px; background: #091122; border-bottom: 1px solid #1e293b; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
-    .brand { color: #eab308; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 8px; }
-    .container { max-width: 840px; margin: 25px auto; padding: 0 16px; }
-    .card { background: #0f172a; border: 1px solid #1e293b; border-radius: 14px; padding: 24px; margin-bottom: 20px; }
+    body {
+      background: #070c18;
+      color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      padding-bottom: 50px;
+    }
+    header {
+      height: 56px;
+      background: #091122;
+      border-bottom: 1px solid #1e293b;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      color: #eab308;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 25px auto;
+      padding: 0 16px;
+    }
+    .card {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
     h2 { font-size: 1.45rem; color: #facc15; margin-bottom: 6px; }
     .desc { font-size: 0.85rem; color: #94a3b8; margin-bottom: 20px; line-height: 1.4; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
     .field { display: flex; flex-direction: column; text-align: left; }
-    label { font-size: 0.78rem; font-weight: 600; color: #94a3b8; margin-bottom: 5px; text-transform: uppercase; }
-    input, select { padding: 11px 14px; background: #131d35; border: 1px solid #334155; border-radius: 8px; color: #fff; font-size: 1rem; outline: none; }
+    label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #94a3b8;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+    input, select {
+      padding: 11px 14px;
+      background: #131d35;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+    }
     input:focus, select:focus { border-color: #facc15; }
-    .state-banner { background: #1e293b; padding: 12px 16px; border-radius: 8px; font-size: 0.88rem; color: #cbd5e1; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
-    .highlight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 18px; }
-    .h-card { background: #070c18; border: 1px solid #1e293b; border-radius: 10px; padding: 14px; text-align: center; }
+    .state-banner {
+      background: #1e293b;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .h-card {
+      background: #070c18;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+    }
     .h-val { font-size: 1.3rem; font-weight: 800; color: #38bdf8; margin-top: 4px; }
     .h-lbl { font-size: 0.72rem; color: #64748b; text-transform: uppercase; }
-    .ref-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.82rem; color: #94a3b8; }
-    .ref-table th, .ref-table td { padding: 8px 12px; border: 1px solid #1e293b; text-align: left; }
-    .ref-table th { background: #070c18; color: #f1f5f9; }
+    .vis-box {
+      background: #070c18;
+      border: 1px dashed #334155;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .action-btn {
+      background: #eab308;
+      color: #070c18;
+      border: none;
+      padding: 10px 18px;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .action-btn:hover { background: #facc15; }
+    .btn-secondary {
+      background: #1e293b;
+      color: #cbd5e1;
+      margin-left: 8px;
+    }
   </style>
 </head>
 <body>
@@ -34,22 +127,23 @@
     <a href="../" class="brand">⬅ Master Hub</a>
     <span style="font-size: 0.85rem; color: #94a3b8;">Bigha & Land Unit Suite</span>
   </header>
+
   <div class="container">
     <div class="card">
       <h2>🌾 Indian Regional Land & Bigha Converter</h2>
-      <p class="desc">Standardized revenue calculations for Khasra, Khatauni, and registry documents. Select your state standard below or type directly into any field.</p>
+      <p class="desc">Standardized revenue conversions across Uttar Pradesh, Bihar, Rajasthan, MP, Haryana, Punjab, West Bengal, and Gujarat records.</p>
       
       <div class="field" style="margin-bottom: 16px;">
-        <label>Select State / Regional System</label>
+        <label>Select State / Revenue Standard</label>
         <select id="stateSelect" onchange="updateState()">
           <option value="up_pucca">Uttar Pradesh (Pucca Bigha - Standard)</option>
           <option value="up_kaccha">Uttar Pradesh (Kaccha Bigha)</option>
           <option value="bihar">Bihar (Standard Bigha / Kattha / Dhur)</option>
           <option value="raj">Rajasthan (Standard Pucca Bigha)</option>
           <option value="mp">Madhya Pradesh (Standard Bigha)</option>
-          <option value="punjab">Punjab & Haryana (Standard Bigha / Kanal / Marla)</option>
-          <option value="wb">West Bengal (Standard Bigha / Kottah)</option>
-          <option value="gujarat">Gujarat & Maharashtra (Vigha / Guntha)</option>
+          <option value="punjab">Punjab & Haryana (Bigha / Kanal / Marla)</option>
+          <option value="wb">West Bengal (Standard Bigha / Kottah / Chatak)</option>
+          <option value="gujarat">Gujarat & Maharashtra (Vigha / Guntha / Vasa)</option>
         </select>
       </div>
 
@@ -64,11 +158,11 @@
           <input type="number" id="in_bigha" step="any" placeholder="0" oninput="fromBigha(this.value)">
         </div>
         <div class="field">
-          <label id="lbl_sub1">Biswa / Kattha</label>
+          <label id="lbl_sub1">Biswa / Kattha / Guntha</label>
           <input type="number" id="in_sub1" step="any" placeholder="0" oninput="fromSub1(this.value)">
         </div>
         <div class="field">
-          <label id="lbl_sub2">Biswansi / Dhur</label>
+          <label id="lbl_sub2">Biswansi / Dhur / Marla</label>
           <input type="number" id="in_sub2" step="any" placeholder="0" oninput="fromSub2(this.value)">
         </div>
         <div class="field">
@@ -112,28 +206,25 @@
         </div>
       </div>
 
-      <table class="ref-table">
-        <thead>
-          <tr>
-            <th>Standard Reference Unit</th>
-            <th>Equivalent Dimensions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1 Acre (एकड़)</td>
-            <td>43,560 Sq. Feet = 4,840 Sq. Yards = 0.4047 Hectare</td>
-          </tr>
-          <tr>
-            <td>1 Hectare (हेक्टेयर)</td>
-            <td>1,07,639 Sq. Feet = 10,000 Sq. Meters = 2.471 Acres</td>
-          </tr>
-          <tr>
-            <td>1 Square Yard / Gaj (वर्ग गज)</td>
-            <td>9 Square Feet = 0.8361 Square Meter</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="vis-box">
+        <div style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;">📐 Equivalent Square Plot Dimensions</div>
+        <div id="plot-dims" style="font-size: 1.15rem; font-weight: bold; color: #facc15;">55 Gaj × 55 Gaj (165 ft × 165 ft)</div>
+      </div>
+
+      <div style="margin-top: 20px; border-top: 1px solid #1e293b; padding-top: 18px;">
+        <label>Estimated Circle Rate (₹ per Gaj / Sq. Yard)</label>
+        <div style="display:flex; gap:10px; margin-top:6px;">
+          <input type="number" id="circle_rate" placeholder="e.g. 5000" style="flex-grow:1" oninput="calcRegistry()">
+          <button class="action-btn" onclick="calcRegistry()">Estimate Land Cost</button>
+        </div>
+        <div id="cost_out" style="margin-top:12px; font-size:0.95rem; color:#10b981; font-weight:bold;"></div>
+      </div>
+
+      <div style="text-align: center; margin-top: 20px;">
+        <button class="action-btn" onclick="copySlip()">📋 Copy Land Slip</button>
+        <button class="action-btn btn-secondary" onclick="window.print()">🖨️ Print Slip</button>
+      </div>
+
     </div>
   </div>
 
@@ -152,23 +243,24 @@
     let curState = "up_pucca";
 
     function updateState() {
-      curState = document.getElementById('stateSelect').value;
+      curState = document.getElementById("stateSelect").value;
       const s = STATES[curState];
-      document.getElementById('stateInfo').innerText = s.info;
-      document.getElementById('lbl_sub1').innerText = s.l1;
-      document.getElementById('lbl_sub2').innerText = s.l2;
-      document.getElementById('disp_sub1_lbl').innerText = s.l1;
+      document.getElementById("stateInfo").innerText = s.info;
+      document.getElementById("lbl_sub1").innerText = s.l1;
+      document.getElementById("lbl_sub2").innerText = s.l2;
+      document.getElementById("disp_sub1_lbl").innerText = s.l1;
       const bPerAcre = (43560 / s.sqft).toFixed(2);
-      document.getElementById('acreFactor').innerText = `1 Acre = ${bPerAcre} Bigha`;
-      const curBigha = parseFloat(document.getElementById('in_bigha').value) || 1;
+      document.getElementById("acreFactor").innerText = "1 Acre = " + bPerAcre + " Bigha";
+      const curBigha = parseFloat(document.getElementById("in_bigha").value) || 1;
       fromBigha(curBigha);
     }
 
     function syncAllFromSqft(sqft) {
       if (isNaN(sqft) || sqft <= 0) {
-        ['in_bigha','in_sub1','in_sub2','in_acre','in_hec','in_sqft','in_gaj','in_sqm'].forEach(id => {
+        ["in_bigha","in_sub1","in_sub2","in_acre","in_hec","in_sqft","in_gaj","in_sqm"].forEach(id => {
           if (document.activeElement.id !== id) document.getElementById(id).value = "";
         });
+        document.getElementById("plot-dims").innerText = "0 Gaj × 0 Gaj";
         return;
       }
       const s = STATES[curState];
@@ -180,19 +272,24 @@
       const gaj = sqft / 9;
       const sqm = sqft / 10.7639;
 
-      if (document.activeElement.id !== 'in_bigha') document.getElementById('in_bigha').value = +bigha.toFixed(4);
-      if (document.activeElement.id !== 'in_sub1') document.getElementById('in_sub1').value = +sub1.toFixed(3);
-      if (document.activeElement.id !== 'in_sub2') document.getElementById('in_sub2').value = +sub2.toFixed(2);
-      if (document.activeElement.id !== 'in_acre') document.getElementById('in_acre').value = +acre.toFixed(4);
-      if (document.activeElement.id !== 'in_hec') document.getElementById('in_hec').value = +hec.toFixed(4);
-      if (document.activeElement.id !== 'in_sqft') document.getElementById('in_sqft').value = +sqft.toFixed(2);
-      if (document.activeElement.id !== 'in_gaj') document.getElementById('in_gaj').value = +gaj.toFixed(2);
-      if (document.activeElement.id !== 'in_sqm') document.getElementById('in_sqm').value = +sqm.toFixed(2);
+      if (document.activeElement.id !== "in_bigha") document.getElementById("in_bigha").value = +bigha.toFixed(4);
+      if (document.activeElement.id !== "in_sub1") document.getElementById("in_sub1").value = +sub1.toFixed(3);
+      if (document.activeElement.id !== "in_sub2") document.getElementById("in_sub2").value = +sub2.toFixed(2);
+      if (document.activeElement.id !== "in_acre") document.getElementById("in_acre").value = +acre.toFixed(4);
+      if (document.activeElement.id !== "in_hec") document.getElementById("in_hec").value = +hec.toFixed(4);
+      if (document.activeElement.id !== "in_sqft") document.getElementById("in_sqft").value = +sqft.toFixed(2);
+      if (document.activeElement.id !== "in_gaj") document.getElementById("in_gaj").value = +gaj.toFixed(2);
+      if (document.activeElement.id !== "in_sqm") document.getElementById("in_sqm").value = +sqm.toFixed(2);
 
-      document.getElementById('disp_gaj').innerText = Math.round(gaj).toLocaleString();
-      document.getElementById('disp_biswa').innerText = sub1.toFixed(2);
-      document.getElementById('disp_acre').innerText = acre.toFixed(3);
-      document.getElementById('disp_hec').innerText = hec.toFixed(3);
+      document.getElementById("disp_gaj").innerText = Math.round(gaj).toLocaleString();
+      document.getElementById("disp_biswa").innerText = sub1.toFixed(2);
+      document.getElementById("disp_acre").innerText = acre.toFixed(3);
+      document.getElementById("disp_hec").innerText = hec.toFixed(3);
+
+      const sideFt = Math.sqrt(sqft).toFixed(1);
+      const sideGaj = Math.sqrt(gaj).toFixed(1);
+      document.getElementById("plot-dims").innerText = sideGaj + " Gaj × " + sideGaj + " Gaj (" + sideFt + " ft × " + sideFt + " ft)";
+      calcRegistry();
     }
 
     function fromBigha(v) { syncAllFromSqft(parseFloat(v) * STATES[curState].sqft); }
@@ -204,7 +301,28 @@
     function fromGaj(v)   { syncAllFromSqft(parseFloat(v) * 9); }
     function fromSqm(v)   { syncAllFromSqft(parseFloat(v) * 10.7639); }
 
-    document.getElementById('in_bigha').value = 1;
+    function calcRegistry() {
+      const gaj = parseFloat(document.getElementById("in_gaj").value) || 0;
+      const rate = parseFloat(document.getElementById("circle_rate").value) || 0;
+      if (rate > 0 && gaj > 0) {
+        const total = Math.round(gaj * rate);
+        const stamp = Math.round(total * 0.07);
+        document.getElementById("cost_out").innerHTML = "Total Valuation: ₹" + total.toLocaleString() + " | Est. Stamp Duty (7%): ₹" + stamp.toLocaleString();
+      } else {
+        document.getElementById("cost_out").innerText = "";
+      }
+    }
+
+    function copySlip() {
+      const bigha = document.getElementById("in_bigha").value;
+      const gaj = document.getElementById("in_gaj").value;
+      const sqft = document.getElementById("in_sqft").value;
+      const acre = document.getElementById("in_acre").value;
+      const txt = "Land Record Slip:\nState: " + STATES[curState].name + "\nBigha: " + bigha + "\nSquare Yards (Gaj): " + gaj + "\nSquare Feet: " + sqft + "\nAcre: " + acre;
+      navigator.clipboard.writeText(txt).then(() => alert("Land slip copied to clipboard!"));
+    }
+
+    document.getElementById("in_bigha").value = 1;
     fromBigha(1);
   </script>
 </body>
