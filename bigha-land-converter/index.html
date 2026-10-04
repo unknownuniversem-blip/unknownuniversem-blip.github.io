@@ -1,15 +1,211 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Bigha & Land Unit Converter</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}.box{max-width:440px;margin:auto;background:#0f172a;padding:24px;border-radius:14px;border:1px solid #1e293b;text-align:left}input,select{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #334155;background:#131d35;color:#fff;box-sizing:border-box}.res{margin-top:12px;padding:12px;background:#070c18;border-radius:8px;color:#38bdf8;font-weight:bold;text-align:center}</style>  <script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<link rel="manifest" href="/manifest.webmanifest">
-<meta name="theme-color" content="#0284c7">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="QuickTools">
-<link rel="apple-touch-icon" href="/icon-192.png">
-</head><body><div class="box"><h3 style="text-align:center;color:#eab308">🌾 Regional Bigha & Land Converter</h3><label style="font-size:0.8rem;color:#94a3b8">Bigha (UP / North Standard)</label><input type="number" id="v" value="1" oninput="conv()"><div class="res" id="out">27,225 Sq. Feet | 20 Biswa</div></div><script>function conv(){const b=parseFloat(document.getElementById('v').value)||0;const sqft=b*27225;const biswa=b*20;const acre=(sqft/43560).toFixed(3);document.getElementById('out').innerHTML=`${sqft.toLocaleString()} Sq. Feet<br>${biswa} Biswa | ${acre} Acres`;}conv();</script><script>
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{
-    navigator.serviceWorker.register('/sw.js').catch(()=>{});
-  });
-}
-</script>
-</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bigha & Land Unit Converter — Indian Land Records</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23eab308'><path d='M12 2L1 21h22L12 2z'/></svg>">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #070c18; color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; min-height: 100vh; padding-bottom: 40px; }
+    header { height: 56px; background: #091122; border-bottom: 1px solid #1e293b; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+    .brand { color: #eab308; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .container { max-width: 840px; margin: 25px auto; padding: 0 16px; }
+    .card { background: #0f172a; border: 1px solid #1e293b; border-radius: 14px; padding: 24px; margin-bottom: 20px; }
+    h2 { font-size: 1.45rem; color: #facc15; margin-bottom: 6px; }
+    .desc { font-size: 0.85rem; color: #94a3b8; margin-bottom: 20px; line-height: 1.4; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .field { display: flex; flex-direction: column; text-align: left; }
+    label { font-size: 0.78rem; font-weight: 600; color: #94a3b8; margin-bottom: 5px; text-transform: uppercase; }
+    input, select { padding: 11px 14px; background: #131d35; border: 1px solid #334155; border-radius: 8px; color: #fff; font-size: 1rem; outline: none; }
+    input:focus, select:focus { border-color: #facc15; }
+    .state-banner { background: #1e293b; padding: 12px 16px; border-radius: 8px; font-size: 0.88rem; color: #cbd5e1; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .highlight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 18px; }
+    .h-card { background: #070c18; border: 1px solid #1e293b; border-radius: 10px; padding: 14px; text-align: center; }
+    .h-val { font-size: 1.3rem; font-weight: 800; color: #38bdf8; margin-top: 4px; }
+    .h-lbl { font-size: 0.72rem; color: #64748b; text-transform: uppercase; }
+    .ref-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.82rem; color: #94a3b8; }
+    .ref-table th, .ref-table td { padding: 8px 12px; border: 1px solid #1e293b; text-align: left; }
+    .ref-table th { background: #070c18; color: #f1f5f9; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../" class="brand">⬅ Master Hub</a>
+    <span style="font-size: 0.85rem; color: #94a3b8;">Bigha & Land Unit Suite</span>
+  </header>
+  <div class="container">
+    <div class="card">
+      <h2>🌾 Indian Regional Land & Bigha Converter</h2>
+      <p class="desc">Standardized revenue calculations for Khasra, Khatauni, and registry documents. Select your state standard below or type directly into any field.</p>
+      
+      <div class="field" style="margin-bottom: 16px;">
+        <label>Select State / Regional System</label>
+        <select id="stateSelect" onchange="updateState()">
+          <option value="up_pucca">Uttar Pradesh (Pucca Bigha - Standard)</option>
+          <option value="up_kaccha">Uttar Pradesh (Kaccha Bigha)</option>
+          <option value="bihar">Bihar (Standard Bigha / Kattha / Dhur)</option>
+          <option value="raj">Rajasthan (Standard Pucca Bigha)</option>
+          <option value="mp">Madhya Pradesh (Standard Bigha)</option>
+          <option value="punjab">Punjab & Haryana (Standard Bigha / Kanal / Marla)</option>
+          <option value="wb">West Bengal (Standard Bigha / Kottah)</option>
+          <option value="gujarat">Gujarat & Maharashtra (Vigha / Guntha)</option>
+        </select>
+      </div>
+
+      <div class="state-banner">
+        <span id="stateInfo">1 Pucca Bigha = 27,225 Sq. Ft = 20 Biswa</span>
+        <b style="color: #facc15;" id="acreFactor">1 Acre = 1.60 Bigha</b>
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label>Bigha (बीघा)</label>
+          <input type="number" id="in_bigha" step="any" placeholder="0" oninput="fromBigha(this.value)">
+        </div>
+        <div class="field">
+          <label id="lbl_sub1">Biswa / Kattha</label>
+          <input type="number" id="in_sub1" step="any" placeholder="0" oninput="fromSub1(this.value)">
+        </div>
+        <div class="field">
+          <label id="lbl_sub2">Biswansi / Dhur</label>
+          <input type="number" id="in_sub2" step="any" placeholder="0" oninput="fromSub2(this.value)">
+        </div>
+        <div class="field">
+          <label>Acre (एकड़)</label>
+          <input type="number" id="in_acre" step="any" placeholder="0" oninput="fromAcre(this.value)">
+        </div>
+        <div class="field">
+          <label>Hectare (हेक्टेयर)</label>
+          <input type="number" id="in_hec" step="any" placeholder="0" oninput="fromHectare(this.value)">
+        </div>
+        <div class="field">
+          <label>Square Feet (वर्ग फीट)</label>
+          <input type="number" id="in_sqft" step="any" placeholder="0" oninput="fromSqft(this.value)">
+        </div>
+        <div class="field">
+          <label>Square Yards / Gaj (वर्ग गज)</label>
+          <input type="number" id="in_gaj" step="any" placeholder="0" oninput="fromGaj(this.value)">
+        </div>
+        <div class="field">
+          <label>Square Meters (वर्ग मीटर)</label>
+          <input type="number" id="in_sqm" step="any" placeholder="0" oninput="fromSqm(this.value)">
+        </div>
+      </div>
+
+      <div class="highlight-grid">
+        <div class="h-card">
+          <div class="h-lbl">Square Yards (Gaj)</div>
+          <div class="h-val" id="disp_gaj">3,025</div>
+        </div>
+        <div class="h-card">
+          <div class="h-lbl" id="disp_sub1_lbl">Biswa / Kattha</div>
+          <div class="h-val" id="disp_biswa">20.00</div>
+        </div>
+        <div class="h-card">
+          <div class="h-lbl">Acre Equivalent</div>
+          <div class="h-val" id="disp_acre">0.625</div>
+        </div>
+        <div class="h-card">
+          <div class="h-lbl">Hectares</div>
+          <div class="h-val" id="disp_hec">0.253</div>
+        </div>
+      </div>
+
+      <table class="ref-table">
+        <thead>
+          <tr>
+            <th>Standard Reference Unit</th>
+            <th>Equivalent Dimensions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1 Acre (एकड़)</td>
+            <td>43,560 Sq. Feet = 4,840 Sq. Yards = 0.4047 Hectare</td>
+          </tr>
+          <tr>
+            <td>1 Hectare (हेक्टेयर)</td>
+            <td>1,07,639 Sq. Feet = 10,000 Sq. Meters = 2.471 Acres</td>
+          </tr>
+          <tr>
+            <td>1 Square Yard / Gaj (वर्ग गज)</td>
+            <td>9 Square Feet = 0.8361 Square Meter</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const STATES = {
+      up_pucca:  { name: "UP Pucca",  sqft: 27225, sub1: 20, sub2: 400, l1: "Biswa (बिसवा)", l2: "Biswansi (बिसवांसी)", info: "1 Pucca Bigha = 27,225 Sq. Ft = 3,025 Gaj = 20 Biswa" },
+      up_kaccha: { name: "UP Kaccha", sqft: 9075,  sub1: 20, sub2: 400, l1: "Kaccha Biswa", l2: "Biswansi", info: "1 Kaccha Bigha = 9,075 Sq. Ft = 1,008.33 Gaj = 1/3 Pucca Bigha" },
+      bihar:     { name: "Bihar",     sqft: 27220, sub1: 20, sub2: 400, l1: "Kattha (कट्ठा)", l2: "Dhur (धुर)", info: "1 Bihar Bigha = 20 Kattha = 400 Dhur = 27,220 Sq. Ft" },
+      raj:       { name: "Rajasthan", sqft: 27225, sub1: 20, sub2: 400, l1: "Biswa (बिसवा)", l2: "Biswansi", info: "1 Pucca Bigha = 27,225 Sq. Ft = 3,025 Sq. Yards" },
+      mp:        { name: "MP",        sqft: 12000, sub1: 20, sub2: 400, l1: "Kattha / Biswa", l2: "Dhur", info: "1 MP Standard Bigha = 12,000 Sq. Ft = 1,333.33 Gaj" },
+      punjab:    { name: "Punjab/HR", sqft: 9070,  sub1: 4,  sub2: 80,  l1: "Kanal (कनाल)", l2: "Marla (मरला)", info: "1 Bigha = 4 Kanal = 80 Marla = 9,070 Sq. Ft" },
+      wb:        { name: "WB",        sqft: 14400, sub1: 20, sub2: 320, l1: "Kottah (कट्ठा)", l2: "Chatak (छटाक)", info: "1 Bengal Bigha = 14,400 Sq. Ft = 20 Kottah = 1,600 Gaj" },
+      gujarat:   { name: "Gujarat",   sqft: 17424, sub1: 16, sub2: 384, l1: "Guntha (गुंठा)", l2: "Vasa", info: "1 Vigha = 17,424 Sq. Ft = 16 Guntha = 0.40 Acre" }
+    };
+
+    let curState = "up_pucca";
+
+    function updateState() {
+      curState = document.getElementById('stateSelect').value;
+      const s = STATES[curState];
+      document.getElementById('stateInfo').innerText = s.info;
+      document.getElementById('lbl_sub1').innerText = s.l1;
+      document.getElementById('lbl_sub2').innerText = s.l2;
+      document.getElementById('disp_sub1_lbl').innerText = s.l1;
+      const bPerAcre = (43560 / s.sqft).toFixed(2);
+      document.getElementById('acreFactor').innerText = `1 Acre = ${bPerAcre} Bigha`;
+      const curBigha = parseFloat(document.getElementById('in_bigha').value) || 1;
+      fromBigha(curBigha);
+    }
+
+    function syncAllFromSqft(sqft) {
+      if (isNaN(sqft) || sqft <= 0) {
+        ['in_bigha','in_sub1','in_sub2','in_acre','in_hec','in_sqft','in_gaj','in_sqm'].forEach(id => {
+          if (document.activeElement.id !== id) document.getElementById(id).value = "";
+        });
+        return;
+      }
+      const s = STATES[curState];
+      const bigha = sqft / s.sqft;
+      const sub1 = bigha * s.sub1;
+      const sub2 = bigha * s.sub2;
+      const acre = sqft / 43560;
+      const hec = sqft / 107639.104;
+      const gaj = sqft / 9;
+      const sqm = sqft / 10.7639;
+
+      if (document.activeElement.id !== 'in_bigha') document.getElementById('in_bigha').value = +bigha.toFixed(4);
+      if (document.activeElement.id !== 'in_sub1') document.getElementById('in_sub1').value = +sub1.toFixed(3);
+      if (document.activeElement.id !== 'in_sub2') document.getElementById('in_sub2').value = +sub2.toFixed(2);
+      if (document.activeElement.id !== 'in_acre') document.getElementById('in_acre').value = +acre.toFixed(4);
+      if (document.activeElement.id !== 'in_hec') document.getElementById('in_hec').value = +hec.toFixed(4);
+      if (document.activeElement.id !== 'in_sqft') document.getElementById('in_sqft').value = +sqft.toFixed(2);
+      if (document.activeElement.id !== 'in_gaj') document.getElementById('in_gaj').value = +gaj.toFixed(2);
+      if (document.activeElement.id !== 'in_sqm') document.getElementById('in_sqm').value = +sqm.toFixed(2);
+
+      document.getElementById('disp_gaj').innerText = Math.round(gaj).toLocaleString();
+      document.getElementById('disp_biswa').innerText = sub1.toFixed(2);
+      document.getElementById('disp_acre').innerText = acre.toFixed(3);
+      document.getElementById('disp_hec').innerText = hec.toFixed(3);
+    }
+
+    function fromBigha(v) { syncAllFromSqft(parseFloat(v) * STATES[curState].sqft); }
+    function fromSub1(v)  { syncAllFromSqft((parseFloat(v) / STATES[curState].sub1) * STATES[curState].sqft); }
+    function fromSub2(v)  { syncAllFromSqft((parseFloat(v) / STATES[curState].sub2) * STATES[curState].sqft); }
+    function fromAcre(v)  { syncAllFromSqft(parseFloat(v) * 43560); }
+    function fromHectare(v){ syncAllFromSqft(parseFloat(v) * 107639.104); }
+    function fromSqft(v)  { syncAllFromSqft(parseFloat(v)); }
+    function fromGaj(v)   { syncAllFromSqft(parseFloat(v) * 9); }
+    function fromSqm(v)   { syncAllFromSqft(parseFloat(v) * 10.7639); }
+
+    document.getElementById('in_bigha').value = 1;
+    fromBigha(1);
+  </script>
+</body>
+</html>
