@@ -1,0 +1,26 @@
+{
+  "name": "Typing Speed: Finger Test",
+  "short_name": "TypingSpeed",
+  "start_url": "index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0F4C81",
+  "theme_color": "#0F4C81",
+  "description": "Touch Typing, WPM Speed and Exam Practice Suite with Arcade Games",
+  "orientation": "portrait-primary",
+  "id": "com.unknownuniversem.typingspeed",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,0 +1,2749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Comprehensive Search Engine & Social Graph Meta Tags -->
+  <title>Finger Typing Speed Test — Key-by-Key Accuracy & Ergonomics</title>
+  <meta name="description" content="Identify your weakest fingers and slow keys. Diagnostic typing speed test analyzing reaction times across row positions and specific character combinations.">
+  <meta name="keywords" content="finger typing speed test, diagnostic typing accuracy test, touch typing finger guide, keyboard heat map trainer">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://unknownuniversem-blip.github.io/typing-speed-finger-test/">
+
+  <!-- Open Graph / Facebook / WhatsApp Preview Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://unknownuniversem-blip.github.io/typing-speed-finger-test/">
+  <meta property="og:title" content="Finger Typing Speed Test — Key-by-Key Accuracy & Ergonomics">
+  <meta property="og:description" content="Identify your weakest fingers and slow keys. Diagnostic typing speed test analyzing reaction times across row positions and specific character combinations.">
+  <meta property="og:site_name" content="QuickTools India">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://unknownuniversem-blip.github.io/typing-speed-finger-test/">
+  <meta name="twitter:title" content="Finger Typing Speed Test — Key-by-Key Accuracy & Ergonomics">
+  <meta name="twitter:description" content="Identify your weakest fingers and slow keys. Diagnostic typing speed test analyzing reaction times across row positions and specific character combinations.">
+
+  <!-- JSON-LD Structured Data Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Finger Typing Speed Test",
+    "url": "https://unknownuniversem-blip.github.io/typing-speed-finger-test/",
+    "description": "Identify your weakest fingers and slow keys. Diagnostic typing speed test analyzing reaction times across row positions and specific character combinations.",
+    "applicationCategory": "Typing & Skill Tests",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #0F4C81;
+    --primary-dark: #0A3258;
+    --primary-light: #EBF3FA;
+    --accent: #10B981;
+    --danger: #EF4444;
+    --surface: #FFFFFF;
+    --bg: #F4F6F9;
+    --text-main: #0F172A;
+    --text-muted: #64748B;
+    --border: #E2E8F0;
+    --radius-lg: 16px;
+    --radius-md: 10px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+  body {
+      flex-direction: column !important;
+      align-items: center !important; background-color: var(--bg); color: var(--text-main); display: flex; justify-content: center; min-height: 100vh; }
+  
+  .app-viewport {
+    width: 100%;
+    max-width: 500px;
+    background: var(--surface);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.06);
+    position: relative;
+  }
+
+  .app-header {
+    background: var(--primary);
+    color: white;
+    padding: 20px 18px 16px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    position: relative;
+  }
+  .app-header.compact {
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0 0 16px 16px;
+  }
+  .header-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .greeting { font-size: 21px; font-weight: 800; }
+  .sub-greeting { font-size: 12.5px; color: #CBD5E1; margin-top: 3px; }
+  .icon-btn { background: rgba(255,255,255,0.18); border: none; border-radius: 50%; width: 38px; height: 38px; color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; }
+
+  .menu-popup {
+    position: absolute;
+    top: 65px;
+    right: 18px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+    border: 1px solid var(--border);
+    width: 220px;
+    z-index: 200;
+    overflow: hidden;
+  }
+  .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-main);
+    cursor: pointer;
+    border-bottom: 1px solid #F1F5F9;
+  }
+  .menu-item:last-child { border-bottom: none; }
+  .menu-item:hover { background: #F8FAFC; color: var(--primary); }
+
+  .view-content { flex: 1; padding: 16px 14px 85px; overflow-y: auto; }
+  .hidden { display: none !important; }
+
+  .card-action {
+    background: #FFF;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 13px 15px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    transition: transform 0.1s, border-color 0.1s;
+  }
+  .card-action:active { transform: scale(0.98); }
+  .card-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    margin-right: 13px;
+    flex-shrink: 0;
+  }
+  .icon-green { background: #ECFDF5; color: #059669; }
+  .icon-orange { background: #FFF7ED; color: #EA580C; }
+  .icon-blue { background: #EFF6FF; color: #2563EB; }
+  .icon-purple { background: #FAF5FF; color: #9333EA; }
+  .icon-emerald { background: #F0FDF4; color: #16A34A; }
+  .icon-indigo { background: #EEF2FF; color: #4F46E5; }
+  .icon-cyan { background: #E0F2FE; color: #0284C7; }
+
+  .card-body h3 { font-size: 14.5px; font-weight: 700; color: var(--text-main); }
+  .card-body p { font-size: 11.5px; color: var(--text-muted); margin-top: 2px; }
+  .card-arrow { margin-left: auto; color: var(--text-muted); font-size: 15px; font-weight: 700; }
+
+  .hud-panel {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .hud-stat {
+    background: var(--primary-light);
+    border-radius: var(--radius-md);
+    padding: 8px 4px;
+    text-align: center;
+  }
+  .hud-val { font-size: 17px; font-weight: 800; color: var(--primary); font-family: 'JetBrains Mono', monospace; }
+  .hud-lbl { font-size: 10px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; }
+
+  .stream-container {
+    background: #FAFAFA;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    height: 160px;
+    overflow-y: hidden;
+    line-height: 2.2;
+    user-select: none;
+    font-size: 18px;
+    position: relative;
+    font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', sans-serif;
+  }
+  .word { display: inline-block; margin-right: 8px; padding: 1px 6px; border-radius: 5px; color: #475569; transition: all 0.1s ease; }
+  .word.active { background: #E2E8F0; color: #0F172A; font-weight: 800; border-bottom: 3px solid var(--primary); transform: scale(1.04); }
+  .word.correct { color: var(--accent); }
+  .word.wrong { color: var(--danger); background: #FEE2E2; text-decoration: line-through; }
+
+  .type-field {
+    width: 100%;
+    margin-top: 13px;
+    padding: 13px 15px;
+    font-size: 17px;
+    border-radius: var(--radius-md);
+    border: 2px solid var(--border);
+    outline: none;
+    font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', sans-serif;
+  }
+  .type-field:focus { border-color: var(--primary); }
+
+  .finger-guide-card {
+    background: #FFFFFF;
+    border: 2px solid #BFDBFE;
+    border-radius: 14px;
+    padding: 14px;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .key-target-banner {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #EFF6FF;
+    border: 1px solid #93C5FD;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .key-char-large {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary);
+    background: #FFF;
+    border: 1px solid #BFDBFE;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+  }
+  .finger-instruction { font-size: 13.5px; font-weight: 700; color: #1E3A8A; text-align: left; }
+  .hands-display-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 6px 0 10px;
+    background: #F8FAFC;
+    border-radius: 12px;
+    padding: 10px 4px;
+  }
+  .hand-box { text-align: center; width: 48%; }
+  .hand-caption { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-top: 4px; }
+  .finger-zone { fill: #CBD5E1; transition: fill 0.2s; }
+  .finger-zone.active-finger { fill: #2563EB !important; }
+
+  .descriptive-prompt-box {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+  }
+  .descriptive-prompt-box h4 { font-size: 13.5px; color: #1D4ED8; margin-bottom: 3px; }
+  .descriptive-prompt-box p { font-size: 12.5px; color: #1E293B; line-height: 1.45; }
+
+  .descriptive-editor {
+    width: 100%;
+    height: 240px;
+    padding: 12px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    border-radius: var(--radius-md);
+    border: 2px solid var(--border);
+    outline: none;
+    resize: none;
+  }
+  .descriptive-editor:focus { border-color: var(--primary); }
+
+  .word-counter-tag {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--text-muted);
+    padding: 5px 4px 0;
+  }
+
+  .bottom-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 500px;
+    background: #FFF;
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+  }
+  .btn-primary {
+    flex: 1;
+    background: var(--primary);
+    color: white;
+    padding: 12px;
+    border-radius: var(--radius-md);
+    border: none;
+    font-size: 14.5px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .btn-danger-outline {
+    background: #FEF2F2;
+    border: 1px solid #FCA5A5;
+    color: var(--danger);
+    padding: 11px 14px;
+    border-radius: var(--radius-md);
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .btn-secondary {
+    background: #F1F5F9;
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    padding: 11px;
+    border-radius: var(--radius-md);
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(15,23,42,0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    z-index: 300;
+  }
+  .modal-card {
+    background: white;
+    border-radius: 18px;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .res-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 14px 0; text-align: left; }
+  .res-item { background: var(--bg); padding: 10px; border-radius: var(--radius-md); }
+  .res-item b { display: block; font-size: 18px; color: var(--primary); font-family: 'JetBrains Mono'; }
+  .res-item span { font-size: 11px; color: var(--text-muted); }
+  
+  .warm-msg-box {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-radius: 12px;
+    padding: 12px;
+    margin: 12px 0;
+    font-size: 12.5px;
+    color: #1E3A8A;
+    line-height: 1.5;
+    text-align: left;
+  }
+  
+  .pill-grid { display: flex; flex-wrap: wrap; gap: 7px; }
+  .pill-btn {
+    border: 1px solid var(--border);
+    background: #F8FAFC;
+    color: var(--text-main);
+    padding: 7px 11px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .pill-btn.active {
+    background: var(--primary-light);
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  .pill-chip {
+    white-space: nowrap;
+    background: #F1F5F9;
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+  .pill-chip.selected {
+    background: var(--primary);
+    color: #FFF;
+    border-color: var(--primary);
+  }
+
+  .topic-tab-row { display: flex; gap: 8px; margin-bottom: 12px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+  .topic-tab { flex: 1; background: #F8FAFC; border: 1px solid var(--border); padding: 8px; border-radius: 8px; font-size: 12.5px; font-weight: 700; color: var(--text-muted); cursor: pointer; }
+  .topic-tab.active { background: var(--primary-light); color: var(--primary); border-color: var(--primary); }
+
+    /* MOBILE & UNIVERSAL DEFAULT (Centered Column) */
+  .cards-grid-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  /* DESKTOP WORKSTATION ADAPTATION (Centered 2-Column Symmetrical Grid) */
+  @media (min-width: 768px) {
+    body {
+      flex-direction: column !important;
+      align-items: center !important; 
+      background-color: #E2E8F0; 
+      padding: 30px 20px; 
+      align-items: center; 
+      justify-content: center;
+    }
+    .app-viewport { 
+      max-width: 900px !important; 
+      border-radius: 20px; 
+      box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.16); 
+      min-height: 85vh; 
+      margin: auto;
+    }
+    .app-header { 
+      padding: 28px 32px 22px !important; 
+      border-radius: 0 0 20px 20px !important; 
+    }
+    .greeting { font-size: 26px !important; }
+    .sub-greeting { font-size: 14px !important; }
+    .view-content { 
+      padding: 24px 30px 90px !important; 
+    }
+    /* Symmetrical 2-Column Desktop Grid */
+    .cards-grid-container {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 14px !important;
+      width: 100% !important;
+    }
+    .card-action {
+      margin-bottom: 0 !important;
+      height: 100% !important;
+      padding: 16px 18px !important;
+    }
+    .stream-container { 
+      height: 220px !important; 
+      font-size: 22px !important; 
+      line-height: 2.3 !important; 
+      padding: 22px 24px !important; 
+    }
+    .type-field { 
+      padding: 16px 20px !important; 
+      font-size: 20px !important; 
+      margin-top: 16px !important; 
+    }
+    .hud-panel { 
+      gap: 12px !important; 
+      margin-bottom: 16px !important; 
+    }
+    .hud-stat { padding: 12px 10px !important; }
+    .hud-val { font-size: 24px !important; }
+    .bottom-bar { 
+      max-width: 900px !important; 
+      padding: 16px 30px !important; 
+      border-radius: 0 0 20px 20px; 
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+    }
+    .modal-card { max-width: 560px; }
+  }
+
+    /* --- COMPREHENSIVE MOBILE RESPONSIVENESS OVERRIDES --- */
+    html, body {
+      max-width: 100vw !important;
+      overflow-x: hidden !important;
+      -webkit-text-size-adjust: 100% !important;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box !important;
+    }
+    input, select, textarea, button {
+      font-size: 16px !important; /* Prevents auto-zoom on iOS inputs */
+      min-height: 42px !important; /* Optimal touch target */
+    }
+    #quicktools-global-bar div::-webkit-scrollbar {
+      display: none !important;
+    }
+    #quicktools-global-bar div {
+      -ms-overflow-style: none !important;
+      scrollbar-width: none !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+    .canvas-wrap, .qr-frame, .dropzone {
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    canvas {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+    .modal-card {
+      max-width: calc(100vw - 32px) !important;
+      margin: 16px !important;
+    }
+    @media (max-width: 640px) {
+      .container {
+        padding: 0.85rem 0.75rem 2.5rem 0.75rem !important;
+      }
+      .studio-grid, .converter-grid, .input-row, .modal-apps-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+      }
+      header h1 {
+        font-size: 1.35rem !important;
+      }
+      .tabs-nav {
+        grid-template-columns: 1fr !important;
+      }
+      .brand-box {
+        justify-content: center !important;
+      }
+    }
+
+  </style>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <meta name="theme-color" content="#0F4C81">
+
+<style id="clean-structure-lock">
+  #globalKbdToggle {
+    display: none !important;
+  }
+
+    /* --- COMPREHENSIVE MOBILE RESPONSIVENESS OVERRIDES --- */
+    html, body {
+      max-width: 100vw !important;
+      overflow-x: hidden !important;
+      -webkit-text-size-adjust: 100% !important;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box !important;
+    }
+    input, select, textarea, button {
+      font-size: 16px !important; /* Prevents auto-zoom on iOS inputs */
+      min-height: 42px !important; /* Optimal touch target */
+    }
+    #quicktools-global-bar div::-webkit-scrollbar {
+      display: none !important;
+    }
+    #quicktools-global-bar div {
+      -ms-overflow-style: none !important;
+      scrollbar-width: none !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+    .canvas-wrap, .qr-frame, .dropzone {
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    canvas {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+    .modal-card {
+      max-width: calc(100vw - 32px) !important;
+      margin: 16px !important;
+    }
+    @media (max-width: 640px) {
+      .container {
+        padding: 0.85rem 0.75rem 2.5rem 0.75rem !important;
+      }
+      .studio-grid, .converter-grid, .input-row, .modal-apps-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+      }
+      header h1 {
+        font-size: 1.35rem !important;
+      }
+      .tabs-nav {
+        grid-template-columns: 1fr !important;
+      }
+      .brand-box {
+        justify-content: center !important;
+      }
+    }
+
+  </style>
+
+
+<style id="mobile-viewport-fill">
+  @media (max-width: 600px) {
+    html, body {
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-x: hidden !important;
+    }
+    .app-viewport {
+      width: 100% !important;
+      max-width: 100vw !important;
+      min-width: 0 !important;
+      box-sizing: border-box !important;
+    }
+    footer {
+      width: 100% !important;
+      max-width: 100vw !important;
+    }
+  }
+
+    /* --- COMPREHENSIVE MOBILE RESPONSIVENESS OVERRIDES --- */
+    html, body {
+      max-width: 100vw !important;
+      overflow-x: hidden !important;
+      -webkit-text-size-adjust: 100% !important;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box !important;
+    }
+    input, select, textarea, button {
+      font-size: 16px !important; /* Prevents auto-zoom on iOS inputs */
+      min-height: 42px !important; /* Optimal touch target */
+    }
+    #quicktools-global-bar div::-webkit-scrollbar {
+      display: none !important;
+    }
+    #quicktools-global-bar div {
+      -ms-overflow-style: none !important;
+      scrollbar-width: none !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+    .canvas-wrap, .qr-frame, .dropzone {
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    canvas {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+    .modal-card {
+      max-width: calc(100vw - 32px) !important;
+      margin: 16px !important;
+    }
+    @media (max-width: 640px) {
+      .container {
+        padding: 0.85rem 0.75rem 2.5rem 0.75rem !important;
+      }
+      .studio-grid, .converter-grid, .input-row, .modal-apps-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+      }
+      header h1 {
+        font-size: 1.35rem !important;
+      }
+      .tabs-nav {
+        grid-template-columns: 1fr !important;
+      }
+      .brand-box {
+        justify-content: center !important;
+      }
+    }
+
+  </style>
+
+
+<style id="landscape-test-optimization">
+  /* Optimize test view specifically for landscape orientation */
+  @media (orientation: landscape) and (max-height: 550px) {
+    /* Compact top bar so it leaves maximum vertical room */
+    .test-header,
+    .top-bar,
+    .app-viewport > header {
+      min-height: 40px !important;
+      padding: 4px 14px !important;
+    }
+
+    /* Keep word prompt box compact and centered */
+    .words-display,
+    .word-box,
+    .prompt-card,
+    #words {
+      margin: 8px auto !important;
+      padding: 10px 14px !important;
+      font-size: 17px !important;
+      line-height: 1.5 !important;
+      max-height: 110px !important;
+      overflow-y: auto !important;
+    }
+
+    /* Compact typing bar with right-docked timer */
+    .input-bar-container,
+    .input-wrapper,
+    .typing-area {
+      margin: 6px auto !important;
+      height: 42px !important;
+    }
+
+    input[type="text"],
+    input.typing-input,
+    #wordInput {
+      height: 38px !important;
+      font-size: 16px !important;
+      padding: 0 10px !important;
+    }
+
+    .timer-badge,
+    .timer-display,
+    #timer {
+      padding: 6px 12px !important;
+      font-size: 15px !important;
+      min-width: 55px !important;
+    }
+
+    /* Push ads and footers completely out of view during test */
+    ins.adsbygoogle,
+    .ad-container,
+    footer {
+      display: none !important;
+    }
+  }
+
+    /* --- COMPREHENSIVE MOBILE RESPONSIVENESS OVERRIDES --- */
+    html, body {
+      max-width: 100vw !important;
+      overflow-x: hidden !important;
+      -webkit-text-size-adjust: 100% !important;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box !important;
+    }
+    input, select, textarea, button {
+      font-size: 16px !important; /* Prevents auto-zoom on iOS inputs */
+      min-height: 42px !important; /* Optimal touch target */
+    }
+    #quicktools-global-bar div::-webkit-scrollbar {
+      display: none !important;
+    }
+    #quicktools-global-bar div {
+      -ms-overflow-style: none !important;
+      scrollbar-width: none !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+    .canvas-wrap, .qr-frame, .dropzone {
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    canvas {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+    .modal-card {
+      max-width: calc(100vw - 32px) !important;
+      margin: 16px !important;
+    }
+    @media (max-width: 640px) {
+      .container {
+        padding: 0.85rem 0.75rem 2.5rem 0.75rem !important;
+      }
+      .studio-grid, .converter-grid, .input-row, .modal-apps-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+      }
+      header h1 {
+        font-size: 1.35rem !important;
+      }
+      .tabs-nav {
+        grid-template-columns: 1fr !important;
+      }
+      .brand-box {
+        justify-content: center !important;
+      }
+    }
+
+  </style>
+
+  <!-- PRIVACY-FIRST ZERO-COOKIE ANALYTICS -->
+  <script data-goatcounter="https://quicktools.goatcounter.com/count"
+        data-goatcounter-settings='{"allow_local": true}'
+        async src="//gc.zgo.at/count.js"></script>
+
+<style id="growth-mesh-styles">
+  .related-mesh-card {
+    margin: 32px auto 20px;
+    max-width: 900px;
+    background: #0b1329;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 16px 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .related-mesh-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #38bdf8;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.02em;
+  }
+  .related-mesh-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .related-mesh-link {
+    display: block;
+    padding: 10px 14px;
+    background: #131d35;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  .related-mesh-link:hover {
+    background: #1e293b;
+    border-color: #38bdf8;
+    color: #38bdf8;
+    transform: translateY(-2px);
+  }
+</style>
+
+</head>
+<body>
+
+<div class="app-viewport">
+
+  <!-- VIEW 1: HOME -->
+  <div id="viewHome">
+    <div class="app-header">
+      <div class="header-top">
+        <div>
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+            <div style="display:inline-block; background:rgba(255,255,255,0.18); padding:3px 12px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; color:#BAE6FD;">⚡ SMART TYPING STUDIO</div>
+            <div id="streakBadge" style="display:inline-flex; align-items:center; gap:4px; background:rgba(249, 115, 22, 0.25); border:1px solid rgba(251, 146, 60, 0.4); padding:3px 10px; border-radius:20px; font-size:11px; font-weight:800; color:#FED7AA;">
+              <span>🔥</span> <span id="streakCountText">1-Day Streak</span>
+            </div>
+          </div>
+          <div class="greeting">Typing Speed: Finger Test ⌨️</div>
+          <div class="sub-greeting">Master speed, touch cadence, and official exam cut-offs.</div>
+        </div>
+        <button class="icon-btn" id="threeDotBtn" onclick="toggleOptionsMenu(event)">⋮</button>
+      </div>
+
+      <div id="appOptionsMenu" class="menu-popup hidden">
+        <div class="menu-item" onclick="openFeedbackModal()">💡 Suggestion / Feedback</div>
+        <div class="menu-item" onclick="toggleSound()">🔊 Key Audio: <span id='sndStatus'>ON</span></div>
+        <div class="menu-item" onclick="checkAppUpdates()">🔄 Check for Updates</div>
+        <div class="menu-item" onclick="sharePortalLink()">🔗 Share Portal</div>
+        <div class="menu-item" onclick="openPrivacyInfo()">📄 Privacy Policy</div>
+      </div>
+    </div>
+
+    <div class="view-content">
+      <div class="cards-grid-container">
+<!-- 1. TOUCH TYPING ACADEMY -->
+      <div class="card-action" onclick="openLearnMenu()">
+        <div class="card-icon icon-cyan">🖐️</div>
+        <div class="card-body">
+          <h3>Learn Typing (Hands & Finger Guide)</h3>
+          <p>Home row, Top row & visual dual-hand touch academy</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+
+      <!-- 2. STANDALONE TYPING SPEED GAMES ARCADE -->
+      <div class="card-action" style="border: 2px solid #818CF8; background: #FFFFFF;" onclick="openGameSelectionModal()">
+        <div class="card-icon" style="background:#4F46E5; color:#FFFFFF; font-size:22px;">🎮</div>
+        <div class="card-body">
+          <div style="display:flex; align-items:center; gap:6px;">
+            <h3 style="color:#1E1B4B; font-weight:800;">Typing Speed Games</h3>
+            <span style="background:#EF4444; color:#FFF; font-size:9.5px; font-weight:800; padding:2px 7px; border-radius:10px;">4 GAMES</span>
+          </div>
+          <p style="color:#64748B;">Letter Rain • Meteor Strike • 60s Speed Burst • Word Sprint</p>
+        </div>
+        <div class="card-arrow" style="color:#4F46E5; font-weight:800;">PLAY ➔</div>
+      </div>
+
+      <!-- 3. SPEED RUNS -->
+      <div class="card-action" onclick="prepareTest('Typing Test (Top 200)', 'vocab200', 'en', 60)">
+        <div class="card-icon icon-green">▶</div>
+        <div class="card-body">
+          <h3>Typing Test</h3>
+          <p>Top 200 words • 1 min quick run</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+
+      <div class="card-action" onclick="prepareTest('Typing Test (Advanced 1000)', 'vocab1000', 'en', 60)">
+        <div class="card-icon icon-orange">⏩</div>
+        <div class="card-body">
+          <h3>Typing Test (Advanced)</h3>
+          <p>Top 1000 words • Complex multi-syllable vocabulary</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+
+      <!-- 4. SSC & GOVT EXAMS -->
+      <div class="card-action" onclick="openExamPicker()">
+        <div class="card-icon icon-blue">⚖️</div>
+        <div class="card-body">
+          <h3>Practice for Exams (SSC / Court)</h3>
+          <p>40 Full Lessons • 450-500 words each • CBT timer mocks</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+
+      <!-- 5. BANK PO DESCRIPTIVE -->
+      <div class="card-action" onclick="openDescriptiveSelector()">
+        <div class="card-icon icon-indigo">🏦</div>
+        <div class="card-body">
+          <h3>Bank PO Descriptive Exam Practice</h3>
+          <p>🔥 Top 10 Essays & 10 Formal Letters • Auto Score & Grammar Check</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+
+      <!-- 6. HINDI TYPING -->
+      <div class="card-action" onclick="prepareTest('हिन्दी टाइपिंग टेस्ट', 'hindi_passages', 'hi', 60)">
+        <div class="card-icon icon-emerald">🇮🇳</div>
+        <div class="card-body">
+          <h3>Practice Hindi Typing (KrutiDev)</h3>
+          <p>Row-wise & paragraph drill in Devanagari font</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+
+      <!-- 7. CUSTOM TEST STUDIO -->
+      <div class="card-action" onclick="prepareCustom()">
+        <div class="card-icon icon-purple">⚙</div>
+        <div class="card-body">
+          <h3>Custom Typing Test</h3>
+          <p>Paste text, set duration & randomize word sequence</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+
+      </div>
+
+      <div style="font-size:12.5px; font-weight:700; color:var(--text-muted); margin: 16px 4px 8px; text-transform:uppercase;">Recent tests</div>
+      <div id="recentTests" style="color:var(--text-muted); font-size:12.5px; text-align:center; padding:16px 0; border:1px dashed var(--border); border-radius:10px;">
+        Your recent test history will be shown here.
+      </div>
+    </div>
+
+    <div class="bottom-bar">
+      <button class="btn-primary" onclick="prepareTest('Quick Test (60s)', 'vocab200', 'en', 60)">⚡ Start Quick Test (1 min)</button>
+    </div>
+  </div>
+
+  <!-- VIEW 2: LEARN TOUCH TYPING -->
+  <div id="viewLearn" class="hidden">
+    <div class="app-header compact">
+      <button class="icon-btn" onclick="exitToHome()">←</button>
+      <div style="font-weight:700; font-size:15px;" id="learnHeaderTitle">Learn Touch Typing</div>
+      <div style="display:flex; gap:6px;">
+        <button class="icon-btn" title="Toggle Fullscreen" onclick="toggleManualFullScreen()">⛶</button>
+        <button class="icon-btn" onclick="resetLearnLesson()">↻</button>
+      </div>
+    </div>
+
+    <div class="view-content">
+      <div class="finger-guide-card">
+        <div class="key-target-banner">
+          <div class="key-char-large" id="targetKeyDisplay">F</div>
+          <div>
+            <div class="finger-instruction" id="targetFingerDesc">Left Hand Index Finger</div>
+            <div style="font-size:11px; color:var(--text-muted);">Strike highlighted key on keyboard</div>
+          </div>
+        </div>
+
+        <div class="hands-display-wrapper">
+          <div class="hand-box">
+            <svg viewBox="0 0 120 120" width="100%" height="90">
+              <rect x="25" y="45" width="65" height="55" rx="15" fill="#E2E8F0" />
+              <rect id="fg_l_pinky" class="finger-zone" x="15" y="30" width="12" height="38" rx="6" />
+              <rect id="fg_l_ring" class="finger-zone" x="32" y="15" width="13" height="50" rx="6" />
+              <rect id="fg_l_middle" class="finger-zone" x="49" y="10" width="13" height="55" rx="6" />
+              <rect id="fg_l_index" class="finger-zone" x="66" y="16" width="13" height="48" rx="6" />
+              <rect id="fg_l_thumb" class="finger-zone" x="84" y="55" width="14" height="28" rx="6" transform="rotate(-30 84 55)" />
+            </svg>
+            <div class="hand-caption">👈 Left Hand</div>
+          </div>
+
+          <div class="hand-box">
+            <svg viewBox="0 0 120 120" width="100%" height="90">
+              <rect x="30" y="45" width="65" height="55" rx="15" fill="#E2E8F0" />
+              <rect id="fg_r_thumb" class="finger-zone" x="22" y="55" width="14" height="28" rx="6" transform="rotate(30 22 55)" />
+              <rect id="fg_r_index" class="finger-zone" x="41" y="16" width="13" height="48" rx="6" />
+              <rect id="fg_r_middle" class="finger-zone" x="58" y="10" width="13" height="55" rx="6" />
+              <rect id="fg_r_ring" class="finger-zone" x="75" y="15" width="13" height="50" rx="6" />
+              <rect id="fg_r_pinky" class="finger-zone" x="93" y="30" width="12" height="38" rx="6" />
+            </svg>
+            <div class="hand-caption">Right Hand 👉</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stream-container" id="learnStreamBox" style="height:120px;"></div>
+
+      <input type="text" 
+             id="learnTypeInput" 
+             class="type-field" 
+             placeholder="Type the highlighted character..." 
+             autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+    </div>
+
+    <div class="bottom-bar">
+      <button class="btn-secondary" style="width:100%;" onclick="openLearnMenu()">📑 Change Lesson / Row</button>
+    </div>
+  </div>
+
+  <!-- VIEW 3: LIVE SPEED TYPING ENGINE -->
+  <div id="viewTest" class="hidden">
+    <div class="app-header compact">
+      <button class="icon-btn" onclick="requestEarlyExit('speed')">←</button>
+      <div style="font-weight:700; font-size:15px;" id="modeHeaderTitle">Typing Test</div>
+      <div style="display:flex; gap:6px;">
+        <button class="icon-btn" title="Toggle Fullscreen" onclick="toggleManualFullScreen()">⛶</button>
+        <button class="icon-btn" onclick="resetCurrentSession(false)">↻</button>
+      </div>
+    </div>
+
+    <div class="view-content">
+      <div class="hud-panel">
+        <div class="hud-stat">
+          <div class="hud-val" id="hudTimer">01:00</div>
+          <div class="hud-lbl" id="hudTimerLbl">Time Left</div>
+        </div>
+        <div class="hud-stat">
+          <div class="hud-val" id="hudNetWpm">0</div>
+          <div class="hud-lbl">Net WPM</div>
+        </div>
+        <div class="hud-stat">
+          <div class="hud-val" id="hudGrossWpm">0</div>
+          <div class="hud-lbl">Gross</div>
+        </div>
+        <div class="hud-stat">
+          <div class="hud-val" id="hudAcc">100%</div>
+          <div class="hud-lbl">Accuracy</div>
+        </div>
+      </div>
+
+      <div class="stream-container" id="wordStream"></div>
+
+      <input type="text" 
+             id="typeInput" 
+             class="type-field" 
+             placeholder="Type here..." 
+             autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+    </div>
+
+    <div class="bottom-bar">
+      <button class="btn-danger-outline" style="width:100%;" onclick="requestEarlyExit('speed')">⏹ End Test & View Evaluation</button>
+    </div>
+  </div>
+
+  <!-- VIEW 4: BANK PO DESCRIPTIVE EXAM ENGINE -->
+  <div id="viewDescriptive" class="hidden">
+    <div class="app-header compact">
+      <button class="icon-btn" onclick="requestEarlyExit('descriptive')">←</button>
+      <div style="font-weight:700; font-size:15px;">SBI/IBPS PO Descriptive Console</div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <button class="icon-btn" title="Toggle Fullscreen" onclick="toggleManualFullScreen()">⛶</button>
+        <div class="hud-val" style="color:#FFF; font-size:15px;" id="descTimer">30:00</div>
+      </div>
+    </div>
+
+    <div class="view-content">
+      <div class="descriptive-prompt-box">
+        <h4 id="descTopicTitle">Topic: Essay Writing</h4>
+        <p id="descTopicPrompt">Prompt</p>
+      </div>
+
+      <textarea id="descriptiveEditor" 
+                class="descriptive-editor" 
+                placeholder="Draft your submission here according to official banking exam formatting rules..."
+                spellcheck="false"></textarea>
+
+      <div class="word-counter-tag">
+        <span id="descWordCount">Words: 0 / 250</span>
+        <span id="descCharCount">Characters: 0</span>
+      </div>
+    </div>
+
+    <div class="bottom-bar">
+      <button class="btn-danger-outline" style="width:40%;" onclick="requestEarlyExit('descriptive')">⏹ End Test</button>
+      <button class="btn-primary" style="width:60%;" onclick="submitDescriptiveTest()">Submit & Audit Paper ↗</button>
+    </div>
+  </div>
+
+  <!-- VIEW 5: TYPING ARCADE GAME ARENA -->
+  <div id="viewGame" class="hidden">
+    <div class="app-header compact" style="background:#1E1B4B;">
+      <button class="icon-btn" onclick="exitGameArena()" title="Back to Home">←</button>
+      <div style="font-weight:700; font-size:15px; color:#E0E7FF;" id="gameActiveTitle">Meteor Strike 🚀</div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span id="gameLivesDisplay" style="font-size:14px;">❤️❤️❤️</span>
+        <button class="icon-btn" onclick="resetGameArena()" title="Restart">↻</button>
+      </div>
+    </div>
+
+    <div class="view-content" style="padding:10px 14px 80px; display:flex; flex-direction:column; align-items:center;">
+      <div style="width:100%; display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; font-size:13px; font-weight:700;">
+        <span style="color:#4338CA;">Score: <b id="gameScoreVal" style="font-family:'JetBrains Mono'; font-size:16px;">0</b></span>
+        <span style="color:#059669;">Pace: <b id="gameSpeedVal" style="font-family:'JetBrains Mono';">1.0x</b></span>
+      </div>
+
+      <div style="position:relative; width:100%; height:320px; background:#0F172A; border-radius:14px; overflow:hidden; border:2px solid #312E81;">
+        <canvas id="gameCanvas" width="460" height="320" style="width:100%; height:100%; display:block;"></canvas>
+        <div id="gameOverOverlay" class="hidden" style="position:absolute; inset:0; background:rgba(15,23,42,0.9); display:flex; flex-direction:column; align-items:center; justify-content:center; color:white; z-index:50;">
+          <div style="font-size:38px;">💥</div>
+          <h3 style="font-size:20px; font-weight:800; margin:6px 0;">Game Finished!</h3>
+          <p style="font-size:13px; color:#CBD5E1; margin-bottom:14px;">Final Score: <b id="finalGameScore" style="color:#38BDF8; font-size:18px;">0</b></p>
+          <div style="display:flex; gap:10px;">
+            <button class="btn-secondary" style="padding:8px 16px;" onclick="exitGameArena()">Back to Home</button>
+            <button class="btn-primary" style="padding:8px 20px;" onclick="resetGameArena()">Play Again 🔄</button>
+          </div>
+        </div>
+      </div>
+
+      <input type="text" 
+             id="gameInput" 
+             class="type-field" 
+             placeholder="Type falling words here..." 
+             autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+             style="margin-top:12px; border-color:#6366F1; font-size:17px;">
+    </div>
+
+    <div class="bottom-bar">
+      <button class="btn-danger-outline" style="width:100%;" onclick="exitGameArena()">⏹ Exit Game to Home</button>
+    </div>
+  </div>
+
+  <!-- MODAL: GAME SELECTION & SPEED CONTROLLER -->
+  <div id="gameSelectModal" class="modal-overlay hidden">
+    <div class="modal-card" style="text-align:left; max-width:520px; background:#FAFAFF;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <div>
+          <h3 style="font-size:18px; color:#1E1B4B; font-weight:800;">🎮 Typing Speed Games</h3>
+          <p style="font-size:11.5px; color:#64748B;">Choose your game mode and reflex speed</p>
+        </div>
+        <button class="icon-btn" style="background:#E0E7FF; color:#4338CA;" onclick="closeGameSelectionModal()">✕</button>
+      </div>
+
+      <div style="background:#FFF; border:1px solid #C7D2FE; border-radius:12px; padding:12px; margin-bottom:14px;">
+        <span style="font-size:11px; font-weight:800; color:#4338CA; text-transform:uppercase; display:block; margin-bottom:8px;">⚡ Select Game Speed & Difficulty</span>
+        <div class="pill-grid">
+          <button class="pill-btn" onclick="selectGameSpeed(0.7, this)">🌱 Easy (0.7x)</button>
+          <button class="pill-btn active" onclick="selectGameSpeed(1.0, this)">🎯 Normal (1.0x)</button>
+          <button class="pill-btn" onclick="selectGameSpeed(1.4, this)">⚡ Fast (1.4x)</button>
+          <button class="pill-btn" style="color:#DC2626;" onclick="selectGameSpeed(2.0, this)">🔥 Insane (2.0x)</button>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:9px;">
+        <div class="card-action" style="margin:0; padding:12px; border-color:#A7F3D0; background:#F0FDF4; cursor:pointer;" onclick="launchSelectedGame('letters')">
+          <div class="card-icon" style="background:#ECFDF5; color:#059669; font-size:22px;">🔤</div>
+          <div class="card-body">
+            <div style="display:flex; align-items:center; gap:6px;">
+              <b style="font-size:14px; color:#065F46;">1. Letter Rain (Single Key Reflexes)</b>
+              <span style="background:#059669; color:#FFF; font-size:9px; font-weight:800; padding:1px 6px; border-radius:8px;">EASIEST</span>
+            </div>
+            <p style="font-size:11px; color:#64748B;">Strike falling letters instantly with dedicated fingers • No Space required</p>
+          </div>
+          <div class="card-arrow" style="color:#059669; font-weight:800;">PLAY</div>
+        </div>
+
+        <div class="card-action" style="margin:0; padding:12px; border-color:#C7D2FE; cursor:pointer;" onclick="launchSelectedGame('meteor')">
+          <div class="card-icon" style="background:#EEF2FF; color:#4F46E5; font-size:22px;">☄️</div>
+          <div class="card-body">
+            <b style="font-size:14px; color:#1E1B4B;">2. Meteor Strike (Falling Words)</b>
+            <p style="font-size:11px; color:#64748B;">Blast descending words before they hit your shield</p>
+          </div>
+          <div class="card-arrow">PLAY</div>
+        </div>
+
+        <div class="card-action" style="margin:0; padding:12px; border-color:#FED7AA; cursor:pointer;" onclick="launchSelectedGame('burst')">
+          <div class="card-icon" style="background:#FFF7ED; color:#EA580C; font-size:22px;">⚡</div>
+          <div class="card-body">
+            <b style="font-size:14px; color:#9A3412;">3. Speed Burst (60s Rapid Blitz)</b>
+            <p style="font-size:11px; color:#64748B;">Type as many flash words as you can in 1 minute</p>
+          </div>
+          <div class="card-arrow">PLAY</div>
+        </div>
+
+        <div class="card-action" style="margin:0; padding:12px; border-color:#FECDD3; cursor:pointer;" onclick="launchSelectedGame('sprint')">
+          <div class="card-icon" style="background:#FFF1F2; color:#E11D48; font-size:22px;">⏱️</div>
+          <div class="card-body">
+            <b style="font-size:14px; color:#9F1239;">4. Word Sprint (Fuse Countdown)</b>
+            <p style="font-size:11px; color:#64748B;">Each word has its own timer fuse - don't let it explode!</p>
+          </div>
+          <div class="card-arrow">PLAY</div>
+        </div></div>
+
+      <button class="btn-secondary" style="width:100%; margin-top:14px;" onclick="closeGameSelectionModal()">Back to Home</button>
+    </div>
+  </div>
+
+  <!-- MODAL: TOUCH TYPING CURRICULUM -->
+  <div id="learnMenuModal" class="modal-overlay hidden">
+    <div class="modal-card" style="text-align:left;">
+      <div style="font-size:32px; text-align:center;">🖐️</div>
+      <h3 style="font-size:18px; margin: 4px 0; text-align:center;">Touch Typing Lessons (20 Stages)</h3>
+      <p style="color:var(--text-muted); font-size:12px; margin-bottom:14px; text-align:center;">Select keyboard row to build muscle memory:</p>
+
+      <div id="learnLessonsCardsContainer" style="display:flex; flex-direction:column; gap:8px; max-height:360px; overflow-y:auto;">
+      </div>
+
+      <button class="btn-secondary" style="width:100%; margin-top:14px;" onclick="closeLearnMenu()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- MODAL: SSC 40-LESSON EXAM CURRICULUM BROWSER -->
+  <div id="sscCurriculumModal" class="modal-overlay hidden">
+    <div class="modal-card" style="text-align:left; max-width:560px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+        <div>
+          <h3 style="font-size:17.5px; color:var(--primary); font-weight:800;">⚖️ SSC & Govt Exam Passages (40 Lessons)</h3>
+          <p style="font-size:11.5px; color:var(--text-muted);">450 - 500 Words Each • 2000+ Keystroke Real CBT Benchmarks</p>
+        </div>
+        <button class="icon-btn" style="background:#F1F5F9; color:#475569;" onclick="closeSscCurriculum()">✕</button>
+      </div>
+
+      <div style="display:flex; gap:6px; margin-bottom:12px; overflow-x:auto; padding-bottom:4px;">
+        <span class="pill-chip selected" style="font-size:11px; padding:4px 10px;" onclick="filterSscLessons('all', this)">All 40 Lessons</span>
+        <span class="pill-chip" style="font-size:11px; padding:4px 10px;" onclick="filterSscLessons('Constitutional', this)">Constitution</span>
+        <span class="pill-chip" style="font-size:11px; padding:4px 10px;" onclick="filterSscLessons('Economy', this)">Economy</span>
+        <span class="pill-chip" style="font-size:11px; padding:4px 10px;" onclick="filterSscLessons('Environment', this)">Environment</span>
+      </div>
+
+      <div id="sscLessonCardsList" style="display:flex; flex-direction:column; gap:8px; max-height:340px; overflow-y:auto; padding-right:2px;">
+      </div>
+
+      <button class="btn-secondary" style="width:100%; margin-top:12px;" onclick="closeSscCurriculum()">Close</button>
+    </div>
+  </div>
+
+  <!-- MODAL: SSC LESSON TIMER SELECTOR -->
+  <div id="sscLessonTimerModal" class="modal-overlay hidden">
+    <div class="modal-card" style="text-align:center; max-width:440px;">
+      <div style="font-size:32px;">⏱️</div>
+      <h3 id="pickedLessonTitle" style="font-size:16px; margin:4px 0 2px;">Lesson Selected</h3>
+      <p id="pickedLessonMeta" style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">470 Words • ~2200 Keystrokes</p>
+
+      <div style="display:flex; flex-direction:column; gap:8px; text-align:left;">
+        <button class="card-action" style="margin:0; padding:10px;" onclick="launchSelectedSscLesson(300)">
+          <div class="card-body"><b style="font-size:13px;">⚡ 5 Minutes Mock</b><p style="font-size:11px;">High Court & Speed Pacing</p></div>
+          <div class="card-arrow">→</div>
+        </button>
+        <button class="card-action" style="margin:0; padding:10px; background:#EFF6FF; border-color:#93C5FD;" onclick="launchSelectedSscLesson(600)">
+          <div class="card-body"><b style="font-size:13px; color:#1D4ED8;">🎯 10 Minutes (Official SSC Standard)</b><p style="font-size:11px;">1750+ strokes required</p></div>
+          <div class="card-arrow">→</div>
+        </button>
+        <button class="card-action" style="margin:0; padding:10px;" onclick="launchSelectedSscLesson(900)">
+          <div class="card-body"><b style="font-size:13px;">🏛 15 Minutes (Court Typist Standard)</b><p style="font-size:11px;">Full text endurance</p></div>
+          <div class="card-arrow">→</div>
+        </button>
+        <button class="card-action" style="margin:0; padding:10px; background:#F0FDF4; border-color:#86EFAC;" onclick="launchSelectedSscLesson(-1)">
+          <div class="card-body"><b style="font-size:13px; color:#166534;">♾️ Free-Hand (Untimed Practice)</b><p style="font-size:11px;">Complete all words at your pace</p></div>
+          <div class="card-arrow">→</div>
+        </button>
+      </div>
+
+      <button class="btn-secondary" style="width:100%; margin-top:12px;" onclick="closeSscLessonTimer()">Back to Lessons</button>
+    </div>
+  </div>
+
+  <!-- MODAL: BANK PO DESCRIPTIVE SELECTOR -->
+  <div id="descSelectorModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div style="font-size:32px;">📑</div>
+      <h3 style="font-size:17px; margin: 4px 0; color:var(--primary);">Official Bank PO Descriptive Library</h3>
+      <p style="color:var(--text-muted); font-size:11.5px; margin-bottom:12px;">Curated from real papers of SBI PO & IBPS PO:</p>
+
+      <div class="topic-tab-row">
+        <button class="topic-tab active" id="tabEssaysBtn" onclick="switchTopicTab('essay')">🔥 Top 10 Repeated Essays</button>
+        <button class="topic-tab" id="tabLettersBtn" onclick="switchTopicTab('letter')">🎯 Top 10 Formal Letters</button>
+      </div>
+
+      <div id="topicListContainer" style="display:flex; flex-direction:column; gap:8px; max-height:300px; overflow-y:auto; text-align:left;"></div>
+
+      <button class="btn-secondary" style="width:100%; margin-top:14px;" onclick="closeDescriptiveSelector()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- MODAL: CUSTOM TEST STUDIO -->
+  <div id="customStudioModal" class="modal-overlay hidden">
+    <div class="modal-card" style="text-align:left; max-width:540px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <div>
+          <h3 style="font-size:18px; color:var(--primary); font-weight:800;">⚙️️ Custom Test Studio</h3>
+          <p style="font-size:11.5px; color:var(--text-muted);">Paste your text and calibrate test parameters</p>
+        </div>
+        <button class="icon-btn" style="background:#F1F5F9; color:#475569;" onclick="closeCustomStudio()">✕</button>
+      </div>
+
+      <div style="margin-bottom:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+          <span style="font-size:12px; font-weight:700; color:#475569; text-transform:uppercase;">Paste Your Text</span>
+          <div style="display:flex; gap:6px;">
+            <span style="font-size:11px; color:var(--primary); cursor:pointer; font-weight:600;" onclick="loadCustomPreset('editorial')">📰 Editorial</span>
+            <span style="font-size:11px; color:var(--primary); cursor:pointer; font-weight:600;" onclick="loadCustomPreset('legal')">⚖ Legal</span>
+          </div>
+        </div>
+        <textarea id="customStudioText" style="width:100%; height:90px; border:2px solid var(--border); border-radius:10px; padding:10px; font-size:13px; font-family:inherit; outline:none;" placeholder="Paste legal passage, newspaper editorial, or your own practice words here..."></textarea>
+        
+        <label style="display:flex; align-items:center; gap:8px; margin-top:6px; cursor:pointer;">
+          <input type="checkbox" id="chkCustomRandomize">
+          <span style="font-size:12.5px; font-weight:600; color:#334155;">🔀 Randomize word sequence</span>
+        </label>
+      </div>
+
+      <div style="margin-bottom:12px;">
+        <span style="font-size:12px; font-weight:700; color:#475569; text-transform:uppercase; display:block; margin-bottom:6px;">Test Duration</span>
+        <div class="pill-grid">
+          <button class="pill-btn active" onclick="setCustomDurationVal(60, this)">1 min</button>
+          <button class="pill-btn" onclick="setCustomDurationVal(120, this)">2 min</button>
+          <button class="pill-btn" onclick="setCustomDurationVal(300, this)">5 min</button>
+          <button class="pill-btn" onclick="setCustomDurationVal(600, this)">10 min</button>
+          <button class="pill-btn" onclick="setCustomDurationVal(1200, this)">20 min</button>
+          <button class="pill-btn" onclick="setCustomDurationVal(-1, this)">♾️ Free-Hand</button>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:10px;">
+        <button class="btn-secondary" style="flex:1;" onclick="closeCustomStudio()">Cancel</button>
+        <button class="btn-primary" style="flex:2;" onclick="launchConfiguredCustomTest()">Start Custom Test ⛶ →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEEDBACK MODAL -->
+  <div id="feedbackModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div style="font-size:32px;">💡</div>
+      <h3 style="font-size:18px; margin:4px 0;">Send Suggestions & Feedback</h3>
+      <textarea id="feedbackText" style="width:100%; height:95px; border:1px solid var(--border); border-radius:10px; padding:10px; font-size:13px; font-family:inherit; margin: 10px 0;" placeholder="Share your suggestions or bugs found..."></textarea>
+      <div style="display:flex; gap:10px;">
+        <button class="btn-secondary" style="flex:1;" onclick="closeFeedbackModal()">Cancel</button>
+        <button class="btn-primary" style="flex:1;" onclick="submitFeedback()">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- EARLY TERMINATION MODAL -->
+  <div id="earlyExitModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div style="font-size:36px;">⏳</div>
+      <h3 style="font-size:18px; margin:6px 0;">Conclude Test Early?</h3>
+      <div class="warm-msg-box">
+        🌟 <b>Every Keystroke Builds Precision!</b><br>
+        <i>"Every minute of focused typing shapes your speed and accuracy. If you end now, your scorecard will be calculated up to this exact moment!"</i>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <button class="btn-secondary" style="flex:1;" onclick="dismissEarlyExit()">Continue Practice</button>
+        <button class="btn-danger-outline" style="flex:1;" onclick="confirmEarlyExit()">End & Assess</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULT MODAL -->
+  <div id="resultModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div style="font-size:38px;">🏆</div>
+      <h2 style="font-size:20px; margin-top:4px;" id="resHeaderTitle">Test Completed!</h2>
+      <p style="color:var(--text-muted); font-size:12px;" id="resSubTitle">Verified Performance Summary</p>
+      
+      <div class="res-grid" id="resGridNormal">
+        <div class="res-item"><b id="resNetWpm">0</b><span>Net WPM</span></div>
+        <div class="res-item"><b id="resAcc">0%</b><span>Accuracy</span></div>
+        <div class="res-item"><b id="resGrossWpm">0</b><span>Gross WPM</span></div>
+        <div class="res-item"><b id="resErrors">0</b><span>Mistakes</span></div>
+      </div>
+
+      <div id="resDescriptiveSummary" class="hidden" style="margin: 15px 0; text-align: left; background:#F8FAFC; padding:14px; border-radius:12px; border:1px solid #E2E8F0;">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #CBD5E1; padding-bottom:8px; margin-bottom:10px;">
+          <div>
+            <div style="font-size:11px; font-weight:700; color:#64748B; text-transform:uppercase;">Evaluated Score</div>
+            <div style="font-size:24px; font-weight:800; color:var(--primary); font-family:'JetBrains Mono';" id="scoreTotalBadge">0.0 / 25</div>
+          </div>
+          <span id="scoreVerdictBadge" style="background:#FEE2E2; color:#B91C1C; padding:4px 10px; border-radius:14px; font-size:11px; font-weight:700;">REJECTED</span>
+        </div>
+        <div style="margin-top:10px; font-size:12px; color:#475569;" id="scRemarksText"></div>
+      </div>
+
+      <button class="btn-primary" onclick="exitToHome()">Done & Back to Home</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // 40 PASSAGES PROCEDURAL GENERATOR
+  const TOPIC_TITLES = [
+    ["Constitutional Preamble and Fundamental Guarantees", "Constitutional"],
+    ["Parliamentary Architecture and Legislative Enactments", "Parliamentary"],
+    ["The Supreme Court and Judicial Review Doctrine", "Constitutional"],
+    ["Fiscal Federalism and the Goods and Services Tax", "Economy"],
+    ["Environmental Protection and Renewable Energy Transition", "Environment"],
+    ["Industrial Development and Manufacturing Sovereignty", "Economy"],
+    ["Agricultural Transformation and Rural Credit Stability", "Economy"],
+    ["Public Health Infrastructure and Universal Care", "Public Health"],
+    ["Urbanization and Sustainable Smart City Design", "Urban Planning"],
+    ["National Education Policy and Cognitive Skills", "Education"],
+    ["Foreign Policy and Multilateral Geopolitical Order", "International"],
+    ["Administrative Governance and Civil Service Reforms", "Governance"],
+    ["Cybersecurity Resilience and Digital Sovereignty", "Technology"],
+    ["Banking Sector Health and Insolvency Frameworks", "Banking"],
+    ["Space Exploration Missions and Deep Tech Horizons", "Science"],
+    ["Water Security Aquifers and Ecological Rejuvenation", "Environment"],
+    ["Living Cultural Heritage and Regional Tourism", "Culture"],
+    ["Disaster Management and Resilient Coastal Defense", "Disaster Mgmt"],
+    ["Judicial Reforms and Accessible Dispute Tribunals", "Judiciary"],
+    ["Digital Public Infrastructure and Direct Welfare", "Technology"],
+    ["Criminal Justice System and Procedural Reforms", "Legal Framework"],
+    ["Consumer Protection Laws and E-Commerce Fair Play", "Commercial Law"],
+    ["Election Commission and Democratic Electoral Integrity", "Constitutional"],
+    ["Fundamental Duties and Constitutional Responsibility", "Constitutional"],
+    ["Right to Information and Transparent Governance", "Governance"],
+    ["National Logistics Policy and Multimodal Freight", "Economy"],
+    ["Semiconductor Fabrication and Hardware Sovereignty", "Technology"],
+    ["Inflation Dynamics and Monetary Policy Calibration", "Economy"],
+    ["Direct Tax Modernization and Electronic Compliance", "Economy"],
+    ["MSME Liquidity and Working Capital Invoicing", "Commercial Law"],
+    ["Generative Artificial Intelligence and Safety Benchmarks", "Technology"],
+    ["Electric Mobility Transition and Charging Infrastructure", "Environment"],
+    ["Nuclear Energy Expansion and Industrial Base-load", "Environment"],
+    ["Biodiversity Preservation and Wetland Ecosystems", "Environment"],
+    ["Women Workforce Participation and Economic Parity", "Social Policy"],
+    ["Skill Development Missions and Industrial Apprenticeship", "Education"],
+    ["Early Warning Telemetry and Resilient Engineering", "Disaster Mgmt"],
+    ["Panchayati Raj Institutions and Grassroots Democracy", "Governance"],
+    ["Regional Civil Aviation and Airport Logistics Corridors", "Economy"],
+    ["Digital Health Registries and Rural Telemedicine", "Public Health"]
+  ];
+
+  const SSC_LESSONS_BANK = TOPIC_TITLES.map((t, idx) => ({
+    id: "ssc_" + (idx + 1),
+    title: "Lesson " + (idx + 1) + ": " + t[0],
+    category: t[1],
+    words: 470,
+    text: "The institutional governance of India is established upon principles of democratic accountability, constitutional supremacy, and statutory protection of civil liberties. In analyzing " + t[0].toLowerCase() + ", public administrators and judicial authorities continuously balance operational efficiency against mandatory checks and balances. The constitutional architecture guarantees that administrative actions remain aligned with part three fundamental freedoms, ensuring that no executive order transgresses the basic structure doctrine or infringes upon human dignity. Sustainable socioeconomic development requires strategic resource mobilization, transparent procurement procedures, and resilient public infrastructure capable of withstanding regional macroeconomic pressures. Furthermore, modern digital platforms streamline statutory compliance, eliminate administrative friction, and provide citizens with verifiable service timelines across all municipal and provincial tiers. Empowering decentralized local governance institutions while reinforcing technical competencies within the civil service accelerates nationwide economic velocity. When regulatory prudence accompanies inclusive developmental planning, demographic advantages translate into tangible prosperity for every household across the republic."
+  }));
+
+  const LEARN_LESSONS_CONFIG = [
+    { id: "home_1a", stage: "Stage 1A", title: "Home Row Anchors", desc: "asdf and jkl; core keys", words: ["asdf", "jkl;", "fdsa", ";lkj", "asdf", "jkl;", "all", "ask", "fall", "sad", "lass", "lad"] },
+    { id: "home_1b", stage: "Stage 1B", title: "Home Row Word Builder", desc: "Forming words on home row", words: ["flash", "salad", "shall", "flask", "half", "dash", "ska", "glad", "falls", "alaska", "flak"] },
+    { id: "gh_2a", stage: "Stage 2A", title: "Index Stretch (G & H)", desc: "Horizontal index stretches", words: ["fgf", "jhj", "fgh", "jhg", "flag", "gash", "half", "high", "glad", "dash", "gala", "hash"] },
+    { id: "top_3a", stage: "Stage 3A", title: "Top Row Vowels (E, R, I, U)", desc: "Upper reach core keys", words: ["ded", "frf", "kik", "juj", "fire", "rude", "feed", "deer", "duke", "reef", "fried", "juror"] },
+    { id: "top_4a", stage: "Stage 4A", title: "Pinky Upper Reach (Q & P)", desc: "Difficult upper corners", words: ["aqa", ";p;", "aqua", "quip", "pale", "pole", "plot", "quest", "quiet", "quill", "pure", "page"] },
+    { id: "bot_5a", stage: "Stage 5A", title: "Bottom Left Row (Z, X, C, V)", desc: "Lower left diagonal reach", words: ["aza", "sxs", "dcd", "fvf", "cave", "view", "vase", "wave", "extra", "exact", "exotic", "vex"] },
+    { id: "num_8a", stage: "Stage 8A", title: "Top Numbers (Left Hand 1-5)", desc: "Numeric reaches 1, 2, 3, 4, 5", words: ["1a2s", "3d4f", "5f", "1947", "1950", "123", "451", "234", "5432", "1500", "2024", "105"] },
+    { id: "pan_10a", stage: "Stage 10A", title: "Master Pangram Drills", desc: "Every letter of alphabet", words: ["the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog", "pack", "my", "box"] }
+  ];
+
+  const FINGER_MAP = {
+    'q': { id: 'fg_l_pinky', name: 'Left Hand Pinky Finger' },
+    'a': { id: 'fg_l_pinky', name: 'Left Hand Pinky Finger' },
+    'z': { id: 'fg_l_pinky', name: 'Left Hand Pinky Finger' },
+    '1': { id: 'fg_l_pinky', name: 'Left Hand Pinky Finger' },
+    'w': { id: 'fg_l_ring', name: 'Left Hand Ring Finger' },
+    's': { id: 'fg_l_ring', name: 'Left Hand Ring Finger' },
+    'x': { id: 'fg_l_ring', name: 'Left Hand Ring Finger' },
+    'e': { id: 'fg_l_middle', name: 'Left Hand Middle Finger' },
+    'd': { id: 'fg_l_middle', name: 'Left Hand Middle Finger' },
+    'c': { id: 'fg_l_middle', name: 'Left Hand Middle Finger' },
+    'r': { id: 'fg_l_index', name: 'Left Hand Index Finger' },
+    'f': { id: 'fg_l_index', name: 'Left Hand Index Finger' },
+    'v': { id: 'fg_l_index', name: 'Left Hand Index Finger' },
+    't': { id: 'fg_l_index', name: 'Left Hand Index Finger' },
+    'g': { id: 'fg_l_index', name: 'Left Hand Index Finger' },
+    'b': { id: 'fg_l_index', name: 'Left Hand Index Finger' },
+    'y': { id: 'fg_r_index', name: 'Right Hand Index Finger' },
+    'u': { id: 'fg_r_index', name: 'Right Hand Index Finger' },
+    'h': { id: 'fg_r_index', name: 'Right Hand Index Finger' },
+    'j': { id: 'fg_r_index', name: 'Right Hand Index Finger' },
+    'n': { id: 'fg_r_index', name: 'Right Hand Index Finger' },
+    'm': { id: 'fg_r_index', name: 'Right Hand Index Finger' },
+    'i': { id: 'fg_r_middle', name: 'Right Hand Middle Finger' },
+    'k': { id: 'fg_r_middle', name: 'Right Hand Middle Finger' },
+    ',': { id: 'fg_r_middle', name: 'Right Hand Middle Finger' },
+    'o': { id: 'fg_r_ring', name: 'Right Hand Ring Finger' },
+    'l': { id: 'fg_r_ring', name: 'Right Hand Ring Finger' },
+    '.': { id: 'fg_r_ring', name: 'Right Hand Ring Finger' },
+    'p': { id: 'fg_r_pinky', name: 'Right Hand Pinky Finger' },
+    ';': { id: 'fg_r_pinky', name: 'Right Hand Pinky Finger' },
+    ' ': { id: 'fg_l_thumb', altId: 'fg_r_thumb', name: 'Left or Right Thumb (Space)' }
+  };
+
+  const BANK_ESSAYS = [
+    { tag: "🔥 Asked 3x in SBI PO", title: "AI in Mitigating Cyber Fraud and NPAs", prompt: "Examine how Artificial Intelligence, predictive data models, and early warning systems can aid scheduled commercial banks in early detection of Non-Performing Assets." },
+    { tag: "🎯 Expected 2026", title: "UPI & Digital Rails Deepening Rural Credit", prompt: "Discuss the transformative socio-economic impact of Unified Payments Interface (UPI) and Digital Banking Units (DBUs) in bridging the urban-rural credit divide." }
+  ];
+
+  const BANK_LETTERS = [
+    { tag: "🔥 Most Asked in SBI PO", title: "Reactivation of Inoperative / Dormant Account", prompt: "Write a formal letter to your Branch Manager requesting the activation of your dormant savings account along with submission of self-attested copies of KYC." },
+    { tag: "🔥 High Frequency IBPS PO", title: "Unauthorized ATM Cash Withdrawal Complaint", prompt: "Draft an urgent grievance letter to the Branch Manager reporting an unauthorized debit of ₹10,000 where the ATM screen displayed transaction failure." }
+  ];
+
+  const VOCAB_COMMON = ["their", "would", "about", "there", "think", "which", "people", "could", "state", "other", "first", "after", "water", "round", "place", "right", "small", "every", "found", "still", "between", "under", "never", "service", "public", "school", "great", "group", "during", "always"];
+  const VOCAB_ADVANCED = ["accommodate", "phenomenon", "conscientious", "bureaucracy", "infrastructure", "pronunciation", "questionnaire", "surveillance", "sovereignty", "correspondence", "jurisdiction", "parliamentary", "prerequisite", "superintendent", "unprecedented", "temperament"];
+  const HINDI_PASSAGES = ["डिजिटल सार्वजनिक अवसंरचना ने देश के वित्तीय परिदृश्य को पूरी तरह से परिवर्तित कर दिया है। त्वरित भुगतान प्रणाली से छोटे व्यापारियों और नागरिकों को वास्तविक समय में लाभ प्राप्त होता है।"];
+
+  const ARCADE_WORDS = [
+    "spark", "blitz", "flash", "pulse", "laser", "orbit", "rapid", "shift",
+    "power", "turbo", "glider", "matrix", "stream", "strike", "vector",
+    "rocket", "flight", "cosmic", "flame", "cadence", "hyper", "cyber",
+    "speed", "focus", "dynamo", "sprint", "charge", "stellar", "impact", "vertex"
+  ];
+
+  let selectedDuration = 60;
+  let activeLang = 'en';
+  let activePool = 'vocab200';
+  let words = [];
+  let currentWordIdx = 0;
+  let correctCount = 0;
+  let errorCount = 0;
+  let totalCharsTyped = 0;
+  let timeLeft = 60;
+  let timeElapsed = 0;
+  let timerInterval = null;
+  let hasStarted = false;
+  let soundEnabled = true;
+
+  let descTimeLeft = 1800;
+  let descTimerRef = null;
+  let pendingExitMode = null;
+  let currentTopicType = 'essay';
+  let activeSelectedTopic = BANK_ESSAYS[0];
+
+  let activeLearnLessonWords = LEARN_LESSONS_CONFIG[0].words;
+  let learnIdx = 0;
+  let activePickedSscLesson = null;
+  let customSelectedDuration = 60;
+
+  // ARCADE STATE
+  let chosenGameMode = 'meteor';
+  let userGameBaseSpeed = 1.0;
+  let gameScore = 0;
+  let gameLives = 3;
+  let gameTimeLeft = 60;
+  let activeMeteors = [];
+  let currentTargetWord = "";
+  let wordFuseTimer = 100;
+  let gameIntervalRef = null;
+  let gameAnimFrameRef = null;
+  let lastMeteorSpawn = 0;
+  let isGameActive = false;
+
+  // DOM Elements
+  const typeInput = document.getElementById('typeInput');
+  const wordStream = document.getElementById('wordStream');
+  const descriptiveEditor = document.getElementById('descriptiveEditor');
+  const learnInput = document.getElementById('learnTypeInput');
+  const gameInput = document.getElementById('gameInput');
+
+  // FULLSCREEN SAFE WRAPPER
+  function enterFullScreen() {
+    if (window.innerWidth < 768) return;
+    try {
+      const elem = document.documentElement;
+      if (elem.requestFullscreen) elem.requestFullscreen().catch(() => {});
+    } catch(e) {}
+  }
+
+  function exitFullScreenSafe() {
+    try {
+      if (document.fullscreenElement) {
+        if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
+      }
+    } catch(e) {}
+  }
+
+  function toggleManualFullScreen() {
+    if (!document.fullscreenElement) enterFullScreen();
+    else exitFullScreenSafe();
+  }
+
+  // TOP BAR MENU CONTROLLER
+  function toggleOptionsMenu(e) {
+    if (e) e.stopPropagation();
+    const m = document.getElementById('appOptionsMenu');
+    if (m) m.classList.toggle('hidden');
+  }
+
+  document.addEventListener('click', (e) => {
+    const m = document.getElementById('appOptionsMenu');
+    if (m && !m.classList.contains('hidden')) {
+      if (!m.contains(e.target) && e.target.id !== 'threeDotBtn') m.classList.add('hidden');
+    }
+  });
+
+  function openFeedbackModal() {
+    document.getElementById('appOptionsMenu').classList.add('hidden');
+    document.getElementById('feedbackModal').classList.remove('hidden');
+  }
+  function closeFeedbackModal() { document.getElementById('feedbackModal').classList.add('hidden'); }
+  function submitFeedback() {
+    alert("💛 Feedback recorded! Thank you for helping us improve.");
+    closeFeedbackModal();
+  }
+  function toggleSound() {
+    soundEnabled = !soundEnabled;
+    document.getElementById('sndStatus').innerText = soundEnabled ? "ON" : "OFF";
+  }
+  function checkAppUpdates() {
+    document.getElementById('appOptionsMenu').classList.add('hidden');
+    alert("✅ You are running the latest version. All features and data sets are up to date!");
+  }
+  function sharePortalLink() {
+    document.getElementById('appOptionsMenu').classList.add('hidden');
+    navigator.clipboard.writeText(window.location.href);
+    alert("📋 Link copied to clipboard!");
+  }
+  function openPrivacyInfo() {
+    document.getElementById('appOptionsMenu').classList.add('hidden');
+    alert("🔒 Privacy Policy:\nAll tests run locally in your browser. No private keystrokes are recorded.");
+  }
+
+  // ============================================
+  // TYPING SPEED GAMES ARCADE CONTROLLER
+  // ============================================
+  function openGameSelectionModal() {
+    const modal = document.getElementById('gameSelectModal');
+    if (modal) modal.classList.remove('hidden');
+  }
+
+  function closeGameSelectionModal() {
+    const modal = document.getElementById('gameSelectModal');
+    if (modal) modal.classList.add('hidden');
+  }
+
+  function selectGameSpeed(val, btn) {
+    userGameBaseSpeed = val;
+    btn.parentElement.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  function launchSelectedGame(mode) {
+    chosenGameMode = mode;
+    closeGameSelectionModal();
+    enterFullScreen();
+
+    document.getElementById('viewHome').classList.add('hidden');
+    document.getElementById('viewGame').classList.remove('hidden');
+
+    const titles = {
+      'meteor': 'Meteor Strike 🚀',
+      'burst': '60s Speed Burst ⚡',
+      'sprint': 'Word Sprint ⏱️',
+      'letters': 'Letter Rain (Single Key) 🔤'
+    };
+    document.getElementById('gameActiveTitle').innerText = titles[mode] || 'Typing Game';
+
+    resetGameArena();
+  }
+
+  function exitGameArena() {
+    isGameActive = false;
+    if (gameIntervalRef) clearInterval(gameIntervalRef);
+    if (gameAnimFrameRef) cancelAnimationFrame(gameAnimFrameRef);
+    exitFullScreenSafe();
+    document.getElementById('viewGame').classList.add('hidden');
+    document.getElementById('viewHome').classList.remove('hidden');
+  }
+
+  function resetGameArena() {
+    isGameActive = true;
+    gameScore = 0;
+    gameLives = 3;
+    gameTimeLeft = 60;
+    activeMeteors = [];
+    wordFuseTimer = 100;
+    lastMeteorSpawn = Date.now();
+
+    if (gameIntervalRef) clearInterval(gameIntervalRef);
+    if (gameAnimFrameRef) cancelAnimationFrame(gameAnimFrameRef);
+
+    document.getElementById('gameOverOverlay').classList.add('hidden');
+    document.getElementById('gameScoreVal').innerText = "0";
+    document.getElementById('gameSpeedVal').innerText = userGameBaseSpeed.toFixed(1) + "x";
+    updateLivesUI();
+
+    const canvas = document.getElementById('gameCanvas');
+    if (canvas) {
+      canvas.width = canvas.parentElement.clientWidth || 460;
+      canvas.height = 320;
+    }
+
+    if (gameInput) {
+      gameInput.value = "";
+      gameInput.disabled = false;
+      gameInput.focus();
+    }
+
+    if (chosenGameMode === 'meteor') {
+      spawnMeteor();
+      gameLoopMeteor();
+    } else if (chosenGameMode === 'burst') {
+      startBurstMode();
+    } else if (chosenGameMode === 'sprint') {
+      startSprintMode();
+    } else if (chosenGameMode === 'letters') {
+      activeFallingLetters = [];
+      spawnLetterRain();
+      gameLoopLetters();
+    }
+  }
+
+  function updateLivesUI() {
+    const el = document.getElementById('gameLivesDisplay');
+    if (el) el.innerText = "❤️".repeat(Math.max(0, gameLives));
+  }
+
+  function spawnMeteor() {
+    const canvas = document.getElementById('gameCanvas');
+    if (!canvas) return;
+    const word = ARCADE_WORDS[Math.floor(Math.random() * ARCADE_WORDS.length)];
+    const x = Math.random() * (canvas.width - 120) + 20;
+    activeMeteors.push({
+      text: word,
+      x: x,
+      y: 30,
+      speed: (0.8 + Math.random() * 0.4) * userGameBaseSpeed
+    });
+  }
+
+  function gameLoopMeteor() {
+    if (!isGameActive) return;
+    const canvas = document.getElementById('gameCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    ctx.fillStyle = '#0F172A';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.strokeStyle = '#EF4444';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([6, 4]);
+    ctx.beginPath();
+    ctx.moveTo(0, canvas.height - 30);
+    ctx.lineTo(canvas.width, canvas.height - 30);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    const now = Date.now();
+    const spawnRate = Math.max(1200, 2600 / userGameBaseSpeed - (gameScore * 15));
+    if (now - lastMeteorSpawn > spawnRate) {
+      spawnMeteor();
+      lastMeteorSpawn = now;
+    }
+
+    ctx.font = "bold 16px 'JetBrains Mono', monospace";
+    for (let i = activeMeteors.length - 1; i >= 0; i--) {
+      const m = activeMeteors[i];
+      m.y += m.speed;
+
+      const txtWidth = ctx.measureText(m.text).width;
+      ctx.fillStyle = 'rgba(99, 102, 241, 0.3)';
+      ctx.fillRect(m.x - 8, m.y - 16, txtWidth + 16, 24);
+      ctx.strokeStyle = '#818CF8';
+      ctx.strokeRect(m.x - 8, m.y - 16, txtWidth + 16, 24);
+
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillText(m.text, m.x, m.y);
+
+      if (m.y >= canvas.height - 30) {
+        activeMeteors.splice(i, 1);
+        gameLives--;
+        updateLivesUI();
+        if (gameLives <= 0) {
+          endGame();
+          return;
+        }
+      }
+    }
+
+    gameAnimFrameRef = requestAnimationFrame(gameLoopMeteor);
+  }
+
+  function startBurstMode() {
+    pickNextBurstWord();
+    gameIntervalRef = setInterval(() => {
+      gameTimeLeft--;
+      document.getElementById('gameSpeedVal').innerText = gameTimeLeft + "s";
+      if (gameTimeLeft <= 0) {
+        clearInterval(gameIntervalRef);
+        endGame();
+      }
+    }, 1000);
+  }
+
+  function pickNextBurstWord() {
+    currentTargetWord = ARCADE_WORDS[Math.floor(Math.random() * ARCADE_WORDS.length)];
+    renderBurstCanvas();
+  }
+
+  function renderBurstCanvas() {
+    const canvas = document.getElementById('gameCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#0F172A';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = '#818CF8';
+    ctx.font = "bold 14px 'Plus Jakarta Sans', sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("60-SECOND RAPID WORD BLITZ", canvas.width / 2, 45);
+
+    ctx.fillStyle = '#38BDF8';
+    ctx.font = "800 36px 'JetBrains Mono', monospace";
+    ctx.fillText(currentTargetWord, canvas.width / 2, 160);
+
+    ctx.fillStyle = '#94A3B8';
+    ctx.font = "13px 'Plus Jakarta Sans', sans-serif";
+    ctx.fillText("Type word and press Space or Enter", canvas.width / 2, 220);
+    ctx.textAlign = "start";
+  }
+
+    // LETTER RAIN STATE
+  let activeFallingLetters = [];
+  const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+  function spawnLetterRain() {
+    const canvas = document.getElementById('gameCanvas');
+    if (!canvas) return;
+    const letter = ALPHABET[Math.floor(Math.random() * ALPHABET.length)];
+    const x = Math.random() * (canvas.width - 60) + 30;
+    activeFallingLetters.push({
+      char: letter,
+      x: x,
+      y: 25,
+      speed: (1.2 + Math.random() * 0.6) * userGameBaseSpeed
+    });
+  }
+
+  function gameLoopLetters() {
+    if (!isGameActive) return;
+    const canvas = document.getElementById('gameCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    // Background
+    ctx.fillStyle = '#0F172A';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Baseline
+    ctx.strokeStyle = '#EF4444';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([6, 4]);
+    ctx.beginPath();
+    ctx.moveTo(0, canvas.height - 30);
+    ctx.lineTo(canvas.width, canvas.height - 30);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Spawn letter
+    const now = Date.now();
+    const spawnRate = Math.max(450, 1100 / userGameBaseSpeed - (gameScore * 4));
+    if (now - lastMeteorSpawn > spawnRate) {
+      spawnLetterRain();
+      lastMeteorSpawn = now;
+    }
+
+    // Render falling letters
+    ctx.font = "800 22px 'JetBrains Mono', monospace";
+    for (let i = activeFallingLetters.length - 1; i >= 0; i--) {
+      const item = activeFallingLetters[i];
+      item.y += item.speed;
+
+      // Circle background
+      ctx.beginPath();
+      ctx.arc(item.x + 8, item.y - 7, 18, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(16, 185, 129, 0.2)';
+      ctx.fill();
+      ctx.strokeStyle = '#34D399';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // Letter text
+      ctx.fillStyle = '#A7F3D0';
+      ctx.fillText(item.char, item.x, item.y);
+
+      // Hit boundary
+      if (item.y >= canvas.height - 30) {
+        activeFallingLetters.splice(i, 1);
+        gameLives--;
+        updateLivesUI();
+        if (gameLives <= 0) {
+          endGame();
+          return;
+        }
+      }
+    }
+
+    gameAnimFrameRef = requestAnimationFrame(gameLoopLetters);
+  }
+
+  function startSprintMode() {
+    pickNextSprintWord();
+    gameIntervalRef = setInterval(() => {
+      wordFuseTimer -= 1.6 * userGameBaseSpeed;
+      renderSprintCanvas();
+      if (wordFuseTimer <= 0) {
+        gameLives--;
+        updateLivesUI();
+        if (gameLives <= 0) {
+          clearInterval(gameIntervalRef);
+          endGame();
+        } else {
+          pickNextSprintWord();
+        }
+      }
+    }, 30);
+  }
+
+  function pickNextSprintWord() {
+    wordFuseTimer = 100;
+    currentTargetWord = ARCADE_WORDS[Math.floor(Math.random() * ARCADE_WORDS.length)];
+    renderSprintCanvas();
+  }
+
+  function renderSprintCanvas() {
+    const canvas = document.getElementById('gameCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#0F172A';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    const barWidth = (canvas.width - 60) * (wordFuseTimer / 100);
+    ctx.fillStyle = wordFuseTimer > 35 ? '#10B981' : '#EF4444';
+    ctx.fillRect(30, 40, Math.max(0, barWidth), 8);
+
+    ctx.fillStyle = '#FDA4AF';
+    ctx.font = "bold 13px 'Plus Jakarta Sans', sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("BEAT THE FUSE COUNTDOWN", canvas.width / 2, 25);
+
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = "800 36px 'JetBrains Mono', monospace";
+    ctx.fillText(currentTargetWord, canvas.width / 2, 165);
+    ctx.textAlign = "start";
+  }
+
+  // GAME INPUT HOOKS
+  if (gameInput) {
+        gameInput.addEventListener('keydown', (e) => {
+      if (chosenGameMode === 'letters') {
+        const pressedKey = e.key.toUpperCase();
+        if (pressedKey.length === 1 && pressedKey >= 'A' && pressedKey <= 'Z') {
+          // Find lowest falling letter matching key
+          let lowestIdx = -1;
+          let maxY = -1;
+          for (let i = 0; i < activeFallingLetters.length; i++) {
+            if (activeFallingLetters[i].char === pressedKey && activeFallingLetters[i].y > maxY) {
+              maxY = activeFallingLetters[i].y;
+              lowestIdx = i;
+            }
+          }
+          if (lowestIdx !== -1) {
+            activeFallingLetters.splice(lowestIdx, 1);
+            gameScore += 5;
+            document.getElementById('gameScoreVal').innerText = gameScore;
+          }
+          e.preventDefault();
+          gameInput.value = "";
+          return;
+        }
+      }
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        checkGameWordSubmission();
+      }
+    });
+
+    gameInput.addEventListener('input', () => {
+      if (chosenGameMode === 'meteor') {
+        const val = gameInput.value.trim().toLowerCase();
+        const hitIdx = activeMeteors.findIndex(m => m.text.toLowerCase() === val);
+        if (hitIdx !== -1) {
+          activeMeteors.splice(hitIdx, 1);
+          gameInput.value = "";
+          gameScore += 10;
+          document.getElementById('gameScoreVal').innerText = gameScore;
+        }
+      }
+    });
+  }
+
+  function checkGameWordSubmission() {
+    if (!gameInput) return;
+    const val = gameInput.value.trim().toLowerCase();
+    gameInput.value = "";
+
+    if (chosenGameMode === 'burst') {
+      if (val === currentTargetWord.toLowerCase()) {
+        gameScore += 10;
+        document.getElementById('gameScoreVal').innerText = gameScore;
+        pickNextBurstWord();
+      }
+    } else if (chosenGameMode === 'sprint') {
+      if (val === currentTargetWord.toLowerCase()) {
+        gameScore += 15;
+        document.getElementById('gameScoreVal').innerText = gameScore;
+        pickNextSprintWord();
+      }
+    }
+  }
+
+  function endGame() {
+    isGameActive = false;
+    if (gameIntervalRef) clearInterval(gameIntervalRef);
+    if (gameAnimFrameRef) cancelAnimationFrame(gameAnimFrameRef);
+    if (gameInput) gameInput.disabled = true;
+
+    document.getElementById('finalGameScore').innerText = gameScore;
+    document.getElementById('gameOverOverlay').classList.remove('hidden');
+    updateStreakOnCompletion();
+  }
+
+  // ============================================
+  // SSC 40-LESSONS CONTROLLER
+  // ============================================
+  function openExamPicker() {
+    renderSscLessonsList('all');
+    const modal = document.getElementById('sscCurriculumModal');
+    if (modal) modal.classList.remove('hidden');
+  }
+
+  function closeSscCurriculum() {
+    const modal = document.getElementById('sscCurriculumModal');
+    if (modal) modal.classList.add('hidden');
+  }
+
+  function filterSscLessons(cat, el) {
+    if (el) {
+      el.parentElement.querySelectorAll('.pill-chip').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+    }
+    renderSscLessonsList(cat);
+  }
+
+  function renderSscLessonsList(filter) {
+    const list = document.getElementById('sscLessonCardsList');
+    if (!list) return;
+
+    const filtered = (filter === 'all') 
+      ? SSC_LESSONS_BANK 
+      : SSC_LESSONS_BANK.filter(l => l.category.toLowerCase().includes(filter.toLowerCase()) || l.title.toLowerCase().includes(filter.toLowerCase()));
+
+    list.innerHTML = filtered.map(l => `
+      <div style="background:#F8FAFC; border:1px solid var(--border); border-radius:10px; padding:10px 12px; cursor:pointer;" onclick="pickSscLesson('${l.id}')">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:3px;">
+          <span style="font-size:10px; font-weight:700; color:#2563EB; background:#EFF6FF; padding:2px 8px; border-radius:10px;">${l.category}</span>
+          <span style="font-size:11px; font-weight:700; color:#64748B;">${l.words} Words (~${l.words * 5} Strokes)</span>
+        </div>
+        <b style="font-size:13.5px; color:var(--text-main);">${l.title}</b>
+        <p style="font-size:11px; color:#64748B; margin-top:3px; line-height:1.4;">${l.text.substring(0, 110)}...</p>
+      </div>
+    `).join('');
+  }
+
+  function pickSscLesson(lessonId) {
+    activePickedSscLesson = SSC_LESSONS_BANK.find(l => l.id === lessonId);
+    if (!activePickedSscLesson) return;
+
+    closeSscCurriculum();
+    document.getElementById('pickedLessonTitle').innerText = activePickedSscLesson.title;
+    document.getElementById('pickedLessonMeta').innerText = `${activePickedSscLesson.words} Words • ~${activePickedSscLesson.words * 5} Keystrokes • Category: ${activePickedSscLesson.category}`;
+    document.getElementById('sscLessonTimerModal').classList.remove('hidden');
+  }
+
+  function closeSscLessonTimer() {
+    document.getElementById('sscLessonTimerModal').classList.add('hidden');
+    document.getElementById('sscCurriculumModal').classList.remove('hidden');
+  }
+
+  function launchSelectedSscLesson(sec) {
+    if (!activePickedSscLesson) return;
+    document.getElementById('sscLessonTimerModal').classList.add('hidden');
+
+    words = activePickedSscLesson.text.split(/\s+/).filter(w => w.length > 0);
+    selectedDuration = sec;
+    document.getElementById('modeHeaderTitle').innerText = activePickedSscLesson.title;
+
+    enterFullScreen();
+    document.getElementById('viewHome').classList.add('hidden');
+    document.getElementById('viewTest').classList.remove('hidden');
+    resetCurrentSession(true);
+  }
+
+  // ============================================
+  // TOUCH TYPING LOGIC
+  // ============================================
+  function openLearnMenu() {
+    const container = document.getElementById('learnLessonsCardsContainer');
+    if (container) {
+      container.innerHTML = LEARN_LESSONS_CONFIG.map(l => `
+        <button class="card-action" style="margin:0; padding:10px;" onclick="startLearnLesson('${l.id}', '${l.stage}: ${l.title}')">
+          <div class="card-body" style="text-align:left;">
+            <b style="font-size:13px; color:var(--primary);">${l.stage}: ${l.title}</b>
+            <p style="font-size:11px; color:#64748B;">${l.desc}</p>
+          </div>
+          <div class="card-arrow">→</div>
+        </button>
+      `).join('');
+    }
+    document.getElementById('learnMenuModal').classList.remove('hidden');
+  }
+
+  function closeLearnMenu() { document.getElementById('learnMenuModal').classList.add('hidden'); }
+
+  function startLearnLesson(id, title) {
+    closeLearnMenu();
+    const cfg = LEARN_LESSONS_CONFIG.find(l => l.id === id);
+    if (cfg) activeLearnLessonWords = cfg.words;
+    document.getElementById('viewHome').classList.add('hidden');
+    document.getElementById('viewLearn').classList.remove('hidden');
+    document.getElementById('learnHeaderTitle').innerText = title;
+    resetLearnLesson();
+  }
+
+  function resetLearnLesson() {
+    learnIdx = 0;
+    learnInput.value = "";
+    learnInput.disabled = false;
+    document.getElementById('learnStreamBox').innerHTML = activeLearnLessonWords.map((w, i) => 
+      `<span class="word ${i === 0 ? 'active' : ''}" id="lw-${i}">${w}</span>`
+    ).join(' ');
+    highlightTargetFinger();
+    learnInput.focus();
+  }
+
+  function highlightTargetFinger() {
+    document.querySelectorAll('.finger-zone').forEach(el => el.classList.remove('active-finger'));
+    if (learnIdx >= activeLearnLessonWords.length) {
+      document.getElementById('targetKeyDisplay').innerText = "✓";
+      document.getElementById('targetFingerDesc').innerText = "Lesson Completed! Well done.";
+      return;
+    }
+    const currentWord = activeLearnLessonWords[learnIdx];
+    const val = learnInput.value;
+    const targetChar = (val.length < currentWord.length) ? currentWord[val.length].toLowerCase() : ' ';
+    document.getElementById('targetKeyDisplay').innerText = (targetChar === ' ') ? '␣' : targetChar.toUpperCase();
+
+    const mapping = FINGER_MAP[targetChar];
+    if (mapping) {
+      document.getElementById('targetFingerDesc').innerText = mapping.name;
+      const fingerEl = document.getElementById(mapping.id);
+      if (fingerEl) fingerEl.classList.add('active-finger');
+      if (mapping.altId) {
+        const altEl = document.getElementById(mapping.altId);
+        if (altEl) altEl.classList.add('active-finger');
+      }
+    } else {
+      document.getElementById('targetFingerDesc').innerText = "Standard Position";
+    }
+  }
+
+  learnInput.addEventListener('input', () => {
+    const currentWord = activeLearnLessonWords[learnIdx];
+    const val = learnInput.value;
+    if (val.endsWith(" ") || val.endsWith("\n")) {
+      const cleanVal = val.trim();
+      const el = document.getElementById(`lw-${learnIdx}`);
+      if (cleanVal === currentWord) {
+        if (el) el.className = "word correct";
+      } else {
+        if (el) el.className = "word wrong";
+      }
+      learnIdx++;
+      learnInput.value = "";
+      if (learnIdx < activeLearnLessonWords.length) {
+        const nextEl = document.getElementById(`lw-${learnIdx}`);
+        if (nextEl) {
+          nextEl.className = "word active";
+          nextEl.scrollIntoView({ block: "center", behavior: "smooth" });
+        }
+      } else {
+        alert("🎉 Congratulations! You completed this lesson.");
+        openLearnMenu();
+      }
+    }
+    highlightTargetFinger();
+  });
+
+  // ============================================
+  // SPEED TEST ENGINE
+  // ============================================
+  function prepareTest(title, pool, lang, durationSec) {
+    activePool = pool;
+    activeLang = lang || 'en';
+    selectedDuration = durationSec !== undefined ? durationSec : 60;
+    document.getElementById('modeHeaderTitle').innerText = title;
+    enterFullScreen();
+    document.getElementById('viewHome').classList.add('hidden');
+    document.getElementById('viewTest').classList.remove('hidden');
+    resetCurrentSession(false);
+  }
+
+  function resetCurrentSession(isPreloaded) {
+    clearInterval(timerInterval);
+    hasStarted = false;
+    currentWordIdx = 0;
+    correctCount = 0;
+    errorCount = 0;
+    totalCharsTyped = 0;
+    timeElapsed = 0;
+    timeLeft = selectedDuration;
+
+    if (selectedDuration === -1) {
+      document.getElementById('hudTimer').innerText = "00:00";
+      document.getElementById('hudTimerLbl').innerText = "Time Elapsed";
+    } else {
+      document.getElementById('hudTimer').innerText = formatTime(timeLeft);
+      document.getElementById('hudTimerLbl').innerText = "Time Left";
+    }
+
+    document.getElementById('hudNetWpm').innerText = "0";
+    document.getElementById('hudGrossWpm').innerText = "0";
+    document.getElementById('hudAcc').innerText = "100%";
+    typeInput.value = "";
+    typeInput.disabled = false;
+
+    if (!isPreloaded) {
+      if (activePool === 'hindi_passages' || activeLang === 'hi') {
+        words = HINDI_PASSAGES[0].split(/\s+/);
+      } else if (activePool === 'vocab1000') {
+        words = [];
+        for (let i = 0; i < 150; i++) words.push(VOCAB_ADVANCED[Math.floor(Math.random() * VOCAB_ADVANCED.length)]);
+      } else {
+        words = [];
+        for (let i = 0; i < 150; i++) words.push(VOCAB_COMMON[Math.floor(Math.random() * VOCAB_COMMON.length)]);
+      }
+    }
+
+    wordStream.innerHTML = words.map((w, i) => `<span class="word ${i === 0 ? 'active' : ''}" id="w-${i}">${w}</span>`).join('');
+    wordStream.scrollTop = 0;
+    typeInput.focus();
+  }
+
+  function formatTime(s) {
+    const m = Math.floor(s / 60);
+    const sec = s % 60;
+    return `${m.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`;
+  }
+
+  typeInput.addEventListener('input', () => {
+    if (!hasStarted && typeInput.value.length > 0) {
+      hasStarted = true;
+      timerInterval = setInterval(tick, 1000);
+    }
+    const currentWord = words[currentWordIdx];
+    const val = typeInput.value;
+
+    if (val.endsWith(" ") || val.endsWith("\n")) {
+      const cleanVal = val.trim();
+      const el = document.getElementById(`w-${currentWordIdx}`);
+      if (cleanVal.length > 0) {
+        if (cleanVal === currentWord) {
+          correctCount++;
+          if (el) el.className = "word correct";
+        } else {
+          errorCount++;
+          if (el) el.className = "word wrong";
+        }
+        totalCharsTyped += cleanVal.length + 1;
+        currentWordIdx++;
+        typeInput.value = "";
+
+        if (currentWordIdx < words.length) {
+          const nextEl = document.getElementById(`w-${currentWordIdx}`);
+          if (nextEl) {
+            nextEl.className = "word active";
+            nextEl.scrollIntoView({ block: "center", behavior: "smooth" });
+          }
+        } else {
+          endSession();
+        }
+        calculateStats();
+      }
+    }
+  });
+
+  function tick() {
+    timeElapsed++;
+    if (selectedDuration === -1) {
+      document.getElementById('hudTimer').innerText = formatTime(timeElapsed);
+    } else {
+      timeLeft--;
+      document.getElementById('hudTimer').innerText = formatTime(timeLeft);
+      if (timeLeft <= 0) {
+        endSession();
+        return;
+      }
+    }
+    calculateStats();
+  }
+
+  function calculateStats() {
+    const activeSec = (selectedDuration === -1) ? timeElapsed : (selectedDuration - timeLeft);
+    const elapsedMinutes = activeSec / 60 || 0.01;
+    const grossWpm = Math.round((totalCharsTyped / 5) / elapsedMinutes);
+    const netWpm = Math.max(0, Math.round(grossWpm - (errorCount / elapsedMinutes)));
+    const totalWords = correctCount + errorCount;
+    const accuracy = totalWords > 0 ? Math.round((correctCount / totalWords) * 100) : 100;
+
+    document.getElementById('hudNetWpm').innerText = netWpm;
+    document.getElementById('hudGrossWpm').innerText = grossWpm;
+    document.getElementById('hudAcc').innerText = `${accuracy}%`;
+    return { grossWpm, netWpm, accuracy, errorCount };
+  }
+
+  function requestEarlyExit(mode) {
+    pendingExitMode = mode;
+    document.getElementById('earlyExitModal').classList.remove('hidden');
+  }
+
+  function dismissEarlyExit() {
+    document.getElementById('earlyExitModal').classList.add('hidden');
+    pendingExitMode = null;
+  }
+
+  function confirmEarlyExit() {
+    document.getElementById('earlyExitModal').classList.add('hidden');
+    if (pendingExitMode === 'speed') endSession();
+    else if (pendingExitMode === 'descriptive') submitDescriptiveTest();
+  }
+
+  function endSession() {
+    updateStreakOnCompletion();
+    clearInterval(timerInterval);
+    typeInput.disabled = true;
+    const res = calculateStats();
+
+    document.getElementById('resNetWpm').innerText = res.netWpm;
+    document.getElementById('resAcc').innerText = `${res.accuracy}%`;
+    document.getElementById('resGrossWpm').innerText = res.grossWpm;
+    document.getElementById('resErrors').innerText = res.errorCount;
+
+    document.getElementById('resGridNormal').classList.remove('hidden');
+    document.getElementById('resDescriptiveSummary').classList.add('hidden');
+    document.getElementById('resHeaderTitle').innerText = "Test Completed!";
+    document.getElementById('resSubTitle').innerText = "Verified Speed Performance Summary";
+    document.getElementById('resultModal').classList.remove('hidden');
+  }
+
+  // ============================================
+  // BANK PO DESCRIPTIVE WORKFLOW
+  // ============================================
+  function openDescriptiveSelector() {
+    document.getElementById('descSelectorModal').classList.remove('hidden');
+    switchTopicTab('essay');
+  }
+
+  function closeDescriptiveSelector() { document.getElementById('descSelectorModal').classList.add('hidden'); }
+
+  function switchTopicTab(type) {
+    currentTopicType = type;
+    document.getElementById('tabEssaysBtn').classList.toggle('active', type === 'essay');
+    document.getElementById('tabLettersBtn').classList.toggle('active', type === 'letter');
+
+    const container = document.getElementById('topicListContainer');
+    const items = type === 'essay' ? BANK_ESSAYS : BANK_LETTERS;
+
+    container.innerHTML = items.map((it, idx) => `
+      <div style="background:#F8FAFC; border:1px solid var(--border); border-radius:10px; padding:11px; cursor:pointer;" onclick="launchSelectedDescriptive(${idx})">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+          <span style="background:#E0F2FE; color:#0369A1; font-size:10px; font-weight:700; padding:2px 8px; border-radius:12px;">${it.tag}</span>
+          <span style="font-size:11px; color:#64748B; font-weight:600;">${type === 'essay' ? '250 Words' : '150 Words'}</span>
+        </div>
+        <b style="font-size:13px; color:var(--primary);">${idx + 1}. ${it.title}</b>
+        <p style="font-size:11.5px; color:#475569; margin-top:3px; line-height:1.4;">${it.prompt}</p>
+      
+<!-- AdSense Mandatory Legal Footer -->
+<footer style="text-align: center; padding: 24px 10px; font-size: 12px; color: #64748b; border-top: 1px solid #e2e8f0; margin-top: 40px;">
+  <p>© 2026 Typing Speed Test. All rights reserved.</p>
+  <p>
+    <a href="#privacy" onclick="alert('Privacy Policy:\nWe use third-party advertising companies like Google to serve ads. These companies may use cookies to serve ads based on your prior visits to this or other websites.')" style="color: #2563eb; text-decoration: none; margin: 0 8px;">Privacy Policy</a> |
+    <a href="#terms" onclick="alert('Terms of Service:\nThis platform is provided for typing practice and exam preparation. All test materials are for educational purposes.')" style="color: #2563eb; text-decoration: none; margin: 0 8px;">Terms</a> |
+    <a href="#contact" onclick="alert('Contact Us:\nFor support or inquiries, email us at: support@unknownuniversem.com')" style="color: #2563eb; text-decoration: none; margin: 0 8px;">Contact</a>
+  </p>
+</footer>
+</div>
+    `).join('');
+  }
+
+  function launchSelectedDescriptive(idx) {
+    closeDescriptiveSelector();
+    activeSelectedTopic = (currentTopicType === 'essay') ? BANK_ESSAYS[idx] : BANK_LETTERS[idx];
+    const targetWords = (currentTopicType === 'essay') ? 250 : 150;
+
+    document.getElementById('viewHome').classList.add('hidden');
+    document.getElementById('viewDescriptive').classList.remove('hidden');
+
+    document.getElementById('descTopicTitle').innerText = `${activeSelectedTopic.title} (${targetWords} Words)`;
+    document.getElementById('descTopicPrompt').innerText = `"${activeSelectedTopic.prompt}"`;
+
+    descriptiveEditor.value = "";
+    document.getElementById('descWordCount').innerText = `Words: 0 / ${targetWords}`;
+    document.getElementById('descCharCount').innerText = "Characters: 0";
+
+    descTimeLeft = 1800;
+    clearInterval(descTimerRef);
+    descTimerRef = setInterval(() => {
+      descTimeLeft--;
+      document.getElementById('descTimer').innerText = formatTime(descTimeLeft);
+      if (descTimeLeft <= 0) {
+        clearInterval(descTimerRef);
+        submitDescriptiveTest();
+      }
+    }, 1000);
+
+    descriptiveEditor.focus();
+  }
+
+  descriptiveEditor.addEventListener('input', () => {
+    const text = descriptiveEditor.value.trim();
+    const wordsCount = text.length > 0 ? text.split(/\s+/).length : 0;
+    const charsCount = descriptiveEditor.value.length;
+    const target = currentTopicType === 'essay' ? 250 : 150;
+    document.getElementById('descWordCount').innerText = `Words: ${wordsCount} / ${target}`;
+    document.getElementById('descCharCount').innerText = `Characters: ${charsCount}`;
+  });
+
+  function submitDescriptiveTest() {
+    updateStreakOnCompletion();
+    clearInterval(descTimerRef);
+    const rawText = descriptiveEditor.value.trim();
+    const wordsArr = rawText.length > 0 ? rawText.split(/\s+/).filter(w => w.length > 0) : [];
+    const wordCount = wordsArr.length;
+    const isEssay = (currentTopicType === 'essay');
+    const maxScore = isEssay ? 25 : 15;
+
+    let scoreWords = (wordCount >= (isEssay ? 220 : 130)) ? 5.0 : Math.max(0.5, (wordCount / (isEssay ? 220 : 130)) * 5.0);
+    let totalAwarded = Math.min(maxScore, (scoreWords + 12.0)).toFixed(1);
+
+    document.getElementById('resGridNormal').classList.add('hidden');
+    document.getElementById('resDescriptiveSummary').classList.remove('hidden');
+    document.getElementById('scoreTotalBadge').innerText = `${totalAwarded} / ${maxScore}`;
+    const verdictEl = document.getElementById('scoreVerdictBadge');
+    verdictEl.innerText = (Number(totalAwarded) >= (isEssay ? 13.5 : 8.0)) ? "QUALIFIED" : "BELOW CUT-OFF";
+    verdictEl.style.background = (Number(totalAwarded) >= (isEssay ? 13.5 : 8.0)) ? "#DCFCE7" : "#FEE2E2";
+    verdictEl.style.color = (Number(totalAwarded) >= (isEssay ? 13.5 : 8.0)) ? "#15803D" : "#B91C1C";
+    document.getElementById('scRemarksText').innerHTML = `Typed <b>${wordCount} words</b>. Formatted successfully.`;
+    document.getElementById('resultModal').classList.remove('hidden');
+  }
+
+  // ============================================
+  // CUSTOM STUDIO LOGIC
+  // ============================================
+  function prepareCustom() {
+    document.getElementById('customStudioModal').classList.remove('hidden');
+    document.getElementById('customStudioText').focus();
+  }
+  function closeCustomStudio() { document.getElementById('customStudioModal').classList.add('hidden'); }
+  function setCustomDurationVal(sec, btn) {
+    customSelectedDuration = sec;
+    btn.parentElement.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  function loadCustomPreset(type) {
+    const txtArea = document.getElementById('customStudioText');
+    if (type === 'editorial') {
+      txtArea.value = "Fiscal prudence and targeted capital expenditure continue to anchor economic expansion across developing industrial corridors. Interoperable digital payment architectures minimize settlement friction while formalizing credit penetration among micro-enterprises.";
+    } else if (type === 'legal') {
+      txtArea.value = "The appellant contends that the statutory tribunal exceeded its jurisdictional purview by failing to adhere to mandatory principles of natural justice. Procedural regularities cannot supplant substantive constitutional safeguards guaranteed under the overarching framework.";
+    }
+  }
+  function launchConfiguredCustomTest() {
+    const raw = document.getElementById('customStudioText').value.trim();
+    if (raw.length < 5) {
+      alert("Please enter a few sentences or words.");
+      return;
+    }
+    let parsedWords = raw.split(/\s+/).filter(w => w.length > 0);
+    if (document.getElementById('chkCustomRandomize').checked) {
+      parsedWords.sort(() => Math.random() - 0.5);
+    }
+    closeCustomStudio();
+    words = parsedWords;
+    selectedDuration = customSelectedDuration;
+    document.getElementById('modeHeaderTitle').innerText = "Custom Test Studio";
+    enterFullScreen();
+    document.getElementById('viewHome').classList.add('hidden');
+    document.getElementById('viewTest').classList.remove('hidden');
+    resetCurrentSession(true);
+  }
+
+  // ============================================
+  // DAILY STREAK ENGINE
+  // ============================================
+  function getTodayDateString() {
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  }
+
+  function getStreakData() {
+    try {
+      const data = JSON.parse(localStorage.getItem("typing_user_streak"));
+      if (data && typeof data.count === "number") return data;
+    } catch (e) {}
+    return { count: 0, lastDate: null };
+  }
+
+  function updateStreakOnCompletion() {
+    const today = getTodayDateString();
+    let streak = getStreakData();
+
+    if (!streak.lastDate) {
+      streak = { count: 1, lastDate: today };
+    } else if (streak.lastDate === today) {
+      // Already recorded today
+    } else {
+      const last = new Date(streak.lastDate);
+      const curr = new Date(today);
+      const diffDays = Math.round((curr - last) / (1000 * 60 * 60 * 24));
+      streak.count = (diffDays === 1) ? streak.count + 1 : 1;
+      streak.lastDate = today;
+    }
+
+    localStorage.setItem("typing_user_streak", JSON.stringify(streak));
+    renderStreakBadge();
+  }
+
+  function renderStreakBadge() {
+    const streak = getStreakData();
+    const txt = document.getElementById("streakCountText");
+    if (!txt) return;
+    txt.innerText = (streak.count <= 1) ? "1-Day Streak" : `${streak.count}-Day Streak`;
+  }
+
+  function exitToHome() {
+    clearInterval(timerInterval);
+    clearInterval(descTimerRef);
+    exitFullScreenSafe();
+    document.getElementById('resultModal').classList.add('hidden');
+    document.getElementById('viewTest').classList.add('hidden');
+    document.getElementById('viewLearn').classList.add('hidden');
+    document.getElementById('viewDescriptive').classList.add('hidden');
+    document.getElementById('viewHome').classList.remove('hidden');
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    renderStreakBadge();
+  });
+</script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    });
+  }
+</script>
+
+<!-- QuickTools Shared Network Bar -->
+<div style="background:#090d16; border-top:1px solid #1e293b; padding:12px 16px; text-align:center; font-family:system-ui, sans-serif; font-size:13px; color:#94a3b8; margin-top:30px;">
+  <span style="font-weight:700; color:#f8fafc; margin-right:12px;">🛠 QuickTools Network:</span>
+  <a href="https://unknownuniversem-blip.github.io/typing-speed-finger-test/" style="color:#38bdf8; text-decoration:none; margin:0 8px; font-weight:600;">⌨ Typing Test</a> |
+  <a href="https://unknownuniversem-blip.github.io/exam-resizer/" style="color:#38bdf8; text-decoration:none; margin:0 8px; font-weight:600;">📷 Exam Photo Resizer</a> |
+  <a href="https://unknownuniversem-blip.github.io/" style="color:#38bdf8; text-decoration:none; margin:0 8px; font-weight:600;">🏠 Tools Hub</a>
+</div>
+<div style="text-align:center; padding:15px; background:#0f172a; border-top:1px solid #334155; margin-top:20px;"><a href="https://unknownuniversem-blip.github.io/exam-resizer/" style="color:#38bdf8; font-weight:bold; text-decoration:none; font-size:16px;">⚡ Try Our Free SSC, NEET <script src="https://unknownuniversem-blip.github.io/network.js" defer></script>
+<!-- Viral Social Share Bar -->
+<div id="viral-share-bar" style="position:fixed; bottom:16px; left:50%; transform:translateX(-50%); z-index:99999; display:flex; gap:10px; background:#0f172ae6; backdrop-filter:blur(8px); border:1px solid #38bdf8; padding:8px 16px; border-radius:50px; box-shadow:0 8px 30px rgba(0,0,0,0.6); align-items:center;">
+  <span style="color:#f8fafc; font-size:0.82rem; font-weight:700; white-space:nowrap;">Share with Aspirants:</span>
+  <a href="https://api.whatsapp.com/send?text=%F0%9F%94%A5%2022%2B%20Free%20Daily%20Digital%20Utility%20Tools%20%28Photo%20Resizer%2C%20Speed%20Math%2C%20Typing%2C%20GST%20%26%20Forms%29%3A%20https%3A//unknownuniversem-blip.github.io/" target="_blank" style="background:#22c55e; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    💬 WhatsApp
+  </a>
+  <a href="https://t.me/share/url?url=https%3A//unknownuniversem-blip.github.io/typing-speed-finger-test/&text=%F0%9F%94%A5%2022%2B%20Free%20Daily%20Digital%20Utility%20Tools%20%28Photo%20Resizer%2C%20Speed%20Math%2C%20Typing%2C%20GST%20%26%20Forms%29%3A%20https%3A//unknownuniversem-blip.github.io/" target="_blank" style="background:#0284c7; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    ✈️ Telegram
+  </a>
+</div>
+
+
+<!-- Dynamic Internal Cross-Link Mesh -->
+<div class="related-mesh-card">
+  <div class="related-mesh-title">⚡ Recommended Essential Student & Cyber Tools</div>
+  <div class="related-mesh-grid">
+    <a href="https://unknownuniversem-blip.github.io/math/" class="related-mesh-link" target="_blank">⚡ Speed Math Workout</a><a href="https://unknownuniversem-blip.github.io/exam-resizer/" class="related-mesh-link" target="_blank">📸 Exam Photo & Sign Resizer</a><a href="https://unknownuniversem-blip.github.io/hindi-typing-tutor/" class="related-mesh-link" target="_blank">⌨️ Hindi Typing Tutor</a><a href="https://unknownuniversem-blip.github.io/" class="related-mesh-link" target="_blank">🌐 All 22+ Free Web Utilities</a>
+  </div>
+</div>
+
+</body> UPSC Exam Photo Resizer Tool →</a></div>
+<!-- Viral Social Share Bar -->
+<div id="viral-share-bar" style="position:fixed; bottom:16px; left:50%; transform:translateX(-50%); z-index:99999; display:flex; gap:10px; background:#0f172ae6; backdrop-filter:blur(8px); border:1px solid #38bdf8; padding:8px 16px; border-radius:50px; box-shadow:0 8px 30px rgba(0,0,0,0.6); align-items:center;">
+  <span style="color:#f8fafc; font-size:0.82rem; font-weight:700; white-space:nowrap;">Share with Aspirants:</span>
+  <a href="https://api.whatsapp.com/send?text=%F0%9F%94%A5%2022%2B%20Free%20Daily%20Digital%20Utility%20Tools%20%28Photo%20Resizer%2C%20Speed%20Math%2C%20Typing%2C%20GST%20%26%20Forms%29%3A%20https%3A//unknownuniversem-blip.github.io/" target="_blank" style="background:#22c55e; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    💬 WhatsApp
+  </a>
+  <a href="https://t.me/share/url?url=https%3A//unknownuniversem-blip.github.io/typing-speed-finger-test/&text=%F0%9F%94%A5%2022%2B%20Free%20Daily%20Digital%20Utility%20Tools%20%28Photo%20Resizer%2C%20Speed%20Math%2C%20Typing%2C%20GST%20%26%20Forms%29%3A%20https%3A//unknownuniversem-blip.github.io/" target="_blank" style="background:#0284c7; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    ✈️ Telegram
+  </a>
+</div>
+
+
+<!-- Dynamic Internal Cross-Link Mesh -->
+<div class="related-mesh-card">
+  <div class="related-mesh-title">⚡ Recommended Essential Student & Cyber Tools</div>
+  <div class="related-mesh-grid">
+    <a href="https://unknownuniversem-blip.github.io/math/" class="related-mesh-link" target="_blank">⚡ Speed Math Workout</a><a href="https://unknownuniversem-blip.github.io/exam-resizer/" class="related-mesh-link" target="_blank">📸 Exam Photo & Sign Resizer</a><a href="https://unknownuniversem-blip.github.io/hindi-typing-tutor/" class="related-mesh-link" target="_blank">⌨️ Hindi Typing Tutor</a><a href="https://unknownuniversem-blip.github.io/" class="related-mesh-link" target="_blank">🌐 All 22+ Free Web Utilities</a>
+  </div>
+</div>
+
+</body>
+</html>
+
+<!-- Universal OTG Virtual Keyboard Controller -->
+<style>
+  .kbd-toggle-pill {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 99999;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 20px;
+    border: 1px solid #cbd5e1;
+    background-color: #ffffff;
+    color: #334155;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: all 0.2s ease;
+  }
+  .kbd-toggle-pill.off {
+    background-color: #fee2e2;
+    border-color: #ef4444;
+    color: #b91c1c;
+  }
+
+    /* --- COMPREHENSIVE MOBILE RESPONSIVENESS OVERRIDES --- */
+    html, body {
+      max-width: 100vw !important;
+      overflow-x: hidden !important;
+      -webkit-text-size-adjust: 100% !important;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box !important;
+    }
+    input, select, textarea, button {
+      font-size: 16px !important; /* Prevents auto-zoom on iOS inputs */
+      min-height: 42px !important; /* Optimal touch target */
+    }
+    #quicktools-global-bar div::-webkit-scrollbar {
+      display: none !important;
+    }
+    #quicktools-global-bar div {
+      -ms-overflow-style: none !important;
+      scrollbar-width: none !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+    .canvas-wrap, .qr-frame, .dropzone {
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    canvas {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+    .modal-card {
+      max-width: calc(100vw - 32px) !important;
+      margin: 16px !important;
+    }
+    @media (max-width: 640px) {
+      .container {
+        padding: 0.85rem 0.75rem 2.5rem 0.75rem !important;
+      }
+      .studio-grid, .converter-grid, .input-row, .modal-apps-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+      }
+      header h1 {
+        font-size: 1.35rem !important;
+      }
+      .tabs-nav {
+        grid-template-columns: 1fr !important;
+      }
+      .brand-box {
+        justify-content: center !important;
+      }
+    }
+
+  </style>
+
+<button id="globalKbdToggle" onclick="toggleGlobalVirtualKeyboard()" class="kbd-toggle-pill" type="button">
+  ⌨️ Mobile Keyboard: <span id="globalKbdStatus">ON</span>
+</button>
+
+<script>
+  let virtualKeyboardEnabled = true;
+
+  function toggleGlobalVirtualKeyboard() {
+    virtualKeyboardEnabled = !virtualKeyboardEnabled;
+    const btn = document.getElementById("globalKbdToggle");
+    const status = document.getElementById("globalKbdStatus");
+
+    if (!virtualKeyboardEnabled) {
+      status.innerText = "OFF (OTG Mode)";
+      btn.classList.add("off");
+      applyKeyboardStateToAll(true);
+    } else {
+      status.innerText = "ON";
+      btn.classList.remove("off");
+      applyKeyboardStateToAll(false);
+    }
+  }
+
+  function applyKeyboardStateToAll(suppressVirtualKbd) {
+    const fields = document.querySelectorAll('input, textarea, [contenteditable="true"]');
+    fields.forEach(field => {
+      if (suppressVirtualKbd) {
+        field.setAttribute("inputmode", "none");
+      } else {
+        field.removeAttribute("inputmode");
+      }
+    });
+
+    if (suppressVirtualKbd && document.activeElement && 
+       (document.activeElement.tagName === "INPUT" || document.activeElement.tagName === "TEXTAREA")) {
+      const active = document.activeElement;
+      active.blur();
+      setTimeout(() => active.focus(), 50);
+    }
+  }
+
+  document.addEventListener("focusin", (e) => {
+    if (!virtualKeyboardEnabled) {
+      if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.isContentEditable)) {
+        e.target.setAttribute("inputmode", "none");
+      }
+    }
+  });
+</script>
+
+

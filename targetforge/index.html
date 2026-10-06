@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TargetForge - Lock In & Hit Your Study Targets</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: "#f0fdf4",
+                            500: "#22c55e",
+                            600: "#16a34a",
+                            700: "#15803d",
+                            900: "#14532d"
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .glass {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        body {
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-brand-500 selection:text-slate-950">
+
+    <!-- HEADER -->
+    <header class="glass sticky top-0 z-40 px-4 py-3 border-b border-slate-800/80 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <div class="bg-brand-500/20 p-2 rounded-xl text-brand-500 border border-brand-500/30">
+                <i data-lucide="target" class="w-6 h-6"></i>
+            </div>
+            <div>
+                <h1 class="text-lg font-bold tracking-wide flex items-center gap-2">
+                    TargetForge
+                    <span class="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-brand-500/10 text-brand-500 border border-brand-500/20">V2 FRESH</span>
+                </h1>
+                <p class="text-xs text-slate-400">Lock In & Master Study Targets</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+            <div id="audioStatusBadge" class="hidden items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-brand-500/10 text-brand-500 border border-brand-500/30">
+                <i data-lucide="volume-2" class="w-3.5 h-3.5 animate-pulse"></i>
+                <span id="audioStatusText">Playing Audio</span>
+            </div>
+            <button onclick="toggleView('timer')" id="nav-timer" class="p-2 rounded-lg bg-slate-800 text-brand-500 transition">
+                <i data-lucide="timer" class="w-5 h-5"></i>
+            </button>
+            <button onclick="toggleView('analytics')" id="nav-analytics" class="p-2 rounded-lg bg-slate-800 text-slate-400 transition">
+                <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="flex-1 max-w-4xl w-full mx-auto p-4 sm:p-6 space-y-6">
+
+        <!-- TIMER VIEW -->
+        <section id="view-timer" class="space-y-6">
+
+            <!-- TRACK PRESETS -->
+            <div class="glass p-4 rounded-2xl space-y-3">
+                <div class="flex items-center justify-between">
+                    <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                        <i data-lucide="book-open" class="w-4 h-4 text-brand-500"></i> Exam Track / Target Category
+                    </label>
+                    <span id="activePresetBadge" class="text-xs font-mono text-brand-500 bg-brand-500/10 px-2 py-0.5 rounded-md border border-brand-500/20">BANKING</span>
+                </div>
+                <div class="grid grid-cols-3 sm:grid-cols-6 gap-2" id="presetButtons"></div>
+            </div>
+
+            <!-- SUBJECT TARGETS -->
+            <div class="glass p-4 rounded-2xl space-y-3">
+                <div class="flex items-center justify-between">
+                    <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                        <i data-lucide="layers" class="w-4 h-4 text-brand-500"></i> Active Subject
+                    </label>
+                    <button onclick="promptAddCustomSubject()" class="text-xs text-brand-500 hover:underline flex items-center gap-1">
+                        <i data-lucide="plus" class="w-3.5 h-3.5"></i> Custom Topic
+                    </button>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="subjectGrid"></div>
+            </div>
+
+            <!-- TIMER DISPLAY -->
+            <div class="glass p-6 sm:p-8 rounded-3xl text-center space-y-6 relative overflow-hidden">
+                <div class="absolute -top-24 -right-24 w-48 h-48 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div id="currentSubjectDisplay" class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-slate-800 text-brand-500 border border-slate-700">
+                    <i data-lucide="target" class="w-3.5 h-3.5"></i> Ready to Lock In
+                </div>
+
+                <div class="space-y-1">
+                    <div id="timerDisplay" class="text-6xl sm:text-8xl font-black font-mono tracking-tight text-white drop-shadow-md">
+                        25:00
+                    </div>
+                    <p class="text-xs text-slate-500 font-mono">STRICT LOCK-IN SESSION</p>
+                </div>
+
+                <!-- PRESET MINUTE BUTTONS -->
+                <div class="flex justify-center items-center gap-2">
+                    <button onclick="setTimerMinutes(15)" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-mono text-slate-300">15m</button>
+                    <button onclick="setTimerMinutes(25)" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-mono text-slate-300">25m</button>
+                    <button onclick="setTimerMinutes(45)" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-mono text-slate-300">45m</button>
+                    <button onclick="setTimerMinutes(60)" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-mono text-slate-300">60m</button>
+                    <button onclick="setTimerMinutes(90)" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-mono text-slate-300">90m</button>
+                </div>
+
+                <!-- CONTROLS -->
+                <div class="flex items-center justify-center gap-4 pt-2">
+                    <button id="btnStartPause" onclick="toggleTimer()" class="w-40 py-3.5 px-6 rounded-2xl bg-brand-500 hover:bg-brand-600 text-slate-950 font-bold text-base shadow-lg transition flex items-center justify-center gap-2">
+                        <i data-lucide="play" class="w-5 h-5 fill-current"></i> Start Session
+                    </button>
+                    <button onclick="resetTimer()" class="p-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition">
+                        <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- AUDIO GENERATOR -->
+            <div class="glass p-4 rounded-2xl space-y-3">
+                <div class="flex items-center justify-between">
+                    <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                        <i data-lucide="headphones" class="w-4 h-4 text-brand-500"></i> Synthesized Focus Sounds
+                    </label>
+                    <span class="text-[10px] text-slate-500 font-mono">WebAudio Engine</span>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    <button id="btn-audio-off" onclick="setAudioSource('off')" class="p-2.5 rounded-xl bg-slate-900 border border-brand-500 text-brand-500 text-xs font-semibold flex items-center justify-center gap-2">
+                        <i data-lucide="volume-x" class="w-4 h-4"></i> Mute
+                    </button>
+                    <button id="btn-audio-binaural" onclick="setAudioSource('binaural')" class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 text-xs font-semibold flex items-center justify-center gap-2">
+                        <i data-lucide="waves" class="w-4 h-4"></i> 40Hz Gamma
+                    </button>
+                    <button id="btn-audio-brown" onclick="setAudioSource('brown')" class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 text-xs font-semibold flex items-center justify-center gap-2">
+                        <i data-lucide="wind" class="w-4 h-4"></i> Brown Noise
+                    </button>
+                    <button id="btn-audio-white" onclick="setAudioSource('white')" class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 text-xs font-semibold flex items-center justify-center gap-2">
+                        <i data-lucide="cloud-rain" class="w-4 h-4"></i> White Noise
+                    </button>
+                </div>
+                <div class="flex items-center gap-3 pt-1">
+                    <i data-lucide="volume-1" class="w-4 h-4 text-slate-500"></i>
+                    <input id="audioVolume" type="range" min="0" max="1" step="0.01" value="0.3" oninput="updateAudioVolume(this.value)" class="w-full accent-brand-500 h-1.5 bg-slate-800 rounded-lg cursor-pointer">
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ANALYTICS VIEW -->
+        <section id="view-analytics" class="hidden space-y-6">
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div class="glass p-4 rounded-2xl text-center space-y-1">
+                    <p class="text-xs text-slate-400 font-medium">Total Study Time</p>
+                    <p id="totalHoursLogged" class="text-2xl font-bold font-mono text-brand-500">0.0h</p>
+                </div>
+                <div class="glass p-4 rounded-2xl text-center space-y-1">
+                    <p class="text-xs text-slate-400 font-medium">Sessions Completed</p>
+                    <p id="totalSessionsCount" class="text-2xl font-bold font-mono text-white">0</p>
+                </div>
+                <div class="glass p-4 rounded-2xl text-center space-y-1">
+                    <p class="text-xs text-slate-400 font-medium">Tab Switches</p>
+                    <p id="totalViolationsCount" class="text-2xl font-bold font-mono text-rose-500">0</p>
+                </div>
+                <div class="glass p-4 rounded-2xl text-center space-y-1">
+                    <p class="text-xs text-slate-400 font-medium">Current Streak</p>
+                    <p id="streakCounter" class="text-2xl font-bold font-mono text-amber-400">1 Day</p>
+                </div>
+            </div>
+
+            <div class="glass p-5 rounded-2xl space-y-4">
+                <h3 class="text-sm font-semibold text-slate-300 flex items-center gap-2">
+                    <i data-lucide="pie-chart" class="w-4 h-4 text-brand-500"></i> Subject Breakdown
+                </h3>
+                <div id="subjectBreakdownContainer" class="space-y-3">
+                    <p class="text-xs text-slate-500 italic">No session data logged yet.</p>
+                </div>
+            </div>
+
+            <div class="glass p-5 rounded-2xl space-y-4">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-sm font-semibold text-slate-300 flex items-center gap-2">
+                        <i data-lucide="history" class="w-4 h-4 text-brand-500"></i> Recent Sessions
+                    </h3>
+                    <div class="flex items-center gap-2">
+                        <button onclick="clearAllData()" class="px-2.5 py-1 rounded-lg bg-rose-500/20 text-rose-400 hover:bg-rose-500/30 text-xs font-mono border border-rose-500/30">
+                            Clear Data
+                        </button>
+                    </div>
+                </div>
+                <div id="recentSessionsList" class="space-y-2 max-h-60 overflow-y-auto"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SPEED MATH MODAL -->
+    <div id="mathModal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="glass max-w-md w-full p-6 rounded-3xl space-y-5 border border-rose-500/30 text-center relative shadow-2xl">
+            <div class="w-12 h-12 bg-rose-500/10 text-rose-500 rounded-2xl flex items-center justify-center mx-auto border border-rose-500/20">
+                <i data-lucide="shield-alert" class="w-6 h-6"></i>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold text-white">Lock-In Protection Active</h3>
+                <p class="text-xs text-slate-400 mt-1">Solve this speed math problem to pause early:</p>
+            </div>
+            <div id="mathQuestion" class="text-3xl font-black font-mono text-brand-500 tracking-wider bg-slate-900 py-3 rounded-2xl border border-slate-800"></div>
+            <input type="number" id="mathAnswer" placeholder="Enter answer..." class="w-full text-center text-xl font-mono py-3 px-4 bg-slate-900 border border-slate-700 focus:border-brand-500 rounded-xl text-white outline-none">
+            <div class="flex gap-3">
+                <button onclick="verifyMathUnlock()" class="flex-1 py-3 bg-brand-500 hover:bg-brand-600 font-bold text-slate-950 text-sm rounded-xl transition">Submit Answer</button>
+                <button onclick="closeMathModal()" class="px-4 py-3 bg-slate-800 hover:bg-slate-700 text-slate-400 text-sm font-semibold rounded-xl transition">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const EXAM_PRESETS = {
+            banking: {
+                title: "Banking / Insurance",
+                subjects: ["Quants / Speed Math", "Reasoning Ability", "English Language", "General Awareness", "Computer Aptitude"]
+            },
+            ssc: {
+                title: "SSC CGL / Govt",
+                subjects: ["Quantitative Aptitude", "Reasoning", "English Comprehension", "General Awareness"]
+            },
+            upsc: {
+                title: "UGC NET / UPSC",
+                subjects: ["Paper 1 Research", "Commerce / Core", "General Studies", "Current Affairs"]
+            },
+            school: {
+                title: "Class 11-12 Commerce",
+                subjects: ["Accountancy", "Business Studies", "Economics", "Applied Math"]
+            },
+            college: {
+                title: "Higher Ed / Finance",
+                subjects: ["Financial Accounting", "Corporate Finance", "Taxation", "Auditing"]
+            },
+            custom: {
+                title: "General Focus",
+                subjects: ["Deep Work", "Speed Drills", "Mock Test Analysis", "Revision"]
+            }
+        };
+
+        let appState = {
+            currentTrack: "banking",
+            activeSubject: EXAM_PRESETS.banking.subjects[0],
+            timerDuration: 25 * 60,
+            timerRemaining: 25 * 60,
+            isRunning: false,
+            timerInterval: null,
+            violations: 0,
+            completedSessions: [],
+            streak: 1,
+            mathAnswerCorrect: 0
+        };
+
+        let audioCtx = null;
+        let activeAudioSource = null;
+        let activeAudioType = 'off';
+        let audioGainNode = null;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadStateFromStorage();
+            renderPresetButtons();
+            renderSubjects();
+            updateTimerDisplay();
+            initTabSwitchMonitoring();
+            lucide.createIcons();
+        });
+
+        function saveStateToStorage() {
+            try {
+                localStorage.setItem("targetforge_fresh_state", JSON.stringify(appState));
+            } catch (e) {}
+        }
+
+        function loadStateFromStorage() {
+            try {
+                const saved = localStorage.getItem("targetforge_fresh_state");
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    appState = { ...appState, ...parsed };
+                }
+            } catch (e) {}
+        }
+
+        function clearAllData() {
+            if (confirm("Clear all logged study data and start completely fresh?")) {
+                localStorage.removeItem("targetforge_fresh_state");
+                localStorage.removeItem("targetforge_state");
+                appState.completedSessions = [];
+                appState.violations = 0;
+                saveStateToStorage();
+                renderAnalyticsView();
+            }
+        }
+
+        function initAudioContext() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContext();
+                audioGainNode = audioCtx.createGain();
+                audioGainNode.gain.value = parseFloat(document.getElementById("audioVolume").value);
+                audioGainNode.connect(audioCtx.destination);
+            }
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+        }
+
+        function updateAudioVolume(val) {
+            if (audioGainNode) audioGainNode.gain.value = parseFloat(val);
+        }
+
+        function setAudioSource(type) {
+            initAudioContext();
+            stopCurrentAudio();
+            activeAudioType = type;
+            const badge = document.getElementById("audioStatusBadge");
+            const text = document.getElementById("audioStatusText");
+
+            if (type === 'off') {
+                badge.className = "hidden";
+                updateAudioUIButtons('off');
+                return;
+            }
+
+            badge.className = "flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-brand-500/10 text-brand-500 border border-brand-500/30";
+
+            if (type === 'binaural') {
+                text.innerText = "40Hz Gamma Beat";
+                const oscL = audioCtx.createOscillator();
+                const oscR = audioCtx.createOscillator();
+                const merger = audioCtx.createChannelMerger(2);
+                oscL.type = 'sine'; oscR.type = 'sine';
+                oscL.frequency.value = 200; oscR.frequency.value = 240;
+                oscL.connect(merger, 0, 0); oscR.connect(merger, 0, 1);
+                merger.connect(audioGainNode);
+                oscL.start(); oscR.start();
+                activeAudioSource = { stop: () => { oscL.stop(); oscR.stop(); } };
+            } else if (type === 'brown' || type === 'white') {
+                text.innerText = type === 'brown' ? "Brownian Noise" : "White Noise";
+                const bufferSize = audioCtx.sampleRate * 2;
+                const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+                const data = buffer.getChannelData(0);
+                let lastOut = 0.0;
+                for (let i = 0; i < bufferSize; i++) {
+                    const white = Math.random() * 2 - 1;
+                    if (type === 'brown') {
+                        data[i] = (lastOut + (0.02 * white)) / 1.02;
+                        lastOut = data[i];
+                        data[i] *= 3.5;
+                    } else {
+                        data[i] = white * 0.2;
+                    }
+                }
+                const noise = audioCtx.createBufferSource();
+                noise.buffer = buffer; noise.loop = true;
+                noise.connect(audioGainNode); noise.start();
+                activeAudioSource = noise;
+            }
+            updateAudioUIButtons(type);
+        }
+
+        function stopCurrentAudio() {
+            if (activeAudioSource && activeAudioSource.stop) {
+                activeAudioSource.stop();
+                activeAudioSource = null;
+            }
+        }
+
+        function updateAudioUIButtons(activeType) {
+            ['off', 'binaural', 'brown', 'white'].forEach(t => {
+                const btn = document.getElementById(`btn-audio-${t}`);
+                if (btn) {
+                    btn.className = (t === activeType) 
+                        ? "p-2.5 rounded-xl bg-slate-900 border border-brand-500 text-brand-500 text-xs font-semibold flex items-center justify-center gap-2"
+                        : "p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 text-xs font-semibold flex items-center justify-center gap-2";
+                }
+            });
+        }
+
+        function renderPresetButtons() {
+            const container = document.getElementById("presetButtons");
+            container.innerHTML = "";
+            Object.keys(EXAM_PRESETS).forEach(key => {
+                const isSelected = appState.currentTrack === key;
+                const btn = document.createElement("button");
+                btn.className = `p-2 rounded-xl text-xs font-semibold uppercase tracking-wider transition ${isSelected ? 'bg-brand-500/20 text-brand-500 border border-brand-500/40' : 'bg-slate-900 text-slate-400 border border-slate-800'}`;
+                btn.innerText = key;
+                btn.onclick = () => selectPreset(key);
+                container.appendChild(btn);
+            });
+        }
+
+        function selectPreset(key) {
+            appState.currentTrack = key;
+            appState.activeSubject = EXAM_PRESETS[key].subjects[0];
+            document.getElementById("activePresetBadge").innerText = key.toUpperCase();
+            renderPresetButtons(); renderSubjects(); updateSubjectDisplay(); saveStateToStorage();
+        }
+
+        function renderSubjects() {
+            const grid = document.getElementById("subjectGrid");
+            grid.innerHTML = "";
+            EXAM_PRESETS[appState.currentTrack].subjects.forEach(sub => {
+                const isSelected = appState.activeSubject === sub;
+                const card = document.createElement("button");
+                card.className = `p-3 rounded-xl text-left text-xs font-medium border transition ${isSelected ? 'bg-brand-500/10 border-brand-500 text-brand-500' : 'bg-slate-900 border-slate-800 text-slate-300'}`;
+                card.innerHTML = `<span class="line-clamp-1">${sub}</span>`;
+                card.onclick = () => {
+                    appState.activeSubject = sub;
+                    renderSubjects(); updateSubjectDisplay(); saveStateToStorage();
+                };
+                grid.appendChild(card);
+            });
+        }
+
+        function updateSubjectDisplay() {
+            const display = document.getElementById("currentSubjectDisplay");
+            display.innerHTML = `<i data-lucide="target" class="w-3.5 h-3.5"></i> ${appState.activeSubject}`;
+            lucide.createIcons();
+        }
+
+        function promptAddCustomSubject() {
+            const name = prompt("Enter Custom Subject/Topic:");
+            if (name && name.trim()) {
+                const clean = name.trim();
+                EXAM_PRESETS[appState.currentTrack].subjects.push(clean);
+                appState.activeSubject = clean;
+                renderSubjects(); updateSubjectDisplay();
+            }
+        }
+
+        function setTimerMinutes(mins) {
+            if (appState.isRunning) { triggerMathChallenge(); return; }
+            appState.timerDuration = mins * 60;
+            appState.timerRemaining = mins * 60;
+            updateTimerDisplay();
+        }
+
+        function updateTimerDisplay() {
+            const mins = Math.floor(appState.timerRemaining / 60);
+            const secs = appState.timerRemaining % 60;
+            document.getElementById("timerDisplay").innerText = `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+        }
+
+        function toggleTimer() {
+            if (appState.isRunning) triggerMathChallenge();
+            else startTimer();
+        }
+
+        function startTimer() {
+            appState.isRunning = true;
+            const btn = document.getElementById("btnStartPause");
+            btn.className = "w-40 py-3.5 px-6 rounded-2xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-base shadow-lg transition flex items-center justify-center gap-2";
+            btn.innerHTML = `<i data-lucide="pause" class="w-5 h-5 fill-current"></i> Pause`;
+            lucide.createIcons();
+
+            appState.timerInterval = setInterval(() => {
+                if (appState.timerRemaining > 0) {
+                    appState.timerRemaining--;
+                    updateTimerDisplay();
+                } else {
+                    completeSession();
+                }
+            }, 1000);
+        }
+
+        function pauseTimer() {
+            appState.isRunning = false;
+            clearInterval(appState.timerInterval);
+            const btn = document.getElementById("btnStartPause");
+            btn.className = "w-40 py-3.5 px-6 rounded-2xl bg-brand-500 hover:bg-brand-600 text-slate-950 font-bold text-base shadow-lg transition flex items-center justify-center gap-2";
+            btn.innerHTML = `<i data-lucide="play" class="w-5 h-5 fill-current"></i> Resume`;
+            lucide.createIcons();
+        }
+
+        function resetTimer() {
+            if (appState.isRunning) { clearInterval(appState.timerInterval); appState.isRunning = false; }
+            appState.timerRemaining = appState.timerDuration;
+            updateTimerDisplay();
+            const btn = document.getElementById("btnStartPause");
+            btn.className = "w-40 py-3.5 px-6 rounded-2xl bg-brand-500 hover:bg-brand-600 text-slate-950 font-bold text-base shadow-lg transition flex items-center justify-center gap-2";
+            btn.innerHTML = `<i data-lucide="play" class="w-5 h-5 fill-current"></i> Start Session`;
+            lucide.createIcons();
+        }
+
+        function completeSession() {
+            resetTimer();
+            const mins = Math.round(appState.timerDuration / 60);
+            appState.completedSessions.unshift({
+                timestamp: new Date().toISOString(),
+                subject: appState.activeSubject,
+                durationMins: mins,
+                track: appState.currentTrack
+            });
+            saveStateToStorage();
+            alert(`🎉 Target Session Complete!\n\nSubject: ${appState.activeSubject}\nDuration: ${mins} mins`);
+        }
+
+        function initTabSwitchMonitoring() {
+            document.addEventListener("visibilitychange", () => {
+                if (document.hidden && appState.isRunning) {
+                    appState.violations++;
+                    saveStateToStorage();
+                }
+            });
+        }
+
+        function triggerMathChallenge() {
+            const a = Math.floor(Math.random() * 12) + 11;
+            const b = Math.floor(Math.random() * 9) + 11;
+            appState.mathAnswerCorrect = a * b;
+            document.getElementById("mathQuestion").innerText = `${a} × ${b} = ?`;
+            document.getElementById("mathAnswer").value = "";
+            document.getElementById("mathModal").classList.remove("hidden");
+            document.getElementById("mathAnswer").focus();
+        }
+
+        function verifyMathUnlock() {
+            const val = parseInt(document.getElementById("mathAnswer").value);
+            if (val === appState.mathAnswerCorrect) {
+                closeMathModal();
+                pauseTimer();
+            } else {
+                alert("Incorrect answer! Lock-in session remains active.");
+            }
+        }
+
+        function closeMathModal() {
+            document.getElementById("mathModal").classList.add("hidden");
+        }
+
+        function toggleView(view) {
+            const timerSec = document.getElementById("view-timer");
+            const analyticsSec = document.getElementById("view-analytics");
+            const btnTimer = document.getElementById("nav-timer");
+            const btnAnalytics = document.getElementById("nav-analytics");
+
+            if (view === 'timer') {
+                timerSec.classList.remove("hidden"); analyticsSec.classList.add("hidden");
+                btnTimer.className = "p-2 rounded-lg bg-slate-800 text-brand-500 transition";
+                btnAnalytics.className = "p-2 rounded-lg bg-slate-800 text-slate-400 transition";
+            } else {
+                timerSec.classList.add("hidden"); analyticsSec.classList.remove("hidden");
+                btnTimer.className = "p-2 rounded-lg bg-slate-800 text-slate-400 transition";
+                btnAnalytics.className = "p-2 rounded-lg bg-slate-800 text-brand-500 transition";
+                renderAnalyticsView();
+            }
+        }
+
+        function renderAnalyticsView() {
+            const totalMins = appState.completedSessions.reduce((acc, s) => acc + (s.durationMins || 0), 0);
+            document.getElementById("totalHoursLogged").innerText = `${(totalMins / 60).toFixed(1)}h`;
+            document.getElementById("totalSessionsCount").innerText = appState.completedSessions.length;
+            document.getElementById("totalViolationsCount").innerText = appState.violations;
+            document.getElementById("streakCounter").innerText = `${appState.streak} Day`;
+
+            const container = document.getElementById("subjectBreakdownContainer");
+            container.innerHTML = "";
+            if (appState.completedSessions.length === 0) {
+                container.innerHTML = `<p class="text-xs text-slate-500 italic">No session data logged yet.</p>`;
+            } else {
+                const totals = {};
+                appState.completedSessions.forEach(s => { totals[s.subject] = (totals[s.subject] || 0) + s.durationMins; });
+                Object.keys(totals).forEach(subj => {
+                    const mins = totals[subj];
+                    const pct = Math.min(100, Math.round((mins / (totalMins || 1)) * 100));
+                    const row = document.createElement("div");
+                    row.className = "space-y-1";
+                    row.innerHTML = `
+                        <div class="flex justify-between text-xs">
+                            <span class="font-medium text-slate-300">${subj}</span>
+                            <span class="font-mono text-brand-500">${mins} mins (${pct}%)</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+                            <div class="h-full bg-brand-500 rounded-full" style="width: ${pct}%"></div>
+                        </div>
+                    `;
+                    container.appendChild(row);
+                });
+            }
+
+            const list = document.getElementById("recentSessionsList");
+            list.innerHTML = "";
+            if (appState.completedSessions.length === 0) {
+                list.innerHTML = `<p class="text-xs text-slate-500 italic">Complete a session to log history here.</p>`;
+            } else {
+                appState.completedSessions.slice(0, 15).forEach(s => {
+                    const d = new Date(s.timestamp).toLocaleString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+                    const item = document.createElement("div");
+                    item.className = "p-2.5 bg-slate-900 rounded-xl border border-slate-800 flex items-center justify-between text-xs";
+                    item.innerHTML = `
+                        <div>
+                            <span class="font-semibold text-slate-200">${s.subject}</span>
+                            <span class="text-[10px] text-slate-500 block">${d} • ${s.track.toUpperCase()}</span>
+                        </div>
+                        <span class="font-mono font-bold text-brand-500 bg-brand-500/10 px-2 py-0.5 rounded border border-brand-500/20">${s.durationMins}m</span>
+                    `;
+                    list.appendChild(item);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
