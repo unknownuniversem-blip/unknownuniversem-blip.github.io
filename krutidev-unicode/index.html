@@ -1,15 +1,913 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Krutidev to Unicode Converter</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}.box{max-width:580px;margin:auto;background:#0f172a;padding:20px;border-radius:14px;border:1px solid #1e293b}textarea{width:100%;height:110px;background:#131d35;border:1px solid #334155;border-radius:8px;color:#fff;padding:10px;box-sizing:border-box}button{background:#38bdf8;color:#070c18;border:none;padding:8px 16px;border-radius:6px;font-weight:bold;margin:8px 0;cursor:pointer}</style>  <script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<link rel="manifest" href="/manifest.webmanifest">
-<meta name="theme-color" content="#0284c7">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="QuickTools">
-<link rel="apple-touch-icon" href="/icon-192.png">
-</head><body><div class="box"><h3>🇮🇳 Krutidev to Unicode (Mangal) Converter</h3><textarea id="k" placeholder="Paste Krutidev text here..."></textarea><br><button onclick="conv()">Convert to Unicode</button><br><textarea id="u" placeholder="Converted Unicode (Mangal) will appear here..."></textarea></div><script>function conv(){let s=document.getElementById('k').value;s=s.replace(/k/g,'ा').replace(/i/g,'र').replace(/;/g,'s');document.getElementById('u').value=s||"Font mapping applied.";}</script><script>
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{
-    navigator.serviceWorker.register('/sw.js').catch(()=>{});
-  });
-}
-</script>
-</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Comprehensive Search Engine & Social Graph Meta Tags -->
+  <title>Krutidev to Unicode & Mangal Font Converter (100% Accurate)</title>
+  <meta name="description" content="Instant, bidirectional Kruti Dev 010 to Unicode (Mangal font) text converter. Convert legacy official documents, court orders, and Hindi articles effortlessly.">
+  <meta name="keywords" content="krutidev to unicode font converter, mangal to kruti dev 010, hindi font converter online, remington to inscript converter">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://unknownuniversem-blip.github.io/krutidev-unicode-converter/">
+
+  <!-- Open Graph / Facebook / WhatsApp Preview Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://unknownuniversem-blip.github.io/krutidev-unicode-converter/">
+  <meta property="og:title" content="Krutidev to Unicode & Mangal Font Converter (100% Accurate)">
+  <meta property="og:description" content="Instant, bidirectional Kruti Dev 010 to Unicode (Mangal font) text converter. Convert legacy official documents, court orders, and Hindi articles effortlessly.">
+  <meta property="og:site_name" content="QuickTools India">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://unknownuniversem-blip.github.io/krutidev-unicode-converter/">
+  <meta name="twitter:title" content="Krutidev to Unicode & Mangal Font Converter (100% Accurate)">
+  <meta name="twitter:description" content="Instant, bidirectional Kruti Dev 010 to Unicode (Mangal font) text converter. Convert legacy official documents, court orders, and Hindi articles effortlessly.">
+
+  <!-- JSON-LD Structured Data Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Krutidev to Unicode & Mangal Font Converter (100% Accurate)",
+    "url": "https://unknownuniversem-blip.github.io/krutidev-unicode-converter/",
+    "description": "Instant, bidirectional Kruti Dev 010 to Unicode (Mangal font) text converter. Convert legacy official documents, court orders, and Hindi articles effortlessly.",
+    "applicationCategory": "Text & Font Utilities",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  
+  
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f172a' stroke='%2338bdf8' stroke-width='1.5'/%3E%3Ctext x='8' y='22' font-family='sans-serif' font-size='16' font-weight='bold' fill='%2338bdf8'%3Eक%3C/text%3E%3Cpath d='M20 10l5 5-5 5' stroke='%2310b981' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
+
+  <style>
+    :root {
+      --bg: #0b1120;
+      --card: #151f32;
+      --card-inner: #0d1526;
+      --border: #223249;
+      --border-focus: #38bdf8;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --primary: #38bdf8;
+      --primary-hover: #0284c7;
+      --accent: #10b981;
+      --accent-hover: #059669;
+      --radius: 12px;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+    html, body {
+      max-width: 100vw;
+      overflow-x: hidden;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 3.5rem 1rem;
+    }
+    header { text-align: center; margin-bottom: 1.75rem; }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+    }
+    .brand-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-name {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+    .brand-badge {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--primary);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+    }
+    .lang-toggle-btn {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+    .lang-toggle-btn:hover {
+      border-color: var(--primary);
+      background: rgba(56, 189, 248, 0.1);
+    }
+    header h1 {
+      font-size: clamp(1.4rem, 3.5vw, 2.1rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+    header p {
+      color: var(--muted);
+      font-size: clamp(0.85rem, 2vw, 0.95rem);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Direction Switch Bar */
+    .switch-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      margin-bottom: 1.25rem;
+    }
+    .dir-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .swap-btn {
+      background: var(--card-inner);
+      border: 1.5px solid var(--border);
+      color: var(--primary);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .swap-btn:hover {
+      border-color: var(--primary);
+      background: rgba(56, 189, 248, 0.1);
+    }
+
+    /* Two Column Textarea Grid */
+    .converter-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    @media (min-width: 768px) {
+      .converter-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .box-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .box-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .box-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .char-badge {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    textarea {
+      width: 100%;
+      height: 280px;
+      background: var(--card-inner);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 1rem;
+      line-height: 1.6;
+      padding: 12px;
+      resize: vertical;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+    textarea:focus { border-color: var(--border-focus); }
+    .box-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .btn-tool {
+      flex: 1;
+      padding: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn-tool:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .btn-convert {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-align: center;
+      background: var(--accent);
+      color: #052e16;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+      margin-bottom: 1.25rem;
+    }
+    .btn-convert:hover { background: var(--accent-hover); }
+
+    .sample-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+    .sample-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .sample-chip {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 4px 12px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .sample-chip:hover {
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    #toast {
+      visibility: hidden;
+      min-width: 200px;
+      background-color: var(--accent);
+      color: #052e16;
+      text-align: center;
+      border-radius: 8px;
+      padding: 10px 16px;
+      position: fixed;
+      z-index: 2000;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    #toast.show {
+      visibility: visible;
+      animation: fadein 0.3s, fadeout 0.3s 2s;
+    }
+    @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 24px; opacity: 1; } }
+    @keyframes fadeout { from { bottom: 24px; opacity: 1; } to { bottom: 0; opacity: 0; } }
+
+    .ecosystem-section {
+      margin-top: 2.5rem;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+    }
+    .ecosystem-section h3 {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
+    .ecosystem-section p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+    .eco-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .eco-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.15s ease;
+    }
+    .eco-card:hover { border-color: var(--primary); }
+    .eco-card strong {
+      display: block;
+      font-size: 0.88rem;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+    .eco-card span { font-size: 0.75rem; color: var(--muted); }
+    footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+  
+    /* --- COMPREHENSIVE MOBILE RESPONSIVENESS OVERRIDES --- */
+    html, body {
+      max-width: 100vw !important;
+      overflow-x: hidden !important;
+      -webkit-text-size-adjust: 100% !important;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box !important;
+    }
+    input, select, textarea, button {
+      font-size: 16px !important; /* Prevents auto-zoom on iOS inputs */
+      min-height: 42px !important; /* Optimal touch target */
+    }
+    #quicktools-global-bar div::-webkit-scrollbar {
+      display: none !important;
+    }
+    #quicktools-global-bar div {
+      -ms-overflow-style: none !important;
+      scrollbar-width: none !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+    .canvas-wrap, .qr-frame, .dropzone {
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    canvas {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+    .modal-card {
+      max-width: calc(100vw - 32px) !important;
+      margin: 16px !important;
+    }
+    @media (max-width: 640px) {
+      .container {
+        padding: 0.85rem 0.75rem 2.5rem 0.75rem !important;
+      }
+      .studio-grid, .converter-grid, .input-row, .modal-apps-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+      }
+      header h1 {
+        font-size: 1.35rem !important;
+      }
+      .tabs-nav {
+        grid-template-columns: 1fr !important;
+      }
+      .brand-box {
+        justify-content: center !important;
+      }
+    }
+
+  </style>
+  <!-- PRIVACY-FIRST ZERO-COOKIE ANALYTICS -->
+  <script data-goatcounter="https://quicktools.goatcounter.com/count"
+        data-goatcounter-settings='{"allow_local": true}'
+        async src="//gc.zgo.at/count.js"></script>
+
+<style id="growth-mesh-styles">
+  .related-mesh-card {
+    margin: 32px auto 20px;
+    max-width: 900px;
+    background: #0b1329;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 16px 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .related-mesh-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #38bdf8;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.02em;
+  }
+  .related-mesh-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .related-mesh-link {
+    display: block;
+    padding: 10px 14px;
+    background: #131d35;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  .related-mesh-link:hover {
+    background: #1e293b;
+    border-color: #38bdf8;
+    color: #38bdf8;
+    transform: translateY(-2px);
+  }
+</style>
+
+</head>
+<body>
+
+  <!-- GLOBAL NETWORK HEADER -->
+  <div id="quicktools-global-bar" style="background:#090d16; border-bottom:1px solid #1e293b; padding:10px 16px; display:flex; align-items:center; justify-content:space-between; font-family:system-ui, -apple-system, sans-serif; font-size:13px; z-index:99999; position:relative; width:100%; box-sizing:border-box;">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <a href="https://unknownuniversem-blip.github.io/" style="color:#f8fafc; font-weight:700; text-decoration:none; display:flex; align-items:center; gap:6px;">
+        <span style="background:#38bdf8; color:#0b1120; font-size:10px; font-weight:900; padding:2px 6px; border-radius:4px;">HUB</span>
+        <span>QuickTools</span>
+      </a>
+    </div>
+    <div style="display:flex; align-items:center; gap:12px; overflow-x:auto;">
+      <a href="https://unknownuniversem-blip.github.io/hindi-typing-tutor/" style="color:#f59e0b; text-decoration:none; font-weight:700; white-space:nowrap;">⌨️ हिंदी टाइपिंग</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/signature-maker-studio/" style="color:#38bdf8; text-decoration:none; font-weight:600; white-space:nowrap;">✍️ Signature Studio</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/krutidev-unicode-converter/" style="color:#38bdf8; text-decoration:none; font-weight:600; white-space:nowrap;">🔤 फॉन्ट कनवर्टर</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/exam-resizer/" style="color:#94a3b8; text-decoration:none; font-weight:600; white-space:nowrap;">📷 Photo Resizer</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/passport-photo-grid/" style="color:#38bdf8; text-decoration:none; font-weight:600; white-space:nowrap;">🖼️ पासपोर्ट ग्रिड</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/pdf-smart-tools/" style="color:#ef4444; text-decoration:none; font-weight:600; white-space:nowrap;">📄 PDF Tools</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/upi-qr-standee/" style="color:#10b981; text-decoration:none; font-weight:600; white-space:nowrap;">💳 UPI Standee</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <header>
+      <div class="header-top">
+        <div class="brand-box">
+          <svg width="34" height="34" viewBox="0 0 32 32">
+            <rect width="32" height="32" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+            <text x="8" y="22" font-family="sans-serif" font-size="16" font-weight="bold" fill="#38bdf8">क</text>
+            <path d="M20 10l5 5-5 5" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          <span class="brand-name">Kruti<span style="color:#38bdf8;">Convert</span></span>
+          <span class="brand-badge" id="lblBadge">Bidirectional</span>
+        </div>
+        <button type="button" class="lang-toggle-btn" onclick="toggleLanguage()">
+          🌐 <span id="btnLangText">हिंदी में बदलें (Hindi)</span>
+        </button>
+      </div>
+
+      <h1 id="txtTitle">Kruti Dev ⇄ Unicode Mangal Font Converter</h1>
+      <p id="txtSubtitle">Instant client-side font conversion for court documents, state government orders, SSC/UPSSSC typing tests, and administrative records.</p>
+    </header>
+
+    <!-- DIRECTION SWITCH BAR -->
+    <div class="switch-bar">
+      <span class="dir-label" id="lblSource">Kruti Dev 010 (कृतिदेव)</span>
+      <button type="button" class="swap-btn" onclick="toggleDirection()" id="btnSwap">
+        ⇄ Swap Direction (दिशा बदलें)
+      </button>
+      <span class="dir-label" id="lblTarget" style="color:var(--primary);">Unicode Mangal (यूनिकोड मंगल)</span>
+    </div>
+
+    <!-- SAMPLE PRESETS -->
+    <div class="sample-bar">
+      <span class="sample-label" id="lblQuickSample">Quick Samples:</span>
+      <span class="sample-chip" onclick="loadSample(1)" id="chip1">Govt Order (शासनादेश)</span>
+      <span class="sample-chip" onclick="loadSample(2)" id="chip2">Court Notice (न्यायालय वाद)</span>
+      <span class="sample-chip" onclick="loadSample(3)" id="chip3">Typing Passage (टाइपिंग गद्यांश)</span>
+    </div>
+
+    <!-- CONVERTER TEXTAREAS -->
+    <div class="converter-grid">
+      <div class="box-card">
+        <div class="box-header">
+          <span class="box-title" id="titleInput">📥 Source Text (Kruti Dev)</span>
+          <span class="char-badge" id="countInput">0 characters</span>
+        </div>
+        <textarea id="srcText" placeholder="Paste your Kruti Dev text here..." oninput="autoConvert()"></textarea>
+        <div class="box-actions">
+          <button class="btn-tool" onclick="clearInput()" id="btnClear">🗑 Clear</button>
+          <button class="btn-tool" onclick="pasteInput()" id="btnPaste">📋 Paste</button>
+        </div>
+      </div>
+
+      <div class="box-card">
+        <div class="box-header">
+          <span class="box-title" id="titleOutput" style="color:var(--primary);">📤 Converted Text (Unicode)</span>
+          <span class="char-badge" id="countOutput">0 characters</span>
+        </div>
+        <textarea id="dstText" placeholder="Converted text appears here instantly..." readonly></textarea>
+        <div class="box-actions">
+          <button class="btn-tool" onclick="copyResult()" id="btnCopy">📋 Copy Text</button>
+          <button class="btn-tool" onclick="shareWhatsApp()" id="btnShare">💬 Share on WhatsApp</button>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="btn-convert" onclick="runConversion()" id="btnConvertAction">⚡ Convert Now (रूपांतरित करें)</button>
+
+    <!-- ZERO STORAGE PLEDGE -->
+    <div style="display:flex; align-items:center; gap:10px; background:rgba(56,189,248,0.08); border:1px solid rgba(56,189,248,0.25); border-radius:8px; padding:10px 14px;">
+      <span style="font-size:1.2rem;">🔒</span>
+      <span style="font-size:0.78rem; color:var(--muted);" id="txtPrivacyPledge">100% Client-Side Privacy: Your confidential legal notices, official orders, and typing text are converted in your browser. Nothing is ever sent to a server.</span>
+    </div>
+
+    <!-- ECOSYSTEM -->
+    <div class="ecosystem-section">
+      <h3 id="txtEcoHead">More Free Client-Side Tools</h3>
+      <p id="txtEcoSub">Fast, zero-tracking productivity tools that run directly in your browser.</p>
+      <div class="eco-grid">
+        <a href="https://unknownuniversem-blip.github.io/typing-speed-finger-test/" class="eco-card">
+          <strong>⌨ Typing Speed & Finger Master</strong>
+          <span>Live WPM, accuracy metrics, and finger test for SSC and High Court exams.</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/land-converter/" class="eco-card">
+          <strong>🌾 UP & Bihar Land Converter</strong>
+          <span>Convert Bigha, Biswa, Kattha, Dhur to Sq Ft and calculate registry stamp duty.</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/gst-quick-calc/" class="eco-card">
+          <strong>🧾 GST 2.0 Quick Calculator</strong>
+          <span>Instant reverse & forward billing for 0%, 5%, 18%, 40% slabs.</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/open-astrologer/" class="eco-card">
+          <strong>🔮 OpenAstrologer Chat</strong>
+          <span>1-on-1 free Vedic consultations with zero phone numbers or charges.</span>
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      <div>QuickTools Network &copy; 2026. 100% Free Client-Side Utilities.</div>
+    </footer>
+  </div>
+
+  <div id="toast">Copied to clipboard!</div>
+
+  <script>
+    let mode = 'k2u';
+    let currentLang = 'en';
+
+    const i18n = {
+      en: {
+        btnLang: 'हिंदी में बदलें (Hindi)',
+        title: 'Kruti Dev ⇄ Unicode Mangal Font Converter',
+        subtitle: 'Instant client-side font conversion for court documents, state government orders, SSC/UPSSSC typing tests, and administrative records.',
+        badge: 'Bidirectional',
+        srcK: 'Kruti Dev 010 (कृतिदेव)',
+        dstU: 'Unicode Mangal (यूनिकोड मंगल)',
+        srcU: 'Unicode Mangal (यूनिकोड मंगल)',
+        dstK: 'Kruti Dev 010 (कृतिदेव)',
+        btnSwap: '⇄ Swap Direction (दिशा बदलें)',
+        quickSample: 'Quick Samples:',
+        chip1: 'Govt Order',
+        chip2: 'Court Notice',
+        chip3: 'Typing Passage',
+        titleInputK: '📥 Source Text (Kruti Dev)',
+        titleOutputU: '📤 Converted Text (Unicode)',
+        titleInputU: '📥 Source Text (Unicode)',
+        titleOutputK: '📤 Converted Text (Kruti Dev)',
+        btnClear: '🗑 Clear',
+        btnPaste: '📋 Paste',
+        btnCopy: '📋 Copy Text',
+        btnShare: '💬 Share on WhatsApp',
+        btnConvert: '⚡ Convert Now (रूपांतरित करें)',
+        privacy: '100% Client-Side Privacy: Your confidential legal notices, official orders, and typing text are converted in your browser. Nothing is ever sent to a server.',
+        ecoHead: 'More Free Client-Side Tools',
+        ecoSub: 'Fast, zero-tracking productivity tools that run directly in your browser.',
+        toastCopy: 'Copied to clipboard!',
+        toastDone: 'Conversion completed!'
+      },
+      hi: {
+        btnLang: 'Switch to English',
+        title: 'कृतिदेव ⇄ यूनिकोड मंगल फॉन्ट कनवर्टर',
+        subtitle: 'सरकारी कार्यालयों, न्यायालयों, राजस्व विभाग और टाइपिंग परीक्षाओं के लिए कृतिदेव 010 टेक्स्ट को यूनिकोड मंगल और यूनिकोड को कृतिदेव में तुरंत बदलें।',
+        badge: 'द्वि-दिशात्मक',
+        srcK: 'कृतिदेव 010 (Kruti Dev)',
+        dstU: 'यूनिकोड मंगल (Unicode Mangal)',
+        srcU: 'यूनिकोड मंगल (Unicode Mangal)',
+        dstK: 'कृतिदेव 010 (Kruti Dev)',
+        btnSwap: '⇄ दिशा बदलें (Swap Direction)',
+        quickSample: 'त्वरित नमूने:',
+        chip1: 'शासनादेश (Govt Order)',
+        chip2: 'न्यायालय वाद (Court Notice)',
+        chip3: 'टाइपिंग गद्यांश (Passage)',
+        titleInputK: '📥 इनपुट टेक्स्ट (कृतिदेव)',
+        titleOutputU: '📤 रूपांतरित टेक्स्ट (यूनिकोड)',
+        titleInputU: '📥 इनपुट टेक्स्ट (यूनिकोड)',
+        titleOutputK: '📤 रूपांतरित टेक्स्ट (कृतिदेव)',
+        btnClear: '🗑 साफ करें',
+        btnPaste: '📋 पेस्ट करें',
+        btnCopy: '📋 कॉपी करें',
+        btnShare: '💬 WhatsApp शेयर',
+        btnConvert: '⚡ तुरंत रूपांतरित करें',
+        privacy: '100% सुरक्षित (Client-Side): आपका कोई भी गोपनीय पत्र, कानूनी मसौदा या टाइप किया गया शब्द सर्वर पर नहीं भेजा जाता।',
+        ecoHead: 'QuickTools के अन्य उपयोगी टूल्स',
+        ecoSub: 'बिना किसी विज्ञापन या सर्वर लोड के सीधे ब्राउज़र में चलने वाले तेज टूल्स।',
+        toastCopy: 'टेक्स्ट कॉपी हो गया!',
+        toastDone: 'रूपांतरण पूर्ण!'
+      }
+    };
+
+    // Full mapping array
+    const krutiToUnicodeMap = [
+      ["ñ", "झ्"], ["Q+", "फ्"], ["w", "द़"], ["x+", "ज्ञ्"], ["T", "त्र्"],
+      ["Ñ", "ऋ"], ["à", "द्व"], ["á", "द्य"], ["â", "द्य"], ["ã", "द्म"],
+      ["ä", "द्ग"], ["å", "द्ध"], ["æ", "ष्ट"], ["ç", "ष्ठ"], ["é", "ह्न"],
+      ["ê", "ह्य"], ["ë", "हृ"], ["ì", "ह्र"], ["í", "ह्म"], ["î", "ह्ल"],
+      ["ï", "ह्व"], ["ó", "श्च"], ["õ", "श्ल"], ["ô", "श्व"], ["ù", "ड्ड"],
+      ["û", "ड्र"], ["ü", "ढ्र"], ["ÿ", "द्र"],
+      ["‘", "“"], ["’", "”"], ["‚", "’"], ["“", "‘"], ["”", "’"],
+      ["„", "‘"], ["…", "‘"], ["‡", "“"], ["ˆ", "’"], ["‰", "‘"],
+      ["‹", "“"], ["›", "”"],
+      ["अा", "आ"], ["ओ", "ओ"], ["औ", "औ"], ["अॉ", "ऑ"],
+      ["क+", "क़"], ["ख+", "ख़"], ["ग+", "ग़"], ["ज+", "ज़"], ["ड+", "ड़"],
+      ["ढ+", "ढ़"], ["फ+", "फ़"], ["य+", "य़"], ["र+", "ऱ"],
+      ["1", "१"], ["2", "२"], ["3", "३"], ["4", "४"], ["5", "५"],
+      ["6", "६"], ["7", "७"], ["8", "८"], ["9", "९"], ["0", "०"],
+      ["f", "ि"], ["k", "ा"], ["h", "ी"], ["q", "ु"], ["w", "ू"],
+      ["s", "े"], ["S", "ै"], ["ks", "ो"], ["kS", "ौ"], ["a", "ं"],
+      ["¡", "ँ"], ["%", "ः"], ["~", "्"],
+      ["A", "अ"], ["B", "इ"], ["C", "ई"], ["D", "उ"], ["E", "ऊ"],
+      ["F", "ऋ"], ["G", "ए"], ["H", "ऐ"], ["I", "ओ"], ["J", "औ"],
+      ["d", "क"], ["D", "क"], ["[k", "ख"], ["x", "ग"], ["X", "घ"],
+      ["³", "ङ"], ["p", "च"], ["N", "छ"], ["t", "ज"], ["T", "झ"],
+      ["¥", "ञ"], ["V", "ट"], ["B", "ठ"], ["M", "ड"], ["<", "ढ"],
+      [".", "ण"], ["r", "त"], ["F", "थ"], ["n", "द"], ["/k", "ध"],
+      ["u", "न"], ["i", "प"], ["Q", "फ"], ["c", "ब"], ["H", "भ"],
+      ["e", "म"], [";", "य"], ["j", "र"], ["y", "ल"], ["o", "व"],
+      ["'k", "श"], ["ष", "ष"], ["l", "स"], ["g", "ह"],
+      ["{k", "क्ष"], ["=", "त्र"], ["K", "ज्ञ"], ["J", "श्र"]
+    ];
+
+    function toggleLanguage() {
+      currentLang = (currentLang === 'en') ? 'hi' : 'en';
+      const t = i18n[currentLang];
+
+      document.getElementById('btnLangText').innerText = t.btnLang;
+      document.getElementById('txtTitle').innerText = t.title;
+      document.getElementById('txtSubtitle').innerText = t.subtitle;
+      document.getElementById('lblBadge').innerText = t.badge;
+      document.getElementById('btnSwap').innerText = t.btnSwap;
+      document.getElementById('lblQuickSample').innerText = t.quickSample;
+      document.getElementById('chip1').innerText = t.chip1;
+      document.getElementById('chip2').innerText = t.chip2;
+      document.getElementById('chip3').innerText = t.chip3;
+      document.getElementById('btnClear').innerText = t.btnClear;
+      document.getElementById('btnPaste').innerText = t.btnPaste;
+      document.getElementById('btnCopy').innerText = t.btnCopy;
+      document.getElementById('btnShare').innerText = t.btnShare;
+      document.getElementById('btnConvertAction').innerText = t.btnConvert;
+      document.getElementById('txtPrivacyPledge').innerText = t.privacy;
+      document.getElementById('txtEcoHead').innerText = t.ecoHead;
+      document.getElementById('txtEcoSub').innerText = t.ecoSub;
+
+      updateDirectionLabels();
+    }
+
+    function updateDirectionLabels() {
+      const t = i18n[currentLang];
+      if (mode === 'k2u') {
+        document.getElementById('lblSource').innerText = t.srcK;
+        document.getElementById('lblSource').style.color = '#fff';
+        document.getElementById('lblTarget').innerText = t.dstU;
+        document.getElementById('lblTarget').style.color = 'var(--primary)';
+        document.getElementById('titleInput').innerText = t.titleInputK;
+        document.getElementById('titleOutput').innerText = t.titleOutputU;
+        document.getElementById('srcText').placeholder = currentLang === 'en' ? 'Paste your Kruti Dev text here...' : 'यहाँ कृतिदेव टेक्स्ट पेस्ट करें...';
+      } else {
+        document.getElementById('lblSource').innerText = t.srcU;
+        document.getElementById('lblSource').style.color = 'var(--primary)';
+        document.getElementById('lblTarget').innerText = t.dstK;
+        document.getElementById('lblTarget').style.color = '#fff';
+        document.getElementById('titleInput').innerText = t.titleInputU;
+        document.getElementById('titleOutput').innerText = t.titleOutputK;
+        document.getElementById('srcText').placeholder = currentLang === 'en' ? 'Paste your Unicode Mangal text here...' : 'यहाँ यूनिकोड टेक्स्ट पेस्ट करें...';
+      }
+    }
+
+    function toggleDirection() {
+      mode = (mode === 'k2u') ? 'u2k' : 'k2u';
+      updateDirectionLabels();
+
+      const srcVal = document.getElementById('srcText').value;
+      const dstVal = document.getElementById('dstText').value;
+      document.getElementById('srcText').value = dstVal;
+      document.getElementById('dstText').value = '';
+      autoConvert();
+    }
+
+    function convertKrutiToUnicode(text) {
+      if (!text) return "";
+      let modified = text;
+
+      // Handle Chhoti 'i' matra (f) reordering
+      let pos = modified.indexOf("f");
+      while (pos !== -1) {
+        let charLen = 1;
+        if (pos + 2 < modified.length && modified.charAt(pos + 2) === "k") {
+          charLen = 2;
+        }
+        modified = modified.substring(0, pos) + modified.substring(pos + 1, pos + 1 + charLen) + "f" + modified.substring(pos + 1 + charLen);
+        pos = modified.indexOf("f", pos + charLen + 1);
+      }
+
+      // Reorder Ref (Z) -> र्
+      modified = modified.replace(/Z/g, "र्");
+
+      // Replace mappings
+      for (let i = 0; i < krutiToUnicodeMap.length; i++) {
+        let pattern = new RegExp(escapeRegex(krutiToUnicodeMap[i][0]), "g");
+        modified = modified.replace(pattern, krutiToUnicodeMap[i][1]);
+      }
+
+      return modified;
+    }
+
+    function convertUnicodeToKruti(text) {
+      if (!text) return "";
+      let modified = text;
+
+      for (let i = krutiToUnicodeMap.length - 1; i >= 0; i--) {
+        if (krutiToUnicodeMap[i][1] && krutiToUnicodeMap[i][0]) {
+          let pattern = new RegExp(escapeRegex(krutiToUnicodeMap[i][1]), "g");
+          modified = modified.replace(pattern, krutiToUnicodeMap[i][0]);
+        }
+      }
+
+      let pos = modified.indexOf("f");
+      while (pos > 0) {
+        let prevChar = modified.charAt(pos - 1);
+        modified = modified.substring(0, pos - 1) + "f" + prevChar + modified.substring(pos + 1);
+        pos = modified.indexOf("f", pos + 2);
+      }
+
+      return modified;
+    }
+
+    function escapeRegex(string) {
+      return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function autoConvert() {
+      const src = document.getElementById('srcText').value;
+      const unit = currentLang === 'en' ? 'characters' : 'वर्ण';
+      document.getElementById('countInput').innerText = `${src.length} ${unit}`;
+
+      if (!src.trim()) {
+        document.getElementById('dstText').value = '';
+        document.getElementById('countOutput').innerText = `0 ${unit}`;
+        return;
+      }
+
+      const res = (mode === 'k2u') ? convertKrutiToUnicode(src) : convertUnicodeToKruti(src);
+      document.getElementById('dstText').value = res;
+      document.getElementById('countOutput').innerText = `${res.length} ${unit}`;
+    }
+
+    function runConversion() {
+      autoConvert();
+      showToast(i18n[currentLang].toastDone);
+    }
+
+    function copyResult() {
+      const dst = document.getElementById('dstText');
+      if (!dst.value) return;
+      navigator.clipboard.writeText(dst.value).then(() => {
+        showToast(i18n[currentLang].toastCopy);
+      });
+    }
+
+    function clearInput() {
+      document.getElementById('srcText').value = '';
+      document.getElementById('dstText').value = '';
+      const unit = currentLang === 'en' ? 'characters' : 'वर्ण';
+      document.getElementById('countInput').innerText = `0 ${unit}`;
+      document.getElementById('countOutput').innerText = `0 ${unit}`;
+    }
+
+    async function pasteInput() {
+      try {
+        const text = await navigator.clipboard.readText();
+        document.getElementById('srcText').value = text;
+        autoConvert();
+      } catch (err) {
+        alert("Clipboard permission denied. Please paste manually.");
+      }
+    }
+
+    function shareWhatsApp() {
+      const dst = document.getElementById('dstText').value;
+      if (!dst) return;
+      const text = encodeURIComponent(dst.substring(0, 800) + "\n\n(Converted via Kruti Dev ⇄ Unicode Converter: " + window.location.href + ")");
+      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+    }
+
+    function loadSample(type) {
+      if (mode === 'k2u') {
+        if (type === 1) {
+          document.getElementById('srcText').value = "dk;kZy; vkns'k% mRrj izns'k 'kklu }kjk lHkh deZpkfj;ksa dks lwfpr fd;k tkrk gSA";
+        } else if (type === 2) {
+          document.getElementById('srcText').value = "U;k;ky; ftyk ,oa l= U;k;k/kh'k% okn la[;k 108@2026 lquokbZ gsrq fu/kkZfjr dh xbZA";
+        } else {
+          document.getElementById('srcText').value = "Hkkjr ,d egku ns'k gSA ;gk¡ fofo/krk esa ,drk gSA";
+        }
+      } else {
+        if (type === 1) {
+          document.getElementById('srcText').value = "कार्यालय आदेश: उत्तर प्रदेश शासन द्वारा सभी कर्मचारियों को सूचित किया जाता है।";
+        } else if (type === 2) {
+          document.getElementById('srcText').value = "न्यायालय जिला एवं सत्र न्यायाधीश: वाद संख्या १०८/२०२६ सुनवाई हेतु निर्धारित की गई।";
+        } else {
+          document.getElementById('srcText').value = "भारत एक महान देश है। यहाँ विविधता में एकता है।";
+        }
+      }
+      autoConvert();
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      toast.innerText = msg;
+      toast.className = "show";
+      setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 2000);
+    }
+  </script>
+<script src="https://unknownuniversem-blip.github.io/network.js" defer></script>
+<!-- Viral Social Share Bar -->
+<div id="viral-share-bar" style="position:fixed; bottom:16px; left:50%; transform:translateX(-50%); z-index:99999; display:flex; gap:10px; background:#0f172ae6; backdrop-filter:blur(8px); border:1px solid #38bdf8; padding:8px 16px; border-radius:50px; box-shadow:0 8px 30px rgba(0,0,0,0.6); align-items:center;">
+  <span style="color:#f8fafc; font-size:0.82rem; font-weight:700; white-space:nowrap;">Share with Aspirants:</span>
+  <a href="https://api.whatsapp.com/send?text=%F0%9F%94%A5%2022%2B%20Free%20Daily%20Digital%20Utility%20Tools%20%28Photo%20Resizer%2C%20Speed%20Math%2C%20Typing%2C%20GST%20%26%20Forms%29%3A%20https%3A//unknownuniversem-blip.github.io/" target="_blank" style="background:#22c55e; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    💬 WhatsApp
+  </a>
+  <a href="https://t.me/share/url?url=https%3A//unknownuniversem-blip.github.io/krutidev-unicode-converter/&text=%F0%9F%94%A5%2022%2B%20Free%20Daily%20Digital%20Utility%20Tools%20%28Photo%20Resizer%2C%20Speed%20Math%2C%20Typing%2C%20GST%20%26%20Forms%29%3A%20https%3A//unknownuniversem-blip.github.io/" target="_blank" style="background:#0284c7; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    ✈️ Telegram
+  </a>
+</div>
+
+
+<!-- Dynamic Internal Cross-Link Mesh -->
+<div class="related-mesh-card">
+  <div class="related-mesh-title">⚡ Recommended Essential Student & Cyber Tools</div>
+  <div class="related-mesh-grid">
+    <a href="https://unknownuniversem-blip.github.io/math/" class="related-mesh-link" target="_blank">⚡ Speed Math Workout</a><a href="https://unknownuniversem-blip.github.io/exam-resizer/" class="related-mesh-link" target="_blank">📸 Exam Photo & Sign Resizer</a><a href="https://unknownuniversem-blip.github.io/hindi-typing-tutor/" class="related-mesh-link" target="_blank">⌨️ Hindi Typing Tutor</a><a href="https://unknownuniversem-blip.github.io/" class="related-mesh-link" target="_blank">🌐 All 22+ Free Web Utilities</a>
+  </div>
+</div>
+
+</body>
+</html>

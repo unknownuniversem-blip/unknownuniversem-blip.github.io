@@ -1,15 +1,827 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Hindi Typing Tutor</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}.box{max-width:560px;margin:auto;background:#0f172a;padding:24px;border-radius:14px;border:1px solid #1e293b}.drill{font-size:1.3rem;background:#131d35;padding:14px;border-radius:8px;margin-bottom:12px;color:#38bdf8}input{width:100%;padding:12px;background:#070c18;border:1px solid #334155;border-radius:8px;color:#fff;font-size:1.1rem;box-sizing:border-box}</style>  <script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<link rel="manifest" href="/manifest.webmanifest">
-<meta name="theme-color" content="#0284c7">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="QuickTools">
-<link rel="apple-touch-icon" href="/icon-192.png">
-</head><body><div class="box"><h3>⌨️ Remington Gail & Inscript Hindi Tutor</h3><div class="drill">क ख ग घ ङ | च छ ज झ ञ</div><input type="text" placeholder="अभ्यास यहाँ टाइप करें..."></div><script>
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{
-    navigator.serviceWorker.register('/sw.js').catch(()=>{});
-  });
-}
-</script>
-</body></html>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+
+  <!-- Comprehensive Search Engine & Social Graph Meta Tags -->
+  <title>Hindi Typing Tutor & Speed Test (Mangal Inscript / Krutidev 010)</title>
+  <meta name="description" content="Free online Hindi typing practice software with real-time WPM, accuracy tracking, backspace control, and exam-mode paragraphs for CPCT, High Court & SSC typing tests.">
+  <meta name="keywords" content="hindi typing tutor online free, mangal inscript typing practice, krutidev 010 typing test, cpct typing test software free, ssc hindi typing test">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://unknownuniversem-blip.github.io/hindi-typing-tutor/">
+
+  <!-- Open Graph / Facebook / WhatsApp Preview Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://unknownuniversem-blip.github.io/hindi-typing-tutor/">
+  <meta property="og:title" content="Hindi Typing Tutor & Speed Test (Mangal Inscript / Krutidev 010)">
+  <meta property="og:description" content="Free online Hindi typing practice software with real-time WPM, accuracy tracking, backspace control, and exam-mode paragraphs for CPCT, High Court & SSC typing tests.">
+  <meta property="og:site_name" content="QuickTools India">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://unknownuniversem-blip.github.io/hindi-typing-tutor/">
+  <meta name="twitter:title" content="Hindi Typing Tutor & Speed Test (Mangal Inscript / Krutidev 010)">
+  <meta name="twitter:description" content="Free online Hindi typing practice software with real-time WPM, accuracy tracking, backspace control, and exam-mode paragraphs for CPCT, High Court & SSC typing tests.">
+
+  <!-- JSON-LD Structured Data Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Hindi Typing Tutor & Speed Test (Mangal Inscript / Krutidev 010)",
+    "url": "https://unknownuniversem-blip.github.io/hindi-typing-tutor/",
+    "description": "Free online Hindi typing practice software with real-time WPM, accuracy tracking, backspace control, and exam-mode paragraphs for CPCT, High Court & SSC typing tests.",
+    "applicationCategory": "Typing & Skill Tests",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, interactive-widget=resizes-content">
+  
+  
+
+  <!-- Privacy Analytics -->
+  <script data-goatcounter="https://quicktools.goatcounter.com/count"
+          data-goatcounter-settings='{"allow_local": true}'
+          async src="//gc.zgo.at/count.js"></script>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f172a' stroke='%23f59e0b' stroke-width='1.5'/%3E%3Ctext x='7' y='22' font-family='sans-serif' font-size='16' font-weight='bold' fill='%23f59e0b'%3Eक%3C/text%3E%3Crect x='19' y='14' width='7' height='2' fill='%2338bdf8'/%3E%3C/svg%3E">
+
+  <style>
+    :root {
+      --bg-primary: #090d16;
+      --bg-card: #131c2e;
+      --bg-surface: #0b1120;
+      --border: #1e293b;
+      --primary: #f59e0b;
+      --accent: #10b981;
+      --danger: #ef4444;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --font-scale: 1.25rem;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
+    }
+
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      position: fixed;
+      inset: 0;
+      overflow: hidden !important;
+      background-color: var(--bg-primary);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: pan-x pan-y;
+    }
+
+    .app-screen {
+      flex: 1;
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 8px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    /* TOP HEADER & CONTROLS */
+    .dashboard-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 12px;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .btn-apps-trigger {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: #38bdf8;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      height: 26px;
+    }
+
+    .selectors-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    select {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: #fff;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 3px 6px;
+      border-radius: 6px;
+      outline: none;
+      height: 26px;
+    }
+
+    /* FONT RESIZE BUTTONS (A- / A+) */
+    .font-size-ctrls {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2px 6px;
+      height: 26px;
+    }
+    .btn-font {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 800;
+      cursor: pointer;
+      padding: 0 4px;
+      line-height: 1;
+    }
+    .btn-font:hover { color: #fff; }
+
+    .stats-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .stat-pill {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2px 7px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      height: 26px;
+    }
+    .stat-val { font-size: 0.85rem; font-weight: 900; }
+
+    /* WORKSPACE */
+    .workspace-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .passage-card, .input-card {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 100% NATIVE FULL PARAGRAPH */
+    .passage-card {
+      flex: 1;
+      padding: 16px 20px;
+      user-select: none;
+    }
+    .passage-card::-webkit-scrollbar { width: 5px; }
+    .passage-card::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+
+    #passageText {
+      font-size: var(--font-scale);
+      line-height: 2.2;
+      color: #e2e8f0;
+      margin: 0;
+      text-align: justify;
+      letter-spacing: 0.01em;
+      white-space: pre-wrap;
+    }
+
+    .highlight-target {
+      background: rgba(245, 158, 11, 0.25);
+      border-bottom: 2.5px solid var(--primary);
+      color: #fff;
+      font-weight: 700;
+      padding: 0 2px;
+      border-radius: 3px;
+    }
+
+    .input-card {
+      flex-shrink: 0;
+      height: 54px;
+      background: var(--bg-card);
+      border-color: rgba(245, 158, 11, 0.45);
+      padding: 0;
+    }
+    .input-card:focus-within { border-color: var(--primary); }
+
+    .typing-input {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: var(--font-scale);
+      padding: 0 14px;
+      outline: none;
+      user-select: text;
+      -webkit-user-select: text;
+    }
+
+    /* ON-SCREEN KEYBOARD (PC & PORTRAIT) */
+    .keyboard-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .kb-row {
+      display: flex;
+      gap: 4px;
+      justify-content: center;
+    }
+    .kb-key {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 3px 2px;
+      flex: 1;
+      max-width: 58px;
+      height: 38px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .key-eng { font-size: 0.6rem; color: var(--muted); font-weight: 700; line-height: 1; }
+    .key-hin { font-size: 0.95rem; color: #fff; font-weight: 800; line-height: 1.1; margin-top: 1px; }
+
+    /* LANDSCAPE: STATIC SIDE-BY-SIDE + NO KEYBOARD */
+    @media screen and (orientation: landscape) and (max-height: 560px) {
+      .keyboard-panel, #keyboardGuide { display: none !important; }
+
+      .app-screen {
+        padding: 4px 8px !important;
+        gap: 5px !important;
+      }
+      .dashboard-strip {
+        padding: 3px 8px !important;
+      }
+
+      .workspace-area {
+        flex-direction: row !important;
+        flex: 1 !important;
+        gap: 8px !important;
+      }
+      .passage-card {
+        flex: 1.1 !important;
+        height: 100% !important;
+        padding: 10px 14px !important;
+      }
+      #passageText {
+        line-height: 1.7 !important;
+      }
+      .input-card {
+        flex: 1 !important;
+        height: 100% !important;
+      }
+      .typing-input {
+        padding: 8px 12px !important;
+      }
+    }
+
+    /* MODAL POPUPS */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.82);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100000;
+      padding: 1rem;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 440px;
+      padding: 1.4rem;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      animation: popIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes popIn {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .modal-meta-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 0.85rem;
+      margin: 12px 0;
+      text-align: left;
+    }
+    .modal-meta-box div { display: flex; justify-content: space-between; margin-bottom: 6px; }
+    .modal-meta-box div:last-child { margin-bottom: 0; }
+    .btn-modal-primary {
+      width: 100%;
+      background: var(--primary);
+      color: #0b1120;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 12px 0;
+    }
+    .app-link-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 10px;
+      text-decoration: none;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-align: left;
+    }
+    .app-link-card:hover { border-color: #38bdf8; }
+    .btn-close-apps {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 0.8rem;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+  </style>
+
+<style id="growth-mesh-styles">
+  .related-mesh-card {
+    margin: 32px auto 20px;
+    max-width: 900px;
+    background: #0b1329;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 16px 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .related-mesh-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #38bdf8;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.02em;
+  }
+  .related-mesh-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .related-mesh-link {
+    display: block;
+    padding: 10px 14px;
+    background: #131d35;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  .related-mesh-link:hover {
+    background: #1e293b;
+    border-color: #38bdf8;
+    color: #38bdf8;
+    transform: translateY(-2px);
+  }
+</style>
+
+</head>
+<body>
+
+  <div class="app-screen">
+    <!-- TOP TOOLBAR & CONTROLS -->
+    <div class="dashboard-strip">
+      <div class="brand-section">
+        <span class="brand-title">⌨️ HindiTyping</span>
+        <button type="button" class="btn-apps-trigger" onclick="openAppsModal()">
+          ⚡ QuickTools
+        </button>
+      </div>
+
+      <div class="selectors-row">
+        <select id="selLayout" onchange="changeLayout()">
+          <option value="mangal" selected>मंगल (Mangal)</option>
+          <option value="kruti">कृतिदेव (Kruti)</option>
+        </select>
+        <select id="selDuration" onchange="resetTest()">
+          <option value="60">1 Min</option>
+          <option value="180">3 Min</option>
+          <option value="300" selected>05:00</option>
+          <option value="600">10 Min</option>
+        </select>
+        <select id="selPassage" onchange="loadPassage()">
+          <option value="basic" selected>सरल (Basic)</option>
+          <option value="court">कोर्ट वाद (Legal)</option>
+          <option value="editorial">संपादकीय (Hard)</option>
+        </select>
+      </div>
+
+      <!-- FONT RESIZE BUTTONS (A- / A+) -->
+      <div class="font-size-ctrls">
+        <button type="button" class="btn-font" onclick="adjustFontSize(-0.1)" title="छोटा फॉन्ट">A-</button>
+        <span style="font-size:0.7rem; color:var(--muted); font-weight:700;">|</span>
+        <button type="button" class="btn-font" onclick="adjustFontSize(0.1)" title="बड़ा फॉन्ट">A+</button>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-pill" style="border-color:var(--primary);">
+          <span>⏱</span><span class="stat-val" id="valTime" style="color:var(--primary);">05:00</span>
+        </div>
+        <div class="stat-pill" style="border-color:var(--accent);">
+          <span>⚡</span><span class="stat-val" id="valWpm" style="color:var(--accent);">0</span><span>WPM</span>
+        </div>
+        <div class="stat-pill" style="border-color:#38bdf8;">
+          <span>🎯</span><span class="stat-val" id="valAcc" style="color:#38bdf8;">100%</span>
+        </div>
+        <div class="stat-pill" style="border-color:var(--danger);">
+          <span>✕</span><span class="stat-val" id="valErrors" style="color:var(--danger);">0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- WORKSPACE AREA: NATURAL CONTINUOUS PARAGRAPH -->
+    <div class="workspace-area">
+      <div class="passage-card">
+        <p id="passageText">गद्यांश लोड हो रहा है...</p>
+      </div>
+
+      <!-- DIRECT INPUT FIELD -->
+      <div class="input-card">
+        <input type="text" class="typing-input" id="typingInput"
+               placeholder="यहाँ टाइप करें (पहला शब्द लिखकर Space दबाएं)..."
+               autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+               autofocus oninput="handleTyping(event)">
+      </div>
+    </div>
+
+    <!-- ON-SCREEN KEYBOARD (VISIBLE ON PC, AUTO-HIDDEN IN LANDSCAPE) -->
+    <div class="keyboard-panel" id="keyboardGuide"></div>
+  </div>
+
+  <!-- COMPLETION MODAL -->
+  <div class="modal-overlay" id="completionModal">
+    <div class="modal-card">
+      <div style="font-size:2rem; margin-bottom:4px;">🏆</div>
+      <div style="font-size:1.15rem; font-weight:800; color:#fff;" id="modalTitle">टाइपिंग टेस्ट पूर्ण!</div>
+
+      <div class="modal-meta-box">
+        <div><span>शुद्ध स्पीड (Net WPM):</span> <strong id="modalNetWpm" style="color:var(--accent);">0 WPM</strong></div>
+        <div><span>सटीकता (Accuracy):</span> <strong id="modalAccuracy" style="color:#38bdf8;">100%</strong></div>
+        <div><span>कुल गलतियां (Errors):</span> <strong id="modalErrors" style="color:var(--danger);">0</strong></div>
+        <div><span>परीक्षा अर्हता:</span> <strong id="modalQualify" style="color:var(--primary);">जांच जारी...</strong></div>
+      </div>
+
+      <button type="button" class="btn-modal-primary" onclick="resetTest()">🔄 पुनः टेस्ट दें (Restart)</button>
+    </div>
+  </div>
+
+  <!-- QUICKTOOLS APPS MODAL -->
+  <div class="modal-overlay" id="appsModal">
+    <div class="modal-card">
+      <div style="font-size:1.1rem; font-weight:800; color:#fff;">QuickTools Productivity Suite</div>
+      <div style="font-size:0.78rem; color:var(--muted); margin-top:2px;">Fast, client-side, zero-tracking web utilities:</div>
+
+      <div class="apps-grid">
+        <a href="https://unknownuniversem-blip.github.io/krutidev-unicode-converter/" class="app-link-card">
+          <span>🔤</span><span>फॉन्ट कनवर्टर</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/signature-maker-studio/" class="app-link-card">
+          <span>✍️</span><span>हस्ताक्षर स्टूडियो</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/exam-resizer/" class="app-link-card">
+          <span>📷</span><span>फोटो रीसाइजर</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/passport-photo-grid/" class="app-link-card">
+          <span>🖼️</span><span>पासपोर्ट ग्रिड</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/typing-speed-finger-test/" class="app-link-card">
+          <span>⌨️</span><span>English Typing</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/pdf-smart-tools/" class="app-link-card">
+          <span>📄</span><span>PDF Tools</span>
+        </a>
+      </div>
+
+      <button type="button" class="btn-close-apps" onclick="closeAppsModal()">बंद करें (Close)</button>
+    </div>
+  </div>
+
+  <script>
+    const passages = {
+      basic: "भारत में बहुत से खेल खेले जाते हैं लेकिन क्रिकेट सबसे लोकप्रिय खेल है। क्रिकेट का आरंभ इंग्लैंड में हुआ था और आज यह दुनिया के सबसे बड़े खेलों में गिना जाता है। भारतीय क्रिकेट टीम ने विश्व पटल पर अपनी उत्कृष्ट प्रतिभा और अनुशासन से कई कीर्तिमान स्थापित किए हैं। खेल से शारीरिक स्फूर्ति और मानसिक एकाग्रता का विकास होता है। नियमित अभ्यास ही किसी भी खिलाड़ी को श्रेष्ठ बनाता है।",
+      court: "न्यायालय जिला एवं सत्र न्यायाधीश द्वारा यह आदेश पारित किया जाता है कि प्रस्तुत वाद संख्या 108 में सभी आवश्यक प्रपत्र तथा साक्ष्य नियत तिथि से पूर्व कार्यालय में जमा कराए जाएं। किसी भी विलंब की स्थिति में पक्षकार स्वयं उत्तरदायी होंगे। साक्षी को अगली सुनवाई पर व्यक्तिगत रूप से उपस्थित रहने का निर्देश दिया जाता है।",
+      editorial: "आधुनिक डिजिटल युग में सूचना प्रौद्योगिकी ने प्रशासनिक कार्यप्रणाली को अत्यधिक पारदर्शी और त्वरित बना दिया है। नागरिकों को बिना किसी अनावश्यक बाधा के सार्वजनिक सेवाओं की सहज उपलब्धता सुनिश्चित करना सुशासन का मूल आधार है। ई-गवर्नेंस के माध्यम से योजनाओं की निगरानी वास्तविक समय में संभव हो सकी है।"
+    };
+
+    const kbRows = [
+      [
+        { eng: 'Q', mangal: 'ौ', kruti: 'ु' }, { eng: 'W', mangal: 'ै', kruti: 'ू' }, { eng: 'E', mangal: 'ा', kruti: 'म' },
+        { eng: 'R', mangal: 'ी', kruti: 'त' }, { eng: 'T', mangal: 'ू', kruti: 'ज' }, { eng: 'Y', mangal: 'ब', kruti: 'ल' },
+        { eng: 'U', mangal: 'ह', kruti: 'न' }, { eng: 'I', mangal: 'ग', kruti: 'प' }, { eng: 'O', mangal: 'द', kruti: 'व' },
+        { eng: 'P', mangal: 'ज', kruti: 'च' }
+      ],
+      [
+        { eng: 'A', mangal: 'ो', kruti: 'ं' }, { eng: 'S', mangal: 'े', kruti: 'े' }, { eng: 'D', mangal: '्', kruti: 'क' },
+        { eng: 'F', mangal: 'ि', kruti: 'ि' }, { eng: 'G', mangal: 'ु', kruti: 'ह' }, { eng: 'H', mangal: 'प', kruti: 'ी' },
+        { eng: 'J', mangal: 'र', kruti: 'र' }, { eng: 'K', mangal: 'क', kruti: 'ा' }, { eng: 'L', mangal: 'त', kruti: 'स' }
+      ],
+      [
+        { eng: 'Z', mangal: 'े', kruti: '्र' }, { eng: 'X', mangal: 'ं', kruti: 'ग' }, { eng: 'C', mangal: 'म', kruti: 'ब' },
+        { eng: 'V', mangal: 'न', kruti: 'अ' }, { eng: 'B', mangal: 'व', kruti: 'इ' }, { eng: 'N', mangal: 'ल', kruti: 'द' },
+        { eng: 'M', mangal: 'स', kruti: 'उ' }
+      ]
+    ];
+
+    let fullPassageRaw = "";
+    let wordsArray = [];
+    let currentWordIdx = 0;
+    let timerRunning = false;
+    let timeRemaining = 300;
+    let totalTime = 300;
+    let timerInterval = null;
+    let errorsCount = 0;
+    let correctCount = 0;
+    let fontScale = parseFloat(localStorage.getItem('typingFontScale') || '1.25');
+
+    window.addEventListener('DOMContentLoaded', () => {
+      applyFontScale();
+      renderKeyboard();
+      loadPassage();
+    });
+
+    function adjustFontSize(delta) {
+      fontScale = Math.min(Math.max(fontScale + delta, 0.9), 1.8);
+      localStorage.setItem('typingFontScale', fontScale);
+      applyFontScale();
+    }
+
+    function applyFontScale() {
+      document.documentElement.style.setProperty('--font-scale', `${fontScale}rem`);
+    }
+
+    function openAppsModal() { document.getElementById('appsModal').classList.add('active'); }
+    function closeAppsModal() { document.getElementById('appsModal').classList.remove('active'); }
+
+    function renderKeyboard() {
+      const kbContainer = document.getElementById('keyboardGuide');
+      const layout = document.getElementById('selLayout').value;
+      kbContainer.innerHTML = '';
+
+      kbRows.forEach(row => {
+        const rowEl = document.createElement('div');
+        rowEl.className = 'kb-row';
+        row.forEach(k => {
+          const keyEl = document.createElement('div');
+          keyEl.className = 'kb-key';
+          keyEl.innerHTML = `<span class="key-eng">${k.eng}</span><span class="key-hin">${layout === 'mangal' ? k.mangal : k.kruti}</span>`;
+          rowEl.appendChild(keyEl);
+        });
+        kbContainer.appendChild(rowEl);
+      });
+    }
+
+    function changeLayout() { renderKeyboard(); resetTest(); }
+
+    function loadPassage() {
+      const pKey = document.getElementById('selPassage').value;
+      fullPassageRaw = (passages[pKey] || passages.basic).trim();
+      wordsArray = fullPassageRaw.split(/\s+/);
+      resetTest();
+    }
+
+    /* TRUE NATIVE PARAGRAPH RENDERER */
+    function renderParagraph() {
+      const targetP = document.getElementById('passageText');
+      
+      let html = "";
+      for (let i = 0; i < wordsArray.length; i++) {
+        if (i === currentWordIdx) {
+          html += `<span class="highlight-target" id="activeWord">${wordsArray[i]}</span> `;
+        } else if (i < currentWordIdx) {
+          html += `<span style="color:var(--accent);">${wordsArray[i]}</span> `;
+        } else {
+          html += `${wordsArray[i]} `;
+        }
+      }
+      
+      targetP.innerHTML = html;
+
+      const activeEl = document.getElementById('activeWord');
+      if (activeEl) {
+        activeEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      }
+    }
+
+    function handleTyping(e) {
+      if (!timerRunning) startTimer();
+      const input = document.getElementById('typingInput');
+      const val = input.value;
+
+      if (val.endsWith(' ') || val.endsWith('\n')) {
+        const typedWord = val.trim();
+        const targetWord = wordsArray[currentWordIdx];
+
+        if (typedWord === targetWord) {
+          correctCount++;
+        } else {
+          errorsCount++;
+        }
+
+        currentWordIdx++;
+        input.value = '';
+
+        updateScores();
+        renderParagraph();
+
+        if (currentWordIdx >= wordsArray.length) {
+          finishTest();
+        }
+      }
+    }
+
+    function startTimer() {
+      timerRunning = true;
+      totalTime = Number(document.getElementById('selDuration').value);
+      timeRemaining = totalTime;
+
+      timerInterval = setInterval(() => {
+        timeRemaining--;
+        const m = Math.floor(timeRemaining / 60);
+        const s = timeRemaining % 60;
+        document.getElementById('valTime').innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        if (timeRemaining <= 0) {
+          clearInterval(timerInterval);
+          finishTest();
+        }
+      }, 1000);
+    }
+
+    function updateScores() {
+      const timeSpentMin = Math.max((totalTime - timeRemaining) / 60, 0.05);
+      const netWpm = Math.max(0, Math.round(correctCount / timeSpentMin));
+      const totalAttempted = currentWordIdx;
+      const accuracy = totalAttempted > 0 ? Math.max(0, Math.round((correctCount / totalAttempted) * 100)) : 100;
+
+      document.getElementById('valWpm').innerText = netWpm;
+      document.getElementById('valAcc').innerText = `${accuracy}%`;
+      document.getElementById('valErrors').innerText = errorsCount;
+    }
+
+    function finishTest() {
+      clearInterval(timerInterval);
+      timerRunning = false;
+      document.getElementById('typingInput').disabled = true;
+
+      const netWpm = Number(document.getElementById('valWpm').innerText);
+      const acc = document.getElementById('valAcc').innerText;
+
+      document.getElementById('modalNetWpm').innerText = `${netWpm} WPM`;
+      document.getElementById('modalAccuracy').innerText = acc;
+      document.getElementById('modalErrors').innerText = errorsCount;
+
+      let qualifyText = "अर्ह (Qualified)";
+      let qualifyColor = "#10b981";
+      if (netWpm < 25) {
+        qualifyText = "पुनः अभ्यास आवश्यक (<25 WPM)";
+        qualifyColor = "#ef4444";
+      } else if (netWpm >= 30) {
+        qualifyText = "उत्कृष्ट! हाईकोर्ट/SSC अर्ह (30+ WPM)";
+      }
+
+      const qEl = document.getElementById('modalQualify');
+      qEl.innerText = qualifyText;
+      qEl.style.color = qualifyColor;
+
+      document.getElementById('completionModal').classList.add('active');
+    }
+
+    function resetTest() {
+      clearInterval(timerInterval);
+      timerRunning = false;
+      currentWordIdx = 0;
+      errorsCount = 0;
+      correctCount = 0;
+      totalTime = Number(document.getElementById('selDuration').value);
+      timeRemaining = totalTime;
+
+      const m = Math.floor(timeRemaining / 60);
+      const s = timeRemaining % 60;
+      document.getElementById('valTime').innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+      document.getElementById('valWpm').innerText = '0';
+      document.getElementById('valAcc').innerText = '100%';
+      document.getElementById('valErrors').innerText = '0';
+
+      const input = document.getElementById('typingInput');
+      input.value = '';
+      input.disabled = false;
+      input.focus();
+      renderParagraph();
+      document.getElementById('completionModal').classList.remove('active');
+    }
+  </script>
+<script src="https://unknownuniversem-blip.github.io/network.js" defer></script>
+<!-- Viral Social Share Bar -->
+<div id="viral-share-bar" style="position:fixed; bottom:16px; left:50%; transform:translateX(-50%); z-index:99999; display:flex; gap:10px; background:#0f172ae6; backdrop-filter:blur(8px); border:1px solid #38bdf8; padding:8px 16px; border-radius:50px; box-shadow:0 8px 30px rgba(0,0,0,0.6); align-items:center;">
+  <span style="color:#f8fafc; font-size:0.82rem; font-weight:700; white-space:nowrap;">Share with Aspirants:</span>
+  <a href="https://api.whatsapp.com/send?text=%E2%8C%A8%EF%B8%8F%20Free%20Hindi%20Typing%20Tutor%20%28Mangal%20/%20Krutidev%29%3A%20CPCT%2C%20High%20Court%20aur%20SSC%20typing%20test%20practice%20online%3A%20https%3A//unknownuniversem-blip.github.io/hindi-typing-tutor/" target="_blank" style="background:#22c55e; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    💬 WhatsApp
+  </a>
+  <a href="https://t.me/share/url?url=https%3A//unknownuniversem-blip.github.io/hindi-typing-tutor/&text=%E2%8C%A8%EF%B8%8F%20Free%20Hindi%20Typing%20Tutor%20%28Mangal%20/%20Krutidev%29%3A%20CPCT%2C%20High%20Court%20aur%20SSC%20typing%20test%20practice%20online%3A%20https%3A//unknownuniversem-blip.github.io/hindi-typing-tutor/" target="_blank" style="background:#0284c7; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    ✈️ Telegram
+  </a>
+</div>
+
+
+<!-- Dynamic Internal Cross-Link Mesh -->
+<div class="related-mesh-card">
+  <div class="related-mesh-title">⚡ Recommended Essential Student & Cyber Tools</div>
+  <div class="related-mesh-grid">
+    <a href="https://unknownuniversem-blip.github.io/krutidev-unicode-converter/" class="related-mesh-link" target="_blank">🔤 Krutidev to Unicode Converter</a><a href="https://unknownuniversem-blip.github.io/typing-speed-finger-test/" class="related-mesh-link" target="_blank">⌨️ Finger Typing Test</a><a href="https://unknownuniversem-blip.github.io/typer-racer-world/" class="related-mesh-link" target="_blank">🏎️ Type Racer World</a><a href="https://unknownuniversem-blip.github.io/math/" class="related-mesh-link" target="_blank">⚡ Speed Math Drills</a>
+  </div>
+</div>
+
+</body>
+</html>

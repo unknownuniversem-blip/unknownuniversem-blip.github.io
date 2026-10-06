@@ -1,34 +1,1282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><title>Client-Side PDF Merger</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Comprehensive Search Engine & Social Graph Meta Tags -->
+  <title>PDF Smart Tools — Merge, Split, Compress & Protect PDFs Locally</title>
+  <meta name="description" content="Client-side PDF management suite. Compress PDF files to under 100KB/200KB for government portals, merge multiple PDFs, extract pages, and protect files securely.">
+  <meta name="keywords" content="compress pdf under 100kb free, merge pdf files locally, split pdf pages online, secure offline pdf compressor">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://unknownuniversem-blip.github.io/pdf-smart-tools/">
+
+  <!-- Open Graph / Facebook / WhatsApp Preview Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://unknownuniversem-blip.github.io/pdf-smart-tools/">
+  <meta property="og:title" content="PDF Smart Tools — Merge, Split, Compress & Protect PDFs Locally">
+  <meta property="og:description" content="Client-side PDF management suite. Compress PDF files to under 100KB/200KB for government portals, merge multiple PDFs, extract pages, and protect files securely.">
+  <meta property="og:site_name" content="QuickTools India">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://unknownuniversem-blip.github.io/pdf-smart-tools/">
+  <meta name="twitter:title" content="PDF Smart Tools — Merge, Split, Compress & Protect PDFs Locally">
+  <meta name="twitter:description" content="Client-side PDF management suite. Compress PDF files to under 100KB/200KB for government portals, merge multiple PDFs, extract pages, and protect files securely.">
+
+  <!-- JSON-LD Structured Data Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "PDF Smart Tools",
+    "url": "https://unknownuniversem-blip.github.io/pdf-smart-tools/",
+    "description": "Client-side PDF management suite. Compress PDF files to under 100KB/200KB for government portals, merge multiple PDFs, extract pages, and protect files securely.",
+    "applicationCategory": "Document Tools",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  
+  
+
+  <!-- PDF-Lib for processing -->
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <!-- PDF.js for rendering visual thumbnails -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+  <!-- Privacy Analytics -->
+  <script data-goatcounter="https://quicktools.goatcounter.com/count"
+          data-goatcounter-settings='{"allow_local": true}'
+          async src="//gc.zgo.at/count.js"></script>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f172a' stroke='%23ef4444' stroke-width='1.5'/%3E%3Cpath d='M9 7h10l5 5v13a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z' fill='none' stroke='%23ef4444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ctext x='10' y='21' font-family='sans-serif' font-size='7' font-weight='bold' fill='%23ef4444'%3EPDF%3C/text%3E%3C/svg%3E">
+
   <style>
-    body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}
-    .box{max-width:480px;margin:auto;background:#0f172a;padding:24px;border-radius:14px;border:1px solid #1e293b}
-    input,button{width:100%;margin:10px 0;padding:12px;border-radius:8px;border:none}
-    button{background:#0284c7;color:#fff;font-weight:bold;cursor:pointer}
+    :root {
+      --bg: #0b1120;
+      --card: #151f32;
+      --card-inner: #0d1526;
+      --border: #223249;
+      --border-focus: #ef4444;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --primary: #ef4444;
+      --primary-hover: #dc2626;
+      --accent: #10b981;
+      --accent-hover: #059669;
+      --radius: 12px;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+    html, body {
+      max-width: 100vw;
+      overflow-x: hidden;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .container {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 3.5rem 1rem;
+    }
+    header { text-align: center; margin-bottom: 1.75rem; }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+    }
+    .brand-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-name {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+    .brand-badge {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--primary);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+    }
+    .lang-toggle-btn {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+    .lang-toggle-btn:hover {
+      border-color: var(--primary);
+      background: rgba(239, 68, 68, 0.1);
+    }
+    header h1 {
+      font-size: clamp(1.4rem, 3.5vw, 2.1rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+    header p {
+      color: var(--muted);
+      font-size: clamp(0.85rem, 2vw, 0.95rem);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .tabs-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+    }
+    .tab-btn {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      background: var(--card-inner);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s ease;
+    }
+    .tab-btn.active {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(239, 68, 68, 0.12);
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.35rem;
+      margin-bottom: 1.25rem;
+    }
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-subtitle {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+    .dropzone {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 2.2rem 1rem;
+      text-align: center;
+      background: var(--card-inner);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-bottom: 1.2rem;
+    }
+    .dropzone:hover, .dropzone.dragover {
+      border-color: var(--primary);
+      background: rgba(239, 68, 68, 0.05);
+    }
+    .dropzone-icon {
+      font-size: 2.2rem;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .dropzone-text {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      display: block;
+    }
+    .dropzone-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 4px;
+      display: block;
+    }
+    .file-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 1.2rem;
+    }
+    .file-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+    }
+    .file-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .file-remove {
+      background: none;
+      border: none;
+      color: var(--primary);
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 2px 6px;
+    }
+
+    /* FILENAME INPUT FIELD STYLING */
+    .filename-field-box {
+      margin-bottom: 1.2rem;
+    }
+    .filename-field-box label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .filename-input-wrap {
+      display: flex;
+      align-items: center;
+      background: var(--card-inner);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 0 12px;
+      transition: border-color 0.15s ease;
+    }
+    .filename-input-wrap:focus-within {
+      border-color: var(--border-focus);
+    }
+    .filename-input-wrap input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-size: 0.95rem;
+      padding: 10px 0;
+      outline: none;
+    }
+    .filename-ext {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 700;
+      padding-left: 6px;
+      user-select: none;
+    }
+
+    /* VISUAL PAGE GRID */
+    .pages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+      margin-top: 1rem;
+      margin-bottom: 1.25rem;
+      max-height: 480px;
+      overflow-y: auto;
+      padding: 4px;
+    }
+    .page-card {
+      background: var(--card-inner);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 6px;
+      text-align: center;
+      position: relative;
+      transition: all 0.15s ease;
+    }
+    .page-card.deleted {
+      opacity: 0.35;
+      filter: grayscale(1);
+      border-style: dashed;
+    }
+    .page-canvas-wrap {
+      width: 100%;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #050914;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+    .page-canvas-wrap canvas {
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+    }
+    .page-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .page-btn-icon {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #fff;
+      border-radius: 4px;
+      padding: 2px 6px;
+      cursor: pointer;
+      font-size: 0.75rem;
+    }
+    .page-btn-icon:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-action {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      font-size: 1rem;
+      font-weight: 800;
+      text-align: center;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+    }
+    .btn-action:hover { background: var(--primary-hover); }
+    .btn-action:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* MODAL POPUP */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.78);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100000;
+      padding: 1rem;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-card {
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 500px;
+      padding: 1.6rem;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      animation: popIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      max-height: 92vh;
+      overflow-y: auto;
+    }
+    @keyframes popIn {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .modal-icon {
+      font-size: 2.8rem;
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+    .modal-title {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 0.3rem;
+    }
+    .modal-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .modal-meta-box {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      margin-bottom: 1.2rem;
+      text-align: left;
+    }
+    .modal-meta-box div {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+    .modal-meta-box div:last-child {
+      margin-bottom: 0;
+    }
+
+    .modal-eco-wrap {
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      margin-bottom: 1.2rem;
+      text-align: left;
+    }
+    .modal-eco-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .modal-apps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .modal-app-card {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 10px;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+    }
+    .modal-app-card:hover {
+      border-color: var(--primary);
+      background: rgba(239, 68, 68, 0.06);
+    }
+    .modal-app-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .modal-app-info strong {
+      display: block;
+      font-size: 0.78rem;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .modal-app-info span {
+      display: block;
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .modal-btn-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .btn-modal-primary {
+      background: var(--accent);
+      color: #052e16;
+      border: none;
+      padding: 11px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .btn-modal-primary:hover { background: var(--accent-hover); }
+    .btn-modal-secondary {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 9px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn-modal-secondary:hover { border-color: var(--primary); color: var(--primary); }
+    .btn-modal-close {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 0.8rem;
+      cursor: pointer;
+      padding: 6px;
+    }
+    .btn-modal-close:hover { color: #fff; }
+
+    .ecosystem-section {
+      margin-top: 2.5rem;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+    }
+    .ecosystem-section h3 {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
+    .ecosystem-section p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+    .eco-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .eco-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.15s ease;
+    }
+    .eco-card:hover { border-color: var(--primary); }
+    .eco-card strong {
+      display: block;
+      font-size: 0.88rem;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+    .eco-card span { font-size: 0.75rem; color: var(--muted); }
+    footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+  
+    /* --- COMPREHENSIVE MOBILE RESPONSIVENESS OVERRIDES --- */
+    html, body {
+      max-width: 100vw !important;
+      overflow-x: hidden !important;
+      -webkit-text-size-adjust: 100% !important;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box !important;
+    }
+    input, select, textarea, button {
+      font-size: 16px !important; /* Prevents auto-zoom on iOS inputs */
+      min-height: 42px !important; /* Optimal touch target */
+    }
+    #quicktools-global-bar div::-webkit-scrollbar {
+      display: none !important;
+    }
+    #quicktools-global-bar div {
+      -ms-overflow-style: none !important;
+      scrollbar-width: none !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+    .canvas-wrap, .qr-frame, .dropzone {
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    canvas {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+    .modal-card {
+      max-width: calc(100vw - 32px) !important;
+      margin: 16px !important;
+    }
+    @media (max-width: 640px) {
+      .container {
+        padding: 0.85rem 0.75rem 2.5rem 0.75rem !important;
+      }
+      .studio-grid, .converter-grid, .input-row, .modal-apps-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+      }
+      header h1 {
+        font-size: 1.35rem !important;
+      }
+      .tabs-nav {
+        grid-template-columns: 1fr !important;
+      }
+      .brand-box {
+        justify-content: center !important;
+      }
+    }
+
   </style>
-<link rel="manifest" href="/manifest.webmanifest">
-<meta name="theme-color" content="#0284c7">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="QuickTools">
-<link rel="apple-touch-icon" href="/icon-192.png">
+
+<style id="growth-mesh-styles">
+  .related-mesh-card {
+    margin: 32px auto 20px;
+    max-width: 900px;
+    background: #0b1329;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 16px 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .related-mesh-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #38bdf8;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.02em;
+  }
+  .related-mesh-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .related-mesh-link {
+    display: block;
+    padding: 10px 14px;
+    background: #131d35;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  .related-mesh-link:hover {
+    background: #1e293b;
+    border-color: #38bdf8;
+    color: #38bdf8;
+    transform: translateY(-2px);
+  }
+</style>
+
 </head>
 <body>
-  <div class="box">
-    <h3>📑 Document PDF Merger (In-Browser)</h3>
-    <p style="color:#94a3b8;font-size:0.85rem">100% private: Certificate scans never leave your device.</p>
-    <input type="file" id="f" multiple accept="application/pdf">
-    <button onclick="alert('Select your PDF scans to combine for exam submission.')">Merge Documents</button>
+
+  <!-- GLOBAL NETWORK HEADER -->
+  <div id="quicktools-global-bar" style="background:#090d16; border-bottom:1px solid #1e293b; padding:10px 16px; display:flex; align-items:center; justify-content:space-between; font-family:system-ui, -apple-system, sans-serif; font-size:13px; z-index:99999; position:relative; width:100%; box-sizing:border-box;">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <a href="https://unknownuniversem-blip.github.io/" style="color:#f8fafc; font-weight:700; text-decoration:none; display:flex; align-items:center; gap:6px;">
+        <span style="background:#38bdf8; color:#0b1120; font-size:10px; font-weight:900; padding:2px 6px; border-radius:4px;">HUB</span>
+        <span>QuickTools</span>
+      </a>
+    </div>
+    <div style="display:flex; align-items:center; gap:12px; overflow-x:auto;">
+      <a href="https://unknownuniversem-blip.github.io/hindi-typing-tutor/" style="color:#f59e0b; text-decoration:none; font-weight:700; white-space:nowrap;">⌨️ हिंदी टाइपिंग</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/signature-maker-studio/" style="color:#38bdf8; text-decoration:none; font-weight:600; white-space:nowrap;">✍️ Signature Studio</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/krutidev-unicode-converter/" style="color:#38bdf8; text-decoration:none; font-weight:600; white-space:nowrap;">🔤 फॉन्ट कनवर्टर</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/exam-resizer/" style="color:#94a3b8; text-decoration:none; font-weight:600; white-space:nowrap;">📷 Photo Resizer</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/passport-photo-grid/" style="color:#38bdf8; text-decoration:none; font-weight:600; white-space:nowrap;">🖼️ पासपोर्ट ग्रिड</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/pdf-smart-tools/" style="color:#ef4444; text-decoration:none; font-weight:600; white-space:nowrap;">📄 PDF Tools</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/upi-qr-standee/" style="color:#10b981; text-decoration:none; font-weight:600; white-space:nowrap;">💳 UPI Standee</a>
+    </div>
   </div>
-<script>
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{
-    navigator.serviceWorker.register('/sw.js').catch(()=>{});
-  });
-}
-</script>
+
+  <div class="container">
+    <header>
+      <div class="header-top">
+        <div class="brand-box">
+          <svg width="34" height="34" viewBox="0 0 32 32">
+            <rect width="32" height="32" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+            <path d="M9 7h10l5 5v13a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="10" y="21" font-family="sans-serif" font-size="7" font-weight="bold" fill="#ef4444">PDF</text>
+          </svg>
+          <span class="brand-name">PDF<span style="color:var(--primary);">Smart</span></span>
+          <span class="brand-badge" id="lblZeroUploadBadge">100% In-Browser</span>
+        </div>
+        <button type="button" class="lang-toggle-btn" onclick="toggleLanguage()">
+          🌐 <span id="btnLangText">हिंदी में बदलें (Hindi)</span>
+        </button>
+      </div>
+
+      <h1 id="txtTitle">Merge, Split, Rotate & Reorder PDFs Offline</h1>
+      <p id="txtSubtitle">Combine marksheets, rotate certificates, and delete unwanted pages with live visual thumbnails. 100% private in-browser tool.</p>
+    </header>
+
+    <div class="tabs-nav">
+      <button class="tab-btn active" id="tabBtnMerge" onclick="switchTab('merge')">📑 Merge Multiple PDFs</button>
+      <button class="tab-btn" id="tabBtnSplit" onclick="switchTab('split')">✂️ Visual Page Organizer & Split</button>
+    </div>
+
+    <!-- TAB 1: MERGE -->
+    <div id="viewMerge">
+      <div class="card">
+        <div class="card-title" id="txtMergeHead">Merge Multiple PDF Documents</div>
+        <div class="card-subtitle" id="txtMergeSub">Select multiple PDFs to combine them in exact sequence into a single clean file</div>
+
+        <div class="dropzone" id="dropzoneMerge" onclick="document.getElementById('inputMergeFiles').click()">
+          <span class="dropzone-icon">📥</span>
+          <span class="dropzone-text" id="txtDropMerge">Click to Select or Drag & Drop PDFs</span>
+          <span class="dropzone-sub">Add marksheets, degrees, or application notices</span>
+          <input type="file" id="inputMergeFiles" accept="application/pdf" multiple style="display:none" onchange="handleMergeFiles(this.files)">
+        </div>
+
+        <div class="file-list" id="mergeFileList"></div>
+
+        <!-- CUSTOM FILENAME INPUT (MERGE) -->
+        <div class="filename-field-box">
+          <label id="lblMergeFilename">Output Filename (फाइल का नाम):</label>
+          <div class="filename-input-wrap">
+            <input type="text" id="customMergeFilename" value="pdfsmart_merged" placeholder="e.g. 10th_12th_certificates">
+            <span class="filename-ext">.pdf</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn-action" id="btnMergeAction" onclick="executeMerge()" disabled>⚡ Merge & Download PDF</button>
+      </div>
+    </div>
+
+    <!-- TAB 2: SPLIT & VISUAL PAGE ORGANIZER -->
+    <div id="viewSplit" style="display:none;">
+      <div class="card">
+        <div class="card-title" id="txtSplitHead">Visual Page Organizer & Split</div>
+        <div class="card-subtitle" id="txtSplitSub">View live thumbnails, rotate pages (90°), delete blank pages, or extract specific pages</div>
+
+        <div class="dropzone" id="dropzoneSplit" onclick="document.getElementById('inputSplitFile').click()">
+          <span class="dropzone-icon">📑</span>
+          <span class="dropzone-text" id="txtDropSplit">Click to Select or Drag a Multi-Page PDF</span>
+          <span class="dropzone-sub" id="lblSplitFileStatus">No file selected</span>
+          <input type="file" id="inputSplitFile" accept="application/pdf" style="display:none" onchange="handleSplitFile(this.files[0])">
+        </div>
+
+        <div id="splitControls" style="display:none;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-size:0.85rem; font-weight:700; color:#fff;" id="txtGridCount">Pages: 0</span>
+            <span style="font-size:0.75rem; color:var(--muted);" id="txtGridHelp">Click ✕ to exclude page • ↻ to rotate</span>
+          </div>
+
+          <div class="pages-grid" id="pagesGrid"></div>
+
+          <!-- CUSTOM FILENAME INPUT (SPLIT) -->
+          <div class="filename-field-box">
+            <label id="lblSplitFilename">Output Filename (फाइल का नाम):</label>
+            <div class="filename-input-wrap">
+              <input type="text" id="customSplitFilename" value="pdfsmart_extracted" placeholder="e.g. admit_card_selected_pages">
+              <span class="filename-ext">.pdf</span>
+            </div>
+          </div>
+
+          <button type="button" class="btn-action" onclick="executeVisualExport()" id="btnSplitAction">💾 Download Processed PDF</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ZERO STORAGE BANNER -->
+    <div style="display:flex; align-items:center; gap:10px; background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.25); border-radius:8px; padding:10px 14px; margin-top:1.5rem;">
+      <span style="font-size:1.2rem;">🔒</span>
+      <span style="font-size:0.78rem; color:var(--muted);" id="txtZeroStorage">100% Private & In-Browser: Your confidential marksheets, court documents, and ID cards are processed directly in your browser's WebAssembly/RAM. Zero bytes are uploaded to any server.</span>
+    </div>
+
+    <!-- ECOSYSTEM -->
+    <div class="ecosystem-section">
+      <h3 id="txtEcoHead">More Free Client-Side Productivity Tools</h3>
+      <p id="txtEcoSub">Fast, zero-tracking web utilities built for speed and regional usability.</p>
+      <div class="eco-grid">
+        <a href="https://unknownuniversem-blip.github.io/exam-resizer/" class="eco-card">
+          <strong>📷 Exam Photo Resizer</strong>
+          <span>Resize signatures & passport photos to target KB for UPSC, SSC, and state forms.</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/passport-photo-grid/" class="eco-card">
+          <strong>📷 Passport Photo Grid Maker</strong>
+          <span>Create 300 DPI printable 4x6 / A4 photo sheets with Name & DOP exam strip.</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/krutidev-unicode-converter/" class="eco-card">
+          <strong>🔤 कृतिदेव ⇄ यूनिकोड कनवर्टर</strong>
+          <span>Convert court notices and official Hindi orders between Kruti Dev and Mangal.</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/open-astrologer/" class="eco-card">
+          <strong>🔮 OpenAstrologer Chat</strong>
+          <span>1-on-1 free Vedic consultations with zero phone numbers or charges.</span>
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      <div>QuickTools Network &copy; 2026. 100% Client-Side Privacy Utilities.</div>
+    </footer>
+  </div>
+
+  <!-- COMPLETION MODAL POPUP -->
+  <div class="modal-overlay" id="completionModal">
+    <div class="modal-card">
+      <span class="modal-icon">🎉</span>
+      <div class="modal-title" id="modalTitle">Congratulations!</div>
+      <div class="modal-desc" id="modalDesc">Your PDF has been processed and downloaded successfully.</div>
+
+      <div class="modal-meta-box">
+        <div><span>Filename:</span> <strong id="modalFileName" style="color:#fff;">document.pdf</strong></div>
+        <div><span>Total Pages:</span> <strong id="modalPageCount" style="color:var(--accent);">0</strong></div>
+        <div><span>Privacy Verification:</span> <strong style="color:var(--accent);">100% Client-Side RAM</strong></div>
+      </div>
+
+      <!-- IN-POPUP APPS CAROUSEL -->
+      <div class="modal-eco-wrap">
+        <div class="modal-eco-label" id="lblPopupEco">
+          <span>⚡ Related Tools for Applicants & Students:</span>
+        </div>
+        <div class="modal-apps-grid">
+          <a href="https://unknownuniversem-blip.github.io/exam-resizer/" target="_blank" class="modal-app-card">
+            <span class="modal-app-icon">📷</span>
+            <div class="modal-app-info">
+              <strong>Exam Resizer</strong>
+              <span>Target KB Photo & Sign</span>
+            </div>
+          </a>
+          <a href="https://unknownuniversem-blip.github.io/passport-photo-grid/" target="_blank" class="modal-app-card">
+            <span class="modal-app-icon">🖼️</span>
+            <div class="modal-app-info">
+              <strong>Passport Grid</strong>
+              <span>Name & DOP Strip Sheet</span>
+            </div>
+          </a>
+          <a href="https://unknownuniversem-blip.github.io/krutidev-unicode-converter/" target="_blank" class="modal-app-card">
+            <span class="modal-app-icon">🔤</span>
+            <div class="modal-app-info">
+              <strong>Font Converter</strong>
+              <span>Kruti Dev ⇄ Unicode</span>
+            </div>
+          </a>
+          <a href="https://unknownuniversem-blip.github.io/age-eligibility-calc/" target="_blank" class="modal-app-card">
+            <span class="modal-app-icon">⏱️</span>
+            <div class="modal-app-info">
+              <strong>Age Calculator</strong>
+              <span>Check Govt Cut-off Date</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="modal-btn-row">
+        <button type="button" class="btn-modal-primary" onclick="resetToNewInitial()" id="btnModalNew">
+          ➕ Start New Process (नया काम शुरू करें)
+        </button>
+        <button type="button" class="btn-modal-secondary" onclick="redownloadLastFile()" id="btnModalRedownload">
+          📥 Download Again (पुनः डाउनलोड करें)
+        </button>
+        <button type="button" class="btn-modal-close" onclick="closeModal()" id="btnModalClose">
+          Close (बंद करें)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    let currentLang = 'en';
+    let mergeFiles = [];
+    let splitFileObj = null;
+    let pageStates = [];
+    let lastGeneratedBlob = null;
+    let lastGeneratedFilename = 'pdfsmart_merged.pdf';
+
+    function switchTab(tab) {
+      document.getElementById('viewMerge').style.display = (tab === 'merge') ? 'block' : 'none';
+      document.getElementById('viewSplit').style.display = (tab === 'split') ? 'block' : 'none';
+      document.getElementById('tabBtnMerge').classList.toggle('active', tab === 'merge');
+      document.getElementById('tabBtnSplit').classList.toggle('active', tab === 'split');
+    }
+
+    // SANITIZE USER FILENAME HELPER
+    function sanitizeFilename(inputVal, defaultName) {
+      let clean = (inputVal || '').trim().replace(/[^a-zA-Z0-9_\-\u0900-\u097F]/g, '_');
+      // Strip out any manually typed .pdf suffix to prevent .pdf.pdf
+      clean = clean.replace(/\.pdf$/i, '');
+      return (clean.length > 0 ? clean : defaultName) + '.pdf';
+    }
+
+    // MERGE ENGINE
+    const dzMerge = document.getElementById('dropzoneMerge');
+    ['dragenter', 'dragover'].forEach(e => {
+      dzMerge.addEventListener(e, ev => { ev.preventDefault(); dzMerge.classList.add('dragover'); });
+    });
+    ['dragleave', 'drop'].forEach(e => {
+      dzMerge.addEventListener(e, ev => { ev.preventDefault(); dzMerge.classList.remove('dragover'); });
+    });
+    dzMerge.addEventListener('drop', ev => {
+      if (ev.dataTransfer.files && ev.dataTransfer.files.length) {
+        handleMergeFiles(ev.dataTransfer.files);
+      }
+    });
+
+    function handleMergeFiles(files) {
+      for (let f of files) {
+        if (f.type === 'application/pdf' || f.name.toLowerCase().endsWith('.pdf')) {
+          mergeFiles.push(f);
+        }
+      }
+      renderMergeList();
+    }
+
+    function renderMergeList() {
+      const list = document.getElementById('mergeFileList');
+      list.innerHTML = '';
+      mergeFiles.forEach((f, idx) => {
+        list.innerHTML += `
+          <div class="file-item">
+            <div class="file-info">
+              <span>📄</span>
+              <strong>${f.name}</strong>
+              <small style="color:var(--muted)">(${(f.size/1024).toFixed(1)} KB)</small>
+            </div>
+            <button class="file-remove" onclick="removeMergeFile(${idx})">✕</button>
+          </div>
+        `;
+      });
+      document.getElementById('btnMergeAction').disabled = (mergeFiles.length < 2);
+    }
+
+    function removeMergeFile(idx) {
+      mergeFiles.splice(idx, 1);
+      renderMergeList();
+    }
+
+    async function executeMerge() {
+      if (mergeFiles.length < 2) return;
+      const btn = document.getElementById('btnMergeAction');
+      btn.disabled = true;
+      btn.innerText = (currentLang === 'en') ? 'Merging In Browser...' : 'रूपांतरित किया जा रहा है...';
+
+      try {
+        const mergedPdf = await PDFLib.PDFDocument.create();
+        let totalPagesCount = 0;
+
+        for (let file of mergeFiles) {
+          const arrayBuffer = await file.arrayBuffer();
+          const pdf = await PDFLib.PDFDocument.load(arrayBuffer);
+          const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+          copiedPages.forEach((page) => {
+            mergedPdf.addPage(page);
+            totalPagesCount++;
+          });
+        }
+
+        const mergedPdfBytes = await mergedPdf.save();
+        const userInputName = document.getElementById('customMergeFilename').value;
+        lastGeneratedFilename = sanitizeFilename(userInputName, 'pdfsmart_merged');
+
+        downloadBlob(mergedPdfBytes, lastGeneratedFilename);
+
+        showCompletionPopup({
+          title: (currentLang === 'en') ? '🎉 Congratulations!' : '🎉 बधाई हो!',
+          desc: (currentLang === 'en') ? 'Your PDFs have been successfully merged & downloaded to your device.' : 'आपकी सभी पीडीएफ फाइलें सफलतापूर्वक मर्ज हो गई हैं और डाउनलोड हो चुकी हैं।',
+          filename: lastGeneratedFilename,
+          pages: totalPagesCount
+        });
+      } catch (err) {
+        alert('Error: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerText = (currentLang === 'en') ? '⚡ Merge & Download PDF' : '⚡ मर्ज करें और डाउनलोड करें';
+      }
+    }
+
+    // VISUAL SPLIT & ORGANIZER ENGINE
+    const dzSplit = document.getElementById('dropzoneSplit');
+    ['dragenter', 'dragover'].forEach(e => {
+      dzSplit.addEventListener(e, ev => { ev.preventDefault(); dzSplit.classList.add('dragover'); });
+    });
+    ['dragleave', 'drop'].forEach(e => {
+      dzSplit.addEventListener(e, ev => { ev.preventDefault(); dzSplit.classList.remove('dragover'); });
+    });
+    dzSplit.addEventListener('drop', ev => {
+      if (ev.dataTransfer.files && ev.dataTransfer.files[0]) {
+        handleSplitFile(ev.dataTransfer.files[0]);
+      }
+    });
+
+    async function handleSplitFile(file) {
+      if (!file || (!file.type.includes('pdf') && !file.name.toLowerCase().endsWith('.pdf'))) return;
+      splitFileObj = file;
+
+      const grid = document.getElementById('pagesGrid');
+      grid.innerHTML = '<div style="color:var(--muted); font-size:0.85rem;">Rendering thumbnails...</div>';
+      document.getElementById('splitControls').style.display = 'block';
+
+      try {
+        const arrayBuffer = await file.arrayBuffer();
+        const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+        const pdf = await loadingTask.promise;
+        const total = pdf.numPages;
+
+        document.getElementById('lblSplitFileStatus').innerText = `${file.name} (${total} pages)`;
+        document.getElementById('txtGridCount').innerText = `Total Pages: ${total}`;
+
+        // Populate custom split default name based on file
+        const baseName = file.name.replace(/\.pdf$/i, '');
+        document.getElementById('customSplitFilename').value = `pdfsmart_${baseName}_pages`;
+
+        pageStates = [];
+        grid.innerHTML = '';
+
+        for (let i = 1; i <= total; i++) {
+          pageStates.push({ pageNum: i, deleted: false, rotation: 0 });
+
+          const card = document.createElement('div');
+          card.className = 'page-card';
+          card.id = `pageCard_${i}`;
+
+          const canvasWrap = document.createElement('div');
+          canvasWrap.className = 'page-canvas-wrap';
+
+          const canvas = document.createElement('canvas');
+          canvas.id = `canvasPage_${i}`;
+          canvasWrap.appendChild(canvas);
+
+          card.innerHTML = `
+            <div class="page-controls">
+              <span>Page ${i}</span>
+              <div style="display:flex; gap:4px;">
+                <button class="page-btn-icon" title="Rotate 90°" onclick="rotatePage(${i})">↻</button>
+                <button class="page-btn-icon" title="Delete / Exclude" onclick="toggleDeletePage(${i})" style="color:var(--primary);">✕</button>
+              </div>
+            </div>
+          `;
+          card.insertBefore(canvasWrap, card.firstChild);
+          grid.appendChild(card);
+
+          renderPageThumbnail(pdf, i, canvas);
+        }
+      } catch (err) {
+        alert('Could not render PDF: ' + err.message);
+      }
+    }
+
+    async function renderPageThumbnail(pdf, pageNum, canvas) {
+      const page = await pdf.getPage(pageNum);
+      const viewport = page.getViewport({ scale: 0.35 });
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      const ctx = canvas.getContext('2d');
+      await page.render({ canvasContext: ctx, viewport }).promise;
+    }
+
+    function toggleDeletePage(pageNum) {
+      const state = pageStates.find(p => p.pageNum === pageNum);
+      if (!state) return;
+      state.deleted = !state.deleted;
+      const card = document.getElementById(`pageCard_${pageNum}`);
+      card.classList.toggle('deleted', state.deleted);
+    }
+
+    function rotatePage(pageNum) {
+      const state = pageStates.find(p => p.pageNum === pageNum);
+      if (!state) return;
+      state.rotation = (state.rotation + 90) % 360;
+      const canvas = document.getElementById(`canvasPage_${pageNum}`);
+      canvas.style.transform = `rotate(${state.rotation}deg)`;
+    }
+
+    async function executeVisualExport() {
+      if (!splitFileObj) return;
+
+      const activePages = pageStates.filter(p => !p.deleted);
+      if (activePages.length === 0) {
+        alert('All pages are deleted! Please keep at least one page.');
+        return;
+      }
+
+      const btn = document.getElementById('btnSplitAction');
+      btn.disabled = true;
+      btn.innerText = (currentLang === 'en') ? 'Exporting PDF...' : 'डाउनलोड तैयार हो रहा है...';
+
+      try {
+        const arrayBuffer = await splitFileObj.arrayBuffer();
+        const srcPdf = await PDFLib.PDFDocument.load(arrayBuffer);
+        const newPdf = await PDFLib.PDFDocument.create();
+
+        for (let p of activePages) {
+          const [copiedPage] = await newPdf.copyPages(srcPdf, [p.pageNum - 1]);
+          if (p.rotation > 0) {
+            const currentRotation = copiedPage.getRotation().angle;
+            copiedPage.setRotation(PDFLib.degrees(currentRotation + p.rotation));
+          }
+          newPdf.addPage(copiedPage);
+        }
+
+        const newPdfBytes = await newPdf.save();
+        const userInputName = document.getElementById('customSplitFilename').value;
+        lastGeneratedFilename = sanitizeFilename(userInputName, `pdfsmart_extracted_${activePages.length}p`);
+
+        downloadBlob(newPdfBytes, lastGeneratedFilename);
+
+        showCompletionPopup({
+          title: (currentLang === 'en') ? '🎉 Congratulations!' : '🎉 बधाई हो!',
+          desc: (currentLang === 'en') ? 'Your customized PDF has been extracted & downloaded successfully.' : 'आपकी चयनित पीडीएफ फाइल सफलतापूर्वक तैयार हो गई है और डाउनलोड हो चुकी है।',
+          filename: lastGeneratedFilename,
+          pages: activePages.length
+        });
+      } catch (err) {
+        alert('Export error: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerText = (currentLang === 'en') ? '💾 Download Processed PDF' : '💾 संशोधित पीडीएफ डाउनलोड करें';
+      }
+    }
+
+    function downloadBlob(bytes, filename) {
+      lastGeneratedBlob = new Blob([bytes], { type: 'application/pdf' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(lastGeneratedBlob);
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function redownloadLastFile() {
+      if (!lastGeneratedBlob) return;
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(lastGeneratedBlob);
+      link.download = lastGeneratedFilename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function showCompletionPopup({ title, desc, filename, pages }) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalDesc').innerText = desc;
+      document.getElementById('modalFileName').innerText = filename;
+      document.getElementById('modalPageCount').innerText = `${pages} page(s)`;
+      document.getElementById('completionModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('completionModal').classList.remove('active');
+    }
+
+    function resetToNewInitial() {
+      closeModal();
+      mergeFiles = [];
+      document.getElementById('inputMergeFiles').value = '';
+      document.getElementById('customMergeFilename').value = 'pdfsmart_merged';
+      renderMergeList();
+
+      splitFileObj = null;
+      pageStates = [];
+      document.getElementById('inputSplitFile').value = '';
+      document.getElementById('customSplitFilename').value = 'pdfsmart_extracted';
+      document.getElementById('splitControls').style.display = 'none';
+      document.getElementById('lblSplitFileStatus').innerText = 'No file selected';
+      document.getElementById('pagesGrid').innerHTML = '';
+
+      lastGeneratedBlob = null;
+    }
+
+    function toggleLanguage() {
+      currentLang = (currentLang === 'en') ? 'hi' : 'en';
+
+      if (currentLang === 'hi') {
+        document.getElementById('btnLangText').innerText = 'Switch to English';
+        document.getElementById('lblZeroUploadBadge').innerText = '100% सुरक्षित (ऑफलाइन)';
+        document.getElementById('txtTitle').innerText = 'पीडीएफ मर्ज, स्प्लिट, रोटेट व पेज हटाएं';
+        document.getElementById('txtSubtitle').innerText = 'मार्कशीट और एडमिट कार्ड को विजुअल थंबनेल देखकर जोड़ें, घुमाएं या खाली पेज हटाएं। ज़ीरो सर्वर अपलोड।';
+        document.getElementById('tabBtnMerge').innerText = '📑 पीडीएफ मर्ज करें';
+        document.getElementById('tabBtnSplit').innerText = '✂ विजुअल पेज ऑर्गनाइजर';
+        document.getElementById('txtMergeHead').innerText = 'एक से अधिक पीडीएफ जोड़ें';
+        document.getElementById('txtMergeSub').innerText = 'फाइलों को क्रम से जोड़कर एक नया दस्तावेज तैयार करें';
+        document.getElementById('lblMergeFilename').innerText = 'डाउनलोड फाइल का नाम (Filename):';
+        document.getElementById('btnMergeAction').innerText = '⚡ मर्ज करें और डाउनलोड करें';
+        document.getElementById('txtSplitHead').innerText = 'विजुअल पेज ऑर्गनाइजर व स्प्लिट';
+        document.getElementById('txtSplitSub').innerText = 'थंबनेल देखकर पेज घुमाएं (90°), खाली पेज हटाएं या अलग करें';
+        document.getElementById('lblSplitFilename').innerText = 'डाउनलोड फाइल का नाम (Filename):';
+        document.getElementById('btnSplitAction').innerText = '💾 संशोधित पीडीएफ डाउनलोड करें';
+        document.getElementById('txtGridHelp').innerText = 'पेज हटाने के लिए ✕ दबाएं • घुमाने के लिए ↻ दबाएं';
+        document.getElementById('btnModalNew').innerText = '➕ नया काम शुरू करें (Start New)';
+        document.getElementById('btnModalRedownload').innerText = '📥 पुनः डाउनलोड करें (Download Again)';
+        document.getElementById('btnModalClose').innerText = 'बंद करें (Close)';
+        document.getElementById('lblPopupEco').innerText = '⚡ छात्रों व अभ्यर्थियों के लिए अन्य आवश्यक टूल्स:';
+      } else {
+        document.getElementById('btnLangText').innerText = 'हिंदी में बदलें (Hindi)';
+        document.getElementById('lblZeroUploadBadge').innerText = '100% In-Browser';
+        document.getElementById('txtTitle').innerText = 'Merge, Split, Rotate & Reorder PDFs Offline';
+        document.getElementById('txtSubtitle').innerText = 'Combine marksheets, rotate certificates, and delete unwanted pages with live visual thumbnails. 100% private in-browser tool.';
+        document.getElementById('tabBtnMerge').innerText = '📑 Merge Multiple PDFs';
+        document.getElementById('tabBtnSplit').innerText = '✂️ Visual Page Organizer & Split';
+        document.getElementById('txtMergeHead').innerText = 'Merge Multiple PDF Documents';
+        document.getElementById('txtMergeSub').innerText = 'Select multiple PDFs to combine them in exact sequence into a single clean file';
+        document.getElementById('lblMergeFilename').innerText = 'Output Filename (Optional):';
+        document.getElementById('btnMergeAction').innerText = '⚡ Merge & Download PDF';
+        document.getElementById('txtSplitHead').innerText = 'Visual Page Organizer & Split';
+        document.getElementById('txtSplitSub').innerText = 'View live thumbnails, rotate pages (90°), delete blank pages, or extract specific pages';
+        document.getElementById('lblSplitFilename').innerText = 'Output Filename (Optional):';
+        document.getElementById('btnSplitAction').innerText = '💾 Download Processed PDF';
+        document.getElementById('txtGridHelp').innerText = 'Click ✕ to exclude page • ↻ to rotate';
+        document.getElementById('btnModalNew').innerText = '➕ Start New Process';
+        document.getElementById('btnModalRedownload').innerText = '📥 Download Again';
+        document.getElementById('btnModalClose').innerText = 'Close';
+        document.getElementById('lblPopupEco').innerText = '⚡ Related Tools for Applicants & Students:';
+      }
+    }
+  </script>
+<script src="https://unknownuniversem-blip.github.io/network.js" defer></script>
+<!-- Viral Social Share Bar -->
+<div id="viral-share-bar" style="position:fixed; bottom:16px; left:50%; transform:translateX(-50%); z-index:99999; display:flex; gap:10px; background:#0f172ae6; backdrop-filter:blur(8px); border:1px solid #38bdf8; padding:8px 16px; border-radius:50px; box-shadow:0 8px 30px rgba(0,0,0,0.6); align-items:center;">
+  <span style="color:#f8fafc; font-size:0.82rem; font-weight:700; white-space:nowrap;">Share with Aspirants:</span>
+  <a href="https://api.whatsapp.com/send?text=%F0%9F%94%A5%2022%2B%20Free%20Daily%20Digital%20Utility%20Tools%20%28Photo%20Resizer%2C%20Speed%20Math%2C%20Typing%2C%20GST%20%26%20Forms%29%3A%20https%3A//unknownuniversem-blip.github.io/" target="_blank" style="background:#22c55e; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    💬 WhatsApp
+  </a>
+  <a href="https://t.me/share/url?url=https%3A//unknownuniversem-blip.github.io/pdf-smart-tools/&text=%F0%9F%94%A5%2022%2B%20Free%20Daily%20Digital%20Utility%20Tools%20%28Photo%20Resizer%2C%20Speed%20Math%2C%20Typing%2C%20GST%20%26%20Forms%29%3A%20https%3A//unknownuniversem-blip.github.io/" target="_blank" style="background:#0284c7; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    ✈️ Telegram
+  </a>
+</div>
+
+
+<!-- Dynamic Internal Cross-Link Mesh -->
+<div class="related-mesh-card">
+  <div class="related-mesh-title">⚡ Recommended Essential Student & Cyber Tools</div>
+  <div class="related-mesh-grid">
+    <a href="https://unknownuniversem-blip.github.io/math/" class="related-mesh-link" target="_blank">⚡ Speed Math Workout</a><a href="https://unknownuniversem-blip.github.io/exam-resizer/" class="related-mesh-link" target="_blank">📸 Exam Photo & Sign Resizer</a><a href="https://unknownuniversem-blip.github.io/hindi-typing-tutor/" class="related-mesh-link" target="_blank">⌨️ Hindi Typing Tutor</a><a href="https://unknownuniversem-blip.github.io/" class="related-mesh-link" target="_blank">🌐 All 22+ Free Web Utilities</a>
+  </div>
+</div>
+
 </body>
 </html>

@@ -1,60 +1,1213 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><title>Digital Signature Studio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Comprehensive Search Engine & Social Graph Meta Tags -->
+  <title>Signature Maker Studio — Draw & Download Transparent PNG Signatures</title>
+  <meta name="description" content="Create clean digital signatures with customized stroke thickness, smooth anti-aliased curves, and auto-trimmed transparent backgrounds ready for online applications.">
+  <meta name="keywords" content="online signature maker free, draw transparent digital signature png, signature generator for forms, white background signature cropper">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://unknownuniversem-blip.github.io/signature-maker-studio/">
+
+  <!-- Open Graph / Facebook / WhatsApp Preview Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://unknownuniversem-blip.github.io/signature-maker-studio/">
+  <meta property="og:title" content="Signature Maker Studio — Draw & Download Transparent PNG Signatures">
+  <meta property="og:description" content="Create clean digital signatures with customized stroke thickness, smooth anti-aliased curves, and auto-trimmed transparent backgrounds ready for online applications.">
+  <meta property="og:site_name" content="QuickTools India">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://unknownuniversem-blip.github.io/signature-maker-studio/">
+  <meta name="twitter:title" content="Signature Maker Studio — Draw & Download Transparent PNG Signatures">
+  <meta name="twitter:description" content="Create clean digital signatures with customized stroke thickness, smooth anti-aliased curves, and auto-trimmed transparent backgrounds ready for online applications.">
+
+  <!-- JSON-LD Structured Data Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Signature Maker Studio",
+    "url": "https://unknownuniversem-blip.github.io/signature-maker-studio/",
+    "description": "Create clean digital signatures with customized stroke thickness, smooth anti-aliased curves, and auto-trimmed transparent backgrounds ready for online applications.",
+    "applicationCategory": "Document Tools",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  
+  
+
+  <!-- Privacy Analytics -->
+  <script data-goatcounter="https://quicktools.goatcounter.com/count"
+          data-goatcounter-settings='{"allow_local": true}'
+          async src="//gc.zgo.at/count.js"></script>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f172a' stroke='%2338bdf8' stroke-width='1.5'/%3E%3Cpath d='M8 22c4-8 7-10 11-12 2 4-5 11-9 12zm0 0l-2 3 3-1z' fill='%2338bdf8'/%3E%3C/svg%3E">
+
   <style>
-    body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}
-    .box{max-width:520px;margin:auto;background:#0f172a;padding:20px;border-radius:12px;border:1px solid #1e293b}
-    canvas{background:#fff;border-radius:8px;touch-action:none;cursor:crosshair;margin:10px 0}
-    button{padding:8px 16px;margin:4px;border-radius:6px;border:none;font-weight:700;cursor:pointer}
+    :root {
+      --bg: #0b1120;
+      --card: #151f32;
+      --card-inner: #0d1526;
+      --border: #223249;
+      --border-focus: #38bdf8;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --primary: #38bdf8;
+      --primary-hover: #0284c7;
+      --accent: #10b981;
+      --radius: 12px;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+    html, body {
+      max-width: 100vw;
+      overflow-x: hidden;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 3.5rem 1rem;
+    }
+    header { text-align: center; margin-bottom: 1.75rem; }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+    }
+    .brand-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-name {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+    .brand-badge {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--primary);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+    }
+    .lang-toggle-btn {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+    .lang-toggle-btn:hover {
+      border-color: var(--primary);
+      background: rgba(56, 189, 248, 0.1);
+    }
+    header h1 {
+      font-size: clamp(1.4rem, 3.5vw, 2.1rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+    header p {
+      color: var(--muted);
+      font-size: clamp(0.85rem, 2vw, 0.95rem);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Tabs */
+    .tabs-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+    }
+    .tab-btn {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      background: var(--card-inner);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s ease;
+    }
+    .tab-btn.active {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(56, 189, 248, 0.12);
+    }
+
+    /* Studio Grid Layout */
+    .studio-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (min-width: 840px) {
+      .studio-grid {
+        grid-template-columns: 360px 1fr;
+        align-items: start;
+      }
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.35rem;
+    }
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.35rem;
+    }
+    .card-subtitle {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    select, input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 9px 12px;
+      background: var(--card-inner);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 0.92rem;
+      outline: none;
+      margin-bottom: 0.9rem;
+      transition: border-color 0.15s ease;
+    }
+    select:focus, input:focus { border-color: var(--border-focus); }
+
+    /* FULL-BLEED DRAWING AREA */
+    .canvas-wrap {
+      background: #ffffff;
+      border-radius: 8px;
+      border: 2px dashed #94a3b8;
+      display: block;
+      width: 100%;
+      height: 260px;
+      position: relative;
+      margin-bottom: 1rem;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+      overflow: hidden;
+    }
+    #signaturePad {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: #ffffff;
+      touch-action: none;
+      cursor: crosshair;
+    }
+
+    .canvas-tools-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 8px;
+      margin-bottom: 1rem;
+    }
+    .btn-tool {
+      padding: 9px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+    .btn-tool:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* Custom Filename Field */
+    .filename-field-box {
+      margin-bottom: 1rem;
+    }
+    .filename-input-wrap {
+      display: flex;
+      align-items: center;
+      background: var(--card-inner);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 0 12px;
+    }
+    .filename-input-wrap:focus-within { border-color: var(--border-focus); }
+    .filename-input-wrap input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-size: 0.95rem;
+      padding: 10px 0;
+      margin-bottom: 0;
+      outline: none;
+    }
+    .filename-ext {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 700;
+      padding-left: 6px;
+    }
+
+    .btn-action {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      font-size: 1rem;
+      font-weight: 800;
+      text-align: center;
+      background: var(--primary);
+      color: #042036;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+    }
+    .btn-action:hover { background: var(--primary-hover); }
+
+    /* Upload Clean Tab */
+    .dropzone {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 2.2rem 1rem;
+      text-align: center;
+      background: var(--card-inner);
+      cursor: pointer;
+      margin-bottom: 1.2rem;
+    }
+    .dropzone:hover { border-color: var(--primary); }
+
+    /* Completion Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.78);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100000;
+      padding: 1rem;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-card {
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 480px;
+      padding: 1.6rem;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      animation: popIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      max-height: 92vh;
+      overflow-y: auto;
+    }
+    @keyframes popIn {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .modal-icon { font-size: 2.8rem; margin-bottom: 0.4rem; display: block; }
+    .modal-title { font-size: 1.25rem; font-weight: 900; color: #fff; margin-bottom: 0.3rem; }
+    .modal-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem; }
+    .modal-meta-box {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      margin-bottom: 1.2rem;
+      text-align: left;
+    }
+    .modal-meta-box div { display: flex; justify-content: space-between; margin-bottom: 4px; }
+    .modal-meta-box div:last-child { margin-bottom: 0; }
+
+    /* Modal Companions */
+    .modal-eco-wrap {
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      margin-bottom: 1.2rem;
+      text-align: left;
+    }
+    .modal-eco-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+    .modal-apps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .modal-app-card {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 10px;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .modal-app-card:hover { border-color: var(--primary); }
+    .modal-app-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .modal-app-info strong { display: block; font-size: 0.78rem; color: #fff; }
+    .modal-app-info span { display: block; font-size: 0.68rem; color: var(--muted); }
+
+    .modal-btn-row { display: flex; flex-direction: column; gap: 8px; }
+    .btn-modal-primary {
+      background: var(--primary);
+      color: #022c22;
+      border: none;
+      padding: 11px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      cursor: pointer;
+    }
+    .btn-modal-close {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 0.8rem;
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    .ecosystem-section {
+      margin-top: 2.5rem;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+    }
+    .ecosystem-section h3 {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
+    .ecosystem-section p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+    .eco-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .eco-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.15s ease;
+    }
+    .eco-card:hover { border-color: var(--primary); }
+    .eco-card strong {
+      display: block;
+      font-size: 0.88rem;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+    .eco-card span { font-size: 0.75rem; color: var(--muted); }
+    footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
   </style>
-  <script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<link rel="manifest" href="/manifest.webmanifest">
-<meta name="theme-color" content="#0284c7">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="QuickTools">
-<link rel="apple-touch-icon" href="/icon-192.png">
+
+<style id="growth-mesh-styles">
+  .related-mesh-card {
+    margin: 32px auto 20px;
+    max-width: 900px;
+    background: #0b1329;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 16px 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .related-mesh-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #38bdf8;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.02em;
+  }
+  .related-mesh-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .related-mesh-link {
+    display: block;
+    padding: 10px 14px;
+    background: #131d35;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  .related-mesh-link:hover {
+    background: #1e293b;
+    border-color: #38bdf8;
+    color: #38bdf8;
+    transform: translateY(-2px);
+  }
+</style>
+
 </head>
 <body>
-  <div class="box">
-    <h3>✍️ Digital Signature Pad & Maker</h3>
-    <p style="color:#94a3b8;font-size:0.8rem">Draw on screen or mobile touch to get clean 10-20KB signature</p>
-    <canvas id="pad" width="460" height="200"></canvas><br>
-    <button style="background:#ef4444;color:#fff" onclick="clearPad()">Clear</button>
-    <button style="background:#22c55e;color:#052e16" onclick="downloadSign()">Download Sign (PNG)</button>
+
+  <!-- GLOBAL NETWORK HEADER -->
+  <div id="quicktools-global-bar" style="background:#090d16; border-bottom:1px solid #1e293b; padding:10px 16px; display:flex; align-items:center; justify-content:space-between; font-family:system-ui, -apple-system, sans-serif; font-size:13px; z-index:99999; position:relative; width:100%; box-sizing:border-box;">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <a href="https://unknownuniversem-blip.github.io/" style="color:#f8fafc; font-weight:700; text-decoration:none; display:flex; align-items:center; gap:6px;">
+        <span style="background:#38bdf8; color:#0b1120; font-size:10px; font-weight:900; padding:2px 6px; border-radius:4px;">HUB</span>
+        <span>QuickTools</span>
+      </a>
+    </div>
+    <div style="display:flex; align-items:center; gap:12px; overflow-x:auto;">
+      <a href="https://unknownuniversem-blip.github.io/hindi-typing-tutor/" style="color:#f59e0b; text-decoration:none; font-weight:700; white-space:nowrap;">⌨️ हिंदी टाइपिंग</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/signature-maker-studio/" style="color:#38bdf8; text-decoration:none; font-weight:600; white-space:nowrap;">✍️ Signature Studio</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/krutidev-unicode-converter/" style="color:#38bdf8; text-decoration:none; font-weight:600; white-space:nowrap;">🔤 फॉन्ट कनवर्टर</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/exam-resizer/" style="color:#94a3b8; text-decoration:none; font-weight:600; white-space:nowrap;">📷 Photo Resizer</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/passport-photo-grid/" style="color:#38bdf8; text-decoration:none; font-weight:600; white-space:nowrap;">🖼️ पासपोर्ट ग्रिड</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/pdf-smart-tools/" style="color:#ef4444; text-decoration:none; font-weight:600; white-space:nowrap;">📄 PDF Tools</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/upi-qr-standee/" style="color:#10b981; text-decoration:none; font-weight:600; white-space:nowrap;">💳 UPI Standee</a>
+    </div>
   </div>
+
+  <div class="container">
+    <header>
+      <div class="header-top">
+        <div class="brand-box">
+          <svg width="34" height="34" viewBox="0 0 32 32">
+            <rect width="32" height="32" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+            <path d="M8 22c4-8 7-10 11-12 2 4-5 11-9 12zm0 0l-2 3 3-1z" fill="#38bdf8"/>
+          </svg>
+          <span class="brand-name">Signature<span style="color:var(--primary);">Studio</span></span>
+          <span class="brand-badge">Full Edge-to-Edge Canvas</span>
+        </div>
+        <button type="button" class="lang-toggle-btn" onclick="toggleLanguage()">
+          🌐 <span id="btnLangText">हिंदी में बदलें (Hindi)</span>
+        </button>
+      </div>
+
+      <h1 id="txtTitle">Exam Signature Maker & Background Cleaner</h1>
+      <p id="txtSubtitle">Draw clean digital signatures instantly or remove paper shadows. Export strictly between 10 KB to 20 KB for SSC, UPSC, and Bank portals.</p>
+    </header>
+
+    <div class="tabs-nav">
+      <button class="tab-btn active" id="tabBtnDraw" onclick="switchTab('draw')">✍️ Live Drawing Pad</button>
+      <button class="tab-btn" id="tabBtnClean" onclick="switchTab('clean')">🧼 Photo Paper Shadow Cleaner</button>
+    </div>
+
+    <!-- TAB 1: DRAW -->
+    <div id="viewDraw" class="studio-grid">
+      <div class="card">
+        <div class="card-title" id="txtControlHead">Signature Settings</div>
+        <div class="card-subtitle" id="txtControlSub">Calibrate exam dimensions, KB target and ink</div>
+
+        <label id="lblPreset">Exam Portal Preset</label>
+        <select id="selPreset" onchange="applyPreset()">
+          <option value="ssc" selected>SSC / UPSSSC (140 x 60 px • 10-20 KB)</option>
+          <option value="upsc">UPSC / Civil Services (350 x 350 px • 20-50 KB)</option>
+          <option value="ibps">IBPS / SBI Clerk (140 x 60 px • 10-20 KB)</option>
+          <option value="custom">Full Free Pad (पूर्ण स्क्रीन पैड)</option>
+        </select>
+
+        <label id="lblTargetKb">File Size Calibrator</label>
+        <select id="selTargetKb">
+          <option value="15" selected>Strict 10 KB - 20 KB (Best for SSC/Bank)</option>
+          <option value="35">Strict 20 KB - 50 KB (Best for UPSC)</option>
+          <option value="max">Highest Quality (No Limit)</option>
+        </select>
+
+        <label id="lblInk">Ink Color</label>
+        <select id="selInkColor">
+          <option value="#000000" selected>Deep Black Ink (काली स्याही)</option>
+          <option value="#0033aa">Royal Blue Ink (नीली स्याही)</option>
+        </select>
+
+        <label id="lblPenSize">Stroke Thickness</label>
+        <select id="selPenSize">
+          <option value="2.5">Fine Ball Pen (पतली)</option>
+          <option value="4" selected>Standard Gel Pen (मध्यम)</option>
+          <option value="6">Bold Marker (मोटी)</option>
+        </select>
+
+        <label id="lblBg">Background Type</label>
+        <select id="selBg">
+          <option value="#ffffff" selected>Pure White (सरकारी फॉर्म हेतु)</option>
+          <option value="transparent">Transparent PNG (पारदर्शी)</option>
+        </select>
+
+        <div class="filename-field-box">
+          <label id="lblDrawFilename">Output Filename:</label>
+          <div class="filename-input-wrap">
+            <input type="text" id="drawFileName" value="exam_signature_140x60" placeholder="e.g. ssc_signature">
+            <span class="filename-ext">.jpg</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn-action" onclick="downloadDrawnSignature()" id="btnDownloadDraw">
+          📥 Download Exam Signature (JPG)
+        </button>
+      </div>
+
+      <div class="card" style="text-align:center;">
+        <div class="canvas-wrap" id="canvasWrap">
+          <canvas id="signaturePad"></canvas>
+        </div>
+
+        <div class="canvas-tools-bar">
+          <button class="btn-tool" onclick="clearCanvas()" id="btnClear">🗑️ Clear</button>
+          <button class="btn-tool" onclick="undoCanvas()" id="btnUndo">↩️ Undo</button>
+          <button class="btn-tool" onclick="autoCropSignature()" id="btnCrop" style="color:var(--primary); border-color:rgba(56,189,248,0.4);">✂️ Trim Margins</button>
+          <button class="btn-tool" onclick="revertMargins()" id="btnRevert" style="display:none; color:var(--accent);">🔄 Revert Trim</button>
+        </div>
+
+        <p style="font-size:0.75rem; color:var(--muted);" id="txtDrawHelp">Draw directly anywhere inside the white surface (100% active drawing area, 0ms latency).</p>
+      </div>
+    </div>
+
+    <!-- TAB 2: CLEAN PHOTO -->
+    <div id="viewClean" style="display:none;" class="studio-grid">
+      <div class="card">
+        <div class="card-title">Enhance Paper Photo</div>
+        <div class="card-subtitle">Convert mobile camera photos into pure white-backed signatures</div>
+
+        <div class="dropzone" onclick="document.getElementById('inputPhotoFile').click()">
+          <span style="font-size:2rem; display:block; margin-bottom:4px;">📷</span>
+          <strong style="color:#fff; font-size:0.95rem;">Select Photo of Signature</strong>
+          <span style="color:var(--muted); font-size:0.75rem; display:block; margin-top:4px;">Captured from phone camera</span>
+          <input type="file" id="inputPhotoFile" accept="image/*" style="display:none;" onchange="handlePhotoUpload(this.files[0])">
+        </div>
+
+        <label>Contrast Boost (Darken Ink)</label>
+        <select id="selContrast" onchange="reprocessPhoto()">
+          <option value="120">Standard Clean</option>
+          <option value="160" selected>High Contrast (हल्की लिखावट के लिए)</option>
+          <option value="200">Ultra Dark (गहरा)</option>
+        </select>
+
+        <div class="filename-field-box">
+          <label>Output Filename:</label>
+          <div class="filename-input-wrap">
+            <input type="text" id="cleanFileName" value="cleaned_exam_signature" placeholder="e.g. ssc_cleaned_sign">
+            <span class="filename-ext">.jpg</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn-action" onclick="downloadCleanedPhoto()" id="btnDownloadClean">
+          📥 Download Cleaned Signature
+        </button>
+      </div>
+
+      <div class="card" style="text-align:center;">
+        <canvas id="photoPreviewCanvas" style="max-width:100%; border:1.5px dashed var(--border); border-radius:8px; display:none; margin:0 auto; background:#fff;"></canvas>
+        <p id="lblNoPhoto" style="color:var(--muted); font-size:0.85rem; padding:2rem;">Upload a photo from notebook paper to view instant cleaning preview.</p>
+      </div>
+    </div>
+
+    <!-- ZERO STORAGE PLEDGE -->
+    <div style="display:flex; align-items:center; gap:10px; background:rgba(56,189,248,0.08); border:1px solid rgba(56,189,248,0.25); border-radius:8px; padding:10px 14px; margin-top:1.5rem;">
+      <span style="font-size:1.2rem;">🔒</span>
+      <span style="font-size:0.78rem; color:var(--muted);" id="txtZeroStorage">100% Private & In-Browser: Your handwritten signature is never uploaded to any cloud or database. The image renders directly in your device's GPU/Canvas RAM.</span>
+    </div>
+
+    <!-- ECOSYSTEM -->
+    <div class="ecosystem-section">
+      <h3 id="txtEcoHead">More Free Client-Side Productivity Tools</h3>
+      <p id="txtEcoSub">Fast, zero-tracking web utilities built for speed and regional usability.</p>
+      <div class="eco-grid">
+        <a href="https://unknownuniversem-blip.github.io/exam-resizer/" class="eco-card">
+          <strong>📷 Exam Photo Resizer</strong>
+          <span>Calibrate photo & signature file size to target 10-20 KB for state forms.</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/passport-photo-grid/" class="eco-card">
+          <strong>🖼️ Passport Photo Grid Maker</strong>
+          <span>Create 300 DPI printable 4x6 / A4 photo sheets with Name & DOP exam strip.</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/pdf-smart-tools/" class="eco-card">
+          <strong>📄 PDF Smart Tools</strong>
+          <span>Merge, split, rotate, and reorder marksheets and certificates in-browser.</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/upi-qr-standee/" class="eco-card">
+          <strong>💳 UPI QR Standee Maker</strong>
+          <span>Generate A4 counter standees with Google Pay, PhonePe & Paytm logos.</span>
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      <div>QuickTools Network &copy; 2026. 100% Client-Side Privacy Utilities.</div>
+    </footer>
+  </div>
+
+  <!-- COMPLETION MODAL POPUP -->
+  <div class="modal-overlay" id="completionModal">
+    <div class="modal-card">
+      <span class="modal-icon">🎉</span>
+      <div class="modal-title" id="modalTitle">Signature Ready!</div>
+      <div class="modal-desc" id="modalDesc">Your signature has been generated and saved to your device.</div>
+
+      <div class="modal-meta-box">
+        <div><span>Filename:</span> <strong id="modalFileName" style="color:#fff;">signature.jpg</strong></div>
+        <div><span>Estimated Size:</span> <strong id="modalFileSize" style="color:var(--accent);">~14.2 KB</strong></div>
+        <div><span>Portal Status:</span> <strong style="color:var(--primary);">Ready for Exam Upload</strong></div>
+      </div>
+
+      <div class="modal-eco-wrap">
+        <div class="modal-eco-label">⚡ Complete Your Exam Application:</div>
+        <div class="modal-apps-grid">
+          <a href="https://unknownuniversem-blip.github.io/exam-resizer/" target="_blank" class="modal-app-card">
+            <span class="modal-app-icon">📷</span>
+            <div class="modal-app-info">
+              <strong>Exam Resizer</strong>
+              <span>Target 20KB Photo</span>
+            </div>
+          </a>
+          <a href="https://unknownuniversem-blip.github.io/passport-photo-grid/" target="_blank" class="modal-app-card">
+            <span class="modal-app-icon">🖼️</span>
+            <div class="modal-app-info">
+              <strong>Passport Grid</strong>
+              <span>Print 4x6 Photo Sheet</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="modal-btn-row">
+        <button type="button" class="btn-modal-primary" onclick="closeModal()">
+          ✓ Continue
+        </button>
+        <button type="button" class="btn-modal-close" onclick="closeModal()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>
-    const cvs = document.getElementById('pad');
-    const ctx = cvs.getContext('2d');
-    let drawing = false;
-    ctx.lineWidth = 2.5; ctx.lineCap = 'round'; ctx.strokeStyle = '#000000';
-    function getPos(e){
-      const r = cvs.getBoundingClientRect();
-      const x = (e.touches ? e.touches[0].clientX : e.clientX) - r.left;
-      const y = (e.touches ? e.touches[0].clientY : e.clientY) - r.top;
-      return {x, y};
+    let currentLang = 'en';
+    const canvasWrap = document.getElementById('canvasWrap');
+    const canvas = document.getElementById('signaturePad');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    let isDrawing = false;
+    let historyStack = []; // Stack holding { width, height, data }
+    let preCropSnapshot = null;
+    let lastX = 0;
+    let lastY = 0;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initCanvasSize();
+      initPointerEvents();
+      applyPreset();
+    });
+
+    window.addEventListener('resize', () => {
+      // Re-fit canvas width responsively without clearing drawn content
+      if (historyStack.length > 0) {
+        const last = historyStack[historyStack.length - 1];
+        fitCanvasToWrapPreserving(last);
+      }
+    });
+
+    function initCanvasSize() {
+      const rect = canvasWrap.getBoundingClientRect();
+      canvas.width = Math.round(rect.width);
+      canvas.height = Math.round(rect.height);
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      saveState();
     }
-    cvs.addEventListener('mousedown', e => { drawing=true; ctx.beginPath(); const p=getPos(e); ctx.moveTo(p.x, p.y); });
-    cvs.addEventListener('mousemove', e => { if(drawing){ const p=getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); } });
-    window.addEventListener('mouseup', () => drawing=false);
-    cvs.addEventListener('touchstart', e => { drawing=true; ctx.beginPath(); const p=getPos(e); ctx.moveTo(p.x, p.y); e.preventDefault(); });
-    cvs.addEventListener('touchmove', e => { if(drawing){ const p=getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); } e.preventDefault(); });
-    cvs.addEventListener('touchend', () => drawing=false);
-    function clearPad(){ ctx.clearRect(0,0,cvs.width,cvs.height); }
-    function downloadSign(){
-      const a = document.createElement('a');
-      a.download = 'signature.png'; a.href = cvs.toDataURL('image/png');
-      a.click();
+
+    function fitCanvasToWrapPreserving(snapshot) {
+      const rect = canvasWrap.getBoundingClientRect();
+      const newW = Math.round(rect.width);
+      const newH = Math.round(rect.height);
+
+      if (newW === canvas.width && newH === canvas.height) return;
+
+      const tempCanvas = document.createElement('canvas');
+      tempCanvas.width = snapshot.width;
+      tempCanvas.height = snapshot.height;
+      const tCtx = tempCanvas.getContext('2d');
+      tCtx.putImageData(snapshot.data, 0, 0);
+
+      canvas.width = newW;
+      canvas.height = newH;
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(tempCanvas, 0, 0);
+      saveState();
+    }
+
+    function switchTab(tab) {
+      document.getElementById('viewDraw').style.display = (tab === 'draw') ? 'grid' : 'none';
+      document.getElementById('viewClean').style.display = (tab === 'clean') ? 'grid' : 'none';
+      document.getElementById('tabBtnDraw').classList.toggle('active', tab === 'draw');
+      document.getElementById('tabBtnClean').classList.toggle('active', tab === 'clean');
+
+      if (tab === 'draw') {
+        const rect = canvasWrap.getBoundingClientRect();
+        if (canvas.width !== Math.round(rect.width)) {
+          initCanvasSize();
+        }
+      }
+    }
+
+    // 100% RELIABLE POINTER API
+    function initPointerEvents() {
+      const getPos = (e) => {
+        const rect = canvas.getBoundingClientRect();
+        return {
+          x: (e.clientX - rect.left) * (canvas.width / rect.width),
+          y: (e.clientY - rect.top) * (canvas.height / rect.height)
+        };
+      };
+
+      canvas.addEventListener('pointerdown', (e) => {
+        canvas.setPointerCapture(e.pointerId);
+        isDrawing = true;
+
+        const pos = getPos(e);
+        lastX = pos.x;
+        lastY = pos.y;
+
+        const color = document.getElementById('selInkColor').value;
+        const size = Number(document.getElementById('selPenSize').value);
+
+        // Immediate dot on first contact
+        ctx.beginPath();
+        ctx.fillStyle = color;
+        ctx.arc(lastX, lastY, size / 2, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      canvas.addEventListener('pointermove', (e) => {
+        if (!isDrawing) return;
+        e.preventDefault();
+
+        const pos = getPos(e);
+        const color = document.getElementById('selInkColor').value;
+        const size = Number(document.getElementById('selPenSize').value);
+
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        ctx.lineWidth = size;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+
+        lastX = pos.x;
+        lastY = pos.y;
+      });
+
+      const finishPointer = (e) => {
+        if (isDrawing) {
+          isDrawing = false;
+          try { canvas.releasePointerCapture(e.pointerId); } catch (_) {}
+          saveState();
+        }
+      };
+
+      canvas.addEventListener('pointerup', finishPointer);
+      canvas.addEventListener('pointercancel', finishPointer);
+    }
+
+    function saveState() {
+      if (historyStack.length > 20) historyStack.shift();
+      historyStack.push({
+        width: canvas.width,
+        height: canvas.height,
+        data: ctx.getImageData(0, 0, canvas.width, canvas.height)
+      });
+    }
+
+    // MULTI-LEVEL UNDO (RESTORES DRAWINGS AND TRIM STATES)
+    function undoCanvas() {
+      if (historyStack.length > 1) {
+        historyStack.pop();
+        const prev = historyStack[historyStack.length - 1];
+        canvas.width = prev.width;
+        canvas.height = prev.height;
+        ctx.putImageData(prev.data, 0, 0);
+
+        if (preCropSnapshot && (canvas.width === preCropSnapshot.width && canvas.height === preCropSnapshot.height)) {
+          document.getElementById('btnRevert').style.display = 'none';
+        }
+      } else {
+        clearCanvas();
+      }
+    }
+
+    function clearCanvas() {
+      historyStack = [];
+      preCropSnapshot = null;
+      document.getElementById('btnRevert').style.display = 'none';
+
+      const rect = canvasWrap.getBoundingClientRect();
+      canvas.width = Math.round(rect.width);
+      canvas.height = Math.round(rect.height);
+
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      saveState();
+    }
+
+    function applyPreset() {
+      const p = document.getElementById('selPreset').value;
+
+      if (p === 'ssc' || p === 'ibps') {
+        document.getElementById('drawFileName').value = 'ssc_signature_140x60';
+        document.getElementById('selTargetKb').value = '15';
+      } else if (p === 'upsc') {
+        document.getElementById('drawFileName').value = 'upsc_signature_350x350';
+        document.getElementById('selTargetKb').value = '35';
+      } else {
+        document.getElementById('drawFileName').value = 'custom_signature';
+      }
+    }
+
+    // AUTOMATIC WHITESPACE TRIMMER WITH UNDO HOOK
+    function autoCropSignature() {
+      const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const d = imgData.data;
+      let minX = canvas.width, minY = canvas.height, maxX = 0, maxY = 0;
+
+      for (let y = 0; y < canvas.height; y++) {
+        for (let x = 0; x < canvas.width; x++) {
+          const idx = (y * canvas.width + x) * 4;
+          if (d[idx] < 240 || d[idx+1] < 240 || d[idx+2] < 240) {
+            if (x < minX) minX = x;
+            if (x > maxX) maxX = x;
+            if (y < minY) minY = y;
+            if (y > maxY) maxY = y;
+          }
+        }
+      }
+
+      if (minX > maxX || minY > maxY) {
+        alert(currentLang === 'en' ? 'Canvas is blank! Draw your signature first.' : 'कैनवास खाली है! पहले साइन करें।');
+        return;
+      }
+
+      // Save pre-crop snapshot for Revert button
+      preCropSnapshot = {
+        width: canvas.width,
+        height: canvas.height,
+        data: ctx.getImageData(0, 0, canvas.width, canvas.height)
+      };
+
+      const padding = 16;
+      const cropX = Math.max(0, minX - padding);
+      const cropY = Math.max(0, minY - padding);
+      const cropW = Math.min(canvas.width - cropX, (maxX - minX) + padding * 2);
+      const cropH = Math.min(canvas.height - cropY, (maxY - minY) + padding * 2);
+
+      const croppedData = ctx.getImageData(cropX, cropY, cropW, cropH);
+
+      canvas.width = cropW;
+      canvas.height = cropH;
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.putImageData(croppedData, 0, 0);
+
+      saveState();
+      document.getElementById('btnRevert').style.display = 'inline-flex';
+    }
+
+    function revertMargins() {
+      if (!preCropSnapshot) return;
+      canvas.width = preCropSnapshot.width;
+      canvas.height = preCropSnapshot.height;
+      ctx.putImageData(preCropSnapshot.data, 0, 0);
+      saveState();
+      document.getElementById('btnRevert').style.display = 'none';
+    }
+
+    function isCanvasBlank() {
+      const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const d = imgData.data;
+      for (let i = 0; i < d.length; i += 4) {
+        if (d[i] < 240 || d[i+1] < 240 || d[i+2] < 240) return false;
+      }
+      return true;
+    }
+
+    // EXACT KB TARGET COMPRESSOR
+    async function calibrateAndDownload(exportCanvas, cleanName, targetKbVal, bgType) {
+      const mime = (bgType === 'transparent') ? 'image/png' : 'image/jpeg';
+      let blob;
+
+      if (targetKbVal === 'max' || mime === 'image/png') {
+        blob = await new Promise(resolve => exportCanvas.toBlob(resolve, mime, 0.95));
+      } else {
+        const targetBytes = Number(targetKbVal) * 1024;
+        let low = 0.1, high = 0.95, bestBlob = null;
+
+        for (let i = 0; i < 6; i++) {
+          const mid = (low + high) / 2;
+          const candidateBlob = await new Promise(resolve => exportCanvas.toBlob(resolve, 'image/jpeg', mid));
+
+          if (candidateBlob.size <= targetBytes) {
+            bestBlob = candidateBlob;
+            low = mid;
+          } else {
+            high = mid;
+          }
+        }
+        blob = bestBlob || await new Promise(resolve => exportCanvas.toBlob(resolve, 'image/jpeg', 0.5));
+      }
+
+      const link = document.createElement('a');
+      link.download = cleanName;
+      link.href = URL.createObjectURL(blob);
+      link.click();
+
+      document.getElementById('modalFileName').innerText = cleanName;
+      document.getElementById('modalFileSize').innerText = `~${(blob.size / 1024).toFixed(1)} KB`;
+      document.getElementById('completionModal').classList.add('active');
+    }
+
+    async function downloadDrawnSignature() {
+      if (isCanvasBlank()) {
+        alert(currentLang === 'en' ? 'Please draw your signature first!' : 'कृपया पहले अपना हस्ताक्षर बनाएं!');
+        return;
+      }
+
+      const bgType = document.getElementById('selBg').value;
+      const exportCanvas = document.createElement('canvas');
+      exportCanvas.width = canvas.width;
+      exportCanvas.height = canvas.height;
+      const eCtx = exportCanvas.getContext('2d');
+
+      if (bgType !== 'transparent') {
+        eCtx.fillStyle = bgType;
+        eCtx.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
+      }
+      eCtx.drawImage(canvas, 0, 0);
+
+      const userFileName = document.getElementById('drawFileName').value.trim() || 'exam_signature';
+      const cleanName = userFileName.replace(/[^a-zA-Z0-9_\-\u0900-\u097F]/g, '_').replace(/\.(jpg|png)$/i, '') + (bgType === 'transparent' ? '.png' : '.jpg');
+
+      const targetKb = document.getElementById('selTargetKb').value;
+      await calibrateAndDownload(exportCanvas, cleanName, targetKb, bgType);
+    }
+
+    // PHOTO CLEANER ENGINE
+    let originalPhotoImg = null;
+
+    function handlePhotoUpload(file) {
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          originalPhotoImg = img;
+          reprocessPhoto();
+          document.getElementById('lblNoPhoto').style.display = 'none';
+          document.getElementById('photoPreviewCanvas').style.display = 'block';
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function reprocessPhoto() {
+      if (!originalPhotoImg) return;
+      const pCanvas = document.getElementById('photoPreviewCanvas');
+
+      let w = originalPhotoImg.width;
+      let h = originalPhotoImg.height;
+      if (w > 800) {
+        h = Math.round((h * 800) / w);
+        w = 800;
+      }
+
+      pCanvas.width = w;
+      pCanvas.height = h;
+      const pCtx = pCanvas.getContext('2d');
+      pCtx.drawImage(originalPhotoImg, 0, 0, w, h);
+
+      const imgData = pCtx.getImageData(0, 0, w, h);
+      const d = imgData.data;
+      const threshold = Number(document.getElementById('selContrast').value);
+
+      for (let i = 0; i < d.length; i += 4) {
+        const gray = 0.299 * d[i] + 0.587 * d[i+1] + 0.114 * d[i+2];
+        if (gray > threshold) {
+          d[i] = 255; d[i+1] = 255; d[i+2] = 255;
+        } else {
+          d[i] = 12; d[i+1] = 12; d[i+2] = 12;
+        }
+      }
+      pCtx.putImageData(imgData, 0, 0);
+    }
+
+    async function downloadCleanedPhoto() {
+      if (!originalPhotoImg) {
+        alert(currentLang === 'en' ? 'Upload a photo first!' : 'कृपया पहले एक फोटो अपलोड करें!');
+        return;
+      }
+      const pCanvas = document.getElementById('photoPreviewCanvas');
+      const userFileName = document.getElementById('cleanFileName').value.trim() || 'cleaned_signature';
+      const cleanName = userFileName.replace(/[^a-zA-Z0-9_\-\u0900-\u097F]/g, '_').replace(/\.jpg$/i, '') + '.jpg';
+
+      await calibrateAndDownload(pCanvas, cleanName, '20', '#ffffff');
+    }
+
+    function closeModal() {
+      document.getElementById('completionModal').classList.remove('active');
+    }
+
+    function toggleLanguage() {
+      currentLang = (currentLang === 'en') ? 'hi' : 'en';
+
+      if (currentLang === 'hi') {
+        document.getElementById('btnLangText').innerText = 'Switch to English';
+        document.getElementById('txtTitle').innerText = 'परीक्षा हस्ताक्षर मेकर व बैकग्राउंड क्लीनर';
+        document.getElementById('txtSubtitle').innerText = 'डिजिटल हस्ताक्षर बनाएं या कॉपी पर किए साइन का पीलापन हटाकर सरकारी फॉर्म हेतु 10KB–20KB में डाउनलोड करें। 100% प्राइवेट।';
+        document.getElementById('tabBtnDraw').innerText = '✍️ लाइव हस्ताक्षर पैड';
+        document.getElementById('tabBtnClean').innerText = '🧼 फोटो पेपर बैकग्राउंड क्लीनर';
+        document.getElementById('txtControlHead').innerText = 'हस्ताक्षर सेटिंग्स';
+        document.getElementById('txtControlSub').innerText = 'परीक्षा साइज, KB सीमा और स्याही का रंग सेट करें';
+        document.getElementById('lblPreset').innerText = 'परीक्षा साइज प्रीसेट:';
+        document.getElementById('lblTargetKb').innerText = 'फाइल साइज कैलिब्रेटर (KB):';
+        document.getElementById('lblInk').innerText = 'स्याही का रंग (Ink Color):';
+        document.getElementById('lblPenSize').innerText = 'पेन की मोटाई (Stroke):';
+        document.getElementById('lblBg').innerText = 'बैकग्राउंड प्रकार:';
+        document.getElementById('lblDrawFilename').innerText = 'डाउनलोड फाइल का नाम:';
+        document.getElementById('btnDownloadDraw').innerText = '📥 हस्ताक्षर डाउनलोड करें (JPG)';
+        document.getElementById('btnClear').innerText = '🗑️ साफ करें';
+        document.getElementById('btnUndo').innerText = '↩️ पूर्ववत (Undo)';
+        document.getElementById('btnCrop').innerText = '✂️ खाली मार्जिन काटें';
+        document.getElementById('btnRevert').innerText = '🔄 मार्जिन रीसेट';
+        document.getElementById('txtDrawHelp').innerText = 'सफेद हिस्से में कहीं भी साइन करें (100% सक्रिय क्षेत्र, 0ms तत्काल रिस्पॉन्स)।';
+        document.getElementById('txtZeroStorage').innerText = '100% प्राइवेट: आपका हस्ताक्षर किसी सर्वर पर नहीं भेजा जाता। सभी प्रोसेसिंग आपके ब्राउज़र के अंदर होती है।';
+      } else {
+        document.getElementById('btnLangText').innerText = 'हिंदी में बदलें (Hindi)';
+        document.getElementById('txtTitle').innerText = 'Exam Signature Maker & Background Cleaner';
+        document.getElementById('txtSubtitle').innerText = 'Draw clean digital signatures instantly or remove paper shadows. Export strictly between 10 KB to 20 KB for SSC, UPSC, and Bank portals.';
+        document.getElementById('tabBtnDraw').innerText = '✍️ Live Drawing Pad';
+        document.getElementById('tabBtnClean').innerText = '🧼 Photo Paper Shadow Cleaner';
+        document.getElementById('txtControlHead').innerText = 'Signature Settings';
+        document.getElementById('txtControlSub').innerText = 'Calibrate exam dimensions, KB target and ink';
+        document.getElementById('lblPreset').innerText = 'Exam Portal Preset';
+        document.getElementById('lblTargetKb').innerText = 'File Size Calibrator';
+        document.getElementById('lblInk').innerText = 'Ink Color';
+        document.getElementById('lblPenSize').innerText = 'Stroke Thickness';
+        document.getElementById('lblBg').innerText = 'Background Type';
+        document.getElementById('lblDrawFilename').innerText = 'Output Filename:';
+        document.getElementById('btnDownloadDraw').innerText = '📥 Download Exam Signature (JPG)';
+        document.getElementById('btnClear').innerText = '🗑️ Clear';
+        document.getElementById('btnUndo').innerText = '↩️ Undo';
+        document.getElementById('btnCrop').innerText = '✂️ Trim Margins';
+        document.getElementById('btnRevert').innerText = '🔄 Revert Trim';
+        document.getElementById('txtDrawHelp').innerText = 'Draw directly anywhere inside the white surface (100% active drawing area, 0ms latency).';
+        document.getElementById('txtZeroStorage').innerText = '100% Private & In-Browser: Your handwritten signature is never uploaded to any cloud or database. The image renders directly in your device GPU/Canvas RAM.';
+      }
     }
   </script>
-<script>
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{
-    navigator.serviceWorker.register('/sw.js').catch(()=>{});
-  });
-}
-</script>
+<script src="https://unknownuniversem-blip.github.io/network.js" defer></script>
+<!-- Viral Social Share Bar -->
+<div id="viral-share-bar" style="position:fixed; bottom:16px; left:50%; transform:translateX(-50%); z-index:99999; display:flex; gap:10px; background:#0f172ae6; backdrop-filter:blur(8px); border:1px solid #38bdf8; padding:8px 16px; border-radius:50px; box-shadow:0 8px 30px rgba(0,0,0,0.6); align-items:center;">
+  <span style="color:#f8fafc; font-size:0.82rem; font-weight:700; white-space:nowrap;">Share with Aspirants:</span>
+  <a href="https://api.whatsapp.com/send?text=%F0%9F%94%A5%2022%2B%20Free%20Daily%20Digital%20Utility%20Tools%20%28Photo%20Resizer%2C%20Speed%20Math%2C%20Typing%2C%20GST%20%26%20Forms%29%3A%20https%3A//unknownuniversem-blip.github.io/" target="_blank" style="background:#22c55e; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    💬 WhatsApp
+  </a>
+  <a href="https://t.me/share/url?url=https%3A//unknownuniversem-blip.github.io/signature-maker-studio/&text=%F0%9F%94%A5%2022%2B%20Free%20Daily%20Digital%20Utility%20Tools%20%28Photo%20Resizer%2C%20Speed%20Math%2C%20Typing%2C%20GST%20%26%20Forms%29%3A%20https%3A//unknownuniversem-blip.github.io/" target="_blank" style="background:#0284c7; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    ✈️ Telegram
+  </a>
+</div>
+
+
+<!-- Dynamic Internal Cross-Link Mesh -->
+<div class="related-mesh-card">
+  <div class="related-mesh-title">⚡ Recommended Essential Student & Cyber Tools</div>
+  <div class="related-mesh-grid">
+    <a href="https://unknownuniversem-blip.github.io/math/" class="related-mesh-link" target="_blank">⚡ Speed Math Workout</a><a href="https://unknownuniversem-blip.github.io/exam-resizer/" class="related-mesh-link" target="_blank">📸 Exam Photo & Sign Resizer</a><a href="https://unknownuniversem-blip.github.io/hindi-typing-tutor/" class="related-mesh-link" target="_blank">⌨️ Hindi Typing Tutor</a><a href="https://unknownuniversem-blip.github.io/" class="related-mesh-link" target="_blank">🌐 All 22+ Free Web Utilities</a>
+  </div>
+</div>
+
 </body>
 </html>

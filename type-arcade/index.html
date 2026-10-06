@@ -1,15 +1,1235 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Type Arcade</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}.box{max-width:500px;margin:auto;background:#0f172a;padding:24px;border-radius:14px;border:1px solid #1e293b}input{padding:10px;width:100%;border-radius:8px;border:1px solid #334155;background:#131d35;color:#fff;box-sizing:border-box}</style>  <script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<link rel="manifest" href="/manifest.webmanifest">
-<meta name="theme-color" content="#0284c7">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="QuickTools">
-<link rel="apple-touch-icon" href="/icon-192.png">
-</head><body><div class="box"><h3>🕹️ Type Arcade Speed Sprint</h3><div id="w" style="font-size:2rem;font-weight:bold;color:#38bdf8;margin:15px 0">focus</div><input type="text" id="inp" placeholder="Type the word above..." oninput="chk(this)"><div style="margin-top:12px;color:#10b981" id="sc">Score: 0</div></div><script>const words=["velocity","accuracy","cadence","aptitude","discipline","aspirant","focus","speed"];let sc=0;function chk(e){if(e.value.trim().toLowerCase()===document.getElementById('w').innerText){sc+=10;document.getElementById('sc').innerText="Score: "+sc;e.value="";document.getElementById('w').innerText=words[Math.floor(Math.random()*words.length)];}}</script><script>
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{
-    navigator.serviceWorker.register('/sw.js').catch(()=>{});
-  });
-}
-</script>
-</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Comprehensive Search Engine & Social Graph Meta Tags -->
+  <title>Type Arcade — Gamified Keyboard Speed & Reflex Training</title>
+  <meta name="description" content="Improve your touch-typing speed with retro arcade game mechanics, falling word challenges, and instant accuracy metrics for all keyboard layouts.">
+  <meta name="keywords" content="type arcade game online, typing practice games free, touch typing speed trainer, gamified typing lessons">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://unknownuniversem-blip.github.io/type-arcade/">
+
+  <!-- Open Graph / Facebook / WhatsApp Preview Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://unknownuniversem-blip.github.io/type-arcade/">
+  <meta property="og:title" content="Type Arcade — Gamified Keyboard Speed & Reflex Training">
+  <meta property="og:description" content="Improve your touch-typing speed with retro arcade game mechanics, falling word challenges, and instant accuracy metrics for all keyboard layouts.">
+  <meta property="og:site_name" content="QuickTools India">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://unknownuniversem-blip.github.io/type-arcade/">
+  <meta name="twitter:title" content="Type Arcade — Gamified Keyboard Speed & Reflex Training">
+  <meta name="twitter:description" content="Improve your touch-typing speed with retro arcade game mechanics, falling word challenges, and instant accuracy metrics for all keyboard layouts.">
+
+  <!-- JSON-LD Structured Data Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Type Arcade",
+    "url": "https://unknownuniversem-blip.github.io/type-arcade/",
+    "description": "Improve your touch-typing speed with retro arcade game mechanics, falling word challenges, and instant accuracy metrics for all keyboard layouts.",
+    "applicationCategory": "Typing & Skill Tests",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">
+  
+  
+
+  <!-- Privacy Analytics -->
+  <script data-goatcounter="https://quicktools.goatcounter.com/count"
+          data-goatcounter-settings='{"allow_local": true}'
+          async src="//gc.zgo.at/count.js"></script>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f172a' stroke='%2338bdf8' stroke-width='1.5'/%3E%3Cpolygon points='10,8 24,16 10,24' fill='%2338bdf8'/%3E%3C/svg%3E">
+
+  <style>
+    :root {
+      --bg: #020617;
+      --card: #0f172a;
+      --card-border: #1e293b;
+      --primary: #38bdf8;
+      --accent: #f59e0b;
+      --danger: #ef4444;
+      --success: #10b981;
+      --purple: #c084fc;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: none;
+    }
+
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden !important;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    #gameCanvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      background: radial-gradient(circle at center, #09152e 0%, #020617 100%);
+    }
+
+    /* ARCADE HUD */
+    .hud {
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .hud-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .hud-badge {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      backdrop-filter: blur(8px);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: 0.03em;
+    }
+
+    .btn-hud {
+      pointer-events: auto;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+    .btn-hud:hover { border-color: var(--primary); transform: scale(1.03); }
+    .btn-hud-danger {
+      border-color: rgba(239, 68, 68, 0.6);
+      color: #fca5a5;
+      background: rgba(239, 68, 68, 0.2);
+    }
+
+    /* OVERLAYS */
+    .overlay-screen {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(2, 6, 23, 0.94);
+      backdrop-filter: blur(14px);
+      padding: 16px;
+      text-align: center;
+      z-index: 20;
+    }
+
+    .arcade-title {
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      font-weight: 900;
+      color: var(--primary);
+      text-shadow: 0 0 35px rgba(56, 189, 248, 0.6);
+      letter-spacing: -0.03em;
+      margin-bottom: 4px;
+    }
+
+    .arcade-sub {
+      color: var(--muted);
+      font-size: clamp(0.8rem, 2vw, 0.95rem);
+      max-width: 600px;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    /* 6 GAME MODES GRID */
+    .modes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      max-width: 820px;
+      width: 100%;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 680px) {
+      .modes-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .mode-card {
+      background: var(--card);
+      border: 2px solid var(--card-border);
+      border-radius: 10px;
+      padding: 10px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-align: left;
+    }
+    .mode-card:hover, .mode-card.selected {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
+      background: rgba(15, 23, 42, 0.95);
+    }
+    .mode-card h3 {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 2px;
+    }
+    .mode-card p {
+      font-size: 0.68rem;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+
+    .selector-bar {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn-pill {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      color: var(--muted);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .btn-pill.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(245, 158, 11, 0.15);
+    }
+
+    .btn-play {
+      background: var(--primary);
+      color: #030712;
+      border: none;
+      padding: 12px 38px;
+      font-size: 1.05rem;
+      font-weight: 900;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
+      transition: transform 0.1s ease;
+      margin-top: 4px;
+    }
+    .btn-play:active { transform: scale(0.96); }
+
+    .score-summary-box {
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 12px 20px;
+      max-width: 420px;
+      width: 100%;
+      margin: 12px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      text-align: left;
+    }
+    .summary-item strong { display: block; font-size: 1.2rem; color: #fff; }
+    .summary-item span { font-size: 0.7rem; color: var(--muted); font-weight: 700; text-transform: uppercase; }
+
+    /* HIDDEN FULLSCREEN TOUCH CAPTURE FIELD */
+    #mobileKeyInput {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      opacity: 0;
+      z-index: 5;
+      font-size: 16px;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: transparent;
+      caret-color: transparent;
+    }
+
+    .btn-mobile-keyboard {
+      display: none;
+      position: absolute;
+      bottom: 58px;
+      right: 12px;
+      z-index: 15;
+      background: rgba(56, 189, 248, 0.25);
+      border: 1px solid var(--primary);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      backdrop-filter: blur(8px);
+      cursor: pointer;
+    }
+    @media (pointer: coarse) {
+      .btn-mobile-keyboard { display: block; }
+    }
+  </style>
+
+<style id="growth-mesh-styles">
+  .related-mesh-card {
+    margin: 32px auto 20px;
+    max-width: 900px;
+    background: #0b1329;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 16px 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .related-mesh-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #38bdf8;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.02em;
+  }
+  .related-mesh-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .related-mesh-link {
+    display: block;
+    padding: 10px 14px;
+    background: #131d35;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  .related-mesh-link:hover {
+    background: #1e293b;
+    border-color: #38bdf8;
+    color: #38bdf8;
+    transform: translateY(-2px);
+  }
+</style>
+
+</head>
+<body>
+
+  <canvas id="gameCanvas"></canvas>
+
+  <button type="button" class="btn-mobile-keyboard" id="btnToggleKb" onclick="focusKeyboard()">⌨️ Keyboard</button>
+
+  <!-- HUD -->
+  <div class="hud" id="gameHud" style="display:none;">
+    <div class="hud-group">
+      <div class="hud-badge" style="color:var(--primary);">
+        <span>SCORE:</span> <b id="valScore">0</b>
+      </div>
+      <div class="hud-badge" style="color:var(--accent);">
+        <span>STREAK:</span> <b id="valStreak">0x</b>
+      </div>
+      <div class="hud-badge" style="color:var(--success);">
+        <span>WPM:</span> <b id="valWpm">0</b>
+      </div>
+    </div>
+
+    <div class="hud-group">
+      <div class="hud-badge" id="hudShieldBadge" style="color:var(--danger);">
+        <span>SHIELD:</span> <b id="valShield">100%</b>
+      </div>
+      <button type="button" class="btn-hud" id="btnOrientationHud" onclick="toggleScreenOrientation()">🔄 Landscape</button>
+      <button type="button" class="btn-hud" id="btnAudioToggle" onclick="toggleAudio()">🔊 SFX</button>
+      <button type="button" class="btn-hud btn-hud-danger" onclick="stopGamePrematurely()">⏹ END</button>
+      <button type="button" class="btn-hud" onclick="exitToMenu()">MENU</button>
+    </div>
+  </div>
+
+  <!-- MAIN MENU -->
+  <div class="overlay-screen" id="menuScreen">
+    <div class="arcade-title">⚡ TypeArcade</div>
+    <div class="arcade-sub">Starts in Portrait by default on mobile. Tap any mode and start typing immediately!</div>
+
+    <div class="modes-grid">
+      <div class="mode-card selected" onclick="selectMode('bottle')" id="card_bottle">
+        <h3>🍾 Bottle Cracker</h3>
+        <p>Words are printed on glass bottles. Launch steel balls to crack them!</p>
+      </div>
+
+      <div class="mode-card" onclick="selectMode('blaster')" id="card_blaster">
+        <h3>☄️ Meteor Blaster</h3>
+        <p>Defend base against cosmic meteors using heavy plasma guns.</p>
+      </div>
+
+      <div class="mode-card" onclick="selectMode('archery')" id="card_archery">
+        <h3>🏹 Target Archery</h3>
+        <p>Hit high-speed target banners with razor golden arrows.</p>
+      </div>
+
+      <div class="mode-card" onclick="selectMode('racer')" id="card_racer">
+        <h3>🏎 Neon Highway</h3>
+        <p>Highway race. Accurate typing powers your turbo nitro engine.</p>
+      </div>
+
+      <div class="mode-card" onclick="selectMode('invaders')" id="card_invaders">
+        <h3>🛸 Star Invaders</h3>
+        <p>Alien motherfleet descending in waves. Fire photon missiles.</p>
+      </div>
+
+      <div class="mode-card" onclick="selectMode('bombs')" id="card_bombs">
+        <h3>💣 Bomb Disarmer</h3>
+        <p>Ticking explosives. Fire lightning zap lasers to defuse fuses.</p>
+      </div>
+    </div>
+
+    <!-- VOCABULARY DIFFICULTY -->
+    <div class="selector-bar">
+      <span style="font-size:0.75rem; font-weight:800; color:var(--muted); text-transform:uppercase;">Vocabulary:</span>
+      <button type="button" class="btn-pill active" onclick="setDiff('rookie')" id="diff_rookie">Rookie (3-5)</button>
+      <button type="button" class="btn-pill" onclick="setDiff('pro')" id="diff_pro">Pro (6-9)</button>
+      <button type="button" class="btn-pill" onclick="setDiff('cyber')" id="diff_cyber">Cyber (Tech)</button>
+      <button type="button" class="btn-pill" id="btnOrientationMenu" onclick="toggleScreenOrientation()" style="border-color:var(--primary); color:var(--primary);">🔄 Landscape Mode</button>
+    </div>
+
+    <button type="button" class="btn-play" onclick="launchGame()">🚀 START GAME</button>
+  </div>
+
+  <!-- MISSION REPORT OVERLAY -->
+  <div class="overlay-screen" id="gameOverScreen" style="display:none;">
+    <div class="arcade-title" style="color:var(--accent);" id="goTitle">MISSION REPORT</div>
+    <div class="arcade-sub" id="goSubtitle">Detailed performance summary:</div>
+
+    <div class="score-summary-box">
+      <div class="summary-item">
+        <strong id="repScore" style="color:var(--primary);">0</strong>
+        <span>Final Score</span>
+      </div>
+      <div class="summary-item">
+        <strong id="repWpm" style="color:var(--success);">0 WPM</strong>
+        <span>Net Typing Speed</span>
+      </div>
+      <div class="summary-item">
+        <strong id="repDestroyed" style="color:var(--accent);">0</strong>
+        <span>Targets Destroyed</span>
+      </div>
+      <div class="summary-item">
+        <strong id="repAccuracy" style="color:var(--purple);">100%</strong>
+        <span>Accuracy</span>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:8px;">
+      <button type="button" class="btn-play" onclick="launchGame()">🔄 PLAY AGAIN</button>
+      <button type="button" class="btn-hud" style="font-size:0.95rem; padding:10px 22px;" onclick="exitToMenu()">Change Mode</button>
+    </div>
+  </div>
+
+  <input type="text" id="mobileKeyInput" autocomplete="off" autocapitalize="off" spellcheck="false">
+
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const mobileInput = document.getElementById('mobileKeyInput');
+
+    let audioEnabled = true;
+    let audioCtx = null;
+    let currentOrientationState = 'portrait'; // DEFAULT IS PORTRAIT
+
+    function playSfx(type) {
+      if (!audioEnabled) return;
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const now = audioCtx.currentTime;
+
+        if (type === 'cannon') {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.type = 'square';
+          osc.frequency.setValueAtTime(320, now);
+          osc.frequency.exponentialRampToValueAtTime(80, now + 0.1);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.linearRampToValueAtTime(0.01, now + 0.1);
+          osc.start(now);
+          osc.stop(now + 0.1);
+        } else if (type === 'arrow') {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(350, now);
+          osc.frequency.exponentialRampToValueAtTime(1100, now + 0.08);
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.linearRampToValueAtTime(0.01, now + 0.08);
+          osc.start(now);
+          osc.stop(now + 0.08);
+        } else if (type === 'blaster') {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(880, now);
+          osc.frequency.exponentialRampToValueAtTime(140, now + 0.09);
+          gain.gain.setValueAtTime(0.15, now);
+          gain.gain.linearRampToValueAtTime(0.01, now + 0.09);
+          osc.start(now);
+          osc.stop(now + 0.09);
+        } else if (type === 'zap') {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(1500, now);
+          osc.frequency.exponentialRampToValueAtTime(400, now + 0.07);
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.linearRampToValueAtTime(0.01, now + 0.07);
+          osc.start(now);
+          osc.stop(now + 0.07);
+        } else if (type === 'glassCrack') {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.type = 'square';
+          osc.frequency.setValueAtTime(2200, now);
+          osc.frequency.exponentialRampToValueAtTime(250, now + 0.16);
+          gain.gain.setValueAtTime(0.24, now);
+          gain.gain.linearRampToValueAtTime(0.01, now + 0.16);
+          osc.start(now);
+          osc.stop(now + 0.16);
+        } else if (type === 'explode') {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(160, now);
+          osc.frequency.exponentialRampToValueAtTime(25, now + 0.22);
+          gain.gain.setValueAtTime(0.28, now);
+          gain.gain.linearRampToValueAtTime(0.01, now + 0.22);
+          osc.start(now);
+          osc.stop(now + 0.22);
+        } else if (type === 'hit') {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(180, now);
+          osc.frequency.exponentialRampToValueAtTime(60, now + 0.1);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.linearRampToValueAtTime(0.01, now + 0.1);
+          osc.start(now);
+          osc.stop(now + 0.1);
+        }
+      } catch (e) {}
+    }
+
+    function toggleAudio() {
+      audioEnabled = !audioEnabled;
+      document.getElementById('btnAudioToggle').innerText = audioEnabled ? '🔊 SFX' : '🔇 Muted';
+    }
+
+    // ORIENTATION TOGGLE (PORTRAIT BY DEFAULT, USER CAN TOGGLE TO LANDSCAPE)
+    async function toggleScreenOrientation() {
+      try {
+        if (!document.fullscreenElement) {
+          if (document.documentElement.requestFullscreen) {
+            await document.documentElement.requestFullscreen();
+          }
+        }
+        if (screen.orientation && screen.orientation.lock) {
+          if (currentOrientationState === 'portrait') {
+            await screen.orientation.lock('landscape');
+            currentOrientationState = 'landscape';
+            updateOrientationButtons('🔄 Portrait');
+          } else {
+            await screen.orientation.lock('portrait');
+            currentOrientationState = 'portrait';
+            updateOrientationButtons('🔄 Landscape');
+          }
+        }
+      } catch (e) {
+        // Fallback for browsers that don't support programmatic orientation lock
+        if (currentOrientationState === 'portrait') {
+          currentOrientationState = 'landscape';
+          updateOrientationButtons('🔄 Portrait');
+        } else {
+          currentOrientationState = 'portrait';
+          updateOrientationButtons('🔄 Landscape');
+        }
+      }
+      resize();
+    }
+
+    function updateOrientationButtons(label) {
+      const btnMenu = document.getElementById('btnOrientationMenu');
+      const btnHud = document.getElementById('btnOrientationHud');
+      if (btnMenu) btnMenu.innerText = label;
+      if (btnHud) btnHud.innerText = label;
+    }
+
+    function focusKeyboard() {
+      if (mobileInput) {
+        mobileInput.focus();
+        mobileInput.click();
+      }
+    }
+
+    const dicts = {
+      rookie: [
+        "sky", "run", "fast", "game", "jump", "hero", "play", "cool",
+        "star", "fire", "dark", "glow", "blue", "wind", "race", "neon",
+        "wave", "gold", "zoom", "dash", "bolt", "kick", "pure", "flow",
+        "apex", "beam", "core", "disk", "echo", "flux", "grid", "halo"
+      ],
+      pro: [
+        "velocity", "horizon", "quantum", "thunder", "gravity", "nebula",
+        "phantom", "blaster", "starlight", "vanguard", "dynamic", "reactor",
+        "champion", "override", "spectrum", "valiant", "friction", "ascension",
+        "infinite", "hyperion", "solstice", "paradox", "luminary", "glacier"
+      ],
+      cyber: [
+        "function", "boolean", "compile", "payload", "network", "virtual",
+        "terminal", "encrypt", "pointer", "database", "cluster", "runtime",
+        "frontend", "backend", "variable", "security", "pipeline", "protocol",
+        "interface", "algorithm", "bandwidth", "framework", "asynchronous"
+      ]
+    };
+
+    let selectedMode = 'bottle';
+    let selectedDiff = 'rookie';
+    let isPlaying = false;
+
+    let score = 0;
+    let streak = 0;
+    let shield = 100;
+    let wordsDestroyed = 0;
+    let totalCharsTyped = 0;
+    let correctCharsTyped = 0;
+    let startTime = 0;
+
+    let itemsOnScreen = [];
+    let projectiles = [];
+    let particles = [];
+    let activeTarget = null;
+    let lastSpawn = 0;
+    let spawnRate = 2000;
+    let invadersDir = 1;
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    function selectMode(m) {
+      selectedMode = m;
+      document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('selected'));
+      document.getElementById(`card_${m}`).classList.add('selected');
+    }
+
+    function setDiff(d) {
+      selectedDiff = d;
+      document.querySelectorAll('.selector-bar button[id^="diff_"]').forEach(b => b.classList.remove('active'));
+      document.getElementById(`diff_${d}`).classList.add('active');
+    }
+
+    function launchGame() {
+      document.getElementById('menuScreen').style.display = 'none';
+      document.getElementById('gameOverScreen').style.display = 'none';
+      document.getElementById('gameHud').style.display = 'flex';
+
+      score = 0;
+      streak = 0;
+      shield = 100;
+      wordsDestroyed = 0;
+      totalCharsTyped = 0;
+      correctCharsTyped = 0;
+      itemsOnScreen = [];
+      projectiles = [];
+      particles = [];
+      activeTarget = null;
+      startTime = performance.now();
+      isPlaying = true;
+
+      document.getElementById('valScore').innerText = score;
+      document.getElementById('valStreak').innerText = streak + 'x';
+      document.getElementById('valShield').innerText = shield + '%';
+      document.getElementById('valWpm').innerText = '0';
+
+      if (selectedMode === 'invaders') {
+        spawnInvadersWave();
+      }
+
+      focusKeyboard();
+      lastSpawn = performance.now();
+      requestAnimationFrame(gameLoop);
+    }
+
+    function stopGamePrematurely() {
+      if (!isPlaying) return;
+      triggerGameOver("SESSION COMPLETED");
+    }
+
+    function exitToMenu() {
+      isPlaying = false;
+      document.getElementById('gameHud').style.display = 'none';
+      document.getElementById('gameOverScreen').style.display = 'none';
+      document.getElementById('menuScreen').style.display = 'flex';
+    }
+
+    function spawnInvadersWave() {
+      const bank = dicts[selectedDiff];
+      const cols = Math.min(Math.floor(canvas.width / 130), 5);
+      for (let r = 0; r < 3; r++) {
+        for (let c = 0; c < cols; c++) {
+          const text = bank[Math.floor(Math.random() * bank.length)];
+          itemsOnScreen.push({
+            text: text,
+            remaining: text,
+            typed: "",
+            x: 50 + c * 115,
+            y: 65 + r * 50,
+            speedX: 0.65,
+            speedY: 0.05,
+            isInvader: true
+          });
+        }
+      }
+    }
+
+    function spawnItem() {
+      const bank = dicts[selectedDiff];
+      const text = bank[Math.floor(Math.random() * bank.length)];
+      const x = 50 + Math.random() * (canvas.width - 160);
+
+      if (selectedMode === 'racer') {
+        itemsOnScreen.push({
+          text: text,
+          remaining: text,
+          typed: "",
+          x: canvas.width + 30,
+          y: 90 + Math.random() * (canvas.height - 230),
+          speed: 2.2 + Math.random() * 0.8
+        });
+      } else if (selectedMode === 'bombs') {
+        itemsOnScreen.push({
+          text: text,
+          remaining: text,
+          typed: "",
+          x: x,
+          y: 80 + Math.random() * (canvas.height - 240),
+          fuse: 100,
+          fuseSpeed: 0.22 + Math.random() * 0.15,
+          isBomb: true
+        });
+      } else {
+        itemsOnScreen.push({
+          text: text,
+          remaining: text,
+          typed: "",
+          x: x,
+          y: 40,
+          speed: 0.62 + Math.random() * 0.5,
+          isBottle: selectedMode === 'bottle'
+        });
+      }
+    }
+
+    function fireModeWeapon(target) {
+      const startX = canvas.width / 2;
+      const startY = canvas.height - 42;
+      const endX = target.x + 35;
+      const endY = target.y;
+
+      if (selectedMode === 'bottle') {
+        playSfx('cannon');
+        projectiles.push({
+          type: 'cannonball',
+          x: startX,
+          y: startY,
+          targetX: endX,
+          targetY: endY,
+          progress: 0,
+          speed: 0.09
+        });
+      } else if (selectedMode === 'archery') {
+        playSfx('arrow');
+        projectiles.push({
+          type: 'arrow',
+          x: startX,
+          y: startY,
+          targetX: endX,
+          targetY: endY,
+          progress: 0,
+          speed: 0.08
+        });
+      } else if (selectedMode === 'blaster') {
+        playSfx('blaster');
+        projectiles.push({
+          type: 'laser',
+          startX: startX,
+          startY: startY,
+          targetX: endX,
+          targetY: endY,
+          life: 1.0,
+          color: '#38bdf8'
+        });
+      } else if (selectedMode === 'bombs') {
+        playSfx('zap');
+        projectiles.push({
+          type: 'laser',
+          startX: startX,
+          startY: startY,
+          targetX: endX,
+          targetY: endY,
+          life: 1.0,
+          color: '#f59e0b'
+        });
+      } else if (selectedMode === 'invaders') {
+        playSfx('blaster');
+        projectiles.push({
+          type: 'missile',
+          x: startX,
+          y: startY,
+          targetX: endX,
+          targetY: endY,
+          progress: 0,
+          speed: 0.085
+        });
+      } else {
+        playSfx('blaster');
+        projectiles.push({
+          type: 'laser',
+          startX: 80,
+          startY: target.y,
+          targetX: endX,
+          targetY: endY,
+          life: 1.0,
+          color: '#10b981'
+        });
+      }
+    }
+
+    function handleInputKey(char) {
+      if (!isPlaying || !char) return;
+      char = char.toLowerCase();
+      totalCharsTyped++;
+
+      if (activeTarget) {
+        if (activeTarget.remaining.toLowerCase().startsWith(char)) {
+          const matchedChar = activeTarget.remaining[0];
+          activeTarget.typed += matchedChar;
+          activeTarget.remaining = activeTarget.remaining.substring(1);
+          correctCharsTyped++;
+          streak++;
+
+          fireModeWeapon(activeTarget);
+          createBurst(activeTarget.x + 25, activeTarget.y, 4, '#38bdf8');
+
+          if (activeTarget.remaining.length === 0) {
+            score += activeTarget.text.length * 15 * Math.min(streak, 10);
+            wordsDestroyed++;
+
+            if (selectedMode === 'bottle') {
+              playSfx('glassCrack');
+              createGlassShatter(activeTarget.x + 30, activeTarget.y);
+            } else {
+              playSfx('explode');
+              createBurst(activeTarget.x + 30, activeTarget.y, 25, '#f59e0b');
+            }
+
+            itemsOnScreen = itemsOnScreen.filter(w => w !== activeTarget);
+            activeTarget = null;
+          }
+        } else {
+          streak = 0;
+          playSfx('hit');
+        }
+      } else {
+        const candidates = itemsOnScreen.filter(w => w.remaining.toLowerCase().startsWith(char));
+        if (candidates.length > 0) {
+          if (selectedMode === 'racer') {
+            candidates.sort((a, b) => a.x - b.x);
+          } else {
+            candidates.sort((a, b) => b.y - a.y);
+          }
+          activeTarget = candidates[0];
+          const matchedChar = activeTarget.remaining[0];
+          activeTarget.typed += matchedChar;
+          activeTarget.remaining = activeTarget.remaining.substring(1);
+          correctCharsTyped++;
+          streak = 1;
+
+          fireModeWeapon(activeTarget);
+          createBurst(activeTarget.x + 25, activeTarget.y, 4, '#38bdf8');
+        }
+      }
+
+      const elapsedMin = Math.max((performance.now() - startTime) / 60000, 0.04);
+      const wpm = Math.round((correctCharsTyped / 5) / elapsedMin);
+
+      document.getElementById('valScore').innerText = score;
+      document.getElementById('valStreak').innerText = streak + 'x';
+      document.getElementById('valWpm').innerText = wpm;
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Backspace' || e.key.length > 1) return;
+      handleInputKey(e.key);
+    });
+
+    mobileInput.addEventListener('input', () => {
+      const val = mobileInput.value;
+      if (val.length > 0) {
+        handleInputKey(val[val.length - 1]);
+        mobileInput.value = "";
+      }
+    });
+
+    canvas.addEventListener('pointerdown', () => {
+      if (isPlaying) focusKeyboard();
+    });
+
+    function createBurst(x, y, count, color) {
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: x,
+          y: y,
+          vx: (Math.random() - 0.5) * 8,
+          vy: (Math.random() - 0.5) * 8,
+          life: 1.0,
+          color: color,
+          size: 3
+        });
+      }
+    }
+
+    function createGlassShatter(x, y) {
+      for (let i = 0; i < 32; i++) {
+        particles.push({
+          x: x,
+          y: y,
+          vx: (Math.random() - 0.5) * 12,
+          vy: (Math.random() - 0.5) * 12,
+          life: 1.0,
+          color: Math.random() > 0.5 ? '#38bdf8' : '#e0f2fe',
+          size: Math.random() * 4 + 2,
+          isGlass: true
+        });
+      }
+    }
+
+    function gameLoop(time) {
+      if (!isPlaying) return;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      if (selectedMode !== 'invaders') {
+        if (time - lastSpawn > spawnRate) {
+          spawnItem();
+          lastSpawn = time;
+          if (spawnRate > 850) spawnRate -= 15;
+        }
+      } else {
+        if (itemsOnScreen.length === 0) spawnInvadersWave();
+      }
+
+      const baseHeight = 50;
+      const baseY = canvas.height - baseHeight;
+
+      // 1. DRAW GLOWING BOTTOM DEFENSE PLATFORM
+      const grad = ctx.createLinearGradient(0, baseY, 0, canvas.height);
+      grad.addColorStop(0, 'rgba(56, 189, 248, 0.45)');
+      grad.addColorStop(0.35, 'rgba(16, 185, 129, 0.35)');
+      grad.addColorStop(1, 'rgba(2, 6, 23, 0.98)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, baseY, canvas.width, baseHeight);
+
+      ctx.strokeStyle = activeTarget ? '#f59e0b' : '#38bdf8';
+      ctx.lineWidth = 3;
+      ctx.shadowColor = activeTarget ? '#f59e0b' : '#38bdf8';
+      ctx.shadowBlur = 16;
+      ctx.beginPath();
+      ctx.moveTo(0, baseY);
+      ctx.lineTo(canvas.width, baseY);
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      // Center Launcher Turret
+      ctx.fillStyle = '#0f172a';
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.arc(canvas.width / 2, canvas.height - 12, 26, Math.PI, 0);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.font = "18px system-ui";
+      ctx.textAlign = "center";
+      let turretIcon = "⚙️️";
+      if (selectedMode === 'bottle') turretIcon = "⚙️";
+      else if (selectedMode === 'archery') turretIcon = "🏹";
+      else if (selectedMode === 'blaster') turretIcon = "🔫";
+      else if (selectedMode === 'bombs') turretIcon = "⚡";
+      else if (selectedMode === 'invaders') turretIcon = "🚀";
+      else if (selectedMode === 'racer') turretIcon = "🏎";
+      ctx.fillText(turretIcon, canvas.width / 2, canvas.height - 15);
+      ctx.textAlign = "left";
+
+      // 2. PROJECTILES
+      for (let i = projectiles.length - 1; i >= 0; i--) {
+        const p = projectiles[i];
+        if (p.type === 'laser') {
+          ctx.strokeStyle = p.color;
+          ctx.lineWidth = 4 * p.life;
+          ctx.shadowColor = p.color;
+          ctx.shadowBlur = 14;
+          ctx.beginPath();
+          ctx.moveTo(p.startX, p.startY);
+          ctx.lineTo(p.targetX, p.targetY);
+          ctx.stroke();
+          ctx.shadowBlur = 0;
+          p.life -= 0.14;
+          if (p.life <= 0) projectiles.splice(i, 1);
+        } else {
+          p.progress += p.speed;
+          const currX = p.x + (p.targetX - p.x) * p.progress;
+          const currY = p.y + (p.targetY - p.y) * p.progress;
+
+          if (p.type === 'cannonball') {
+            ctx.fillStyle = '#cbd5e1';
+            ctx.beginPath();
+            ctx.arc(currX, currY, 6, 0, Math.PI * 2);
+            ctx.fill();
+          } else if (p.type === 'arrow') {
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(currX, currY);
+            ctx.lineTo(currX, currY + 12);
+            ctx.stroke();
+          } else if (p.type === 'missile') {
+            ctx.fillStyle = '#38bdf8';
+            ctx.beginPath();
+            ctx.arc(currX, currY, 5, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          if (p.progress >= 1.0) projectiles.splice(i, 1);
+        }
+      }
+
+      // 3. TARGET WORDS
+      if (selectedMode === 'invaders') {
+        let hitEdge = false;
+        itemsOnScreen.forEach(item => {
+          item.x += item.speedX * invadersDir;
+          if (item.x < 20 || item.x > canvas.width - 130) hitEdge = true;
+        });
+        if (hitEdge) {
+          invadersDir *= -1;
+          itemsOnScreen.forEach(item => { item.y += 18; });
+        }
+      }
+
+      ctx.font = "900 22px system-ui, -apple-system, sans-serif";
+
+      for (let i = itemsOnScreen.length - 1; i >= 0; i--) {
+        const item = itemsOnScreen[i];
+
+        if (selectedMode === 'racer') {
+          item.x -= item.speed;
+        } else if (selectedMode === 'bombs') {
+          item.fuse -= item.fuseSpeed;
+        } else if (selectedMode !== 'invaders') {
+          item.y += item.speed;
+        }
+
+        const textMetrics = ctx.measureText(item.text);
+        const boxWidth = textMetrics.width + 20;
+        const boxHeight = 34;
+        const boxX = item.x - 10;
+        const boxY = item.y - 23;
+
+        if (selectedMode === 'bottle') {
+          ctx.fillStyle = "rgba(15, 23, 42, 0.9)";
+          ctx.strokeStyle = item === activeTarget ? "#f59e0b" : "#38bdf8";
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.roundRect(boxX, boxY, boxWidth, boxHeight, 8);
+          ctx.fill();
+          ctx.stroke();
+
+          ctx.strokeStyle = "rgba(56, 189, 248, 0.7)";
+          ctx.strokeRect(boxX - 5, boxY + 8, 5, 16);
+        } else {
+          ctx.fillStyle = "rgba(15, 23, 42, 0.88)";
+          ctx.strokeStyle = item === activeTarget ? "#f59e0b" : "rgba(255,255,255,0.2)";
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.roundRect(boxX, boxY, boxWidth, boxHeight, 8);
+          ctx.fill();
+          ctx.stroke();
+        }
+
+        let drawX = item.x;
+        if (item.typed.length > 0) {
+          ctx.fillStyle = "#10b981";
+          ctx.fillText(item.typed, drawX, item.y);
+          drawX += ctx.measureText(item.typed).width;
+        }
+
+        ctx.fillStyle = (item === activeTarget) ? "#f59e0b" : "#ffffff";
+        ctx.fillText(item.remaining, drawX, item.y);
+
+        if (item.isBomb) {
+          ctx.fillStyle = "rgba(255,255,255,0.2)";
+          ctx.fillRect(boxX, boxY - 8, boxWidth, 4);
+          ctx.fillStyle = item.fuse < 30 ? "#ef4444" : "#f59e0b";
+          ctx.fillRect(boxX, boxY - 8, Math.max(0, (item.fuse / 100) * boxWidth), 4);
+          if (item.fuse <= 0) {
+            triggerHit(item, i);
+            continue;
+          }
+        }
+
+        const hitBase = (selectedMode === 'racer') ? (item.x <= 20) : (item.y >= baseY - 8);
+        if (hitBase) {
+          triggerHit(item, i);
+        }
+      }
+
+      // 4. PARTICLES
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life -= 0.035;
+        if (p.life <= 0) {
+          particles.splice(i, 1);
+        } else {
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = p.life;
+          if (p.isGlass) {
+            ctx.fillRect(p.x, p.y, p.size, p.size * 1.5);
+          } else {
+            ctx.fillRect(p.x, p.y, p.size || 3, p.size || 3);
+          }
+          ctx.globalAlpha = 1.0;
+        }
+      }
+
+      requestAnimationFrame(gameLoop);
+    }
+
+    function triggerHit(item, index) {
+      createBurst(item.x + 25, item.y, 18, '#ef4444');
+      itemsOnScreen.splice(index, 1);
+      if (item === activeTarget) activeTarget = null;
+      streak = 0;
+      document.getElementById('valStreak').innerText = '0x';
+      playSfx('hit');
+
+      shield -= 20;
+      document.getElementById('valShield').innerText = shield + '%';
+      if (shield <= 0) {
+        triggerGameOver('SHIELD COLLAPSED (GAME OVER)');
+      }
+    }
+
+    function triggerGameOver(title) {
+      isPlaying = false;
+      const elapsedMin = Math.max((performance.now() - startTime) / 60000, 0.04);
+      const finalWpm = Math.round((correctCharsTyped / 5) / elapsedMin);
+      const accuracy = totalCharsTyped > 0 ? Math.round((correctCharsTyped / totalCharsTyped) * 100) : 100;
+
+      document.getElementById('goTitle').innerText = title;
+      document.getElementById('repScore').innerText = score;
+      document.getElementById('repWpm').innerText = `${finalWpm} WPM`;
+      document.getElementById('repDestroyed').innerText = wordsDestroyed;
+      document.getElementById('repAccuracy').innerText = `${accuracy}%`;
+      document.getElementById('gameOverScreen').style.display = 'flex';
+    }
+  </script>
+<script src="https://unknownuniversem-blip.github.io/network.js" defer></script>
+<!-- Viral Social Share Bar -->
+<div id="viral-share-bar" style="position:fixed; bottom:16px; left:50%; transform:translateX(-50%); z-index:99999; display:flex; gap:10px; background:#0f172ae6; backdrop-filter:blur(8px); border:1px solid #38bdf8; padding:8px 16px; border-radius:50px; box-shadow:0 8px 30px rgba(0,0,0,0.6); align-items:center;">
+  <span style="color:#f8fafc; font-size:0.82rem; font-weight:700; white-space:nowrap;">Share with Aspirants:</span>
+  <a href="https://api.whatsapp.com/send?text=%F0%9F%94%A5%2022%2B%20Free%20Daily%20Digital%20Utility%20Tools%20%28Photo%20Resizer%2C%20Speed%20Math%2C%20Typing%2C%20GST%20%26%20Forms%29%3A%20https%3A//unknownuniversem-blip.github.io/" target="_blank" style="background:#22c55e; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    💬 WhatsApp
+  </a>
+  <a href="https://t.me/share/url?url=https%3A//unknownuniversem-blip.github.io/type-arcade/&text=%F0%9F%94%A5%2022%2B%20Free%20Daily%20Digital%20Utility%20Tools%20%28Photo%20Resizer%2C%20Speed%20Math%2C%20Typing%2C%20GST%20%26%20Forms%29%3A%20https%3A//unknownuniversem-blip.github.io/" target="_blank" style="background:#0284c7; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    ✈️ Telegram
+  </a>
+</div>
+
+
+<!-- Dynamic Internal Cross-Link Mesh -->
+<div class="related-mesh-card">
+  <div class="related-mesh-title">⚡ Recommended Essential Student & Cyber Tools</div>
+  <div class="related-mesh-grid">
+    <a href="https://unknownuniversem-blip.github.io/math/" class="related-mesh-link" target="_blank">⚡ Speed Math Workout</a><a href="https://unknownuniversem-blip.github.io/exam-resizer/" class="related-mesh-link" target="_blank">📸 Exam Photo & Sign Resizer</a><a href="https://unknownuniversem-blip.github.io/hindi-typing-tutor/" class="related-mesh-link" target="_blank">⌨️ Hindi Typing Tutor</a><a href="https://unknownuniversem-blip.github.io/" class="related-mesh-link" target="_blank">🌐 All 22+ Free Web Utilities</a>
+  </div>
+</div>
+
+</body>
+</html>

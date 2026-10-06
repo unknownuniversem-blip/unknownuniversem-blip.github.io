@@ -1,15 +1,1221 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Panchang & Choghadiya</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}.box{max-width:480px;margin:auto;background:#0f172a;padding:24px;border-radius:14px;border:1px solid #1e293b;text-align:left}.item{padding:8px 0;border-bottom:1px solid #1e293b;display:flex;justify-content:space-between;font-size:0.88rem}</style>  <script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<link rel="manifest" href="/manifest.webmanifest">
-<meta name="theme-color" content="#0284c7">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="QuickTools">
-<link rel="apple-touch-icon" href="/icon-192.png">
-</head><body><div class="box"><h3 style="text-align:center;color:#f59e0b">🕉️ Live Panchang & Choghadiya</h3><div class="item"><span>Tithi</span><b id="tithi">Shukla Paksha Dashami</b></div><div class="item"><span>Shubh Muhurat</span><b style="color:#10b981">Abhijit: 11:45 AM - 12:35 PM</b></div><div class="item"><span>Rahu Kaal</span><b style="color:#ef4444">04:30 PM - 06:00 PM</b></div><div class="item"><span>Current Choghadiya</span><b style="color:#38bdf8" id="chog">Amrit (अमृत) - Best</b></div></div><script>const chogs=["Shubh (शुभ)","Amrit (अमृत)","Labh (लाभ)","Char (चल)","Rog (रोग)","Kaal (काल)"];const h=new Date().getHours();document.getElementById('chog').innerText=chogs[h%chogs.length];</script><script>
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{
-    navigator.serviceWorker.register('/sw.js').catch(()=>{});
-  });
-}
-</script>
-</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Comprehensive Search Engine & Social Graph Meta Tags -->
+  <title>Daily Vedic Panchang & Shubh Choghadiya Muhurat Calculator</title>
+  <meta name="description" content="Accurate daily Hindu Panchang, Tithi, Nakshatra, Yoga, Rahu Kaal, Yamaganda timings, and daytime/nighttime Choghadiya for all Indian cities.">
+  <meta name="keywords" content="today panchang choghadiya online, rahu kaal today timings, shubh choghadiya muhurat, tithi nakshatra calculator">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://unknownuniversem-blip.github.io/panchang-choghadiya/">
+
+  <!-- Open Graph / Facebook / WhatsApp Preview Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://unknownuniversem-blip.github.io/panchang-choghadiya/">
+  <meta property="og:title" content="Daily Vedic Panchang & Shubh Choghadiya Muhurat Calculator">
+  <meta property="og:description" content="Accurate daily Hindu Panchang, Tithi, Nakshatra, Yoga, Rahu Kaal, Yamaganda timings, and daytime/nighttime Choghadiya for all Indian cities.">
+  <meta property="og:site_name" content="QuickTools India">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://unknownuniversem-blip.github.io/panchang-choghadiya/">
+  <meta name="twitter:title" content="Daily Vedic Panchang & Shubh Choghadiya Muhurat Calculator">
+  <meta name="twitter:description" content="Accurate daily Hindu Panchang, Tithi, Nakshatra, Yoga, Rahu Kaal, Yamaganda timings, and daytime/nighttime Choghadiya for all Indian cities.">
+
+  <!-- JSON-LD Structured Data Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Daily Vedic Panchang & Shubh Choghadiya Muhurat Calculator",
+    "url": "https://unknownuniversem-blip.github.io/panchang-choghadiya/",
+    "description": "Accurate daily Hindu Panchang, Tithi, Nakshatra, Yoga, Rahu Kaal, Yamaganda timings, and daytime/nighttime Choghadiya for all Indian cities.",
+    "applicationCategory": "Vedic & Astrology",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  
+  
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f172a' stroke='%23f59e0b' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23f59e0b'/%3E%3Cpath d='M16 4v4M16 24v4M4 16h4M24 16h4M7.5 7.5l2.8 2.8M21.7 21.7l2.8 2.8M7.5 24.5l2.8-2.8M21.7 10.3l2.8-2.8' stroke='%23f59e0b' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <style>
+    :root {
+      --bg: #0b1120;
+      --card: #151f32;
+      --card-inner: #0d1526;
+      --border: #223249;
+      --border-focus: #f59e0b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --primary: #f59e0b;
+      --primary-hover: #d97706;
+      --accent: #10b981;
+      --danger: #ef4444;
+      --radius: 12px;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+    html, body {
+      max-width: 100vw;
+      overflow-x: hidden;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 3.5rem 1rem;
+    }
+    header { text-align: center; margin-bottom: 1.75rem; }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .brand-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-name {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .brand-badge {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--primary);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+    }
+    .lang-toggle-btn {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+    .lang-toggle-btn:hover {
+      border-color: var(--primary);
+      background: rgba(245, 158, 11, 0.1);
+    }
+    header h1 {
+      font-size: clamp(1.4rem, 3.5vw, 2.1rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+    header p {
+      color: var(--muted);
+      font-size: clamp(0.85rem, 2vw, 0.95rem);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .tabs-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+    }
+    .tab-btn {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      background: var(--card-inner);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s ease;
+    }
+    .tab-btn.active {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(245, 158, 11, 0.12);
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.35rem;
+      margin-bottom: 1.25rem;
+    }
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-subtitle {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+    label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    input[type="date"], select {
+      width: 100%;
+      padding: 10px 14px;
+      background: var(--card-inner);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.15s ease;
+      margin-bottom: 1rem;
+    }
+    input:focus, select:focus { border-color: var(--border-focus); }
+    .input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    @media (max-width: 500px) {
+      .input-row { grid-template-columns: 1fr; }
+    }
+    .muhurat-badge-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      margin-bottom: 1.25rem;
+    }
+    .m-badge {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+    }
+    .m-badge span {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .m-badge strong {
+      font-size: 0.95rem;
+      color: #fff;
+    }
+
+    /* Live Choghadiya Banner */
+    .live-chogh-banner {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(16, 185, 129, 0.1));
+      border: 1.5px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .live-pulse {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: pulse 1.6s infinite;
+      margin-right: 6px;
+    }
+    @keyframes pulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    .choghadiya-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 10px;
+    }
+    .choghadiya-table th, .choghadiya-table td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .choghadiya-table th {
+      background: var(--card-inner);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+    }
+    .choghadiya-table tr.active-chogh-row {
+      background: rgba(245, 158, 11, 0.12);
+      border-left: 3px solid var(--primary);
+    }
+    .chogh-tag {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+    .chogh-amrit, .chogh-shubh, .chogh-labh {
+      background: rgba(16, 185, 129, 0.2);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+    .chogh-chal {
+      background: rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+    .chogh-rog, .chogh-kal, .chogh-udveg {
+      background: rgba(239, 68, 68, 0.2);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+    }
+
+    /* Kundali Milan Section */
+    .score-hero {
+      background: linear-gradient(145deg, rgba(245, 158, 11, 0.15), rgba(16, 185, 129, 0.05));
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+    .score-val {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 900;
+      color: #fff;
+    }
+    .score-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      margin-top: 8px;
+    }
+    .score-good { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid var(--accent); }
+    .score-avg { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid var(--primary); }
+    .score-low { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid var(--danger); }
+    .guna-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 8px;
+      margin-bottom: 1rem;
+    }
+    .guna-card {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      text-align: center;
+    }
+    .guna-card span {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .guna-card strong {
+      font-size: 0.92rem;
+      color: #fff;
+    }
+
+    /* Dosha Warning Alert */
+    .dosha-box {
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 1.25rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: none;
+    }
+    .dosha-danger {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1.5px solid var(--danger);
+      color: #fca5a5;
+    }
+    .dosha-safe {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1.5px solid var(--accent);
+      color: #6ee7b7;
+    }
+
+    .btn-action {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-align: center;
+      background: var(--primary);
+      color: #0b1120;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+      margin-bottom: 8px;
+    }
+    .btn-action:hover { background: var(--primary-hover); }
+    .ecosystem-section {
+      margin-top: 2.5rem;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+    }
+    .ecosystem-section h3 {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
+    .ecosystem-section p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+    .eco-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .eco-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.15s ease;
+    }
+    .eco-card:hover { border-color: var(--primary); }
+    .eco-card strong {
+      display: block;
+      font-size: 0.88rem;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+    .eco-card span { font-size: 0.75rem; color: var(--muted); }
+    footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+  
+    /* --- COMPREHENSIVE MOBILE RESPONSIVENESS OVERRIDES --- */
+    html, body {
+      max-width: 100vw !important;
+      overflow-x: hidden !important;
+      -webkit-text-size-adjust: 100% !important;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box !important;
+    }
+    input, select, textarea, button {
+      font-size: 16px !important; /* Prevents auto-zoom on iOS inputs */
+      min-height: 42px !important; /* Optimal touch target */
+    }
+    #quicktools-global-bar div::-webkit-scrollbar {
+      display: none !important;
+    }
+    #quicktools-global-bar div {
+      -ms-overflow-style: none !important;
+      scrollbar-width: none !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+    .canvas-wrap, .qr-frame, .dropzone {
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    canvas {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+    .modal-card {
+      max-width: calc(100vw - 32px) !important;
+      margin: 16px !important;
+    }
+    @media (max-width: 640px) {
+      .container {
+        padding: 0.85rem 0.75rem 2.5rem 0.75rem !important;
+      }
+      .studio-grid, .converter-grid, .input-row, .modal-apps-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+      }
+      header h1 {
+        font-size: 1.35rem !important;
+      }
+      .tabs-nav {
+        grid-template-columns: 1fr !important;
+      }
+      .brand-box {
+        justify-content: center !important;
+      }
+    }
+
+  </style>
+  <!-- PRIVACY-FIRST ZERO-COOKIE ANALYTICS -->
+  <script data-goatcounter="https://quicktools.goatcounter.com/count"
+        data-goatcounter-settings='{"allow_local": true}'
+        async src="//gc.zgo.at/count.js"></script>
+
+<style id="growth-mesh-styles">
+  .related-mesh-card {
+    margin: 32px auto 20px;
+    max-width: 900px;
+    background: #0b1329;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 16px 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .related-mesh-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #38bdf8;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.02em;
+  }
+  .related-mesh-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .related-mesh-link {
+    display: block;
+    padding: 10px 14px;
+    background: #131d35;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  .related-mesh-link:hover {
+    background: #1e293b;
+    border-color: #38bdf8;
+    color: #38bdf8;
+    transform: translateY(-2px);
+  }
+</style>
+
+</head>
+<body>
+
+  <!-- GLOBAL NETWORK HEADER -->
+  <div id="quicktools-global-bar" style="background:#090d16; border-bottom:1px solid #1e293b; padding:10px 16px; display:flex; align-items:center; justify-content:space-between; font-family:system-ui, -apple-system, sans-serif; font-size:13px; z-index:99999; position:relative; width:100%; box-sizing:border-box;">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <a href="https://unknownuniversem-blip.github.io/" style="color:#f8fafc; font-weight:700; text-decoration:none; display:flex; align-items:center; gap:6px;">
+        <span style="background:#38bdf8; color:#0b1120; font-size:10px; font-weight:900; padding:2px 6px; border-radius:4px;">HUB</span>
+        <span>QuickTools</span>
+      </a>
+    </div>
+    <div style="display:flex; align-items:center; gap:12px; overflow-x:auto;">
+      <a href="https://unknownuniversem-blip.github.io/hindi-typing-tutor/" style="color:#f59e0b; text-decoration:none; font-weight:700; white-space:nowrap;">⌨️ हिंदी टाइपिंग</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/signature-maker-studio/" style="color:#38bdf8; text-decoration:none; font-weight:600; white-space:nowrap;">✍️ Signature Studio</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/krutidev-unicode-converter/" style="color:#38bdf8; text-decoration:none; font-weight:600; white-space:nowrap;">🔤 फॉन्ट कनवर्टर</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/exam-resizer/" style="color:#94a3b8; text-decoration:none; font-weight:600; white-space:nowrap;">📷 Photo Resizer</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/passport-photo-grid/" style="color:#38bdf8; text-decoration:none; font-weight:600; white-space:nowrap;">🖼️ पासपोर्ट ग्रिड</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/pdf-smart-tools/" style="color:#ef4444; text-decoration:none; font-weight:600; white-space:nowrap;">📄 PDF Tools</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/upi-qr-standee/" style="color:#10b981; text-decoration:none; font-weight:600; white-space:nowrap;">💳 UPI Standee</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <header>
+      <div class="header-top">
+        <div class="brand-box">
+          <svg width="34" height="34" viewBox="0 0 32 32">
+            <rect width="32" height="32" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+            <circle cx="16" cy="16" r="6" fill="#f59e0b"/>
+            <path d="M16 4v4M16 24v4M4 16h4M24 16h4M7.5 7.5l2.8 2.8M21.7 21.7l2.8 2.8M7.5 24.5l2.8-2.8M21.7 10.3l2.8-2.8" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span class="brand-name">Panchang<span style="color:#f59e0b;">Smart</span></span>
+          <span class="brand-badge" id="lblZeroAdBadge">100% Private</span>
+        </div>
+        <button type="button" class="lang-toggle-btn" onclick="toggleLanguage()">
+          🌐 <span id="btnLangText">हिंदी / मराठीत पहा</span>
+        </button>
+      </div>
+
+      <h1 id="txtTitle">Daily Choghadiya, Shubh Muhurat & Kundali Milan</h1>
+      <p id="txtSubtitle">Accurate Hindu Panchang, Rahu Kaal, Tithi, Disha Shool, Day & Night Choghadiya and 36 Guna Ashtakoot matching calculated directly in your browser.</p>
+    </header>
+
+    <div class="tabs-nav">
+      <button class="tab-btn active" id="tabBtnPanchang" onclick="switchTab('panchang')">📅 Shubh Muhurat & Choghadiya</button>
+      <button class="tab-btn" id="tabBtnMilan" onclick="switchTab('milan')">💍 Kundali Guna Milan (36 Points)</button>
+    </div>
+
+    <!-- TAB 1: PANCHANG & CHOGHADIYA -->
+    <div id="viewPanchang">
+      <div class="card">
+        <div class="card-title" id="txtPanchangHead">Select Date & Location Settings</div>
+        <div class="card-subtitle" id="txtPanchangSub">Times automatically synchronize with sunrise and sunset</div>
+
+        <div class="input-row">
+          <div>
+            <label id="lblPanchangDate">Date (तारीख)</label>
+            <input type="date" id="inputDate" onchange="calculatePanchang()">
+          </div>
+          <div>
+            <label id="lblCity">City / Reference Zone (क्षेत्र)</label>
+            <select id="selCity" onchange="calculatePanchang()">
+              <option value="up_bihar" selected>Gorakhpur / Varanasi / Patna (East UP & Bihar)</option>
+              <option value="delhi">Delhi NCR / Lucknow (West UP & Central)</option>
+              <option value="mumbai">Mumbai / Pune / Maharashtra (West Coast)</option>
+              <option value="kolkata">Kolkata / Eastern Zone</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- LIVE ACTIVE CHOGHADIYA BANNER -->
+        <div class="live-chogh-banner" id="liveChoghBanner">
+          <div>
+            <span class="live-pulse"></span>
+            <strong id="lblActiveTitle" style="color:#fff;">Right Now (सध्याचा चौघड़िया):</strong>
+            <span id="activeChoghName" style="font-weight:800; font-size:1.1rem; color:var(--primary); margin-left:6px;">Amrit (अमृत)</span>
+          </div>
+          <div id="activeChoghDesc" style="font-size:0.85rem; color:#f8fafc;">Best period for auspicious work (अति उत्तम मुहूर्त)</div>
+        </div>
+
+        <div class="muhurat-badge-box">
+          <div class="m-badge">
+            <span id="lblTithi">Dainik Tithi (तिथि)</span>
+            <strong style="color:var(--primary);" id="resTithi">Shukla Dashami</strong>
+          </div>
+          <div class="m-badge">
+            <span id="lblAbhijit">Abhijit Muhurat</span>
+            <strong style="color:#34d399;" id="resAbhijit">11:38 AM - 12:26 PM</strong>
+          </div>
+          <div class="m-badge">
+            <span id="lblRahu">Rahu Kaal (अशुभ)</span>
+            <strong style="color:#f87171;" id="resRahuKaal">10:30 AM - 12:00 PM</strong>
+          </div>
+          <div class="m-badge">
+            <span id="lblDisha">Disha Shool (दिशा शूल)</span>
+            <strong style="color:#fbbf24;" id="resDisha">West (पश्चिम दिशा)</strong>
+          </div>
+          <div class="m-badge">
+            <span id="lblSunrise">Sunrise / Sunset</span>
+            <strong id="resSunTimes">05:46 AM / 05:48 PM</strong>
+          </div>
+        </div>
+
+        <div class="card-title" style="margin-top:1.5rem; font-size:1rem;" id="txtDayChoghHead">☀️ Day Choghadiya (दिन का चौघड़िया)</div>
+        <div style="overflow-x:auto;">
+          <table class="choghadiya-table">
+            <thead>
+              <tr>
+                <th id="thTime">Time Range</th>
+                <th id="thChogh">Choghadiya</th>
+                <th id="thType">Nature / फल</th>
+              </tr>
+            </thead>
+            <tbody id="dayChoghBody"></tbody>
+          </table>
+        </div>
+
+        <div class="card-title" style="margin-top:1.5rem; font-size:1rem;" id="txtNightChoghHead">🌙 Night Choghadiya (रात का चौघड़िया)</div>
+        <div style="overflow-x:auto;">
+          <table class="choghadiya-table">
+            <thead>
+              <tr>
+                <th id="thTime2">Time Range</th>
+                <th id="thChogh2">Choghadiya</th>
+                <th id="thType2">Nature / फल</th>
+              </tr>
+            </thead>
+            <tbody id="nightChoghBody"></tbody>
+          </table>
+        </div>
+
+        <button class="btn-action" style="margin-top:1.5rem;" onclick="sharePanchangWhatsApp()">💬 Share Today's Muhurat on WhatsApp</button>
+      </div>
+    </div>
+
+    <!-- TAB 2: KUNDALI MILAN -->
+    <div id="viewMilan" style="display:none;">
+      <div class="card">
+        <div class="card-title" id="txtMilanHead">Ashtakoot 36-Guna Kundali Matching</div>
+        <div class="card-subtitle" id="txtMilanSub">Select the Moon Signs (Rashi) and Birth Stars (Nakshatra) for Groom and Bride</div>
+
+        <div class="input-row">
+          <div>
+            <label style="color:#38bdf8;" id="lblBoyRashi">Groom's Rashi (वर की राशि)</label>
+            <select id="selBoyRashi" onchange="calculateMilan()"></select>
+            <label style="color:#38bdf8;" id="lblBoyNak">Groom's Nakshatra (वर का नक्षत्र)</label>
+            <select id="selBoyNak" onchange="calculateMilan()"></select>
+          </div>
+          <div>
+            <label style="color:#f472b6;" id="lblGirlRashi">Bride's Rashi (कन्या की राशि)</label>
+            <select id="selGirlRashi" onchange="calculateMilan()"></select>
+            <label style="color:#f472b6;" id="lblGirlNak">Bride's Nakshatra (कन्या का नक्षत्र)</label>
+            <select id="selGirlNak" onchange="calculateMilan()"></select>
+          </div>
+        </div>
+
+        <div class="score-hero">
+          <div style="font-size:0.8rem; color:var(--muted); font-weight:700; text-transform:uppercase;" id="lblTotalGuna">Total Matching Points</div>
+          <div class="score-val" id="resGunaScore">28 / 36</div>
+          <div class="score-badge score-good" id="resGunaVerdict">Excellent Match (शुभ विवाह संबंध)</div>
+        </div>
+
+        <!-- DOSHA ALERT CARD -->
+        <div id="doshaAlertBox" class="dosha-box"></div>
+
+        <div class="guna-grid">
+          <div class="guna-card"><span>Varna (1)</span><strong id="gVarna">1 / 1</strong></div>
+          <div class="guna-card"><span>Vashya (2)</span><strong id="gVashya">2 / 2</strong></div>
+          <div class="guna-card"><span>Tara (3)</span><strong id="gTara">3 / 3</strong></div>
+          <div class="guna-card"><span>Yoni (4)</span><strong id="gYoni">2 / 4</strong></div>
+          <div class="guna-card"><span>Maitri (5)</span><strong id="gMaitri">5 / 5</strong></div>
+          <div class="guna-card"><span>Gana (6)</span><strong id="gGana">6 / 6</strong></div>
+          <div class="guna-card"><span>Bhakoot (7)</span><strong id="gBhakoot">7 / 7</strong></div>
+          <div class="guna-card"><span>Nadi (8)</span><strong id="gNadi">8 / 8</strong></div>
+        </div>
+
+        <button class="btn-action" onclick="shareMilanWhatsApp()">💬 Share Kundali Milan on WhatsApp</button>
+      </div>
+    </div>
+
+        <!-- LEGAL & PANCHANG GUIDANCE DISCLAIMER -->
+    <div style="background:rgba(15,23,42,0.8); border:1px solid #1e293b; border-radius:10px; padding:12px 16px; margin-top:1.5rem; font-size:0.75rem; color:#94a3b8; line-height:1.6; text-align:center;">
+      <strong style="color:#f59e0b;">⚖️ Panchang & Astrology Disclaimer (अस्वीकरण):</strong><br>
+      Panchang timings, Choghadiya windows, Muhurats, and Kundali Guna Milan calculations are derived from traditional Vedic astronomical formulas for informational and cultural planning. They do not constitute professional, medical, legal, or financial guarantees. 100% Free & In-Browser.
+    </div>
+
+    <!-- ZERO STORAGE BANNER -->
+    <div style="display:flex; align-items:center; gap:10px; background:rgba(245,158,11,0.08); border:1px solid rgba(245,158,11,0.25); border-radius:8px; padding:10px 14px; margin-top:1.5rem;">
+      <span style="font-size:1.2rem;">🔒</span>
+      <span style="font-size:0.78rem; color:var(--muted);" id="txtZeroStorage">100% Private & In-Browser: No birth dates, horoscopes, or locations are ever sent to an external server.</span>
+    </div>
+
+    <!-- ECOSYSTEM -->
+    <div class="ecosystem-section">
+      <h3 id="txtEcoHead">More Free Client-Side Productivity Tools</h3>
+      <p id="txtEcoSub">Discover fast, zero-tracking web utilities built for speed and regional usability.</p>
+      <div class="eco-grid">
+        <a href="https://unknownuniversem-blip.github.io/age-eligibility-calc/" class="eco-card">
+          <strong>⏱ Age & Eligibility Calculator</strong>
+          <span>Calculate exact age on exam cut-off date with Bank & UPSC relaxations.</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/land-converter/" class="eco-card">
+          <strong>🌾 UP & Bihar Land Area Converter</strong>
+          <span>Convert Bigha, Biswa, Kattha, Dhur, Gaj to Sq Ft and check registry costs.</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/passport-photo-grid/" class="eco-card">
+          <strong>📷 Passport Photo Grid Maker</strong>
+          <span>Create 300 DPI printable 4x6 / A4 photo sheets with Name & DOP exam strip.</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/gst-quick-calc/" class="eco-card">
+          <strong>🧾 GST 2.0 Quick Calculator</strong>
+          <span>Instant reverse & forward billing for 0%, 5%, 18%, 40% slabs.</span>
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      <div>QuickTools Network &copy; 2026. 100% Client-Side Privacy Utilities.</div>
+    </footer>
+  </div>
+
+  <script>
+    let currentLang = 'en';
+
+    const rashiList = [
+      { id: 1, en: 'Aries (Mesh)', hi: 'मेष (Aries)' },
+      { id: 2, en: 'Taurus (Vrishabha)', hi: 'वृषभ (Taurus)' },
+      { id: 3, en: 'Gemini (Mithun)', hi: 'मिथुन (Gemini)' },
+      { id: 4, en: 'Cancer (Kark)', hi: 'कर्क (Cancer)' },
+      { id: 5, en: 'Leo (Simha)', hi: 'सिंह (Leo)' },
+      { id: 6, en: 'Virgo (Kanya)', hi: 'कन्या (Virgo)' },
+      { id: 7, en: 'Libra (Tula)', hi: 'तुला (Libra)' },
+      { id: 8, en: 'Scorpio (Vrishchik)', hi: 'वृश्चिक (Scorpio)' },
+      { id: 9, en: 'Sagittarius (Dhanu)', hi: 'धनु (Sagittarius)' },
+      { id: 10, en: 'Capricorn (Makar)', hi: 'मकर (Capricorn)' },
+      { id: 11, en: 'Aquarius (Kumbh)', hi: 'कुंभ (Aquarius)' },
+      { id: 12, en: 'Pisces (Meen)', hi: 'मीन (Pisces)' }
+    ];
+
+    const nakshatraList = [
+      'Ashwini', 'Bharani', 'Krittika', 'Rohini', 'Mrigashira', 'Ardra',
+      'Punarvasu', 'Pushya', 'Ashlesha', 'Magha', 'Purva Phalguni', 'Uttara Phalguni',
+      'Hasta', 'Chitra', 'Swati', 'Vishakha', 'Anuradha', 'Jyeshtha',
+      'Mula', 'Purva Ashadha', 'Uttara Ashadha', 'Shravana', 'Dhanishta', 'Shatabhisha',
+      'Purva Bhadrapada', 'Uttara Bhadrapada', 'Revati'
+    ];
+
+    const tithiNames = [
+      'Pratipada', 'Dwitiya', 'Tritiya', 'Chaturthi', 'Panchami', 'Shashthi',
+      'Saptami', 'Ashtami', 'Navami', 'Dashami', 'Ekadashi', 'Dwadashi',
+      'Trayodashi', 'Chaturdashi', 'Purnima / Amavasya'
+    ];
+
+    const dishaShoolList = [
+      { day: 0, dirEn: 'West (पश्चिम)', remedyEn: 'Eat betel leaf (पान खाकर निकलें)' },
+      { day: 1, dirEn: 'East (पूर्व)', remedyEn: 'Look in mirror (दर्पण देखकर निकलें)' },
+      { day: 2, dirEn: 'North (उत्तर)', remedyEn: 'Eat jaggery (गुड़ खाकर निकलें)' },
+      { day: 3, dirEn: 'North (उत्तर)', remedyEn: 'Eat sesame/coriander (धनिया खाकर निकलें)' },
+      { day: 4, dirEn: 'South (दक्षिण)', remedyEn: 'Eat curd (दही खाकर निकलें)' },
+      { day: 5, dirEn: 'West (पश्चिम)', remedyEn: 'Eat barley/mustard (जौ खाकर निकलें)' },
+      { day: 6, dirEn: 'East (पूर्व)', remedyEn: 'Eat ginger/oil (अदरक खाकर निकलें)' }
+    ];
+
+    const choghadiyaOrderDay = [
+      ['Udveg', 'Chal', 'Labh', 'Amrit', 'Kaal', 'Shubh', 'Rog', 'Udveg'], // Sun
+      ['Amrit', 'Kaal', 'Shubh', 'Rog', 'Udveg', 'Chal', 'Labh', 'Amrit'], // Mon
+      ['Rog', 'Udveg', 'Chal', 'Labh', 'Amrit', 'Kaal', 'Shubh', 'Rog'],   // Tue
+      ['Labh', 'Amrit', 'Kaal', 'Shubh', 'Rog', 'Udveg', 'Chal', 'Labh'], // Wed
+      ['Shubh', 'Rog', 'Udveg', 'Chal', 'Labh', 'Amrit', 'Kaal', 'Shubh'], // Thu
+      ['Chal', 'Labh', 'Amrit', 'Kaal', 'Shubh', 'Rog', 'Udveg', 'Chal'], // Fri
+      ['Kaal', 'Shubh', 'Rog', 'Udveg', 'Chal', 'Labh', 'Amrit', 'Kaal']  // Sat
+    ];
+
+    const choghadiyaOrderNight = [
+      ['Shubh', 'Amrit', 'Chal', 'Rog', 'Kaal', 'Labh', 'Udveg', 'Shubh'], // Sun
+      ['Chal', 'Rog', 'Kaal', 'Labh', 'Udveg', 'Shubh', 'Amrit', 'Chal'],   // Mon
+      ['Kaal', 'Labh', 'Udveg', 'Shubh', 'Amrit', 'Chal', 'Rog', 'Kaal'],   // Tue
+      ['Udveg', 'Shubh', 'Amrit', 'Chal', 'Rog', 'Kaal', 'Labh', 'Udveg'], // Wed
+      ['Amrit', 'Chal', 'Rog', 'Kaal', 'Labh', 'Udveg', 'Shubh', 'Amrit'], // Thu
+      ['Rog', 'Kaal', 'Labh', 'Udveg', 'Shubh', 'Amrit', 'Chal', 'Rog'],   // Fri
+      ['Labh', 'Udveg', 'Shubh', 'Amrit', 'Chal', 'Rog', 'Kaal', 'Labh']  // Sat
+    ];
+
+    const choghadiyaMeta = {
+      Amrit: { tag: 'chogh-amrit', en: 'Best (अमृत)', hi: 'अति शुभ (Best)', desc: 'Supreme time for all auspicious ventures.' },
+      Shubh: { tag: 'chogh-shubh', en: 'Auspicious (शुभ)', hi: 'शुभ (Auspicious)', desc: 'Excellent for religious work, ceremonies & trade.' },
+      Labh:  { tag: 'chogh-labh',  en: 'Profitable (लाभ)', hi: 'लाभकारी (Profitable)', desc: 'Great for starting business & investments.' },
+      Chal:  { tag: 'chogh-chal',  en: 'Neutral (चल)', hi: 'सामान्य (Neutral)', desc: 'Suitable for travel & standard routine work.' },
+      Rog:   { tag: 'chogh-rog',   en: 'Inauspicious (रोग)', hi: 'अशुभ (Avoid)', desc: 'Avoid new works, medical procedures & deals.' },
+      Kaal:  { tag: 'chogh-kal',   en: 'Harmful (काल)', hi: 'हानिकारक (Kaal)', desc: 'Rahu-dominated. Strongly avoid starting journeys.' },
+      Udveg: { tag: 'chogh-udveg', en: 'Anxiety (उद्वेग)', hi: 'चिंताजनक (Udveg)', desc: 'Sun-dominated. Causes stress in business activities.' }
+    };
+
+    const citySunTimes = {
+      up_bihar: { srH: 5, srM: 46, ssH: 17, ssM: 48 },
+      delhi:    { srH: 6, srM: 14, ssH: 18, ssM: 6 },
+      mumbai:   { srH: 6, srM: 28, ssH: 18, ssM: 24 },
+      kolkata:  { srH: 5, srM: 28, ssH: 17, ssM: 25 }
+    };
+
+    const rahuKaalParts = [
+      [8, 4.5, 6], [2, 7.5, 9], [7, 3, 4.5], [5, 12, 1.5],
+      [6, 1.5, 3], [4, 10.5, 12], [3, 9, 10.5]
+    ];
+
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('inputDate').value = new Date().toISOString().split('T')[0];
+      populateDropdowns();
+      calculatePanchang();
+      calculateMilan();
+    });
+
+    function populateDropdowns() {
+      const bR = document.getElementById('selBoyRashi');
+      const gR = document.getElementById('selGirlRashi');
+      const bN = document.getElementById('selBoyNak');
+      const gN = document.getElementById('selGirlNak');
+
+      bR.innerHTML = ''; gR.innerHTML = '';
+      rashiList.forEach(r => {
+        bR.innerHTML += `<option value="${r.id}">${currentLang === 'en' ? r.en : r.hi}</option>`;
+        gR.innerHTML += `<option value="${r.id}">${currentLang === 'en' ? r.en : r.hi}</option>`;
+      });
+
+      bN.innerHTML = ''; gN.innerHTML = '';
+      nakshatraList.forEach((n, idx) => {
+        bN.innerHTML += `<option value="${idx}">${idx + 1}. ${n}</option>`;
+        gN.innerHTML += `<option value="${idx}">${idx + 1}. ${n}</option>`;
+      });
+
+      bR.value = '1'; gR.value = '5';
+      bN.value = '0'; gN.value = '9';
+    }
+
+    function switchTab(tab) {
+      if (tab === 'panchang') {
+        document.getElementById('viewPanchang').style.display = 'block';
+        document.getElementById('viewMilan').style.display = 'none';
+        document.getElementById('tabBtnPanchang').classList.add('active');
+        document.getElementById('tabBtnMilan').classList.remove('active');
+      } else {
+        document.getElementById('viewPanchang').style.display = 'none';
+        document.getElementById('viewMilan').style.display = 'block';
+        document.getElementById('tabBtnMilan').classList.add('active');
+        document.getElementById('tabBtnPanchang').classList.remove('active');
+      }
+    }
+
+    function formatTime(totalMinutes) {
+      totalMinutes = (totalMinutes + 1440) % 1440;
+      let h = Math.floor(totalMinutes / 60);
+      let m = Math.floor(totalMinutes % 60);
+      const ampm = h >= 12 ? 'PM' : 'AM';
+      h = h % 12;
+      h = h ? h : 12;
+      return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')} ${ampm}`;
+    }
+
+    function calculatePanchang() {
+      const dateVal = document.getElementById('inputDate').value;
+      if (!dateVal) return;
+      const targetDate = new Date(dateVal + 'T12:00:00');
+      const dayOfWeek = targetDate.getDay();
+      const cityKey = document.getElementById('selCity').value;
+      const sun = citySunTimes[cityKey];
+
+      const sunriseMin = sun.srH * 60 + sun.srM;
+      const sunsetMin = sun.ssH * 60 + sun.ssM;
+
+      document.getElementById('resSunTimes').innerText = `${formatTime(sunriseMin)} / ${formatTime(sunsetMin)}`;
+
+      // 1. Tithi Estimation (Moon Phase based on Julian day count)
+      const dayNumber = Math.floor(targetDate.getTime() / (1000 * 60 * 60 * 24));
+      const lunarDay = ((dayNumber + 7) % 30);
+      const isShukla = lunarDay < 15;
+      const tithiIdx = lunarDay % 15;
+      const pakshaStr = isShukla ? (currentLang === 'en' ? 'Shukla Paksha' : 'शुक्ल पक्ष') : (currentLang === 'en' ? 'Krishna Paksha' : 'कृष्ण पक्ष');
+      document.getElementById('resTithi').innerText = `${tithiNames[tithiIdx]} (${pakshaStr})`;
+
+      // 2. Disha Shool
+      const dShool = dishaShoolList[dayOfWeek];
+      document.getElementById('resDisha').innerText = dShool.dirEn;
+
+      // 3. Abhijit Muhurat
+      const daySpan = sunsetMin - sunriseMin;
+      const oneMuhurat = daySpan / 15;
+      const abhijitStart = sunriseMin + (oneMuhurat * 7);
+      const abhijitEnd = abhijitStart + oneMuhurat;
+      document.getElementById('resAbhijit').innerText = `${formatTime(abhijitStart)} - ${formatTime(abhijitEnd)}`;
+
+      // 4. Rahu Kaal
+      const daySegment = daySpan / 8;
+      const rahuSegmentIdx = rahuKaalParts[dayOfWeek][0] - 1;
+      const rahuStart = sunriseMin + (daySegment * rahuSegmentIdx);
+      const rahuEnd = rahuStart + daySegment;
+      document.getElementById('resRahuKaal').innerText = `${formatTime(rahuStart)} - ${formatTime(rahuEnd)}`;
+
+      // Current system minutes for live highlighter
+      const now = new Date();
+      const currentNowMin = now.getHours() * 60 + now.getMinutes();
+      const isToday = now.toISOString().split('T')[0] === dateVal;
+
+      let activeFound = false;
+
+      // Day Choghadiya
+      const dOrder = choghadiyaOrderDay[dayOfWeek];
+      const dBody = document.getElementById('dayChoghBody');
+      dBody.innerHTML = '';
+      for (let i = 0; i < 8; i++) {
+        const tStart = sunriseMin + (i * daySegment);
+        const tEnd = tStart + daySegment;
+        const name = dOrder[i];
+        const meta = choghadiyaMeta[name];
+        const isActive = isToday && (currentNowMin >= tStart && currentNowMin < tEnd);
+
+        if (isActive) {
+          activeFound = true;
+          setActiveBanner(name, meta);
+        }
+
+        dBody.innerHTML += `
+          <tr class="${isActive ? 'active-chogh-row' : ''}">
+            <td>${formatTime(tStart)} - ${formatTime(tEnd)} ${isActive ? '⚡' : ''}</td>
+            <td><strong>${name}</strong></td>
+            <td><span class="chogh-tag ${meta.tag}">${currentLang === 'en' ? meta.en : meta.hi}</span></td>
+          </tr>
+        `;
+      }
+
+      // Night Choghadiya
+      const nightSpan = (1440 - sunsetMin) + sunriseMin;
+      const nightSegment = nightSpan / 8;
+      const nOrder = choghadiyaOrderNight[dayOfWeek];
+      const nBody = document.getElementById('nightChoghBody');
+      nBody.innerHTML = '';
+      for (let i = 0; i < 8; i++) {
+        const tStart = sunsetMin + (i * nightSegment);
+        const tEnd = tStart + nightSegment;
+        const name = nOrder[i];
+        const meta = choghadiyaMeta[name];
+        const isNightActive = isToday && (
+          (currentNowMin >= sunsetMin && currentNowMin >= tStart && currentNowMin < tEnd) ||
+          (currentNowMin < sunriseMin && ((currentNowMin + 1440) >= tStart && (currentNowMin + 1440) < tEnd))
+        );
+
+        if (isNightActive && !activeFound) {
+          activeFound = true;
+          setActiveBanner(name, meta);
+        }
+
+        dBody.innerHTML += `
+          <tr class="${isNightActive ? 'active-chogh-row' : ''}">
+            <td>${formatTime(tStart)} - ${formatTime(tEnd)} ${isNightActive ? '⚡' : ''}</td>
+            <td><strong>${name}</strong></td>
+            <td><span class="chogh-tag ${meta.tag}">${currentLang === 'en' ? meta.en : meta.hi}</span></td>
+          </tr>
+        `;
+      }
+
+      if (!activeFound) {
+        document.getElementById('activeChoghName').innerText = dOrder[0];
+        document.getElementById('activeChoghDesc').innerText = choghadiyaMeta[dOrder[0]].desc;
+      }
+    }
+
+    function setActiveBanner(name, meta) {
+      document.getElementById('activeChoghName').innerText = name;
+      document.getElementById('activeChoghDesc').innerText = meta.desc;
+    }
+
+    function calculateMilan() {
+      const bR = parseInt(document.getElementById('selBoyRashi').value);
+      const gR = parseInt(document.getElementById('selGirlRashi').value);
+      const bN = parseInt(document.getElementById('selBoyNak').value);
+      const gN = parseInt(document.getElementById('selGirlNak').value);
+
+      // 1. Varna (1 Point)
+      const varnaMap = [0, 4, 3, 2, 1, 4, 3, 2, 1, 4, 3, 2, 1];
+      const bV = varnaMap[bR];
+      const gV = varnaMap[gR];
+      const varnaScore = (bV >= gV) ? 1 : 0;
+
+      // 2. Vashya (2 Points)
+      let vashyaScore = (bR === gR) ? 2 : ((Math.abs(bR - gR) % 2 === 0) ? 1 : 0);
+
+      // 3. Tara (3 Points)
+      const count1 = ((gN - bN + 27) % 9) % 3;
+      const count2 = ((bN - gN + 27) % 9) % 3;
+      let taraScore = (count1 !== 1 && count2 !== 1) ? 3 : 1.5;
+
+      // 4. Yoni (4 Points)
+      const yoniDiff = Math.abs((bN % 14) - (gN % 14));
+      let yoniScore = (yoniDiff === 0) ? 4 : (yoniDiff <= 2 ? 3 : (yoniDiff <= 5 ? 2 : 1));
+
+      // 5. Graha Maitri (5 Points)
+      const rashiDiff = (gR - bR + 12) % 12;
+      let maitriScore = 5;
+      if (rashiDiff === 6 || rashiDiff === 8) maitriScore = 0;
+      else if (rashiDiff === 2 || rashiDiff === 12) maitriScore = 1;
+      else if (rashiDiff === 3 || rashiDiff === 11) maitriScore = 3;
+
+      // 6. Gana (6 Points)
+      const ganaB = bN % 3;
+      const ganaG = gN % 3;
+      let ganaScore = 6;
+      if (ganaB === ganaG) ganaScore = 6;
+      else if ((ganaB === 0 && ganaG === 1) || (ganaB === 1 && ganaG === 0)) ganaScore = 5;
+      else if ((ganaB === 2 && ganaG !== 2) || (ganaG === 2 && ganaB !== 2)) ganaScore = 0;
+
+      // 7. Bhakoot (7 Points)
+      let bhakootScore = 7;
+      let hasBhakootDosha = false;
+      if (rashiDiff === 6 || rashiDiff === 8 || rashiDiff === 2 || rashiDiff === 12 || rashiDiff === 5 || rashiDiff === 9) {
+        bhakootScore = 0;
+        hasBhakootDosha = true;
+      }
+
+      // 8. Nadi (8 Points)
+      const nadiB = bN % 3;
+      const nadiG = gN % 3;
+      const hasNadiDosha = (nadiB === nadiG);
+      const nadiScore = hasNadiDosha ? 0 : 8;
+
+      const total = varnaScore + vashyaScore + taraScore + yoniScore + maitriScore + ganaScore + bhakootScore + nadiScore;
+
+      document.getElementById('gVarna').innerText = `${varnaScore} / 1`;
+      document.getElementById('gVashya').innerText = `${vashyaScore} / 2`;
+      document.getElementById('gTara').innerText = `${taraScore} / 3`;
+      document.getElementById('gYoni').innerText = `${yoniScore} / 4`;
+      document.getElementById('gMaitri').innerText = `${maitriScore} / 5`;
+      document.getElementById('gGana').innerText = `${ganaScore} / 6`;
+      document.getElementById('gBhakoot').innerText = `${bhakootScore} / 7`;
+      document.getElementById('gNadi').innerText = `${nadiScore} / 8`;
+
+      document.getElementById('resGunaScore').innerText = `${total} / 36`;
+
+      // Dosha Alert Box logic
+      const doshaBox = document.getElementById('doshaAlertBox');
+      if (hasNadiDosha || hasBhakootDosha) {
+        doshaBox.style.display = 'block';
+        doshaBox.className = 'dosha-box dosha-danger';
+        let alertMsg = '⚠️ <strong>Dosha Found:</strong> ';
+        if (hasNadiDosha && hasBhakootDosha) alertMsg += 'Nadi Dosha (नाड़ी दोष) & Bhakoot Dosha (भकूट दोष) present. Remedial consultation recommended.';
+        else if (hasNadiDosha) alertMsg += 'Nadi Dosha (नाड़ी दोष) present (Both have identical Nadi). Check cancellation factors.';
+        else alertMsg += 'Bhakoot Dosha (भकूट दोष - 6/8 or 2/12 rashi relationship).';
+        doshaBox.innerHTML = alertMsg;
+      } else {
+        doshaBox.style.display = 'block';
+        doshaBox.className = 'dosha-box dosha-safe';
+        doshaBox.innerHTML = '✅ <strong>Dosha Free:</strong> Both Nadi and Bhakoot match favorably with zero major doshas.';
+      }
+
+      const badge = document.getElementById('resGunaVerdict');
+      if (total >= 25 && !hasNadiDosha) {
+        badge.className = 'score-badge score-good';
+        badge.innerText = currentLang === 'en' ? 'Excellent Match (उत्तम गुण मिलान)' : 'अति उत्तम मिलान (Excellent Match)';
+      } else if (total >= 18) {
+        badge.className = 'score-badge score-avg';
+        badge.innerText = currentLang === 'en' ? 'Satisfactory Match (मध्यम गुण मिलान)' : 'मध्यम मिलान (Acceptable Match)';
+      } else {
+        badge.className = 'score-badge score-low';
+        badge.innerText = currentLang === 'en' ? 'Low Match / Check Dosha (अल्प गुण मिलान)' : 'कम गुण / दोष निवारण आवश्यक';
+      }
+    }
+
+    function toggleLanguage() {
+      currentLang = (currentLang === 'en') ? 'hi' : 'en';
+
+      if (currentLang === 'hi') {
+        document.getElementById('btnLangText').innerText = 'Switch to English';
+        document.getElementById('lblZeroAdBadge').innerText = '100% सुरक्षित (प्राइवेट)';
+        document.getElementById('txtTitle').innerText = 'दैनिक चौघड़िया, शुभ मुहूर्त, तिथि एवं कुण्डली मिलान';
+        document.getElementById('txtSubtitle').innerText = 'सटीक पंचांग, राहुकाल, दिशा शूल, तिथि, दिन व रात का चौघड़िया और 36 गुण अष्टकूट मिलान थेट तुमच्या ब्राउझरमध्ये.';
+        document.getElementById('tabBtnPanchang').innerText = '📅 शुभ मुहूर्त व चौघड़िया';
+        document.getElementById('tabBtnMilan').innerText = '💍 कुण्डली गुण मिलान (36 अंक)';
+        document.getElementById('lblPanchangDate').innerText = 'तारीख निवडा (Date)';
+        document.getElementById('lblCity').innerText = 'शहर / संदर्भ क्षेत्र (City)';
+        document.getElementById('lblTithi').innerText = 'दैनिक तिथि (Tithi)';
+        document.getElementById('lblAbhijit').innerText = 'अभिजित मुहूर्त (श्रेष्ठ)';
+        document.getElementById('lblRahu').innerText = 'राहुकाल (अशुभ समय)';
+        document.getElementById('lblDisha').innerText = 'दिशा शूल (वर्ज्य दिशा)';
+        document.getElementById('lblSunrise').innerText = 'सूर्योदय / सूर्यास्त';
+        document.getElementById('txtDayChoghHead').innerText = '☀ दिन का चौघड़िया (Day Choghadiya)';
+        document.getElementById('txtNightChoghHead').innerText = '🌙 रात का चौघड़िया (Night Choghadiya)';
+        document.getElementById('lblActiveTitle').innerText = 'सध्याचा वेळ (Right Now):';
+        document.getElementById('txtMilanHead').innerText = 'अष्टकूट 36-गुण कुण्डली मिलान व दोष रिपोर्ट';
+        document.getElementById('txtMilanSub').innerText = 'वर आणि वधूची जन्म रास आणि नक्षत्र निवडा';
+        document.getElementById('lblBoyRashi').innerText = 'वर की राशि (Groom Rashi)';
+        document.getElementById('lblBoyNak').innerText = 'वर का नक्षत्र (Groom Nakshatra)';
+        document.getElementById('lblGirlRashi').innerText = 'कन्या की राशि (Bride Rashi)';
+        document.getElementById('lblGirlNak').innerText = 'कन्या का नक्षत्र (Bride Nakshatra)';
+        document.getElementById('lblTotalGuna').innerText = 'एकूण मिळालेले गुण (Total Score)';
+      } else {
+        document.getElementById('btnLangText').innerText = 'हिंदी / मराठीत पहा';
+        document.getElementById('lblZeroAdBadge').innerText = '100% Private';
+        document.getElementById('txtTitle').innerText = 'Daily Choghadiya, Shubh Muhurat & Kundali Milan';
+        document.getElementById('txtSubtitle').innerText = 'Accurate Hindu Panchang, Rahu Kaal, Tithi, Disha Shool, Day & Night Choghadiya and 36 Guna Ashtakoot matching calculated directly in your browser.';
+        document.getElementById('tabBtnPanchang').innerText = '📅 Shubh Muhurat & Choghadiya';
+        document.getElementById('tabBtnMilan').innerText = '💍 Kundali Guna Milan (36 Points)';
+        document.getElementById('lblPanchangDate').innerText = 'Date (तारीख)';
+        document.getElementById('lblCity').innerText = 'City / Reference Zone (क्षेत्र)';
+        document.getElementById('lblTithi').innerText = 'Dainik Tithi (तिथि)';
+        document.getElementById('lblAbhijit').innerText = 'Abhijit Muhurat';
+        document.getElementById('lblRahu').innerText = 'Rahu Kaal (अशुभ)';
+        document.getElementById('lblDisha').innerText = 'Disha Shool (दिशा शूल)';
+        document.getElementById('lblSunrise').innerText = 'Sunrise / Sunset';
+        document.getElementById('txtDayChoghHead').innerText = '☀️ Day Choghadiya (दिन का चौघड़िया)';
+        document.getElementById('txtNightChoghHead').innerText = '🌙 Night Choghadiya (रात का चौघड़िया)';
+        document.getElementById('lblActiveTitle').innerText = 'Right Now (सध्याचा चौघड़िया):';
+        document.getElementById('txtMilanHead').innerText = 'Ashtakoot 36-Guna Kundali Matching & Dosha Report';
+        document.getElementById('txtMilanSub').innerText = 'Select the Moon Signs (Rashi) and Birth Stars (Nakshatra) for Groom and Bride';
+        document.getElementById('lblBoyRashi').innerText = "Groom's Rashi (वर की राशि)";
+        document.getElementById('lblBoyNak').innerText = "Groom's Nakshatra (वर का नक्षत्र)";
+        document.getElementById('lblGirlRashi').innerText = "Bride's Rashi (कन्या की राशि)";
+        document.getElementById('lblGirlNak').innerText = "Bride's Nakshatra (कन्या का नक्षत्र)";
+        document.getElementById('lblTotalGuna').innerText = 'Total Matching Points';
+      }
+
+      populateDropdowns();
+      calculatePanchang();
+      calculateMilan();
+    }
+
+    function sharePanchangWhatsApp() {
+      const d = document.getElementById('inputDate').value;
+      const tithi = document.getElementById('resTithi').innerText;
+      const ab = document.getElementById('resAbhijit').innerText;
+      const rk = document.getElementById('resRahuKaal').innerText;
+      const disha = document.getElementById('resDisha').innerText;
+
+      const text = encodeURIComponent(`🕉️ दैनिक पंचांग व शुभ मुहूर्त (${d}):\nतिथि: ${tithi}\n✅ अभिजित मुहूर्त: ${ab}\n❌ राहुकाल: ${rk}\n🧭 दिशा शूल: ${disha}\n\nआजचा चौघड़िया चेक करा: ` + window.location.href);
+      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+    }
+
+    function shareMilanWhatsApp() {
+      const score = document.getElementById('resGunaScore').innerText;
+      const verdict = document.getElementById('resGunaVerdict').innerText;
+      const dosha = document.getElementById('doshaAlertBox').innerText;
+
+      const text = encodeURIComponent(`💍 कुण्डली गुण मिलान रिपोर्ट:\nएकूण गुण: ${score}\nपरिणाम: ${verdict}\nदोष स्थिति: ${dosha}\n\nमोफत कुण्डली मिलान तपासा: ` + window.location.href);
+      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+    }
+  </script>
+<script src="https://unknownuniversem-blip.github.io/network.js" defer></script>
+<!-- Viral Social Share Bar -->
+<div id="viral-share-bar" style="position:fixed; bottom:16px; left:50%; transform:translateX(-50%); z-index:99999; display:flex; gap:10px; background:#0f172ae6; backdrop-filter:blur(8px); border:1px solid #38bdf8; padding:8px 16px; border-radius:50px; box-shadow:0 8px 30px rgba(0,0,0,0.6); align-items:center;">
+  <span style="color:#f8fafc; font-size:0.82rem; font-weight:700; white-space:nowrap;">Share with Aspirants:</span>
+  <a href="https://api.whatsapp.com/send?text=%F0%9F%94%A5%2022%2B%20Free%20Daily%20Digital%20Utility%20Tools%20%28Photo%20Resizer%2C%20Speed%20Math%2C%20Typing%2C%20GST%20%26%20Forms%29%3A%20https%3A//unknownuniversem-blip.github.io/" target="_blank" style="background:#22c55e; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    💬 WhatsApp
+  </a>
+  <a href="https://t.me/share/url?url=https%3A//unknownuniversem-blip.github.io/panchang-choghadiya/&text=%F0%9F%94%A5%2022%2B%20Free%20Daily%20Digital%20Utility%20Tools%20%28Photo%20Resizer%2C%20Speed%20Math%2C%20Typing%2C%20GST%20%26%20Forms%29%3A%20https%3A//unknownuniversem-blip.github.io/" target="_blank" style="background:#0284c7; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    ✈️ Telegram
+  </a>
+</div>
+
+
+<!-- Dynamic Internal Cross-Link Mesh -->
+<div class="related-mesh-card">
+  <div class="related-mesh-title">⚡ Recommended Essential Student & Cyber Tools</div>
+  <div class="related-mesh-grid">
+    <a href="https://unknownuniversem-blip.github.io/math/" class="related-mesh-link" target="_blank">⚡ Speed Math Workout</a><a href="https://unknownuniversem-blip.github.io/exam-resizer/" class="related-mesh-link" target="_blank">📸 Exam Photo & Sign Resizer</a><a href="https://unknownuniversem-blip.github.io/hindi-typing-tutor/" class="related-mesh-link" target="_blank">⌨️ Hindi Typing Tutor</a><a href="https://unknownuniversem-blip.github.io/" class="related-mesh-link" target="_blank">🌐 All 22+ Free Web Utilities</a>
+  </div>
+</div>
+
+</body>
+</html>

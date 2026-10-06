@@ -1,14 +1,957 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>GST Quick Calculator</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}.box{max-width:440px;margin:auto;background:#0f172a;padding:24px;border-radius:14px;border:1px solid #1e293b;text-align:left}input,select{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #334155;background:#131d35;color:#fff;box-sizing:border-box}.res{margin-top:12px;padding:12px;background:#070c18;border-radius:8px;font-size:1rem;color:#10b981;font-weight:bold;text-align:center}</style><link rel="manifest" href="/manifest.webmanifest">
-<meta name="theme-color" content="#0284c7">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="QuickTools">
-<link rel="apple-touch-icon" href="/icon-192.png">
-</head><body><div class="box"><h3 style="text-align:center;color:#10b981">🧾 GST Fast Calculator</h3><label style="font-size:0.8rem;color:#94a3b8">Amount (₹)</label><input type="number" id="amt" value="1000" oninput="calc()"><label style="font-size:0.8rem;color:#94a3b8">GST Slab Rate</label><select id="r" onchange="calc()"><option value="0.05">5%</option><option value="0.12">12%</option><option value="0.18" selected>18%</option><option value="0.28">28%</option></select><div class="res" id="res">GST: ₹180 | Total: ₹1,180</div></div><script>function calc(){const a=parseFloat(document.getElementById('amt').value)||0;const r=parseFloat(document.getElementById('r').value);const gst=a*r;document.getElementById('res').innerHTML=`GST Tax: ₹${gst.toFixed(2)}<br>Total Invoice: ₹${(a+gst).toFixed(2)}`;}calc();</script><script>
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{
-    navigator.serviceWorker.register('/sw.js').catch(()=>{});
-  });
-}
-</script>
-</body></html>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+
+  <!-- Comprehensive Search Engine & Social Graph Meta Tags -->
+  <title>GST Quick Calculator (Inclusive & Exclusive Multi-Slab)</title>
+  <meta name="description" content="Instant GST calculation tool supporting 0%, 5%, 12%, 18%, and 28% tax slabs. Calculate net amount, gross amount, CGST, SGST, and IGST breakdowns in real-time.">
+  <meta name="keywords" content="gst calculator online india, gst inclusive exclusive calculator, reverse gst calculation tool, cgst sgst calculator">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://unknownuniversem-blip.github.io/gst-quick-calc/">
+
+  <!-- Open Graph / Facebook / WhatsApp Preview Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://unknownuniversem-blip.github.io/gst-quick-calc/">
+  <meta property="og:title" content="GST Quick Calculator (Inclusive & Exclusive Multi-Slab)">
+  <meta property="og:description" content="Instant GST calculation tool supporting 0%, 5%, 12%, 18%, and 28% tax slabs. Calculate net amount, gross amount, CGST, SGST, and IGST breakdowns in real-time.">
+  <meta property="og:site_name" content="QuickTools India">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://unknownuniversem-blip.github.io/gst-quick-calc/">
+  <meta name="twitter:title" content="GST Quick Calculator (Inclusive & Exclusive Multi-Slab)">
+  <meta name="twitter:description" content="Instant GST calculation tool supporting 0%, 5%, 12%, 18%, and 28% tax slabs. Calculate net amount, gross amount, CGST, SGST, and IGST breakdowns in real-time.">
+
+  <!-- JSON-LD Structured Data Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "GST Quick Calculator (Inclusive & Exclusive Multi-Slab)",
+    "url": "https://unknownuniversem-blip.github.io/gst-quick-calc/",
+    "description": "Instant GST calculation tool supporting 0%, 5%, 12%, 18%, and 28% tax slabs. Calculate net amount, gross amount, CGST, SGST, and IGST breakdowns in real-time.",
+    "applicationCategory": "Finance & Business",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  
+  
+
+  <!-- Dynamic SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f172a' stroke='%2338bdf8' stroke-width='1.5'/%3E%3Cpath d='M8 12h16M8 16h11M8 20h8' stroke='%2310b981' stroke-width='2.2' stroke-linecap='round'/%3E%3Ccircle cx='23' cy='19' r='3' fill='none' stroke='%2338bdf8' stroke-width='2'/%3E%3C/svg%3E">
+
+  <style>
+    :root {
+      --bg: #0b1120;
+      --card: #151f32;
+      --card-inner: #0d1526;
+      --border: #223249;
+      --border-focus: #38bdf8;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --primary: #38bdf8;
+      --accent: #10b981;
+      --accent-hover: #059669;
+      --danger: #ef4444;
+      --radius: 12px;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+    html, body {
+      max-width: 100vw;
+      overflow-x: hidden;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .container {
+      width: 100%;
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 3.5rem 1rem;
+    }
+    header { text-align: center; margin-bottom: 1.75rem; }
+    .brand-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 0.6rem;
+    }
+    .brand-name {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+    .brand-badge {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+    }
+    header h1 {
+      font-size: clamp(1.4rem, 3.5vw, 2.1rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+    header p {
+      color: var(--muted);
+      font-size: clamp(0.85rem, 2vw, 0.95rem);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .gst2-notice {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.8rem;
+      color: var(--primary);
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+
+    /* Mode Selection Tabs */
+    .mode-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+    }
+    .mode-btn {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      background: var(--card-inner);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+    .mode-btn span:first-child {
+      font-size: 0.98rem;
+      color: #fff;
+    }
+    .mode-btn span:last-child {
+      font-size: 0.72rem;
+      font-weight: 500;
+    }
+    .mode-btn.active {
+      border-color: var(--primary);
+      background: rgba(56, 189, 248, 0.12);
+    }
+    .mode-btn.active span:first-child {
+      color: var(--primary);
+    }
+
+    .grid-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 860px) {
+      .grid-layout {
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: start;
+      }
+      .sticky-pane {
+        position: sticky;
+        top: 1.5rem;
+      }
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.35rem;
+      margin-bottom: 1.25rem;
+    }
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-subtitle {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+
+    /* Slab Selector Buttons */
+    .slab-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 1rem;
+    }
+    .slab-btn {
+      padding: 10px 4px;
+      background: var(--card-inner);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+    .slab-btn small {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .slab-btn:hover {
+      border-color: var(--primary);
+      background: rgba(56, 189, 248, 0.1);
+    }
+    .slab-btn.active {
+      border-color: var(--accent);
+      background: rgba(16, 185, 129, 0.18);
+      color: var(--accent);
+    }
+    .slab-btn.active small {
+      color: var(--accent);
+    }
+
+    /* Custom Rate Row */
+    .custom-rate-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--card-inner);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      margin-bottom: 1.25rem;
+    }
+    .custom-rate-box span {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .custom-rate-box input {
+      width: 100px;
+      padding: 6px 8px;
+      font-size: 0.95rem;
+      background: #090f1d;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: #fff;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    /* Spaced Input Elements */
+    .input-group {
+      margin-bottom: 1.25rem;
+    }
+    .input-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .input-header label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .input-field-wrap {
+      display: flex;
+      align-items: center;
+      background: var(--card-inner);
+      border: 1.5px solid var(--border);
+      border-radius: 9px;
+      padding: 8px 14px;
+      transition: all 0.2s ease;
+    }
+    .input-field-wrap:focus-within {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+    }
+    .input-prefix {
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-right: 8px;
+      user-select: none;
+    }
+    .editable-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.25rem;
+      font-family: monospace;
+      outline: none;
+      text-align: right;
+    }
+
+    /* State Switcher */
+    .tax-type-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 1.25rem;
+    }
+    .tax-pill {
+      padding: 9px;
+      border-radius: 6px;
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .tax-pill.active {
+      border-color: var(--primary);
+      color: #fff;
+      background: rgba(56, 189, 248, 0.12);
+    }
+
+    /* Receipt Slip Layout */
+    .receipt-slip {
+      background: var(--card-inner);
+      border: 1.5px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      margin-bottom: 1.25rem;
+      position: relative;
+    }
+    .receipt-header {
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+    .receipt-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 0.05em;
+    }
+    .receipt-sub {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+    .receipt-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      font-size: 0.85rem;
+    }
+    .receipt-row.total-row {
+      border-top: 1.5px solid var(--border);
+      margin-top: 8px;
+      padding-top: 10px;
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+    .receipt-val {
+      font-family: monospace;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .btn-action {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-align: center;
+      background: var(--accent);
+      color: #052e16;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+      margin-bottom: 8px;
+    }
+    .btn-action:hover { background: var(--accent-hover); }
+    .btn-sub {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-align: center;
+      background: var(--card-inner);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .btn-sub:hover { color: #fff; border-color: var(--muted); }
+
+    /* Ecosystem */
+    .ecosystem-section {
+      margin-top: 2.5rem;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+    }
+    .ecosystem-section h3 {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
+    .ecosystem-section p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+    .eco-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .eco-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.15s ease;
+    }
+    .eco-card:hover { border-color: var(--primary); }
+    .eco-card strong {
+      display: block;
+      font-size: 0.88rem;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+    .eco-card span { font-size: 0.75rem; color: var(--muted); }
+    footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+  
+    /* --- COMPREHENSIVE MOBILE RESPONSIVENESS OVERRIDES --- */
+    html, body {
+      max-width: 100vw !important;
+      overflow-x: hidden !important;
+      -webkit-text-size-adjust: 100% !important;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box !important;
+    }
+    input, select, textarea, button {
+      font-size: 16px !important; /* Prevents auto-zoom on iOS inputs */
+      min-height: 42px !important; /* Optimal touch target */
+    }
+    #quicktools-global-bar div::-webkit-scrollbar {
+      display: none !important;
+    }
+    #quicktools-global-bar div {
+      -ms-overflow-style: none !important;
+      scrollbar-width: none !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+    .canvas-wrap, .qr-frame, .dropzone {
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    canvas {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+    .modal-card {
+      max-width: calc(100vw - 32px) !important;
+      margin: 16px !important;
+    }
+    @media (max-width: 640px) {
+      .container {
+        padding: 0.85rem 0.75rem 2.5rem 0.75rem !important;
+      }
+      .studio-grid, .converter-grid, .input-row, .modal-apps-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+      }
+      header h1 {
+        font-size: 1.35rem !important;
+      }
+      .tabs-nav {
+        grid-template-columns: 1fr !important;
+      }
+      .brand-box {
+        justify-content: center !important;
+      }
+    }
+
+  </style>
+  <!-- PRIVACY-FIRST ZERO-COOKIE ANALYTICS -->
+  <script data-goatcounter="https://quicktools.goatcounter.com/count"
+        data-goatcounter-settings='{"allow_local": true}'
+        async src="//gc.zgo.at/count.js"></script>
+
+<style id="growth-mesh-styles">
+  .related-mesh-card {
+    margin: 32px auto 20px;
+    max-width: 900px;
+    background: #0b1329;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 16px 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .related-mesh-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #38bdf8;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.02em;
+  }
+  .related-mesh-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .related-mesh-link {
+    display: block;
+    padding: 10px 14px;
+    background: #131d35;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  .related-mesh-link:hover {
+    background: #1e293b;
+    border-color: #38bdf8;
+    color: #38bdf8;
+    transform: translateY(-2px);
+  }
+</style>
+
+</head>
+<body>
+
+  <!-- GLOBAL NETWORK HEADER -->
+  <div id="quicktools-global-bar" style="background:#090d16; border-bottom:1px solid #1e293b; padding:10px 16px; display:flex; align-items:center; justify-content:space-between; font-family:system-ui, -apple-system, sans-serif; font-size:13px; z-index:99999; position:relative; width:100%; box-sizing:border-box;">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <a href="https://unknownuniversem-blip.github.io/" style="color:#f8fafc; font-weight:700; text-decoration:none; display:flex; align-items:center; gap:6px;">
+        <span style="background:#38bdf8; color:#0b1120; font-size:10px; font-weight:900; padding:2px 6px; border-radius:4px;">HUB</span>
+        <span>QuickTools</span>
+      </a>
+    </div>
+    <div style="display:flex; align-items:center; gap:12px; overflow-x:auto;">
+      <a href="https://unknownuniversem-blip.github.io/hindi-typing-tutor/" style="color:#f59e0b; text-decoration:none; font-weight:700; white-space:nowrap;">⌨️ हिंदी टाइपिंग</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/signature-maker-studio/" style="color:#38bdf8; text-decoration:none; font-weight:600; white-space:nowrap;">✍️ Signature Studio</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/krutidev-unicode-converter/" style="color:#38bdf8; text-decoration:none; font-weight:600; white-space:nowrap;">🔤 फॉन्ट कनवर्टर</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/exam-resizer/" style="color:#94a3b8; text-decoration:none; font-weight:600; white-space:nowrap;">📷 Photo Resizer</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/passport-photo-grid/" style="color:#38bdf8; text-decoration:none; font-weight:600; white-space:nowrap;">🖼️ पासपोर्ट ग्रिड</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/pdf-smart-tools/" style="color:#ef4444; text-decoration:none; font-weight:600; white-space:nowrap;">📄 PDF Tools</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/upi-qr-standee/" style="color:#10b981; text-decoration:none; font-weight:600; white-space:nowrap;">💳 UPI Standee</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <header>
+      <div class="brand-box">
+        <svg width="34" height="34" viewBox="0 0 32 32">
+          <rect width="32" height="32" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+          <path d="M8 12h16M8 16h11M8 20h8" stroke="#10b981" stroke-width="2.2" stroke-linecap="round"/>
+          <circle cx="23" cy="19" r="3" fill="none" stroke="#38bdf8" stroke-width="2"/>
+        </svg>
+        <span class="brand-name">GST<span style="color:#38bdf8;">Quick</span>Calc</span>
+        <span class="brand-badge">GST 2.0 Slabs</span>
+      </div>
+      <h1>GST कैलकुलेटर एवं रिवर्स बिलिंग</h1>
+      <p>नए GST स्लैब (0%, 5%, 18%, 40%, 3%) के अनुसार बिल बनाएं या कुल MRP से बेस रेट और टैक्स अलग करें।</p>
+    </header>
+
+    <div class="gst2-notice">
+      📢 <strong>नये GST 2.0 नियम:</strong> 12% व 28% स्लैब समाप्त कर दिए गए हैं। आवश्यक वस्तुएं <strong>5%</strong>, सामान्य उत्पाद <strong>18%</strong> और लग्जरी/सिन गुड्स <strong>40%</strong> में आते हैं।
+    </div>
+
+    <!-- CALCULATION MODE SWITCHER -->
+    <div class="mode-tabs">
+      <button type="button" class="mode-btn active" id="btnModeReverse" onclick="setMode('reverse')">
+        <span>🔄 रिवर्स बिलिंग (Reverse / MRP Mode)</span>
+        <span>कुल बिल / MRP से असली रेट व टैक्स अलग करें</span>
+      </button>
+      <button type="button" class="mode-btn" id="btnModeForward" onclick="setMode('forward')">
+        <span>➕ फॉरवर्ड बिलिंग (Forward Mode)</span>
+        <span>बेस रेट में GST जोड़कर कुल बिल बनाएं</span>
+      </button>
+    </div>
+
+    <div class="grid-layout">
+      <!-- INPUTS COLUMN -->
+      <div>
+        <div class="card">
+          <div class="card-title">1. रकम डालें (Enter Amount)</div>
+          <div class="card-subtitle" id="lblModeHint">कुल फाइनल बिल या MRP डालें (GST सहित)</div>
+
+          <div class="input-group">
+            <div class="input-header">
+              <label id="lblAmountTitle">कुल बिल रकम (Gross / MRP Amount)</label>
+            </div>
+            <div class="input-field-wrap">
+              <span class="input-prefix">₹</span>
+              <input type="number" id="inputAmount" class="editable-input" value="1180" min="0" step="any" oninput="calculateGst()">
+            </div>
+          </div>
+
+          <label style="margin-bottom:8px;">लागू GST टैक्स स्लैब चुनें (Tax Slab %)</label>
+          <div class="slab-grid">
+            <button type="button" class="slab-btn" onclick="setSlab(0)">
+              0%
+              <small>Essential / Nil</small>
+            </button>
+            <button type="button" class="slab-btn" onclick="setSlab(5)">
+              5%
+              <small>FMCG / Food</small>
+            </button>
+            <button type="button" class="slab-btn active" onclick="setSlab(18)">
+              18%
+              <small>Standard Goods</small>
+            </button>
+            <button type="button" class="slab-btn" onclick="setSlab(40)">
+              40%
+              <small>Luxury / Sin Goods</small>
+            </button>
+            <button type="button" class="slab-btn" onclick="setSlab(3)">
+              3%
+              <small>Gold / Jewellery</small>
+            </button>
+            <button type="button" class="slab-btn" id="btnCustom" onclick="focusCustom()">
+              Custom %
+              <small>कस्टम दर</small>
+            </button>
+          </div>
+
+          <!-- Custom rate input -->
+          <div class="custom-rate-box">
+            <span>अन्य / कस्टम टैक्स दर:</span>
+            <input type="number" id="txtCustomSlab" placeholder="e.g. 12" min="0" max="100" step="0.1" oninput="onCustomRateInput(this.value)">
+            <span>%</span>
+          </div>
+
+          <label style="margin-bottom:8px;">बिल का प्रकार (State Tax Type)</label>
+          <div class="tax-type-box">
+            <div class="tax-pill active" id="pillIntra" onclick="setTaxType('intra')">
+              अपने राज्य में (CGST + SGST)
+            </div>
+            <div class="tax-pill" id="pillInter" onclick="setTaxType('inter')">
+              दूसरे राज्य में (IGST)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECEIPT SLIP COLUMN -->
+      <div class="sticky-pane">
+        <div class="card">
+          <div class="card-title" style="color:var(--accent);">2. बिल व टैक्स समरी (Receipt Breakdown)</div>
+          <div class="card-subtitle">पारदर्शी हिसाब (Transparent Tax Split)</div>
+
+          <div class="receipt-slip" id="printableReceipt">
+            <div class="receipt-header">
+              <div class="receipt-title">GST BILLING SUMMARY</div>
+              <div class="receipt-sub" id="slipModeLabel">रिवर्स बिलिंग (Reverse / MRP Calculation)</div>
+            </div>
+
+            <div class="receipt-row">
+              <span style="color:var(--muted);">मूल मूल्य (Base / Net Price):</span>
+              <span class="receipt-val" id="resBasePrice">₹1,000.00</span>
+            </div>
+
+            <div class="receipt-row">
+              <span style="color:var(--muted);">GST टैक्स स्लैब (Rate):</span>
+              <span class="receipt-val" id="resTaxRate">18%</span>
+            </div>
+
+            <div id="intraTaxRows">
+              <div class="receipt-row">
+                <span style="color:var(--muted);">केंद्रीय कर (CGST @ <span id="lblCgstRate">9%</span>):</span>
+                <span class="receipt-val" style="color:var(--primary);" id="resCgst">₹90.00</span>
+              </div>
+              <div class="receipt-row">
+                <span style="color:var(--muted);">राज्य कर (SGST @ <span id="lblSgstRate">9%</span>):</span>
+                <span class="receipt-val" style="color:var(--primary);" id="resSgst">₹90.00</span>
+              </div>
+            </div>
+
+            <div id="interTaxRows" style="display:none;">
+              <div class="receipt-row">
+                <span style="color:var(--muted);">एकीकृत कर (IGST @ <span id="lblIgstRate">18%</span>):</span>
+                <span class="receipt-val" style="color:var(--primary);" id="resIgst">₹180.00</span>
+              </div>
+            </div>
+
+            <div class="receipt-row">
+              <span style="color:var(--muted); font-weight:700;">कुल टैक्स रकम (Total GST):</span>
+              <span class="receipt-val" style="color:var(--accent);" id="resTotalTax">₹180.00</span>
+            </div>
+
+            <div class="receipt-row total-row">
+              <span style="color:#fff;">कुल अंतिम बिल (Gross Total):</span>
+              <span class="receipt-val" style="color:#fff; font-size:1.3rem;" id="resGrossTotal">₹1,180.00</span>
+            </div>
+          </div>
+
+          <button class="btn-action" onclick="shareWhatsApp()">💬 WhatsApp पर रसीद भेजें</button>
+          <button class="btn-sub" onclick="window.print()">🖨 रसीद प्रिंट करें / PDF सेव करें</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ZERO STORAGE PLEDGE -->
+    <div style="display:flex; align-items:center; gap:10px; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.25); border-radius:8px; padding:10px 14px; margin-top:1.5rem;">
+      <span style="font-size:1.2rem;">🔒</span>
+      <span style="font-size:0.78rem; color:var(--muted);">100% सुरक्षित (Zero Storage): आपका कोई भी इनवॉइस डेटा या बिलिंग रिकॉर्ड किसी सर्वर पर नहीं भेजा जाता।</span>
+    </div>
+
+    <!-- ECOSYSTEM CROSS-PROMOTION -->
+    <div class="ecosystem-section">
+      <h3>QuickTools के अन्य उपयोगी टूल्स</h3>
+      <p>बिना किसी विज्ञापन या सर्वर लोड के सीधे ब्राउज़र में चलने वाले तेज टूल्स।</p>
+      <div class="eco-grid">
+        <a href="https://unknownuniversem-blip.github.io/land-converter/" class="eco-card">
+          <strong>🌾 जमीन नाप और रजिस्ट्री खर्च</strong>
+          <span>बीघा, बिस्वा, कट्ठा, धुर, गज को वर्ग फुट में बदलें और सर्किल रेट निकालें।</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/loan-emi-calculator/" class="eco-card">
+          <strong>💰 लोन EMI व ब्याज बचत</strong>
+          <span>होम व कार लोन EMI, 0% नो-कॉस्ट EMI और प्रीपेमेंट बचत कैलकुलेटर।</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/wa-direct/" class="eco-card">
+          <strong>💬 डायरेक्ट WhatsApp चैट</strong>
+          <span>बिना नंबर सेव किए तुरंत मैसेज भेजें और मल्टी-नंबर ब्रॉडकास्ट करें।</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/exam-resizer/" class="eco-card">
+          <strong>📷 सरकारी परीक्षा फोटो रिसाइजर</strong>
+          <span>SSC, UPSC, NEET फॉर्म के लिए फोटो व साइन को 20-50 KB में रीसाइज करें।</span>
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      <div>QuickTools Network &copy; 2026. 100% Free Client-Side Utilities.</div>
+    </footer>
+  </div>
+
+  <script>
+    let currentMode = 'reverse';
+    let currentSlab = 18;
+    let taxType = 'intra';
+
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateGst();
+    });
+
+    function setMode(mode) {
+      currentMode = mode;
+      const btnRev = document.getElementById('btnModeReverse');
+      const btnFwd = document.getElementById('btnModeForward');
+      const hint = document.getElementById('lblModeHint');
+      const title = document.getElementById('lblAmountTitle');
+      const slipLabel = document.getElementById('slipModeLabel');
+      const inputEl = document.getElementById('inputAmount');
+
+      if (mode === 'reverse') {
+        btnRev.classList.add('active');
+        btnFwd.classList.remove('active');
+        hint.innerText = 'कुल फाइनल बिल या MRP डालें (GST सहित)';
+        title.innerText = 'कुल बिल रकम (Gross / MRP Amount)';
+        slipLabel.innerText = 'रिवर्स बिलिंग (Reverse / MRP Calculation)';
+        inputEl.value = 1180;
+      } else {
+        btnFwd.classList.add('active');
+        btnRev.classList.remove('active');
+        hint.innerText = 'बिना टैक्स वाला मूल बेस रेट डालें (Exclusive of Tax)';
+        title.innerText = 'मूल बेस रकम (Net Base Amount)';
+        slipLabel.innerText = 'फॉरवर्ड बिलिंग (Forward Calculation)';
+        inputEl.value = 1000;
+      }
+      calculateGst();
+    }
+
+    function setSlab(rate) {
+      currentSlab = rate;
+      document.getElementById('txtCustomSlab').value = '';
+      const btns = document.querySelectorAll('.slab-grid .slab-btn');
+      btns.forEach(b => {
+        if (b.innerText.includes(`${rate}%`)) b.classList.add('active');
+        else b.classList.remove('active');
+      });
+      calculateGst();
+    }
+
+    function focusCustom() {
+      document.getElementById('txtCustomSlab').focus();
+    }
+
+    function onCustomRateInput(val) {
+      const rate = parseFloat(val);
+      if (!isNaN(rate) && rate >= 0) {
+        currentSlab = rate;
+        const btns = document.querySelectorAll('.slab-grid .slab-btn');
+        btns.forEach(b => b.classList.remove('active'));
+        document.getElementById('btnCustom').classList.add('active');
+        calculateGst();
+      }
+    }
+
+    function setTaxType(type) {
+      taxType = type;
+      const pIntra = document.getElementById('pillIntra');
+      const pInter = document.getElementById('pillInter');
+      const intraRows = document.getElementById('intraTaxRows');
+      const interRows = document.getElementById('interTaxRows');
+
+      if (type === 'intra') {
+        pIntra.classList.add('active');
+        pInter.classList.remove('active');
+        intraRows.style.display = 'block';
+        interRows.style.display = 'none';
+      } else {
+        pInter.classList.add('active');
+        pIntra.classList.remove('active');
+        intraRows.style.display = 'none';
+        interRows.style.display = 'block';
+      }
+      calculateGst();
+    }
+
+    function formatInr(val) {
+      return '₹' + Number(val.toFixed(2)).toLocaleString('en-IN', { minimumFractionDigits: 2 });
+    }
+
+    function calculateGst() {
+      const amt = parseFloat(document.getElementById('inputAmount').value) || 0;
+      let basePrice = 0;
+      let totalTax = 0;
+      let grossPrice = 0;
+
+      if (currentMode === 'reverse') {
+        grossPrice = amt;
+        basePrice = grossPrice / (1 + (currentSlab / 100));
+        totalTax = grossPrice - basePrice;
+      } else {
+        basePrice = amt;
+        totalTax = basePrice * (currentSlab / 100);
+        grossPrice = basePrice + totalTax;
+      }
+
+      const halfRate = (currentSlab / 2);
+      const halfTax = totalTax / 2;
+
+      document.getElementById('resBasePrice').innerText = formatInr(basePrice);
+      document.getElementById('resTaxRate').innerText = `${currentSlab}%`;
+      document.getElementById('resTotalTax').innerText = formatInr(totalTax);
+      document.getElementById('resGrossTotal').innerText = formatInr(grossPrice);
+
+      document.getElementById('lblCgstRate').innerText = `${halfRate}%`;
+      document.getElementById('lblSgstRate').innerText = `${halfRate}%`;
+      document.getElementById('resCgst').innerText = formatInr(halfTax);
+      document.getElementById('resSgst').innerText = formatInr(halfTax);
+
+      document.getElementById('lblIgstRate').innerText = `${currentSlab}%`;
+      document.getElementById('resIgst').innerText = formatInr(totalTax);
+    }
+
+    function shareWhatsApp() {
+      const base = document.getElementById('resBasePrice').innerText;
+      const tax = document.getElementById('resTotalTax').innerText;
+      const total = document.getElementById('resGrossTotal').innerText;
+      const splitType = taxType === 'intra'
+        ? `CGST (${currentSlab/2}%): ${document.getElementById('resCgst').innerText}\nSGST (${currentSlab/2}%): ${document.getElementById('resSgst').innerText}`
+        : `IGST (${currentSlab}%): ${document.getElementById('resIgst').innerText}`;
+
+      const text = encodeURIComponent(`🧾 GST Bill Breakdown (${currentSlab}% Slab):\nमूल बेस रेट (Base Price): ${base}\n${splitType}\nकुल टैक्स (Total GST): ${tax}\n\nकुल फाइनल बिल (Gross Total): ${total}\n\nऑनलाइन कैलकुलेट करें: ` + window.location.href);
+      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+    }
+  </script>
+<script src="https://unknownuniversem-blip.github.io/network.js" defer></script>
+<!-- Viral Social Share Bar -->
+<div id="viral-share-bar" style="position:fixed; bottom:16px; left:50%; transform:translateX(-50%); z-index:99999; display:flex; gap:10px; background:#0f172ae6; backdrop-filter:blur(8px); border:1px solid #38bdf8; padding:8px 16px; border-radius:50px; box-shadow:0 8px 30px rgba(0,0,0,0.6); align-items:center;">
+  <span style="color:#f8fafc; font-size:0.82rem; font-weight:700; white-space:nowrap;">Share with Aspirants:</span>
+  <a href="https://api.whatsapp.com/send?text=%F0%9F%94%A5%2022%2B%20Free%20Daily%20Digital%20Utility%20Tools%20%28Photo%20Resizer%2C%20Speed%20Math%2C%20Typing%2C%20GST%20%26%20Forms%29%3A%20https%3A//unknownuniversem-blip.github.io/" target="_blank" style="background:#22c55e; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    💬 WhatsApp
+  </a>
+  <a href="https://t.me/share/url?url=https%3A//unknownuniversem-blip.github.io/gst-quick-calc/&text=%F0%9F%94%A5%2022%2B%20Free%20Daily%20Digital%20Utility%20Tools%20%28Photo%20Resizer%2C%20Speed%20Math%2C%20Typing%2C%20GST%20%26%20Forms%29%3A%20https%3A//unknownuniversem-blip.github.io/" target="_blank" style="background:#0284c7; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    ✈️ Telegram
+  </a>
+</div>
+
+
+<!-- Dynamic Internal Cross-Link Mesh -->
+<div class="related-mesh-card">
+  <div class="related-mesh-title">⚡ Recommended Essential Student & Cyber Tools</div>
+  <div class="related-mesh-grid">
+    <a href="https://unknownuniversem-blip.github.io/math/" class="related-mesh-link" target="_blank">⚡ Speed Math Workout</a><a href="https://unknownuniversem-blip.github.io/exam-resizer/" class="related-mesh-link" target="_blank">📸 Exam Photo & Sign Resizer</a><a href="https://unknownuniversem-blip.github.io/hindi-typing-tutor/" class="related-mesh-link" target="_blank">⌨️ Hindi Typing Tutor</a><a href="https://unknownuniversem-blip.github.io/" class="related-mesh-link" target="_blank">🌐 All 22+ Free Web Utilities</a>
+  </div>
+</div>
+
+</body>
+</html>

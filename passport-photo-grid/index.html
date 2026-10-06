@@ -1,56 +1,866 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-  <meta charset="UTF-8"><title>Passport Photo A4 Printable Sheet</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Comprehensive Search Engine & Social Graph Meta Tags -->
+  <title>Passport Size Photo Grid Maker (8 Photos on 4x6 / A4 Sheet)</title>
+  <meta name="description" content="Create standard Indian passport size photo sheets (3.5cm x 4.5cm) with borders ready for 1-click printing on 4x6 inch photo paper or A4 sheets. Zero upload, runs locally.">
+  <meta name="keywords" content="passport size photo grid maker online, print 8 passport photos on 4x6 paper, instant passport photo sheet creator, cyber cafe photo tool">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://unknownuniversem-blip.github.io/passport-photo-grid/">
+
+  <!-- Open Graph / Facebook / WhatsApp Preview Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://unknownuniversem-blip.github.io/passport-photo-grid/">
+  <meta property="og:title" content="Passport Size Photo Grid Maker (8 Photos on 4x6 / A4 Sheet)">
+  <meta property="og:description" content="Create standard Indian passport size photo sheets (3.5cm x 4.5cm) with borders ready for 1-click printing on 4x6 inch photo paper or A4 sheets. Zero upload, runs locally.">
+  <meta property="og:site_name" content="QuickTools India">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://unknownuniversem-blip.github.io/passport-photo-grid/">
+  <meta name="twitter:title" content="Passport Size Photo Grid Maker (8 Photos on 4x6 / A4 Sheet)">
+  <meta name="twitter:description" content="Create standard Indian passport size photo sheets (3.5cm x 4.5cm) with borders ready for 1-click printing on 4x6 inch photo paper or A4 sheets. Zero upload, runs locally.">
+
+  <!-- JSON-LD Structured Data Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Passport Size Photo Grid Maker (8 Photos on 4x6 / A4 Sheet)",
+    "url": "https://unknownuniversem-blip.github.io/passport-photo-grid/",
+    "description": "Create standard Indian passport size photo sheets (3.5cm x 4.5cm) with borders ready for 1-click printing on 4x6 inch photo paper or A4 sheets. Zero upload, runs locally.",
+    "applicationCategory": "Govt Forms & Utilities",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  
+  
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f172a' stroke='%2338bdf8' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='12' r='5' fill='%2338bdf8'/%3E%3Cpath d='M8 26c0-4.4 3.6-8 8-8s8 3.6 8 8' stroke='%2310b981' stroke-width='2' fill='none'/%3E%3C/svg%3E">
+
   <style>
-    body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}
-    .box{max-width:500px;margin:auto;background:#0f172a;padding:24px;border-radius:12px;border:1px solid #1e293b}
-    button,input{width:100%;margin:10px 0;padding:10px;border-radius:8px;border:none;cursor:pointer}
-    button{background:#10b981;font-weight:700;color:#042f2e}
+    :root {
+      --bg: #0b1120;
+      --card: #151f32;
+      --card-inner: #0d1526;
+      --border: #223249;
+      --border-focus: #38bdf8;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --primary: #38bdf8;
+      --accent: #10b981;
+      --accent-hover: #059669;
+      --radius: 12px;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type="number"] { -moz-appearance: textfield; }
+
+    html, body {
+      max-width: 100vw;
+      overflow-x: hidden;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 3.5rem 1rem;
+    }
+    header { text-align: center; margin-bottom: 1.75rem; }
+    .brand-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 0.6rem;
+    }
+    .brand-name {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+    .brand-badge {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+    }
+    header h1 {
+      font-size: clamp(1.4rem, 3.5vw, 2.1rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+    header p {
+      color: var(--muted);
+      font-size: clamp(0.85rem, 2vw, 0.95rem);
+      max-width: 750px;
+      margin: 0 auto;
+    }
+    .grid-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 900px) {
+      .grid-layout {
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: start;
+      }
+      .sticky-pane {
+        position: sticky;
+        top: 1.5rem;
+      }
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.35rem;
+      margin-bottom: 1.25rem;
+    }
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-subtitle {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+    label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    select, input[type="text"], input[type="date"], input[type="number"] {
+      width: 100%;
+      padding: 9px 12px;
+      background: var(--card-inner);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color 0.15s ease;
+      margin-bottom: 0.9rem;
+    }
+    select:focus, input:focus {
+      border-color: var(--border-focus);
+    }
+    .upload-zone {
+      border: 2px dashed var(--border);
+      border-radius: 10px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      background: var(--card-inner);
+      transition: all 0.2s ease;
+      margin-bottom: 1.25rem;
+    }
+    .upload-zone:hover {
+      border-color: var(--primary);
+      background: rgba(56, 189, 248, 0.05);
+    }
+    .upload-zone span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-top: 4px;
+    }
+    .controls-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .slider-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 0.9rem;
+    }
+    .slider-box {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 10px;
+    }
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+    .preview-box {
+      background: var(--card-inner);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-height: 480px;
+      overflow: auto;
+    }
+    canvas {
+      max-width: 100%;
+      height: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      background: #fff;
+    }
+    .btn-action {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-align: center;
+      background: var(--accent);
+      color: #052e16;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+      margin-bottom: 8px;
+    }
+    .btn-action:hover { background: var(--accent-hover); }
+    .btn-sub {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-align: center;
+      background: var(--card-inner);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .btn-sub:hover { color: #fff; border-color: var(--muted); }
+    .ecosystem-section {
+      margin-top: 2.5rem;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+    }
+    .ecosystem-section h3 {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
+    .ecosystem-section p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+    .eco-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .eco-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.15s ease;
+    }
+    .eco-card:hover { border-color: var(--primary); }
+    .eco-card strong {
+      display: block;
+      font-size: 0.88rem;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+    .eco-card span { font-size: 0.75rem; color: var(--muted); }
+    footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    @media print {
+      body * { visibility: hidden; }
+      #canvas, #canvas * { visibility: visible; }
+      #canvas {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw !important;
+        height: auto !important;
+        box-shadow: none;
+      }
+    }
+  
+    /* --- COMPREHENSIVE MOBILE RESPONSIVENESS OVERRIDES --- */
+    html, body {
+      max-width: 100vw !important;
+      overflow-x: hidden !important;
+      -webkit-text-size-adjust: 100% !important;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box !important;
+    }
+    input, select, textarea, button {
+      font-size: 16px !important; /* Prevents auto-zoom on iOS inputs */
+      min-height: 42px !important; /* Optimal touch target */
+    }
+    #quicktools-global-bar div::-webkit-scrollbar {
+      display: none !important;
+    }
+    #quicktools-global-bar div {
+      -ms-overflow-style: none !important;
+      scrollbar-width: none !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+    .canvas-wrap, .qr-frame, .dropzone {
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    canvas {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+    .modal-card {
+      max-width: calc(100vw - 32px) !important;
+      margin: 16px !important;
+    }
+    @media (max-width: 640px) {
+      .container {
+        padding: 0.85rem 0.75rem 2.5rem 0.75rem !important;
+      }
+      .studio-grid, .converter-grid, .input-row, .modal-apps-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+      }
+      header h1 {
+        font-size: 1.35rem !important;
+      }
+      .tabs-nav {
+        grid-template-columns: 1fr !important;
+      }
+      .brand-box {
+        justify-content: center !important;
+      }
+    }
+
   </style>
-  <script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<link rel="manifest" href="/manifest.webmanifest">
-<meta name="theme-color" content="#0284c7">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="QuickTools">
-<link rel="apple-touch-icon" href="/icon-192.png">
+  <!-- PRIVACY-FIRST ZERO-COOKIE ANALYTICS -->
+  <script data-goatcounter="https://quicktools.goatcounter.com/count"
+        data-goatcounter-settings='{"allow_local": true}'
+        async src="//gc.zgo.at/count.js"></script>
+
+<style id="growth-mesh-styles">
+  .related-mesh-card {
+    margin: 32px auto 20px;
+    max-width: 900px;
+    background: #0b1329;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 16px 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .related-mesh-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #38bdf8;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.02em;
+  }
+  .related-mesh-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .related-mesh-link {
+    display: block;
+    padding: 10px 14px;
+    background: #131d35;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  .related-mesh-link:hover {
+    background: #1e293b;
+    border-color: #38bdf8;
+    color: #38bdf8;
+    transform: translateY(-2px);
+  }
+</style>
+
 </head>
 <body>
-  <div class="box">
-    <h3>🖨️ Passport Photo A4 Sheet Maker</h3>
-    <p style="font-size:0.8rem;color:#94a3b8">Print 8 passport photos on a single sheet at home or cyber cafe</p>
-    <input type="file" id="photo" accept="image/*">
-    <button onclick="renderGrid()">Generate Printable Sheet</button>
+
+  <!-- GLOBAL NETWORK HEADER -->
+  <div id="quicktools-global-bar" style="background:#090d16; border-bottom:1px solid #1e293b; padding:10px 16px; display:flex; align-items:center; justify-content:space-between; font-family:system-ui, -apple-system, sans-serif; font-size:13px; z-index:99999; position:relative; width:100%; box-sizing:border-box;">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <a href="https://unknownuniversem-blip.github.io/" style="color:#f8fafc; font-weight:700; text-decoration:none; display:flex; align-items:center; gap:6px;">
+        <span style="background:#38bdf8; color:#0b1120; font-size:10px; font-weight:900; padding:2px 6px; border-radius:4px;">HUB</span>
+        <span>QuickTools</span>
+      </a>
+    </div>
+    <div style="display:flex; align-items:center; gap:12px; overflow-x:auto;">
+      <a href="https://unknownuniversem-blip.github.io/hindi-typing-tutor/" style="color:#f59e0b; text-decoration:none; font-weight:700; white-space:nowrap;">⌨️ हिंदी टाइपिंग</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/signature-maker-studio/" style="color:#38bdf8; text-decoration:none; font-weight:600; white-space:nowrap;">✍️ Signature Studio</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/krutidev-unicode-converter/" style="color:#38bdf8; text-decoration:none; font-weight:600; white-space:nowrap;">🔤 फॉन्ट कनवर्टर</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/exam-resizer/" style="color:#94a3b8; text-decoration:none; font-weight:600; white-space:nowrap;">📷 Photo Resizer</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/passport-photo-grid/" style="color:#38bdf8; text-decoration:none; font-weight:600; white-space:nowrap;">🖼️ पासपोर्ट ग्रिड</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/pdf-smart-tools/" style="color:#ef4444; text-decoration:none; font-weight:600; white-space:nowrap;">📄 PDF Tools</a>
+      <span style="color:#334155;">|</span>
+      <a href="https://unknownuniversem-blip.github.io/upi-qr-standee/" style="color:#10b981; text-decoration:none; font-weight:600; white-space:nowrap;">💳 UPI Standee</a>
+    </div>
   </div>
-  <div id="print-area" style="display:none;background:#fff;padding:20px;display:flex;flex-wrap:wrap;gap:15px;justify-content:center;margin-top:20px"></div>
+
+  <div class="container">
+    <header>
+      <div class="brand-box">
+        <svg width="34" height="34" viewBox="0 0 32 32">
+          <rect width="32" height="32" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+          <circle cx="16" cy="12" r="5" fill="#38bdf8"/>
+          <path d="M8 26c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#10b981" stroke-width="2" fill="none"/>
+        </svg>
+        <span class="brand-name">Passport<span style="color:#38bdf8;">Grid Pro</span></span>
+        <span class="brand-badge">नाम + DOP स्ट्रिप सपोर्ट</span>
+      </div>
+      <h1>पासपोर्ट फोटो ग्रिड मेकर प्रो</h1>
+      <p>फोटो को ज़ूम/एडजस्ट करें, सरकारी भर्ती फॉर्म के लिए नाम और तारीख (DOP) जोड़ें, और 4×6 इंच या A4 पेपर पर 300 DPI प्रिंटेबल शीट तैयार करें।</p>
+    </header>
+
+    <div class="grid-layout">
+      <!-- SETTINGS -->
+      <div>
+        <div class="card">
+          <div class="card-title">1. फोटो अपलोड व पेपर सेटिंग्स</div>
+          <div class="card-subtitle">PNG या JPEG फोटो चुनें (100% प्राइवेट, इन-ब्राउज़र)</div>
+
+          <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+            <div style="font-size:2rem;">📁</div>
+            <strong style="color:#fff;">फोटो चुनें या यहाँ ड्रैग करें</strong>
+            <span>Click to select passport photo</span>
+            <input type="file" id="fileInput" accept="image/*" style="display:none;" onchange="handleImageUpload(event)">
+          </div>
+
+          <div class="controls-row">
+            <div>
+              <label>पेपर साइज (Paper)</label>
+              <select id="selPaper" onchange="renderGrid()">
+                <option value="4x6" selected>4×6 इंच (Photo Paper)</option>
+                <option value="A4">A4 पेपर (8.3×11.7 इंच)</option>
+              </select>
+            </div>
+            <div>
+              <label>फोटो साइज (Preset)</label>
+              <select id="selPreset" onchange="renderGrid()">
+                <option value="in_passport" selected>भारतीय पासपोर्ट (3.5 × 4.5 cm)</option>
+                <option value="stamp">स्टैम्प साइज (2.5 × 3.0 cm)</option>
+                <option value="us_visa">US/Schengen वीजा (2 × 2 इंच)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="controls-row">
+            <div>
+              <label>कटिंग बॉर्डर (Guides)</label>
+              <select id="selBorder" onchange="renderGrid()">
+                <option value="yes" selected>हाँ (पतला कटिंग बॉर्डर)</option>
+                <option value="no">नहीं (Border-free)</option>
+              </select>
+            </div>
+            <div>
+              <label>कितनी फोटो प्रिंट करनी है?</label>
+              <select id="selCount" onchange="renderGrid()">
+                <option value="full" selected>पूरी शीट भरें (Full Sheet)</option>
+                <option value="4">केवल 4 फोटो</option>
+                <option value="6">केवल 6 फोटो</option>
+                <option value="8">केवल 8 फोटो</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="color:var(--primary);">2. नाम व तारीख पट्टी (Name & Date of Photo)</div>
+          <div class="card-subtitle">SSC, BPSC, UP Police व रेलवे भर्ती फॉर्म के लिए अनिवार्य पट्टी</div>
+
+          <label>उम्मीदवार का नाम (Candidate Name)</label>
+          <input type="text" id="txtName" placeholder="उदा. RAHUL KUMAR" oninput="renderGrid()">
+
+          <div class="controls-row">
+            <div>
+              <label>फोटो खींचने की तारीख (DOP)</label>
+              <input type="text" id="txtDate" placeholder="उदा. DOP: 15/09/2026" oninput="renderGrid()">
+            </div>
+            <div>
+              <label>पट्टी का बैकग्राउंड</label>
+              <select id="selStripBg" onchange="renderGrid()">
+                <option value="white" selected>सफेद पट्टी (White Strip)</option>
+                <option value="none">कोई पट्टी नहीं (No Strip)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="color:var(--accent);">3. फोटो एडजस्टमेंट (Zoom & Light)</div>
+          <div class="card-subtitle">चेहरे को 70-80% फ्रेम में फिट करने के लिए एडजस्ट करें</div>
+
+          <div class="slider-row">
+            <div class="slider-box">
+              <div class="slider-header">
+                <span>ज़ूम (ZOOM)</span>
+                <span id="dispZoom">1.0x</span>
+              </div>
+              <input type="range" id="rngZoom" min="0.8" max="2.5" step="0.05" value="1.0" oninput="updateSliders(); renderGrid();">
+            </div>
+            <div class="slider-box">
+              <div class="slider-header">
+                <span>ऊपर/नीचे (PAN Y)</span>
+                <span id="dispPanY">0px</span>
+              </div>
+              <input type="range" id="rngPanY" min="-120" max="120" step="2" value="0" oninput="updateSliders(); renderGrid();">
+            </div>
+          </div>
+
+          <div class="slider-row">
+            <div class="slider-box">
+              <div class="slider-header">
+                <span>ब्राइटनेस (LIGHT)</span>
+                <span id="dispBright">100%</span>
+              </div>
+              <input type="range" id="rngBright" min="70" max="150" step="1" value="100" oninput="updateSliders(); renderGrid();">
+            </div>
+            <div class="slider-box">
+              <div class="slider-header">
+                <span>कंट्रास्ट (CONTRAST)</span>
+                <span id="dispContrast">100%</span>
+              </div>
+              <input type="range" id="rngContrast" min="70" max="150" step="1" value="100" oninput="updateSliders(); renderGrid();">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PREVIEW & DOWNLOAD -->
+      <div class="sticky-pane">
+        <div class="card">
+          <div class="card-title" style="color:var(--accent);">4. प्रिंटेबल शीट प्रीव्यू</div>
+          <div class="card-subtitle" id="sheetSummary">तैयार शीट (Ready Sheet)</div>
+
+          <div class="preview-box">
+            <canvas id="canvas"></canvas>
+          </div>
+
+          <div style="margin-top:1.2rem;">
+            <button class="btn-action" onclick="downloadImage()">⬇ HD प्रिंटेबल इमेज डाउनलोड करें (JPEG)</button>
+            <button class="btn-sub" onclick="window.print()">🖨 सीधे प्रिंट करें (Direct Print)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ZERO STORAGE PLEDGE -->
+    <div style="display:flex; align-items:center; gap:10px; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.25); border-radius:8px; padding:10px 14px; margin-top:1.5rem;">
+      <span style="font-size:1.2rem;">🔒</span>
+      <span style="font-size:0.78rem; color:var(--muted);">100% सुरक्षित (Zero Storage): आपकी कोई भी फोटो किसी सर्वर पर अपलोड नहीं होती। संपूर्ण प्रोसेस आपके ब्राउज़र में होता है।</span>
+    </div>
+
+    <!-- ECOSYSTEM CROSS-PROMOTION -->
+    <div class="ecosystem-section">
+      <h3>QuickTools के अन्य उपयोगी टूल्स</h3>
+      <p>बिना किसी विज्ञापन या सर्वर लोड के सीधे ब्राउज़र में चलने वाले तेज टूल्स।</p>
+      <div class="eco-grid">
+        <a href="https://unknownuniversem-blip.github.io/exam-resizer/" class="eco-card">
+          <strong>📷 सरकारी परीक्षा फोटो रिसाइजर</strong>
+          <span>SSC, UPSC, NEET फॉर्म के लिए फोटो व साइन को 20-50 KB में सेट करें।</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/gst-quick-calc/" class="eco-card">
+          <strong>🧾 GST कैलकुलेटर व रिवर्स बिलिंग</strong>
+          <span>0%, 5%, 18%, 40% स्लैब पर रिवर्स बिलिंग व टैक्स स्प्लिट।</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/land-converter/" class="eco-card">
+          <strong>🌾 जमीन नाप और रजिस्ट्री खर्च</strong>
+          <span>बीघा, बिस्वा, कट्ठा, धुर, गज को वर्ग फुट में बदलें और सर्किल रेट निकालें।</span>
+        </a>
+        <a href="https://unknownuniversem-blip.github.io/loan-emi-calculator/" class="eco-card">
+          <strong>💰 लोन EMI व ब्याज बचत</strong>
+          <span>होम व कार लोन EMI, 0% नो-कॉस्ट EMI और प्रीपेमेंट बचत कैलकुलेटर।</span>
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      <div>QuickTools Network &copy; 2026. 100% Free Client-Side Utilities.</div>
+    </footer>
+  </div>
+
   <script>
-    function renderGrid(){
-      const file = document.getElementById('photo').files[0];
-      if(!file) return alert('Upload a photo');
+    let userImg = null;
+    const MM_TO_PX = 11.811; // 300 DPI baseline
+
+    const presets = {
+      in_passport: { w: 35, h: 45, name: 'Indian Passport (3.5x4.5 cm)' },
+      stamp: { w: 25, h: 30, name: 'Stamp Size (2.5x3.0 cm)' },
+      us_visa: { w: 50.8, h: 50.8, name: 'Visa (2x2 inch)' }
+    };
+
+    const papers = {
+      '4x6': { w: 101.6, h: 152.4, name: '4x6 Inch' },
+      'A4': { w: 210, h: 297, name: 'A4' }
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      createPlaceholderImage();
+    });
+
+    function updateSliders() {
+      document.getElementById('dispZoom').innerText = document.getElementById('rngZoom').value + 'x';
+      document.getElementById('dispPanY').innerText = document.getElementById('rngPanY').value + 'px';
+      document.getElementById('dispBright').innerText = document.getElementById('rngBright').value + '%';
+      document.getElementById('dispContrast').innerText = document.getElementById('rngContrast').value + '%';
+    }
+
+    function createPlaceholderImage() {
+      const pCanvas = document.createElement('canvas');
+      pCanvas.width = 350;
+      pCanvas.height = 450;
+      const ctx = pCanvas.getContext('2d');
+      ctx.fillStyle = '#1e293b';
+      ctx.fillRect(0, 0, 350, 450);
+      ctx.fillStyle = '#64748b';
+      ctx.beginPath();
+      ctx.arc(175, 160, 65, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(175, 420, 150, Math.PI, 0);
+      ctx.fill();
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = 'bold 20px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Sample Photo', 175, 270);
+
+      userImg = new Image();
+      userImg.onload = () => renderGrid();
+      userImg.src = pCanvas.toDataURL();
+    }
+
+    function handleImageUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
       const reader = new FileReader();
-      reader.onload = e => {
-        const area = document.getElementById('print-area');
-        area.style.display = 'flex'; area.innerHTML = '';
-        for(let i=0; i<8; i++){
-          const img = document.createElement('img');
-          img.src = e.target.result;
-          img.style.width = '3.5cm'; img.style.height = '4.5cm';
-          img.style.border = '1px solid #ccc';
-          area.appendChild(img);
-        }
-        window.print();
+      reader.onload = (evt) => {
+        userImg = new Image();
+        userImg.onload = () => renderGrid();
+        userImg.src = evt.target.result;
       };
       reader.readAsDataURL(file);
     }
+
+    function renderGrid() {
+      if (!userImg) return;
+
+      const paperKey = document.getElementById('selPaper').value;
+      const presetKey = document.getElementById('selPreset').value;
+      const hasBorder = document.getElementById('selBorder').value === 'yes';
+      const countOpt = document.getElementById('selCount').value;
+
+      const nameText = document.getElementById('txtName').value.trim();
+      const dateText = document.getElementById('txtDate').value.trim();
+      const stripBg = document.getElementById('selStripBg').value;
+
+      const zoom = parseFloat(document.getElementById('rngZoom').value);
+      const panY = parseFloat(document.getElementById('rngPanY').value);
+      const bright = parseFloat(document.getElementById('rngBright').value);
+      const contrast = parseFloat(document.getElementById('rngContrast').value);
+
+      const paper = papers[paperKey];
+      const preset = presets[presetKey];
+
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+
+      const sheetW = Math.round(paper.w * MM_TO_PX);
+      const sheetH = Math.round(paper.h * MM_TO_PX);
+      canvas.width = sheetW;
+      canvas.height = sheetH;
+
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, sheetW, sheetH);
+
+      const photoW = Math.round(preset.w * MM_TO_PX);
+      const photoH = Math.round(preset.h * MM_TO_PX);
+      const gap = Math.round(4 * MM_TO_PX);
+
+      const cols = Math.floor((sheetW - gap) / (photoW + gap));
+      const rows = Math.floor((sheetH - gap) / (photoH + gap));
+      const maxPossible = cols * rows;
+
+      let targetCount = maxPossible;
+      if (countOpt !== 'full') {
+        targetCount = Math.min(parseInt(countOpt), maxPossible);
+      }
+
+      // Generate a cropped, zoomed, filtered single unit tile
+      const tileCanvas = document.createElement('canvas');
+      tileCanvas.width = photoW;
+      tileCanvas.height = photoH;
+      const tctx = tileCanvas.getContext('2d');
+
+      tctx.filter = `brightness(${bright}%) contrast(${contrast}%)`;
+
+      // Crop calculation based on zoom & pan
+      const baseScale = Math.max(photoW / userImg.width, photoH / userImg.height);
+      const finalScale = baseScale * zoom;
+      const drawW = userImg.width * finalScale;
+      const drawH = userImg.height * finalScale;
+      const drawX = (photoW - drawW) / 2;
+      const drawY = (photoH - drawH) / 2 + (panY * MM_TO_PX * 0.2);
+
+      tctx.drawImage(userImg, drawX, drawY, drawW, drawH);
+      tctx.filter = 'none';
+
+      // Draw Name/Date Strip if requested
+      if (stripBg === 'white' && (nameText || dateText)) {
+        const stripH = Math.round(photoH * 0.18);
+        const stripY = photoH - stripH;
+
+        tctx.fillStyle = '#ffffff';
+        tctx.fillRect(0, stripY, photoW, stripH);
+
+        tctx.strokeStyle = '#cccccc';
+        tctx.lineWidth = 1;
+        tctx.strokeRect(0, stripY, photoW, stripH);
+
+        tctx.fillStyle = '#000000';
+        tctx.textAlign = 'center';
+
+        if (nameText && dateText) {
+          tctx.font = `bold ${Math.round(stripH * 0.38)}px sans-serif`;
+          tctx.fillText(nameText.toUpperCase(), photoW / 2, stripY + stripH * 0.42);
+          tctx.font = `${Math.round(stripH * 0.32)}px sans-serif`;
+          tctx.fillText(dateText, photoW / 2, stripY + stripH * 0.85);
+        } else {
+          const single = nameText || dateText;
+          tctx.font = `bold ${Math.round(stripH * 0.48)}px sans-serif`;
+          tctx.fillText(single, photoW / 2, stripY + stripH * 0.65);
+        }
+      }
+
+      // Tile onto sheet
+      const gridW = cols * photoW + (cols - 1) * gap;
+      const gridH = rows * photoH + (rows - 1) * gap;
+      const startX = Math.round((sheetW - gridW) / 2);
+      const startY = Math.round((sheetH - gridH) / 2);
+
+      let drawn = 0;
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          if (drawn >= targetCount) break;
+
+          const x = startX + c * (photoW + gap);
+          const y = startY + r * (photoH + gap);
+
+          ctx.drawImage(tileCanvas, x, y);
+
+          if (hasBorder) {
+            ctx.strokeStyle = '#cccccc';
+            ctx.lineWidth = 1.5;
+            ctx.strokeRect(x, y, photoW, photoH);
+          }
+
+          drawn++;
+        }
+        if (drawn >= targetCount) break;
+      }
+
+      document.getElementById('sheetSummary').innerText = `${paper.name} पर ${drawn} फोटो (${cols} × ${rows} लेआउट)`;
+    }
+
+    function downloadImage() {
+      const canvas = document.getElementById('canvas');
+      const link = document.createElement('a');
+      link.download = `passport-photo-sheet-${Date.now()}.jpg`;
+      link.href = canvas.toDataURL('image/jpeg', 0.95);
+      link.click();
+    }
   </script>
-<script>
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{
-    navigator.serviceWorker.register('/sw.js').catch(()=>{});
-  });
-}
-</script>
+<script src="https://unknownuniversem-blip.github.io/network.js" defer></script>
+<!-- Viral Social Share Bar -->
+<div id="viral-share-bar" style="position:fixed; bottom:16px; left:50%; transform:translateX(-50%); z-index:99999; display:flex; gap:10px; background:#0f172ae6; backdrop-filter:blur(8px); border:1px solid #38bdf8; padding:8px 16px; border-radius:50px; box-shadow:0 8px 30px rgba(0,0,0,0.6); align-items:center;">
+  <span style="color:#f8fafc; font-size:0.82rem; font-weight:700; white-space:nowrap;">Share with Aspirants:</span>
+  <a href="https://api.whatsapp.com/send?text=%F0%9F%94%A5%2022%2B%20Free%20Daily%20Digital%20Utility%20Tools%20%28Photo%20Resizer%2C%20Speed%20Math%2C%20Typing%2C%20GST%20%26%20Forms%29%3A%20https%3A//unknownuniversem-blip.github.io/" target="_blank" style="background:#22c55e; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    💬 WhatsApp
+  </a>
+  <a href="https://t.me/share/url?url=https%3A//unknownuniversem-blip.github.io/passport-photo-grid/&text=%F0%9F%94%A5%2022%2B%20Free%20Daily%20Digital%20Utility%20Tools%20%28Photo%20Resizer%2C%20Speed%20Math%2C%20Typing%2C%20GST%20%26%20Forms%29%3A%20https%3A//unknownuniversem-blip.github.io/" target="_blank" style="background:#0284c7; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    ✈️ Telegram
+  </a>
+</div>
+
+
+<!-- Dynamic Internal Cross-Link Mesh -->
+<div class="related-mesh-card">
+  <div class="related-mesh-title">⚡ Recommended Essential Student & Cyber Tools</div>
+  <div class="related-mesh-grid">
+    <a href="https://unknownuniversem-blip.github.io/math/" class="related-mesh-link" target="_blank">⚡ Speed Math Workout</a><a href="https://unknownuniversem-blip.github.io/exam-resizer/" class="related-mesh-link" target="_blank">📸 Exam Photo & Sign Resizer</a><a href="https://unknownuniversem-blip.github.io/hindi-typing-tutor/" class="related-mesh-link" target="_blank">⌨️ Hindi Typing Tutor</a><a href="https://unknownuniversem-blip.github.io/" class="related-mesh-link" target="_blank">🌐 All 22+ Free Web Utilities</a>
+  </div>
+</div>
+
 </body>
 </html>

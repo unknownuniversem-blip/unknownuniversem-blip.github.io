@@ -1,15 +1,970 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Sarkari Alert AI</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{background:#070c18;color:#f8fafc;font-family:sans-serif;padding:20px;text-align:center}.box{max-width:600px;margin:auto;background:#0f172a;padding:24px;border-radius:14px;border:1px solid #1e293b}input,select{width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #334155;background:#131d35;color:#fff;box-sizing:border-box}.alert-card{background:#070c18;border-left:4px solid #10b981;padding:12px;margin:10px 0;text-align:left;border-radius:4px}</style>  <script data-goatcounter="https://quicktools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<link rel="manifest" href="/manifest.webmanifest">
-<meta name="theme-color" content="#0284c7">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="QuickTools">
-<link rel="apple-touch-icon" href="/icon-192.png">
-</head><body><div class="box"><h3>📢 Sarkari Alert AI Tracker</h3><input type="text" id="q" placeholder="Filter by SSC, UPSC, Railway, Police, Banking..." oninput="filterAlerts()"><div id="alerts"><div class="alert-card"><b>SSC CGL 2026 Notification</b><p style="font-size:0.8rem;color:#94a3b8">Tier 1 Exam window scheduled. Check syllabus & age criteria.</p></div><div class="alert-card"><b>Railway RRB NTPC Recruitment</b><p style="font-size:0.8rem;color:#94a3b8">Graduate & Under-Graduate notification guidelines active.</p></div><div class="alert-card"><b>UP Police Constable Physical (PET)</b><p style="font-size:0.8rem;color:#94a3b8">Admit cards active for standard 4.8km & 2.4km running trials.</p></div></div></div><script>function filterAlerts(){const q=document.getElementById('q').value.toLowerCase();document.querySelectorAll('.alert-card').forEach(c=>{c.style.display=c.innerText.toLowerCase().includes(q)?'block':'none';});}</script><script>
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{
-    navigator.serviceWorker.register('/sw.js').catch(()=>{});
-  });
-}
-</script>
-</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Comprehensive Search Engine & Social Graph Meta Tags -->
+  <title>Sarkari Alert AI — Latest Govt Job Notifications & Admit Cards</title>
+  <meta name="description" content="Curated, verified alerts for central and state government recruitment exams (UPSC, SSC, Banking, Railways, Police, Teaching) with direct apply links.">
+  <meta name="keywords" content="sarkari alert 2026, latest govt job notifications online, ssc admit card updates, bank po recruitment eligibility">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://unknownuniversem-blip.github.io/sarkari-alert-ai/">
+
+  <!-- Open Graph / Facebook / WhatsApp Preview Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://unknownuniversem-blip.github.io/sarkari-alert-ai/">
+  <meta property="og:title" content="Sarkari Alert AI — Latest Govt Job Notifications & Admit Cards">
+  <meta property="og:description" content="Curated, verified alerts for central and state government recruitment exams (UPSC, SSC, Banking, Railways, Police, Teaching) with direct apply links.">
+  <meta property="og:site_name" content="QuickTools India">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://unknownuniversem-blip.github.io/sarkari-alert-ai/">
+  <meta name="twitter:title" content="Sarkari Alert AI — Latest Govt Job Notifications & Admit Cards">
+  <meta name="twitter:description" content="Curated, verified alerts for central and state government recruitment exams (UPSC, SSC, Banking, Railways, Police, Teaching) with direct apply links.">
+
+  <!-- JSON-LD Structured Data Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Sarkari Alert AI",
+    "url": "https://unknownuniversem-blip.github.io/sarkari-alert-ai/",
+    "description": "Curated, verified alerts for central and state government recruitment exams (UPSC, SSC, Banking, Railways, Police, Teaching) with direct apply links.",
+    "applicationCategory": "Govt Forms & Utilities",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  
+  
+
+  <!-- Privacy Analytics -->
+  <script data-goatcounter="https://quicktools.goatcounter.com/count"
+          data-goatcounter-settings='{"allow_local": true}'
+          async src="//gc.zgo.at/count.js"></script>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23e11d48'/%3E%3Cstop offset='100%25' stop-color='%23be123c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cpath d='M9 22 L16 8 L23 22 Z' fill='none' stroke='%23ffffff' stroke-width='2.2' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='17' r='2' fill='%23ffffff'/%3E%3C/svg%3E">
+
+  <style>
+    :root {
+      --bg-canvas: #f8fafc;
+      --surface: #ffffff;
+      --brand-navy: #0f172a;
+      --brand-slate: #1e293b;
+      --brand-crimson: #e11d48;
+      --brand-crimson-dark: #be123c;
+      --brand-accent: #2563eb;
+      --brand-emerald: #059669;
+      --brand-amber: #d97706;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border-subtle: #e2e8f0;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --shadow-soft: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.03);
+      --shadow-hover: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", Helvetica, Arial, sans-serif; }
+    body { background-color: var(--bg-canvas); color: var(--text-main); line-height: 1.5; }
+
+    /* STATUS STRIP */
+    .net-bar {
+      background: var(--brand-navy);
+      color: #94a3b8;
+      font-size: 11.5px;
+      padding: 6px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .net-bar a { color: #38bdf8; text-decoration: none; font-weight: 600; margin-left: 8px; }
+    .net-bar a:hover { color: #ffffff; }
+
+    /* HERO BRAND HEADER */
+    .brand-hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #881337 100%);
+      color: #ffffff;
+      padding: 26px 16px 22px;
+      text-align: center;
+      position: relative;
+    }
+    .brand-hero::after {
+      content: "";
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #38bdf8, #e11d48, #f59e0b, #10b981);
+    }
+    .brand-title {
+      font-size: clamp(2rem, 5.5vw, 3.1rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+    .brand-title span { color: #f43f5e; }
+    .hero-tagline {
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      color: #cbd5e1;
+      max-width: 680px;
+      margin: 4px auto 0;
+    }
+
+    /* NAVIGATION */
+    .site-nav {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    }
+    .nav-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 2px 8px;
+    }
+    .nav-inner a {
+      color: #334155;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 14px;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .nav-inner a:hover {
+      color: var(--brand-crimson);
+      border-bottom-color: var(--brand-crimson);
+    }
+
+    /* SEARCH & FILTER */
+    .search-strip {
+      max-width: 1140px;
+      margin: 16px auto 10px;
+      padding: 0 12px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .search-input-wrap {
+      flex: 1;
+      min-width: 280px;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      padding: 12px 16px 12px 42px;
+      background: #ffffff;
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      color: var(--text-main);
+      outline: none;
+      box-shadow: var(--shadow-soft);
+    }
+    .search-input:focus {
+      border-color: var(--brand-crimson);
+      box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.15);
+    }
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+    .btn-channel {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 11px 18px;
+      border-radius: var(--radius-md);
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    /* HIGHLIGHT TILES */
+    .tiles-grid {
+      max-width: 1140px;
+      margin: 8px auto 14px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 0 12px;
+    }
+    @media (max-width: 768px) { .tiles-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .tile-card {
+      color: #ffffff;
+      padding: 12px 10px;
+      border-radius: var(--radius-md);
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.15s ease;
+    }
+    .tile-card:hover { transform: translateY(-2px); }
+    .tile-rose { background: linear-gradient(135deg, #e11d48, #be123c); }
+    .tile-blue { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+    .tile-emerald { background: linear-gradient(135deg, #059669, #047857); }
+    .tile-amber { background: linear-gradient(135deg, #d97706, #b45309); }
+
+    /* TIERS CONTENT */
+    .content-area {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 12px 24px;
+    }
+
+    .columns-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    @media (max-width: 860px) { .columns-row { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px) { .columns-row { grid-template-columns: 1fr; } }
+
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+    }
+    .section-header {
+      padding: 12px 14px;
+      font-size: 14px;
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .hdr-results { background: linear-gradient(135deg, #059669, #047857); }
+    .hdr-admit { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+    .hdr-jobs { background: linear-gradient(135deg, #e11d48, #be123c); }
+    .hdr-answer { background: linear-gradient(135deg, #d97706, #b45309); }
+    .hdr-docs { background: linear-gradient(135deg, #4f46e5, #4338ca); }
+    .hdr-admission { background: linear-gradient(135deg, #0d9488, #0f766e); }
+
+    .live-badge {
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 9999px;
+      font-weight: 700;
+    }
+
+    .items-container {
+      list-style: none;
+      padding: 6px 0;
+      flex: 1;
+    }
+    .item-entry {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border-subtle);
+      cursor: pointer;
+      transition: background 0.12s ease;
+    }
+    .item-entry:last-child { border-bottom: none; }
+    .item-entry:hover { background: #f8fafc; }
+    .item-entry:hover .item-link { color: var(--brand-crimson); }
+
+    .item-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1e293b;
+      display: block;
+      line-height: 1.45;
+    }
+    .item-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 4px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .tag-badge {
+      background: #f1f5f9;
+      color: #334155;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 10px;
+    }
+
+    /* COMPANIONS BANNER */
+    .utilities-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 18px 20px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .util-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #38bdf8;
+      margin-bottom: 12px;
+    }
+    .util-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    @media (max-width: 768px) { .util-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .util-pill {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      color: #f1f5f9;
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .util-pill:hover { border-color: #38bdf8; color: #fff; }
+
+    /* ------------------------------------------------------------------ */
+    /* POST DETAILS VIEW                                                  */
+    /* ------------------------------------------------------------------ */
+    #postDetailsView {
+      display: none;
+      max-width: 980px;
+      margin: 14px auto 30px;
+      padding: 0 12px;
+    }
+
+    .btn-back {
+      background: var(--surface);
+      color: #334155;
+      border: 1.5px solid var(--border-subtle);
+      padding: 8px 16px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-bottom: 14px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .detail-card-main {
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-soft);
+    }
+    .detail-head-title {
+      font-size: clamp(1.3rem, 3.5vw, 1.75rem);
+      font-weight: 900;
+      color: var(--brand-navy);
+      line-height: 1.35;
+    }
+    .detail-head-date {
+      color: var(--brand-crimson);
+      font-size: 12px;
+      font-weight: 700;
+      margin: 4px 0 14px;
+    }
+    .detail-intro-box {
+      background: #f8fafc;
+      border-left: 4px solid var(--brand-crimson);
+      padding: 12px 14px;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: 13.5px;
+      color: #334155;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    /* DATES & FEES */
+    .dual-pane {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    @media (max-width: 680px) { .dual-pane { grid-template-columns: 1fr; } }
+
+    .pane-box {
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .pane-title {
+      background: #f1f5f9;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #0f172a;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .pane-body {
+      padding: 12px;
+      font-size: 12.5px;
+      color: #334155;
+      line-height: 1.65;
+    }
+
+    /* AGE & VACANCY */
+    .age-posts-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .badge-vacancies {
+      background: #2563eb;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+    }
+
+    /* QUALIFICATIONS & BREAKDOWN */
+    .info-section-box {
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      margin-bottom: 16px;
+      background: #ffffff;
+    }
+    .info-section-box strong {
+      display: block;
+      color: #0f172a;
+      font-size: 13px;
+      margin-bottom: 6px;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 4px;
+    }
+    .info-section-box div {
+      font-size: 13px;
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    /* ACTION TABLE */
+    .action-table-wrap {
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+    .action-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .action-table th {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 10px 14px;
+      font-weight: 800;
+      text-align: left;
+    }
+    .action-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .action-table tr:last-child td { border-bottom: none; }
+    .action-table tr:nth-child(even) { background: #f8fafc; }
+
+    .btn-act {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 800;
+      text-decoration: none;
+      font-size: 12px;
+    }
+    .btn-act-pdf { background: #fee2e2; color: #b91c1c; }
+    .btn-act-pdf:hover { background: #fecaca; }
+    .btn-act-syllabus { background: #fef3c7; color: #b45309; }
+    .btn-act-syllabus:hover { background: #fde68a; }
+    .btn-act-apply { background: #dbeafe; color: #1d4ed8; }
+    .btn-act-apply:hover { background: #bfdbfe; }
+    .btn-act-web { color: #334155; font-weight: 700; text-decoration: underline; }
+
+    .site-footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 24px 16px;
+      text-align: center;
+      font-size: 12px;
+      margin-top: 40px;
+    }
+  </style>
+
+<style id="growth-mesh-styles">
+  .related-mesh-card {
+    margin: 32px auto 20px;
+    max-width: 900px;
+    background: #0b1329;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 16px 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .related-mesh-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #38bdf8;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.02em;
+  }
+  .related-mesh-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .related-mesh-link {
+    display: block;
+    padding: 10px 14px;
+    background: #131d35;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  .related-mesh-link:hover {
+    background: #1e293b;
+    border-color: #38bdf8;
+    color: #38bdf8;
+    transform: translateY(-2px);
+  }
+</style>
+
+</head>
+<body>
+
+  <!-- STATUS STRIP -->
+  <div class="net-bar">
+    <div>⚡ Sarkari Alert AI • Verified Recruitment Portal</div>
+    <div>
+      <a href="https://unknownuniversem-blip.github.io/hindi-typing-tutor/">⌨ Hindi Typing</a>
+      <a href="https://unknownuniversem-blip.github.io/typer-racer-world/">🏎️ NitroTypers</a>
+      <a href="https://unknownuniversem-blip.github.io/exam-resizer/">📷 Photo Resizer</a>
+      <a href="https://unknownuniversem-blip.github.io/">🏠 Hub</a>
+    </div>
+  </div>
+
+  <!-- HERO BRAND HEADER -->
+  <header class="brand-hero">
+    <h1 class="brand-title">SARKARI ALERT <span>AI</span></h1>
+    <p class="hero-tagline">Real-Time Exam Notifications, Eligibility Criteria, Syllabus & Official Board Gateways</p>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a onclick="showHome()">Home</a>
+      <a href="#secJobs" onclick="showHome()">Latest Jobs</a>
+      <a onclick="filterByOrg('Banking')">🏦 Banking Jobs</a>
+      <a href="#secAdmit" onclick="showHome()">Admit Cards</a>
+      <a href="#secResults" onclick="showHome()">Results</a>
+      <a href="#secAdmission" onclick="showHome()">🎓 University Admissions</a>
+      <a href="#secAnswer" onclick="showHome()">Answer Keys</a>
+      <a href="#secDocuments" onclick="showHome()">Certificates</a>
+    </div>
+  </nav>
+
+  <!-- HOMEPAGE VIEW -->
+  <div id="homeMainView">
+    <div class="search-strip">
+      <div class="search-input-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" class="search-input" id="searchBox" placeholder="Type to filter any job, syllabus, or exam (e.g. RRB NTPC, SSC CHSL, BPSC, High Court)..." oninput="filterAll()">
+      </div>
+      <button type="button" class="btn-channel" onclick="alert('📢 Alerts channel launching soon! Bookmark this site (Ctrl+D) for daily updates.')">
+        🔔 Get Free Updates
+      </button>
+    </div>
+
+    <!-- TOP HIGHLIGHT TILES -->
+    <div class="tiles-grid">
+      <div class="tile-card tile-rose" onclick="openBySlug('rrb-ntpc-2026')">📢 Railway RRB NTPC (5,165 Posts)</div>
+      <div class="tile-card tile-blue" onclick="openBySlug('ssc-chsl-2026')">📝 SSC CHSL 10+2 (3,712 Posts)</div>
+      <div class="tile-card tile-emerald" onclick="openBySlug('ibps-po-2026')">🏦 IBPS PO / Clerk (14,700+ Posts)</div>
+      <div class="tile-card tile-amber" onclick="openBySlug('bpsc-tre-2026')">🏆 BPSC Teacher TRE (33,520 Posts)</div>
+    </div>
+
+    <!-- PAN-INDIA SECTOR QUICK FILTER BAR -->
+    <div style="max-width:1140px; margin:0 auto 12px; padding:0 12px; display:flex; gap:6px; overflow-x:auto; padding-bottom:4px;">
+      <button onclick="filterByOrg('')" style="background:#0f172a; color:#fff; border:none; padding:6px 12px; border-radius:9999px; font-size:11.5px; font-weight:700; cursor:pointer; white-space:nowrap;">🌟 All Portals</button>
+      <button onclick="filterByOrg('SSC')" style="background:#fff; border:1px solid #cbd5e1; padding:6px 12px; border-radius:9999px; font-size:11.5px; font-weight:700; cursor:pointer; white-space:nowrap;">🏛️ SSC Central</button>
+      <button onclick="filterByOrg('Railway')" style="background:#fff; border:1px solid #cbd5e1; padding:6px 12px; border-radius:9999px; font-size:11.5px; font-weight:700; cursor:pointer; white-space:nowrap;">🚆 Railway RRB</button>
+      <button onclick="filterByOrg('Banking')" style="background:#fff; border:1px solid #cbd5e1; padding:6px 12px; border-radius:9999px; font-size:11.5px; font-weight:700; cursor:pointer; white-space:nowrap;">🏦 Banking (IBPS/SBI)</button>
+      <button onclick="filterByOrg('UPSC')" style="background:#fff; border:1px solid #cbd5e1; padding:6px 12px; border-radius:9999px; font-size:11.5px; font-weight:700; cursor:pointer; white-space:nowrap;">🇮🇳 UPSC (IAS/CDS/NDA)</button>
+      <button onclick="filterByOrg('Police')" style="background:#fff; border:1px solid #cbd5e1; padding:6px 12px; border-radius:9999px; font-size:11.5px; font-weight:700; cursor:pointer; white-space:nowrap;">👮 State Police</button>
+      <button onclick="filterByOrg('High Court')" style="background:#fff; border:1px solid #cbd5e1; padding:6px 12px; border-radius:9999px; font-size:11.5px; font-weight:700; cursor:pointer; white-space:nowrap;">⚖️ High Courts</button>
+      <button onclick="filterByOrg('Teacher')" style="background:#fff; border:1px solid #cbd5e1; padding:6px 12px; border-radius:9999px; font-size:11.5px; font-weight:700; cursor:pointer; white-space:nowrap;">📚 Teaching (CTET/BPSC)</button>
+      <button onclick="filterByOrg('Army')" style="background:#fff; border:1px solid #cbd5e1; padding:6px 12px; border-radius:9999px; font-size:11.5px; font-weight:700; cursor:pointer; white-space:nowrap;">🎖️ Defense & Agniveer</button>
+      <button onclick="filterByOrg('Universities')" style="background:#fff; border:1px solid #cbd5e1; padding:6px 12px; border-radius:9999px; font-size:11.5px; font-weight:700; cursor:pointer; white-space:nowrap;">🎓 Universities (CUET/DU)</button>
+    </div>
+
+    <main class="content-area">
+      <!-- ROW 1 -->
+      <div class="columns-row">
+        <!-- RESULTS -->
+        <div class="section-card" id="secResults">
+          <div class="section-header hdr-results">
+            <span>Declared Results</span>
+            <span class="live-badge">Updated</span>
+          </div>
+          <ul class="items-container" id="list_results"></ul>
+        </div>
+
+        <!-- ADMIT CARDS -->
+        <div class="section-card" id="secAdmit">
+          <div class="section-header hdr-admit">
+            <span>Admit Cards & Slips</span>
+            <span class="live-badge">Live</span>
+          </div>
+          <ul class="items-container" id="list_admit"></ul>
+        </div>
+
+        <!-- LATEST JOBS -->
+        <div class="section-card" id="secJobs">
+          <div class="section-header hdr-jobs">
+            <span>Latest Vacancies</span>
+            <span class="live-badge">Active</span>
+          </div>
+          <ul class="items-container" id="list_jobs"></ul>
+        </div>
+      </div>
+
+      <!-- ROW 2 -->
+      <div class="columns-row">
+        <!-- ANSWER KEYS -->
+        <div class="section-card" id="secAnswer">
+          <div class="section-header hdr-answer">
+            <span>Answer Keys & Solutions</span>
+            <span class="live-badge">Keys</span>
+          </div>
+          <ul class="items-container" id="list_answerkey"></ul>
+        </div>
+
+        <!-- CERTIFICATES -->
+        <div class="section-card" id="secDocuments">
+          <div class="section-header hdr-docs">
+            <span>Certificates & Verification</span>
+            <span class="live-badge">Direct</span>
+          </div>
+          <ul class="items-container">
+            <li class="item-entry" onclick="window.open('https://edistrict.up.gov.in', '_blank')">
+              <span class="item-link">UP Domicile (निवास), Caste (जाति) & Income (आय) Portal</span>
+              <div class="item-meta-row"><span class="tag-badge">e-District</span><span>Direct</span></div>
+            </li>
+            <li class="item-entry" onclick="window.open('https://uidai.gov.in', '_blank')">
+              <span class="item-link">Aadhaar Card: Check Status, Download e-Aadhaar & PVC Order</span>
+              <div class="item-meta-row"><span class="tag-badge">UIDAI</span><span>Official</span></div>
+            </li>
+            <li class="item-entry" onclick="window.open('https://incometax.gov.in', '_blank')">
+              <span class="item-link">PAN Card: Instant e-PAN Online & Aadhaar Linking</span>
+              <div class="item-meta-row"><span class="tag-badge">IT Dept</span><span>Free</span></div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- ADMISSIONS -->
+        <div class="section-card" id="secAdmission">
+          <div class="section-header hdr-admission">
+            <span>Admissions & Counseling</span>
+            <span class="live-badge">Entrance</span>
+          </div>
+          <ul class="items-container">
+            <li class="item-entry" onclick="window.open('https://neet.nta.nic.in', '_blank')">
+              <span class="item-link">NTA NEET UG Online Application & Information Bulletin</span>
+              <div class="item-meta-row"><span class="tag-badge">NTA</span><span>Active</span></div>
+            </li>
+            <li class="item-entry" onclick="window.open('https://cuet.nta.nic.in', '_blank')">
+              <span class="item-link">CUET UG Central University Admission Registration</span>
+              <div class="item-meta-row"><span class="tag-badge">NTA</span><span>Portal</span></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- COMPANIONS -->
+      <div class="utilities-banner">
+        <div class="util-title">🛠️ Essential Exam Tools for Form Applicants</div>
+        <div class="util-grid">
+          <a href="https://unknownuniversem-blip.github.io/exam-resizer/" class="util-pill" target="_blank">
+            <span>📷</span><span>Photo Resizer (20KB - 50KB)</span>
+          </a>
+          <a href="https://unknownuniversem-blip.github.io/signature-maker-studio/" class="util-pill" target="_blank">
+            <span>✍️</span><span>Signature Maker Studio</span>
+          </a>
+          <a href="https://unknownuniversem-blip.github.io/hindi-typing-tutor/" class="util-pill" target="_blank">
+            <span>⌨️</span><span>Mangal / Krutidev Typing</span>
+          </a>
+          <a href="https://unknownuniversem-blip.github.io/typer-racer-world/" class="util-pill" target="_blank">
+            <span>🏎️</span><span>NitroTypers English Test</span>
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- COMPLETE DETAIL VIEW (DATES, QUALIFICATION, VACANCY & SYLLABUS) -->
+  <div id="postDetailsView">
+    <button type="button" class="btn-back" onclick="showHome()">← Back to Sarkari Alert AI Home</button>
+
+    <div class="detail-card-main">
+      <h2 class="detail-head-title" id="pTitle">Notification Details</h2>
+      <div class="detail-head-date" id="pDate">Post Date: Active</div>
+
+      <div class="detail-intro-box" id="pIntro">Notice summary.</div>
+
+      <!-- DATES & FEES -->
+      <div class="dual-pane">
+        <div class="pane-box">
+          <div class="pane-title">📅 Important Dates (महत्वपूर्ण तिथियां)</div>
+          <div class="pane-body" id="pDatesCol"></div>
+        </div>
+        <div class="pane-box">
+          <div class="pane-title">💳 Application Fee (आवेदन शुल्क)</div>
+          <div class="pane-body" id="pFeeCol"></div>
+        </div>
+      </div>
+
+      <!-- AGE & VACANCIES -->
+      <div class="age-posts-bar">
+        <div><strong>🎂 Age Limit Criteria:</strong> <span id="pAgeCol"></span></div>
+        <div>Total Vacancy: <span class="badge-vacancies" id="pTotalPostCol"></span></div>
+      </div>
+
+      <!-- ELIGIBILITY QUALIFICATION -->
+      <div class="info-section-box">
+        <strong>🎓 Educational Qualification & Eligibility Criteria (पात्रता):</strong>
+        <div id="pQualification"></div>
+      </div>
+
+      <!-- VACANCY BREAKDOWN -->
+      <div class="info-section-box" id="secVacBreakdown">
+        <strong>📋 Post-Wise Vacancy Distribution:</strong>
+        <div id="pVacDetails"></div>
+      </div>
+
+      <!-- ACTION LINKS TABLE -->
+      <div class="action-table-wrap">
+        <table class="action-table">
+          <tr>
+            <th style="width:55%;">Official Document / Gateway</th>
+            <th style="width:45%; text-align:center;">Action / Verified Destination</th>
+          </tr>
+          <tr>
+            <td><b>🔗 Apply Online / Candidate Registration</b></td>
+            <td style="text-align:center;"><a id="pApplyLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-act btn-act-apply">Apply Online ➔</a></td>
+          </tr>
+          <tr>
+            <td><b>📥 Download Official Notification PDF</b></td>
+            <td style="text-align:center;"><a id="pNoticeLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-act btn-act-pdf">Download Notice PDF</a></td>
+          </tr>
+          <tr>
+            <td><b>📖 Download Syllabus & Exam Pattern PDF</b></td>
+            <td style="text-align:center;"><a id="pSyllabusLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-act btn-act-syllabus">Download Syllabus PDF</a></td>
+          </tr>
+          <tr>
+            <td><b>🏛️ Official Conducting Board Authority</b></td>
+            <td style="text-align:center;"><a id="pOfficialLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-act-web">Visit Official Board Site ➔</a></td>
+          </tr>
+          <tr style="background:#f0fdf4;">
+            <td>📷 <b>Need Photo / Signature Resizer (20KB - 50KB)?</b></td>
+            <td style="text-align:center;"><a href="https://unknownuniversem-blip.github.io/exam-resizer/" target="_blank" style="color:#059669; font-weight:800; text-decoration:none;">Resize Photo Free ➔</a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div><strong>Sarkari Alert AI™</strong> — Autonomous Government Recruitment Engine</div>
+    <p>All notices, dates, qualifications, and syllabus links are parsed from official government boards without intermediate affiliate redirects.</p>
+  </footer>
+
+  <script>
+    let database = { jobs: [], admit: [], results: [], answerkey: [] };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      fetch('data.json')
+        .then(res => res.json())
+        .then(data => {
+          database = data;
+          renderAll();
+        })
+        .catch(() => {
+          console.warn('data.json awaiting refresh.');
+        });
+    });
+
+    function populateSection(listId, items, catKey, query = '') {
+      const ul = document.getElementById(listId);
+      if (!ul || !items) return;
+
+      const filtered = items.filter(i => 
+        i.title.toLowerCase().includes(query) || (i.org && i.org.toLowerCase().includes(query))
+      );
+
+      if (filtered.length === 0) {
+        ul.innerHTML = '<li class="item-entry"><span class="item-link" style="color:#94a3b8;">No matching notices found.</span></li>';
+        return;
+      }
+
+      ul.innerHTML = filtered.map((item, idx) => `
+        <li class="item-entry" onclick="openDetail('${catKey}', ${idx})">
+          <span class="item-link">${item.title}</span>
+          <div class="item-meta-row">
+            <span class="tag-badge">${item.org || 'Govt'}</span>
+            <span>${item.date ? item.date.replace('Post Date: ', '') : 'Active'}</span>
+          </div>
+        </li>
+      `).join('');
+    }
+
+    function renderAll(q = '') {
+      populateSection('list_jobs', database.jobs, 'jobs', q);
+      populateSection('list_admit', database.admit, 'admit', q);
+      populateSection('list_results', database.results, 'results', q);
+      populateSection('list_answerkey', database.answerkey, 'answerkey', q);
+    }
+
+        function filterByOrg(orgQuery) {
+      showHome();
+      document.getElementById('searchBox').value = orgQuery;
+      filterAll();
+      window.scrollTo({ top: 320, behavior: 'smooth' });
+    }
+
+    function filterAll() {
+      const q = document.getElementById('searchBox').value.trim().toLowerCase();
+      renderAll(q);
+    }
+
+    function showHome() {
+      document.getElementById('homeMainView').style.display = 'block';
+      document.getElementById('postDetailsView').style.display = 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function openDetail(catKey, index) {
+      const list = database[catKey] || [];
+      const item = list[index];
+      if (!item) return;
+
+      document.getElementById('pTitle').innerText = item.title;
+      document.getElementById('pDate').innerText = item.date || 'Post Date: Active';
+      document.getElementById('pIntro').innerHTML = item.intro || item.title;
+      document.getElementById('pDatesCol').innerHTML = item.dates || '• Dates : Check official notice';
+      document.getElementById('pFeeCol').innerHTML = item.fee || '• Fee : Check official notice';
+      document.getElementById('pAgeCol').innerHTML = item.age || 'Check notification for details';
+      document.getElementById('pTotalPostCol').innerText = item.total_posts || 'Open';
+      document.getElementById('pQualification').innerHTML = item.qualification || 'Candidate must possess the required educational qualification from a recognized board/university in India as outlined in the notification.';
+      
+      const vacEl = document.getElementById('pVacDetails');
+      if (item.vacancies_detail) {
+        document.getElementById('secVacBreakdown').style.display = 'block';
+        vacEl.innerHTML = item.vacancies_detail;
+      } else {
+        document.getElementById('secVacBreakdown').style.display = 'none';
+      }
+
+      const links = item.links || {};
+      const directApply = links.apply || links.official || '#';
+      const directNotice = links.notice || directApply;
+      const directSyllabus = links.syllabus || directNotice;
+      const directOfficial = links.official || directApply;
+
+      document.getElementById('pApplyLink').href = directApply;
+      document.getElementById('pNoticeLink').href = directNotice;
+      document.getElementById('pSyllabusLink').href = directSyllabus;
+      document.getElementById('pOfficialLink').href = directOfficial;
+
+      document.getElementById('homeMainView').style.display = 'none';
+      document.getElementById('postDetailsView').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Opens a post by unique slug from any banner or external card
+    function openBySlug(slug) {
+      for (const cat in database) {
+        const idx = database[cat].findIndex(x => x.id === slug);
+        if (idx !== -1) {
+          openDetail(cat, idx);
+          return;
+        }
+      }
+      openDetail('jobs', 0);
+    }
+  </script>
+<script src="https://unknownuniversem-blip.github.io/network.js" defer></script>
+<!-- Viral Social Share Bar -->
+<div id="viral-share-bar" style="position:fixed; bottom:16px; left:50%; transform:translateX(-50%); z-index:99999; display:flex; gap:10px; background:#0f172ae6; backdrop-filter:blur(8px); border:1px solid #38bdf8; padding:8px 16px; border-radius:50px; box-shadow:0 8px 30px rgba(0,0,0,0.6); align-items:center;">
+  <span style="color:#f8fafc; font-size:0.82rem; font-weight:700; white-space:nowrap;">Share with Aspirants:</span>
+  <a href="https://api.whatsapp.com/send?text=%F0%9F%94%A5%2022%2B%20Free%20Daily%20Digital%20Utility%20Tools%20%28Photo%20Resizer%2C%20Speed%20Math%2C%20Typing%2C%20GST%20%26%20Forms%29%3A%20https%3A//unknownuniversem-blip.github.io/" target="_blank" style="background:#22c55e; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    💬 WhatsApp
+  </a>
+  <a href="https://t.me/share/url?url=https%3A//unknownuniversem-blip.github.io/sarkari-alert-ai/&text=%F0%9F%94%A5%2022%2B%20Free%20Daily%20Digital%20Utility%20Tools%20%28Photo%20Resizer%2C%20Speed%20Math%2C%20Typing%2C%20GST%20%26%20Forms%29%3A%20https%3A//unknownuniversem-blip.github.io/" target="_blank" style="background:#0284c7; color:#fff; text-decoration:none; padding:6px 14px; border-radius:30px; font-size:0.78rem; font-weight:800; display:flex; align-items:center; gap:5px;">
+    ✈️ Telegram
+  </a>
+</div>
+
+
+<!-- Dynamic Internal Cross-Link Mesh -->
+<div class="related-mesh-card">
+  <div class="related-mesh-title">⚡ Recommended Essential Student & Cyber Tools</div>
+  <div class="related-mesh-grid">
+    <a href="https://unknownuniversem-blip.github.io/math/" class="related-mesh-link" target="_blank">⚡ Speed Math Workout</a><a href="https://unknownuniversem-blip.github.io/exam-resizer/" class="related-mesh-link" target="_blank">📸 Exam Photo & Sign Resizer</a><a href="https://unknownuniversem-blip.github.io/hindi-typing-tutor/" class="related-mesh-link" target="_blank">⌨️ Hindi Typing Tutor</a><a href="https://unknownuniversem-blip.github.io/" class="related-mesh-link" target="_blank">🌐 All 22+ Free Web Utilities</a>
+  </div>
+</div>
+
+</body>
+</html>
